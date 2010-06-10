@@ -23,9 +23,9 @@
           </execution>
         </executions>
         <configuration>
-          <schemaDirectory>${basedir}/src/main/resources/</schemaDirectory>
-         <!-- <schemaDirectory>${basedir}/src/main/resources/</schemaDirectory> -->
-		  <generatePackage>org.incf.atlas</generatePackage>
+          <schemaDirectory>${basedir}/src/main/resources/wpsSchema</schemaDirectory>
+         <!-- <schemaDirectory>${basedir}/src/main/resources/</schemaDirectory>
+		  <generatePackage>org.incf.atlas</generatePackage> -->
           <excludeSchemas>
             <excludeSchema></excludeSchema>
           </excludeSchemas>

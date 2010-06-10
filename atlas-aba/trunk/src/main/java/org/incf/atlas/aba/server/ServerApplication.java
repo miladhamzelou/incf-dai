@@ -1,6 +1,9 @@
 package org.incf.atlas.aba.server;
 
+import org.incf.atlas.aba.resource.CapabilitiesResource;
 import org.incf.atlas.aba.resource.CoordinateTransformationChainResource;
+import org.incf.atlas.aba.resource.FaviconResource;
+import org.incf.atlas.aba.resource.PingResource;
 import org.restlet.Application;
 import org.restlet.Component;
 import org.restlet.Restlet;
@@ -21,6 +24,16 @@ public class ServerApplication extends Application {
 		System.out.println("***CreateRoot***");
 		Router router = new Router(getContext());
 
+		// attach resource handlers based on the URI
+		router.attach("/favicon.ico", FaviconResource.class);
+
+		router.attach("/ping/{pingType}", PingResource.class);
+		
+		/* GetCapabilities
+		 * ?request=GetCapabilities&output=xml
+		 */
+		router.attach("/?Request=GetCapabilities", 
+				CapabilitiesResource.class);
 		router.attach("?Request=Execute&Identifier=TransformationChain"
 				+ "&DataInputs={dataInputs}",
 				CoordinateTransformationChainResource.class);
