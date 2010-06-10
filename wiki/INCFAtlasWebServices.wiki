@@ -124,7 +124,7 @@ DataInuts keys:
  * vocabulary = { { hub } : { srs | vocabulary } : { code } }
  * filter = {
 
-<table style="color:black; background-color:#ffffcc;" cellpadding="20" cellspacing="0" border="1">
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>Request</th>
     <th>Identifier</th>
@@ -137,14 +137,14 @@ DataInuts keys:
     <td>n/a</td>
     <td>n/a</td>
     <td>All hubs</td>
-    <td>XML</td>
+    <td>XML:<br/>wpsGetCapabilities_response.xsd</td>
   </tr>
   <tr>
     <td>DescribeProcess</td>
     <td>n/a</td>
     <td>n/a</td>
     <td>All hubs</td>
-    <td>XML</td>
+    <td>XML:<br/>wpsDescribeProcess_response.xsd</td>
   </tr>
   <tr>
     <td>Execute</td>
