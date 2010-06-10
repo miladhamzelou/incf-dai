@@ -81,10 +81,9 @@ public class CapabilitiesResource extends Resource {
 		WPSCapabilitiesType capabilities = of.createWPSCapabilitiesType();
 		
 		// attributes
-	    capabilities.setVersion("0.0");
-	    capabilities.setUpdateSequence("some update sequence");
-		capabilities.setService("test service");
-		capabilities.setLang("EN");
+	    capabilities.setVersion("0.0.0");
+		capabilities.setService("WPS");
+		capabilities.setLang("en-US");
 
 		// service identification
 	    ServiceIdentification si = owsFac.createServiceIdentification();
@@ -97,23 +96,23 @@ public class CapabilitiesResource extends Resource {
 	    CodeType serviceType = owsFac.createCodeType();
 	    serviceType.setValue("WPS");
 	    si.setServiceType(serviceType);
-	    si.getServiceTypeVersion().add("0.2.41.0.0");
+	    si.getServiceTypeVersion().add("0.0.0");
 	    si.setFees("NONE");
 	    si.getAccessConstraints().add("NONE");
 	    capabilities.setServiceIdentification(si);
 	    
 	    // service provider
-        ServiceProvider serviceProvider = owsFac.createServiceProvider();
-        serviceProvider.setProviderName("Asif Memon");
-        capabilities.setServiceProvider(serviceProvider);
+//        ServiceProvider serviceProvider = owsFac.createServiceProvider();
+//        serviceProvider.setProviderName("Asif Memon");
+//        capabilities.setServiceProvider(serviceProvider);
         
         // operations metadata
-        OperationsMetadata operationsMetadata = 
-                owsFac.createOperationsMetadata();
-        net.opengis.ows._1.Operation operation = owsFac.createOperation();
-        operation.setName("GetCapabilities");
-        operationsMetadata.getOperation().add(operation);
-        capabilities.setOperationsMetadata(operationsMetadata);
+//        OperationsMetadata operationsMetadata = 
+//                owsFac.createOperationsMetadata();
+//        net.opengis.ows._1.Operation operation = owsFac.createOperation();
+//        operation.setName("GetCapabilities");
+//        operationsMetadata.getOperation().add(operation);
+//        capabilities.setOperationsMetadata(operationsMetadata);
 
 	    // process offerings
         ProcessOfferings processOfferings = of.createProcessOfferings();
@@ -132,6 +131,7 @@ public class CapabilitiesResource extends Resource {
                 + "interest (POI) in a specified Spatial Reference System " 
                 + "(SRS)");
         process1.setAbstract(abstract1);
+        process1.setProcessVersion("0.0.0");
         processOfferings.getProcess().add(process1);
         
         // process 2
@@ -146,6 +146,7 @@ public class CapabilitiesResource extends Resource {
         abstract2.setValue("Returns Fine/Anatomic structures segmented for the "
                 + "POI in a specified SRS");
         process2.setAbstract(abstract2);
+        process2.setProcessVersion("0.0.0");
 		processOfferings.getProcess().add(process2);
 		
 		capabilities.setProcessOfferings(processOfferings);

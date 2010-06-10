@@ -34,6 +34,7 @@ public class ServerApplication extends Application {
 		 */
 		router.attach("/?Request=GetCapabilities", 
 				CapabilitiesResource.class);
+		
 		router.attach("?Request=Execute&Identifier=TransformationChain"
 				+ "&DataInputs={dataInputs}",
 				CoordinateTransformationChainResource.class);

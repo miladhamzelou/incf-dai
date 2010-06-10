@@ -89,8 +89,8 @@ public class XmlValidator {
 	
 	// dev testing only
 	public static void main(String[] a) {
-		final String SCHEMA = "target/classes/WBC_v0.4.xsd";
-		final String XML = "/wholeWBCState.xml";
+		final String SCHEMA = "src/main/resources/wpsSchema/wpsGetCapabilities_response.xsd";
+		final String XML = "/exampleResponses/GetCapabilitiesResponse.xml";
 		XmlValidator validator = new XmlValidator(SCHEMA);
 		if (validator.validate(XML)) {
 			System.out.println("Passed");

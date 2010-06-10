@@ -1,0 +1,30 @@
+<wps:Capabilities service="WPS" version="0.0.0" xml:lang="en-US" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:wps="http://www.opengis.net/wps/1.0.0" xmlns:ows="http://www.opengis.net/ows/1.1">
+<ows:ServiceIdentification>
+<ows:Title>ABA Services</ows:Title>
+<ows:Abstract>ABA Services are created to access ....</ows:Abstract>
+<ows:ServiceType>WPS</ows:ServiceType>
+<ows:ServiceTypeVersion>0.0.0</ows:ServiceTypeVersion>
+<ows:Fees>NONE</ows:Fees>
+<ows:AccessConstraints>NONE</ows:AccessConstraints>
+</ows:ServiceIdentification>
+<wps:ProcessOfferings>
+<wps:Process wps:processVersion="0.0.0">
+<ows:Identifier>GetCorrelationMapByPOI</ows:Identifier>
+<ows:Title>Get Correlation Map</ows:Title>
+<ows:Abstract>This method will return the URL and load the correlation map interface in the browser, for a point of interest (POI) in a specified Spatial Reference System (SRS)</ows:Abstract>
+</wps:Process>
+<wps:Process wps:processVersion="0.0.0">
+<ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
+<ows:Title>Get Structure Names by POI</ows:Title>
+<ows:Abstract>Returns Fine/Anatomic structures segmented for the POI in a specified SRS</ows:Abstract>
+</wps:Process>
+</wps:ProcessOfferings>
+<wps:Languages>
+<wps:Default>
+<ows:Language>en-US</ows:Language>
+</wps:Default>
+<wps:Supported>
+<ows:Language>en-US</ows:Language>
+</wps:Supported>
+</wps:Languages>
+</wps:Capabilities>
