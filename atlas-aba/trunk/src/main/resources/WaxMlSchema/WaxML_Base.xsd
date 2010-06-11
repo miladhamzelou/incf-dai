@@ -87,7 +87,7 @@ Optional</xs:documentation>
                     <xs:element name="structureTerms" minOccurs="1" maxOccurs="1">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element  name="StructureTerm" type="wax:StructureTermType" minOccurs="0" maxOccurs="unbounded" />
+                                <xs:element name="StructureTerm" type="wax:StructureTermType" minOccurs="0" maxOccurs="unbounded" />
                             </xs:sequence>
                         </xs:complexType>
                     </xs:element>
@@ -128,7 +128,7 @@ Optional</xs:documentation>
         </xs:complexContent>
     </xs:complexType>
     <xs:simpleType name="geometryFomatCodeList">
-        <xs:union memberTypes="wax:geomFormatEnumstring" />
+        <xs:union memberTypes="wax:geomFormatEnum xs:string" />
     </xs:simpleType>
     <xs:simpleType name="geomFormatEnum">
         <xs:restriction base="xs:string">
@@ -162,6 +162,7 @@ Optional</xs:documentation>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+    <xs:element name="imagesResponse" type="wax:ImagesResponseType" />
     <xs:complexType name="Image2DType">
         <xs:sequence>
             <xs:element name="imageSource" minOccurs="1" maxOccurs="unbounded">
@@ -172,7 +173,7 @@ Optional</xs:documentation>
                             <xs:attribute name="metadata" type="xs:anyURI" />
                             <xs:attribute name="name" type="xs:normalizedString" />
                             <xs:attribute name="srsName" type="xs:token" />
-                            <xs:attribute name="format" type="xs:token" />
+                            <xs:attribute name="format" type="wax:IncfRemoteFormats" />
                             <xs:attribute name="relavance" type="xs:float" />
                         </xs:extension>
                     </xs:simpleContent>
@@ -230,7 +231,7 @@ Optional</xs:documentation>
     <xs:complexType name="GeneType">
         <xs:sequence>
             <xs:element name="symbol" type="wax:GeneSymbolType" />
-            <xs:element  ref="wax:name" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element ref="wax:name" minOccurs="1" maxOccurs="unbounded" />
             <xs:element name="mgiMarkerAccesionId" type="xs:QName" minOccurs="1" maxOccurs="unbounded" />
             <xs:element name="organism" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
@@ -299,4 +300,50 @@ The codeSpace attribute can optionally be used to add information to indentify t
     </xs:complexType>
     <xs:element name="name" type="xs:Name" />
     <xs:element name="description" type="gml:StringOrRefType" />
+    <xs:simpleType name="IncfRemoteFormatEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="WMS/jpg" />
+            <xs:enumeration value="WMS/gif" />
+            <xs:enumeration value="WMS/png" />
+            <xs:enumeration value="zoomify" />
+            <xs:enumeration value="image/jpeg" />
+            <xs:enumeration value="image/png" />
+            <xs:enumeration value="image/gif" />
+            <xs:enumeration value="text/html" />
+            <xs:enumeration value="url" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IncfRemoteFormats">
+        <xs:union memberTypes="wax:IncfRemoteFormatEnum xs:string" />
+    </xs:simpleType>
+    <xs:complexType name="IncfUri">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+                <xs:attribute ref="xlink:title" />
+                <xs:attribute name="format" type="wax:IncfRemoteFormats" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ImageUrlListType">
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="url" type="wax:IncfUri" />
+        </xs:choice>
+        <xs:attribute name="name" type="xs:string" />
+    </xs:complexType>
+    <xs:complexType name="CorrelatioMapType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:choice>
+                    <xs:element name="imagesReferenceCollection" minOccurs="1" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:choice>
+                                <xs:element name="imageReferences" type="wax:ImageUrlListType" />
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="correlationMapResponse" type="wax:CorrelatioMapType" />
 </xs:schema>
