@@ -185,7 +185,7 @@ DataInuts keys:
     <td>Execute</td>
     <td>GetTransformationChain</td>
     <td>inputSrsCode<br/>targetSrsCode<br/>filter</td>
-    <td>Central only</td>
+    <td>Central and<br/>selected hubs</td>
     <td>XML</td>
   </tr>
   <tr>
