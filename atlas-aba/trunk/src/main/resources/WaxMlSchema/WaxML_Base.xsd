@@ -216,9 +216,9 @@ Optional</xs:documentation>
     <xs:complexType name="GenesResponseType">
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
-                <xs:all>
+                <xs:sequence>
                     <xs:element name="genesByPOI" type="wax:GeneByPoiType" minOccurs="0" maxOccurs="1" />
-                </xs:all>
+                </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
