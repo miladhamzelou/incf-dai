@@ -1,15 +1,14 @@
 package org.incf.atlas.aba.resource;
 
 
-import generated.CoordinateTransformationChainResponse;
-import generated.ObjectFactory;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Set;
 
 import org.incf.atlas.aba.util.ABAUtil;
 import org.incf.atlas.aba.util.DataInputs;
+import org.incf.atlas.generated.CoordinateTransformationChainResponse;
+import org.incf.atlas.generated.ObjectFactory;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;

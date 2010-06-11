@@ -1,13 +1,11 @@
 package org.incf.atlas.aba.util;
 	   
 import org.incf.atlas.aba.resource.ABAServiceVO;
-import org.incf.atlas.aba.util.ABAConfigurator;
-
-import generated.CoordinateTransformationChain;
-import generated.CoordinateTransformationChainResponse;
-import generated.ObjectFactory;
-import generated.QueryInfo;
-import generated.CoordinateTransformationChain.CoordinateTransformation;
+import org.incf.atlas.generated.CoordinateTransformationChain;
+import org.incf.atlas.generated.CoordinateTransformationChainResponse;
+import org.incf.atlas.generated.ObjectFactory;
+import org.incf.atlas.generated.QueryInfo;
+import org.incf.atlas.generated.CoordinateTransformationChain.CoordinateTransformation;
 
 public class ABAUtil {
 
