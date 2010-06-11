@@ -1,0 +1,29 @@
+<wps:Capabilities service="WPS" version="0.0.0" xml:lang="en-US" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:wps="http://www.opengis.net/wps/1.0.0" 
+    xmlns:ows="http://www.opengis.net/ows/1.1">
+  <ows:ServiceIdentification>
+    <ows:Title>ABA Hub Services</ows:Title>
+    <ows:Abstract>ABA Hub Services provide access to data available from the
+      Allen Brain Atlas resource.</ows:Abstract>
+    <ows:ServiceType>WPS</ows:ServiceType>
+    <ows:ServiceTypeVersion>0.0.1</ows:ServiceTypeVersion>
+  </ows:ServiceIdentification>
+  <wps:ProcessOfferings>
+    <wps:Process wps:processVersion="0.0.1">
+      <ows:Identifier>GetTransformationChain</ows:Identifier>
+      <ows:Title>Get Transformation Chain</ows:Title>
+      <ows:Abstract>This method will return the transformation chain between
+        any two given transformations.
+      </ows:Abstract>
+    </wps:Process>
+  </wps:ProcessOfferings>
+  <wps:Languages>
+    <wps:Default>
+      <ows:Language>en-US</ows:Language>
+    </wps:Default>
+    <wps:Supported>
+      <ows:Language>en-US</ows:Language>
+    </wps:Supported>
+  </wps:Languages>
+</wps:Capabilities>
