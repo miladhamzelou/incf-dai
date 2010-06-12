@@ -5,6 +5,8 @@ package org.incf.atlas.aba.resource;
 //import generated.ServiceIdentification;
 //import generated.ServiceProvider;
 
+import java.io.File;
+
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
@@ -26,9 +28,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
-public class CapabilitiesResource extends Resource {
+public class GetCapabilities extends Resource {
 	
-	private static final Logger logger = LoggerFactory.getLogger(CapabilitiesResource.class);
+	private static final Logger logger = LoggerFactory.getLogger(GetCapabilities.class);
 	
 	/*
 	 * /incf-services/service/ABAServiceController?request=GetCapabilities&output=xml
@@ -36,7 +38,7 @@ public class CapabilitiesResource extends Resource {
 	
 	private String responseFormat;
 
-	public CapabilitiesResource(Context context, Request request, Response response) {
+	public GetCapabilities(Context context, Request request, Response response) {
 		super(context, request, response);
 		
 		responseFormat = (String) 
@@ -169,8 +171,9 @@ public class CapabilitiesResource extends Resource {
 		
 		// generate representation based on media type
 		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
-			return new FileRepresentation("src/main/resources/database/Capabilities.xml", 
-					MediaType.APPLICATION_XML);
+			File file = new File(this.getClass().getResource(
+						"/database/Capabilities.xml").getPath());
+			return new FileRepresentation(file, MediaType.APPLICATION_XML);
 		}
 		
 		return null;

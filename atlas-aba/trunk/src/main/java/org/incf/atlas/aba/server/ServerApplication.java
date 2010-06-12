@@ -1,7 +1,8 @@
 package org.incf.atlas.aba.server;
 
-import org.incf.atlas.aba.resource.CapabilitiesResource;
+import org.incf.atlas.aba.resource.GetCapabilities;
 import org.incf.atlas.aba.resource.CoordinateTransformationChainResource;
+import org.incf.atlas.aba.resource.DescribeProcess;
 import org.incf.atlas.aba.resource.FaviconResource;
 import org.incf.atlas.aba.resource.PingResource;
 import org.restlet.Application;
@@ -32,9 +33,12 @@ public class ServerApplication extends Application {
 		/* GetCapabilities
 		 * ?request=GetCapabilities&output=xml
 		 */
-		router.attach("/?Request=GetCapabilities", 
-				CapabilitiesResource.class);
+		router.attach("?Request=GetCapabilities", GetCapabilities.class);
+		router.attach("?request=GetCapabilities", GetCapabilities.class);
 		
+		router.attach("?Request=DescribeProcess", DescribeProcess.class);
+		router.attach("?request=DescribeProcess", DescribeProcess.class);
+
 		router.attach("?Request=Execute&Identifier=TransformationChain"
 				+ "&DataInputs={dataInputs}",
 				CoordinateTransformationChainResource.class);
