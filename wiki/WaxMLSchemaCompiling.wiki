@@ -8,6 +8,12 @@ Use pre-compiled schemas.
 
 = Needs:= 
 make this work in eclipse
+m2 plugins
+* extension set to true
+* tried jar in 
+** schema files
+** binding files
+** args
 
 = Details =
 
