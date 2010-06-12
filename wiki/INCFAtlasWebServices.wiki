@@ -1,22 +1,40 @@
 #labels INCF,Atlas,Webservice,Featured
-= Currently Functioning Test and Demonstration URIs =
-At this time these URIs have just been established to support testing.
+= ABA Hub =
 
-http://incf-dev-local.crbs.ucsd.edu:8080/atlas/favicon.ico
+== Working WPS Functions ==
+
+ * GetCapabilities
+
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=GetCapabilities
+
+ * DescribeProcess
+
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=DescribeProcess
+
+== WPS Functions under Development ==
+
+ * Execute : ListSRSs
+ * Execute : DescribeSRS
+
+ * Execute : ListTransformations
+ * Execute : DescribeTransformation
+ * Execute : TransformPOI
+ * Execute : GetTransformationChain
+
+ * Execute : Get2DImagesByPOI
+ * Execute : GetCorrelationMapByPOI
+ * Execute : GetGenesByPOI
+ * Execute : GetStructureNamesByPOI
+
+== Ancillary URLs ==
+
+ * http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba/favicon.ico
 
     Returns the INCF favicon.
 
-http://incf-dev-local.crbs.ucsd.edu:8080/atlas/ping/server
+ * http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba/ping/server
 
     Returns a string acknowledging server connection.
-
-http://incf-dev-local.crbs.ucsd.edu:8080/atlas?Request=GetCapabilities
-
-    Returns an mock XML document.
-
-http://incf-dev-local.crbs.ucsd.edu:8080/atlas?Request=Execute&Identifier=GetGenesByPOI&DataInputs=srsCode=WHS;x=1.1;y=2.2;z=3.3
-
-    Returns and XML document echoing the data input key/value pairs. Any of the DataInputs key/value pairs may be changed.
 
 = Planned Base URIs=
  * http://[server]:[port]/atlas
