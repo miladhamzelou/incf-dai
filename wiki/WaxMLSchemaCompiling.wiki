@@ -1,0 +1,26 @@
+#labels xjc
+# ogc schemas complex to compile, sue jars
+
+= Introduction =
+
+waxml includes ogc schemas. Schemas don't easily compile, but are available precompiled.
+Use pre-compiled schemas.
+
+= Needs:= 
+make this work in eclipse
+
+= Details =
+
+Precompiled OGC jars:
+http://download.java.net/maven/2/org/jvnet/ogc/
+
+Command line to get this to work (from dave v's machine)
+
+"c:\Program Files\Java\jdk1.6
+.0_17\bin\xjc.exe" WaxMlSchema\WaxML_Base.xsd ogcPrecompiled\gml-v_3_2_1-schema-
+1.0.0.jar -extension
+
+Basically:
+xjc schemafile jar(s) -extension
+
+ technique learned from: [http://weblogs.java.net/blog/kohsuke/archive/2006/09/separate_compil.html]
