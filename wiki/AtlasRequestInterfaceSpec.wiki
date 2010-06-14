@@ -6,11 +6,11 @@ The Atlas base URIs identify the server location (URL) and the server applicatio
 
  * Format
 
-    http://[server]:[port]/atlas-[hub]
+    !http://[server]:[port]/atlas-[hub]
 
  * Example:
 
-    http://incf-dev-local:8080/atlas-aba
+    !http://incf-dev-local:8080/atlas-aba
 
 == Full URIs == 
 
