@@ -1,0 +1,55 @@
+= Project Notes =
+
+== Project Technologies ==
+ * Primary language: Java
+ * Build: Maven
+ * Source code management: SVN
+ * Packaging: WAR (.war file)
+ * Database: PostgreSQL
+ * XML specification: XML Schema (.xsd documents)
+ * XML-object mapping: JAXB
+ * Server: Tomcat
+ * Application architecture: RESTlets under controlling servlet
+ * ORM: JPA/Hibernate
+
+== Database Tables ==
+
+=== Central Database ===
+ * Project
+ * Hub
+ * SpacialObject
+ * HubService
+ * CoordinateTransformation
+ * Process
+ * ProcessParameter
+ * Spaces tables
+   * Author
+   * Orientation
+   * SRS
+   * Slice
+   * Fiducial
+   * Structure
+
+=== Hub Databases ===
+Same as Central except no Hub table
+
+== Java Package Names ==
+
+ * org.incf.atlas.server.central
+ * org.incf.atlas.server.central.database
+ * org.incf.atlas.server.central.resource
+ * org.incf.atlas.server.central.util
+
+ * org.incf.atlas.server.hubs
+
+ * org.incf.atlas.server.hubs.aba
+ * org.incf.atlas.server.hubs.aba.database
+ * org.incf.atlas.server.hubs.aba.resource
+ * org.incf.atlas.server.hubs.aba.transform
+ * org.incf.atlas.server.hubs.aba.util
+
+ * org.incf.atlas.server.hubs.ucsd
+ * org.incf.atlas.server.hubs.ucsd.database
+ * org.incf.atlas.server.hubs.ucsd.resource
+ * org.incf.atlas.server.hubs.ucsd.transform
+ * org.incf.atlas.server.hubs.ucsd.util
