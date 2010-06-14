@@ -1,5 +1,7 @@
 = ABA Hub =
 
+We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far we only have a couple functions and they return incomplete data, but the important thing is that the server is in being. The code is maintained in out source code repository.
+
 == Working WPS Functions ==
 
  * GetCapabilities
