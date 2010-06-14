@@ -1,0 +1,36 @@
+= ABA Hub =
+
+== Working WPS Functions ==
+
+ * GetCapabilities
+
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=GetCapabilities
+
+ * DescribeProcess
+
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=DescribeProcess
+
+== WPS Functions under Development ==
+
+ * Execute : ListSRSs
+ * Execute : DescribeSRS
+
+ * Execute : ListTransformations
+ * Execute : DescribeTransformation
+ * Execute : TransformPOI
+ * Execute : GetTransformationChain
+
+ * Execute : Get2DImagesByPOI
+ * Execute : GetCorrelationMapByPOI
+ * Execute : GetGenesByPOI
+ * Execute : GetStructureNamesByPOI
+
+== Ancillary URLs ==
+
+ * http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba/favicon.ico
+
+    Returns the INCF favicon.
+
+ * http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba/ping/server
+
+    Returns a string acknowledging server connection.
