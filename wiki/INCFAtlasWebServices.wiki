@@ -1,76 +1,7 @@
 #labels INCF,Atlas,Webservice,Featured
-= ABA Hub =
+= Project Notes =
 
-== Working WPS Functions ==
-
- * GetCapabilities
-
-    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=GetCapabilities
-
- * DescribeProcess
-
-    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=DescribeProcess
-
-== WPS Functions under Development ==
-
- * Execute : ListSRSs
- * Execute : DescribeSRS
-
- * Execute : ListTransformations
- * Execute : DescribeTransformation
- * Execute : TransformPOI
- * Execute : GetTransformationChain
-
- * Execute : Get2DImagesByPOI
- * Execute : GetCorrelationMapByPOI
- * Execute : GetGenesByPOI
- * Execute : GetStructureNamesByPOI
-
-== Ancillary URLs ==
-
- * http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba/favicon.ico
-
-    Returns the INCF favicon.
-
- * http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba/ping/server
-
-    Returns a string acknowledging server connection.
-
-= Planned Base URIs=
- * http://[server]:[port]/atlas
- * http://[server]:[port]/[hub]/atlas
-
-Servers
- * central.incf.org
- * hubs.incf.org
-
-The port will be 8080 or unspecified which defaults to 80.
-
-Base URI examples:
- * http://central.incf.org/atlas
- * http://central.incf.org:8080/atlas
- * http://hubs.incf.org/aba/atlas
- * http://hubs.incf.org:8080/ucsd/atlas
-
-=Full URIs=
-The URIs will be consistent with but a subset of the OGC (Open Geospatial Consortium) WPS (Web Processing Service) standard. 
-
-A complete URI will consist of
- * a base URI
- * a query string which will specify the 
-   * Request
-   * Identifier
-   * Data inputs
-   * Response format
-
-The Request is mandatory the other query string elements depend on the type of Request.
-
-For example:
- * http://central.incf.org/atlas?Request=GetCapabilities
- * http://central.incf.org/atlas?Request=GetCapabilities&ResponseFormat=text/xml
- * http://hubs.incf.org/aba/atlas/?Request=Execute&Identifier=GetGenesByPOI&DataInputs=srsCode=WHS;x=263.7;y=159.4;z=227.8&ResponseFormat=text/xml
-
-=Project Technologies=
+== Project Technologies ==
  * Primary language: Java
  * Build: Maven
  * Source code management: SVN
@@ -82,9 +13,9 @@ For example:
  * Application architecture: RESTlets under controlling servlet
  * ORM: JPA/Hibernate
 
-= Database Tables =
+== Database Tables ==
 
-== Central Database ==
+=== Central Database ===
  * Project
  * Hub
  * SpacialObject
@@ -100,10 +31,10 @@ For example:
    * Fiducial
    * Structure
 
-== Hub Databases ==
+=== Hub Databases ===
 Same as Central except no Hub table
 
-=Java Package Names=
+== Java Package Names ==
 
  * org.incf.atlas.server.central
  * org.incf.atlas.server.central.database
@@ -123,115 +54,3 @@ Same as Central except no Hub table
  * org.incf.atlas.server.hubs.ucsd.resource
  * org.incf.atlas.server.hubs.ucsd.transform
  * org.incf.atlas.server.hubs.ucsd.util
-
-= URI Suffixes =
-
-Full URI = Base URI + URI Suffixes
-
-?Request={request}&Identifier={identifier}&DataInputs={data-inputs}&ResponseFormat={format}
-
-Request = { GetCapabilities | DescribeProcess | Execute }
-
-Identifier = { function-name }
-
-DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
-
-DataInuts keys:
- * srsCode, inputSrsCode, targetSrsCode = { Spacial Reference System code }
- * x, y, z = { integer | floating-point number }
- * vocabulary = { { hub } : { srs | vocabulary } : { code } }
- * filter = {
-
-<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
-  <tr>
-    <th>Request</th>
-    <th>Identifier</th>
-    <th>DataInputs<br/>(keys)</th>
-    <th>Applicability</th>
-    <th>Expected<br/>Output</th>
-  </tr>
-  <tr>
-    <td>GetCapabilities</td>
-    <td>n/a</td>
-    <td>n/a</td>
-    <td>All hubs</td>
-    <td>XML:<br/>wpsGetCapabilities_response.xsd</td>
-  </tr>
-  <tr>
-    <td>DescribeProcess</td>
-    <td>n/a</td>
-    <td>n/a</td>
-    <td>All hubs</td>
-    <td>XML:<br/>wpsDescribeProcess_response.xsd</td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>DescribeSRS</td>
-    <td>srsCode</td>
-    <td>All hubs</td>
-    <td>XML</td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>ListSRSs</td>
-    <td>n/a</td>
-    <td>All hubs</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>DescribeTransformation</td>
-    <td>TBD</td>
-    <td>All hubs</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>ListTransformations</td>
-    <td>TBD</td>
-    <td>All hubs</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>TransformPOI</td>
-    <td>inputSrsCode<br/>targetSrsCode<br/>x<br/>y<br/>z<br/>filter</td>
-    <td>All hubs</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>GetTransformationChain</td>
-    <td>inputSrsCode<br/>targetSrsCode<br/>filter</td>
-    <td>Central and<br/>selected hubs</td>
-    <td>XML</td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>Get2DImagesByPOI</td>
-    <td>srsCode<br/>x<br/>y<br/>z<br/>filter</td>
-    <td>All hubs</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>GetCorrelationMapByPOI</td>
-    <td>srsCode<br/>x<br/>y<br/>z<br/>filter</td>
-    <td>ABA hub only</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>GetGenesByPOI</td>
-    <td>srsCode<br/>x<br/>y<br/>z<br/></td>
-    <td>ABA hub only</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>GetStructureNamesByPOI</td>
-    <td>srsCode<br/>x<br/>y<br/>z<br/>vocabulary<br/>filter</td>
-    <td>All hubs</td>
-    <td></td>
-  </tr>
-</table>
