@@ -4,11 +4,11 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
 
 == Working WPS Functions ==
 
- * GetCapabilities
+ * !GetCapabilities
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=GetCapabilities
 
- * DescribeProcess
+ * !DescribeProcess
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=DescribeProcess
 
