@@ -62,18 +62,18 @@ This table summarizes the planned set of Atlas requests.
     <th>Expected<br/>Output</th>
   </tr>
   <tr>
-    <td>GetCapabilities</td>
+    <td>!GetCapabilities</td>
     <td>n/a</td>
     <td>n/a</td>
     <td>All hubs</td>
-    <td>XML:<br/>wpsGetCapabilities_response.xsd</td>
+    <td>XML specified by:<br/>wpsGetCapabilities_response.xsd</td>
   </tr>
   <tr>
-    <td>DescribeProcess</td>
+    <td>!DescribeProcess</td>
     <td>n/a</td>
     <td>n/a</td>
     <td>All hubs</td>
-    <td>XML:<br/>wpsDescribeProcess_response.xsd</td>
+    <td>XML specified by:<br/>wpsDescribeProcess_response.xsd</td>
   </tr>
   <tr>
     <td>Execute</td>
@@ -91,14 +91,14 @@ This table summarizes the planned set of Atlas requests.
   </tr>
   <tr>
     <td>Execute</td>
-    <td>DescribeTransformation</td>
+    <td>!DescribeTransformation</td>
     <td>TBD</td>
     <td>All hubs</td>
     <td></td>
   </tr>
   <tr>
     <td>Execute</td>
-    <td>ListTransformations</td>
+    <td>!ListTransformations</td>
     <td>TBD</td>
     <td>All hubs</td>
     <td></td>
@@ -112,7 +112,7 @@ This table summarizes the planned set of Atlas requests.
   </tr>
   <tr>
     <td>Execute</td>
-    <td>GetTransformationChain</td>
+    <td>!GetTransformationChain</td>
     <td>inputSrsCode<br/>targetSrsCode<br/>filter</td>
     <td>Central and<br/>selected hubs</td>
     <td>XML</td>
