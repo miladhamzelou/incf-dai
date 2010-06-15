@@ -45,7 +45,7 @@ DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
 
 DataInuts keys:
  * srsCode, inputSrsCode, targetSrsCode = { Spacial Reference System code }
- * x, y, z = { integer | floating-point number }
+ * x, y, z = { double }
  * vocabulary = { { hub } : { srs | vocabulary } : { code } }
  * filter = { TBD }
 
