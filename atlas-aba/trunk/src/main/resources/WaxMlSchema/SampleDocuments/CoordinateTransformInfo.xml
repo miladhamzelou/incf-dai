@@ -7,9 +7,9 @@
   <coordinateTransformationInfo>
     <coordinateTransformation order="-1339"
       code="string" hub="string" inputSrsCode="string" targetSrsCode="string"
-      accuracy="6436.21491" />
+      accuracy="6436.21491">url</coordinateTransformation>
     <coordinateTransformation order="-5060"
       code="string" hub="string" inputSrsCode="string" targetSrsCode="string"
-      accuracy="1847.89491" />
+      accuracy="1847.89491">url</coordinateTransformation>
   </coordinateTransformationInfo>
 </coordinateTransformationInfoResponse>
