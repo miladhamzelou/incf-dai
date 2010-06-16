@@ -13,6 +13,14 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=DescribeProcess
 
+ * Execute : TransformPOI
+
+
+
+ * Execute : !GetTransformationChain
+
+
+
 == WPS Functions under Development ==
 
  * Execute : ListSRSs
@@ -20,9 +28,7 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
 
  * Execute : !ListTransformations
  * Execute : !DescribeTransformation
- * Execute : TransformPOI
- * Execute : !GetTransformationChain
-
+ 
  * Execute : Get2DImagesByPOI
  * Execute : GetCorrelationMapByPOI
  * Execute : GetGenesByPOI
