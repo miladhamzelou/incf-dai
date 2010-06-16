@@ -5,10 +5,11 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Set;
 
+import org.incf.atlas.aba.util.ABAConfigurator;
 import org.incf.atlas.aba.util.ABAUtil;
 import org.incf.atlas.aba.util.DataInputs;
-import org.incf.atlas.generated.CoordinateTransformationChainResponse;
-import org.incf.atlas.generated.ObjectFactory;
+import org.incf.atlas.generated.transformationchain.CoordinateTransformationChainResponse;
+import org.incf.atlas.generated.transformationchain.ObjectFactory;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
@@ -31,7 +32,8 @@ public class CoordinateTransformationChainResource extends Resource {
 	String hostName = "";
 	String servicePath = "";
 	String url = "";
-
+	ABAConfigurator config = ABAConfigurator.INSTANCE;
+	
 	public CoordinateTransformationChainResource(Context context, Request request, 
 			Response response) {
 		super(context, request, response);
@@ -90,13 +92,18 @@ public class CoordinateTransformationChainResource extends Resource {
         String currentTime = dateFormat.format(date);
         vo.setCurrentTime(currentTime);
 
-        url = hostName + servicePath + "&DataInputs=" + dataInputString;
+		hostName = config.getValue("ucsd.host.name");
+		System.out.println("****HOSTNAME**** - " + hostName);
+		String portNumber = ":8080";
+		servicePath = "/atlas-aba?Request=Execute&Identifier=TransformationChain";
+
+        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputString;
         vo.setUrlString(url);
         
 		ObjectFactory of = new ObjectFactory();
 		CoordinateTransformationChainResponse coordinateChain = of.createCoordinateTransformationChainResponse();
 
-		ABAUtil util = new ABAUtil();
+		ABAUtil util = new ABAUtil(); 
 		coordinateChain = util.getCoordinateTransformationChain(vo, coordinateChain);
 		//generate representation based on media type
 		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {

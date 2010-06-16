@@ -47,30 +47,6 @@ public class ABAServiceVO {
 	private String currentTime = "";
 	private String urlString = "";
 
-	public String getUrlString() {
-		return urlString;
-	}
-
-	public void setUrlString(String urlString) {
-		this.urlString = urlString;
-	}
-
-	public String getCurrentTime() {
-		return currentTime;
-	}
-
-	public void setCurrentTime(String currentTime) {
-		this.currentTime = currentTime;
-	}
-
-	public String getFilter() {
-		return filter;
-	}
-
-	public void setFilter(String filter) {
-		this.filter = filter;
-	}
-
 	private String originalCoordinateX = "";
 	private String originalCoordinateY = "";
 	private String originalCoordinateZ = "";
@@ -80,7 +56,8 @@ public class ABAServiceVO {
 	private String transformationXMLResponseString = "";
 	private String srcSRSCode = "";
 	private String destSRSCode = "";
-	
+	private String vocabulary = "";
+
 	private String transformationOne;
 	private String transformationTwo;
 	private String transformationThree;
@@ -108,7 +85,30 @@ public class ABAServiceVO {
 	private String toSRSCodeThree;
 	private String toSRSCodeFour;
 
-	
+	public String getUrlString() {
+		return urlString;
+	}
+
+	public void setUrlString(String urlString) {
+		this.urlString = urlString;
+	}
+
+	public String getCurrentTime() {
+		return currentTime;
+	}
+
+	public void setCurrentTime(String currentTime) {
+		this.currentTime = currentTime;
+	}
+
+	public String getFilter() {
+		return filter;
+	}
+
+	public void setFilter(String filter) {
+		this.filter = filter;
+	}
+
 	public String getTfw1() {
 		return tfw1;
 	}
@@ -488,4 +488,13 @@ public class ABAServiceVO {
 		this.transformationFourURL = transformationFourURL;
 	}
 	
+	public String getVocabulary() {
+		return vocabulary;
+	}
+
+	public void setVocabulary(String vocabulary) {
+		this.vocabulary = vocabulary;
+	}
+
+
 }
