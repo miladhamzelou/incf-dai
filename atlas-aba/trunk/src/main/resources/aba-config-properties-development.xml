@@ -76,7 +76,7 @@
 
 	<property>
         <name>ucsd.aba.service.path</name>
-        <value>/incf-services/service/ABAServiceController?</value>
+        <value>/atlas-aba?</value>
     </property>
 
 	<property>
@@ -91,7 +91,7 @@
 
 	<property>
         <name>ucsd.ucsd.service.path</name>
-        <value>/incf-services/service/UCSDServiceController?</value>
+        <value>/atlas-ucsd?</value>
     </property>
 
 	<!-- End INCF-UCSDServer properties --> 

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema id="transformationPOI" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" 
+xmlns:app1="http://www.opengis.net/gml/3.2" 
+xmlns:gml="http://www.opengis.net/gml/3.2" 
+xmlns:atl="http://incf.org/atlas/generated/transformpoi" 
+targetNamespace="http://incf.org/atlas/generated/transformpoi" 
+elementFormDefault="qualified" xml:lang="en" version="1.0.0 2010-02-03">
+
+
+  <xs:element name="TransformationResponse">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="QueryInfo" type="atl:QueryInfo"/> 
+      <xs:element name="POI" type="atl:POI"/>
+    </xs:sequence>
+  </xs:complexType>  
+  </xs:element>
+ 
+    <xs:complexType name="QueryInfo">
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:sequence>
+              <xs:element name="timeCreated" type="xs:string" minOccurs="0" />
+              <xs:element name="queryURL" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent msdata:ColumnName="queryURL_Text" msdata:Ordinal="1">
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="name" type="xs:string" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="criteria" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="input" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence> 
+						  <xs:element name="Point" msdata:Prefix="gml"> 
+					  
+						    <xs:complexType>
+						      <xs:sequence>
+						        <xs:element name="pos" msdata:Prefix="gml" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+						      </xs:sequence>
+						      <xs:attribute name="srcName" form="unqualified" type="xs:string" />
+						    </xs:complexType>
+						  </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="name" type="xs:string" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+      </xs:choice> 
+    </xs:complexType>
+
+          <xs:complexType name="POI">
+            <xs:sequence>
+			  <xs:element name="Point" msdata:Prefix="gml">
+			    <xs:complexType>
+			      <xs:sequence>
+			        <xs:element name="pos" msdata:Prefix="gml" type="xs:string" minOccurs="0" msdata:Ordinal="0" />
+			      </xs:sequence>
+			      <xs:attribute name="destName" form="unqualified" type="xs:string" />
+			    </xs:complexType>
+			  </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+
+
+</xs:schema>
+   
