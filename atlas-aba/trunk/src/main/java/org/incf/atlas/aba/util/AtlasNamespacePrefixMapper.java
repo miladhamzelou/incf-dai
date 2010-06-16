@@ -16,6 +16,9 @@ public class AtlasNamespacePrefixMapper extends NamespacePrefixMapper {
 		if (namespaceUri.equals("http://www.w3.org/1999/xlink")) {
 			return "xlink";
 		}
+		if (namespaceUri.equals("http://incf.org/atlas/generated/transformpoi")) {
+			return "atl";
+		}
 		return null;
 	}
 
