@@ -15,7 +15,7 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
 
  * Execute : TransformPOI
 
-    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=Execute&identifier=TransformPOI&dataInputs=inputSrsCode=agea;targetSrsCode=abareference;x=280;y=112;z=162;filter=1
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=Execute&identifier=TransformPOI&dataInputs=inputSrsCode=abavoxel;targetSrsCode=agea;x=280;y=112;z=162;filter=cerebellum
 
  * Execute : !GetTransformationChain
 
