@@ -5,6 +5,8 @@ import org.incf.atlas.aba.resource.CoordinateTransformationChainResource;
 import org.incf.atlas.aba.resource.DescribeProcess;
 import org.incf.atlas.aba.resource.FaviconResource;
 import org.incf.atlas.aba.resource.PingResource;
+import org.incf.atlas.aba.resource.StructureNamesByPOIResource;
+import org.incf.atlas.aba.resource.TransformPOIResource;
 import org.restlet.Application;
 import org.restlet.Component;
 import org.restlet.Restlet;
@@ -42,6 +44,14 @@ public class ServerApplication extends Application {
 		router.attach("?Request=Execute&Identifier=TransformationChain"
 				+ "&DataInputs={dataInputs}",
 				CoordinateTransformationChainResource.class);
+
+		router.attach("?Request=Execute&Identifier=TransformPOI"
+				+ "&DataInputs={dataInputs}",
+				TransformPOIResource.class);
+
+		router.attach("?Request=Execute&Identifier=StructureNamesByPOI"
+				+ "&DataInputs={dataInputs}",
+				StructureNamesByPOIResource.class);
 
 		return router;
 
