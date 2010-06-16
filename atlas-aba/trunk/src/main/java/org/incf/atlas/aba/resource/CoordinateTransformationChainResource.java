@@ -45,7 +45,7 @@ public class CoordinateTransformationChainResource extends Resource {
 		dataInputs = new DataInputs(dataInputString);
 
 		hostName = "http://132.239.131.188:8080/atlas";
-		servicePath = "?Request=Execute&Identifier=TransformationChain";
+		servicePath = "/atlas?Request=Execute&Identifier=TransformationChain";
 
 		getVariants().add(new Variant(MediaType.APPLICATION_XML));
 	}
@@ -92,7 +92,7 @@ public class CoordinateTransformationChainResource extends Resource {
         String currentTime = dateFormat.format(date);
         vo.setCurrentTime(currentTime);
 
-		hostName = config.getValue("ucsd.host.name");
+		hostName = config.getValue("incf.deploy.host.name");
 		System.out.println("****HOSTNAME**** - " + hostName);
 		String portNumber = ":8080";
 		servicePath = "/atlas-aba?Request=Execute&Identifier=TransformationChain";

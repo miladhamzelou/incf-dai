@@ -60,7 +60,7 @@ public class TransformPOIResource extends Resource {
 
 		//FIXME - amemon - read the hostname from the config file 
 		ABAConfigurator config = ABAConfigurator.INSTANCE;
-		hostName = config.getValue("ucsd.host.name");
+		hostName = config.getValue("incf.deploy.host.name");
 		System.out.println("****HOSTNAME**** - " + hostName);
 		portNumber = ":8080";
 		servicePath = "/atlas-aba?Request=Execute&Identifier=TransformPOI";
@@ -97,13 +97,13 @@ public class TransformPOIResource extends Resource {
 			} else if (key.equalsIgnoreCase("filter")) {
 				filter = dataInputs.getValue(key);
 				vo.setFilter(filter);
-			} else if (key.equalsIgnoreCase("coordinateX")) {
+			} else if (key.equalsIgnoreCase("x")) {
 				coordinateX = dataInputs.getValue(key);
 				vo.setOriginalCoordinateX(coordinateX);
-			} else if (key.equalsIgnoreCase("coordinateY")) {
+			} else if (key.equalsIgnoreCase("y")) {
 				coordinateY = dataInputs.getValue(key);
 				vo.setOriginalCoordinateY(coordinateY);
-			} else if (key.equalsIgnoreCase("coordinateZ")) {
+			} else if (key.equalsIgnoreCase("z")) {
 				coordinateZ = dataInputs.getValue(key);
 				vo.setOriginalCoordinateZ(coordinateZ);
 			}

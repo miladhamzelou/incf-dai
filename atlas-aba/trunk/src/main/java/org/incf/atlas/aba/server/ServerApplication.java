@@ -41,16 +41,25 @@ public class ServerApplication extends Application {
 		router.attach("?Request=DescribeProcess", DescribeProcess.class);
 		router.attach("?request=DescribeProcess", DescribeProcess.class);
 
-		router.attach("?Request=Execute&Identifier=TransformationChain"
+		router.attach("?Request=Execute&Identifier=GetTransformationChain"
 				+ "&DataInputs={dataInputs}",
+				CoordinateTransformationChainResource.class);
+		router.attach("?request=Execute&identifier=GetTransformationChain"
+				+ "&dataInputs={dataInputs}",
 				CoordinateTransformationChainResource.class);
 
 		router.attach("?Request=Execute&Identifier=TransformPOI"
 				+ "&DataInputs={dataInputs}",
 				TransformPOIResource.class);
+		router.attach("?request=Execute&identifier=TransformPOI"
+				+ "&dataInputs={dataInputs}",
+				TransformPOIResource.class);
 
-		router.attach("?Request=Execute&Identifier=StructureNamesByPOI"
+		router.attach("?Request=Execute&Identifier=GetStructureNamesByPOI"
 				+ "&DataInputs={dataInputs}",
+				StructureNamesByPOIResource.class);
+		router.attach("?request=Execute&identifier=GetStructureNamesByPOI"
+				+ "&dataInputs={dataInputs}",
 				StructureNamesByPOIResource.class);
 
 		return router;

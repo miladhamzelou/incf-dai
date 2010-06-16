@@ -50,7 +50,7 @@ public class StructureNamesByPOIResource extends Resource {
 
 		//FIXME - amemon - read the hostname from the config file 
 		ABAConfigurator config = ABAConfigurator.INSTANCE;
-		hostName = config.getValue("ucsd.host.name");
+		hostName = config.getValue("incf.deploy.host.name");
 		System.out.println("****HOSTNAME**** - " + hostName);
 		portNumber = ":8080";
 		servicePath = "/atlas-aba?Request=Execute&Identifier=StructureNamesByPOI";

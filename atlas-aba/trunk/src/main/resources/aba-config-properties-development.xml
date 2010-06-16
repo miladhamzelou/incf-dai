@@ -104,6 +104,11 @@
     </property>
 
 	<property>
+        <name>incf.deploy.host.name</name>
+        <value>incf-dev-local.crbs.ucsd.edu</value>
+    </property>
+
+	<property>
         <name>incf.aba.port.number</name>
         <value></value>
     </property>
