@@ -89,11 +89,11 @@ public class XmlValidator {
 	
 	// dev testing only
 	public static void main(String[] a) {
-//		final String SCHEMA = "src/main/resources/wpsSchema/wpsGetCapabilities_response.xsd";
-//		final String XML = "/database/Capabilities.xml";
+		final String SCHEMA = "src/main/resources/wpsSchema/wpsGetCapabilities_response.xsd";
+		final String XML = "/database/Capabilities.xml";
 		
-		final String SCHEMA = "src/main/resources/wpsSchema/wpsDescribeProcess_response.xsd";
-		final String XML = "/database/ProcessDescriptions.xml";
+//		final String SCHEMA = "src/main/resources/wpsSchema/wpsDescribeProcess_response.xsd";
+//		final String XML = "/database/ProcessDescriptions.xml";
 		
 		XmlValidator validator = new XmlValidator(SCHEMA);
 		if (validator.validate(XML)) {

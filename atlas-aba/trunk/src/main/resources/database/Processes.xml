@@ -1,0 +1,19 @@
+<Processes>
+
+    <wps:Process wps:processVersion="0.0.1">
+      <ows:Identifier>GetTransformationChain</ows:Identifier>
+      <ows:Title>Get Transformation Chain</ows:Title>
+      <ows:Abstract>This method will return the transformation chain between
+        any two given transformations.
+      </ows:Abstract>
+    </wps:Process>
+
+
+  <Process wps:processVersion="0.0.1">
+    <ows:Identifier>DescribeSRS</ows:Identifier>
+    <ows:Title></ows:Title>
+    <ows:Abstract></ows:Abstract>
+  </ProcessDescription>
+
+
+</Processes>

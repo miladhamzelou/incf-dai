@@ -1,7 +1,7 @@
 package org.incf.atlas.aba.resource;
 
 import java.io.File;
-import java.net.URISyntaxException;
+import java.net.URL;
 
 import org.restlet.Context;
 import org.restlet.data.MediaType;
@@ -28,12 +28,20 @@ public class FaviconResource extends Resource {
 		super(context, request, response);
 		
 		// get resource
-		try {
-			favicon = new File(this.getClass().getResource("/favicon.ico")
-					.toURI());
-		} catch (URISyntaxException e) {
-			logger.error("Error getting favicon.", e);
-		}
+//		try {
+//			favicon = new File(this.getClass().getResource("/favicon.ico")
+//					.toURI());
+//		} catch (URISyntaxException e) {
+//			logger.error("Error getting favicon.", e);
+//		}
+		Class c = this.getClass();
+		URL u = c.getResource("/favicon.ico");
+		
+		System.out.printf("***** u: %s%n", u);
+		logger.info("u: {}", u);
+		
+		favicon = new File(this.getClass().getResource("/favicon.ico")
+					.toString());
 		
 		// if found, set media type
 		// by default: available is true; modifiable is false

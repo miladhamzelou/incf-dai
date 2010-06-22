@@ -1,0 +1,82 @@
+<ProcessInputs service="WPS" version="1.0.0" xml:lang="en-US"
+    xmlns:ows="http://www.opengis.net/ows/1.1"
+    xmlns:wps="http://www.opengis.net/wps/1.0.0">
+
+      <Input id="srsCode">
+        <ows:Identifier>srsCode</ows:Identifier>
+        <ows:Title>Atlas SRS Code</ows:Title>
+        <ows:abstract>The Atlas SRS (Spatial Reference System) code.
+        </ows:abstract>
+        <LiteralData>
+          <ows:AllowedValues>
+            <ows:Value>AAA</ows:Value>
+            <ows:Value>ZZZ</ows:Value>
+          </ows:AllowedValues>
+        </LiteralData>
+      </Input>
+
+      <Input id="inputSrsCode">
+        <ows:Identifier>inputSrsCode</ows:Identifier>
+        <ows:Title>Input SRS Code</ows:Title>
+        <ows:abstract>The "in" or "from" SRS (Spatial Reference System) code.
+        </ows:abstract>
+        <LiteralData>
+          <ows:AllowedValues>
+            <ows:Value>AAA</ows:Value>
+            <ows:Value>ZZZ</ows:Value>
+          </ows:AllowedValues>
+        </LiteralData>
+      </Input>
+
+      <Input id="targetSrsCode">
+        <ows:Identifier>targetSrsCode</ows:Identifier>
+        <ows:Title>Target SRS Code</ows:Title>
+        <ows:abstract>The "out" or "to" SRS (Spatial Reference System) code.
+        </ows:abstract>
+        <LiteralData>
+          <ows:AllowedValues>
+            <ows:Value>AAA</ows:Value>
+            <ows:Value>ZZZ</ows:Value>
+          </ows:AllowedValues>
+        </LiteralData>
+      </Input>
+
+      <Input id="filter">
+        <ows:Identifier>filter</ows:Identifier>
+        <ows:Title>Filter</ows:Title>
+        <LiteralData>
+          <ows:AnyValue/>
+        </LiteralData>
+      </Input>
+      
+      <Input id="x">
+        <ows:Identifier>x</ows:Identifier>
+        <ows:Title>X-Coordinate Value</ows:Title>
+        <ows:abstract>Value in the x dimension as defined in the SRS.
+        </ows:abstract>
+        <LiteralData>
+          <ows:DataType ows:reference="xs:double"/>
+        </LiteralData>
+      </Input>
+      
+      <Input id="y">
+        <ows:Identifier>y</ows:Identifier>
+        <ows:Title>Y-Coordinate Value</ows:Title>
+        <ows:abstract>Value in the Y dimension as defined in the SRS.
+        </ows:abstract>
+        <LiteralData>
+          <ows:DataType ows:reference="xs:double"/>
+        </LiteralData>
+      </Input>
+      
+      <Input id="z">
+        <ows:Identifier>z</ows:Identifier>
+        <ows:Title>Z-Coordinate Value</ows:Title>
+        <ows:abstract>Value in the z dimension as defined in the SRS.
+        </ows:abstract>
+        <LiteralData>
+          <ows:DataType ows:reference="xs:double"/>
+        </LiteralData>
+      </Input>
+      
+</ProcessInputs>
