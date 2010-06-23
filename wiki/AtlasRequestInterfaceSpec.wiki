@@ -136,7 +136,7 @@ This table summarizes the planned set of Atlas requests.
     <td>Execute</td>
     <td>GetGenesByPOI</td>
     <td>srsCode<br/>x<br/>y<br/>z<br/></td>
-    <td>ABA hub only</td>
+    <td>ABA and<br/>EMAGE hubs</td>
     <td>XML</td>
   </tr>
   <tr>
