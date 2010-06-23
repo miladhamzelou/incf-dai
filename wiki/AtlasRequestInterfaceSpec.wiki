@@ -44,7 +44,7 @@ Identifier = { function-name }
 DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
 
 DataInuts keys:
- * srsCode, inputSrsCode, targetSrsCode = { Spacial Reference System code }
+ * srsName, inputSrsName, targetSrsName = { Spacial Reference System code }
  * x, y, z = { double }
  * vocabulary = { { hub } : { srs | vocabulary } : { code } }
  * filter = { TBD }
