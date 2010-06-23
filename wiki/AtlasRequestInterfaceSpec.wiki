@@ -88,28 +88,28 @@ This table summarizes the planned set of Atlas requests.
     <td>ListSRSs</td>
     <td>n/a</td>
     <td>All hubs</td>
-    <td></td>
+    <td>XML</td>
   </tr>
   <tr>
     <td>Execute</td>
     <td>!DescribeTransformation</td>
     <td>TBD</td>
     <td>All hubs</td>
-    <td></td>
+    <td>XML</td>
   </tr>
   <tr>
     <td>Execute</td>
     <td>!ListTransformations</td>
     <td>TBD</td>
     <td>All hubs</td>
-    <td></td>
+    <td>XML</td>
   </tr>
   <tr>
     <td>Execute</td>
     <td>TransformPOI</td>
     <td>inputSrsCode<br/>targetSrsCode<br/>x<br/>y<br/>z<br/>filter</td>
     <td>All hubs</td>
-    <td></td>
+    <td>XML</td>
   </tr>
   <tr>
     <td>Execute</td>
@@ -123,27 +123,27 @@ This table summarizes the planned set of Atlas requests.
     <td>Get2DImagesByPOI</td>
     <td>srsCode<br/>x<br/>y<br/>z<br/>filter</td>
     <td>All hubs</td>
-    <td></td>
+    <td>XML</td>
   </tr>
   <tr>
     <td>Execute</td>
     <td>GetCorrelationMapByPOI</td>
     <td>srsCode<br/>x<br/>y<br/>z<br/>filter</td>
     <td>ABA hub only</td>
-    <td></td>
+    <td>XML</td>
   </tr>
   <tr>
     <td>Execute</td>
     <td>GetGenesByPOI</td>
     <td>srsCode<br/>x<br/>y<br/>z<br/></td>
     <td>ABA hub only</td>
-    <td></td>
+    <td>XML</td>
   </tr>
   <tr>
     <td>Execute</td>
     <td>GetStructureNamesByPOI</td>
     <td>srsCode<br/>x<br/>y<br/>z<br/>vocabulary<br/>filter</td>
     <td>All hubs</td>
-    <td></td>
+    <td>XML</td>
   </tr>
 </table>
