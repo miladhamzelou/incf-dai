@@ -1,7 +1,10 @@
 package org.incf.atlas.aba.resource;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Properties;
 
 import javax.xml.xquery.XQConnection;
@@ -23,20 +26,14 @@ import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Capabilities extends Resource {
+public class ProcessDescriptions extends Resource {
 
 	private static final Logger logger = LoggerFactory.getLogger(
-			Capabilities.class);
+			ProcessDescriptions.class);
 	
-	public Capabilities(Context context, Request request, Response response) {
+	public ProcessDescriptions(Context context, Request request,
+			Response response) {
 		super(context, request, response);
-		
-		
-		logger.info("* * * here");
-		logger.debug("* * * here");
-		System.out.println("* * * * * here");
-		
-		
 		getVariants().add(new Variant(MediaType.APPLICATION_XML));
 	}
 
@@ -56,16 +53,17 @@ public class Capabilities extends Resource {
         props.setProperty("omit-xml-declaration", "no");
         props.setProperty("{http://saxon.sf.net/}indent-spaces", "2");
         
+        String prelude = "declare variable $doc := doc(\"atlas-aba/WEB-INF/classes/database/ProcessInputs.xml\");";
         File tempDir = new File("atlas-aba/WEB-INF/temp");
         tempDir.mkdir();
-		File tempFile = new File(tempDir, "Capabilities.xml");
+		File tempFile = new File(tempDir, "ProcessDescriptions.xml");
 		try {
 
 			// run query
 			XQDataSource ds = new SaxonXQDataSource();
 			XQConnection conn = ds.getConnection();
-			XQPreparedExpression exp = conn.prepareExpression(
-					this.getClass().getResourceAsStream("/database/Capabilities.xq"));
+	        XQPreparedExpression exp = conn.prepareExpression(prelude
+	                + readFileAsString("atlas-aba/WEB-INF/classes/database/ProcessDescriptions.xq"));
 			XQResultSequence result = exp.executeQuery();
 			
 	        // serialize to temporary file (TODO could be cached)
@@ -78,6 +76,15 @@ public class Capabilities extends Resource {
         
 		// return as file
         return new FileRepresentation(tempFile, MediaType.APPLICATION_XML);
+	}
+	
+	private String readFileAsString(String filePath) throws IOException{
+	    byte[] buffer = new byte[(int) new File(filePath).length()];
+	    BufferedInputStream f = new BufferedInputStream(
+	    		new FileInputStream(filePath));
+	    f.read(buffer);
+	    f.close();
+	    return new String(buffer);
 	}
 	
 }

@@ -2,41 +2,50 @@
     xmlns:ows="http://www.opengis.net/ows/1.1"
     xmlns:wps="http://www.opengis.net/wps/1.0.0">
 
-      <Input id="srsCode">
-        <ows:Identifier>srsCode</ows:Identifier>
-        <ows:Title>Atlas SRS Code</ows:Title>
-        <ows:abstract>The Atlas SRS (Spatial Reference System) code.
-        </ows:abstract>
+      <Input id="srsName">
+        <ows:Identifier>srsName</ows:Identifier>
+        <ows:Title>Atlas SRS Name</ows:Title>
+        <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
         <LiteralData>
           <ows:AllowedValues>
-            <ows:Value>AAA</ows:Value>
-            <ows:Value>ZZZ</ows:Value>
+            <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+            <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+            <ows:Value>Mouse_AGEA_1.0</ows:Value>
+            <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+            <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+            <ows:Value>Mouse_WHS_1.0</ows:Value>
           </ows:AllowedValues>
         </LiteralData>
       </Input>
 
-      <Input id="inputSrsCode">
-        <ows:Identifier>inputSrsCode</ows:Identifier>
-        <ows:Title>Input SRS Code</ows:Title>
-        <ows:abstract>The "in" or "from" SRS (Spatial Reference System) code.
-        </ows:abstract>
+      <Input id="inputSrsName">
+        <ows:Identifier>inputSrsName</ows:Identifier>
+        <ows:Title>Input SRS Name</ows:Title>
+        <ows:Abstract>The "in" or "from" SRS (Spatial Reference System) name.</ows:Abstract>
         <LiteralData>
           <ows:AllowedValues>
-            <ows:Value>AAA</ows:Value>
-            <ows:Value>ZZZ</ows:Value>
+            <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+            <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+            <ows:Value>Mouse_AGEA_1.0</ows:Value>
+            <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+            <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+            <ows:Value>Mouse_WHS_1.0</ows:Value>
           </ows:AllowedValues>
         </LiteralData>
       </Input>
 
-      <Input id="targetSrsCode">
-        <ows:Identifier>targetSrsCode</ows:Identifier>
-        <ows:Title>Target SRS Code</ows:Title>
-        <ows:abstract>The "out" or "to" SRS (Spatial Reference System) code.
-        </ows:abstract>
+      <Input id="targetSrsName">
+        <ows:Identifier>targetSrsName</ows:Identifier>
+        <ows:Title>Target SRS Name</ows:Title>
+        <ows:Abstract>The "out" or "to" SRS (Spatial Reference System) name.</ows:Abstract>
         <LiteralData>
           <ows:AllowedValues>
-            <ows:Value>AAA</ows:Value>
-            <ows:Value>ZZZ</ows:Value>
+            <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+            <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+            <ows:Value>Mouse_AGEA_1.0</ows:Value>
+            <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+            <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+            <ows:Value>Mouse_WHS_1.0</ows:Value>
           </ows:AllowedValues>
         </LiteralData>
       </Input>
@@ -44,6 +53,22 @@
       <Input id="filter">
         <ows:Identifier>filter</ows:Identifier>
         <ows:Title>Filter</ows:Title>
+        <ows:Abstract>.</ows:Abstract>
+        <LiteralData>
+          <ows:AllowedValues>
+            <ows:Value>maptype:coronal</ows:Value>
+            <ows:Value>maptype:horizontal</ows:Value>
+            <ows:Value>maptype:sagittal</ows:Value>
+            <ows:Value>structureset:anatomic</ows:Value>
+            <ows:Value>structureset:fine</ows:Value>
+          </ows:AllowedValues>
+        </LiteralData>
+      </Input>
+      
+      <Input id="vocabulary">
+        <ows:Identifier>vocabulary</ows:Identifier>
+        <ows:Title>Vocabulary</ows:Title>
+        <ows:Abstract>.</ows:Abstract>
         <LiteralData>
           <ows:AnyValue/>
         </LiteralData>
@@ -52,8 +77,7 @@
       <Input id="x">
         <ows:Identifier>x</ows:Identifier>
         <ows:Title>X-Coordinate Value</ows:Title>
-        <ows:abstract>Value in the x dimension as defined in the SRS.
-        </ows:abstract>
+        <ows:Abstract>Value in the X dimension as defined in the SRS.</ows:Abstract>
         <LiteralData>
           <ows:DataType ows:reference="xs:double"/>
         </LiteralData>
@@ -62,8 +86,7 @@
       <Input id="y">
         <ows:Identifier>y</ows:Identifier>
         <ows:Title>Y-Coordinate Value</ows:Title>
-        <ows:abstract>Value in the Y dimension as defined in the SRS.
-        </ows:abstract>
+        <ows:Abstract>Value in the Y dimension as defined in the SRS.</ows:Abstract>
         <LiteralData>
           <ows:DataType ows:reference="xs:double"/>
         </LiteralData>
@@ -72,8 +95,7 @@
       <Input id="z">
         <ows:Identifier>z</ows:Identifier>
         <ows:Title>Z-Coordinate Value</ows:Title>
-        <ows:abstract>Value in the z dimension as defined in the SRS.
-        </ows:abstract>
+        <ows:Abstract>Value in the Z dimension as defined in the SRS.</ows:Abstract>
         <LiteralData>
           <ows:DataType ows:reference="xs:double"/>
         </LiteralData>
