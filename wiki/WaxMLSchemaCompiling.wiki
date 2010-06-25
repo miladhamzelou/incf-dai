@@ -32,5 +32,12 @@ xjc schemafile jar(s) -extension
  technique learned from: [http://weblogs.java.net/blog/kohsuke/archive/2006/09/separate_compil.html]
 
 Windows issues Notes:
-
 [http://www.innovationontherun.com/common-issues-and-workarounds-while-building-ear-files-in-eclipse/]
+To make 32 bit clipse work in 64 bit, insert -vm into eclipse.ini
+[[[[
+--launcher.XXMaxPermSize
+256m
+-vm
+C:\Program Files (x86)\Java\jdk1.6.0_18\bin\javaw.exe
+-vmargs
+]]]
