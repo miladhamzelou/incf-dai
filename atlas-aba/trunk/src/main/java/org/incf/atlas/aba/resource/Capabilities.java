@@ -56,7 +56,13 @@ public class Capabilities extends Resource {
         props.setProperty("omit-xml-declaration", "no");
         props.setProperty("{http://saxon.sf.net/}indent-spaces", "2");
         
-        File tempDir = new File("atlas-aba/WEB-INF/temp");
+//        File tempDir = new File("atlas-aba/WEB-INF/temp");
+        File tempDir = new File("/usr/local/tomcat/webapps/atlas-aba/WEB-INF/temp");
+        
+        
+        logger.debug("tempDir: {}", tempDir.getAbsolutePath());
+        
+        
         tempDir.mkdir();
 		File tempFile = new File(tempDir, "Capabilities.xml");
 		try {

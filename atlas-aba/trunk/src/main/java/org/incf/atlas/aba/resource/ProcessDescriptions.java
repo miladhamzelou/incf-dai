@@ -53,8 +53,8 @@ public class ProcessDescriptions extends Resource {
         props.setProperty("omit-xml-declaration", "no");
         props.setProperty("{http://saxon.sf.net/}indent-spaces", "2");
         
-        String prelude = "declare variable $doc := doc(\"atlas-aba/WEB-INF/classes/database/ProcessInputs.xml\");";
-        File tempDir = new File("atlas-aba/WEB-INF/temp");
+        String prelude = "declare variable $doc := doc(\"file:///usr/local/tomcat/webapps/atlas-aba/WEB-INF/classes/database/ProcessInputs.xml\");";
+        File tempDir = new File("/usr/local/tomcat/webapps/atlas-aba/WEB-INF/temp");
         tempDir.mkdir();
 		File tempFile = new File(tempDir, "ProcessDescriptions.xml");
 		try {
@@ -63,7 +63,7 @@ public class ProcessDescriptions extends Resource {
 			XQDataSource ds = new SaxonXQDataSource();
 			XQConnection conn = ds.getConnection();
 	        XQPreparedExpression exp = conn.prepareExpression(prelude
-	                + readFileAsString("atlas-aba/WEB-INF/classes/database/ProcessDescriptions.xq"));
+	                + readFileAsString("/usr/local/tomcat/webapps/atlas-aba/WEB-INF/classes/database/ProcessDescriptions.xq"));
 			XQResultSequence result = exp.executeQuery();
 			
 	        // serialize to temporary file (TODO could be cached)
