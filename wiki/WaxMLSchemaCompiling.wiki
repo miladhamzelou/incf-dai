@@ -30,3 +30,7 @@ Basically:
 xjc schemafile jar(s) -extension
 
  technique learned from: [http://weblogs.java.net/blog/kohsuke/archive/2006/09/separate_compil.html]
+
+Windows issues Notes:
+
+[http://www.innovationontherun.com/common-issues-and-workarounds-while-building-ear-files-in-eclipse/]
