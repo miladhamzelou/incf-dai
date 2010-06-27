@@ -1,0 +1,1478 @@
+<image-series grddl:transformation='/hammock/common/xslt/aibs.xsl' xmlns:grddl='http://www.w3.org/2003/g/data-view#'> 
+  <age type='integer'>55</age> 
+  <createdate>05/25/2008</createdate> 
+  <geneid type='integer'>86401</geneid> 
+  <imageseriesdisplayname>C1ql2-Coronal-05-2593</imageseriesdisplayname> 
+  <imageseriesid type='integer'>71587929</imageseriesid> 
+  <ncbiaccessionnumber>NM_207233</ncbiaccessionnumber> 
+  <plane>coronal</plane> 
+  <probeorientation>antisense</probeorientation> 
+  <projectname>0310</projectname> 
+  <riboprobename>RP_050725_03_G06</riboprobename> 
+  <sex>M</sex> 
+  <specimenid>05-2593</specimenid> 
+  <strain>C57BL/6J</strain> 
+  <templateid type='integer'>57941</templateid> 
+  <transcriptgi type='integer'>46402220</transcriptgi> 
+  <transcriptid type='integer'>38821</transcriptid> 
+  <transcriptname/> 
+  <treatmenttype>ISH</treatmenttype> 
+  <images type='array'> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_2</imagedisplayname> 
+      <imageid type='integer'>71424433</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>50</position> 
+      <referenceatlasindex type='integer'>-13</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304011142/NISSL_4711_3_0304011142_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303011171/BC040774_2_0303011171_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303011171/BC040774_2_0303011171_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303011171/BC040774_2_0303011171_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303011171/BC040774_2_0303011171_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_6</imagedisplayname> 
+      <imageid type='integer'>71425037</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>150</position> 
+      <referenceatlasindex type='integer'>-13</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308011242/NISSL_4712_7_0308011242_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307011091/BC040774_6_0307011091_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307011091/BC040774_6_0307011091_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307011091/BC040774_6_0307011091_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307011091/BC040774_6_0307011091_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_10</imagedisplayname> 
+      <imageid type='integer'>71424435</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>250</position> 
+      <referenceatlasindex type='integer'>-13</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304011142/NISSL_4711_11_0304011142_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303011171/BC040774_10_0303011171_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303011171/BC040774_10_0303011171_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303011171/BC040774_10_0303011171_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303011171/BC040774_10_0303011171_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_14</imagedisplayname> 
+      <imageid type='integer'>71425039</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>350</position> 
+      <referenceatlasindex type='integer'>-13</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308011242/NISSL_4712_15_0308011242_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307011091/BC040774_14_0307011091_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307011091/BC040774_14_0307011091_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307011091/BC040774_14_0307011091_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307011091/BC040774_14_0307011091_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_18</imagedisplayname> 
+      <imageid type='integer'>71424437</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>450</position> 
+      <referenceatlasindex type='integer'>-13</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304011142/NISSL_4711_19_0304011142_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303011171/BC040774_18_0303011171_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303011171/BC040774_18_0303011171_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303011171/BC040774_18_0303011171_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303011171/BC040774_18_0303011171_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_22</imagedisplayname> 
+      <imageid type='integer'>71425041</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>550</position> 
+      <referenceatlasindex type='integer'>-9</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308011242/NISSL_4712_23_0308011242_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307011091/BC040774_22_0307011091_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307011091/BC040774_22_0307011091_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307011091/BC040774_22_0307011091_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307011091/BC040774_22_0307011091_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_26</imagedisplayname> 
+      <imageid type='integer'>71424439</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>650</position> 
+      <referenceatlasindex type='integer'>-4</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304011142/NISSL_4711_27_0304011142_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303011171/BC040774_26_0303011171_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303011171/BC040774_26_0303011171_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303011171/BC040774_26_0303011171_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303011171/BC040774_26_0303011171_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_30</imagedisplayname> 
+      <imageid type='integer'>71425043</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>750</position> 
+      <referenceatlasindex type='integer'>-1</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308011242/NISSL_4712_31_0308011242_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307011091/BC040774_30_0307011091_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307011091/BC040774_30_0307011091_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307011091/BC040774_30_0307011091_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307011091/BC040774_30_0307011091_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_34</imagedisplayname> 
+      <imageid type='integer'>71424443</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>850</position> 
+      <referenceatlasindex type='integer'>3</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304021196/NISSL_4711_35_0304021196_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303021180/BC040774_34_0303021180_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303021180/BC040774_34_0303021180_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303021180/BC040774_34_0303021180_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303021180/BC040774_34_0303021180_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_38</imagedisplayname> 
+      <imageid type='integer'>71425047</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>950</position> 
+      <referenceatlasindex type='integer'>7</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308021126/NISSL_4712_39_0308021126_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307021272/BC040774_38_0307021272_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307021272/BC040774_38_0307021272_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307021272/BC040774_38_0307021272_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307021272/BC040774_38_0307021272_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_42</imagedisplayname> 
+      <imageid type='integer'>71424445</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>1050</position> 
+      <referenceatlasindex type='integer'>11</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304021196/NISSL_4711_43_0304021196_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303021180/BC040774_42_0303021180_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303021180/BC040774_42_0303021180_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303021180/BC040774_42_0303021180_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303021180/BC040774_42_0303021180_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_46</imagedisplayname> 
+      <imageid type='integer'>71425049</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>1150</position> 
+      <referenceatlasindex type='integer'>14</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308021126/NISSL_4712_47_0308021126_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307021272/BC040774_46_0307021272_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307021272/BC040774_46_0307021272_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307021272/BC040774_46_0307021272_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307021272/BC040774_46_0307021272_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_50</imagedisplayname> 
+      <imageid type='integer'>71424447</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>1250</position> 
+      <referenceatlasindex type='integer'>18</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304021196/NISSL_4711_51_0304021196_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303021180/BC040774_50_0303021180_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303021180/BC040774_50_0303021180_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303021180/BC040774_50_0303021180_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303021180/BC040774_50_0303021180_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_54</imagedisplayname> 
+      <imageid type='integer'>71425051</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>1350</position> 
+      <referenceatlasindex type='integer'>22</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308021126/NISSL_4712_55_0308021126_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307021272/BC040774_54_0307021272_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307021272/BC040774_54_0307021272_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307021272/BC040774_54_0307021272_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307021272/BC040774_54_0307021272_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_58</imagedisplayname> 
+      <imageid type='integer'>71424449</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>1450</position> 
+      <referenceatlasindex type='integer'>26</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304021196/NISSL_4711_59_0304021196_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303021180/BC040774_58_0303021180_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303021180/BC040774_58_0303021180_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303021180/BC040774_58_0303021180_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303021180/BC040774_58_0303021180_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_62</imagedisplayname> 
+      <imageid type='integer'>71425053</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>1550</position> 
+      <referenceatlasindex type='integer'>30</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308021126/NISSL_4712_63_0308021126_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307021272/BC040774_62_0307021272_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307021272/BC040774_62_0307021272_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307021272/BC040774_62_0307021272_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307021272/BC040774_62_0307021272_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_66</imagedisplayname> 
+      <imageid type='integer'>71424453</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>1650</position> 
+      <referenceatlasindex type='integer'>35</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304031163/NISSL_4711_67_0304031163_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303031093/BC040774_66_0303031093_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303031093/BC040774_66_0303031093_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303031093/BC040774_66_0303031093_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303031093/BC040774_66_0303031093_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_70</imagedisplayname> 
+      <imageid type='integer'>71425057</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>1750</position> 
+      <referenceatlasindex type='integer'>39</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308031055/NISSL_4712_71_0308031055_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307031284/BC040774_70_0307031284_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307031284/BC040774_70_0307031284_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307031284/BC040774_70_0307031284_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307031284/BC040774_70_0307031284_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_74</imagedisplayname> 
+      <imageid type='integer'>71424455</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>1850</position> 
+      <referenceatlasindex type='integer'>43</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304031163/NISSL_4711_75_0304031163_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303031093/BC040774_74_0303031093_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303031093/BC040774_74_0303031093_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303031093/BC040774_74_0303031093_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303031093/BC040774_74_0303031093_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_78</imagedisplayname> 
+      <imageid type='integer'>71425059</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>1950</position> 
+      <referenceatlasindex type='integer'>47</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308031055/NISSL_4712_79_0308031055_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307031284/BC040774_78_0307031284_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307031284/BC040774_78_0307031284_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307031284/BC040774_78_0307031284_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307031284/BC040774_78_0307031284_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_82</imagedisplayname> 
+      <imageid type='integer'>71424457</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>2050</position> 
+      <referenceatlasindex type='integer'>51</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304031163/NISSL_4711_83_0304031163_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303031093/BC040774_82_0303031093_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303031093/BC040774_82_0303031093_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303031093/BC040774_82_0303031093_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303031093/BC040774_82_0303031093_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_86</imagedisplayname> 
+      <imageid type='integer'>71425061</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>2150</position> 
+      <referenceatlasindex type='integer'>55</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308031055/NISSL_4712_87_0308031055_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307031284/BC040774_86_0307031284_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307031284/BC040774_86_0307031284_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307031284/BC040774_86_0307031284_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307031284/BC040774_86_0307031284_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_90</imagedisplayname> 
+      <imageid type='integer'>71424459</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>2250</position> 
+      <referenceatlasindex type='integer'>59</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304031163/NISSL_4711_91_0304031163_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303031093/BC040774_90_0303031093_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303031093/BC040774_90_0303031093_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303031093/BC040774_90_0303031093_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303031093/BC040774_90_0303031093_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_94</imagedisplayname> 
+      <imageid type='integer'>71425063</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>2350</position> 
+      <referenceatlasindex type='integer'>63</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308031055/NISSL_4712_95_0308031055_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307031284/BC040774_94_0307031284_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307031284/BC040774_94_0307031284_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307031284/BC040774_94_0307031284_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307031284/BC040774_94_0307031284_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_98</imagedisplayname> 
+      <imageid type='integer'>71424463</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>2450</position> 
+      <referenceatlasindex type='integer'>66</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304041048/NISSL_4711_99_0304041048_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303041114/BC040774_98_0303041114_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303041114/BC040774_98_0303041114_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303041114/BC040774_98_0303041114_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303041114/BC040774_98_0303041114_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_102</imagedisplayname> 
+      <imageid type='integer'>71425067</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>2550</position> 
+      <referenceatlasindex type='integer'>71</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308041190/NISSL_4712_103_0308041190_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307041174/BC040774_102_0307041174_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307041174/BC040774_102_0307041174_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307041174/BC040774_102_0307041174_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307041174/BC040774_102_0307041174_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_106</imagedisplayname> 
+      <imageid type='integer'>71424465</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>2650</position> 
+      <referenceatlasindex type='integer'>74</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304041048/NISSL_4711_107_0304041048_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303041114/BC040774_106_0303041114_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303041114/BC040774_106_0303041114_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303041114/BC040774_106_0303041114_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303041114/BC040774_106_0303041114_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_110</imagedisplayname> 
+      <imageid type='integer'>71425069</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>2750</position> 
+      <referenceatlasindex type='integer'>78</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308041190/NISSL_4712_111_0308041190_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307041174/BC040774_110_0307041174_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307041174/BC040774_110_0307041174_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307041174/BC040774_110_0307041174_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307041174/BC040774_110_0307041174_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_114</imagedisplayname> 
+      <imageid type='integer'>71424467</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>2850</position> 
+      <referenceatlasindex type='integer'>82</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304041048/NISSL_4711_115_0304041048_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303041114/BC040774_114_0303041114_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303041114/BC040774_114_0303041114_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303041114/BC040774_114_0303041114_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303041114/BC040774_114_0303041114_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_118</imagedisplayname> 
+      <imageid type='integer'>71425071</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>2950</position> 
+      <referenceatlasindex type='integer'>86</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308041190/NISSL_4712_119_0308041190_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307041174/BC040774_118_0307041174_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307041174/BC040774_118_0307041174_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307041174/BC040774_118_0307041174_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307041174/BC040774_118_0307041174_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_122</imagedisplayname> 
+      <imageid type='integer'>71424469</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>3050</position> 
+      <referenceatlasindex type='integer'>90</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304041048/NISSL_4711_123_0304041048_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303041114/BC040774_122_0303041114_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303041114/BC040774_122_0303041114_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303041114/BC040774_122_0303041114_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303041114/BC040774_122_0303041114_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_126</imagedisplayname> 
+      <imageid type='integer'>71425073</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>3150</position> 
+      <referenceatlasindex type='integer'>94</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308041190/NISSL_4712_127_0308041190_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307041174/BC040774_126_0307041174_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307041174/BC040774_126_0307041174_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307041174/BC040774_126_0307041174_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307041174/BC040774_126_0307041174_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_134</imagedisplayname> 
+      <imageid type='integer'>71425077</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>3350</position> 
+      <referenceatlasindex type='integer'>102</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308051246/NISSL_4712_135_0308051246_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307051218/BC040774_134_0307051218_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307051218/BC040774_134_0307051218_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307051218/BC040774_134_0307051218_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307051218/BC040774_134_0307051218_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_138</imagedisplayname> 
+      <imageid type='integer'>71424475</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>3450</position> 
+      <referenceatlasindex type='integer'>107</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304051227/NISSL_4711_139_0304051227_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303051030/BC040774_138_0303051030_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303051030/BC040774_138_0303051030_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303051030/BC040774_138_0303051030_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303051030/BC040774_138_0303051030_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_142</imagedisplayname> 
+      <imageid type='integer'>71425079</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>3550</position> 
+      <referenceatlasindex type='integer'>111</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308051246/NISSL_4712_143_0308051246_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307051218/BC040774_142_0307051218_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307051218/BC040774_142_0307051218_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307051218/BC040774_142_0307051218_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307051218/BC040774_142_0307051218_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_146</imagedisplayname> 
+      <imageid type='integer'>71424477</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>3650</position> 
+      <referenceatlasindex type='integer'>115</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304051227/NISSL_4711_147_0304051227_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303051030/BC040774_146_0303051030_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303051030/BC040774_146_0303051030_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303051030/BC040774_146_0303051030_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303051030/BC040774_146_0303051030_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_150</imagedisplayname> 
+      <imageid type='integer'>71425081</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>3750</position> 
+      <referenceatlasindex type='integer'>118</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308051246/NISSL_4712_151_0308051246_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307051218/BC040774_150_0307051218_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307051218/BC040774_150_0307051218_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307051218/BC040774_150_0307051218_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307051218/BC040774_150_0307051218_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_154</imagedisplayname> 
+      <imageid type='integer'>71424479</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>3850</position> 
+      <referenceatlasindex type='integer'>122</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304051227/NISSL_4711_155_0304051227_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303051030/BC040774_154_0303051030_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303051030/BC040774_154_0303051030_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303051030/BC040774_154_0303051030_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303051030/BC040774_154_0303051030_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_158</imagedisplayname> 
+      <imageid type='integer'>71425083</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>3950</position> 
+      <referenceatlasindex type='integer'>126</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308051246/NISSL_4712_159_0308051246_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307051218/BC040774_158_0307051218_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307051218/BC040774_158_0307051218_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307051218/BC040774_158_0307051218_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307051218/BC040774_158_0307051218_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_162</imagedisplayname> 
+      <imageid type='integer'>71424483</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>4050</position> 
+      <referenceatlasindex type='integer'>130</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304061279/NISSL_4711_163_0304061279_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303061045/BC040774_162_0303061045_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303061045/BC040774_162_0303061045_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303061045/BC040774_162_0303061045_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303061045/BC040774_162_0303061045_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_166</imagedisplayname> 
+      <imageid type='integer'>71425087</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>4150</position> 
+      <referenceatlasindex type='integer'>134</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308061252/NISSL_4712_167_0308061252_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307061044/BC040774_166_0307061044_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307061044/BC040774_166_0307061044_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307061044/BC040774_166_0307061044_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307061044/BC040774_166_0307061044_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_170</imagedisplayname> 
+      <imageid type='integer'>71424485</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>4250</position> 
+      <referenceatlasindex type='integer'>138</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304061279/NISSL_4711_171_0304061279_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303061045/BC040774_170_0303061045_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303061045/BC040774_170_0303061045_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303061045/BC040774_170_0303061045_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303061045/BC040774_170_0303061045_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_174</imagedisplayname> 
+      <imageid type='integer'>71425089</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>4350</position> 
+      <referenceatlasindex type='integer'>142</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308061252/NISSL_4712_175_0308061252_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307061044/BC040774_174_0307061044_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307061044/BC040774_174_0307061044_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307061044/BC040774_174_0307061044_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307061044/BC040774_174_0307061044_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_178</imagedisplayname> 
+      <imageid type='integer'>71424487</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>4450</position> 
+      <referenceatlasindex type='integer'>145</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304061279/NISSL_4711_179_0304061279_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303061045/BC040774_178_0303061045_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303061045/BC040774_178_0303061045_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303061045/BC040774_178_0303061045_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303061045/BC040774_178_0303061045_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_182</imagedisplayname> 
+      <imageid type='integer'>71425091</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>4550</position> 
+      <referenceatlasindex type='integer'>150</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308061252/NISSL_4712_183_0308061252_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307061044/BC040774_182_0307061044_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307061044/BC040774_182_0307061044_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307061044/BC040774_182_0307061044_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307061044/BC040774_182_0307061044_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_186</imagedisplayname> 
+      <imageid type='integer'>71424489</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>4650</position> 
+      <referenceatlasindex type='integer'>153</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304061279/NISSL_4711_187_0304061279_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303061045/BC040774_186_0303061045_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303061045/BC040774_186_0303061045_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303061045/BC040774_186_0303061045_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303061045/BC040774_186_0303061045_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_190</imagedisplayname> 
+      <imageid type='integer'>71425093</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>4750</position> 
+      <referenceatlasindex type='integer'>157</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308061252/NISSL_4712_191_0308061252_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307061044/BC040774_190_0307061044_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307061044/BC040774_190_0307061044_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307061044/BC040774_190_0307061044_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307061044/BC040774_190_0307061044_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_194</imagedisplayname> 
+      <imageid type='integer'>71424493</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>4850</position> 
+      <referenceatlasindex type='integer'>161</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304071285/NISSL_4711_195_0304071285_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303071209/BC040774_194_0303071209_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303071209/BC040774_194_0303071209_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303071209/BC040774_194_0303071209_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303071209/BC040774_194_0303071209_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_198</imagedisplayname> 
+      <imageid type='integer'>71425097</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>4950</position> 
+      <referenceatlasindex type='integer'>165</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308071250/NISSL_4712_199_0308071250_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307071069/BC040774_198_0307071069_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307071069/BC040774_198_0307071069_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307071069/BC040774_198_0307071069_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307071069/BC040774_198_0307071069_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_202</imagedisplayname> 
+      <imageid type='integer'>71424495</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>5050</position> 
+      <referenceatlasindex type='integer'>170</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304071285/NISSL_4711_203_0304071285_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303071209/BC040774_202_0303071209_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303071209/BC040774_202_0303071209_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303071209/BC040774_202_0303071209_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303071209/BC040774_202_0303071209_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_206</imagedisplayname> 
+      <imageid type='integer'>71425099</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>5150</position> 
+      <referenceatlasindex type='integer'>173</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308071250/NISSL_4712_207_0308071250_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307071069/BC040774_206_0307071069_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307071069/BC040774_206_0307071069_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307071069/BC040774_206_0307071069_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307071069/BC040774_206_0307071069_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_210</imagedisplayname> 
+      <imageid type='integer'>71424497</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>5250</position> 
+      <referenceatlasindex type='integer'>177</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304071285/NISSL_4711_211_0304071285_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303071209/BC040774_210_0303071209_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303071209/BC040774_210_0303071209_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303071209/BC040774_210_0303071209_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303071209/BC040774_210_0303071209_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_214</imagedisplayname> 
+      <imageid type='integer'>71425101</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>5350</position> 
+      <referenceatlasindex type='integer'>181</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308071250/NISSL_4712_215_0308071250_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307071069/BC040774_214_0307071069_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307071069/BC040774_214_0307071069_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307071069/BC040774_214_0307071069_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307071069/BC040774_214_0307071069_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_218</imagedisplayname> 
+      <imageid type='integer'>71424499</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>5450</position> 
+      <referenceatlasindex type='integer'>185</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304071285/NISSL_4711_219_0304071285_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303071209/BC040774_218_0303071209_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303071209/BC040774_218_0303071209_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303071209/BC040774_218_0303071209_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303071209/BC040774_218_0303071209_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_222</imagedisplayname> 
+      <imageid type='integer'>71425103</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>5550</position> 
+      <referenceatlasindex type='integer'>190</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308071250/NISSL_4712_223_0308071250_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307071069/BC040774_222_0307071069_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307071069/BC040774_222_0307071069_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307071069/BC040774_222_0307071069_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307071069/BC040774_222_0307071069_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_226</imagedisplayname> 
+      <imageid type='integer'>71424503</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>5650</position> 
+      <referenceatlasindex type='integer'>194</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304081251/NISSL_4711_227_0304081251_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303081165/BC040774_226_0303081165_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303081165/BC040774_226_0303081165_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303081165/BC040774_226_0303081165_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303081165/BC040774_226_0303081165_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_234</imagedisplayname> 
+      <imageid type='integer'>71424505</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>5850</position> 
+      <referenceatlasindex type='integer'>202</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304081251/NISSL_4711_235_0304081251_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303081165/BC040774_234_0303081165_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303081165/BC040774_234_0303081165_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303081165/BC040774_234_0303081165_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303081165/BC040774_234_0303081165_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_238</imagedisplayname> 
+      <imageid type='integer'>71425109</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>5950</position> 
+      <referenceatlasindex type='integer'>206</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308081106/NISSL_4712_239_0308081106_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307081174/BC040774_238_0307081174_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307081174/BC040774_238_0307081174_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307081174/BC040774_238_0307081174_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307081174/BC040774_238_0307081174_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_242</imagedisplayname> 
+      <imageid type='integer'>71424507</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>6050</position> 
+      <referenceatlasindex type='integer'>210</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304081251/NISSL_4711_243_0304081251_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303081165/BC040774_242_0303081165_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303081165/BC040774_242_0303081165_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303081165/BC040774_242_0303081165_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303081165/BC040774_242_0303081165_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_246</imagedisplayname> 
+      <imageid type='integer'>71425111</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>6150</position> 
+      <referenceatlasindex type='integer'>214</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308081106/NISSL_4712_247_0308081106_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307081174/BC040774_246_0307081174_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307081174/BC040774_246_0307081174_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307081174/BC040774_246_0307081174_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307081174/BC040774_246_0307081174_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_250</imagedisplayname> 
+      <imageid type='integer'>71424509</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>6250</position> 
+      <referenceatlasindex type='integer'>218</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304081251/NISSL_4711_251_0304081251_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303081165/BC040774_250_0303081165_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303081165/BC040774_250_0303081165_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303081165/BC040774_250_0303081165_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303081165/BC040774_250_0303081165_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_254</imagedisplayname> 
+      <imageid type='integer'>71425113</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>6350</position> 
+      <referenceatlasindex type='integer'>222</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308081106/NISSL_4712_255_0308081106_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307081174/BC040774_254_0307081174_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307081174/BC040774_254_0307081174_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307081174/BC040774_254_0307081174_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307081174/BC040774_254_0307081174_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_258</imagedisplayname> 
+      <imageid type='integer'>71424513</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>6450</position> 
+      <referenceatlasindex type='integer'>226</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304091148/NISSL_4711_259_0304091148_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303091211/BC040774_258_0303091211_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303091211/BC040774_258_0303091211_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303091211/BC040774_258_0303091211_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303091211/BC040774_258_0303091211_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_262</imagedisplayname> 
+      <imageid type='integer'>71425117</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>6550</position> 
+      <referenceatlasindex type='integer'>230</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308091062/NISSL_4712_263_0308091062_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307091069/BC040774_262_0307091069_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307091069/BC040774_262_0307091069_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307091069/BC040774_262_0307091069_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307091069/BC040774_262_0307091069_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_266</imagedisplayname> 
+      <imageid type='integer'>71424515</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>6650</position> 
+      <referenceatlasindex type='integer'>234</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304091148/NISSL_4711_267_0304091148_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303091211/BC040774_266_0303091211_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303091211/BC040774_266_0303091211_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303091211/BC040774_266_0303091211_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303091211/BC040774_266_0303091211_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_270</imagedisplayname> 
+      <imageid type='integer'>71425119</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>6750</position> 
+      <referenceatlasindex type='integer'>238</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308091062/NISSL_4712_271_0308091062_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307091069/BC040774_270_0307091069_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307091069/BC040774_270_0307091069_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307091069/BC040774_270_0307091069_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307091069/BC040774_270_0307091069_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_274</imagedisplayname> 
+      <imageid type='integer'>71424517</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>6850</position> 
+      <referenceatlasindex type='integer'>242</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304091148/NISSL_4711_275_0304091148_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303091211/BC040774_274_0303091211_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303091211/BC040774_274_0303091211_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303091211/BC040774_274_0303091211_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303091211/BC040774_274_0303091211_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_278</imagedisplayname> 
+      <imageid type='integer'>71425121</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>6950</position> 
+      <referenceatlasindex type='integer'>246</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308091062/NISSL_4712_279_0308091062_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307091069/BC040774_278_0307091069_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307091069/BC040774_278_0307091069_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307091069/BC040774_278_0307091069_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307091069/BC040774_278_0307091069_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_282</imagedisplayname> 
+      <imageid type='integer'>71424519</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>7050</position> 
+      <referenceatlasindex type='integer'>250</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304091148/NISSL_4711_283_0304091148_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303091211/BC040774_282_0303091211_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303091211/BC040774_282_0303091211_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303091211/BC040774_282_0303091211_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303091211/BC040774_282_0303091211_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_286</imagedisplayname> 
+      <imageid type='integer'>71425123</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>7150</position> 
+      <referenceatlasindex type='integer'>254</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308091062/NISSL_4712_287_0308091062_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307091069/BC040774_286_0307091069_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307091069/BC040774_286_0307091069_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307091069/BC040774_286_0307091069_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307091069/BC040774_286_0307091069_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_290</imagedisplayname> 
+      <imageid type='integer'>71424523</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>7250</position> 
+      <referenceatlasindex type='integer'>258</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304101017/NISSL_4711_291_0304101017_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303101045/BC040774_290_0303101045_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303101045/BC040774_290_0303101045_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303101045/BC040774_290_0303101045_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303101045/BC040774_290_0303101045_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_294</imagedisplayname> 
+      <imageid type='integer'>71425127</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>7350</position> 
+      <referenceatlasindex type='integer'>262</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308101260/NISSL_4712_295_0308101260_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307101218/BC040774_294_0307101218_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307101218/BC040774_294_0307101218_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307101218/BC040774_294_0307101218_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307101218/BC040774_294_0307101218_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_298</imagedisplayname> 
+      <imageid type='integer'>71424525</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>7450</position> 
+      <referenceatlasindex type='integer'>267</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304101017/NISSL_4711_299_0304101017_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303101045/BC040774_298_0303101045_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303101045/BC040774_298_0303101045_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303101045/BC040774_298_0303101045_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303101045/BC040774_298_0303101045_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_302</imagedisplayname> 
+      <imageid type='integer'>71425129</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>7550</position> 
+      <referenceatlasindex type='integer'>270</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308101260/NISSL_4712_303_0308101260_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307101218/BC040774_302_0307101218_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307101218/BC040774_302_0307101218_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307101218/BC040774_302_0307101218_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307101218/BC040774_302_0307101218_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_306</imagedisplayname> 
+      <imageid type='integer'>71424527</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>7650</position> 
+      <referenceatlasindex type='integer'>274</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304101017/NISSL_4711_307_0304101017_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303101045/BC040774_306_0303101045_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303101045/BC040774_306_0303101045_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303101045/BC040774_306_0303101045_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303101045/BC040774_306_0303101045_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_310</imagedisplayname> 
+      <imageid type='integer'>71425131</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>7750</position> 
+      <referenceatlasindex type='integer'>278</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308101260/NISSL_4712_311_0308101260_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307101218/BC040774_310_0307101218_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307101218/BC040774_310_0307101218_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307101218/BC040774_310_0307101218_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307101218/BC040774_310_0307101218_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_314</imagedisplayname> 
+      <imageid type='integer'>71424529</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>7850</position> 
+      <referenceatlasindex type='integer'>282</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304101017/NISSL_4711_315_0304101017_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303101045/BC040774_314_0303101045_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303101045/BC040774_314_0303101045_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303101045/BC040774_314_0303101045_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303101045/BC040774_314_0303101045_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_318</imagedisplayname> 
+      <imageid type='integer'>71425133</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>7950</position> 
+      <referenceatlasindex type='integer'>286</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308101260/NISSL_4712_319_0308101260_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307101218/BC040774_318_0307101218_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307101218/BC040774_318_0307101218_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307101218/BC040774_318_0307101218_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307101218/BC040774_318_0307101218_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_330</imagedisplayname> 
+      <imageid type='integer'>71424535</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>8250</position> 
+      <referenceatlasindex type='integer'>298</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304111127/NISSL_4711_331_0304111127_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303111079/BC040774_330_0303111079_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303111079/BC040774_330_0303111079_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303111079/BC040774_330_0303111079_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303111079/BC040774_330_0303111079_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_334</imagedisplayname> 
+      <imageid type='integer'>71425139</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>8350</position> 
+      <referenceatlasindex type='integer'>302</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308111067/NISSL_4712_335_0308111067_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307111019/BC040774_334_0307111019_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307111019/BC040774_334_0307111019_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307111019/BC040774_334_0307111019_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307111019/BC040774_334_0307111019_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_338</imagedisplayname> 
+      <imageid type='integer'>71424537</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>8450</position> 
+      <referenceatlasindex type='integer'>306</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304111127/NISSL_4711_339_0304111127_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303111079/BC040774_338_0303111079_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303111079/BC040774_338_0303111079_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303111079/BC040774_338_0303111079_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303111079/BC040774_338_0303111079_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_346</imagedisplayname> 
+      <imageid type='integer'>71424539</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>8650</position> 
+      <referenceatlasindex type='integer'>314</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304111127/NISSL_4711_347_0304111127_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303111079/BC040774_346_0303111079_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303111079/BC040774_346_0303111079_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303111079/BC040774_346_0303111079_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303111079/BC040774_346_0303111079_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_350</imagedisplayname> 
+      <imageid type='integer'>71425143</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>8750</position> 
+      <referenceatlasindex type='integer'>318</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308111067/NISSL_4712_351_0308111067_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307111019/BC040774_350_0307111019_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307111019/BC040774_350_0307111019_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307111019/BC040774_350_0307111019_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307111019/BC040774_350_0307111019_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_354</imagedisplayname> 
+      <imageid type='integer'>71424543</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>8850</position> 
+      <referenceatlasindex type='integer'>322</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304121014/NISSL_4711_355_0304121014_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303121249/BC040774_354_0303121249_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303121249/BC040774_354_0303121249_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303121249/BC040774_354_0303121249_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303121249/BC040774_354_0303121249_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_358</imagedisplayname> 
+      <imageid type='integer'>71425147</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>8950</position> 
+      <referenceatlasindex type='integer'>326</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308121132/NISSL_4712_359_0308121132_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307121122/BC040774_358_0307121122_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307121122/BC040774_358_0307121122_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307121122/BC040774_358_0307121122_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307121122/BC040774_358_0307121122_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_362</imagedisplayname> 
+      <imageid type='integer'>71424545</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>9050</position> 
+      <referenceatlasindex type='integer'>330</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304121014/NISSL_4711_363_0304121014_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303121249/BC040774_362_0303121249_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303121249/BC040774_362_0303121249_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303121249/BC040774_362_0303121249_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303121249/BC040774_362_0303121249_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_370</imagedisplayname> 
+      <imageid type='integer'>71424547</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>9250</position> 
+      <referenceatlasindex type='integer'>339</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304121014/NISSL_4711_371_0304121014_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303121249/BC040774_370_0303121249_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303121249/BC040774_370_0303121249_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303121249/BC040774_370_0303121249_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303121249/BC040774_370_0303121249_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_374</imagedisplayname> 
+      <imageid type='integer'>71425151</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>9350</position> 
+      <referenceatlasindex type='integer'>342</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308121132/NISSL_4712_375_0308121132_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307121122/BC040774_374_0307121122_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307121122/BC040774_374_0307121122_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307121122/BC040774_374_0307121122_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307121122/BC040774_374_0307121122_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_378</imagedisplayname> 
+      <imageid type='integer'>71424549</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>9450</position> 
+      <referenceatlasindex type='integer'>346</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304121014/NISSL_4711_379_0304121014_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303121249/BC040774_378_0303121249_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303121249/BC040774_378_0303121249_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303121249/BC040774_378_0303121249_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303121249/BC040774_378_0303121249_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_382</imagedisplayname> 
+      <imageid type='integer'>71425153</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>9550</position> 
+      <referenceatlasindex type='integer'>350</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308121132/NISSL_4712_383_0308121132_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307121122/BC040774_382_0307121122_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307121122/BC040774_382_0307121122_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307121122/BC040774_382_0307121122_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307121122/BC040774_382_0307121122_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_386</imagedisplayname> 
+      <imageid type='integer'>71424553</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>9650</position> 
+      <referenceatlasindex type='integer'>354</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304131226/NISSL_4711_387_0304131226_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303131202/BC040774_386_0303131202_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303131202/BC040774_386_0303131202_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303131202/BC040774_386_0303131202_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303131202/BC040774_386_0303131202_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_390</imagedisplayname> 
+      <imageid type='integer'>71425157</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>9750</position> 
+      <referenceatlasindex type='integer'>358</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308131019/NISSL_4712_391_0308131019_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307131037/BC040774_390_0307131037_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307131037/BC040774_390_0307131037_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307131037/BC040774_390_0307131037_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307131037/BC040774_390_0307131037_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_394</imagedisplayname> 
+      <imageid type='integer'>71424555</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>9850</position> 
+      <referenceatlasindex type='integer'>362</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304131226/NISSL_4711_395_0304131226_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303131202/BC040774_394_0303131202_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303131202/BC040774_394_0303131202_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303131202/BC040774_394_0303131202_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303131202/BC040774_394_0303131202_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_398</imagedisplayname> 
+      <imageid type='integer'>71425159</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>9950</position> 
+      <referenceatlasindex type='integer'>366</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308131019/NISSL_4712_399_0308131019_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307131037/BC040774_398_0307131037_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307131037/BC040774_398_0307131037_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307131037/BC040774_398_0307131037_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307131037/BC040774_398_0307131037_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_402</imagedisplayname> 
+      <imageid type='integer'>71424557</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>10050</position> 
+      <referenceatlasindex type='integer'>370</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304131226/NISSL_4711_403_0304131226_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303131202/BC040774_402_0303131202_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303131202/BC040774_402_0303131202_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303131202/BC040774_402_0303131202_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303131202/BC040774_402_0303131202_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_406</imagedisplayname> 
+      <imageid type='integer'>71425161</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>10150</position> 
+      <referenceatlasindex type='integer'>374</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308131019/NISSL_4712_407_0308131019_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307131037/BC040774_406_0307131037_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307131037/BC040774_406_0307131037_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307131037/BC040774_406_0307131037_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307131037/BC040774_406_0307131037_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_410</imagedisplayname> 
+      <imageid type='integer'>71424559</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>10250</position> 
+      <referenceatlasindex type='integer'>378</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304131226/NISSL_4711_411_0304131226_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303131202/BC040774_410_0303131202_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303131202/BC040774_410_0303131202_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303131202/BC040774_410_0303131202_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303131202/BC040774_410_0303131202_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_414</imagedisplayname> 
+      <imageid type='integer'>71425163</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>10350</position> 
+      <referenceatlasindex type='integer'>382</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308131019/NISSL_4712_415_0308131019_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307131037/BC040774_414_0307131037_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307131037/BC040774_414_0307131037_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307131037/BC040774_414_0307131037_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307131037/BC040774_414_0307131037_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_418</imagedisplayname> 
+      <imageid type='integer'>71424563</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>10450</position> 
+      <referenceatlasindex type='integer'>385</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304141059/NISSL_4711_419_0304141059_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303141142/BC040774_418_0303141142_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303141142/BC040774_418_0303141142_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303141142/BC040774_418_0303141142_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303141142/BC040774_418_0303141142_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_422</imagedisplayname> 
+      <imageid type='integer'>71425167</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>10550</position> 
+      <referenceatlasindex type='integer'>389</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308141070/NISSL_4712_423_0308141070_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307141046/BC040774_422_0307141046_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307141046/BC040774_422_0307141046_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307141046/BC040774_422_0307141046_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307141046/BC040774_422_0307141046_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_426</imagedisplayname> 
+      <imageid type='integer'>71424565</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>10650</position> 
+      <referenceatlasindex type='integer'>393</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304141059/NISSL_4711_427_0304141059_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303141142/BC040774_426_0303141142_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303141142/BC040774_426_0303141142_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303141142/BC040774_426_0303141142_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303141142/BC040774_426_0303141142_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_430</imagedisplayname> 
+      <imageid type='integer'>71425169</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>10750</position> 
+      <referenceatlasindex type='integer'>397</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308141070/NISSL_4712_431_0308141070_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307141046/BC040774_430_0307141046_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307141046/BC040774_430_0307141046_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307141046/BC040774_430_0307141046_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307141046/BC040774_430_0307141046_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_434</imagedisplayname> 
+      <imageid type='integer'>71424567</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>10850</position> 
+      <referenceatlasindex type='integer'>401</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304141059/NISSL_4711_435_0304141059_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303141142/BC040774_434_0303141142_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303141142/BC040774_434_0303141142_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303141142/BC040774_434_0303141142_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303141142/BC040774_434_0303141142_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_438</imagedisplayname> 
+      <imageid type='integer'>71425171</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>10950</position> 
+      <referenceatlasindex type='integer'>405</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308141070/NISSL_4712_439_0308141070_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307141046/BC040774_438_0307141046_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307141046/BC040774_438_0307141046_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307141046/BC040774_438_0307141046_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307141046/BC040774_438_0307141046_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_450</imagedisplayname> 
+      <imageid type='integer'>71424573</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>11250</position> 
+      <referenceatlasindex type='integer'>416</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304151227/NISSL_4711_451_0304151227_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303151175/BC040774_450_0303151175_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303151175/BC040774_450_0303151175_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303151175/BC040774_450_0303151175_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303151175/BC040774_450_0303151175_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_454</imagedisplayname> 
+      <imageid type='integer'>71425177</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>11350</position> 
+      <referenceatlasindex type='integer'>421</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308151205/NISSL_4712_455_0308151205_A.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307151256/BC040774_454_0307151256_A.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307151256/BC040774_454_0307151256_A.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307151256/BC040774_454_0307151256_A.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307151256/BC040774_454_0307151256_A.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_458</imagedisplayname> 
+      <imageid type='integer'>71424575</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>11450</position> 
+      <referenceatlasindex type='integer'>425</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304151227/NISSL_4711_459_0304151227_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303151175/BC040774_458_0303151175_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303151175/BC040774_458_0303151175_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303151175/BC040774_458_0303151175_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303151175/BC040774_458_0303151175_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_462</imagedisplayname> 
+      <imageid type='integer'>71425179</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>11550</position> 
+      <referenceatlasindex type='integer'>428</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308151205/NISSL_4712_463_0308151205_B.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307151256/BC040774_462_0307151256_B.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307151256/BC040774_462_0307151256_B.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307151256/BC040774_462_0307151256_B.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307151256/BC040774_462_0307151256_B.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_466</imagedisplayname> 
+      <imageid type='integer'>71424577</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>11650</position> 
+      <referenceatlasindex type='integer'>433</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304151227/NISSL_4711_467_0304151227_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303151175/BC040774_466_0303151175_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303151175/BC040774_466_0303151175_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303151175/BC040774_466_0303151175_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303151175/BC040774_466_0303151175_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_470</imagedisplayname> 
+      <imageid type='integer'>71425181</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>11750</position> 
+      <referenceatlasindex type='integer'>438</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308151205/NISSL_4712_471_0308151205_C.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307151256/BC040774_470_0307151256_C.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307151256/BC040774_470_0307151256_C.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307151256/BC040774_470_0307151256_C.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307151256/BC040774_470_0307151256_C.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_474</imagedisplayname> 
+      <imageid type='integer'>71424579</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>11850</position> 
+      <referenceatlasindex type='integer'>442</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4711_05-2593_24492/zoomify/primary/0304151227/NISSL_4711_475_0304151227_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0303151175/BC040774_474_0303151175_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0303151175/BC040774_474_0303151175_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0303151175/BC040774_474_0303151175_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0303151175/BC040774_474_0303151175_D.aff</downloadExpressionPath> 
+    </image> 
+    <image> 
+      <imagecreatedate type='datetime'>2008-05-25T10:14:52Z</imagecreatedate> 
+      <imagedisplayname>C1ql2_478</imagedisplayname> 
+      <imageid type='integer'>71425183</imageid> 
+      <imageseriesid type='integer'>71587929</imageseriesid> 
+      <position type='integer'>11950</position> 
+      <referenceatlasindex type='integer'>446</referenceatlasindex> 
+      <zoomifiednisslurl>production11/NISSL_4712_05-2593_24131/zoomify/primary/0308151205/NISSL_4712_479_0308151205_D.aff</zoomifiednisslurl> 
+      <thumbnailurl>/ImageWeb/GetImage?path=production9/BC040774_05-2593_20714/zoomify/primary/0307151256/BC040774_478_0307151256_D.aff</thumbnailurl> 
+      <expressthumbnailurl>/ImageWeb/GetImage?imgType=express&amp;path=production9/BC040774_05-2593_20714/zoomify/express/0307151256/BC040774_478_0307151256_D.aff</expressthumbnailurl> 
+      <downloadImagePath>production9/BC040774_05-2593_20714/zoomify/primary/0307151256/BC040774_478_0307151256_D.aff</downloadImagePath> 
+      <downloadExpressionPath>production9/BC040774_05-2593_20714/zoomify/express/0307151256/BC040774_478_0307151256_D.aff</downloadExpressionPath> 
+    </image> 
+  </images> 
+</image-series> 

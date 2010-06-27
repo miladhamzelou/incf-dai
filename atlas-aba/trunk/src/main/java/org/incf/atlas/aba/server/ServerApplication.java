@@ -3,6 +3,7 @@ package org.incf.atlas.aba.server;
 import org.incf.atlas.aba.resource.Capabilities;
 import org.incf.atlas.aba.resource.CoordinateTransformationChainResource;
 import org.incf.atlas.aba.resource.FaviconResource;
+import org.incf.atlas.aba.resource.Images2DByPOI;
 import org.incf.atlas.aba.resource.PingResource;
 import org.incf.atlas.aba.resource.ProcessDescriptions;
 import org.incf.atlas.aba.resource.StructureNamesByPOIResource;
@@ -61,6 +62,13 @@ public class ServerApplication extends Application {
 		router.attach("?request=Execute&identifier=GetStructureNamesByPOI"
 				+ "&dataInputs={dataInputs}",
 				StructureNamesByPOIResource.class);
+
+		router.attach("?Request=Execute&Identifier=Get2DImagesByPOI"
+				+ "&DataInputs={dataInputs}",
+				Images2DByPOI.class);
+		router.attach("?request=Execute&identifier=Get2DImagesByPOI"
+				+ "&dataInputs={dataInputs}",
+				Images2DByPOI.class);
 
 		return router;
 

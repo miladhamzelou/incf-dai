@@ -1,6 +1,9 @@
 package org.incf.atlas.aba.util;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 import javax.xml.XMLConstants;
 import javax.xml.transform.sax.SAXSource;
@@ -20,69 +23,102 @@ import org.xml.sax.SAXParseException;
  */
 public class XmlValidator {
 
-	private Schema schema;
+	private SchemaFactory schemaFactory;
+	private StringBuilder validationErrors;
 
-	public XmlValidator(String schemaFile) {
-		try {
-			String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
-			SchemaFactory factory = SchemaFactory.newInstance(language);
-			schema = factory.newSchema(new File(schemaFile));
-		} catch (Exception e) {
-			System.out.println(e.toString());
-		}
+	public XmlValidator() {
+		String schemaLanguage = XMLConstants.W3C_XML_SCHEMA_NS_URI;
+		schemaFactory = SchemaFactory.newInstance(schemaLanguage);
+		validationErrors = new StringBuilder();
 	}
-
-	public boolean validate(String xmlToValidate) {
-
-		// allows for continuing validation after errors (rather that simply
-		// stopping at that point
-		ValidatorErrorHandler errorHandler = new ValidatorErrorHandler();
-
+	
+	public boolean validate(File xmlFile, File schemaFile) {
 		try {
+			
+			// set up Validator with custom error handler
+			Schema schema = schemaFactory.newSchema(schemaFile);
 			Validator validator = schema.newValidator();
-			validator.setErrorHandler(errorHandler);
+
+			// allows for continuing validation after errors (rather that simply
+			// stopping at that point)
+			validator.setErrorHandler(new ValidatorErrorHandler(
+					validationErrors));
 
 			// prepare XML file as SAX source
-			SAXSource source = new SAXSource(new InputSource(this.getClass()
-					.getResourceAsStream(xmlToValidate)));
+			SAXSource source = new SAXSource(new InputSource(new FileReader(
+					xmlFile)));
 
-			// validate against the schema
+			// validate xml against schema
 			validator.validate(source);
 
-		} catch (SAXParseException e) {
-			System.out.printf("Line: %d - %s%n", e.getLineNumber(), e
-					.toString());
-		} catch (Exception e) {
-			System.out.println(e.toString());
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		if (errorHandler.exceptions()) {
-			return false;
-		} else {
-			return true;
-		}
+		return validationErrors.length() > 0 ? false : true;
 	}
+
+//	public boolean validate(String xmlToValidate) {
+//
+//		// allows for continuing validation after errors (rather that simply
+//		// stopping at that point
+//		ValidatorErrorHandler errorHandler = new ValidatorErrorHandler();
+//
+//		try {
+//			Validator validator = schema.newValidator();
+//			validator.setErrorHandler(errorHandler);
+//
+//			// prepare XML file as SAX source
+//			SAXSource source = new SAXSource(new InputSource(this.getClass()
+//					.getResourceAsStream(xmlToValidate)));
+//
+//			// validate against the schema
+//			validator.validate(source);
+//
+//		} catch (SAXParseException e) {
+//			System.out.printf("Line: %d - %s%n", e.getLineNumber(), e
+//					.toString());
+//		} catch (Exception e) {
+//			System.out.println(e.toString());
+//		}
+//		if (errorHandler.exceptions()) {
+//			return false;
+//		} else {
+//			return true;
+//		}
+//	}
 
 	private class ValidatorErrorHandler implements ErrorHandler {
 		
-		private boolean exceptions = false;
+		private StringBuilder buf;
+		
+		public ValidatorErrorHandler(StringBuilder buf) {
+			this.buf = buf;
+		}
 
 		public void error(SAXParseException e) throws SAXException {
-			exceptions = true;
-			System.out.printf("Line: %d - %s%n", e.getLineNumber(), e.toString());
+			accrueValidationError(e, buf);
 		}
 
 		public void fatalError(SAXParseException e) throws SAXException {
-			exceptions = true;
+			accrueValidationError(e, buf);
 			throw e; 
 		}
 
 		public void warning(SAXParseException e) throws SAXException {
-			exceptions = true;
-			System.out.printf("Line: %d - %s%n", e.getLineNumber(), e.toString());
+			accrueValidationError(e, buf);
 		}
 		
-		public boolean exceptions() {
-			return exceptions;
+		private void accrueValidationError(SAXParseException e, 
+				StringBuilder buf) {
+			buf.append(String.format("Line: %d - %s%n", e.getLineNumber(), 
+					e.toString()));
 		}
 
 	}
@@ -95,8 +131,8 @@ public class XmlValidator {
 //		final String SCHEMA = "src/main/resources/wpsSchema/wpsDescribeProcess_response.xsd";
 //		final String XML = "/database/ProcessDescriptions.xml";
 		
-		XmlValidator validator = new XmlValidator(SCHEMA);
-		if (validator.validate(XML)) {
+		XmlValidator validator = new XmlValidator();
+		if (validator.validate(new File(XML), new File(SCHEMA))) {
 			System.out.println(XML + ": Passed validation");
 		} else {
 			System.out.println(XML + ": Failed validation");
