@@ -23,7 +23,7 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
 
  * Execute : Get2DImagesByPOI
 
-http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=Execute&identifier=Get2DImagesByPOI&dataInputs=srsName=ABAvoxel;x=6272;y=3678;z=4874;gene=C1ql2;zoom=25
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=Execute&identifier=Get2DImagesByPOI&dataInputs=srsName=ABAvoxel;x=6272;y=3678;z=4874;gene=C1ql2;zoom=25
 
 == WPS Functions under Development ==
 
