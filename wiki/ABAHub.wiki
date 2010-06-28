@@ -21,6 +21,10 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=Execute&identifier=GetTransformationChain&dataInputs=inputSrsCode=paxinos;targetSrsCode=abareference;filter=1
 
+ * Execute : Get2DImagesByPOI
+
+http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=Execute&identifier=Get2DImagesByPOI&dataInputs=srsName=ABAvoxel;x=6272;y=3678;z=4874;gene=C1ql2;zoom=25
+
 == WPS Functions under Development ==
 
  * Execute : ListSRSs
@@ -29,7 +33,6 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
  * Execute : !ListTransformations
  * Execute : !DescribeTransformation
  
- * Execute : Get2DImagesByPOI
  * Execute : GetCorrelationMapByPOI
  * Execute : GetGenesByPOI
  * Execute : GetStructureNamesByPOI
