@@ -1,79 +1,66 @@
- <xs:schema id="StructureTermsResponse" 
- xmlns:mstns="http://www.incf.org/waxML" 
- xmlns="http://www.incf.org/waxML" 
- xmlns:xs="http://www.w3.org/2001/XMLSchema" 
- xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified" 
- xmlns:app1="http://www.opengis.net/gml/3.2" msdata:schemafragmentcount="3"
- xmlns:atl="http://incf.org/atlas/generated/structurenamesbypoi" 
- targetNamespace="http://incf.org/atlas/generated/structurenamesbypoi">
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+elementFormDefault="qualified" 
+targetNamespace="http://www.incf.org/waxML" 
+xmlns:gml="http://www.opengis.net/gml/3.2" 
+xmlns:wax="http://www.incf.org/waxML">
 
-    
-   <xs:import namespace="http://www.opengis.net/gml/3.2" />  
-
-   <xs:element name="StructureNamesByPOIMain" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msdata:Prefix="wax">
-	  <xs:complexType>
-	    <xs:sequence>
-	      <xs:element name="StructureNamesByPOIQueryInfo" type="atl:StructureNamesByPOIQueryInfo"/>
-	      <xs:element name="StructureNamesByPOIStructureTerms" type="atl:StructureNamesByPOIStructureTerms"/>
-	    </xs:sequence>
-	  </xs:complexType>  
-   </xs:element>
-
-     <xs:complexType name="StructureNamesByPOIQueryInfo">  
-       <xs:choice minOccurs="0" maxOccurs="unbounded">  
-         <xs:element name="queryInfo" msdata:Prefix="wax">  
-           <xs:complexType>  
-             <xs:sequence>  
-               <xs:element name="timeCreated" form="unqualified" type="xs:string" minOccurs="0" />  
-               <xs:element name="queryUrl" form="unqualified" type="xs:string" minOccurs="0" />  
-               <xs:element name="criteria" form="unqualified">  
-                 <xs:complexType>  
-                   <xs:sequence>  
-                     <xs:element name="input" form="unqualified" minOccurs="0" maxOccurs="unbounded">  
-                       <xs:complexType>  
-                         <xs:sequence>  
-						   <xs:element name="Point" msdata:Prefix="gml">  
-						     <xs:complexType>  
-						       <xs:sequence>  
-						         <xs:element name="pos" msdata:Prefix="gml" type="xs:string" minOccurs="0" msdata:Ordinal="0" />  
-						       </xs:sequence>  
-						       <xs:attribute name="srsName" form="unqualified" type="xs:string" />  
-						     </xs:complexType>   
-						   </xs:element>  
-                          </xs:sequence>  
-                         <xs:attribute name="name" form="unqualified" type="xs:string" />  
-                       </xs:complexType>  
-                     </xs:element>  
-                   </xs:sequence>  
-                 </xs:complexType>  
-               </xs:element>  
-             </xs:sequence>  
-           </xs:complexType>  
-           </xs:element>  
-       </xs:choice>  
-     </xs:complexType>  
-           
-           <xs:complexType name="StructureNamesByPOIStructureTerms">  
-             <xs:sequence>  
-               <xs:element name="StructureTerm" msdata:Prefix="wax" minOccurs="0" maxOccurs="unbounded">  
-                 <xs:complexType>  
-                   <xs:sequence>  
-                     <xs:element name="description" msdata:Prefix="wax" type="xs:string" minOccurs="0" />  
-                     <xs:element name="structureCode" msdata:Prefix="wax" nillable="true" minOccurs="0" maxOccurs="unbounded">  
-                       <xs:complexType>  
-                         <xs:simpleContent msdata:Prefix="wax" msdata:ColumnName="structureCode_Text" msdata:Ordinal="2">  
-                           <xs:extension base="xs:string">  
-   							 <xs:attribute name="id" msdata:Prefix="gml" type="xs:string" />  
-                             <xs:attribute name="codeSpace" form="unqualified" type="xs:string" />  
-                           </xs:extension>  
-                         </xs:simpleContent>  
-                       </xs:complexType>  
-                     </xs:element>  
-                   </xs:sequence>  
-                 </xs:complexType>  
-               </xs:element>  
-             </xs:sequence>  
-           </xs:complexType>  
- 
- </xs:schema>
- 
+  <xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="gml.xsd"/>
+  <xs:element name="structureTermsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="wax:queryInfo"/>
+        <xs:element ref="wax:structureTerms"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="queryInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="timeCreated" form="unqualified" type="xs:NMTOKEN"/>
+        <xs:element name="queryUrl" form="unqualified" type="xs:anyURI"/>
+        <xs:element name="criteria" form="unqualified">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="input" form="unqualified">
+                <xs:complexType>
+                  <xs:choice>
+                    <xs:element name="value" form="unqualified" type="xs:NMTOKEN"/>
+                    <xs:element ref="gml:Point"/>
+                  </xs:choice>
+                  <xs:attribute name="name" use="required" type="xs:NCName"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="structureTerms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="wax:StructureTerm"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StructureTerm">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="wax:structureCode"/>
+        <xs:element ref="wax:description"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="structureCode">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:NCName">
+          <xs:attribute ref="gml:id" use="required"/>
+          <xs:attribute name="codeSpace" use="required" type="xs:NCName"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="description" type="xs:string"/>
+</xs:schema>
