@@ -69,7 +69,7 @@ public class ServerApplication extends Application {
 		router.attach("?request=Execute&identifier=Get2DImagesByPOI"
 				+ "&dataInputs={dataInputs}",
 				Images2DByPOI.class);
-
+		
 		return router;
 
 	}
