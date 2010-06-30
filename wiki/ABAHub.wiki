@@ -39,8 +39,7 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
  
  * Execute : GetCorrelationMapByPOI
  * Execute : GetGenesByPOI
- * Execute : GetStructureNamesByPOI
-
+ 
 == Ancillary URLs ==
 
  * http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba/favicon.ico
