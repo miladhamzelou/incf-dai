@@ -1,5 +1,12 @@
 package org.incf.atlas.aba.resource;
 
+import generated.Criteria;
+import generated.Input;
+import generated.ObjectFactory;
+import generated.QueryInfo;
+import generated.QueryURL;
+import generated.TransformationResponse;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Set;
@@ -10,17 +17,12 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.namespace.QName;
 
+import net.opengis.gml._3.Point;
+
 import org.incf.atlas.aba.util.ABAConfigurator;
 import org.incf.atlas.aba.util.ABAUtil;
 import org.incf.atlas.aba.util.AtlasNamespacePrefixMapper;
 import org.incf.atlas.aba.util.DataInputs;
-import org.incf.atlas.generated.transformpoi.ObjectFactory;
-import org.incf.atlas.generated.transformpoi.POI;
-import org.incf.atlas.generated.transformpoi.QueryInfo;
-import org.incf.atlas.generated.transformpoi.TransformationResponse;
-import org.incf.atlas.generated.transformpoi.POI.Point;
-import org.incf.atlas.generated.transformpoi.QueryInfo.Criteria;
-import org.incf.atlas.generated.transformpoi.QueryInfo.QueryURL;
 
 import org.restlet.Context;
 import org.restlet.data.MediaType;
@@ -86,11 +88,11 @@ public class TransformPOIResource extends Resource {
 		ABAServiceVO vo = new ABAServiceVO();
 		Set<String> dataInputKeys = dataInputs.getKeys();
 		for (String key : dataInputKeys) {
-			if (key.equalsIgnoreCase("inputSrsCode")) {
+			if (key.equalsIgnoreCase("inputSrsName")) {
 				fromSRSCode = dataInputs.getValue(key);
 				vo.setFromSRSCode(fromSRSCode);
 				vo.setFromSRSCodeOne(fromSRSCode);
-			} else if (key.equalsIgnoreCase("targetSrsCode")) {
+			} else if (key.equalsIgnoreCase("targetSrsName")) {
 				toSRSCode = dataInputs.getValue(key);
 				vo.setToSRSCode(toSRSCode);
 				vo.setToSRSCodeOne(toSRSCode);
@@ -123,50 +125,54 @@ public class TransformPOIResource extends Resource {
 
         url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputString;
         vo.setUrlString(url);
-        
+
 		ObjectFactory of = new ObjectFactory();
 		TransformationResponse transformationResponse = 
 			of.createTransformationResponse();
 
-		//Query Info setters
-		QueryInfo queryInfo = new QueryInfo();
-		QueryInfo.Criteria.Input.Point srcPoint = new QueryInfo.Criteria.Input.Point();
-		srcPoint.setSrcName(vo.getFromSRSCode());//Change
-		srcPoint.setPos(vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " " + vo.getOriginalCoordinateZ());//Change
 		QueryURL queryURL = new QueryURL();
 		queryURL.setName("TransformPOI");
 		queryURL.setValue(url);//Change
-		Criteria.Input input = new Criteria.Input();
+		
+		//Query Info setters
+		Point srcPoint = new Point();
+		srcPoint.setSrsName(vo.getFromSRSCode());//Change
+		srcPoint.setPos(vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " " + vo.getOriginalCoordinateZ());//Change
+		
+		Input input = new Input();
 		input.setName("POI");
 		input.setPoint(srcPoint);
+		
+		
 		Criteria criteria = new Criteria();
-		criteria.getInput().add(input);
-		queryInfo.getTimeCreatedAndQueryURLAndCriteria().add(queryURL);
-		queryInfo.getTimeCreatedAndQueryURLAndCriteria().add(currentTime);//Change
-		queryInfo.getTimeCreatedAndQueryURLAndCriteria().add(criteria);
+		criteria.setInput(input);
+
+		QueryInfo queryInfo = new QueryInfo();
+		queryInfo.setQueryURL(queryURL);
+		queryInfo.setTimeCreated(currentTime);
+	
+		queryInfo.setCriteria(criteria);
 
 		//TransformPOI responses
-		POI poi = new POI();
-		POI.Point destPoint = new POI.Point();
-		destPoint.setDestName(vo.getToSRSCode());//Change
+		Point destPoint = new Point();
+		destPoint.setSrsName(vo.getToSRSCode());//Change
 		destPoint.setPos(vo.getTransformedCoordinateX() + " " + vo.getTransformedCoordinateY() + " " + vo.getTransformedCoordinateZ());//Change
-		poi.setPoint(destPoint);
-
-		transformationResponse.setQueryInfo(queryInfo);
-		transformationResponse.setPOI(poi);
+				
+		generated.Point tempPoint = new generated.Point();
+		tempPoint.setPoint(destPoint);
 		
-		//ABAUtil util = new ABAUtil();
-		//transformationPOIMain = util.getCoordinateTransformationChain(vo, coordinateChain);
+		transformationResponse.setQueryInfo(queryInfo);
+		transformationResponse.setPOI(tempPoint);
 
-		//generate representation based on media type
-/*		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
+		//generate representation based on media type - Used this method for renaming the prefixes
+		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
 			return getDomRepresentation(transformationResponse);
-		}
-*/		
+		}		
+/*
 		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
 			return new JaxbRepresentation<TransformationResponse>(transformationResponse);
 		}
-
+*/		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -197,7 +203,7 @@ public class TransformPOIResource extends Resource {
 			Class clazz = object.getClass();
 			System.out.println("5");
 			QName qName = new QName(
-					"http://incf.org/atlas/generated/transformpoi",
+					"http://www.opengis.net/gml/3.2",
 					clazz.getSimpleName());
 			System.out.println("6");
 			JAXBElement jaxbElement = new JAXBElement(qName, clazz, object);
@@ -222,7 +228,7 @@ public class TransformPOIResource extends Resource {
 	public static JAXBContext getWBCJAXBContext() {
 		if (jaxbContext == null) {
 			try {
-				jaxbContext = JAXBContext.newInstance("net.opengis.wps._1_0");
+				jaxbContext = JAXBContext.newInstance("generated");
 			} catch (JAXBException e) {
 				throw new RuntimeException(e);
 			}

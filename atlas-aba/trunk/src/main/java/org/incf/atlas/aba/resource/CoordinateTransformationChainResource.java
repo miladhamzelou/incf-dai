@@ -69,11 +69,11 @@ public class CoordinateTransformationChainResource extends Resource {
 		ABAServiceVO vo = new ABAServiceVO();
 		Set<String> dataInputKeys = dataInputs.getKeys();
 		for (String key : dataInputKeys) {
-			if (key.equalsIgnoreCase("inputSrsCode")) {
+			if (key.equalsIgnoreCase("inputSrsName")) {
 				fromSRSCode = dataInputs.getValue(key);
 				vo.setFromSRSCode(fromSRSCode);
 				vo.setFromSRSCodeOne(fromSRSCode);
-			} else if (key.equalsIgnoreCase("targetSrsCode")) {
+			} else if (key.equalsIgnoreCase("targetSrsName")) {
 				toSRSCode = dataInputs.getValue(key);
 				vo.setToSRSCode(toSRSCode);
 				vo.setToSRSCodeOne(toSRSCode);
@@ -95,7 +95,7 @@ public class CoordinateTransformationChainResource extends Resource {
 		hostName = config.getValue("incf.deploy.host.name");
 		System.out.println("****HOSTNAME**** - " + hostName);
 		String portNumber = ":8080";
-		servicePath = "/atlas-aba?Request=Execute&Identifier=TransformationChain";
+		servicePath = "/atlas-aba?Request=Execute&Identifier=GetTransformationChain";
 
         url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputString;
         vo.setUrlString(url);
