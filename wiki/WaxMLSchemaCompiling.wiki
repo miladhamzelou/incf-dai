@@ -22,8 +22,7 @@ http://download.java.net/maven/2/org/jvnet/ogc/
 
 Command line to get this to work (from dave v's machine)
 
-"c:\Program Files\Java\jdk1.6
-.0_17\bin\xjc.exe" WaxMlSchema\WaxML_Base.xsd ogcPrecompiled\gml-v_3_2_1-schema-
+"c:\Program Files\Java\jdk1.6.0_17\bin\xjc.exe" WaxMlSchema\WaxML_Base.xsd ogcPrecompiled\gml-v_3_2_1-schema-
 1.0.0.jar -extension
 
 Basically:
