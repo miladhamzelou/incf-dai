@@ -61,6 +61,7 @@
             <ows:Value>maptype:sagittal</ows:Value>
             <ows:Value>structureset:anatomic</ows:Value>
             <ows:Value>structureset:fine</ows:Value>
+            <ows:AnyValue/>
           </ows:AllowedValues>
         </LiteralData>
       </Input>
@@ -101,11 +102,63 @@
         </LiteralData>
       </Input>
       
-      sourceType
-      sourceUrl
-      xmin
-      xmax
-      ymin
-      ymax
+      <Input id="xmin">
+        <ows:Identifier>xmin</ows:Identifier>
+        <ows:Title>Left X-Coordinate Value</ows:Title>
+        <ows:Abstract>Left x-coordinate of the desired image fragment.</ows:Abstract>
+        <LiteralData>
+          <ows:DataType ows:reference="xs:double"/>
+        </LiteralData>
+      </Input>
+      
+      <Input id="xmax">
+        <ows:Identifier>xmax</ows:Identifier>
+        <ows:Title>Right X-Coordinate Value</ows:Title>
+        <ows:Abstract>Right x-coordinate of the desired image fragment.</ows:Abstract>
+        <LiteralData>
+          <ows:DataType ows:reference="xs:double"/>
+        </LiteralData>
+      </Input>
+      
+      <Input id="ymin">
+        <ows:Identifier>ymin</ows:Identifier>
+        <ows:Title>Lower Y-Coordinate Value</ows:Title>
+        <ows:Abstract>Lower y-coordinate of the desired image fragment.</ows:Abstract>
+        <LiteralData>
+          <ows:DataType ows:reference="xs:double"/>
+        </LiteralData>
+      </Input>
+      
+      <Input id="ymax">
+        <ows:Identifier>ymax</ows:Identifier>
+        <ows:Title>Upper Y-Coordinate Value</ows:Title>
+        <ows:Abstract>Upper y-coordinate of the desired image fragment.</ows:Abstract>
+        <LiteralData>
+          <ows:DataType ows:reference="xs:double"/>
+        </LiteralData>
+      </Input>
+      
+      <Input id="sourceType">
+        <ows:Identifier>sourceType</ows:Identifier>
+        <ows:Title>Source Type</ows:Title>
+        <ows:Abstract>Type of image source that will be queried.</ows:Abstract>
+        <LiteralData>
+          <ows:AllowedValues>
+            <ows:Value>WMS</ows:Value>
+            <ows:Value>zoomify</ows:Value>
+            <ows:Value>static</ows:Value>
+            <ows:AnyValue/>
+          </ows:AllowedValues>
+        </LiteralData>
+      </Input>
+      
+      <Input id="sourceURL">
+        <ows:Identifier>sourceURL</ows:Identifier>
+        <ows:Title>Source URL</ows:Title>
+        <ows:Abstract>The URL of the image whose fragment URL will be returned.</ows:Abstract>
+        <LiteralData>
+          <ows:DataType ows:reference="xs:anyURL"/>
+        </LiteralData>
+      </Input>
       
 </ProcessInputs>

@@ -362,49 +362,49 @@
   </ProcessDescription>
   
   <ProcessDescription wps:processVersion="1.0.0">
-    <ows:Identifier>Get2DImage</ows:Identifier>
+    <ows:Identifier>Retrieve2DImage</ows:Identifier>
     <ows:Title>........</ows:Title>
     <ows:Abstract></ows:Abstract>
     <DataInputs>
       <Input minOccurs="1" maxOccurs="1">
       {
         for $x in $doc/ProcessInputs/Input
-        where $x/@id='srsName'
+        where $x/@id='sourceType'
         return $x/*
       }
       </Input>
       <Input minOccurs="1" maxOccurs="1">
       {
         for $x in $doc/ProcessInputs/Input
-        where $x/@id='x'
+        where $x/@id='sourceURL'
         return $x/*
       }
       </Input>
       <Input minOccurs="1" maxOccurs="1">
       {
         for $x in $doc/ProcessInputs/Input
-        where $x/@id='y'
+        where $x/@id='xmin'
         return $x/*
       }
       </Input>
       <Input minOccurs="1" maxOccurs="1">
       {
         for $x in $doc/ProcessInputs/Input
-        where $x/@id='z'
+        where $x/@id='xmax'
         return $x/*
       }
       </Input>
-      <Input minOccurs="0" maxOccurs="1">
+      <Input minOccurs="1" maxOccurs="1">
       {
         for $x in $doc/ProcessInputs/Input
-        where $x/@id='vocabulary'
+        where $x/@id='ymin'
         return $x/*
       }
       </Input>
-      <Input minOccurs="0" maxOccurs="1">
+      <Input minOccurs="1" maxOccurs="1">
       {
         for $x in $doc/ProcessInputs/Input
-        where $x/@id='filter'
+        where $x/@id='ymax'
         return $x/*
       }
       </Input>

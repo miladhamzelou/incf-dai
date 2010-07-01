@@ -3,11 +3,11 @@
     xmlns:wps="http://www.opengis.net/wps/1.0.0" 
     xmlns:ows="http://www.opengis.net/ows/1.1">
   <ows:ServiceIdentification>
-    <ows:Title>ABA Hub Services</ows:Title>
-    <ows:Abstract>ABA Hub Services provide access to data available from the
+    <ows:Title>ABA Atlas Services</ows:Title>
+    <ows:Abstract>ABA Atlas Services provide access to data available from the
       Allen Brain Atlas resource.</ows:Abstract>
     <ows:ServiceType>WPS</ows:ServiceType>
-    <ows:ServiceTypeVersion>0.0.1</ows:ServiceTypeVersion>
+    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
   </ows:ServiceIdentification>
   <wps:ProcessOfferings>
     {
