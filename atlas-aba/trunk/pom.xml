@@ -27,8 +27,9 @@
           <schemaDirectory>${basedir}/src/main/resources</schemaDirectory>
           <!--
           <generatePackage>org.incf.atlas</generatePackage> 
-		  -->
           <schemaFiles>CoordinateTransformationChainResponse.xsd,StructureNamesByPOI.xsd,TransformPOI.xsd,wpsSchema/wpsGetCapabilities_response.xsd</schemaFiles>
+          -->
+		  <schemaFiles>CoordinateTransformationChainResponse.xsd,StructureNamesByPOI.xsd,gml.xsd,TransformPOI.xsd,wpsSchema/wpsGetCapabilities_response.xsd</schemaFiles>
           <!--
           <schemaFiles>CoordinateTransformationChainResponse.xsd,wpsSchema/wpsGetCapabilities_response.xsd,WaxMlSchema/WaxML_Base.xsd</schemaFiles>
           -->
