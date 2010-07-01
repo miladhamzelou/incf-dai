@@ -15,15 +15,15 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
 
  * Execute : TransformPOI
 
-    http://132.239.131.188:8080/atlas-aba?Request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_ABAVoxel_1.0;targetSrsName=Mouse_AGEA_1.0;x=280;y=112;z=162;filter=cerebellum
+    http://incf-dev-local.crbs.ucsd.edu/atlas-aba?Request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_ABAVoxel_1.0;targetSrsName=Mouse_AGEA_1.0;x=280;y=112;z=162;filter=cerebellum
 
  * Execute : !GetTransformationChain
 
-    http://132.239.131.188:8080/atlas-aba?Request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;targetSrsName=Mouse_ABAReference_1.0;filter=Cerebellum
+    http://incf-dev-local.crbs.ucsd.edu/atlas-aba?Request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;targetSrsName=Mouse_ABAReference_1.0;filter=Cerebellum
 
  * Execute : GetStructureNamesByPOI
 
-    http://132.239.131.188:8080/atlas-aba?Request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine
+    http://incf-dev-local.crbs.ucsd.edu/atlas-aba?Request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine
 
  * Execute : Get2DImagesByPOI
 
