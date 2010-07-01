@@ -6,26 +6,26 @@ xmlns:gml="http://www.opengis.net/gml/3.2"
 xmlns:wax="http://www.incf.org/waxML">
 
   <xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="gml.xsd"/>
-  <xs:element name="structureTermsResponse">
+  <xs:element name="StructureTermsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="wax:queryInfo"/>
-        <xs:element ref="wax:structureTerms"/>
+        <xs:element ref="wax:QueryInfo"/>
+        <xs:element ref="wax:StructureTerms"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="queryInfo">
+  <xs:element name="QueryInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="timeCreated" form="unqualified" type="xs:NMTOKEN"/>
-        <xs:element name="queryUrl" form="unqualified" type="xs:anyURI"/>
-        <xs:element name="criteria" form="unqualified">
+        <xs:element name="TimeCreated" form="unqualified" type="xs:NMTOKEN"/>
+        <xs:element name="QueryUrl" form="unqualified" type="xs:anyURI"/>
+        <xs:element name="Criteria" form="unqualified">
           <xs:complexType>
             <xs:sequence>
-              <xs:element maxOccurs="unbounded" name="input" form="unqualified">
+              <xs:element maxOccurs="unbounded" name="Input" form="unqualified">
                 <xs:complexType>
                   <xs:choice>
-                    <xs:element name="value" form="unqualified" type="xs:NMTOKEN"/>
+                    <xs:element name="Value" form="unqualified" type="xs:NMTOKEN"/>
                     <xs:element ref="gml:Point"/>
                   </xs:choice>
                   <xs:attribute name="name" use="required" type="xs:NCName"/>
@@ -37,7 +37,7 @@ xmlns:wax="http://www.incf.org/waxML">
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="structureTerms">
+  <xs:element name="StructureTerms">
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="wax:StructureTerm"/>
@@ -47,12 +47,12 @@ xmlns:wax="http://www.incf.org/waxML">
   <xs:element name="StructureTerm">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="wax:structureCode"/>
-        <xs:element ref="wax:description"/>
+        <xs:element ref="wax:StructureCode"/>
+        <xs:element ref="wax:Description"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="structureCode">
+  <xs:element name="StructureCode">
     <xs:complexType>
       <xs:simpleContent>
         <xs:extension base="xs:NCName">
@@ -62,5 +62,5 @@ xmlns:wax="http://www.incf.org/waxML">
       </xs:simpleContent>
     </xs:complexType>
   </xs:element>
-  <xs:element name="description" type="xs:string"/>
+  <xs:element name="Description" type="xs:string"/>
 </xs:schema>

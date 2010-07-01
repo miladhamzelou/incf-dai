@@ -12,13 +12,13 @@
   <xs:element name="QueryInfo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element ref="timeCreated"/>
+        <xs:element ref="TimeCreated"/>
         <xs:element ref="QueryURL"/>
         <xs:element ref="Criteria"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="timeCreated" type="xs:string"/>
+  <xs:element name="TimeCreated" type="xs:string"/>
   <xs:element name="QueryURL">
     <xs:complexType>
       <xs:simpleContent>
