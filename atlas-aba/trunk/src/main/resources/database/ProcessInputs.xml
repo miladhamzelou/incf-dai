@@ -101,4 +101,11 @@
         </LiteralData>
       </Input>
       
+      sourceType
+      sourceUrl
+      xmin
+      xmax
+      ymin
+      ymax
+      
 </ProcessInputs>

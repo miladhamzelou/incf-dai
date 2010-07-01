@@ -66,10 +66,16 @@ public class ServerApplication extends Application {
 		router.attach("?Request=Execute&Identifier=Get2DImagesByPOI"
 				+ "&DataInputs={dataInputs}",
 				Images2DByPOI.class);
-		router.attach("?request=Execute&identifier=Get2DImagesByPOI"
-				+ "&dataInputs={dataInputs}",
-				Images2DByPOI.class);
-		
+        router.attach("?request=Execute&identifier=Get2DImagesByPOI"
+                + "&dataInputs={dataInputs}",
+                Images2DByPOI.class);
+
+        
+        router.attach("?service={service}&version={version}&request=Execute&identifier=Get2DImagesByPOI"
+                + "&dataInputs={dataInputs}",
+                Images2DByPOI.class);
+
+        
 		return router;
 
 	}

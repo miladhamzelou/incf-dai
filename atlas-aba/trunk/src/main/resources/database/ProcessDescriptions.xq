@@ -361,4 +361,61 @@
     </ProcessOutputs>
   </ProcessDescription>
   
+  <ProcessDescription wps:processVersion="1.0.0">
+    <ows:Identifier>Get2DImage</ows:Identifier>
+    <ows:Title>........</ows:Title>
+    <ows:Abstract></ows:Abstract>
+    <DataInputs>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='srsName'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='x'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='y'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='z'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="0" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='vocabulary'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="0" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='filter'
+        return $x/*
+      }
+      </Input>
+    </DataInputs>
+    <ProcessOutputs>
+      <Output>
+        <ows:Identifier></ows:Identifier>
+        <ows:Title></ows:Title>
+        <ows:Abstract></ows:Abstract>
+      </Output>
+    </ProcessOutputs>
+  </ProcessDescription>
+  
 </wps:ProcessDescriptions>
