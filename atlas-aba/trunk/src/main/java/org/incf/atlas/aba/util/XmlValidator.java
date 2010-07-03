@@ -61,6 +61,7 @@ public class XmlValidator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println(validationErrors.toString());
 		return validationErrors.length() > 0 ? false : true;
 	}
 
@@ -125,11 +126,14 @@ public class XmlValidator {
 	
 	// dev testing only
 	public static void main(String[] a) {
-		final String SCHEMA = "src/main/resources/wpsSchema/wpsGetCapabilities_response.xsd";
-		final String XML = "/database/Capabilities.xml";
+//		final String SCHEMA = "src/main/resources/wpsSchema/wpsGetCapabilities_response.xsd";
+//		final String XML = "src/main/resources/database/Capabilities.xq";
 		
 //		final String SCHEMA = "src/main/resources/wpsSchema/wpsDescribeProcess_response.xsd";
 //		final String XML = "/database/ProcessDescriptions.xml";
+		
+		final String SCHEMA = "src/main/xsd/owsExceptionReport.xsd";
+		final String XML = "src/main/resources/exampleResponses/ExceptionReport.xml";
 		
 		XmlValidator validator = new XmlValidator();
 		if (validator.validate(new File(XML), new File(SCHEMA))) {

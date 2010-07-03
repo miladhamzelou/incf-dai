@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.opengis.net/gml/3.2" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/waxML">
+  <xs:import namespace="http://www.incf.org/waxML" schemaLocation="StructureNamesByPOI.xsd"/>
+  <xs:element name="Point">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="gml:pos"/>
+      </xs:sequence>
+      <xs:attribute name="srsName" use="required" type="xs:NMTOKEN"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pos" type="xs:string"/>
+  <xs:attribute name="id" type="xs:integer"/>
+</xs:schema>
+ 

@@ -363,8 +363,11 @@
   
   <ProcessDescription wps:processVersion="1.0.0">
     <ows:Identifier>Retrieve2DImage</ows:Identifier>
-    <ows:Title>........</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Title>Retrieve 2D Image</ows:Title>
+    <ows:Abstract>This function gets a URL reference to a 2D image based
+      on the source URL provided and "cropped" based on the specified lower
+      left (xmin, ymin) and upper right (xmax, ymax).
+    </ows:Abstract>
     <DataInputs>
       <Input minOccurs="1" maxOccurs="1">
       {

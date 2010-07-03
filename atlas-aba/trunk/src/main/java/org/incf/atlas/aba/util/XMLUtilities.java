@@ -71,6 +71,35 @@ public final class XMLUtilities {
         }
     }
     
+    public static void prettyPrintXml(Document doc, 
+    		OutputStream out, int indent) {
+    	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        TransformerFactory tfactory = TransformerFactory.newInstance();
+        
+        // set indent spaces on factory
+//        tfactory.setAttribute("indent-number", new Integer(indent));
+        
+        try {
+        	Transformer serializer = tfactory.newTransformer();
+            
+            // turn on indenting on transformer (serializer)
+            serializer.setOutputProperty(OutputKeys.INDENT, "yes");
+            serializer.setOutputProperty(
+            		"{http://xml.apache.org/xslt}indent-amount", 
+//            		String.valueOf(indent));
+            		"2");
+
+            serializer.transform(new DOMSource(doc),
+            		new StreamResult(new OutputStreamWriter(out, "utf-8")));
+        } catch (Exception e) {
+        	
+            // this is fatal, just dump stack and throw runtime exception
+            e.printStackTrace();
+            
+            throw new RuntimeException(e);
+        }
+    }
+    
     public static void main(String[] args) throws FileNotFoundException {
     	String inFile = "src/main/resources/exampleResponses/GetCapabilitiesResponse.xml";
     	String outFile = "src/main/resources/exampleResponses/GetCapabilitiesResponse1.xml";

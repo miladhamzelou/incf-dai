@@ -23,13 +23,16 @@
           </execution>
         </executions>
         <configuration>
-          <!-- default is ${basedir}/src/main/xsd -->
+          <!-- default is ${basedir}/src/main/xsd 
           <schemaDirectory>${basedir}/src/main/resources</schemaDirectory>
+          -->
           <!--
           <generatePackage>org.incf.atlas</generatePackage> 
           <schemaFiles>CoordinateTransformationChainResponse.xsd,StructureNamesByPOI.xsd,TransformPOI.xsd,wpsSchema/wpsGetCapabilities_response.xsd</schemaFiles>
           -->
-		  <schemaFiles>CoordinateTransformationChainResponse.xsd,StructureNamesByPOI.xsd,gml.xsd,TransformPOI.xsd,wpsSchema/wpsGetCapabilities_response.xsd</schemaFiles>
+          <!--
+		  <schemaFiles>CoordinateTransformationChainResponse.xsd,StructureNamesByPOI.xsd,gml.xsd,TransformPOI.xsd,wpsSchema/wpsGetCapabilities_response.xsd,wpsSchema/owsExceptionReport.xsd</schemaFiles>
+          -->
           <!--
           <schemaFiles>CoordinateTransformationChainResponse.xsd,wpsSchema/wpsGetCapabilities_response.xsd,WaxMlSchema/WaxML_Base.xsd</schemaFiles>
           -->
@@ -37,12 +40,14 @@
 		  <verbose>true</verbose>       
         </configuration>
       </plugin>
+      
+      <!-- This is needed otherwise maven seems to use Java v1.4 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.6</source>
+          <target>1.6</target>
         </configuration>
       </plugin>
     </plugins>

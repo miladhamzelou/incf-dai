@@ -1,4 +1,4 @@
-<wps:Capabilities service="WPS" version="0.0.0" xml:lang="en-US" 
+<wps:Capabilities service="WPS" version="1.0.0" xml:lang="en-US" 
     xmlns:xlink="http://www.w3.org/1999/xlink" 
     xmlns:wps="http://www.opengis.net/wps/1.0.0" 
     xmlns:ows="http://www.opengis.net/ows/1.1">
