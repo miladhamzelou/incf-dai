@@ -43,13 +43,15 @@ import org.w3c.dom.Element;
  */
 public class Images2DByPOI extends Resource {
 
-	private static final Logger logger = LoggerFactory.getLogger(
-			Images2DByPOI.class);
-	
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+		
 	private String dataInputsString;
 	
 	public Images2DByPOI(Context context, Request request, Response response) {
 		super(context, request, response);
+
+		logger.debug("Instantiated {}.", getClass());
+		
 		dataInputsString = (String) request.getAttributes().get("dataInputs");
 		getVariants().add(new Variant(MediaType.APPLICATION_XML));
 	}

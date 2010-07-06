@@ -8,9 +8,8 @@ import org.incf.atlas.aba.resource.NotYetImplemented;
 import org.incf.atlas.aba.resource.PingResource;
 import org.incf.atlas.aba.resource.ProcessDescriptions;
 import org.incf.atlas.aba.resource.StructureNamesByPOIResource;
-import org.incf.atlas.aba.resource.Test1Resource;
-import org.incf.atlas.aba.resource.TestResource;
 import org.incf.atlas.aba.resource.TransformPOIResource;
+import org.incf.atlas.aba.resource.UnrecognizedUri;
 import org.restlet.Application;
 import org.restlet.Component;
 import org.restlet.Restlet;
@@ -45,15 +44,19 @@ public class ServerApplication extends Application {
 		&request=Execute&Identifier=ListSRSs&ResponseForm={*responseForm}
 
 	 * ignore for now
-
+	
+	service = WPS
+	version = version
 	request = { GetCapabilities | DescribeProcess | Execute }
-
 	Identifier = { ..... | .....  our standard set }
-
 	DataInputs = { varies by identifier }
+	ResponseForm = [ response format }
 	 */
 
 	// elements of Atlas GET query string
+	// note query key case!
+	//	service, version, request -- leading lower
+	//  Identifier, DataInputs, ResponseForm -- leading upper
 	private static final String SERVICE = "?service={service}";
 	private static final String VERSION = "&version={version}";
 	private static final String SERV_VER = SERVICE + VERSION;
@@ -129,7 +132,23 @@ public class ServerApplication extends Application {
 	private static final String RETRIEVE_2D_IMAGE_R =
 		RETRIEVE_2D_IMAGE + RESPONSE_FORM;
 	
+	public ServerApplication() {
 
+		// redirect restlet logging to slf4j
+		// see http://wiki.restlet.org/docs_1.1/13-restlet/48-restlet/101-restlet.html
+		// "Replacing default JDK logging with log4j"
+		SLF4JBridgeHandler.install();
+
+		StringBuilder buf = new StringBuilder();
+		buf.append("\n");
+		buf.append("       *******************************************\n");
+		buf.append("       *          Starting INCF Server           *\n");
+		buf.append("       *******************************************\n");
+		buf.append("\n  Server version   : ");
+		buf.append("\nWaiting for connections ...");
+		logger.info(buf.toString());
+	}
+	
 	@Override
 	public Restlet createRoot() {
 		Router router = new Router(getContext());
@@ -143,14 +162,14 @@ public class ServerApplication extends Application {
 		router.attach(DESCRIBE_SRS, NotYetImplemented.class);
 		router.attach(DESCRIBE_SRS_R, NotYetImplemented.class);
 		
-//		router.attach(LIST_SRS_S, Xxx.class);
-//		router.attach(LIST_SRS_S_R, Xxx.class);
+		router.attach(LIST_SRS_S, NotYetImplemented.class);
+		router.attach(LIST_SRS_S_R, NotYetImplemented.class);
 		
-//		router.attach(DESCRIBE_TRANSFORMATION, Xxx.class);
-//		router.attach(DESCRIBE_TRANSFORMATION_R, Xxx.class);
+		router.attach(DESCRIBE_TRANSFORMATION, NotYetImplemented.class);
+		router.attach(DESCRIBE_TRANSFORMATION_R, NotYetImplemented.class);
 		
-//		router.attach(LIST_TRANSFORMATIONS, Xxx.class);
-//		router.attach(LIST_TRANSFORMATIONS_R, Xxx.class);
+		router.attach(LIST_TRANSFORMATIONS, NotYetImplemented.class);
+		router.attach(LIST_TRANSFORMATIONS_R, NotYetImplemented.class);
 		
 		router.attach(TRANSFORM_POI, TransformPOIResource.class);
 		router.attach(TRANSFORM_POI_R, TransformPOIResource.class);
@@ -161,61 +180,32 @@ public class ServerApplication extends Application {
 		router.attach(GET_2D_IMAGES_BY_POI, Images2DByPOI.class);
 		router.attach(GET_2D_IMAGES_BY_POI_R, Images2DByPOI.class);
 		
-//		router.attach(GET_CORRELATION_MAP_BY_POI, Xxx.class);
-//		router.attach(GET_CORRELATION_MAP_BY_POI_R, Xxx.class);
+		router.attach(GET_CORRELATION_MAP_BY_POI, NotYetImplemented.class);
+		router.attach(GET_CORRELATION_MAP_BY_POI_R, NotYetImplemented.class);
 		
-//		router.attach(GET_GENES_BY_POI, Xxx.class);
-//		router.attach(GET_GENES_BY_POI_R, Xxx.class);
+		router.attach(GET_GENES_BY_POI, NotYetImplemented.class);
+		router.attach(GET_GENES_BY_POI_R, NotYetImplemented.class);
 		
 		router.attach(GET_STRUCTURE_NAMES_BY_POI, StructureNamesByPOIResource.class);
 		router.attach(GET_STRUCTURE_NAMES_BY_POI_R, StructureNamesByPOIResource.class);
 		
-//		router.attach(RETRIEVE_2D_IMAGE, Xxx.class);
-//		router.attach(RETRIEVE_2D_IMAGE_R, Xxx.class);
+		router.attach(RETRIEVE_2D_IMAGE, NotYetImplemented.class);
+		router.attach(RETRIEVE_2D_IMAGE_R, NotYetImplemented.class);
 		
 		// attach resource handlers based on the URI
 		router.attach("/favicon.ico", FaviconResource.class);
 
 		router.attach("/ping/{pingType}", PingResource.class);
 		
-//		router.attach("?Request=GetCapabilities", Capabilities.class);
-//		router.attach("?request=GetCapabilities", Capabilities.class);
-//		
-//		router.attach("?Request=DescribeProcess", ProcessDescriptions.class);
-//		router.attach("?request=DescribeProcess", ProcessDescriptions.class);
+		router.attach("/{uriSuffix}", UnrecognizedUri.class);
+		router.attach("?{uriSuffix}", UnrecognizedUri.class);
 
-//		router.attach("?Request=Execute&Identifier=GetTransformationChain"
-//				+ "&DataInputs={dataInputs}",
-//				CoordinateTransformationChainResource.class);
-//		router.attach("?request=Execute&identifier=GetTransformationChain"
-//				+ "&dataInputs={dataInputs}",
-//				CoordinateTransformationChainResource.class);
-//
-//		router.attach("?Request=Execute&Identifier=TransformPOI"
-//				+ "&DataInputs={dataInputs}",
-//				TransformPOIResource.class);
-//		router.attach("?request=Execute&identifier=TransformPOI"
-//				+ "&dataInputs={dataInputs}",
-//				TransformPOIResource.class);
-//
-//		router.attach("?Request=Execute&Identifier=GetStructureNamesByPOI"
-//				+ "&DataInputs={dataInputs}",
-//				StructureNamesByPOIResource.class);
-//		router.attach("?request=Execute&identifier=GetStructureNamesByPOI"
-//				+ "&dataInputs={dataInputs}",
-//				StructureNamesByPOIResource.class);
-//
-//		router.attach("?Request=Execute&Identifier=Get2DImagesByPOI"
-//				+ "&DataInputs={dataInputs}",
-//				Images2DByPOI.class);
-//        router.attach("?request=Execute&identifier=Get2DImagesByPOI"
-//                + "&dataInputs={dataInputs}",
-//                Images2DByPOI.class);
+		logger.error("No router matched.");
 
 		return router;
-
 	}
 
+	// testing only
 	public static void main(String[] args) {
 
 		// redirect restlet logging to slf4j

@@ -17,15 +17,16 @@ import org.slf4j.LoggerFactory;
 
 public class FaviconResource extends Resource {
 	
-	private final Logger logger = LoggerFactory.getLogger(
-			FaviconResource.class);
-
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
 	// resource object
 	private File favicon;
 	
 	public FaviconResource(Context context, Request request, 
 			Response response) {
 		super(context, request, response);
+		
+		logger.debug("Instantiated {}.", getClass());
 		
 		// get resource
 //		try {

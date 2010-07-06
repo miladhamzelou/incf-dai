@@ -25,17 +25,12 @@ import org.slf4j.LoggerFactory;
 
 public class Capabilities extends Resource {
 
-	private static final Logger logger = LoggerFactory.getLogger(
-			Capabilities.class);
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	public Capabilities(Context context, Request request, Response response) {
 		super(context, request, response);
 		
-		
-		logger.info("* * * here");
-		logger.debug("* * * here");
-		System.out.println("* * * * * here");
-		
+		logger.debug("Instantiated {}.", getClass());
 		
 		getVariants().add(new Variant(MediaType.APPLICATION_XML));
 	}

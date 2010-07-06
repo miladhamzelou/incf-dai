@@ -14,13 +14,16 @@ import org.slf4j.LoggerFactory;
 
 public class PingResource extends Resource {
 
-	private final Logger logger = LoggerFactory.getLogger(PingResource.class);
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	// resource object
 	private String pingResponse;
 
 	public PingResource(Context context, Request request, Response response) {
 		super(context, request, response);
+		
+		logger.debug("Instantiated {}.", getClass());
+		
 		String pingType = (String) request.getAttributes().get("pingType"); 
 //		if (pingType.equals("server")) {
 			StringBuilder buf = new StringBuilder();

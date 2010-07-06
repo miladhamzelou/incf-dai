@@ -18,20 +18,20 @@ import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * This resource is used for functions planned but not yet implemented.
- * 
- * @author dave
- */
-public class NotYetImplemented extends Resource {
-	
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+public class UnrecognizedUri extends Resource {
 
-	public NotYetImplemented(Context context, Request request, 
-			Response response) {
+	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
+	String message;
+
+	public UnrecognizedUri(Context context, Request request, Response response) {
 		super(context, request, response);
 		
 		logger.debug("Instantiated {}.", getClass());
+		
+		String uriSuffix = (String) request.getAttributes().get("uriSuffix"); 
+		message = String.format("Unrecognized URI suffix: %s", uriSuffix);
+		logger.warn(message);
 		
 		getVariants().add(new Variant(MediaType.APPLICATION_XML));
 	}
@@ -39,11 +39,14 @@ public class NotYetImplemented extends Resource {
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
 		
+		logger.debug("Executing represent().");
+		logger.debug("Message: {}", message);
+		
 		// prepare an ExceptionReport
 		ExceptionHandler eh = new ExceptionHandler(
 				Constants.getInstance().getDefaultVersion());
 		eh.handleException(ExceptionCode.NOT_APPLICABLE_CODE, null, 
-				new String[] { "This function has not yet been implemented." });
+				new String[] { message });
 		
 		// generate xml
 		String exceptionReportXml = null;
@@ -53,6 +56,8 @@ public class NotYetImplemented extends Resource {
 			throw new ResourceException(e);
 		}
 		
+		logger.debug("exceptionReportXml: {}", exceptionReportXml);
+
 		// return it
 		getResponse().setStatus(Status.CLIENT_ERROR_FORBIDDEN);
 		return new StringRepresentation(exceptionReportXml);

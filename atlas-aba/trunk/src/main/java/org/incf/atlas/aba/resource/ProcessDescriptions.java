@@ -28,8 +28,7 @@ import org.slf4j.LoggerFactory;
 
 public class ProcessDescriptions extends Resource {
 
-	private static final Logger logger = LoggerFactory.getLogger(
-			ProcessDescriptions.class);
+	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	public ProcessDescriptions(Context context, Request request,
 			Response response) {

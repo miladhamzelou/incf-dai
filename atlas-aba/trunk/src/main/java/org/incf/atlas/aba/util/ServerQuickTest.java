@@ -10,13 +10,16 @@ import org.restlet.data.Status;
 public class ServerQuickTest {
 	
 	private static final String BASE_URL = 
-		"http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba-test";
+		"http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba";
 	
 	private static final String[] URIS = {
 		BASE_URL + "?service=WPS&request=GetCapabilities",
 		BASE_URL + "?service=WPS&request=GetCapabilities&ResponseForm=f",
 		BASE_URL + "?service=WPS&version=1.0.0&request=DescribeProcess",
 		BASE_URL + "?service=WPS&version=1.0.0&request=DescribeProcess&ResponseForm=f",
+		
+		BASE_URL + "?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=inputSrsName=Mouse_ABAVoxel_1.0;targetSrsName=Mouse_AGEA_1.0;x=280;y=112;z=162;filter=cerebellum",
+		BASE_URL + "?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=inputSrsName=Mouse_ABAVoxel_1.0;targetSrsName=Mouse_AGEA_1.0;x=280;y=112;z=162;filter=cerebellum&ResponseForm=f",
 		
 		BASE_URL + "?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_ABAVoxel_1.0;targetSrsName=Mouse_AGEA_1.0;x=280;y=112;z=162;filter=cerebellum",
 		BASE_URL + "?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_ABAVoxel_1.0;targetSrsName=Mouse_AGEA_1.0;x=280;y=112;z=162;filter=cerebellum&ResponseForm=f",
@@ -27,7 +30,7 @@ public class ServerQuickTest {
 		BASE_URL + "?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine",
 		BASE_URL + "?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine&ResponseForm=f",
 		
-		BASE_URL + "?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=ABAvoxel;x=6272;y=3678;z=4874;gene=C1ql2;zoom=25",
+//		BASE_URL + "?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=ABAvoxel;x=6272;y=3678;z=4874;gene=C1ql2;zoom=25",
 	};
 
 	
