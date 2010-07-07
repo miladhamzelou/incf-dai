@@ -11,7 +11,7 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
 
  * !DescribeProcess -- returns a validated WPS XML response
 
-    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?request=DescribeProcess
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=DescribeProcess
 
  * Execute : TransformPOI
 
