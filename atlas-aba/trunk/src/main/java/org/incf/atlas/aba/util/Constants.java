@@ -10,7 +10,8 @@ public class Constants {
 	// singleton pattern
 	private static Constants constants;
 	
-	private String defaultVersion;
+    private String defaultService;
+    private String defaultVersion;
 	
 	// singleton pattern
 	private Constants() {
@@ -23,7 +24,8 @@ public class Constants {
 					+ PROPS + "'.", e);
 		}
 		
-		defaultVersion = props.getProperty("defaultVersion");
+        defaultService = props.getProperty("defaultService");
+        defaultVersion = props.getProperty("defaultVersion");
 	}
 	
 	// singleton pattern
@@ -38,8 +40,12 @@ public class Constants {
 		return constants;
 	}
 	
-	public String getDefaultVersion() {
-		return defaultVersion;
-	}
-	
+    public String getDefaultService() {
+        return defaultService;
+    }
+    
+    public String getDefaultVersion() {
+        return defaultVersion;
+    }
+    
 }
