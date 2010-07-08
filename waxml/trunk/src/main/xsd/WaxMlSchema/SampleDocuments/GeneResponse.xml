@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio Developer Edition (Education) 8.1.2.2399 (http://www.liquid-technologies.com) -->
+<genesResponse xmlns="http://www.incf.org/waxML/" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:\dev_incf\WaxMlSchema\WaxML_Base.xsd">
+    <queryinfo>
+        <queryURL name="GetGenesByPOI">URL</queryURL>
+        <criteria>
+            <input name="POI">
+                <gml:Point srsName="INCF:WHS">
+                    <gml:pos>x,y,z</gml:pos>
+                </gml:Point>
+            </input>
+            <input name="srsCode">EMAP23</input>
+            <input name="filter"></input>
+        </criteria>
+    </queryinfo> 
+    <!-- Genes by POI, or just Genes? -->
+    <genesByPOI>
+        <gene>
+            <symbol gml:id="AAAAB" >Bmp4</symbol>
+            <gml:name>bone morphogenetic protein 4</gml:name>
+            <mgiMarkerAccesionId>string</mgiMarkerAccesionId>
+            <organism>mouse</organism>
+        </gene>
+        <gene>
+            <symbol gml:id="AAAAD" codeSpace="http://www.incf.org/HUBS/ABA">Sox1</symbol>
+            <gml:name>SRY-box containing gene 1</gml:name>
+            <mgiMarkerAccesionId>MGI:98357</mgiMarkerAccesionId>
+            <organism isDefault="1" codeSpace="http://www.incf.org/organisms">mouse</organism>
+        </gene>
+        <expressionLevel>
+            <geneSymbol xlink:href="#AAAAB" />
+            <level >strong</level>
+            <stage >TS11</stage>
+            <resourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:86</resourceUri>
+        </expressionLevel>
+        <expressionLevel>
+            <geneSymbol >Bmp4</geneSymbol>
+            <level>detected</level>
+            <stage>10.5dpc</stage>
+            <resourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:131</resourceUri>
+        </expressionLevel>
+        <expressionLevel>
+            <geneSymbol xlink:href="#AAAAD"/>
+            <level>not detected</level>
+            <stage>E10.5</stage>
+            <resourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:3066</resourceUri>
+        </expressionLevel>
+    </genesByPOI>
+</genesResponse>

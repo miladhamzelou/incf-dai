@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio Developer Edition (Education) 8.0.10.2115 (http://www.liquid-technologies.com) -->
+<transformationResponse xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="F:\WaxMlSchema\WaxML_Base.xsd">
+	<queryInfo>
+		<timeCreated>1976-07-28T16:12:51.38</timeCreated>
+		<criteria />
+	</queryInfo>
+	<POI>
+		<gml:Point uomLabels="string string string" gml:id="AAAAA">
+			<gml:coordinates ts=" ">string</gml:coordinates>
+		</gml:Point>
+	</POI>
+</transformationResponse>
