@@ -49,12 +49,12 @@
 				</executions>
 				<inherited>true</inherited>
 				<configuration>
-					<outputJar>XmlBeansABA.jar</outputJar>
+					<outputJar>XmlBeansAtlasWaxML.jar</outputJar>
 					<compiler>${JAVA_HOME}/bin/javac</compiler>
 					<verbose>true</verbose>
 					<quiet>false</quiet>
 					<noJavac>false</noJavac>
-					<catalogLocation>${basedir}/src/main/catalog/XmlCatalog2.xml</catalogLocation>
+					<catalogLocation>${basedir}/src/main/catalog/XmlCatalog.xml</catalogLocation>
 					<download>false</download>
 					<sourceSchemas>
 						<sourceSchema>WaxMlSchema/WaxML_Base.xsd</sourceSchema>
