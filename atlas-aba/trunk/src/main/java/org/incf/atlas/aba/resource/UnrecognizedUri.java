@@ -45,7 +45,7 @@ public class UnrecognizedUri extends Resource {
 		// prepare an ExceptionReport
 		ExceptionHandler eh = new ExceptionHandler(
 				Constants.getInstance().getDefaultVersion());
-		eh.handleException(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
 				new String[] { message });
 		
 		// generate xml

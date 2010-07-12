@@ -10,23 +10,50 @@ import net.opengis.ows._1.ExceptionReport;
 import net.opengis.ows._1.ExceptionType;
 import net.opengis.ows._1.ObjectFactory;
 
+/**
+ * The constructor creates a WPS ExceptionReport object. This object has a list
+ * of one or more ExceptionTypes. Exception cannot be used because it's a
+ * reserved word. Each ExceptionType has a list of one or more ExceptionText's.
+ * 
+ * @author davidlittle
+ */
 public class ExceptionHandler {
 	
 	private ObjectFactory of;
 	private ExceptionReport exceptionReport;
 	
-	public ExceptionHandler(String version) {
-		this(version, null);
-	}
-	
-	public ExceptionHandler(String version, String lang) {
+    public ExceptionHandler() {
+        this(Constants.getInstance().getDefaultVersion(), 
+                Constants.getInstance().getDefaultLanguage());
+    }
+    
+    public ExceptionHandler(String version) {
+        this(version, Constants.getInstance().getDefaultLanguage());
+    }
+    
+	/**
+	 * Creates a WPS ExceptionReport, specifying the version and the language.
+	 * 
+	 * @param version the ExceptionReport version
+	 * @param language the ExceptionReport language
+	 */
+	public ExceptionHandler(String version, String language) {
 		of = new ObjectFactory();
 		exceptionReport = of.createExceptionReport();
 		exceptionReport.setVersion(version);
-		exceptionReport.setLang(lang);
+		exceptionReport.setLang(language);
 	}
 	
-	public void handleException(ExceptionCode exceptionCode, 
+	/**
+	 * Creates an ExceptionType and adds it to the ExceptionReport.
+	 * 
+	 * @param exceptionCode the WPS exception code
+	 * @param locator an optional locator can be used to to state where the
+	 *     problem occurred
+	 * @param exceptionText an explanation of the exception expressed as an
+	 *     array of strings
+	 */
+	public void addExceptionToReport(ExceptionCode exceptionCode, 
 			String locator, String[] exceptionText) {
 				
 		// handle one new exception
@@ -45,6 +72,12 @@ public class ExceptionHandler {
 		return exceptionReport;
 	}
 	
+	/**
+	 * Marshal the ExceptionReport into an XML string.
+	 * 
+	 * @return the ExceptionReport as an XML string
+	 * @throws JAXBException if any marshalling problem
+	 */
 	public String getXMLExceptionReport() throws JAXBException {
 		JAXBContext jc = JAXBContext.newInstance("net.opengis.ows._1");
 		Marshaller marshaller = jc.createMarshaller();
@@ -56,9 +89,11 @@ public class ExceptionHandler {
 		return out.toString();
 	}
 	
+	
+	// testing only
 	public static void main(String[] args) throws JAXBException {
 		ExceptionHandler eh = new ExceptionHandler("1.0.0");
-		eh.handleException(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
 				new String[] { "Line 1.", "Line 2." });
 		System.out.println(eh.getXMLExceptionReport());
 	}

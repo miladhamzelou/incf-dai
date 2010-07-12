@@ -10,6 +10,7 @@ public class Constants {
 	// singleton pattern
 	private static Constants constants;
 	
+    private String defaultLanguage;
     private String defaultService;
     private String defaultVersion;
 	
@@ -24,6 +25,7 @@ public class Constants {
 					+ PROPS + "'.", e);
 		}
 		
+        defaultLanguage = props.getProperty("defaultLanguage");
         defaultService = props.getProperty("defaultService");
         defaultVersion = props.getProperty("defaultVersion");
 	}
@@ -40,6 +42,10 @@ public class Constants {
 		return constants;
 	}
 	
+    public String getDefaultLanguage() {
+        return defaultLanguage;
+    }
+    
     public String getDefaultService() {
         return defaultService;
     }

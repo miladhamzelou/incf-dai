@@ -17,39 +17,62 @@ public class BaseResouce extends Resource {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     
+    private Constants constants;
     private String service;
     private String version;
+    private ExceptionHandler exceptionHandler;
 
     public BaseResouce(Context context, Request request, Response response) {
         super(context, request, response);
-        
-        logger.debug("Instantiated {}.", getClass());
+        constants = Constants.getInstance();
         
         service = (String) request.getAttributes().get("service");
         version = (String) request.getAttributes().get("version");
         
-        Constants constants = Constants.getInstance();
-        if (!service.equals(constants.getDefaultService())) {
-            
-            // prepare an ExceptionReport
-            ExceptionHandler eh = new ExceptionHandler(
-                    Constants.getInstance().getDefaultVersion());
-            eh.handleException(ExceptionCode.NOT_APPLICABLE_CODE, null, 
-                    new String[] { "This function has not yet been implemented." });
-            
-        }
-        
-        // TODO but not for GetCapabilities
-        if (!version.equals(constants.getDefaultVersion())) {
-            
+        checkService();
+        if (this instanceOf Capabilities) {
+            checkVersion();
         }
         
         getVariants().add(new Variant(MediaType.APPLICATION_XML));
     }
     
+    protected ExceptionHandler getExceptionHandler() {
+        if (exceptionHandler == null) {
+            exceptionHandler = new ExceptionHandler();
+        }
+        return exceptionHandler;
+    }
+    
+    private void checkService() {
+        if (!service.equals(constants.getDefaultService())) {
+            
+            // prepare an ExceptionReport
+            ExceptionHandler eh = getExceptionHandler();
+            eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
+                    new String[] { 
+                    String.format("Service %s is not supported.", service),
+                    String.format("The supported service is %s.", 
+                                    constants.getDefaultService()),
+                    });
+            
+        }
+    }
+
     // TODO all except GetCapabilities
-    public void checkVersion() {
-        
+    private void checkVersion() {
+        if (!version.equals(constants.getDefaultVersion())) {
+            
+            // prepare an ExceptionReport
+            ExceptionHandler eh = getExceptionHandler();
+            eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
+                    new String[] { 
+                    String.format("Version %s is not supported.", version),
+                    String.format("The supported version is %s.", 
+                                    constants.getDefaultVersion()),
+                    });
+            
+        }
     }
 
 }
