@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
-<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" version="0.8" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/waxML" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/waxML" version="0.8" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
     <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
     <xs:complexType name="BaseResponseType">
@@ -37,9 +37,7 @@ Optional</xs:documentation>
                             </xs:annotation>
                             <xs:complexType>
                                 <xs:complexContent>
-                                    <xs:extension base="xs:anyType">
-                                        <xs:attribute name="name" type="xs:Name" />
-                                    </xs:extension>
+                                    <xs:extension base="wax:InputType" />
                                 </xs:complexContent>
                             </xs:complexType>
                         </xs:element>
@@ -47,6 +45,36 @@ Optional</xs:documentation>
                 </xs:complexType>
             </xs:element>
         </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="InputType" abstract="true">
+        <xs:attribute name="name" type="xs:Name" />
+    </xs:complexType>
+    <xs:complexType name="InputStringType">
+        <xs:complexContent>
+            <xs:extension base="wax:InputType">
+                <xs:sequence>
+                    <xs:element name="value" type="xs:string" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="InputPOIType">
+        <xs:complexContent>
+            <xs:extension base="wax:InputType">
+                <xs:choice>
+                    <xs:element name="POI" type="wax:POIType" />
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="InputAnyType">
+        <xs:complexContent>
+            <xs:extension base="wax:InputType">
+                <xs:sequence>
+                    <xs:any />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
     </xs:complexType>
     <xs:element name="POI" type="wax:POIType" />
     <xs:complexType name="POIType">
@@ -62,8 +90,8 @@ Optional</xs:documentation>
                     <xs:attribute name="order" type="xs:int" use="required" />
                     <xs:attribute name="code" type="xs:string" use="required" />
                     <xs:attribute name="hub" type="xs:Name" use="required" />
-                    <xs:attribute name="inputSrsCode" type="xs:QName" use="required" />
-                    <xs:attribute name="targetSrsCode" type="xs:QName" use="required" />
+                    <xs:attribute name="inputSrsName" type="xs:QName" use="required" />
+                    <xs:attribute name="targetSrsName" type="xs:QName" use="required" />
                     <xs:attribute name="accuracy" type="xs:float" />
                 </xs:complexType>
             </xs:element>
@@ -87,7 +115,7 @@ Optional</xs:documentation>
                     <xs:element name="structureTerms" minOccurs="1" maxOccurs="1">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element name="StructureTerm" type="wax:StructureTermType" minOccurs="0" maxOccurs="unbounded" />
+                                <xs:element name="structureTerm" type="wax:StructureTermType" minOccurs="0" maxOccurs="unbounded" />
                             </xs:sequence>
                         </xs:complexType>
                     </xs:element>
@@ -105,7 +133,13 @@ Optional</xs:documentation>
     </xs:complexType>
     <xs:complexType name="FeatureReferenceType">
         <xs:sequence>
-            <xs:element name="centroid" type="gml:PointType" />
+            <xs:element name="centroid">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element ref="gml:Point" />
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
             <xs:element ref="wax:boundedBy" />
             <xs:element xmlns:q1="http://www.isotc211.org/2005/gmd" name="Url">
                 <xs:complexType>
@@ -173,7 +207,7 @@ Optional</xs:documentation>
                             <xs:attribute name="metadata" type="xs:anyURI" />
                             <xs:attribute name="name" type="xs:normalizedString" />
                             <xs:attribute name="srsName" type="xs:token" />
-                            <xs:attribute name="format" type="wax:IncfRemoteFormats" use="required" />
+                            <xs:attribute name="format" type="wax:IncfRemoteFormats" />
                             <xs:attribute name="relavance" type="xs:float" />
                         </xs:extension>
                     </xs:simpleContent>
@@ -232,13 +266,34 @@ Optional</xs:documentation>
         <xs:sequence>
             <xs:element name="symbol" type="wax:GeneSymbolType" />
             <xs:element ref="wax:name" minOccurs="1" maxOccurs="unbounded" />
-            <xs:element name="mgiMarkerAccesionId" type="xs:QName" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="markerAccesionId" type="wax:AssessionIdType" minOccurs="1" maxOccurs="unbounded" />
             <xs:element name="organism" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>The name of the organism. Use the codespace attribute for any external reference.</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AssessionIdType">
+        <xs:sequence>
+            <xs:element name="prefix" type="wax:IncfNameType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The pefix, eg MGI for MGI:12345</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="identifier" type="wax:incfCodeType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The identifier, eg 12345 for MGI:2345
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="fullIdentifier" type="xs:anyURI" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>MGI:12345</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="spearator" />
     </xs:complexType>
     <xs:complexType name="GeneExpressionLevelType">
         <xs:annotation>
@@ -298,8 +353,16 @@ The codeSpace attribute can optionally be used to add information to indentify t
             <xs:extension base="xs:Name" />
         </xs:simpleContent>
     </xs:complexType>
-    <xs:element name="name" type="xs:Name" />
+    <xs:element name="name" type="wax:IncfNameType" />
     <xs:element name="description" type="gml:StringOrRefType" />
+    <xs:complexType name="Incfdescription">
+        <xs:simpleContent>
+            <xs:restriction base="gml:stringOrNilReason">
+                <xs:attribute ref="xlink:href" />
+                <xs:attribute ref="gml:id" />
+            </xs:restriction>
+        </xs:simpleContent>
+    </xs:complexType>
     <xs:simpleType name="IncfRemoteFormatEnum">
         <xs:restriction base="xs:string">
             <xs:enumeration value="WMS/jpg" />

@@ -9,6 +9,7 @@
 			<File Uri=".\SampleDocuments\StructureTermsResponse.xml"/>
 			<File Uri=".\SampleDocuments\GeneResponse.xml"/>
 			<File Uri=".\SampleDocuments\StructureTermsResponse_v2.xml"/>
+			<File Uri=".\SampleDocuments\StructureTermsResponse_min.xml"/>
 		</SubGroup>
 		<SubGroup Name="Schemas">
 			<File Uri="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
