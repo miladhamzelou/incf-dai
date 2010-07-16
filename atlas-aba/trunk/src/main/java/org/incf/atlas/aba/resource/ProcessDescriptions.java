@@ -26,14 +26,15 @@ import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ProcessDescriptions extends Resource {
+public class ProcessDescriptions extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	public ProcessDescriptions(Context context, Request request,
 			Response response) {
 		super(context, request, response);
-		getVariants().add(new Variant(MediaType.APPLICATION_XML));
+
+        logger.debug("Instantiated {}.", getClass());
 	}
 
 	/* 
@@ -45,6 +46,11 @@ public class ProcessDescriptions extends Resource {
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
 		
+        // if there are exceptions, send an excepton report
+        if (exceptionHandler != null) {
+            return getExceptionReport();
+        }
+        
         // set serialization properties
         Properties props = new Properties();
         props.setProperty("method", "xml");

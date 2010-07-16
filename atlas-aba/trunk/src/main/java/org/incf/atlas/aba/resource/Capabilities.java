@@ -17,13 +17,12 @@ import org.restlet.data.Request;
 import org.restlet.data.Response;
 import org.restlet.resource.FileRepresentation;
 import org.restlet.resource.Representation;
-import org.restlet.resource.Resource;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Capabilities extends Resource {
+public class Capabilities extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
@@ -31,8 +30,6 @@ public class Capabilities extends Resource {
 		super(context, request, response);
 		
 		logger.debug("Instantiated {}.", getClass());
-		
-		getVariants().add(new Variant(MediaType.APPLICATION_XML));
 	}
 
 	/* 
@@ -43,6 +40,11 @@ public class Capabilities extends Resource {
 	 */
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
+	    
+	    // if there are exceptions, send an excepton report
+	    if (exceptionHandler != null) {
+	        return getExceptionReport();
+	    }
 		
         // set serialization properties
         Properties props = new Properties();

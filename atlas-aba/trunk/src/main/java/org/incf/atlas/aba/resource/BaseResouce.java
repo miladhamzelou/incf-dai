@@ -1,5 +1,7 @@
 package org.incf.atlas.aba.resource;
 
+import javax.xml.bind.JAXBException;
+
 import org.incf.atlas.aba.util.Constants;
 import org.incf.atlas.aba.util.ExceptionCode;
 import org.incf.atlas.aba.util.ExceptionHandler;
@@ -7,7 +9,11 @@ import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
+import org.restlet.data.Status;
+import org.restlet.resource.Representation;
 import org.restlet.resource.Resource;
+import org.restlet.resource.ResourceException;
+import org.restlet.resource.StringRepresentation;
 import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,20 +26,25 @@ public class BaseResouce extends Resource {
     private Constants constants;
     private String service;
     private String version;
-    private ExceptionHandler exceptionHandler;
-
+    private String responseForm;
+    
+    protected ExceptionHandler exceptionHandler;
+    
     public BaseResouce(Context context, Request request, Response response) {
         super(context, request, response);
         constants = Constants.getInstance();
         
         service = (String) request.getAttributes().get("service");
         version = (String) request.getAttributes().get("version");
+        responseForm = (String) request.getAttributes().get("responseForm");
         
+        // every request must include service key/value
         checkService();
-        if (this instanceOf Capabilities) {
-            checkVersion();
-        }
         
+        // every request may include responseForm key/value
+        checkResponseForm();
+        
+        // every request's response will be xml
         getVariants().add(new Variant(MediaType.APPLICATION_XML));
     }
     
@@ -44,7 +55,28 @@ public class BaseResouce extends Resource {
         return exceptionHandler;
     }
     
-    private void checkService() {
+    protected Representation getExceptionReport() 
+            throws ResourceException {
+        
+        // generate xml
+        String exceptionReportXml = null;
+        try {
+            exceptionReportXml = exceptionHandler.getXMLExceptionReport();
+        } catch (JAXBException e) {
+            throw new ResourceException(e);
+        }
+        
+        // return it
+        getResponse().setStatus(Status.CLIENT_ERROR_FORBIDDEN);
+        return new StringRepresentation(exceptionReportXml);
+    }
+    
+    
+    /**
+     * Check the value of the service value. This is applicable to all
+     * requests.
+     */
+    protected void checkService() {
         if (!service.equals(constants.getDefaultService())) {
             
             // prepare an ExceptionReport
@@ -59,8 +91,11 @@ public class BaseResouce extends Resource {
         }
     }
 
-    // TODO all except GetCapabilities
-    private void checkVersion() {
+    /**
+     * Check the value of the version value. This is applicable to all
+     * requests except GetCapabilities.
+     */
+    protected void checkVersion() {
         if (!version.equals(constants.getDefaultVersion())) {
             
             // prepare an ExceptionReport
@@ -70,6 +105,33 @@ public class BaseResouce extends Resource {
                     String.format("Version %s is not supported.", version),
                     String.format("The supported version is %s.", 
                                     constants.getDefaultVersion()),
+                    });
+            
+        }
+    }
+
+    /**
+     * Check the value of the ResponseForm value. This is an optional parameter.
+     */
+    protected void checkResponseForm() {
+        
+        // responseForm is optional
+        if (responseForm == null) {
+            responseForm = constants.getDefaultResponseForm();
+            return;
+        }
+        
+        // if responseForm is there, check it
+        if (!responseForm.equals(constants.getDefaultResponseForm())) {
+            
+            // prepare an ExceptionReport
+            ExceptionHandler eh = getExceptionHandler();
+            eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
+                    new String[] { 
+                    String.format("Response Form %s is not supported.", 
+                            responseForm),
+                    String.format("The only supported Response Form is %s.", 
+                            constants.getDefaultResponseForm()),
                     });
             
         }

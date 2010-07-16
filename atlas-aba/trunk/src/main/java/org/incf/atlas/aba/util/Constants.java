@@ -11,6 +11,7 @@ public class Constants {
 	private static Constants constants;
 	
     private String defaultLanguage;
+    private String defaultResponseForm;
     private String defaultService;
     private String defaultVersion;
 	
@@ -26,6 +27,7 @@ public class Constants {
 		}
 		
         defaultLanguage = props.getProperty("defaultLanguage");
+        defaultResponseForm = props.getProperty("defaultResponseForm");
         defaultService = props.getProperty("defaultService");
         defaultVersion = props.getProperty("defaultVersion");
 	}
@@ -44,6 +46,10 @@ public class Constants {
 	
     public String getDefaultLanguage() {
         return defaultLanguage;
+    }
+    
+    public String getDefaultResponseForm() {
+        return defaultResponseForm;
     }
     
     public String getDefaultService() {
