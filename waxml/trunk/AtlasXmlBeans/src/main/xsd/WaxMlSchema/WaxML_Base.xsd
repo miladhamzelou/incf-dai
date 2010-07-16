@@ -357,10 +357,10 @@ The codeSpace attribute can optionally be used to add information to indentify t
     <xs:element name="description" type="gml:StringOrRefType" />
     <xs:complexType name="Incfdescription">
         <xs:simpleContent>
-            <xs:restriction base="gml:stringOrNilReason">
+            <xs:extension base="xs:string">
                 <xs:attribute ref="xlink:href" />
                 <xs:attribute ref="gml:id" />
-            </xs:restriction>
+            </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
     <xs:simpleType name="IncfRemoteFormatEnum">
