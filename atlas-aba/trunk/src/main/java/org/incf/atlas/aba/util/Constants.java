@@ -1,7 +1,9 @@
 package org.incf.atlas.aba.util;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Properties;
+import java.util.Set;
 
 public class Constants {
 
@@ -14,6 +16,7 @@ public class Constants {
     private String defaultResponseForm;
     private String defaultService;
     private String defaultVersion;
+    private Set<String> srsNames;
 	
 	// singleton pattern
 	private Constants() {
@@ -30,6 +33,15 @@ public class Constants {
         defaultResponseForm = props.getProperty("defaultResponseForm");
         defaultService = props.getProperty("defaultService");
         defaultVersion = props.getProperty("defaultVersion");
+        
+        String[] sNames = props.getProperty("srsNames").split(",");
+        srsNames = new HashSet<String>();
+        for (int i = 0; i < sNames.length; i++) {
+            String srsName = sNames[i].trim();
+            if (srsName != null && srsName.length() != 0) {
+                srsNames.add(srsName);
+            }
+        }
 	}
 	
 	// singleton pattern
@@ -58,6 +70,10 @@ public class Constants {
     
     public String getDefaultVersion() {
         return defaultVersion;
+    }
+    
+    public Set<String> getSrsNames() {
+        return srsNames;
     }
     
 }

@@ -43,7 +43,7 @@ public class Capabilities extends BaseResouce {
 	    
 	    // if there are exceptions, send an excepton report
 	    if (exceptionHandler != null) {
-	        return getExceptionReport();
+	        return getExceptionRepresentation();
 	    }
 		
         // set serialization properties

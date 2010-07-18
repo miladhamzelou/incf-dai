@@ -26,6 +26,7 @@ public class BaseResouce extends Resource {
     private Constants constants;
     private String service;
     private String version;
+    protected String dataInputsString;
     private String responseForm;
     
     protected ExceptionHandler exceptionHandler;
@@ -36,6 +37,7 @@ public class BaseResouce extends Resource {
         
         service = (String) request.getAttributes().get("service");
         version = (String) request.getAttributes().get("version");
+        dataInputsString = (String) request.getAttributes().get("dataInputs");
         responseForm = (String) request.getAttributes().get("responseForm");
         
         // every request must include service key/value
@@ -55,7 +57,7 @@ public class BaseResouce extends Resource {
         return exceptionHandler;
     }
     
-    protected Representation getExceptionReport() 
+    protected Representation getExceptionRepresentation() 
             throws ResourceException {
         
         // generate xml
@@ -136,5 +138,60 @@ public class BaseResouce extends Resource {
             
         }
     }
+    
+    protected void validateSrsName(String srsName) {
+        if (!constants.getSrsNames().contains(srsName)) {
+            
+            // prepare an ExceptionReport
+            ExceptionHandler eh = getExceptionHandler();
+            StringBuilder validSrsNames = new StringBuilder();
+            int i = 0;
+            for (String sName : constants.getSrsNames()) {
+                if (i > 0) {
+                    validSrsNames.append(", ");
+                }
+                validSrsNames.append(sName);
+                i++;
+            }
+            eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
+                    new String[] { 
+                    String.format("SRS name '%s' is not recognized.", 
+                            responseForm),
+                    String.format("The supported SRS names are '%s'.", 
+                            validSrsNames.toString()),
+                    });
+        }
+    }
+
+    protected Double validateCoordinate(String name, String value)  {
+        if (value == null || value.length() == 0) {
+            
+            // prepare an ExceptionReport
+            ExceptionHandler eh = getExceptionHandler();
+            eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
+                    new String[] { 
+                    String.format("Value of %s coordinate is missing.", name) 
+                    });
+            
+            // no reason to continue validation
+            return null;
+        }
+        
+        Double d = null;
+        try {
+            d = new Double(value);
+        } catch (NumberFormatException e) {
+            
+            // prepare an ExceptionReport
+            ExceptionHandler eh = getExceptionHandler();
+            eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
+                    new String[] { 
+                    String.format("Value '%s' of %s coordinate is non-numeric.", 
+                            value, name) 
+                    });
+        }
+        return d;
+    }
 
 }
+

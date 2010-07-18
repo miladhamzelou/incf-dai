@@ -41,7 +41,7 @@ public class NotYetImplemented extends BaseResouce {
 		eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
 				new String[] { "This function has not yet been implemented." });
 		
-		return getExceptionReport();
+		return getExceptionRepresentation();
 	}
 
 }

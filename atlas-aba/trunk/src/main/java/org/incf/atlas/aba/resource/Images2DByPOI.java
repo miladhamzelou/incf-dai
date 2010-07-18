@@ -19,13 +19,14 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 import org.incf.atlas.aba.util.DataInputs;
+import org.incf.atlas.aba.util.ExceptionCode;
+import org.incf.atlas.aba.util.ExceptionHandler;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
 import org.restlet.resource.DomRepresentation;
 import org.restlet.resource.Representation;
-import org.restlet.resource.Resource;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.Variant;
 import org.slf4j.Logger;
@@ -34,26 +35,26 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /**
- * Expected GET statement: http://<host:port>/atlas-aba$request=Execute
- * 	&identifier=Get2DImagesByPOI&dataInputs=srsName=<srs name>;x=<x-coord>
- * 	;y=<y-coord>;z=<z-coord>;gene=<gene-symbol>;zoom=<zoom-level>
+ * Expected GET statement: http://<host:port>/atlas-aba
+ *  ?service={service}
+ *  &version={version}
+ *  &request=Execute
+ * 	&Identifier=Get2DImagesByPOI
+ *  &DataInputs=srsName={srsName};x={x};y={y};z={z};gene={geneSymbol};zoom={zoomLevel}
+ *  &ResponseForm={responseForm}
  * 
  * @author dave
  *
  */
-public class Images2DByPOI extends Resource {
+public class Images2DByPOI extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 		
-	private String dataInputsString;
-	
 	public Images2DByPOI(Context context, Request request, Response response) {
 		super(context, request, response);
 
 		logger.debug("Instantiated {}.", getClass());
 		
-		dataInputsString = (String) request.getAttributes().get("dataInputs");
-		getVariants().add(new Variant(MediaType.APPLICATION_XML));
 	}
 
 	/* 
@@ -64,7 +65,38 @@ public class Images2DByPOI extends Resource {
 	 */
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
+	    
+	    if (dataInputsString == null || dataInputsString.length() == 0) {
+	        ExceptionHandler eh = getExceptionHandler();
+	        eh.addExceptionToReport(ExceptionCode.MISSING_PARAMETER_VALUE, null, 
+	                new String[] { "All DataInputs were missing." });
+	        
+	        // there is no point in going further, so return
+	        return getExceptionRepresentation();
+	    }
 		
+	    // parse dataInputs string
+        DataInputs dataInputs = new DataInputs(dataInputsString);
+
+        String srsName = dataInputs.getValue("srsName");
+        
+        // validate data inputs
+        validateSrsName(srsName);
+        double[] poiCoords = {
+                validateCoordinate("x", dataInputs.getValue("x")),
+                validateCoordinate("y", dataInputs.getValue("y")),
+                validateCoordinate("z", dataInputs.getValue("z")) };
+        
+        // if any validation exceptions, no reason to continue
+        if (exceptionHandler != null) {
+            return getExceptionRepresentation();
+        }
+        
+        // ok, now we have valid data input values
+        Point3d poi = new Point3d(poiCoords);
+        String geneSymbol = dataInputs.getValue("gene");
+        int zoomLevel = Integer.parseInt(dataInputs.getValue("zoom"));
+        
         // set serialization properties
         Properties props = new Properties();
         props.setProperty("method", "xml");
@@ -72,24 +104,6 @@ public class Images2DByPOI extends Resource {
         props.setProperty("omit-xml-declaration", "no");
         props.setProperty("{http://saxon.sf.net/}indent-spaces", "2");
         
-		if (dataInputsString == null) {
-			// TODO error
-		}
-		
-		DataInputs dataInputs = new DataInputs(dataInputsString);
-
-        // validate data inputs 
-        //	srsName, x, y, z, gene, zoom
-        
-		String srsName = dataInputs.getValue("srsName");
-		double[] poiCoords = { 
-				Double.parseDouble(dataInputs.getValue("x")),
-				Double.parseDouble(dataInputs.getValue("y")),
-				Double.parseDouble(dataInputs.getValue("z")) };
-		Point3d poi = new Point3d(poiCoords);
-		String geneSymbol = dataInputs.getValue("gene");
-		int zoomLevel = Integer.parseInt(dataInputs.getValue("zoom"));
-		
         // get aba coronal and sagittal image series ids based on gene
 		//  /gene/image-series/image-series/plane { coronal | sagittal }
 		//  /gene/image-series/image-series/imageseriesid
