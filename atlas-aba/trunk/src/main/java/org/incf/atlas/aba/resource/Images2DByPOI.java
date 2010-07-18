@@ -66,6 +66,7 @@ public class Images2DByPOI extends BaseResouce {
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
 	    
+	    // make sure we have something in dataInputs
 	    if (dataInputsString == null || dataInputsString.length() == 0) {
 	        ExceptionHandler eh = getExceptionHandler();
 	        eh.addExceptionToReport(ExceptionCode.MISSING_PARAMETER_VALUE, null, 
