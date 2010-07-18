@@ -3,6 +3,7 @@ package org.incf.atlas.aba.resource;
 import javax.xml.bind.JAXBException;
 
 import org.incf.atlas.aba.util.Constants;
+import org.incf.atlas.aba.util.DataInputs;
 import org.incf.atlas.aba.util.ExceptionCode;
 import org.incf.atlas.aba.util.ExceptionHandler;
 import org.restlet.Context;
@@ -163,7 +164,7 @@ public class BaseResouce extends Resource {
         }
     }
 
-    protected Double validateCoordinate(String name, String value)  {
+    private Double validateCoordinate(String name, String value)  {
         if (value == null || value.length() == 0) {
             
             // prepare an ExceptionReport
@@ -191,6 +192,13 @@ public class BaseResouce extends Resource {
                     });
         }
         return d;
+    }
+
+    protected Double[] validateCoordinate(DataInputs dataInputs)  {
+        return new Double[] {
+            validateCoordinate("x", dataInputs.getValue("x")),
+            validateCoordinate("y", dataInputs.getValue("y")),
+            validateCoordinate("z", dataInputs.getValue("z")) };
     }
 
 }

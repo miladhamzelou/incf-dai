@@ -82,10 +82,7 @@ public class Images2DByPOI extends BaseResouce {
         
         // validate data inputs
         validateSrsName(srsName);
-        double[] poiCoords = {
-                validateCoordinate("x", dataInputs.getValue("x")),
-                validateCoordinate("y", dataInputs.getValue("y")),
-                validateCoordinate("z", dataInputs.getValue("z")) };
+        Double[] poiCoords = validateCoordinate(dataInputs);
         
         // if any validation exceptions, no reason to continue
         if (exceptionHandler != null) {
@@ -93,7 +90,8 @@ public class Images2DByPOI extends BaseResouce {
         }
         
         // ok, now we have valid data input values
-        Point3d poi = new Point3d(poiCoords);
+        Point3d poi = new Point3d(
+                new double[] { poiCoords[0], poiCoords[1], poiCoords[2] });
         String geneSymbol = dataInputs.getValue("gene");
         int zoomLevel = Integer.parseInt(dataInputs.getValue("zoom"));
         
