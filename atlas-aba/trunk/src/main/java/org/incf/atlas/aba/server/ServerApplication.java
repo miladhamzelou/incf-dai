@@ -1,14 +1,14 @@
 package org.incf.atlas.aba.server;
 
 import org.incf.atlas.aba.resource.Capabilities;
-import org.incf.atlas.aba.resource.CoordinateTransformationChainResource;
+import org.incf.atlas.aba.resource.CoordinateTransformationChain;
 import org.incf.atlas.aba.resource.FaviconResource;
 import org.incf.atlas.aba.resource.Images2DByPOI;
 import org.incf.atlas.aba.resource.NotYetImplemented;
 import org.incf.atlas.aba.resource.PingResource;
 import org.incf.atlas.aba.resource.ProcessDescriptions;
-import org.incf.atlas.aba.resource.StructureNamesByPOIResource;
-import org.incf.atlas.aba.resource.TransformPOIResource;
+import org.incf.atlas.aba.resource.StructureNamesByPOI;
+import org.incf.atlas.aba.resource.TransformPOI;
 import org.incf.atlas.aba.resource.UnrecognizedUri;
 import org.restlet.Application;
 import org.restlet.Component;
@@ -171,11 +171,11 @@ public class ServerApplication extends Application {
 		router.attach(LIST_TRANSFORMATIONS, NotYetImplemented.class);
 		router.attach(LIST_TRANSFORMATIONS_R, NotYetImplemented.class);
 		
-		router.attach(TRANSFORM_POI, TransformPOIResource.class);
-		router.attach(TRANSFORM_POI_R, TransformPOIResource.class);
+		router.attach(TRANSFORM_POI, TransformPOI.class);
+		router.attach(TRANSFORM_POI_R, TransformPOI.class);
 		
-		router.attach(GET_TRANSFORMATION_CHAIN, CoordinateTransformationChainResource.class);
-		router.attach(GET_TRANSFORMATION_CHAIN_R, CoordinateTransformationChainResource.class);
+		router.attach(GET_TRANSFORMATION_CHAIN, CoordinateTransformationChain.class);
+		router.attach(GET_TRANSFORMATION_CHAIN_R, CoordinateTransformationChain.class);
 		
 		router.attach(GET_2D_IMAGES_BY_POI, Images2DByPOI.class);
 		router.attach(GET_2D_IMAGES_BY_POI_R, Images2DByPOI.class);
@@ -186,8 +186,8 @@ public class ServerApplication extends Application {
 		router.attach(GET_GENES_BY_POI, NotYetImplemented.class);
 		router.attach(GET_GENES_BY_POI_R, NotYetImplemented.class);
 		
-		router.attach(GET_STRUCTURE_NAMES_BY_POI, StructureNamesByPOIResource.class);
-		router.attach(GET_STRUCTURE_NAMES_BY_POI_R, StructureNamesByPOIResource.class);
+		router.attach(GET_STRUCTURE_NAMES_BY_POI, StructureNamesByPOI.class);
+		router.attach(GET_STRUCTURE_NAMES_BY_POI_R, StructureNamesByPOI.class);
 		
 		router.attach(RETRIEVE_2D_IMAGE, NotYetImplemented.class);
 		router.attach(RETRIEVE_2D_IMAGE_R, NotYetImplemented.class);
