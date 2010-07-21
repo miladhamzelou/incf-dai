@@ -22,43 +22,50 @@ import net.opengis.gml._3.Point;
 import org.incf.atlas.aba.util.ABAConfigurator;
 import org.incf.atlas.aba.util.ABAUtil;
 import org.incf.atlas.aba.util.AtlasNamespacePrefixMapper;
+import org.incf.atlas.aba.util.Constants;
 import org.incf.atlas.aba.util.DataInputs;
+import org.incf.atlas.aba.util.ExceptionCode;
+import org.incf.atlas.aba.util.ExceptionHandler;
 
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
+import org.restlet.data.Status;
 import org.restlet.ext.jaxb.JaxbRepresentation;
 import org.restlet.resource.DomRepresentation;
 import org.restlet.resource.Representation;
 import org.restlet.resource.Resource;
 import org.restlet.resource.ResourceException;
+import org.restlet.resource.StringRepresentation;
 import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
-public class TransformPOIResource extends Resource {
+public class TransformPOI extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(
-			TransformPOIResource.class);
+			TransformPOI.class);
 
-	private String dataInputString;
-	private DataInputs dataInputs;
+	//private String dataInputString;
+	//private DataInputs dataInputs;
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
 	String url = "";
 
-	public TransformPOIResource(Context context, Request request, 
+	public TransformPOI(Context context, Request request, 
 			Response response) {
 		super(context, request, response);
 		
-		System.out.println("You are in TransformPOIResource");
+		logger.debug("Instantiated {}.", getClass());
+
+/*		System.out.println("You are in TransformPOIResource");
 		dataInputString = (String) request.getAttributes().get("dataInputs"); 
 		System.out.println("dataInputString " + dataInputString );
-		
-		dataInputs = new DataInputs(dataInputString);
+*/		
+		//dataInputs = new DataInputs(dataInputString);
 
 		//FIXME - amemon - read the hostname from the config file 
 		ABAConfigurator config = ABAConfigurator.INSTANCE;
@@ -67,7 +74,7 @@ public class TransformPOIResource extends Resource {
 		portNumber = ":8080";
 		servicePath = "/atlas-aba?Request=Execute&Identifier=TransformPOI";
 		
-		getVariants().add(new Variant(MediaType.APPLICATION_XML));
+		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
 
 	}
 
@@ -75,19 +82,51 @@ public class TransformPOIResource extends Resource {
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
 
-		try { 
-
-		String fromSRSCode = "";
-		String toSRSCode = "";
-		String filter = "";
-		String coordinateX = "";
-		String coordinateY = "";
-		String coordinateZ = "";
-		
-		// text return for debugging
 		ABAServiceVO vo = new ABAServiceVO();
-		Set<String> dataInputKeys = dataInputs.getKeys();
-		for (String key : dataInputKeys) {
+
+        try { 
+
+		    // make sure we have something in dataInputs
+		    if (dataInputsString == null || dataInputsString.length() == 0) {
+		        ExceptionHandler eh = getExceptionHandler();
+		        eh.addExceptionToReport(ExceptionCode.MISSING_PARAMETER_VALUE, null, 
+		                new String[] { "All DataInputs were missing." });
+
+		        // there is no point in going further, so return
+		        return getExceptionRepresentation();
+		    }
+
+		    // parse dataInputs string
+	        DataInputs dataInputs = new DataInputs(dataInputsString);
+
+	        vo.setFromSRSCodeOne(dataInputs.getValue("inputSrsName"));
+	        vo.setFromSRSCode(dataInputs.getValue("inputSrsName"));
+	        vo.setToSRSCodeOne(dataInputs.getValue("targetSrsName"));
+	        vo.setToSRSCode(dataInputs.getValue("targetSrsName"));
+	        vo.setFilter(dataInputs.getValue("filter"));
+
+	        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
+	        System.out.println("To SRS Code: " + vo.getToSRSCodeOne());
+	        System.out.println("Filter: " + vo.getFilter());
+
+	        // validate data inputs
+	        validateSrsName(vo.getFromSRSCodeOne());
+	        validateSrsName(vo.getToSRSCodeOne());
+	        Double[] poiCoords = validateCoordinate(dataInputs);
+
+	        vo.setOriginalCoordinateX(String.valueOf(poiCoords[0].intValue()));
+	        vo.setOriginalCoordinateY(String.valueOf(poiCoords[1].intValue()));
+	        vo.setOriginalCoordinateZ(String.valueOf(poiCoords[2].intValue()));
+
+	        // if any validation exceptions, no reason to continue
+	        if (exceptionHandler != null) {
+	            return getExceptionRepresentation();
+	        }
+
+		// text return for debugging
+		//Set<String> dataInputKeys = dataInputs.getKeys();
+		System.out.println("-2");
+/*		for (String key : dataInputKeys) {
 			if (key.equalsIgnoreCase("inputSrsName")) {
 				fromSRSCode = dataInputs.getValue(key);
 				vo.setFromSRSCode(fromSRSCode);
@@ -106,24 +145,36 @@ public class TransformPOIResource extends Resource {
 				coordinateY = dataInputs.getValue(key);
 				vo.setOriginalCoordinateY(coordinateY);
 			} else if (key.equalsIgnoreCase("z")) {
+				System.out.println("-1");
 				coordinateZ = dataInputs.getValue(key);
 				vo.setOriginalCoordinateZ(coordinateZ);
 			}
 		}
+*/		
 
 		//Start - Call the main method here
 		ABAUtil util = new ABAUtil();
 		String completeCoordinatesString = util.spaceTransformation(vo);
-
 		vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
 		//End
 
+		//Start - Exception Handling
+		if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+	        ExceptionHandler eh = getExceptionHandler();
+	        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+	                new String[] { "Coordinates - Out of Range." });
+
+	        // there is no point in going further, so return
+	        return getExceptionRepresentation();
+		}
+		//End
+		
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         java.util.Date date = new java.util.Date();
         String currentTime = dateFormat.format(date);
         vo.setCurrentTime(currentTime);
 
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputString;
+        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
         vo.setUrlString(url);
 
 		ObjectFactory of = new ObjectFactory();
@@ -138,19 +189,18 @@ public class TransformPOIResource extends Resource {
 		Point srcPoint = new Point();
 		srcPoint.setSrsName(vo.getFromSRSCode());//Change
 		srcPoint.setPos(vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " " + vo.getOriginalCoordinateZ());//Change
-		
+
 		Input input = new Input();
 		input.setName("POI");
 		input.setPoint(srcPoint);
-		
-		
+
 		Criteria criteria = new Criteria();
 		criteria.setInput(input);
 
 		QueryInfo queryInfo = new QueryInfo();
 		queryInfo.setQueryURL(queryURL);
 		queryInfo.setTimeCreated(currentTime);
-	
+
 		queryInfo.setCriteria(criteria);
 
 		//TransformPOI responses
@@ -163,6 +213,8 @@ public class TransformPOIResource extends Resource {
 		
 		transformationResponse.setQueryInfo(queryInfo);
 		transformationResponse.setPOI(tempPoint);
+
+		System.out.println("8");
 
 		//generate representation based on media type - Used this method for renaming the prefixes
 		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
