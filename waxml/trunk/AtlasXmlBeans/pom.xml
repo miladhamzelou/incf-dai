@@ -63,6 +63,7 @@
 					<schemaDirectory>${basedir}/src/main/xsd</schemaDirectory>
 					<sourceGenerationDirectory>${basedir}/src/java/</sourceGenerationDirectory>
 					<generatedSchemaDirectory>${basedir}/src/xmlbeans-xsds</generatedSchemaDirectory>
+				    <defaultXmlConfigDir>${basedir}/src/main/xsdconfig</defaultXmlConfigDir>
 				</configuration>
 			</plugin>
 		</plugins>
