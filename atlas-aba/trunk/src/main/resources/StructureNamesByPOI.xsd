@@ -14,7 +14,7 @@ xmlns:wax="http://www.incf.org/waxML">
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="QueryInfo">
+  <xs:element name="QueryInfo"> 
     <xs:complexType>
       <xs:sequence>
         <xs:element name="TimeCreated" form="unqualified" type="xs:NMTOKEN"/>
