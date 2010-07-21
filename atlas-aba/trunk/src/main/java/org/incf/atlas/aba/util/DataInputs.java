@@ -35,5 +35,5 @@ public class DataInputs {
 			dataInputs.put(inputKeyValue[0], inputKeyValue[1]);
 		}
 	}
-	
+
 }
