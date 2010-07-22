@@ -115,9 +115,6 @@ This table summarizes the planned set of Atlas requests.
     <td>ABA<br/>UCSD</td>
     <td>XML</td>
   </tr>
-</table>
-
-<table>
   <tr>
     <td>Execute</td>
     <td>!GetTransformationChain</td>
@@ -139,6 +136,9 @@ This table summarizes the planned set of Atlas requests.
     <td>UCSD</td>
     <td>XML</td>
   </tr>
+</table>
+
+<table>
   <tr>
     <td>Execute</td>
     <td>GetCorrelationMapByPOI</td>
