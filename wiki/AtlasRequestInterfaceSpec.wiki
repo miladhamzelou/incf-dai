@@ -95,6 +95,8 @@ This table summarizes the planned set of Atlas requests.
     <td>XML</td>
   </tr>
 </table>
+
+<table>
   <tr>
     <td>Execute</td>
     <td>!DescribeTransformation</td>
