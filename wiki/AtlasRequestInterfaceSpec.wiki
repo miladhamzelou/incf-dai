@@ -136,9 +136,6 @@ This table summarizes the planned set of Atlas requests.
     <td>UCSD</td>
     <td>XML</td>
   </tr>
-</table>
-
-<table>
   <tr>
     <td>Execute</td>
     <td>GetCorrelationMapByPOI</td>
@@ -160,6 +157,9 @@ This table summarizes the planned set of Atlas requests.
     <td>ABA<br/>UCSD</td>
     <td>XML</td>
   </tr>
+</table>
+
+<table>
   <tr>
     <td>Execute</td>
     <td>Retrieve2DImageByPOI</td>     <td>sourceType<br/>sourceURL<br/>srsName<br/>xmin<br/>xmax<br/>ymin<br/>ymax<br/>
