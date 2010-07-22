@@ -105,7 +105,7 @@ This table summarizes the planned set of Atlas requests.
     <td>Execute</td>
     <td>!ListTransformations</td>
     <td>TBD</td>
-    <td>ABA<br/>UCSD/td>
+    <td>ABA<br/>UCSD</td>
     <td>XML</td>
   </tr>
   <tr>
