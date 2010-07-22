@@ -170,14 +170,14 @@ filter</td>
 <table>
   <tr>
     <td>Execute</td>
-    <td>GetCellsByURI/td>
+    <td>GetCellsByURI</td>
     <td>?</td>
     <td>UCSD</td>
     <td>XML</td>
   </tr>
   <tr>
     <td>Execute</td>
-    <td>GetCellsByPOI/td>
+    <td>GetCellsByPOI</td>
     <td>?</td>
     <td>UCSD</td>
     <td>XML</td>
