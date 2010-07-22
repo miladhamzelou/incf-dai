@@ -94,6 +94,7 @@ This table summarizes the planned set of Atlas requests.
     <td>ABA<br/>UCSD</td>
     <td>XML</td>
   </tr>
+</table>
   <tr>
     <td>Execute</td>
     <td>!DescribeTransformation</td>
