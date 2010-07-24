@@ -1,27 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
-<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" 
-xmlns:wax="http://www.incf.org/WaxML/" 
-xmlns:xlink="http://www.w3.org/1999/xlink"
- elementFormDefault="qualified"
-  targetNamespace="http://www.incf.org/WaxML/" 
-  version="0.8" 
-  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" version="0.8" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
     <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
     <xs:complexType name="BaseResponseType">
         <xs:sequence>
-            <xs:element name="queryInfo" type="wax:QueryInfoType" minOccurs="0" maxOccurs="1" />
+            <xs:element name="QueryInfo" type="wax:QueryInfoType" minOccurs="0" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="QueryInfoType">
         <xs:sequence>
-            <xs:element name="timeCreated" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+            <xs:element name="TimeCreated" type="xs:dateTime" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation> Time that this process was run, and this document was created</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="queryUrl" minOccurs="0" maxOccurs="1">
+            <xs:element name="QueryUrl" minOccurs="0" maxOccurs="1">
                 <xs:annotation>
                     <xs:documentation>                      The URL that was used to make this document.
 Optional</xs:documentation>
@@ -34,24 +28,20 @@ Optional</xs:documentation>
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="criteria" minOccurs="0" maxOccurs="1">
+            <xs:element name="Criteria" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="input" minOccurs="0" maxOccurs="unbounded">
+                        <xs:element ref="wax:Input" minOccurs="0" maxOccurs="unbounded">
                             <xs:annotation>
-                                <xs:documentation>Name of the input parameter, and it's value. This can be any element, eg a gml point</xs:documentation>
+                                <xs:documentation>Name of the Input parameter, and it's value. This can be any element, eg a gml point</xs:documentation>
                             </xs:annotation>
-                            <xs:complexType>
-                                <xs:complexContent>
-                                    <xs:extension base="wax:InputType" />
-                                </xs:complexContent>
-                            </xs:complexType>
                         </xs:element>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
         </xs:sequence>
     </xs:complexType>
+    <xs:element name="Input" type="wax:InputType" abstract="true" />
     <xs:complexType name="InputType" abstract="true">
         <xs:attribute name="name" type="xs:Name" />
     </xs:complexType>
@@ -88,40 +78,44 @@ Optional</xs:documentation>
             <xs:element ref="gml:Point" />
         </xs:choice>
     </xs:complexType>
-    <xs:element name="boundedBy" type="gml:BoundingShapeType" />
+    <xs:element name="BoundedBy" type="gml:BoundingShapeType" />
     <xs:complexType name="CoordinateTransformationInfoType">
         <xs:sequence>
-            <xs:element name="coordinateTransformation" minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="CoordinateTransformation" minOccurs="1" maxOccurs="unbounded">
                 <xs:complexType>
-                    <xs:attribute name="order" type="xs:int" use="required" />
-                    <xs:attribute name="code" type="xs:string" use="required" />
-                    <xs:attribute name="hub" type="xs:Name" use="required" />
-                    <xs:attribute name="inputSrsName" type="xs:QName" use="required" />
-                    <xs:attribute name="targetSrsName" type="xs:QName" use="required" />
-                    <xs:attribute name="accuracy" type="xs:float" />
+                    <xs:simpleContent>
+                        <xs:extension base="xs:anyURI">
+                            <xs:attribute name="order" type="xs:int" use="required" />
+                            <xs:attribute name="code" type="xs:string" use="required" />
+                            <xs:attribute name="hub" type="xs:Name" use="required" />
+                            <xs:attribute name="inputSrsName" type="xs:QName" use="required" />
+                            <xs:attribute name="targetSrsName" type="xs:QName" use="required" />
+                            <xs:attribute name="accuracy" type="xs:float" />
+                        </xs:extension>
+                    </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-    <xs:element name="coordinateTransformationInfoResponse" type="wax:CoordinateTransformationInfoResponseType" />
+    <xs:element name="CoordinateTransformationInfoResponse" type="wax:CoordinateTransformationInfoResponseType" />
     <xs:complexType name="CoordinateTransformationInfoResponseType">
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
                 <xs:sequence>
-                    <xs:element name="coordinateTransformationInfo" type="wax:CoordinateTransformationInfoType" />
+                    <xs:element name="CoordinateTransformationInfo" type="wax:CoordinateTransformationInfoType" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="structureTermsResponse" type="wax:StructureTermsResponseType" />
+    <xs:element name="StructureTermsResponse" type="wax:StructureTermsResponseType" />
     <xs:complexType name="StructureTermsResponseType">
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
                 <xs:sequence>
-                    <xs:element name="structureTerms" minOccurs="1" maxOccurs="1">
+                    <xs:element name="StructureTerms" minOccurs="1" maxOccurs="1">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element name="structureTerm" type="wax:StructureTermType" minOccurs="0" maxOccurs="unbounded" />
+                                <xs:element name="StructureTerm" type="wax:StructureTermType" minOccurs="0" maxOccurs="unbounded" />
                             </xs:sequence>
                         </xs:complexType>
                     </xs:element>
@@ -131,22 +125,22 @@ Optional</xs:documentation>
     </xs:complexType>
     <xs:complexType name="StructureTermType">
         <xs:sequence>
-            <xs:element name="structureCode" type="wax:incfCodeType" />
-            <xs:element ref="wax:name" minOccurs="0" maxOccurs="1" />
-            <xs:element ref="wax:description" minOccurs="1" maxOccurs="unbounded" />
-            <xs:element name="feature" type="wax:FeatureReferenceType" minOccurs="0" maxOccurs="1" />
+            <xs:element name="StructureCode" type="wax:incfCodeType" />
+            <xs:element ref="wax:Name" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="wax:Description" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="Feature" type="wax:FeatureReferenceType" minOccurs="0" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="FeatureReferenceType">
         <xs:sequence>
-            <xs:element name="centroid">
+            <xs:element name="Centroid">
                 <xs:complexType>
                     <xs:choice>
                         <xs:element ref="gml:Point" />
                     </xs:choice>
                 </xs:complexType>
             </xs:element>
-            <xs:element ref="wax:boundedBy" />
+            <xs:element ref="wax:BoundedBy" />
             <xs:element xmlns:q1="http://www.isotc211.org/2005/gmd" name="Url">
                 <xs:complexType>
                     <xs:simpleContent>
@@ -156,7 +150,7 @@ Optional</xs:documentation>
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="format" type="wax:geometryFomatCodeList" />
+            <xs:element name="Format" type="wax:geometryFomatCodeList" />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="incfCodeType">
@@ -177,7 +171,7 @@ Optional</xs:documentation>
             <xs:enumeration value="gml-sf" />
         </xs:restriction>
     </xs:simpleType>
-    <xs:element name="transformationResponse" type="wax:TransformationResponseType" />
+    <xs:element name="TransformationResponse" type="wax:TransformationResponseType" />
     <xs:complexType name="TransformationResponseType">
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
@@ -194,7 +188,7 @@ Optional</xs:documentation>
                     <xs:element name="Image2Dcollection" minOccurs="0" maxOccurs="1">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element name="image2dType" type="wax:Image2DType" minOccurs="0" maxOccurs="unbounded" />
+                                <xs:element name="Image2dType" type="wax:Image2DType" minOccurs="0" maxOccurs="unbounded" />
                             </xs:sequence>
                         </xs:complexType>
                     </xs:element>
@@ -202,10 +196,10 @@ Optional</xs:documentation>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:element name="imagesResponse" type="wax:ImagesResponseType" />
+    <xs:element name="ImagesResponse" type="wax:ImagesResponseType" />
     <xs:complexType name="Image2DType">
         <xs:sequence>
-            <xs:element name="imageSource" minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="ImageSource" minOccurs="1" maxOccurs="unbounded">
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:anyURI">
@@ -219,12 +213,12 @@ Optional</xs:documentation>
                     </xs:simpleContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="imagePosition">
+            <xs:element name="ImagePosition">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element name="imagePlaneEquation" type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
-                        <xs:element name="imagePlanePlacement " type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
-                        <xs:element name="corner" minOccurs="0" maxOccurs="4">
+                        <xs:element name="ImagePlaneEquation" type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
+                        <xs:element name="ImagePlanePlacement " type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
+                        <xs:element name="Corner" minOccurs="0" maxOccurs="4">
                             <xs:complexType>
                                 <xs:sequence>
                                     <xs:element ref="gml:Point" />
@@ -252,28 +246,28 @@ Optional</xs:documentation>
             <xs:enumeration value="bottomright" />
         </xs:restriction>
     </xs:simpleType>
-    <xs:element name="genesResponse" type="wax:GenesResponseType" />
+    <xs:element name="GenesResponse" type="wax:GenesResponseType" />
     <xs:complexType name="GenesResponseType">
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
                 <xs:sequence>
-                    <xs:element name="genesByPOI" type="wax:GeneByPoiType" minOccurs="0" maxOccurs="1" />
+                    <xs:element name="GenesByPOI" type="wax:GeneByPoiType" minOccurs="0" maxOccurs="1" />
+                    <xs:element name="markerAccesionId" type="wax:AssessionIdType" minOccurs="1" maxOccurs="unbounded" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="GeneByPoiType">
         <xs:sequence>
-            <xs:element name="gene" type="wax:GeneType" minOccurs="1" maxOccurs="unbounded" />
-            <xs:element name="expressionLevel" type="wax:GeneExpressionLevelType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="Gene" type="wax:GeneType" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="ExpressionLevel" type="wax:GeneExpressionLevelType" minOccurs="0" maxOccurs="unbounded" />
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="GeneType">
         <xs:sequence>
-            <xs:element name="symbol" type="wax:GeneSymbolType" />
-            <xs:element ref="wax:name" minOccurs="1" maxOccurs="unbounded" />
-            <xs:element name="markerAccesionId" type="wax:AssessionIdType" minOccurs="1" maxOccurs="unbounded" />
-            <xs:element name="organism" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="Symbol" type="wax:GeneSymbolType" />
+            <xs:element ref="wax:Name" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="Organism" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>The name of the organism. Use the codespace attribute for any external reference.</xs:documentation>
                 </xs:annotation>
@@ -308,7 +302,7 @@ Optional</xs:documentation>
 </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-            <xs:element name="geneSymbol" type="wax:GeneSymbolType">
+            <xs:element name="GeneSymbol" type="wax:GeneSymbolType">
                 <xs:annotation>
                     <xs:documentation>Contains the code for the geneSymbol. This symbol MUST be found in the gene elements in the genesByPOI list.
 
@@ -318,18 +312,18 @@ xlink can be used to link a gene. Eg to link to a gene/symbol[@gml:id=ABc123], a
 </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="level" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
-                <xs:annotation>
-                    <xs:documentation>contain whatever the resource has - a number or natural language description such as `strong'. The codeSpace attribute can optionally be used to add information to indentify the source.</xs:documentation>
-                </xs:annotation>
-            </xs:element>
-            <xs:element name="stage" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="Stage" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>Contains "NEED REFERNCE"
 The codeSpace attribute can optionally be used to add information to indentify the source.</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="resourceUri" type="wax:IncfResourceType" minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="Level" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>contain whatever the resource has - a number or natural language description such as `strong'. The codeSpace attribute can optionally be used to add information to indentify the source.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ResourceUri" type="wax:IncfResourceType" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
                     <xs:documentation>Contains an URL to a relevant page at the resource</xs:documentation>
                 </xs:annotation>
@@ -359,8 +353,8 @@ The codeSpace attribute can optionally be used to add information to indentify t
             <xs:extension base="xs:Name" />
         </xs:simpleContent>
     </xs:complexType>
-    <xs:element name="name" type="wax:IncfNameType" />
-    <xs:element name="description" type="gml:StringOrRefType" />
+    <xs:element name="Name" type="wax:IncfNameType" />
+    <xs:element name="Description" type="gml:StringOrRefType" />
     <xs:complexType name="Incfdescription">
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -395,7 +389,7 @@ The codeSpace attribute can optionally be used to add information to indentify t
     </xs:complexType>
     <xs:complexType name="ImageUrlListType">
         <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="url" type="wax:IncfUri" />
+            <xs:element name="Url" type="wax:IncfUri" />
         </xs:choice>
         <xs:attribute name="name" type="xs:string" />
     </xs:complexType>
@@ -403,10 +397,10 @@ The codeSpace attribute can optionally be used to add information to indentify t
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
                 <xs:choice>
-                    <xs:element name="imagesReferenceCollection" minOccurs="1" maxOccurs="1">
+                    <xs:element name="ImagesReferenceCollection" minOccurs="1" maxOccurs="1">
                         <xs:complexType>
                             <xs:choice>
-                                <xs:element name="imageReferences" type="wax:ImageUrlListType" />
+                                <xs:element name="ImageReferences" type="wax:ImageUrlListType" />
                             </xs:choice>
                         </xs:complexType>
                     </xs:element>
@@ -415,4 +409,23 @@ The codeSpace attribute can optionally be used to add information to indentify t
         </xs:complexContent>
     </xs:complexType>
     <xs:element name="correlationMapResponse" type="wax:CorrelatioMapType" />
+    <xs:complexType name="ListSRSResponeType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType" />
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="SRSType">
+        <xs:sequence>
+            <xs:element name="Name" type="wax:IncfNameType" />
+            <xs:element name="Description" type="wax:Incfdescription" />
+            <xs:element name="Origin" type="wax:incfCodeType" />
+            <xs:element name="Area" />
+            <xs:element name="Units" />
+            <xs:element name="Neurodimensions" type="wax:NeurodimensionsType" />
+            <xs:element name="Source" type="wax:incf_DocumentCitation" />
+            <xs:element name="DerivedFrom" type="xs:string" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NeurodimensionsType" />
+    <xs:complexType name="incf_DocumentCitation" />
 </xs:schema>
