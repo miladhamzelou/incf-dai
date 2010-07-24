@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio Developer Edition (Education) 8.1.2.2399 (http://www.liquid-technologies.com) -->
+<wax:structureTermsResponse xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/waxML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.incf.org/waxML C:\dev_incf_google\atlas-aba\trunk\src\main\resources\WaxMlSchema\WaxML_Base.xsd">
+      <wax:queryInfo>
+        <wax:timeCreated>1998-09-19T09:55:47.49</wax:timeCreated>
+        <wax:queryUrl>http://www.liquid-technologies.com</wax:queryUrl>
+        <wax:criteria>
+            <wax:input name="POI">
+                <gml:Point srsName="INCF:ABAvoxel">
+                    <gml:pos>x,y,z</gml:pos>
+                </gml:Point>
+            </wax:input>
+            <wax:input name="StructureVocabulary">ABAvoxel</wax:input>
+            <wax:input name="StructureFilter">structureset:Fine</wax:input>
+        </wax:criteria>
+    </wax:queryInfo>
+    <wax:structureTerms>
+        <wax:StructureTerm>
+            <wax:structureCode gml:id="1369" codeSpace="ABAvoxel">HIP</wax:structureCode>
+            <wax:name>Hippocampus</wax:name>
+            <wax:description>Hippocampus, segmented </wax:description>
+            <wax:description xlink:href="http://www.liquid-technologies.com" xlink:arcrole="http://www.liquid-technologies.com" xlink:title="string" xlink:show="embed" xlink:actuate="onRequest" gml:remoteSchema="http://www.liquid-technologies.com">string</wax:description>
+            <wax:feature>
+                <wax:centroid  gml:id="AAAAB">
+                     <gml:Point>
+                       <gml:pos axisLabels="X Y Z">5973.4749058039 9195.4749058039</gml:pos>
+                    </gml:Point>
+                </wax:centroid>
+                <wax:boundedBy>
+                    <gml:Envelope >
+                        <gml:lowerCorner >4086.3349058039</gml:lowerCorner>
+                        <gml:upperCorner srsName="http://www.liquid-technologies.com" srsDimension="3193935249">679.2549058039 4681.6949058039</gml:upperCorner>
+                    </gml:Envelope>
+                </wax:boundedBy>
+                <wax:Url srsName="INCF:ABAvoxel">http://www.liquid-technologies.com</wax:Url>
+                <wax:format>gml-sf</wax:format>
+            </wax:feature>
+        </wax:StructureTerm>
+        <wax:StructureTerm>
+            <wax:structureCode isDefault="0" gml:id="AAAAC" codeSpace="http://www.liquid-technologies.com">string</wax:structureCode>
+            <wax:description xlink:show="other" xlink:actuate="onLoad">string</wax:description>
+            <wax:description xlink:href="http://www.liquid-technologies.com" xlink:role="http://www.liquid-technologies.com" xlink:arcrole="http://www.liquid-technologies.com" xlink:show="none" gml:remoteSchema="http://www.liquid-technologies.com">string</wax:description>
+            <wax:description xlink:href="http://www.liquid-technologies.com" xlink:role="http://www.liquid-technologies.com" xlink:arcrole="http://www.liquid-technologies.com" xlink:title="string" xlink:show="new" xlink:actuate="onRequest" nilReason="http://www.liquid-technologies.com" gml:remoteSchema="http://www.liquid-technologies.com">string</wax:description>
+            <wax:description type="simple" xlink:actuate="onRequest" gml:remoteSchema="http://www.liquid-technologies.com">string</wax:description>
+            <wax:description type="simple" xlink:role="http://www.liquid-technologies.com" xlink:arcrole="http://www.liquid-technologies.com" xlink:show="replace" xlink:actuate="onLoad" nilReason="http://www.liquid-technologies.com" gml:remoteSchema="http://www.liquid-technologies.com">string</wax:description>
+        </wax:StructureTerm>
+        <wax:StructureTerm>
+            <wax:structureCode isDefault="false" gml:id="AAAAD" codeSpace="http://www.liquid-technologies.com">string</wax:structureCode>
+            <wax:name>string</wax:name>
+            <wax:description xlink:href="http://www.liquid-technologies.com" xlink:role="http://www.liquid-technologies.com" xlink:arcrole="http://www.liquid-technologies.com" xlink:show="other" nilReason="http://www.liquid-technologies.com" gml:remoteSchema="http://www.liquid-technologies.com">string</wax:description>
+            <wax:description type="simple" xlink:actuate="none" nilReason="http://www.liquid-technologies.com">string</wax:description>
+            <wax:description xlink:href="http://www.liquid-technologies.com" xlink:actuate="other" nilReason="" gml:remoteSchema="http://www.liquid-technologies.com">string</wax:description>
+            <wax:description xlink:href="http://www.liquid-technologies.com" xlink:role="http://www.liquid-technologies.com" xlink:arcrole="http://www.liquid-technologies.com" xlink:title="string" xlink:show="replace">string</wax:description>
+            <wax:description xlink:title="string" xlink:show="replace" xlink:actuate="onRequest">string</wax:description>
+        </wax:StructureTerm>
+        <wax:StructureTerm>
+            <wax:structureCode isDefault="1" gml:id="AAAAE" codeSpace="http://www.liquid-technologies.com">string</wax:structureCode>
+            <wax:description xlink:href="http://www.liquid-technologies.com" xlink:arcrole="http://www.liquid-technologies.com" gml:remoteSchema="http://www.liquid-technologies.com">string</wax:description>
+            <wax:description xlink:href="http://www.liquid-technologies.com" xlink:role="http://www.liquid-technologies.com" xlink:title="string" xlink:show="new" xlink:actuate="onLoad">string</wax:description>
+            <wax:description type="simple" xlink:title="string" nilReason="">string</wax:description>
+            <wax:description type="simple" nilReason="http://www.liquid-technologies.com">string</wax:description>
+        </wax:StructureTerm>
+    </wax:structureTerms>
+</wax:structureTermsResponse>

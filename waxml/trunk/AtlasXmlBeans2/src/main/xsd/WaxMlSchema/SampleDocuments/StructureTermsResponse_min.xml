@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio Developer Edition (Education) 8.1.2.2399 (http://www.liquid-technologies.com) -->
+<wax:structureTermsResponse xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/waxML" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.incf.org/waxML C:\dev_incf_google\atlas-aba\trunk\src\main\resources\WaxMlSchema\WaxML_Base.xsd">
+    <wax:queryInfo>
+        <wax:timeCreated>1998-09-19T09:55:47.49</wax:timeCreated>
+        <wax:queryUrl>http://www.liquid-technologies.com</wax:queryUrl>
+        <wax:criteria>
+            <wax:input name="POI">
+                <gml:Point srsName="INCF:ABAvoxel">
+                    <gml:pos>x,y,z</gml:pos>
+                </gml:Point>
+            </wax:input>
+            <wax:input name="StructureVocabulary">ABAvoxel</wax:input>
+            <wax:input name="StructureFilter">structureset:Fine</wax:input>
+        </wax:criteria>
+    </wax:queryInfo>
+    <wax:structureTerms>
+        <wax:StructureTerm>
+            <wax:structureCode gml:id="1369" codeSpace="ABAvoxel">HIP</wax:structureCode>
+            <wax:description>Hippocampus, segmented </wax:description>
+        </wax:StructureTerm>
+    </wax:structureTerms>
+</wax:structureTermsResponse>

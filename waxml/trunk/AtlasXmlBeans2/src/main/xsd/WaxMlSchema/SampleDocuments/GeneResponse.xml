@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio Developer Edition (Education) 8.1.2.2399 (http://www.liquid-technologies.com) -->
+<genesResponse xmlns="http://www.incf.org/waxML/" xmlns:gml="http://www.opengis.net/gml/3.2"
+xmlns:xlink="http://www.w3.org/1999/xlink"  
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xsi:schemaLocation="http://www.incf.org/waxML C:\dev_incf_google\atlas-aba\trunk\src\main\resources\WaxMlSchema\WaxML_Base.xsd">
+
+<!-- xsi:noNamespaceSchemaLocation="C:\dev_incf\WaxMlSchema\WaxML_Base.xsd" -->
+    <queryinfo>
+        <queryURL name="GetGenesByPOI">URL</queryURL>
+        <criteria>
+            <input name="POI" xsi:type="InputPOIType" >
+                <gml:Point srsName="INCF:WHS">
+                    <gml:pos>x,y,z</gml:pos>
+                </gml:Point>
+            </input>
+            <input name="srsCode" xsi:type="InputStringType" >EMAP23</input>
+            <input name="filter" xsi:type="InputStringType" ></input>
+        </criteria>
+    </queryinfo> 
+    <!-- Genes by POI, or just Genes? -->
+    <genesByPOI>
+        <gene>
+            <symbol gml:id="AAAAB" >Bmp4</symbol>
+            <name>bone morphogenetic protein 4</name>
+            <markerAccesionId separator=":">
+                <prefix>string</prefix>
+                <identifier>string</identifier>
+                <fullIdentifier>string</fullIdentifier>
+			</markerAccesionId>
+            <organism>mouse</organism>
+        </gene>
+        <gene>
+            <symbol gml:id="AAAAD" codeSpace="http://www.incf.org/HUBS/ABA">Sox1</symbol>
+            <name>SRY-box containing gene 1</name>
+            <markerAccesionId  separator=":">
+                  <prefix>MGI</prefix>
+                <identifier>98357</identifier>
+                <fullIdentifier>MGI:98357</fullIdentifier>
+			</markerAccesionId>
+            <organism isDefault="1" codeSpace="http://www.incf.org/organisms">mouse</organism>
+        </gene>
+        <expressionLevel>
+            <geneSymbol xlink:href="#AAAAB" />
+            <level >strong</level>
+            <stage >TS11</stage>
+            <resourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:86</resourceUri>
+        </expressionLevel>
+        <expressionLevel>
+            <geneSymbol >Bmp4</geneSymbol>
+            <level>detected</level>
+            <stage>10.5dpc</stage>
+            <resourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:131</resourceUri>
+        </expressionLevel>
+        <expressionLevel>
+            <geneSymbol xlink:href="#AAAAD"/>
+            <level codeSpace="http://www.incf.org/gene/expression/level">not detected</level>
+            <stage codeSpace="http://www.incf.org/gene/expression/stage">E10.5</stage>
+            <resourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:3066</resourceUri>
+        </expressionLevel>
+    </genesByPOI>
+</genesResponse>

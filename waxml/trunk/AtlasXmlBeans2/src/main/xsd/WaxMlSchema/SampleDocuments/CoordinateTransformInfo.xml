@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coordinateTransformationInfoResponse>
+  <queryInfo>
+    <timeCreated>1978-02-03T11:37:55.52</timeCreated>
+    <queryUrl>http://www.liquid-technologies.com</queryUrl>
+  </queryInfo>
+  <coordinateTransformationInfo>
+    <coordinateTransformation order="-1339"
+      code="string" hub="string" inputSrsCode="string" targetSrsCode="string"
+      accuracy="6436.21491" />
+    <coordinateTransformation order="-5060"
+      code="string" hub="string" inputSrsCode="string" targetSrsCode="string"
+      accuracy="1847.89491" />
+  </coordinateTransformationInfo>
+</coordinateTransformationInfoResponse>
