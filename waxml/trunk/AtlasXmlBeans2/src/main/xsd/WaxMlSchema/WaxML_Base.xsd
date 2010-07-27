@@ -31,7 +31,7 @@ Optional</xs:documentation>
             <xs:element name="Criteria" minOccurs="0" maxOccurs="1">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element ref="wax:Input" minOccurs="0" maxOccurs="unbounded">
+                        <xs:element name="Input" type="wax:InputType" minOccurs="0" maxOccurs="unbounded">
                             <xs:annotation>
                                 <xs:documentation>Name of the Input parameter, and it's value. This can be any element, eg a gml point</xs:documentation>
                             </xs:annotation>
@@ -41,7 +41,7 @@ Optional</xs:documentation>
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-    <xs:element name="Input" type="wax:InputType" abstract="true" />
+  <!--  <xs:element name="Input" type="wax:InputType" /> -->
     <xs:complexType name="InputType" abstract="true">
         <xs:attribute name="name" type="xs:Name" />
     </xs:complexType>
