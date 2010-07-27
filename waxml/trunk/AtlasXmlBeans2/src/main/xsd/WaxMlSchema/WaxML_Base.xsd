@@ -49,7 +49,7 @@ Optional</xs:documentation>
         <xs:complexContent>
             <xs:extension base="wax:InputType">
                 <xs:sequence>
-                    <xs:element name="value" type="xs:string" />
+                    <xs:element name="Value" type="xs:string" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -125,7 +125,8 @@ Optional</xs:documentation>
     </xs:complexType>
     <xs:complexType name="StructureTermType">
         <xs:sequence>
-            <xs:element name="StructureCode" type="wax:incfCodeType" />
+            <xs:element name="Code" type="wax:incfCodeType" />
+            <xs:element name="Uri" type="xs:anyURI" minOccurs="0" maxOccurs="1" />
             <xs:element ref="wax:Name" minOccurs="0" maxOccurs="1" />
             <xs:element ref="wax:Description" minOccurs="1" maxOccurs="unbounded" />
             <xs:element name="Feature" type="wax:FeatureReferenceType" minOccurs="0" maxOccurs="1" />
@@ -185,18 +186,22 @@ Optional</xs:documentation>
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
                 <xs:sequence>
-                    <xs:element name="Image2Dcollection" minOccurs="0" maxOccurs="1">
-                        <xs:complexType>
-                            <xs:sequence>
-                                <xs:element name="Image2dType" type="wax:Image2DType" minOccurs="0" maxOccurs="unbounded" />
-                            </xs:sequence>
-                        </xs:complexType>
-                    </xs:element>
+                    <xs:element name="Image2Dcollection" minOccurs="0" maxOccurs="1" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
     <xs:element name="ImagesResponse" type="wax:ImagesResponseType" />
+    <xs:complexType name="Retrieve2DImagesResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="ImageUrl" type="xs:anyURI" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="Retrieve2DImagesResponse" type="wax:Retrieve2DImagesResponseType" />
     <xs:complexType name="Image2DType">
         <xs:sequence>
             <xs:element name="ImageSource" minOccurs="1" maxOccurs="unbounded">
@@ -209,6 +214,7 @@ Optional</xs:documentation>
                             <xs:attribute name="srsName" type="xs:token" />
                             <xs:attribute name="format" type="wax:IncfRemoteFormats" />
                             <xs:attribute name="relavance" type="xs:float" />
+                            <xs:attribute name="type" type="wax:incfImageServices" />
                         </xs:extension>
                     </xs:simpleContent>
                 </xs:complexType>
@@ -218,15 +224,20 @@ Optional</xs:documentation>
                     <xs:sequence>
                         <xs:element name="ImagePlaneEquation" type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
                         <xs:element name="ImagePlanePlacement " type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
-                        <xs:element name="Corner" minOccurs="0" maxOccurs="4">
-                            <xs:complexType>
-                                <xs:sequence>
-                                    <xs:element ref="gml:Point" />
-                                </xs:sequence>
-                                <xs:attribute name="position" type="wax:PositionEnum" />
-                            </xs:complexType>
-                        </xs:element>
+                        <xs:element name="Corners" type="wax:Corners" minOccurs="0" maxOccurs="1" />
                     </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Corners">
+        <xs:sequence>
+            <xs:element name="Corner" minOccurs="4" maxOccurs="4">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="gml:Point" />
+                    </xs:sequence>
+                    <xs:attribute name="position" type="wax:PositionEnum" />
                 </xs:complexType>
             </xs:element>
         </xs:sequence>
@@ -252,7 +263,7 @@ Optional</xs:documentation>
             <xs:extension base="wax:BaseResponseType">
                 <xs:sequence>
                     <xs:element name="GenesByPOI" type="wax:GeneByPoiType" minOccurs="0" maxOccurs="1" />
-                    <xs:element name="markerAccesionId" type="wax:AssessionIdType" minOccurs="1" maxOccurs="unbounded" />
+                    <xs:element name="MarkerAccesionId" type="wax:AssessionIdType" minOccurs="1" maxOccurs="unbounded" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -276,18 +287,18 @@ Optional</xs:documentation>
     </xs:complexType>
     <xs:complexType name="AssessionIdType">
         <xs:sequence>
-            <xs:element name="prefix" type="wax:IncfNameType" minOccurs="1">
+            <xs:element name="Prefix" type="wax:IncfNameType" minOccurs="1">
                 <xs:annotation>
                     <xs:documentation>The pefix, eg MGI for MGI:12345</xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="identifier" type="wax:incfCodeType" minOccurs="1">
+            <xs:element name="Identifier" type="wax:incfCodeType" minOccurs="1">
                 <xs:annotation>
                     <xs:documentation>The identifier, eg 12345 for MGI:2345
 </xs:documentation>
                 </xs:annotation>
             </xs:element>
-            <xs:element name="fullIdentifier" type="xs:anyURI" minOccurs="1">
+            <xs:element name="FullIdentifier" type="xs:anyURI" minOccurs="1">
                 <xs:annotation>
                     <xs:documentation>MGI:12345</xs:documentation>
                 </xs:annotation>
@@ -379,6 +390,18 @@ The codeSpace attribute can optionally be used to add information to indentify t
     <xs:simpleType name="IncfRemoteFormats">
         <xs:union memberTypes="wax:IncfRemoteFormatEnum xs:string" />
     </xs:simpleType>
+    <xs:simpleType name="incfImageServicesEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="wms-jpg" />
+            <xs:enumeration value="wms-png" />
+            <xs:enumeration value="wms-gif" />
+            <xs:enumeration value="zoomify" />
+            <xs:enumeration value="url" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="incfImageServices">
+        <xs:union memberTypes="wax:incfImageServicesEnum xs:string" />
+    </xs:simpleType>
     <xs:complexType name="IncfUri">
         <xs:simpleContent>
             <xs:extension base="xs:anyURI">
@@ -397,7 +420,12 @@ The codeSpace attribute can optionally be used to add information to indentify t
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
                 <xs:choice>
-                    <xs:element name="ImagesReferenceCollection" minOccurs="1" maxOccurs="1">
+                    <xs:element name="CorrelationUrl" type="xs:anyURI" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation>This method  returns a URL of a web page to be displayed in a browse</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="ImagesReferenceCollection" minOccurs="0" maxOccurs="1">
                         <xs:complexType>
                             <xs:choice>
                                 <xs:element name="ImageReferences" type="wax:ImageUrlListType" />
@@ -419,8 +447,13 @@ The codeSpace attribute can optionally be used to add information to indentify t
             <xs:element name="Name" type="wax:IncfNameType" />
             <xs:element name="Description" type="wax:Incfdescription" />
             <xs:element name="Origin" type="wax:incfCodeType" />
-            <xs:element name="Area" />
-            <xs:element name="Units" />
+            <xs:element name="Area">
+                <xs:complexType>
+                    <xs:attribute name="structureName" type="xs:string" />
+                    <xs:attribute name="structureURN" type="xs:anyURI" />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Units" type="gml:UnitOfMeasureType" />
             <xs:element name="Neurodimensions" type="wax:NeurodimensionsType" />
             <xs:element name="Source" type="wax:incf_DocumentCitation" />
             <xs:element name="DerivedFrom" type="xs:string" />
@@ -428,4 +461,8 @@ The codeSpace attribute can optionally be used to add information to indentify t
     </xs:complexType>
     <xs:complexType name="NeurodimensionsType" />
     <xs:complexType name="incf_DocumentCitation" />
+    <xs:complexType name="UnitsOfMeasureType">
+        <xs:attribute name="unitsName" type="xs:string" />
+        <xs:attribute name="unitsAbbreviation" type="xs:Name" />
+    </xs:complexType>
 </xs:schema>
