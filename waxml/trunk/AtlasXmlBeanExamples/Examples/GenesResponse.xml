@@ -1,0 +1,59 @@
+<wax:GenesResponse xmlns:wax="http://www.incf.org/WaxML/">
+  <wax:QueryInfo>
+    <wax:Criteria>
+      <wax:Input xsi:type="wax:InputPOIType" name="POI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <wax:POI>
+          <ns:Point ns:id="id-onGeomRequiredByGML" xmlns:ns="http://www.opengis.net/gml/3.2">
+            <ns:pos>1 1 1</ns:pos>
+          </ns:Point>
+        </wax:POI>
+      </wax:Input>
+      <wax:Input xsi:type="wax:InputStringType" name="srsCode" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <wax:Value>EMAP23</wax:Value>
+      </wax:Input>
+      <wax:Input xsi:type="wax:InputStringType" name="filter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <wax:Value>AFilter</wax:Value>
+      </wax:Input>
+    </wax:Criteria>
+  </wax:QueryInfo>
+  <wax:GenesByPOI>
+    <wax:Gene>
+      <wax:Symbol codeSpace="required" ns:id="AAAAAB" xmlns:ns="http://www.opengis.net/gml/3.2">Bmp4</wax:Symbol>
+      <wax:MarkerAccesionId spearator=":">
+        <wax:Prefix>string</wax:Prefix>
+        <wax:Identifier>string</wax:Identifier>
+        <wax:FullIdentifier>string:string</wax:FullIdentifier>
+      </wax:MarkerAccesionId>
+      <wax:Name>bone morphogenetic protein 4</wax:Name>
+      <wax:Organism>mouse</wax:Organism>
+    </wax:Gene>
+    <wax:Gene>
+      <wax:Symbol ns:id="AAAAD" codeSpace="http://www.incf.org/HUBS/ABA" xmlns:ns="http://www.opengis.net/gml/3.2">Sox1</wax:Symbol>
+      <wax:MarkerAccesionId spearator=":">
+        <wax:Prefix>MGI</wax:Prefix>
+        <wax:Identifier>98357</wax:Identifier>
+        <wax:FullIdentifier>MGI:98357</wax:FullIdentifier>
+      </wax:MarkerAccesionId>
+      <wax:Name>bone morphogenetic protein 4</wax:Name>
+      <wax:Organism codeSpace="http://www.incf.org/organisms" isDefault="true">mouse</wax:Organism>
+    </wax:Gene>
+    <wax:ExpressionLevel>
+      <wax:GeneSymbol xlin:href="#AAAAB" xmlns:xlin="http://www.w3.org/1999/xlink"/>
+      <wax:Stage>TS11</wax:Stage>
+      <wax:Level>strong</wax:Level>
+      <wax:ResourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:86</wax:ResourceUri>
+    </wax:ExpressionLevel>
+    <wax:ExpressionLevel>
+      <wax:GeneSymbol>Bmp4</wax:GeneSymbol>
+      <wax:Stage>10.5dpc</wax:Stage>
+      <wax:Level>detected</wax:Level>
+      <wax:ResourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:131</wax:ResourceUri>
+    </wax:ExpressionLevel>
+    <wax:ExpressionLevel>
+      <wax:GeneSymbol xlin:href="#AAAAD" xmlns:xlin="http://www.w3.org/1999/xlink"/>
+      <wax:Stage codeSpace="http://www.incf.org/gene/expression/stage">E10.5</wax:Stage>
+      <wax:Level codeSpace="http://www.incf.org/gene/expression/level">not detected</wax:Level>
+      <wax:ResourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:3066</wax:ResourceUri>
+    </wax:ExpressionLevel>
+  </wax:GenesByPOI>
+</wax:GenesResponse>

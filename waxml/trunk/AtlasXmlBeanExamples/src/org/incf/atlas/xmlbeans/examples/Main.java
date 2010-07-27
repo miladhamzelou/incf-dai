@@ -35,6 +35,28 @@ public class Main {
 	}
 	
 	
+	StructureTermsResponse str = new StructureTermsResponse();
+    String StructureTermsResponse = str.AsXML();
+     try {
+     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/StructureTermsResponse.xml"));
+         out.write(StructureTermsResponse);
+         out.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	TransformationResponse tr = new TransformationResponse();
+    String tranformationResponse = tr.AsXml();
+     try {
+     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/TransformationResponseResponse.xml"));
+         out.write(tranformationResponse);
+         out.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
 	System.out.println("done");
        
 	}

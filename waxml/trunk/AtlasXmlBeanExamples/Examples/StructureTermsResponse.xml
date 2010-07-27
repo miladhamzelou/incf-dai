@@ -1,0 +1,26 @@
+<wax:StructureTermsResponse xmlns:wax="http://www.incf.org/WaxML/">
+  <wax:QueryInfo/>
+  <wax:StructureTerms>
+    <wax:StructureTerm>
+      <wax:Code codeSpace="Mouse_ABAvoxel_1.0" isDefault="true" structureID="1369">HIP</wax:Code>
+      <wax:Uri>uri:incf:pons-repository.org:structurenames:Hippocampus</wax:Uri>
+      <wax:Name>Hippocampus</wax:Name>
+      <wax:Description>Hippocampus, segmented</wax:Description>
+      <wax:Feature>
+        <wax:Centroid>
+          <ns:Point ns:id="requiredAnyId" srsName="Mouse_ABAvoxel_1.0" xmlns:ns="http://www.opengis.net/gml/3.2">
+            <ns:pos>1 1 1</ns:pos>
+          </ns:Point>
+        </wax:Centroid>
+        <wax:BoundedBy>
+          <ns:Envelope srsName="Mouse_WHS_1.0" xmlns:ns="http://www.opengis.net/gml/3.2">
+            <ns:lowerCorner>10 10 10</ns:lowerCorner>
+            <ns:upperCorner>20 20 20</ns:upperCorner>
+          </ns:Envelope>
+        </wax:BoundedBy>
+        <wax:Url srsName="Mouse_ABAvoxel_1.0">URI</wax:Url>
+        <wax:Format>shape</wax:Format>
+      </wax:Feature>
+    </wax:StructureTerm>
+  </wax:StructureTerms>
+</wax:StructureTermsResponse>
