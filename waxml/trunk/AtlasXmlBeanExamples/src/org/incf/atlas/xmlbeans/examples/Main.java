@@ -23,6 +23,18 @@ public class Main {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
+	  GenesResponse gr = new GenesResponse();
+      String grResponse = gr.AsXml();
+       try {
+       	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/GenesResponse.xml"));
+           out.write(grResponse);
+           out.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	
 	System.out.println("done");
        
 	}
