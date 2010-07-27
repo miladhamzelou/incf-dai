@@ -125,7 +125,15 @@ Optional</xs:documentation>
     </xs:complexType>
     <xs:complexType name="StructureTermType">
         <xs:sequence>
-            <xs:element name="Code" type="wax:incfCodeType" />
+            <xs:element name="Code">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="wax:incfCodeType">
+                            <xs:attribute name=" structureID" type="xs:string" />
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="Uri" type="xs:anyURI" minOccurs="0" maxOccurs="1" />
             <xs:element ref="wax:Name" minOccurs="0" maxOccurs="1" />
             <xs:element ref="wax:Description" minOccurs="1" maxOccurs="unbounded" />
@@ -437,11 +445,32 @@ The codeSpace attribute can optionally be used to add information to indentify t
         </xs:complexContent>
     </xs:complexType>
     <xs:element name="correlationMapResponse" type="wax:CorrelatioMapType" />
-    <xs:complexType name="ListSRSResponeType">
+    <xs:complexType name="ListSRSResponseType">
         <xs:complexContent>
-            <xs:extension base="wax:BaseResponseType" />
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="SRSList" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="SRS" type="wax:SRSType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+    <xs:element name="ListSRSResponse" type="wax:ListSRSResponseType" />
+    <xs:complexType name="DescribeSRSResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="SRS" type="wax:SRSType" minOccurs="0" maxOccurs="1" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="DescribeSRSResponse" type="wax:DescribeSRSResponseType" />
     <xs:complexType name="SRSType">
         <xs:sequence>
             <xs:element name="Name" type="wax:IncfNameType" />
@@ -477,7 +506,13 @@ The codeSpace attribute can optionally be used to add information to indentify t
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
-    <xs:complexType name="incf_DocumentCitation" />
+    <xs:complexType name="incf_DocumentCitation">
+        <xs:sequence>
+            <xs:element name="Abstract" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="uri" type="xs:anyURI" />
+        <xs:attribute name="format" type="wax:IncfRemoteFormats" />
+    </xs:complexType>
     <xs:complexType name="UnitsOfMeasureType">
         <xs:attribute name="unitsName" type="xs:string" />
         <xs:attribute name="unitsAbbreviation" type="xs:Name" />
