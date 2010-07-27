@@ -11,7 +11,7 @@ public class GenesResponse {
 		
 		InputStringType type = InputStringType.Factory.newInstance();
 		type.setName("MyParameter");
-		type.setValue(arg0)
+		type.setValue("2");
 		query.addNewCriteria();
 		
 	GeneByPoiType 	genePoiBlock = genes.addNewGenesByPOI();

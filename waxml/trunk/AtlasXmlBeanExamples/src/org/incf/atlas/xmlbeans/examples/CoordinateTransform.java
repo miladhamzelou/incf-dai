@@ -1,8 +1,10 @@
 package org.incf.atlas.xmlbeans.examples;
+import java.io.StringWriter;
 import java.util.ArrayList;
 
 import javax.xml.namespace.QName;
 
+import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 
@@ -12,6 +14,7 @@ import net.opengis.gml.x32.PointType;
 import org.incf.atlas.waxml.generated.CoordinateTransformationInfoResponseDocument;
 import org.incf.atlas.waxml.generated.CoordinateTransformationInfoResponseDocument.Factory;
 import org.incf.atlas.waxml.generated.CoordinateTransformationInfoType.CoordinateTransformation;
+import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
 
 import org.incf.atlas.waxml.generated.*
@@ -22,6 +25,7 @@ public String asXml(){
 	
 	CoordinateTransformationInfoResponseDocument co =   CoordinateTransformationInfoResponseDocument.Factory.newInstance();
 	co.addNewCoordinateTransformationInfoResponse();
+	
 	//Query Info
 	co.getCoordinateTransformationInfoResponse().addNewQueryInfo();
 	QueryInfoType qi = co.getCoordinateTransformationInfoResponse().getQueryInfo();
@@ -29,22 +33,25 @@ public String asXml(){
 	url.setName("GetTransformationChain");
 	url.setStringValue("URL");
 	qi.setQueryUrl(url);
-	
-	qi.addNewCriteria();
+     Criteria criterias = qi.addNewCriteria();
 
-	ArrayList<InputType> inputs = new ArrayList<InputType>();
-	InputStringType inputSrsConstraint = InputStringType.Factory.newInstance();
+
+	InputType input1 =criterias.addNewInput();
+	InputStringType inputSrsConstraint = (InputStringType) input1.changeType(InputStringType.type);
+
+	//InputStringType inputSrsConstraint = InputStringType.Factory.newInstance();
 	inputSrsConstraint.setName("inputSrsName");
 	inputSrsConstraint.setValue("Mouse_Paxinos_1.0");
-	InputStringType ouputSrsConstraint = InputStringType.Factory.newInstance();
+		
+	InputType input2 =criterias.addNewInput();
+	InputStringType ouputSrsConstraint  = (InputStringType) input2.changeType(InputStringType.type);
+	
+	//InputStringType ouputSrsConstraint = InputStringType.Factory.newInstance();
 	ouputSrsConstraint.setName("outputSrsName");
 	ouputSrsConstraint.setValue("Mouse_ABAreference_1.0");
-	inputs.add(inputSrsConstraint);
-	inputs.add(ouputSrsConstraint);
-	qi.addNewCriteria().setInputArray(inputs.toArray(qi.addNewCriteria().getInputArray()));
 	
-	
-	CoordinateTransformationInfoType ct= co.addNewCoordinateTransformationInfoResponse().addNewCoordinateTransformationInfo();
+	 
+	CoordinateTransformationInfoType ct= co.getCoordinateTransformationInfoResponse().addNewCoordinateTransformationInfo();
 
 	CoordinateTransformation ex1 =ct.addNewCoordinateTransformation();
 	ex1.setOrder(1);
@@ -82,6 +89,31 @@ public String asXml(){
 //	ex4.setAccuracy(1);
 	ex4.setStringValue("RequestUrl_3");
 	
-	return co.xmlText();
+	 ArrayList errorList = new ArrayList();
+	 opt.setErrorListener(errorList);
+	
+	 
+	 // Validate the XML.
+	 boolean isValid = co.validate(opt);
+	 
+	 // If the XML isn't valid, loop through the listener's contents,
+	 // printing contained messages.
+	 if (!isValid)
+	 {
+	      for (int i = 0; i < errorList.size(); i++)
+	      {
+	          XmlError error = (XmlError)errorList.get(i);
+	          
+	          System.out.println("\n");
+	          System.out.println("Message: " + error.getMessage() + "\n");
+	          System.out.println("Location of invalid XML: " + 
+	              error.getCursorLocation().xmlText() + "\n");
+	      }
+	 }
+	 
+	
+	return co.xmlText(opt);
+
+	
 }
 }
