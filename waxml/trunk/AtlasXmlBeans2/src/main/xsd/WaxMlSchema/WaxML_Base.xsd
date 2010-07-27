@@ -41,7 +41,7 @@ Optional</xs:documentation>
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-  <!--  <xs:element name="Input" type="wax:InputType" /> -->
+    <!--  <xs:element name="Input" type="wax:InputType" /> -->
     <xs:complexType name="InputType" abstract="true">
         <xs:attribute name="name" type="xs:Name" />
     </xs:complexType>
@@ -156,7 +156,7 @@ Optional</xs:documentation>
     </xs:complexType>
     <xs:complexType name="incfCodeType">
         <xs:complexContent>
-            <xs:extension base="gml:CodeWithAuthorityType">
+            <xs:extension base="gml:CodeType">
                 <xs:attribute name="isDefault" type="xs:boolean" />
                 <xs:attribute ref="gml:id" />
             </xs:extension>
@@ -263,7 +263,6 @@ Optional</xs:documentation>
             <xs:extension base="wax:BaseResponseType">
                 <xs:sequence>
                     <xs:element name="GenesByPOI" type="wax:GeneByPoiType" minOccurs="0" maxOccurs="1" />
-                    <xs:element name="MarkerAccesionId" type="wax:AssessionIdType" minOccurs="1" maxOccurs="unbounded" />
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -277,6 +276,7 @@ Optional</xs:documentation>
     <xs:complexType name="GeneType">
         <xs:sequence>
             <xs:element name="Symbol" type="wax:GeneSymbolType" />
+            <xs:element name="MarkerAccesionId" type="wax:AssessionIdType" minOccurs="0" maxOccurs="unbounded" />
             <xs:element ref="wax:Name" minOccurs="1" maxOccurs="unbounded" />
             <xs:element name="Organism" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
@@ -361,7 +361,7 @@ The codeSpace attribute can optionally be used to add information to indentify t
     </xs:complexType>
     <xs:complexType name="IncfNameType">
         <xs:simpleContent>
-            <xs:extension base="xs:Name" />
+            <xs:extension base="xs:normalizedString" />
         </xs:simpleContent>
     </xs:complexType>
     <xs:element name="Name" type="wax:IncfNameType" />
