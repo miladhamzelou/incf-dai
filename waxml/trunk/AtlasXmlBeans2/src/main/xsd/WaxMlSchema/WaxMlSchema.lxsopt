@@ -5,6 +5,4 @@
 	<OpenFile Uri=".\SampleDocuments\CoordinateTransformInfo.xml"/>
 	<OpenFile Uri=".\SampleDocuments\StructureTermsResponse.xml"/>
 	<OpenFile Uri=".\WaxML_Base.xsd"/>
-	<OpenFile Uri=".\SampleDocuments\TransformResponse.xml"/>
-	<OpenFile Uri=".\SampleDocuments\StructureTermsResponse_min.xml"/>
 </XmlStudioProjectOptions>

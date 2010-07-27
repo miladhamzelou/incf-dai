@@ -459,7 +459,24 @@ The codeSpace attribute can optionally be used to add information to indentify t
             <xs:element name="DerivedFrom" type="xs:string" />
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="NeurodimensionsType" />
+    <xs:complexType name="NeurodimensionsType">
+        <xs:sequence>
+            <xs:element name="MinusX" type="wax:NeurodimensionType" />
+            <xs:element name="PlusX" type="wax:NeurodimensionType" />
+            <xs:element name="MinusY" type="wax:NeurodimensionType" />
+            <xs:element name="PlusY" type="wax:NeurodimensionType" />
+            <xs:element name="MinusZ" type="wax:NeurodimensionType" />
+            <xs:element name="PlusZ" type="wax:NeurodimensionType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NeurodimensionType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xlink:href" />
+                <xs:attribute name="maxValue" type="xs:float" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
     <xs:complexType name="incf_DocumentCitation" />
     <xs:complexType name="UnitsOfMeasureType">
         <xs:attribute name="unitsName" type="xs:string" />
