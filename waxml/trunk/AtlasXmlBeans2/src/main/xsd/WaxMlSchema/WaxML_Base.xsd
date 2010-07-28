@@ -80,33 +80,55 @@ Optional</xs:documentation>
     </xs:complexType>
     <xs:element name="BoundedBy" type="gml:BoundingShapeType" />
     <xs:complexType name="CoordinateTransformationInfoType">
-        <xs:sequence>
-            <xs:element name="CoordinateTransformation" minOccurs="1" maxOccurs="unbounded">
-                <xs:complexType>
-                    <xs:simpleContent>
-                        <xs:extension base="xs:anyURI">
-                            <xs:attribute name="order" type="xs:int" use="required" />
-                            <xs:attribute name="code" type="xs:string" use="required" />
-                            <xs:attribute name="hub" type="xs:Name" use="required" />
-                            <xs:attribute name="inputSrsName" type="xs:QName" use="required" />
-                            <xs:attribute name="targetSrsName" type="xs:QName" use="required" />
-                            <xs:attribute name="accuracy" type="xs:float" />
-                        </xs:extension>
-                    </xs:simpleContent>
-                </xs:complexType>
-            </xs:element>
-        </xs:sequence>
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+                <xs:attribute name="code" type="xs:string" use="required" />
+                <xs:attribute name="hub" type="xs:Name" use="required" />
+                <xs:attribute name="inputSrsName" type="xs:QName" use="required" />
+                <xs:attribute name="targetSrsName" type="xs:QName" use="required" />
+                <xs:attribute name="accuracy" type="xs:float" />
+            </xs:extension>
+        </xs:simpleContent>
     </xs:complexType>
-    <xs:element name="CoordinateTransformationInfoResponse" type="wax:CoordinateTransformationInfoResponseType" />
-    <xs:complexType name="CoordinateTransformationInfoResponseType">
+    <xs:element name="CoordinateTransformationChainResponse" type="wax:CoordinateTransformationChainResponseType" />
+    <xs:complexType name="CoordinateChainTransformType">
+        <xs:complexContent>
+            <xs:extension base="wax:CoordinateTransformationInfoType">
+                <xs:attribute name="order" type="xs:int" use="required" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="CoordinateTransformationChainResponseType">
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
                 <xs:sequence>
-                    <xs:element name="CoordinateTransformationInfo" type="wax:CoordinateTransformationInfoType" />
+                    <xs:element name="CoordinateTransformationChain" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="CoordinateTransformation" type="wax:CoordinateChainTransformType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+    <xs:complexType name="ListTransformationsResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="TransformationList" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="CoordinateTransformation" type="wax:CoordinateTransformationInfoType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="ListTransformationsResponse" type="wax:ListTransformationsResponseType" />
     <xs:element name="StructureTermsResponse" type="wax:StructureTermsResponseType" />
     <xs:complexType name="StructureTermsResponseType">
         <xs:complexContent>
@@ -194,7 +216,13 @@ Optional</xs:documentation>
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
                 <xs:sequence>
-                    <xs:element name="Image2Dcollection" minOccurs="0" maxOccurs="1" />
+                    <xs:element name="Image2Dcollection" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Image2D" type="wax:Image2DType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -252,7 +280,7 @@ Optional</xs:documentation>
     </xs:complexType>
     <xs:complexType name="incfSrsType">
         <xs:simpleContent>
-            <xs:extension base="gml:NameList">
+            <xs:extension base="gml:doubleList">
                 <xs:attribute name="srsName" type="xs:token" />
             </xs:extension>
         </xs:simpleContent>
@@ -470,6 +498,17 @@ The codeSpace attribute can optionally be used to add information to indentify t
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
+    <xs:complexType name="SliceType">
+        <xs:complexContent>
+            <xs:extension base="xs:anyType">
+                <xs:attribute name="code" />
+                <xs:attribute name="orientation" />
+                <xs:attribute name="constant" />
+                <xs:attribute name="xOrientation" />
+                <xs:attribute name="yOrientation" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
     <xs:element name="DescribeSRSResponse" type="wax:DescribeSRSResponseType" />
     <xs:complexType name="SRSType">
         <xs:sequence>
@@ -517,4 +556,14 @@ The codeSpace attribute can optionally be used to add information to indentify t
         <xs:attribute name="unitsName" type="xs:string" />
         <xs:attribute name="unitsAbbreviation" type="xs:Name" />
     </xs:complexType>
+    <xs:complexType name="Retrieve2DImageResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="ImageUrl" type="xs:anyURI" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="Retrieve2DImageResponse" type="wax:Retrieve2DImageResponseType" />
 </xs:schema>
