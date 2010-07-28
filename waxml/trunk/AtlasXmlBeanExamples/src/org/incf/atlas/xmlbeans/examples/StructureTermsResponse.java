@@ -1,9 +1,11 @@
 package org.incf.atlas.xmlbeans.examples;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.opengis.gml.x32.BoundingShapeType;
 import net.opengis.gml.x32.DirectPositionType;
+import net.opengis.gml.x32.EnvelopeType;
 import net.opengis.gml.x32.PointType;
 
 import org.apache.xmlbeans.XmlError;
@@ -63,9 +65,22 @@ pnt.getPos().setStringValue("1 1 1");
 	BoundingShapeType t1bound = t1ft.addNewBoundedBy();
 	t1bound.addNewEnvelope();
 	t1bound.getEnvelope().setSrsName("Mouse_WHS_1.0");
-	DirectPositionType t1lc = t1bound.getEnvelope().addNewLowerCorner();
-	DirectPositionType t1uc = t1bound.getEnvelope().addNewUpperCorner();
+	EnvelopeType envelope = t1bound.getEnvelope();
+
+	DirectPositionType t1lc =envelope.addNewLowerCorner();
+	DirectPositionType t1uc = envelope.addNewUpperCorner();
+	
+	List axisList1 = new ArrayList<String>();
+	axisList1.add("left");
+	axisList1.add("dorsal");
+	axisList1.add("posterior");
+	List AxsList2 = new ArrayList<String>();
+	AxsList2.add("right");
+	AxsList2.add("ventral");
+	AxsList2.add("anterior");
 	t1lc.setStringValue("10 10 10");
+t1lc.setAxisLabels(AxsList2);	
+	t1uc.setAxisLabels(axisList1);
 	t1uc.setStringValue("20 20 20");
 	
 	t1ft.addNewUrl().setStringValue("URI");
