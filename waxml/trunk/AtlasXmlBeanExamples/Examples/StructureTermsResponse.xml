@@ -28,12 +28,6 @@
             <gml:pos>1 1 1</gml:pos>
           </gml:Point>
         </Centroid>
-        <BoundedBy>
-          <gml:Envelope srsName="Mouse_WHS_1.0">
-            <gml:lowerCorner>10 10 10</gml:lowerCorner>
-            <gml:upperCorner>20 20 20</gml:upperCorner>
-          </gml:Envelope>
-        </BoundedBy>
         <Url srsName="Mouse_ABAvoxel_1.0">URI</Url>
         <Format>shape</Format>
       </Feature>
