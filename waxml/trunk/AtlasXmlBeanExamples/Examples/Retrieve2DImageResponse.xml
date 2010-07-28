@@ -1,15 +1,26 @@
-<wax:Retrieve2DImageResponse xmlns:wax="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
+<wax:Retrieve2DImageResponse xmlns:wax="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <wax:QueryInfo>
     <wax:Criteria>
-      <wax:Input xsi:type="wax:InputPOIType" name="POI">
-        <wax:POI>
-          <gml:Point gml:id="id-onGeomRequiredByGML" srsName="Mouse_ABAvoxel_1.0">
-            <gml:pos>1 1 1</gml:pos>
-          </gml:Point>
-        </wax:POI>
+      <wax:Input xsi:type="wax:InputStringType" name="sourceType">
+        <wax:Value>wms-jpg</wax:Value>
       </wax:Input>
-      <wax:Input xsi:type="wax:InputStringType" name="filter">
-        <wax:Value>maptype:coronal</wax:Value>
+      <wax:Input xsi:type="wax:InputStringType" name="sourceURL">
+        <wax:Value>URL</wax:Value>
+      </wax:Input>
+      <wax:Input xsi:type="wax:InputStringType" name="srsName">
+        <wax:Value>Mouse_ABAvoxel_1.0</wax:Value>
+      </wax:Input>
+      <wax:Input xsi:type="wax:InputStringType" name="xmin">
+        <wax:Value>0</wax:Value>
+      </wax:Input>
+      <wax:Input xsi:type="wax:InputStringType" name="xmax">
+        <wax:Value>100</wax:Value>
+      </wax:Input>
+      <wax:Input xsi:type="wax:InputStringType" name="ymin">
+        <wax:Value>0</wax:Value>
+      </wax:Input>
+      <wax:Input xsi:type="wax:InputStringType" name="ymax">
+        <wax:Value>100</wax:Value>
       </wax:Input>
     </wax:Criteria>
   </wax:QueryInfo>

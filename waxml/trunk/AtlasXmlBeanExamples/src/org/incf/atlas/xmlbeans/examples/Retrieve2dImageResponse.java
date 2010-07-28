@@ -25,19 +25,38 @@ public class Retrieve2dImageResponse {
 		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
 		QueryInfoType query = imagesRes.addNewQueryInfo();
 		Criteria criterias = query.addNewCriteria();
-		InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);
-		poiCriteria.setName("POI");
-		PointType pnt = poiCriteria.addNewPOI().addNewPoint();
-		pnt.setId("id-onGeomRequiredByGML");
-		pnt.setSrsName("Mouse_ABAvoxel_1.0");
-pnt.addNewPos();
-pnt.getPos().setStringValue("1 1 1");
 		
-		InputStringType filterCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
-		filterCodeCriteria.setName("filter");
-		filterCodeCriteria.setValue("maptype:coronal");
+		
+		InputStringType crtieria1 = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+		crtieria1.setName("sourceType");
+		crtieria1.setValue(IncfImageServicesEnum.WMS_JPG.toString());
 
+		InputStringType crtieria2 = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+		crtieria2.setName("sourceURL");
+		crtieria2.setValue("URL");
+		
+		InputStringType crtieria3 = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+		crtieria3.setName("srsName");
+		crtieria3.setValue("Mouse_ABAvoxel_1.0");
+		
+		InputStringType crtieria4 = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+		crtieria4.setName("xmin");
+		crtieria4.setValue("0");
 
+	
+		InputStringType crtieria6 = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+		crtieria6.setName("xmax");
+		crtieria6.setValue("100");
+
+		InputStringType crtieria7 = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+		crtieria7.setName("ymin");
+		crtieria7.setValue("0");
+
+		InputStringType crtieria8 = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+		crtieria8.setName("ymax");
+		crtieria8.setValue("100");
+
+		
 		imagesRes.addImageUrl("URL");
 		
 		 ArrayList errorList = new ArrayList();

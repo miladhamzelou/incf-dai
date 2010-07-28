@@ -78,7 +78,18 @@ public class Main {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-
+	
+	ImagesResponseMulti irm = new ImagesResponseMulti();
+    String ImagesResponsemulti = irm.AsXml();
+     try {
+     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/ImagesResponse_multipleImages.xml"));
+         out.write(ImagesResponsemulti);
+         out.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
 	ImagesByUriResponse iur = new ImagesByUriResponse();
     String ImagesByUriResponse = iur.AsXml();
      try {
