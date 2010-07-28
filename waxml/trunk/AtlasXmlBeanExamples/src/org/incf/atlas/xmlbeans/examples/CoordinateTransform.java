@@ -21,6 +21,10 @@ import org.incf.atlas.waxml.generated.*
 public class CoordinateTransform {
 public String asXml(){
 	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+	opt.setSaveNamespacesFirst();
+	opt.setSaveAggressiveNamespaces();
+	opt.setUseDefaultNamespace();
 	
 	CoordinateTransformationChainResponseDocument co =   CoordinateTransformationChainResponseDocument.Factory.newInstance();
 	co.addNewCoordinateTransformationChainResponse();

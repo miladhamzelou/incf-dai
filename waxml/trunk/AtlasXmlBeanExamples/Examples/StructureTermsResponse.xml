@@ -1,26 +1,42 @@
-<wax:StructureTermsResponse xmlns:wax="http://www.incf.org/WaxML/">
-  <wax:QueryInfo/>
-  <wax:StructureTerms>
-    <wax:StructureTerm>
-      <wax:Code codeSpace="Mouse_ABAvoxel_1.0" isDefault="true" structureID="1369">HIP</wax:Code>
-      <wax:Uri>uri:incf:pons-repository.org:structurenames:Hippocampus</wax:Uri>
-      <wax:Name>Hippocampus</wax:Name>
-      <wax:Description>Hippocampus, segmented</wax:Description>
-      <wax:Feature>
-        <wax:Centroid>
-          <ns:Point ns:id="requiredAnyId" srsName="Mouse_ABAvoxel_1.0" xmlns:ns="http://www.opengis.net/gml/3.2">
-            <ns:pos>1 1 1</ns:pos>
-          </ns:Point>
-        </wax:Centroid>
-        <wax:BoundedBy>
-          <ns:Envelope srsName="Mouse_WHS_1.0" xmlns:ns="http://www.opengis.net/gml/3.2">
-            <ns:lowerCorner>10 10 10</ns:lowerCorner>
-            <ns:upperCorner>20 20 20</ns:upperCorner>
-          </ns:Envelope>
-        </wax:BoundedBy>
-        <wax:Url srsName="Mouse_ABAvoxel_1.0">URI</wax:Url>
-        <wax:Format>shape</wax:Format>
-      </wax:Feature>
-    </wax:StructureTerm>
-  </wax:StructureTerms>
-</wax:StructureTermsResponse>
+<StructureTermsResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
+  <QueryInfo>
+    <Criteria>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputPOIType" name="POI">
+        <POI>
+          <gml:Point gml:id="id-onGeomRequiredByGML" srsName="Mouse_ABAvoxel_1.0">
+            <gml:pos>1 1 1</gml:pos>
+          </gml:Point>
+        </POI>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="StructureVocabulary">
+        <Value>Mouse_ABAvoxel_1.0</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="StructureFilter">
+        <Value>structureset:Fine</Value>
+      </Input>
+    </Criteria>
+  </QueryInfo>
+  <StructureTerms>
+    <StructureTerm>
+      <Code codeSpace="Mouse_ABAvoxel_1.0" isDefault="true" structureID="1369">HIP</Code>
+      <Uri>uri:incf:pons-repository.org:structurenames:Hippocampus</Uri>
+      <Name>Hippocampus</Name>
+      <Description>Hippocampus, segmented</Description>
+      <Feature>
+        <Centroid>
+          <gml:Point gml:id="requiredAnyId" srsName="Mouse_ABAvoxel_1.0">
+            <gml:pos>1 1 1</gml:pos>
+          </gml:Point>
+        </Centroid>
+        <BoundedBy>
+          <gml:Envelope srsName="Mouse_WHS_1.0">
+            <gml:lowerCorner>10 10 10</gml:lowerCorner>
+            <gml:upperCorner>20 20 20</gml:upperCorner>
+          </gml:Envelope>
+        </BoundedBy>
+        <Url srsName="Mouse_ABAvoxel_1.0">URI</Url>
+        <Format>shape</Format>
+      </Feature>
+    </StructureTerm>
+  </StructureTerms>
+</StructureTermsResponse>

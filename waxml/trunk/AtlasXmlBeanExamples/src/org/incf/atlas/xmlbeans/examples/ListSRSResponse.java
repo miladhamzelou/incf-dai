@@ -11,6 +11,11 @@ import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 public class ListSRSResponse {
 public String  AsXml(){
 	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+	opt.setSaveNamespacesFirst();
+	opt.setSaveAggressiveNamespaces();
+	opt.setUseDefaultNamespace();
+	
 	ListSRSResponseDocument document =	ListSRSResponseDocument.Factory.newInstance(); 
 	
 	ListSRSResponseType rootDoc =	document.addNewListSRSResponse();

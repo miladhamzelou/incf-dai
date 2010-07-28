@@ -12,6 +12,11 @@ public class GenesResponse {
 
 	public String AsXml(){
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+		opt.setSaveNamespacesFirst();
+		opt.setSaveAggressiveNamespaces();
+		opt.setUseDefaultNamespace();
+		
 		GenesResponseDocument document = GenesResponseDocument.Factory.newInstance();
 		
 		GenesResponseType genes = document.addNewGenesResponse();

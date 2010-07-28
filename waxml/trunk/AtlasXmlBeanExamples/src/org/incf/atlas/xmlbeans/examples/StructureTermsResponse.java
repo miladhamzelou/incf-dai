@@ -4,21 +4,43 @@ import java.util.ArrayList;
 
 import net.opengis.gml.x32.BoundingShapeType;
 import net.opengis.gml.x32.DirectPositionType;
+import net.opengis.gml.x32.PointType;
 
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.*;
 import org.incf.atlas.waxml.generated.FeatureReferenceType.*;
+import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.StructureTermType.Code;
 import org.incf.atlas.waxml.generated.StructureTermsResponseType.*;
 
 public class StructureTermsResponse {
 public String AsXML(){
 	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+	opt.setSaveNamespacesFirst();
+	opt.setSaveAggressiveNamespaces();
+	opt.setUseDefaultNamespace();
+	
 	StructureTermsResponseDocument document =	StructureTermsResponseDocument.Factory.newInstance(); 
 	
 	StructureTermsResponseType rootDoc =	document.addNewStructureTermsResponse();
 	QueryInfoType query = rootDoc.addNewQueryInfo();
+	Criteria criterias =query.addNewCriteria();
+	InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);
+	poiCriteria.setName("POI");
+	PointType pnt = poiCriteria.addNewPOI().addNewPoint();
+	pnt.setId("id-onGeomRequiredByGML");
+	pnt.setSrsName("Mouse_ABAvoxel_1.0");
+pnt.addNewPos();
+pnt.getPos().setStringValue("1 1 1");
+	InputStringType srsCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+	srsCodeCriteria.setName("StructureVocabulary");
+	srsCodeCriteria.setValue("Mouse_ABAvoxel_1.0");
+	InputStringType filterCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+	filterCodeCriteria.setName("StructureFilter");
+	filterCodeCriteria.setValue("structureset:Fine");
+
 	
 	StructureTerms terms = rootDoc.addNewStructureTerms();
 	StructureTermType term1 = terms.addNewStructureTerm();

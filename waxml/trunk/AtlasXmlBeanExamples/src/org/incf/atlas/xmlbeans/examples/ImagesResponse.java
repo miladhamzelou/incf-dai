@@ -22,6 +22,11 @@ import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
 public class ImagesResponse {
 	public String AsXml(){
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+		opt.setSaveNamespacesFirst();
+		opt.setSaveAggressiveNamespaces();
+		opt.setUseDefaultNamespace();
+		
 		ImagesResponseDocument document = ImagesResponseDocument.Factory.newInstance();
 		
 		ImagesResponseType imagesRes = document.addNewImagesResponse();

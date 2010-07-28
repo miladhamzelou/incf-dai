@@ -23,6 +23,10 @@ import org.incf.atlas.waxml.generated.*
 public class ListTransforms {
 public String asXml(){
 	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+	opt.setSaveNamespacesFirst();
+	opt.setSaveAggressiveNamespaces();
+	opt.setUseDefaultNamespace();
 	
 	ListTransformationsResponseDocument co =   ListTransformationsResponseDocument.Factory.newInstance();
 	co.addNewListTransformationsResponse();

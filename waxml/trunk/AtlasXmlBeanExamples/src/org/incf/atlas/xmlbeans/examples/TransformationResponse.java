@@ -13,6 +13,11 @@ import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 public class TransformationResponse {
 	public String  AsXml(){
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+		opt.setSaveNamespacesFirst();
+		opt.setSaveAggressiveNamespaces();
+		opt.setUseDefaultNamespace();
+		
 		TransformationResponseDocument document = TransformationResponseDocument.Factory.newInstance(); 
 	
 		TransformationResponseType rootDoc =	document.addNewTransformationResponse();
