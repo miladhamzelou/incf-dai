@@ -12,23 +12,26 @@ import net.opengis.gml.x32.CoordinatesType;
 import net.opengis.gml.x32.PointType;
 
 import org.incf.atlas.waxml.generated.CoordinateChainTransformType;
+import org.incf.atlas.waxml.generated.ListTransformationsResponseDocument;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseType.CoordinateTransformationChain;
+import org.incf.atlas.waxml.generated.ListTransformationsResponseType.TransformationList;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
 
 import org.incf.atlas.waxml.generated.*
 ;
-public class CoordinateTransform {
+public class ListTransforms {
 public String asXml(){
 	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 	
-	CoordinateTransformationChainResponseDocument co =   CoordinateTransformationChainResponseDocument.Factory.newInstance();
-	co.addNewCoordinateTransformationChainResponse();
+	ListTransformationsResponseDocument co =   ListTransformationsResponseDocument.Factory.newInstance();
+	co.addNewListTransformationsResponse();
+	
 	
 	
 	//Query Info
-	co.getCoordinateTransformationChainResponse().addNewQueryInfo();
-	QueryInfoType qi = co.getCoordinateTransformationChainResponse().getQueryInfo();
+	co.getListTransformationsResponse().addNewQueryInfo();
+	QueryInfoType qi = co.getListTransformationsResponse().getQueryInfo();
 	QueryUrl url = QueryUrl.Factory.newInstance();
 	url.setName("GetTransformationChain");
 	url.setStringValue("URL");
@@ -51,9 +54,10 @@ public String asXml(){
 	ouputSrsConstraint.setValue("Mouse_ABAreference_1.0");
 	
 	 
-	CoordinateTransformationChain ct= co.getCoordinateTransformationChainResponse().addNewCoordinateTransformationChain();
-	CoordinateChainTransformType ex1 = ct.addNewCoordinateTransformation();
-	ex1.setOrder(1);
+	TransformationList ct= co.getListTransformationsResponse().addNewTransformationList();
+	
+	CoordinateTransformationInfoType ex1 = ct.addNewCoordinateTransformation();
+	
 	
 	ex1.setCode("Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_1.0");
 	ex1.setHub("UCSD");
@@ -62,8 +66,8 @@ public String asXml(){
 	ex1.setAccuracy(1);
 	ex1.setStringValue("RequestUrl_1");
 	
-	CoordinateChainTransformType ex2 =ct.addNewCoordinateTransformation();
-	ex2.setOrder(2);
+	CoordinateTransformationInfoType ex2 =ct.addNewCoordinateTransformation();
+	
 	ex2.setCode("Mouse_WHS_1.0_To_Mouse_AGEA_1.0_1.0");
 	ex2.setHub("ABA");
 	ex2.setInputSrsName(new QName("Mouse_WHS_1.0"));
@@ -71,23 +75,8 @@ public String asXml(){
 	ex2.setAccuracy(1);
 	ex2.setStringValue("RequestUrl_2");
 	
-	CoordinateChainTransformType ex3 =ct.addNewCoordinateTransformation();
-	ex3.setOrder(3);
-	ex3.setCode("Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0");
-	ex3.setHub("ABA");
-	ex3.setInputSrsName(new QName("Mouse_AGEA_1.0"));
-	ex3.setTargetSrsName(new QName("Mouse_ABAvoxel_1.0"));
-//	ex3.setAccuracy(1);
-	ex3.setStringValue("RequestUrl_3");
 	
-	CoordinateChainTransformType ex4 =ct.addNewCoordinateTransformation();
-	ex4.setOrder(4);
-	ex4.setCode("Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0");
-	ex4.setHub("ABA");
-	ex4.setInputSrsName(new QName("Mouse_ABAvoxel_1.0"));
-	ex4.setTargetSrsName(new QName("Mouse_ABAreference_1.0"));
-//	ex4.setAccuracy(1);
-	ex4.setStringValue("RequestUrl_3");
+	
 	
 	 ArrayList errorList = new ArrayList();
 	 opt.setErrorListener(errorList);

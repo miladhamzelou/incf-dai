@@ -1,0 +1,17 @@
+<wax:ListTransformationsResponse xmlns:wax="http://www.incf.org/WaxML/">
+  <wax:QueryInfo>
+    <wax:QueryUrl name="GetTransformationChain">URL</wax:QueryUrl>
+    <wax:Criteria>
+      <wax:Input xsi:type="wax:InputStringType" name="inputSrsName" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <wax:Value>Mouse_Paxinos_1.0</wax:Value>
+      </wax:Input>
+      <wax:Input xsi:type="wax:InputStringType" name="outputSrsName" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <wax:Value>Mouse_ABAreference_1.0</wax:Value>
+      </wax:Input>
+    </wax:Criteria>
+  </wax:QueryInfo>
+  <wax:TransformationList>
+    <wax:CoordinateTransformation code="Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_1.0" hub="UCSD" inputSrsName="Mouse_Paxinos_1.0" targetSrsName="Mouse_WHS_1.0" accuracy="1.0">RequestUrl_1</wax:CoordinateTransformation>
+    <wax:CoordinateTransformation code="Mouse_WHS_1.0_To_Mouse_AGEA_1.0_1.0" hub="ABA" inputSrsName="Mouse_WHS_1.0" targetSrsName="Mouse_AGEA_1.0" accuracy="1.0">RequestUrl_2</wax:CoordinateTransformation>
+  </wax:TransformationList>
+</wax:ListTransformationsResponse>

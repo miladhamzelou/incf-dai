@@ -1,4 +1,4 @@
-<wax:CoordinateTransformationInfoResponse xmlns:wax="http://www.incf.org/WaxML/">
+<wax:CoordinateTransformationChainResponse xmlns:wax="http://www.incf.org/WaxML/">
   <wax:QueryInfo>
     <wax:QueryUrl name="GetTransformationChain">URL</wax:QueryUrl>
     <wax:Criteria>
@@ -10,10 +10,10 @@
       </wax:Input>
     </wax:Criteria>
   </wax:QueryInfo>
-  <wax:CoordinateTransformationInfo>
+  <wax:CoordinateTransformationChain>
     <wax:CoordinateTransformation order="1" code="Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_1.0" hub="UCSD" inputSrsName="Mouse_Paxinos_1.0" targetSrsName="Mouse_WHS_1.0" accuracy="1.0">RequestUrl_1</wax:CoordinateTransformation>
     <wax:CoordinateTransformation order="2" code="Mouse_WHS_1.0_To_Mouse_AGEA_1.0_1.0" hub="ABA" inputSrsName="Mouse_WHS_1.0" targetSrsName="Mouse_AGEA_1.0" accuracy="1.0">RequestUrl_2</wax:CoordinateTransformation>
     <wax:CoordinateTransformation order="3" code="Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0" hub="ABA" inputSrsName="Mouse_AGEA_1.0" targetSrsName="Mouse_ABAvoxel_1.0">RequestUrl_3</wax:CoordinateTransformation>
     <wax:CoordinateTransformation order="4" code="Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0" hub="ABA" inputSrsName="Mouse_ABAvoxel_1.0" targetSrsName="Mouse_ABAreference_1.0">RequestUrl_3</wax:CoordinateTransformation>
-  </wax:CoordinateTransformationInfo>
-</wax:CoordinateTransformationInfoResponse>
+  </wax:CoordinateTransformationChain>
+</wax:CoordinateTransformationChainResponse>

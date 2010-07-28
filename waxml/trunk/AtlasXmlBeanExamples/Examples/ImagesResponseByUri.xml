@@ -1,0 +1,43 @@
+<wax:ImagesResponse xmlns:wax="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
+  <wax:QueryInfo>
+    <wax:Criteria>
+      <wax:Input xsi:type="wax:InputStringType" name="URI">
+        <wax:Value>uri:incf:pons-repository.org:structurenames:Hippocampus</wax:Value>
+      </wax:Input>
+      <wax:Input xsi:type="wax:InputStringType" name="filter">
+        <wax:Value>maptype:coronal</wax:Value>
+      </wax:Input>
+    </wax:Criteria>
+  </wax:QueryInfo>
+  <wax:Image2Dcollection>
+    <wax:Image2D>
+      <wax:ImageSource format="image/jpeg" relavance="0.6" srsName="srscode" thumbnanil="http://example.com/image.jpg" metadata="URL" type="url">URL</wax:ImageSource>
+      <wax:ImagePosition>
+        <wax:ImagePlaneEquation srsName="SRS">1 2 3 4</wax:ImagePlaneEquation>
+        <wax:ImagePlanePlacement srsName="SRS">1 2 3 4 5 6.0</wax:ImagePlanePlacement>
+        <wax:Corners>
+          <wax:Corner position="topleft">
+            <gml:Point gml:id="image1TopLeft">
+              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
+            </gml:Point>
+          </wax:Corner>
+          <wax:Corner position="bottomleft">
+            <gml:Point gml:id="image1BOTTOMLEFT">
+              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
+            </gml:Point>
+          </wax:Corner>
+          <wax:Corner position="topright">
+            <gml:Point gml:id="image1TOPRIGHT">
+              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
+            </gml:Point>
+          </wax:Corner>
+          <wax:Corner position="bottomright">
+            <gml:Point gml:id="image1BOTTOMRIGHT">
+              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
+            </gml:Point>
+          </wax:Corner>
+        </wax:Corners>
+      </wax:ImagePosition>
+    </wax:Image2D>
+  </wax:Image2Dcollection>
+</wax:ImagesResponse>
