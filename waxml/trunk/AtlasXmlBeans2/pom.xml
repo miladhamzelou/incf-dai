@@ -25,7 +25,7 @@
 		</pluginRepository>
 	</pluginRepositories>
 	<build>
-		<finalName>WaxMl-Gml</finalName>
+		<finalName>atlas-waxml</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -58,7 +58,8 @@
 					<download>false</download>
 					<sourceSchemas>
 						<sourceSchema>WaxMlSchema/WaxML_Base.xsd</sourceSchema>
-						<sourceSchema>SCHEMAS_OPENGIS_NET/wps/1.0.0/wpsAll.xsd</sourceSchema>
+					<!--  <sourceSchema>SCHEMAS_OPENGIS_NET/wps/1.0.0/wpsAll.xsd</sourceSchema>
+					-->	
 					</sourceSchemas>
 					<schemaDirectory>${basedir}/src/main/xsd</schemaDirectory>
 				<!-- 	<sourceGenerationDirectory>${basedir}/src/java/</sourceGenerationDirectory>
