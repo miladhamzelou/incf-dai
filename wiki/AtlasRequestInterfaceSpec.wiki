@@ -184,18 +184,14 @@ filter</td>
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th>Request</th>
-    <th>Identifier</th>
-    <th>DataInputs<br/>(keys)</th>
-    <th>Hub<br/>Applicability</th>
-    <th>Expected<br/>Output</th>
+    <th colspan="2">GetCapabilities</th>
   </tr>
   <tr>
-    <th>Request</th>
-    <th>Identifier</th>
-    <th>DataInputs<br/>(keys)</th>
-    <th>Hub<br/>Applicability</th>
-    <th>Expected<br/>Output</th>
+    <th>GET<br/>Request</th>
+    <td></td>
   </tr>
-
+  <tr>
+    <th>Data Inputs</th>
+    <td></td>
+  </tr>
 </table>
