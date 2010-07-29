@@ -188,7 +188,7 @@ filter</td>
   </tr>
   <tr>
     <th>GET<br/>Request</th>
-    <td>!http://[host]/[hub]$service=WPS&request=GetCapabilities</td>
+    <td><nowiki>http://[host]/[hub]$service=WPS&request=GetCapabilities</nowiki></td>
   </tr>
   <tr>
     <th>Data Inputs</th>
