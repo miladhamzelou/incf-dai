@@ -188,10 +188,14 @@ filter</td>
   </tr>
   <tr>
     <th>GET<br/>Request</th>
-    <td></td>
+    <td>http://<host>/<hub>$service=WPS&request=GetCapabilities</td>
   </tr>
   <tr>
     <th>Data Inputs</th>
-    <td></td>
+    <td>None</td>
+  </tr>
+  <tr>
+    <th>Normal<br/>Return</th>
+    <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd Schema].</td>
   </tr>
 </table>
