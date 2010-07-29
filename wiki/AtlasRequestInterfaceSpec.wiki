@@ -180,3 +180,22 @@ filter</td>
     <td>XML</td>
   </tr>
 </table>
+
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th>Request</th>
+    <th>Identifier</th>
+    <th>DataInputs<br/>(keys)</th>
+    <th>Hub<br/>Applicability</th>
+    <th>Expected<br/>Output</th>
+  </tr>
+  <tr>
+    <th>Request</th>
+    <th>Identifier</th>
+    <th>DataInputs<br/>(keys)</th>
+    <th>Hub<br/>Applicability</th>
+    <th>Expected<br/>Output</th>
+  </tr>
+
+</table>
