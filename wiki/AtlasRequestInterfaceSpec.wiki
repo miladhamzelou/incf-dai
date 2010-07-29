@@ -184,11 +184,11 @@ filter</td>
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th colspan="2">GetCapabilities</th>
+    <th colspan="2">!GetCapabilities</th>
   </tr>
   <tr>
     <th>GET<br/>Request</th>
-    <td>http://<host>/<hub>$service=WPS&request=GetCapabilities</td>
+    <td>http://[host]/[hub]$service=WPS&request=GetCapabilities</td>
   </tr>
   <tr>
     <th>Data Inputs</th>
