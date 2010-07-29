@@ -188,7 +188,7 @@ filter</td>
   </tr>
   <tr>
     <th>GET<br/>Request</th>
-    <td><nowiki>http://[host]/[hub]$service=WPS&request=GetCapabilities</nowiki></td>
+    <td>http://[host]/[hub]$service=WPS&request=GetCapabilities</td>
   </tr>
   <tr>
     <th>Data Inputs</th>
@@ -196,6 +196,10 @@ filter</td>
   </tr>
   <tr>
     <th>Normal<br/>Return</th>
-    <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd Schema].</td>
+    <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd WPS Schema].</td>
+  </tr>
+  <tr>
+    <th>Error<br/>Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
 </table>
