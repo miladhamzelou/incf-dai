@@ -512,8 +512,23 @@ The codeSpace attribute can optionally be used to add information to indentify t
     <xs:element name="DescribeSRSResponse" type="wax:DescribeSRSResponseType" />
     <xs:complexType name="SRSType">
         <xs:sequence>
-            <xs:element name="Name" type="wax:IncfNameType" />
+            <xs:element name="Name">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:normalizedString">
+                            <xs:attribute name="srsCode" type="xs:QName" />
+                            <xs:attribute name="srsBase" type="xs:normalizedString" />
+                            <xs:attribute name="srsVersion" type="xs:normalizedString" />
+                            <xs:attribute name="species" type="xs:normalizedString" />
+                            <xs:attribute name="urn" type="xs:normalizedString" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
             <xs:element name="Description" type="wax:Incfdescription" />
+            <xs:element name="Author" xmlns:q1="http://www.isotc211.org/2005/gmd" type="q1:CI_ResponsibleParty_Type" />
+            <xs:element name="DateCreated" type="xs:date" />
+            <xs:element name="DateUpdated" type="xs:date" />
             <xs:element name="Origin" type="wax:incfCodeType" />
             <xs:element name="Area">
                 <xs:complexType>
@@ -524,7 +539,16 @@ The codeSpace attribute can optionally be used to add information to indentify t
             <xs:element name="Units" type="gml:UnitOfMeasureType" />
             <xs:element name="Neurodimensions" type="wax:NeurodimensionsType" />
             <xs:element name="Source" type="wax:incf_DocumentCitation" />
-            <xs:element name="DerivedFrom" type="xs:string" />
+            <xs:element name="DerivedFrom">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="method" type="xs:normalizedString" />
+                            <xs:attribute name="srsName" type="xs:normalizedString" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="NeurodimensionsType">
