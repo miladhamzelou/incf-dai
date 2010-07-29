@@ -202,4 +202,8 @@ filter</td>
     <th>Error<br/>Return</th>
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
+  <tr>
+    <th>Example</th>
+    <td>http://incf-dev-local.crbs.ucsd.edu/atlas-aba$service=WPS&request=GetCapabilities</td>
+  </tr>
 </table>
