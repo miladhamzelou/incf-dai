@@ -158,7 +158,7 @@ Optional</xs:documentation>
             </xs:element>
             <xs:element name="Uri" type="xs:anyURI" minOccurs="0" maxOccurs="1" />
             <xs:element ref="wax:Name" minOccurs="0" maxOccurs="1" />
-            <xs:element ref="wax:Description" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element ref="wax:Description" minOccurs="0" maxOccurs="unbounded" />
             <xs:element name="Feature" type="wax:FeatureReferenceType" minOccurs="0" maxOccurs="1" />
         </xs:sequence>
     </xs:complexType>
@@ -526,7 +526,7 @@ The codeSpace attribute can optionally be used to add information to indentify t
                 </xs:complexType>
             </xs:element>
             <xs:element name="Description" type="wax:Incfdescription" />
-            <xs:element name="Author" xmlns:q1="http://www.isotc211.org/2005/gmd" type="q1:CI_ResponsibleParty_Type" />
+            <xs:element xmlns:q1="http://www.isotc211.org/2005/gmd" name="Author" type="q1:CI_ResponsibleParty_Type" />
             <xs:element name="DateCreated" type="xs:date" />
             <xs:element name="DateUpdated" type="xs:date" />
             <xs:element name="Origin" type="wax:incfCodeType" />
