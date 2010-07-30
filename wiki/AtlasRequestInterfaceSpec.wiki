@@ -214,7 +214,7 @@ filter</td>
   </tr>
   <tr>
     <th>GET<br/>Request</th>
-    <td>[ http://[[host]]/[[hub]]$service=WPS&version=1.0.0&request=DescribeProcess]</td>
+    <td>[ http://`[`host`]`/[[hub]]$service=WPS&version=1.0.0&request=DescribeProcess]</td>
   </tr>
   <tr>
     <th>Data Inputs</th>
