@@ -188,7 +188,11 @@ filter</td>
   </tr>
   <tr>
     <th>GET<br/>Request</th>
-    <td>http://[host]/[hub]$service=WPS&request=GetCapabilities</td>
+    <td>http://[host:port]/[hub]$service=WPS&request=GetCapabilities</td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td></td>
   </tr>
   <tr>
     <th>Data Inputs</th>
@@ -215,6 +219,10 @@ filter</td>
   <tr>
     <th>GET<br/>Request</th>
     <td>http://[host:port]/[hub]$service=WPS&version=1.0.0&request=DescribeProcess</td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td></td>
   </tr>
   <tr>
     <th>Data Inputs</th>
