@@ -238,6 +238,6 @@ filter</td>
   </tr>
   <tr>
     <th>Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version-1.0.0&request=GetCapabilities</td>
   </tr>
 </table>
