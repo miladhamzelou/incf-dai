@@ -1,5 +1,5 @@
 INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview
-Version 0.4, March 2010. 
+Version 0.5, July 2010. 
 Digital Atlasing Infrastructure Task Force
 I. Zaslavsky, editor
  https://docs.google.com/View?id=dd9x97wk_2drhhj6fp
@@ -7,12 +7,12 @@ I. Zaslavsky, editor
 
 The Waxholm Markup Language (WaxML) Schema is at:
 
-http://code.google.com/p/incf-dai/source/browse/#svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema
+ http://code.google.com/p/incf-dai/source/browse/#svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema
 
 
 WaxML coding examples and sample XML output is at:
 
-http://code.google.com/p/incf-dai/source/browse/#svn/waxml/trunk
+ http://code.google.com/p/incf-dai/source/browse/#svn/waxml/trunk
 
 A sample implementation (for ABA) is at: 
  http://code.google.com/p/incf-dai/source/browse/#svn/atlas-aba/trunk/src/main/resources/WaxMlSchema/SampleDocuments
