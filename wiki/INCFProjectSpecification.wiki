@@ -6,10 +6,12 @@ I. Zaslavsky, editor
 
 
 The Waxholm Markup Language (WaxML) Schema is at:
+
 http://code.google.com/p/incf-dai/source/browse/#svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema
 
 
 WaxML coding examples and sample XML output is at:
+
 http://code.google.com/p/incf-dai/source/browse/#svn/waxml/trunk
 
 A sample implementation (for ABA) is at: 
