@@ -1,0 +1,39 @@
+GetCapabilites and DescribeProcess Database
+===========================================
+
+Overview
+--------
+The "database" supporting the WPS GetCapabilities and DescribeProcess requests
+consist of 3 files:
+
+- Capabilities.xq (xq for XQuery)
+- ProcessDescriptions.xq
+- ProcessInputs.xml
+
+The .xq files are "template" files of mostly XML but some embedded XQuery
+statements. (A Google search for "XQJ tutorial" will lead you to several good
+tutorials. XQJ is XQuery for Java.)
+
+Capabilities.xq has the basic WPS GetCapabilities response static elements with
+the XQuery statements that will dynamically insert the appropriate wps:Process
+elements. These are retrieved from ProcessDescription.xq.
+
+ProcessDescriptions.xq has the basic WPS DescribeProcess response to include
+the Process Identifier, Title, and Abstract (also used in the GetCapabilities
+response) and the ProcessOutput element. Each Process has zero to several
+ProcessInputs which are drawn from the ProcessInputs.xml file via embedded 
+XQuery statements.
+
+ProcessInputs.xml contains the set of inputs used by the various processes
+which are the WPS execute functions offered by the WPS server.
+
+Editing the Database
+--------------------
+To make changes to the database (equivalent to SQL inserts, updates, and 
+deletes), you merely edit the three files taking care to preserve their ability
+to generate GetCapabilities and DescribeProcess XML responses that successfully
+validate against the appropriate WPS response schema.
+
+For example, if there are changes to Process DataInputs, edit the 
+ProcessInput.xml. These will roll into the ProcessDescription elements via the
+XQuery statements in ProcessDescriptions.xq.
