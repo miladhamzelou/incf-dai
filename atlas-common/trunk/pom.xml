@@ -5,28 +5,12 @@
   <packaging>jar</packaging>
   <name>INCF Atlas Common</name>
   <version>0.0.1-SNAPSHOT</version>
-  <description>INCF Atlas Common Code, Resources, and Schema</description>
+  <description>INCF Atlas Common Code and Resources</description>
 
   <build>
-    <finalName>atlas-common</finalName>
+    <finalName>atlas-common-${project.version}</finalName>
 
     <plugins>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>jaxb2-maven-plugin</artifactId>
-        <version>1.3</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>xjc</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-		  <strict>true</strict>
-		  <verbose>true</verbose>       
-        </configuration>
-      </plugin>
 
       <!-- This is needed otherwise maven seems to use Java v1.4 -->
       <plugin>
@@ -61,12 +45,6 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.5.8</version>
-    </dependency>
-    <dependency>
-      <groupId>com.sun.xml.bind</groupId>
-      <artifactId>jaxb-impl</artifactId>
-      <version>2.1</version>
-      <classifier>EA1</classifier>
     </dependency>
   </dependencies>
   
