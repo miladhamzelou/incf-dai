@@ -43,7 +43,7 @@
     <!-- resolve variables in resource files in the build process -->
     <resources>
       <resource>
-        <directory>src/main/resources</directory>
+        <directory>src/main/xsd</directory>
         <filtering>true</filtering>
       </resource>
     </resources>
