@@ -5,7 +5,7 @@
   <packaging>war</packaging>
   <name>INCF Atlas ABA Hub Server</name>
   <version>0.0.1-SNAPSHOT</version>
-  <description>INCF Atlas ABA Hub Server</description>
+  <description>INCF Atlas ABA (Allen Brain Atlas) Hub Server</description>
 
   <build>
     <finalName>atlas-aba</finalName>
