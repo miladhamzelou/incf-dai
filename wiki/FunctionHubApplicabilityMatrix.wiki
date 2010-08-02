@@ -1,0 +1,101 @@
+=Function-Hub Applicability Matrix=
+
+This matrix indicates which INCF Atlas processes are applicable to the various hubs.
+
+The WPS GetCapabilities and DescribeProcess requests are applicable to all hubs.
+
+		SERV_VER + EXEC_ID_KEY + "" + DATA_INPUTS;
+		SERV_VER + EXEC_ID_KEY + "";
+		SERV_VER + EXEC_ID_KEY + "" + DATA_INPUTS;
+		SERV_VER + EXEC_ID_KEY + "" + DATA_INPUTS;
+		SERV_VER + EXEC_ID_KEY + "" + DATA_INPUTS;
+		SERV_VER + EXEC_ID_KEY + "" + DATA_INPUTS;
+		SERV_VER + EXEC_ID_KEY + "" + DATA_INPUTS;
+		SERV_VER + EXEC_ID_KEY + "" + DATA_INPUTS;
+		SERV_VER + EXEC_ID_KEY + "" + DATA_INPUTS;
+		SERV_VER + EXEC_ID_KEY + "" + DATA_INPUTS;
+		SERV_VER + EXEC_ID_KEY + "" + DATA_INPUTS;
+
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <td></td>
+    <th>ABA Hub</th>
+    <th>UCSD Hub</th>
+  </tr>
+  <tr>
+    <th>DescribeSRS</th>
+    <td>&bull;</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>DescribeTransfomation</th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Get2DImagesByPOI</th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>GetCorrelationMapByPOI</th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>GetGenesByPOI</th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>GetStructureNamesByPOI</th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>GetTransformationChain</th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>ListSRSs</th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>ListTransformations</th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Retrieve2DImage</th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th>TransformPOI</th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
