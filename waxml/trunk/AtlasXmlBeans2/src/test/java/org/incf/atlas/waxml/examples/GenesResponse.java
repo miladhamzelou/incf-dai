@@ -26,7 +26,7 @@ public class GenesResponse {
 
 		ArrayList errorList = new ArrayList();
 		Utilities.validateXml(opt, document, errorList);
-		
+
 		return document.xmlText(opt);
 	}
 
@@ -44,7 +44,7 @@ public class GenesResponse {
 		assertTrue(errorList.toString(), validXml);
 
 	}
-	
+
 	public GenesResponseDocument completeResponse() {
 		GenesResponseDocument document = GenesResponseDocument.Factory
 				.newInstance();
@@ -53,21 +53,21 @@ public class GenesResponse {
 		// QueryInfo and criteria should be done as a utility
 		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
 		QueryInfoType query = genes.addNewQueryInfo();
-		
+
 		query.addNewQueryUrl().setName("GetGenesByPOI");
 		query.getQueryUrl().setStringValue("URL");
-		
+
 		Criteria criterias = query.addNewCriteria();
 
-		InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput()
-				.changeType(InputPOIType.type);
-		poiCriteria.setName("POI");
-		PointType pnt = poiCriteria.addNewPOI().addNewPoint();
-		pnt.setId("id-onGeomRequiredByGML");
-		pnt.addNewPos();
-		pnt.getPos().setStringValue("263 159 227");
-		pnt.setSrsName("Mouse_ABAVoxel_1.0");
-		
+		// InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput()
+		// .changeType(InputPOIType.type);
+		// poiCriteria.setName("POI");
+		// PointType pnt = poiCriteria.addNewPOI().addNewPoint();
+		// pnt.setId("id-onGeomRequiredByGML");
+		// pnt.addNewPos();
+		// pnt.getPos().setStringValue("263 159 227");
+		// pnt.setSrsName("Mouse_ABAVoxel_1.0");
+
 		InputStringType srsCodeCriteria = (InputStringType) criterias
 				.addNewInput().changeType(InputStringType.type);
 		srsCodeCriteria.setName("srsCode");
@@ -76,6 +76,21 @@ public class GenesResponse {
 				.addNewInput().changeType(InputStringType.type);
 		filterCodeCriteria.setName("filter");
 		filterCodeCriteria.setValue("AFilter");
+
+		InputStringType xCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		xCriteria.setName("x");
+		xCriteria.setValue("263");
+
+		InputStringType yCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		yCriteria.setName("y");
+		yCriteria.setValue("159");
+
+		InputStringType zCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		zCriteria.setName("y");
+		zCriteria.setValue("227");
 
 		GeneByPoiType genePoiBlock = genes.addNewGenesByPOI();
 		// adding a gene should be a utility method

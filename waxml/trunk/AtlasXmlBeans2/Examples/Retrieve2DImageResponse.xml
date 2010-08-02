@@ -1,5 +1,6 @@
 <Retrieve2DImageResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <QueryInfo>
+    <QueryUrl name="GetMap">URL</QueryUrl>
     <Criteria>
       <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="sourceType">
         <Value>wms-jpg</Value>

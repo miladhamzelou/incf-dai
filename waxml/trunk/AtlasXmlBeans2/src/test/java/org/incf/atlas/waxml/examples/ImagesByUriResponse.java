@@ -35,6 +35,10 @@ public class ImagesByUriResponse {
 	// QueryInfo and criteria should be done as a utility
 		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
 		QueryInfoType query = imagesRes.addNewQueryInfo();
+		Utilities.addMethodNameToQueryInfo(query, "Get2DImagesByURI  ",
+		"URL");
+
+		
 		Criteria criterias = query.addNewCriteria();
 		
 		

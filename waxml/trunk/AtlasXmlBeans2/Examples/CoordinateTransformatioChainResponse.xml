@@ -11,22 +11,9 @@
     </Criteria>
   </QueryInfo>
   <CoordinateTransformationChain>
-    <CoordinateTransformation order="1" 
-        code="Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_1.0" hub="UCSD"
-        inputSrsName="Mouse_Paxinos_1.0" outputSrsName="Mouse_WHS_1.0" 
-        accuracy="1.0">RequestUrl_1</CoordinateTransformation>
-    <CoordinateTransformation order="2" 
-        code="Mouse_WHS_1.0_To_Mouse_AGEA_1.0_1.0" 
-       hub="ABA" inputSrsName="Mouse_WHS_1.0" 
-       outputSrsName="Mouse_AGEA_1.0" 
-       accuracy="1.0">RequestUrl_2</CoordinateTransformation>
-    <CoordinateTransformation order="3" 
-       code="Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0" 
-       hub="ABA" inputSrsName="Mouse_AGEA_1.0" 
-       outputSrsName="Mouse_ABAvoxel_1.0">RequestUrl_3</CoordinateTransformation>
-    <CoordinateTransformation order="4" 
-       code="Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0" hub="ABA" 
-       inputSrsName="Mouse_ABAvoxel_1.0"
-        outputSrsName="Mouse_ABAreference_1.0">RequestUrl_3</CoordinateTransformation>
+    <CoordinateTransformation order="1" code="Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_1.0" hub="UCSD" inputSrsName="Mouse_Paxinos_1.0" outputSrsName="Mouse_WHS_1.0" accuracy="1.0">RequestUrl_1</CoordinateTransformation>
+    <CoordinateTransformation order="2" code="Mouse_WHS_1.0_To_Mouse_AGEA_1.0_1.0" hub="ABA" inputSrsName="Mouse_WHS_1.0" outputSrsName="Mouse_AGEA_1.0" accuracy="1.0">RequestUrl_2</CoordinateTransformation>
+    <CoordinateTransformation order="3" code="Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0" hub="ABA" inputSrsName="Mouse_AGEA_1.0" outputSrsName="Mouse_ABAvoxel_1.0">RequestUrl_3</CoordinateTransformation>
+    <CoordinateTransformation order="4" code="Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0" hub="ABA" inputSrsName="Mouse_ABAvoxel_1.0" outputSrsName="Mouse_ABAreference_1.0">RequestUrl_3</CoordinateTransformation>
   </CoordinateTransformationChain>
 </CoordinateTransformationChainResponse>

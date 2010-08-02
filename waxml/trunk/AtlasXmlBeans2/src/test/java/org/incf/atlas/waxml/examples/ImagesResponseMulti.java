@@ -23,24 +23,50 @@ import org.incf.atlas.waxml.utilities.*;
 public class ImagesResponseMulti {
 	public String AsXml(){
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+		opt.setSaveNamespacesFirst();
+		opt.setSaveAggressiveNamespaces();
+		opt.setUseDefaultNamespace();
+		
+		
 		ImagesResponseDocument document = ImagesResponseDocument.Factory.newInstance();
 		
 		ImagesResponseType imagesRes = document.addNewImagesResponse();
-	// QueryInfo and criteria should be done as a utility
-		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
+
 		QueryInfoType query = imagesRes.addNewQueryInfo();
+		Utilities.addMethodNameToQueryInfo(query,"Get2DImagesByPOI","URL");
+
 		Criteria criterias = query.addNewCriteria();
 		
-		InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);
-		poiCriteria.setName("POI");
-		PointType pnt = poiCriteria.addNewPOI().addNewPoint();
-		pnt.setId("id-onGeomRequiredByGML");
-		pnt.setSrsName("Mouse_ABAvoxel_1.0");
-pnt.addNewPos();
-pnt.getPos().setStringValue("1 1 1");
-		InputStringType srsCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
-		srsCodeCriteria.setName("widthAndHeight");
-		srsCodeCriteria.setValue("N,M");
+		
+//		InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);
+//		poiCriteria.setName("POI");
+//		PointType pnt = poiCriteria.addNewPOI().addNewPoint();
+//		pnt.setId("id-onGeomRequiredByGML");
+//		pnt.setSrsName("Mouse_ABAvoxel_1.0");
+//pnt.addNewPos();
+//pnt.getPos().setStringValue("1 1 1");
+	
+		// not in spec
+//		InputStringType srsCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+//		srsCodeCriteria.setName("widthAndHeight");
+//		srsCodeCriteria.setValue("N,M");
+		
+		InputStringType xCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		xCriteria.setName("x");
+		xCriteria.setValue("263");
+
+		InputStringType yCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		yCriteria.setName("y");
+		yCriteria.setValue("159");
+
+		InputStringType zCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		zCriteria.setName("y");
+		zCriteria.setValue("227");
+
 		InputStringType filterCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
 		filterCodeCriteria.setName("filter");
 		filterCodeCriteria.setValue("maptype:coronal");

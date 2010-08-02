@@ -17,7 +17,6 @@ public class TransformationResponse {
 	public String AsXml() {
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
-		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
 		opt.setSaveNamespacesFirst();
 		opt.setSaveAggressiveNamespaces();
 		opt.setUseDefaultNamespace();
@@ -59,19 +58,34 @@ public class TransformationResponse {
 
 		Criteria criterias = query.addNewCriteria();
 
-		InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput()
-				.changeType(InputPOIType.type);
-		poiCriteria.setName("POI");
-		PointType pnt = poiCriteria.addNewPOI().addNewPoint();
-		pnt.setId("id-distinctidRequiredByGML");
-		pnt.setSrsName("Mouse_ABAVoxel_1.0");
-		pnt.addNewPos();
-		pnt.getPos().setStringValue("280 112 162");
+		// InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput()
+		// .changeType(InputPOIType.type);
+		// poiCriteria.setName("POI");
+		// PointType pnt = poiCriteria.addNewPOI().addNewPoint();
+		// pnt.setId("id-distinctidRequiredByGML");
+		// pnt.setSrsName("Mouse_ABAVoxel_1.0");
+		// pnt.addNewPos();
+		// pnt.getPos().setStringValue("280 112 162");
 
 		InputStringType targetsrsCriteria = (InputStringType) criterias
 				.addNewInput().changeType(InputStringType.type);
 		targetsrsCriteria.setName("outputSrsName");
 		targetsrsCriteria.setValue("Mouse_AGEA_1.0");
+
+		InputStringType xCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		xCriteria.setName("x");
+		xCriteria.setValue("280");
+
+		InputStringType yCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		yCriteria.setName("y");
+		yCriteria.setValue("112");
+
+		InputStringType zCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		zCriteria.setName("y");
+		zCriteria.setValue("162");
 
 		InputStringType filterCodeCriteria = (InputStringType) criterias
 				.addNewInput().changeType(InputStringType.type);

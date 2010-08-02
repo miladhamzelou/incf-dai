@@ -1,6 +1,7 @@
 package org.incf.atlas.waxml.examples;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.xml.namespace.QName;
 
@@ -32,6 +33,10 @@ public String asXml(){
 	opt.setSaveNamespacesFirst();
 	opt.setSaveAggressiveNamespaces();
 	opt.setUseDefaultNamespace();
+	HashMap dnsMap = new HashMap();
+	dnsMap.put("wax", "http://www.incf.org/WaxML/");
+	// dnsMap.put("http://www.incf.org/WaxML/", null);
+	opt.setSaveImplicitNamespaces(Utilities.SuggestedNamespaces());
 	
 	CoordinateTransformationChainResponseDocument co = completeResponse();
 	ArrayList errorList = new ArrayList();

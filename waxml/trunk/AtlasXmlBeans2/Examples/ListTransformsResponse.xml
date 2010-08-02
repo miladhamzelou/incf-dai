@@ -11,12 +11,7 @@
     </Criteria>
   </QueryInfo>
   <TransformationList>
-    <CoordinateTransformation code="Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_1.0" 
-        hub="UCSD" inputSrsName="Mouse_Paxinos_1.0" 
-        outputSrsName="Mouse_WHS_1.0" accuracy="1.0">RequestUrl_1</CoordinateTransformation>
-    <CoordinateTransformation 
-        code="Mouse_WHS_1.0_To_Mouse_AGEA_1.0_1.0" 
-        hub="ABA" inputSrsName="Mouse_WHS_1.0" 
-        outputSrsName="Mouse_AGEA_1.0" accuracy="1.0">RequestUrl_2</CoordinateTransformation>
+    <CoordinateTransformation code="Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_1.0" hub="UCSD" inputSrsName="Mouse_Paxinos_1.0" outputSrsName="Mouse_WHS_1.0" accuracy="1.0">RequestUrl_1</CoordinateTransformation>
+    <CoordinateTransformation code="Mouse_WHS_1.0_To_Mouse_AGEA_1.0_1.0" hub="ABA" inputSrsName="Mouse_WHS_1.0" outputSrsName="Mouse_AGEA_1.0" accuracy="1.0">RequestUrl_2</CoordinateTransformation>
   </TransformationList>
 </ListTransformationsResponse>

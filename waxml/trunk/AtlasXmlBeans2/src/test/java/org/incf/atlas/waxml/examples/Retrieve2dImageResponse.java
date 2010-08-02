@@ -25,6 +25,8 @@ public class Retrieve2dImageResponse {
 	// QueryInfo and criteria should be done as a utility
 		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
 		QueryInfoType query = imagesRes.addNewQueryInfo();
+		Utilities.addMethodNameToQueryInfo(query,"GetMap","URL");
+
 		Criteria criterias = query.addNewCriteria();
 		
 		

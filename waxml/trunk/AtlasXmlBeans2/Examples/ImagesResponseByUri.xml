@@ -1,5 +1,6 @@
 <ImagesResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
   <QueryInfo>
+    <QueryUrl name="Get2DImagesByURI  ">URL</QueryUrl>
     <Criteria>
       <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="URI">
         <Value>uri:incf:pons-repository.org:structurenames:Hippocampus</Value>

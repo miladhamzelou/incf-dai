@@ -7,6 +7,7 @@ import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseDocument;
+import org.incf.atlas.waxml.generated.QueryInfoType;
 
 public class Utilities {
 	public static HashMap SuggestedNamespaces() {
@@ -16,6 +17,7 @@ public class Utilities {
 		// uncomment if ou want all the elements prefixed with wax:
 		suggestedPrefixes.put("http://www.incf.org/WaxML/", null);
 		suggestedPrefixes.put("http://www.w3.org/2001/XMLSchema-instance", "xsi");
+		
 
 		
 		return suggestedPrefixes;
@@ -46,5 +48,11 @@ public class Utilities {
 		      }
 		 }
 		 return isValid;
+	}
+	
+	public static void addMethodNameToQueryInfo(QueryInfoType queryInfo, String methodName, String url ){
+		queryInfo.addNewQueryUrl().setName(methodName);
+		queryInfo.getQueryUrl().setStringValue(url);
+
 	}
 }

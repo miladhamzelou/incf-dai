@@ -29,17 +29,43 @@ public String AsXML(){
 	
 	StructureTermsResponseType rootDoc =	document.addNewStructureTermsResponse();
 	QueryInfoType query = rootDoc.addNewQueryInfo();
+	Utilities.addMethodNameToQueryInfo(query, "GetStructureNamesByPOI  ",
+	"URL");
+	
 	Criteria criterias =query.addNewCriteria();
-	InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);
-	poiCriteria.setName("POI");
-	PointType pnt = poiCriteria.addNewPOI().addNewPoint();
-	pnt.setId("id-onGeomRequiredByGML");
-	pnt.setSrsName("Mouse_ABAvoxel_1.0");
-pnt.addNewPos();
-pnt.getPos().setStringValue("1 1 1");
+	
+//	InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);
+//	poiCriteria.setName("POI");
+//	PointType pnt = poiCriteria.addNewPOI().addNewPoint();
+//	pnt.setId("id-onGeomRequiredByGML");
+//	pnt.setSrsName("Mouse_ABAvoxel_1.0");
+//pnt.addNewPos();
+//pnt.getPos().setStringValue("1 1 1");
+	
+	InputStringType srsCriteria = (InputStringType) criterias.addNewInput()
+	.changeType(InputStringType.type);
+	srsCriteria.setName("srsName");
+	srsCriteria.setValue("Mouse_ABAvoxel_1.0");
+
+	InputStringType xCriteria = (InputStringType) criterias.addNewInput()
+	.changeType(InputStringType.type);
+xCriteria.setName("x");
+xCriteria.setValue("280");
+
+InputStringType yCriteria = (InputStringType) criterias.addNewInput()
+	.changeType(InputStringType.type);
+yCriteria.setName("y");
+yCriteria.setValue("112");
+
+InputStringType zCriteria = (InputStringType) criterias.addNewInput()
+	.changeType(InputStringType.type);
+zCriteria.setName("y");
+zCriteria.setValue("162");
+
 	InputStringType srsCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
 	srsCodeCriteria.setName("StructureVocabulary");
 	srsCodeCriteria.setValue("Mouse_ABAvoxel_1.0");
+	
 	InputStringType filterCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
 	filterCodeCriteria.setName("StructureFilter");
 	filterCodeCriteria.setValue("structureset:Fine");
