@@ -1,4 +1,4 @@
-package org.incf.waxml.utilities;
+package org.incf.atlas.waxml.utilities;
 
 public class CoordinateTransformUtil {
 

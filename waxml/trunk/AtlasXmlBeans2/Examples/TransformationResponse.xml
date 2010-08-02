@@ -1,0 +1,25 @@
+<TransformationResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
+  <QueryInfo>
+    <QueryUrl name="TransformPOI">URL</QueryUrl>
+    <Criteria>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputPOIType" name="POI">
+        <POI>
+          <gml:Point gml:id="id-distinctidRequiredByGML" srsName="Mouse_ABAVoxel_1.0">
+            <gml:pos>280 112 162</gml:pos>
+          </gml:Point>
+        </POI>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="outputSrsName">
+        <Value>Mouse_AGEA_1.0</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="filter">
+        <Value>cerebellum</Value>
+      </Input>
+    </Criteria>
+  </QueryInfo>
+  <POI>
+    <gml:Point gml:id="id-onGeomRequiredByGML" srsName="Mouse_AGEA_1.0">
+      <gml:pos>2 2 2</gml:pos>
+    </gml:Point>
+  </POI>
+</TransformationResponse>

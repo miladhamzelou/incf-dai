@@ -1,0 +1,28 @@
+<Retrieve2DImageResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <QueryInfo>
+    <Criteria>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="sourceType">
+        <Value>wms-jpg</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="sourceURL">
+        <Value>URL</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="srsName">
+        <Value>Mouse_ABAvoxel_1.0</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="xmin">
+        <Value>0</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="xmax">
+        <Value>100</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="ymin">
+        <Value>0</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="ymax">
+        <Value>100</Value>
+      </Input>
+    </Criteria>
+  </QueryInfo>
+  <ImageUrl>URL</ImageUrl>
+</Retrieve2DImageResponse>

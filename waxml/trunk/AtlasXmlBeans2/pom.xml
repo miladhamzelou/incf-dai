@@ -17,6 +17,12 @@
 			<url>http://download.java.net/maven/1</url>
 			<layout>legacy</layout>
 		</repository>
+		<repository>
+			<id>maven-repository.mirrors.ibiblio.org</id>
+			<name>mirrors.ibiblio.org</name>
+			<url>http://mirrors.ibiblio.org/pub/mirrors/maven2</url>
+			<layout>legacy</layout>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
@@ -68,6 +74,14 @@
 				     <defaultXmlConfigDir>${basedir}/src/main/xsdconfig</defaultXmlConfigDir>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<dependencies>
@@ -111,5 +125,16 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+  <groupId>xsddoc</groupId>
+  <artifactId>maven-xsddoc-plugin</artifactId>
+  <version>1.0</version>
+  <type>plugin</type>
+</dependency>
 	</dependencies>
+	<reporting>
+		<plugins>
+		</plugins>
+	</reporting>
+
 </project>
