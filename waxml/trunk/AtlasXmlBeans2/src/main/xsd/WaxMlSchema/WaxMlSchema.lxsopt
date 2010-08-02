@@ -5,4 +5,5 @@
 	<OpenFile Uri=".\SampleDocuments\CoordinateTransformInfo.xml"/>
 	<OpenFile Uri=".\SampleDocuments\StructureTermsResponse.xml"/>
 	<OpenFile Uri=".\WaxML_Base.xsd"/>
+	<OpenFile Uri="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
 </XmlStudioProjectOptions>

@@ -85,7 +85,7 @@ Optional</xs:documentation>
                 <xs:attribute name="code" type="xs:string" use="required" />
                 <xs:attribute name="hub" type="xs:Name" use="required" />
                 <xs:attribute name="inputSrsName" type="xs:QName" use="required" />
-                <xs:attribute name="targetSrsName" type="xs:QName" use="required" />
+                <xs:attribute name="outputSrsName" type="xs:QName" use="required" />
                 <xs:attribute name="accuracy" type="xs:float" />
             </xs:extension>
         </xs:simpleContent>
@@ -312,7 +312,7 @@ Optional</xs:documentation>
     <xs:complexType name="GeneType">
         <xs:sequence>
             <xs:element name="Symbol" type="wax:GeneSymbolType" />
-            <xs:element name="MarkerAccesionId" type="wax:AssessionIdType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="MarkerAccessionId" type="wax:AccessionIdType" minOccurs="0" maxOccurs="unbounded" />
             <xs:element ref="wax:Name" minOccurs="1" maxOccurs="unbounded" />
             <xs:element name="Organism" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
                 <xs:annotation>
@@ -321,7 +321,7 @@ Optional</xs:documentation>
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-    <xs:complexType name="AssessionIdType">
+    <xs:complexType name="AccessionIdType">
         <xs:sequence>
             <xs:element name="Prefix" type="wax:IncfNameType" minOccurs="1">
                 <xs:annotation>
@@ -340,7 +340,7 @@ Optional</xs:documentation>
                 </xs:annotation>
             </xs:element>
         </xs:sequence>
-        <xs:attribute name="spearator" />
+        <xs:attribute name="separator" />
     </xs:complexType>
     <xs:complexType name="GeneExpressionLevelType">
         <xs:annotation>
