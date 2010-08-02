@@ -2,10 +2,10 @@ package org.incf.atlas.ucsd.resource;
 
 import javax.xml.bind.JAXBException;
 
+import org.incf.atlas.common.util.ExceptionCode;
+import org.incf.atlas.common.util.ExceptionHandler;
 import org.incf.atlas.ucsd.util.Constants;
 import org.incf.atlas.ucsd.util.DataInputs;
-import org.incf.atlas.ucsd.util.ExceptionCode;
-import org.incf.atlas.ucsd.util.ExceptionHandler;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
@@ -24,7 +24,7 @@ public class BaseResouce extends Resource {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     
-    private Constants constants;
+    protected Constants constants;
     private String service;
     private String version;
     protected String dataInputsString;
@@ -53,7 +53,9 @@ public class BaseResouce extends Resource {
     
     protected ExceptionHandler getExceptionHandler() {
         if (exceptionHandler == null) {
-            exceptionHandler = new ExceptionHandler();
+            exceptionHandler = new ExceptionHandler(
+            		constants.getDefaultVersion(), 
+            		constants.getDefaultLanguage());
         }
         return exceptionHandler;
     }
@@ -80,7 +82,13 @@ public class BaseResouce extends Resource {
      * requests.
      */
     protected void checkService() {
-        if (!service.equals(constants.getDefaultService())) {
+    	
+    	// if unrecognized uri, value will be null, so skip check
+    	if (service == null) {
+    		return;
+    	}
+
+    	if (!service.equals(constants.getDefaultService())) {
             
             // prepare an ExceptionReport
             ExceptionHandler eh = getExceptionHandler();
@@ -99,7 +107,13 @@ public class BaseResouce extends Resource {
      * requests except GetCapabilities.
      */
     protected void checkVersion() {
-        if (!version.equals(constants.getDefaultVersion())) {
+    	
+    	// if unrecognized uri, value will be null, so skip check
+    	if (version == null) {
+    		return;
+    	}
+
+    	if (!version.equals(constants.getDefaultVersion())) {
             
             // prepare an ExceptionReport
             ExceptionHandler eh = getExceptionHandler();

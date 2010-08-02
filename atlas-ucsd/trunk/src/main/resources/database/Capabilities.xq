@@ -3,15 +3,15 @@
     xmlns:wps="http://www.opengis.net/wps/1.0.0" 
     xmlns:ows="http://www.opengis.net/ows/1.1">
   <ows:ServiceIdentification>
-    <ows:Title>ABA Atlas Services</ows:Title>
-    <ows:Abstract>ABA Atlas Services provide access to data available from the
-      Allen Brain Atlas resource.</ows:Abstract>
+    <ows:Title>UCSD Atlas Services</ows:Title>
+    <ows:Abstract>UCSD Atlas Services provide access to data available from the
+      University of California, San Diego resource.</ows:Abstract>
     <ows:ServiceType>WPS</ows:ServiceType>
     <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
   </ows:ServiceIdentification>
   <wps:ProcessOfferings>
     {
-      for $pd in doc("file:///usr/local/tomcat/webapps/atlas-aba/WEB-INF/classes/database/ProcessDescriptions.xq")/wps:ProcessDescriptions/ProcessDescription
+      for $pd in doc("file:///usr/local/tomcat/webapps/atlas-ucsd/WEB-INF/classes/database/ProcessDescriptions.xq")/wps:ProcessDescriptions/ProcessDescription
       return 
         <wps:Process wps:processVersion="{$pd/@wps:processVersion}"> {
           $pd/ows:Identifier | 

@@ -36,6 +36,11 @@
   <dependencies>
     <dependency>
       <groupId>org.incf</groupId>
+      <artifactId>atlas-common</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>org.incf</groupId>
       <artifactId>atlas-wps</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>

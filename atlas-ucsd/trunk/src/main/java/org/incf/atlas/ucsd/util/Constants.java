@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Constants {
 
-	private static final String PROPS = "/atlas-aba.properties";
+	private static final String PROPS = "/atlas-ucsd.properties";
 	
 	// singleton pattern
 	private static Constants constants;
