@@ -1,4 +1,4 @@
-=Function-Hub Applicability Matrix=
+=Function-Hub Applicability Table=
 
 This matrix indicates which INCF Atlas processes are applicable to the various hubs.
 
