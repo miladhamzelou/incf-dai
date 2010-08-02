@@ -417,6 +417,28 @@
         <ows:Identifier></ows:Identifier>
         <ows:Title></ows:Title>
         <ows:Abstract></ows:Abstract>
+        <ComplexOutput>
+          <Default>
+            <Format>
+              <MimeType>text/ascii</MimeType>
+              <MimeType>text/html</MimeType>
+              <MimeType>application/vnd.incf.waxml</MimeType>
+              <Encoding>UTF-8</Encoding>
+              <Schema>http://foo.bar/waxml/201001/response.xsd</Schema>
+            </Format>
+          </Default>
+          <Supported>
+            <Format>
+              <MimeType>text/xml</MimeType>
+              <Encoding>UTF-8</Encoding>
+              <Schema>http://foo.bar/gml/3.1.0/polygon.xsd</Schema>
+            </Format>
+            <Format>
+              <MimeType>text/html</MimeType>
+              <Encoding>UTF-8</Encoding>
+            </Format>
+          </Supported>
+        </ComplexOutput>
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
