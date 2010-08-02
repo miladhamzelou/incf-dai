@@ -2,7 +2,7 @@
 
 This matrix indicates which INCF Atlas processes are applicable to the various hubs.
 
-The WPS GetCapabilities and DescribeProcess requests are applicable to all hubs.
+The WPS !GetCapabilities and !DescribeProcess requests are applicable to all hubs.
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -16,7 +16,7 @@ The WPS GetCapabilities and DescribeProcess requests are applicable to all hubs.
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">DescribeTransfomation</th>
+    <th align="left">!DescribeTransfomation</th>
     <td align="center">X</td>
     <td align="center"></td>
   </tr>
@@ -41,7 +41,7 @@ The WPS GetCapabilities and DescribeProcess requests are applicable to all hubs.
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">GetTransformationChain</th>
+    <th align="left">!GetTransformationChain</th>
     <td align="center">X</td>
     <td align="center"></td>
   </tr>
@@ -51,7 +51,7 @@ The WPS GetCapabilities and DescribeProcess requests are applicable to all hubs.
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">ListTransformations</th>
+    <th align="left">!ListTransformations</th>
     <td align="center">X</td>
     <td align="center"></td>
   </tr>
