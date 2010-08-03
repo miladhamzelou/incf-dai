@@ -54,15 +54,6 @@ Optional</xs:documentation>
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    <xs:complexType name="InputPOIType">
-        <xs:complexContent>
-            <xs:extension base="wax:InputType">
-                <xs:choice>
-                    <xs:element name="POI" type="wax:POIType" />
-                </xs:choice>
-            </xs:extension>
-        </xs:complexContent>
-    </xs:complexType>
     <xs:complexType name="InputAnyType">
         <xs:complexContent>
             <xs:extension base="wax:InputType">
