@@ -188,27 +188,31 @@ filter</td>
     <th colspan="2">!GetCapabilities</th>
   </tr>
   <tr>
-    <th>GET<br/>Request</th>
+    <th align="left">GET<br/>Request</th>
     <td>http://[host:port]/[hub]$service=WPS&request=GetCapabilities</td>
   </tr>
   <tr>
-    <th>Description</th>
+    <th align="left">Description</th>
     <td></td>
   </tr>
   <tr>
-    <th>Data Inputs</th>
+    <th align="left">Applicability</th>
+    <td>All hubs</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
     <td>None</td>
   </tr>
   <tr>
-    <th>Normal<br/>Return</th>
+    <th align="left">Normal<br/>Return</th>
     <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd WPS Schema].</td>
   </tr>
   <tr>
-    <th>Error<br/>Return</th>
+    <th align="left">Error<br/>Return</th>
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th>Example</th>
+    <th align="left">Example</th>
     <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
   </tr>
 </table>
@@ -220,27 +224,31 @@ filter</td>
     <th colspan="2">!DescribeProcess</th>
   </tr>
   <tr>
-    <th>GET<br/>Request</th>
-    <td>http://[host:port]/[hub]$service=WPS&version=1.0.0&request=DescribeProcess</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=DescribeProcess</td>
   </tr>
   <tr>
-    <th>Description</th>
+    <th align="left">Description</th>
     <td></td>
   </tr>
   <tr>
-    <th>Data Inputs</th>
+    <th align="left">Applicability</th>
+    <td>All hubs</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
     <td>None</td>
   </tr>
   <tr>
-    <th>Normal<br/>Return</th>
+    <th align="left">Normal<br/>Return</th>
     <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd WPS Schema].</td>
   </tr>
   <tr>
-    <th>Error<br/>Return</th>
+    <th align="left">Error<br/>Return</th>
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th>Example</th>
+    <th align="left">Example</th>
     <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=DescribeProcess</td>
   </tr>
 </table>
@@ -249,30 +257,34 @@ filter</td>
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th colspan="2">!DescribeSRS</th>
+    <th colspan="2">DescribeSRS</th>
   </tr>
   <tr>
-    <th>GET<br/>Request</th>
+    <th align="left">GET<br/>Request</th>
     <td>http://[host:port]/[hub]$service=WPS&request=Execute&identifier=DescribeSRS</td>
   </tr>
   <tr>
-    <th>Description</th>
+    <th align="left">Description</th>
     <td></td>
   </tr>
   <tr>
-    <th>Data Inputs</th>
+    <th align="left">Applicability</th>
+    <td>See [http://code.google.com/p/incf-dai/wiki/AtlasFunctionHubApplicabilityTable Applibility Table]</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
     <td>srsName</td>
   </tr>
   <tr>
-    <th>Normal<br/>Return</th>
+    <th align="left">Normal<br/>Return</th>
     <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd WPS Schema].</td>
   </tr>
   <tr>
-    <th>Error<br/>Return</th>
+    <th align="left">Error<br/>Return</th>
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th>Example</th>
+    <th align="left">Example</th>
     <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
   </tr>
 </table>
