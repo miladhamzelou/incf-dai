@@ -181,6 +181,7 @@ filter</td>
   </tr>
 </table>
 
+==!GetCapabilities==
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -212,6 +213,8 @@ filter</td>
   </tr>
 </table>
 
+==!DescribeProcess==
+
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th colspan="2">!DescribeProcess</th>
@@ -241,3 +244,49 @@ filter</td>
     <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=DescribeProcess</td>
   </tr>
 </table>
+
+==DescribeSRS==
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th colspan="2">!DescribeSRS</th>
+  </tr>
+  <tr>
+    <th>GET<br/>Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&request=Execute&identifier=DescribeSRS</td>
+  </tr>
+  <tr>
+    <th>Description</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Data Inputs</th>
+    <td>srsName</td>
+  </tr>
+  <tr>
+    <th>Normal<br/>Return</th>
+    <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd WPS Schema].</td>
+  </tr>
+  <tr>
+    <th>Error<br/>Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+  </tr>
+  <tr>
+    <th>Example</th>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
+  </tr>
+</table>
+
+==!DescribeTransfomation==
+==Get2DImagesByPOI==
+==Get2DImagesByURI==
+==GetCellsByPOI==
+==GetCellsByURI==
+==GetCorrelationMapByPOI==
+==GetGenesByPOI==
+==GetStructureNamesByPOI==
+==!GetTransformationChain==
+==ListSRSs==
+==!ListTransformations==
+==Retrieve2DImage==
+==TransformPOI==
