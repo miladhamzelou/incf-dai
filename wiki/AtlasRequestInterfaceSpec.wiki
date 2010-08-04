@@ -287,7 +287,7 @@ filter</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[SRS_Names srsName]</td>
+    <td>[SRS_Names !srsName]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
