@@ -45,14 +45,26 @@ Request = { GetCapabilities | DescribeProcess | Execute }
 
 Identifier = { function-name }
 
+===Data Inputs===
+
 DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
 
 DataInuts keys:
- * srsName, inputSrsName, targetSrsName = { Mouse_ABAreference_1.0 | Mouse_ABAvoxel_1.0 | Mouse_AGEA_1.0 | Mouse_EMAP-T26_1.0 | Mouse_Paxinos_1.0 | Mouse_WHS_1.0 }
+
+
  * sourceType = { WMS }
  * x, y, z, xmin, xmax, ymin, ymax = { double }
  * vocabulary = { { hub } : { srs | vocabulary } : { code } }
  * filter = { maptype:coronal | maptype:horizontal | maptype:sagittal | structureset:anatomic | structureset:fine }
+
+====SRS Names====
+srsName, inputSrsName, and outputSrsName will be one of these values:
+ * Mouse_ABAreference_1.0
+ * Mouse_ABAvoxel_1.0
+ * Mouse_AGEA_1.0
+ * Mouse_EMAP-T26_1.0
+ * Mouse_Paxinos_1.0
+ * Mouse_WHS_1.0 }
 
 == Summary of Atlas Functions ==
 
@@ -263,8 +275,7 @@ filter</td>
     <th colspan="2">DescribeSRS</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=[srsName]</td>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=[srsName]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -276,7 +287,7 @@ filter</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>srsName</td>
+    <td>[SRS_Names srsName]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
