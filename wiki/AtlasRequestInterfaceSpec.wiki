@@ -55,7 +55,7 @@ DataInuts keys:
  * sourceType = { WMS }
  * x, y, z, xmin, xmax, ymin, ymax = { double }
  * vocabulary = { { hub } : { srs | vocabulary } : { code } }
- * filter = { maptype:coronal | maptype:horizontal | maptype:sagittal | structureset:anatomic | structureset:fine }
+ * filter = {  }
 
 ====SRS Names====
 srsName, inputSrsName, and outputSrsName will be one of these values:
@@ -68,6 +68,14 @@ srsName, inputSrsName, and outputSrsName will be one of these values:
 
 ====Coordinates====
 x, y, z, xmin, xmax, ymin, ymax are type double
+
+====Filter====
+_filter_ will be one of these values:
+ * maptype:coronal
+ * maptype:horizontal
+ * maptype:sagittal
+ * structureset:anatomic
+ * structureset:fine
 
 == Summary of Atlas Functions ==
 
@@ -328,11 +336,11 @@ filter</td>
   <tr>
     <th align="left">Data Inputs</th>
     <td>
-      [AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
-      [AtlasRequestInterfaceSpec#Coordinates x]<br/>
-      [AtlasRequestInterfaceSpec#Coordinates y]<br/>
-      [AtlasRequestInterfaceSpec#Coordinates z]<br/>
-      filter
+[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
+[AtlasRequestInterfaceSpec#Coordinates x]<br/>
+[AtlasRequestInterfaceSpec#Coordinates y]<br/>
+[AtlasRequestInterfaceSpec#Coordinates z]<br/>
+filter
     </td>
   </tr>
   <tr>
@@ -345,7 +353,7 @@ filter</td>
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=3892;y=2748;z=1434;filter=coronal</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=3892;y=2748;z=1434;filter=maptype:coronal</td>
   </tr>
 </table>
 
