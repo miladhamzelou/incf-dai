@@ -90,27 +90,6 @@ This table summarizes the planned set of Atlas requests.
     <th>Expected<br/>Output</th>
   </tr>
   <tr>
-    <td>!GetCapabilities</td>
-    <td>n/a</td>
-    <td>n/a</td>
-    <td>Central and<br/>all hubs</td>
-    <td>XML specified by:<br/>wpsGetCapabilities_response.xsd</td>
-  </tr>
-  <tr>
-    <td>!DescribeProcess</td>
-    <td>n/a</td>
-    <td>n/a</td>
-    <td>Central and<br/>all hubs</td>
-    <td>XML specified by:<br/>wpsDescribeProcess_response.xsd</td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>DescribeSRS</td>
-    <td>srsName</td>
-    <td>ABA<br/>UCSD</td>
-    <td>XML</td>
-  </tr>
-  <tr>
     <td>Execute</td>
     <td>ListSRSs</td>
     <td>n/a</td>
@@ -316,6 +295,9 @@ filter</td>
 
 ==!DescribeTransfomation==
 
+Temporary -- Data Inputs: 
+TBD
+
 ==Get2DImagesByPOI==
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
@@ -363,16 +345,37 @@ filter</td>
 
 ==GetCorrelationMapByPOI==
 
+Temporary -- Data Inputs: 
+inputSrsName outputSrsName x y z filter
+
 ==GetGenesByPOI==
+
+Temporary -- Data Inputs: 
+inputSrsName outputSrsNamex y z
 
 ==GetStructureNamesByPOI==
 
+Temporary -- Data Inputs: 
+srsName x y z vocabulary filter
+
 ==!GetTransformationChain==
+
+Temporary -- Data Inputs: 
+inputSrsName outputSrsName filter
 
 ==ListSRSs==
 
+Temporary -- Data Inputs: 
+None
+
 ==!ListTransformations==
+
+Temporary -- Data Inputs: 
+TBD
 
 ==Retrieve2DImage==
 
 ==TransformPOI==
+
+Temporary -- Data Inputs: 
+inputSrsName outputSrsNamex y z filter
