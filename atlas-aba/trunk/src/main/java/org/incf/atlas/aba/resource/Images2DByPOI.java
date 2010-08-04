@@ -1,6 +1,7 @@
 package org.incf.atlas.aba.resource;
 
 import java.io.BufferedReader;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -34,6 +35,72 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+/*
+$ mysql -A -h mysql.crbs.ucsd.edu -u allen -p***** -D AllenBrainAtlas
+
+Existing tables:
+image_series (26,072 rows)
+image (685,744 rows)
+
+(1) Set up (one-time)
+Create a new table:
+CREATE TABLE image_series_map (
+  id BIGINT AUTO INCREMENT PRIMARY KEY,
+  imageseriesid BIGINT,
+  plane VARCHAR(255),
+  xcoord DOUBLE,
+  ycoord DOUBLE,
+  zcoord DOUBLE,
+  xpixel INT,
+  ypixel INT,
+  position INT
+) ENGINE = InnoDB;
+
+Get list of imageSeriesId's:
+SELECT imageseriesid. plane
+FROM imageseries;
+
+Populate image_series_map:
+for each imageseriesid (26,072 times)
+  read map file: http://www.brain-map.org/aba/api/map/[imageseriesid].map
+  for each map file line (hundreds of thousands)
+    INSERT INTO image_series_map
+      (imageseriesid, plane, xcoord, ycoord, zcoord, xpixel, ypixel, position)
+    VALUES (?, ?, ?, ?, ?, ?, ?);
+
+(2) Get2DImagesByPOI procedure:
+DataInputs: x, y, z, filter (coronal | sagittal)
+Scale x, y, z by 0.01
+
+SELECT imageseriesid, xpixel, ypixel, position
+FROM image_series_map
+WHERE [(closest | close) fit]
+AND plane = '(coronal | sagittal)'
+
+Using imageseriesid and position:
+SELECT imageid, zoomifiednisslurl,thumbnailurl, expressthumbnailurl,
+  downloadimagepath, [other metadata?]
+FROM image
+WHERE imageseriesid = ?
+AND position = ?
+
+Several question arise:
+- Performance?
+- What do we return?
+	zoomifiednisslurl
+	thumbnailurl
+	expressthumbnailurl
+    downloadimagepath
+    other metadata
+    ABA's Get Image URL (need more values: zoom, mime, top, left, width, height)
+    Lydia's web app image URL (need more values: zoom level)
+ - In the "closest | close" fit search
+ 	which, and if "close" how do we handle a list
+ 	what's the algorithm -- this is were PostGIS/Postgres is needed
+   
+
+ */
+
 /**
  * Expected GET statement: http://<host:port>/atlas-aba
  *  ?service={service}
@@ -42,6 +109,14 @@ import org.w3c.dom.Element;
  * 	&Identifier=Get2DImagesByPOI
  *  &DataInputs=srsName={srsName};x={x};y={y};z={z};gene={geneSymbol};zoom={zoomLevel}
  *  &ResponseForm={responseForm}
+ *  
+ *      
+ * search procedure
+ * with inputs x, y, z find closest line in image_series_map
+ * with position, imageseriesid
+ * 
+ * 
+ * 
  * 
  * @author dave
  *
@@ -270,7 +345,7 @@ public class Images2DByPOI extends BaseResouce {
         return new DomRepresentation(MediaType.APPLICATION_XML, doc);
 	}
 	
-	public List<ImageSeries> retrieveImagesSeriesesForGene(String geneSymbol) {
+	private List<ImageSeries> retrieveImagesSeriesesForGene(String geneSymbol) {
         List<ImageSeries> imageSerieses = new ArrayList<ImageSeries>();
 	    try {
 	        URL u = new URL(assembleGeneInfoURI(geneSymbol));
@@ -324,7 +399,7 @@ public class Images2DByPOI extends BaseResouce {
 	    return imageSerieses;
 	}
 	
-	public Image getClosestPosition(ImageSeries imageSeries, Point3d poi) {
+	private Image getClosestPosition(ImageSeries imageSeries, Point3d poi) {
 		Image image = new Image(imageSeries);
 		try {
 			
@@ -378,7 +453,7 @@ public class Images2DByPOI extends BaseResouce {
 		return image;
 	}
 	
-	public String retrieveImageIdForPosition(String imageSeriesId,
+	private String retrieveImageIdForPosition(String imageSeriesId,
 			String position) {
         String imageId = null;
 	    try {
