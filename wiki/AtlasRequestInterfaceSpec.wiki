@@ -58,7 +58,7 @@ DataInuts keys:
  * filter = {  }
 
 ====SRS Names====
-srsName, inputSrsName, and outputSrsName will be one of these values:
+_srsName, inputSrsName, outputSrsName_ will be one of these values:
  * Mouse_ABAreference_1.0
  * Mouse_ABAvoxel_1.0
  * Mouse_AGEA_1.0
@@ -67,7 +67,7 @@ srsName, inputSrsName, and outputSrsName will be one of these values:
  * Mouse_WHS_1.0 }
 
 ====Coordinates====
-x, y, z, xmin, xmax, ymin, ymax are type double
+_x, y, z, xmin, xmax, ymin, ymax_ are type double
 
 ====Filter====
 _filter_ will be one of these values:
@@ -335,13 +335,11 @@ filter</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>
-[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
+    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
 [AtlasRequestInterfaceSpec#Coordinates x]<br/>
 [AtlasRequestInterfaceSpec#Coordinates y]<br/>
 [AtlasRequestInterfaceSpec#Coordinates z]<br/>
-filter
-    </td>
+[AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
