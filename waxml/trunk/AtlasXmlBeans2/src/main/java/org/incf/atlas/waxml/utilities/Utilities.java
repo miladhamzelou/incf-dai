@@ -50,6 +50,9 @@ public class Utilities {
 		 return isValid;
 	}
 	
+	/* add query url with method name 
+	 * */
+	 
 	public static void addMethodNameToQueryInfo(QueryInfoType queryInfo, String methodName, String url ){
 		queryInfo.addNewQueryUrl().setName(methodName);
 		queryInfo.getQueryUrl().setStringValue(url);
