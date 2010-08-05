@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema 
+    xmlns:wax="http://www.incf.org/WaxML/" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.incf.org/WaxML/" 
+    version="0.8" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="IncfRemoteFormats">
+    <xs:union memberTypes="wax:IncfRemoteFormatEnum xs:string" />
+  </xs:simpleType>
+  <xs:simpleType name="IncfRemoteFormatEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="WMS/jpg" />
+      <xs:enumeration value="WMS/gif" />
+      <xs:enumeration value="WMS/png" />
+      <xs:enumeration value="zoomify" />
+      <xs:enumeration value="image/jpeg" />
+      <xs:enumeration value="image/png" />
+      <xs:enumeration value="image/gif" />
+      <xs:enumeration value="text/html" />
+      <xs:enumeration value="url" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
+    

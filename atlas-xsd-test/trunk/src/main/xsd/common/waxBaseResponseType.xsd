@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema 
+    xmlns:wax="http://www.incf.org/WaxML/" 
+    elementFormDefault="qualified" 
+    targetNamespace="http://www.incf.org/WaxML/" 
+    version="0.8" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="BaseResponseType">
+    <xs:sequence>
+      <xs:element name="QueryInfo" type="wax:QueryInfoType" minOccurs="0" maxOccurs="1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="QueryInfoType">
+    <xs:sequence>
+      <xs:element name="TimeCreated" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation> Time that this process was run, and this document was created</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="QueryUrl" minOccurs="0" maxOccurs="1">
+        <xs:annotation>
+          <xs:documentation>The URL that was used to make this document. Optional
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+              <xs:attribute name="name" type="xs:Name" />
+            </xs:extension>
+          </xs:simpleContent>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Criteria" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="Input" type="wax:InputType" minOccurs="0" maxOccurs="unbounded">
+              <xs:annotation>
+                <xs:documentation>Name of the Input parameter, and it's value. This can be any element, eg a gml point</xs:documentation>
+              </xs:annotation>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InputType" abstract="true">
+    <xs:attribute name="name" type="xs:Name" />
+  </xs:complexType>
+</xs:schema>
