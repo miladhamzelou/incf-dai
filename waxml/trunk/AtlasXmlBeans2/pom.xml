@@ -63,8 +63,17 @@
 					<catalogLocation>${basedir}/src/main/catalog/XmlCatalog.xml</catalogLocation>
 					<download>false</download>
 					<sourceSchemas>
-						<sourceSchema>WaxMlSchema/WaxML_Base.xsd</sourceSchema>
-					<!--  <sourceSchema>SCHEMAS_OPENGIS_NET/wps/1.0.0/wpsAll.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/StructureTermsResponse.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/GenesResponse.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/allCoordinateTransformationResponses.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/CorelationMapResponse.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/allSrsTransformResponses.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/ImagesResponse.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/Retrieve2DimageResponse.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/Retrieve2DimagesResponse.xsd</sourceSchema>
+					    <sourceSchema>WaxMlSchema/TransformationResponse.xsd</sourceSchema>
+					<!--	<sourceSchema>WaxMlSchema/WaxML_Base.xsd</sourceSchema>
+					  <sourceSchema>SCHEMAS_OPENGIS_NET/wps/1.0.0/wpsAll.xsd</sourceSchema>
 					-->	
 					</sourceSchemas>
 					<schemaDirectory>${basedir}/src/main/xsd</schemaDirectory>
@@ -131,6 +140,11 @@
   <version>1.0</version>
   <type>plugin</type>
 </dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.7</version>
+		</dependency>
 	</dependencies>
 	<reporting>
 		<plugins>
