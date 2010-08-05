@@ -1,8 +1,7 @@
 package org.incf.atlas.waxml.examples;
 
 import java.io.BufferedWriter;
-import java.io.Console;
-import java.io.File;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import org.incf.atlas.waxml.utilities.*;
