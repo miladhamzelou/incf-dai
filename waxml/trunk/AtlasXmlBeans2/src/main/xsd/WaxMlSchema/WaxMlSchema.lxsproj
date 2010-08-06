@@ -2,8 +2,6 @@
 <!--Created by Liquid XML Data Binding Libraries (www.liquid-technologies.com) for Liquid Technologies Limited-->
 <XmlStudioProject xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" Version="8.0.7.1998" UseRelativePaths="true">
 	<Project Name="WaxMlSchema">
-		<File Uri=".\WaxML_Base.xsd"/>
-		<File Uri=".\allTransformationResponses.xsd"/>
 		<File Uri=".\StructureTermsResponse.xsd"/>
 		<File Uri=".\GenesResponse.xsd"/>
 		<File Uri=".\CorelationMapResponse.xsd"/>
@@ -12,6 +10,9 @@
 		<File Uri=".\TransformationResponse.xsd"/>
 		<File Uri=".\Retrieve2DImageResponse.xsd"/>
 		<File Uri=".\Retrieve2DimagesResponse.xsd"/>
+		<File Uri=".\allCoordinateTransformationResponses.xsd"/>
+		<File Uri=".\newBaseResponseTemplate.xsd"/>
+		<File Uri=".\ListTransformationResponse.xsd"/>
 		<SubGroup Name="Documents">
 			<File Uri=".\SampleDocuments\TransformResponse.xml"/>
 			<File Uri=".\SampleDocuments\CoordinateTransformInfo.xml"/>
@@ -28,5 +29,9 @@
 			<File Uri="http://schemas.opengis.net/ows/1.1.0/owsAll.xsd"/>
 		</SubGroup>
 		<SubGroup Name="Transforms"/>
+		<SubGroup Name="common">
+			<File Uri=".\WaxML_Base.xsd"/>
+			<File Uri=".\common\CoordinateTransformationCommon.xsd"/>
+		</SubGroup>
 	</Project>
 </XmlStudioProject>
