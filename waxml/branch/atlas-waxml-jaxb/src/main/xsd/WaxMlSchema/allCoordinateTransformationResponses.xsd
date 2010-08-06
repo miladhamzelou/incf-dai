@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:wax="http://www.incf.org/WaxML/" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="WaxML_Base.xsd"  />
+      <xs:complexType name="CoordinateTransformationInfoType">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+                <xs:attribute name="code" type="xs:string" use="required" />
+                <xs:attribute name="hub" type="xs:Name" use="required" />
+                <xs:attribute name="inputSrsName" type="xs:QName" use="required" />
+                <xs:attribute name="outputSrsName" type="xs:QName" use="required" />
+                <xs:attribute name="accuracy" type="xs:float" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="CoordinateTransformationChainResponse" type="wax:CoordinateTransformationChainResponseType" />
+    <xs:complexType name="CoordinateChainTransformType">
+        <xs:complexContent>
+            <xs:extension base="wax:CoordinateTransformationInfoType">
+                <xs:attribute name="order" type="xs:int" use="required" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="CoordinateTransformationChainResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="CoordinateTransformationChain" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="CoordinateTransformation" type="wax:CoordinateChainTransformType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ListTransformationsResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="TransformationList" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="CoordinateTransformation" type="wax:CoordinateTransformationInfoType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="ListTransformationsResponse" type="wax:ListTransformationsResponseType" />
+</xs:schema>

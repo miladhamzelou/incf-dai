@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:include schemaLocation="common/WaxML_Base.xsd" />
+    <xs:complexType name="ImagesResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="Image2Dcollection" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Image2D" type="wax:Image2DType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="ImagesResponse" type="wax:ImagesResponseType" />
+    <xs:complexType name="Image2DType">
+        <xs:sequence>
+            <xs:element name="ImageSource" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:anyURI">
+                            <xs:attribute name="thumbnanil" type="xs:anyURI" />
+                            <xs:attribute name="metadata" type="xs:anyURI" />
+                            <xs:attribute name="name" type="xs:normalizedString" />
+                            <xs:attribute name="srsName" type="xs:token" />
+                            <xs:attribute name="format" type="wax:IncfRemoteFormats" />
+                            <xs:attribute name="relavance" type="xs:float" />
+                            <xs:attribute name="type" type="wax:incfImageServices" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ImagePosition">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ImagePlaneEquation" type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
+                        <xs:element name="ImagePlanePlacement " type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
+                        <xs:element name="Corners" type="wax:Corners" minOccurs="0" maxOccurs="1" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="Corners">
+        <xs:sequence>
+            <xs:element name="Corner" minOccurs="4" maxOccurs="4">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="gml:Point" />
+                    </xs:sequence>
+                    <xs:attribute name="position" type="wax:PositionEnum" />
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    
+</xs:schema>

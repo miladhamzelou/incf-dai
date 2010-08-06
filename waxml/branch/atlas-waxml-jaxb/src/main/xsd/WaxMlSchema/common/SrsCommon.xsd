@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:wax="http://www.incf.org/WaxML/" 
+xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink"  
+elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+<xs:include schemaLocation="WaxML_Base.xsd"  />
+  <xs:complexType name="SRSType">
+        <xs:sequence>
+            <xs:element name="Name">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:normalizedString">
+                            <xs:attribute name="srsCode" type="xs:QName" />
+                            <xs:attribute name="srsBase" type="xs:normalizedString" />
+                            <xs:attribute name="srsVersion" type="xs:normalizedString" />
+                            <xs:attribute name="species" type="xs:normalizedString" />
+                            <xs:attribute name="urn" type="xs:normalizedString" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Description" type="wax:Incfdescription" />
+            <xs:element xmlns:q1="http://www.isotc211.org/2005/gmd" name="Author" type="q1:CI_ResponsibleParty_Type" />
+            <xs:element name="DateCreated" type="xs:date" />
+            <xs:element name="DateUpdated" type="xs:date" />
+            <xs:element name="Origin" type="wax:incfCodeType" />
+            <xs:element name="Area">
+                <xs:complexType>
+                    <xs:attribute name="structureName" type="xs:string" />
+                    <xs:attribute name="structureURN" type="xs:anyURI" />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Units" type="gml:UnitOfMeasureType" />
+            <xs:element name="Neurodimensions" type="wax:NeurodimensionsType" />
+            <xs:element name="Source" type="wax:incf_DocumentCitation" />
+            <xs:element name="DerivedFrom">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="method" type="xs:normalizedString" />
+                            <xs:attribute name="srsName" type="xs:normalizedString" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SliceType">
+        <xs:complexContent>
+            <xs:extension base="xs:anyType">
+                <xs:attribute name="code" />
+                <xs:attribute name="orientation" />
+                <xs:attribute name="constant" />
+                <xs:attribute name="xOrientation" />
+                <xs:attribute name="yOrientation" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="NeurodimensionsType">
+        <xs:sequence>
+            <xs:element name="MinusX" type="wax:NeurodimensionType" />
+            <xs:element name="PlusX" type="wax:NeurodimensionType" />
+            <xs:element name="MinusY" type="wax:NeurodimensionType" />
+            <xs:element name="PlusY" type="wax:NeurodimensionType" />
+            <xs:element name="MinusZ" type="wax:NeurodimensionType" />
+            <xs:element name="PlusZ" type="wax:NeurodimensionType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NeurodimensionType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xlink:href" />
+                <xs:attribute name="maxValue" type="xs:float" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    
+</xs:schema>

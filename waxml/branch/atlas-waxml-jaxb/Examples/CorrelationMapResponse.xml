@@ -1,0 +1,20 @@
+<correlationMapResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <QueryInfo>
+    <QueryUrl name="GetCorrelationMapByPOI">URL</QueryUrl>
+    <Criteria>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="x">
+        <Value>263</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="y">
+        <Value>159</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="y">
+        <Value>227</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="filter">
+        <Value>maptype:coronal</Value>
+      </Input>
+    </Criteria>
+  </QueryInfo>
+  <CorrelationUrl>URL</CorrelationUrl>
+</correlationMapResponse>

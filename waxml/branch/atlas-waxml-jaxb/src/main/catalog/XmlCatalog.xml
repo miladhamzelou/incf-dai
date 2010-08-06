@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE catalog PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN" "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+	
+	
+	<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog"> 
+	<!-- 
+	<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:oasis:names:tc:entity:xmlns:xml:catalog oasis/entity/1.1/catalog.xsd">
+-->
+<!-- Modified version of Simon Cox localCatalog to work with instructions provided on GeoSciML subversion pages -->
+	<!-- Modified by Bruce Simons 25 January 2008 -->
+	
+	<!-- An example OASIS Catalog document, for entity resolution. -->
+	<!-- ===================================================== -->
+	        <!-- The first three pairs of elements provide local copies for three specific XML Schema documents -->
+	        <!-- The first entry in each pair uses the "uri" version, and the second the "system" version of the redirect -->
+	        <!-- the two alternatives are provided in order to support various processing environments, which appear to behave slightly differently -->
+	
+<!-- The OASIS Entity ResolutionCatalog schema -->
+	        <uri name="urn:oasis:names:tc:entity:xmlns:xml:catalog" 
+	        uri="oasis/entity/release/1.0/catalog.xsd"/>
+	        <system systemId="urn:oasis:names:tc:entity:xmlns:xml:catalog" 
+	        uri="oasis/entity/release/1.0/catalog.xsd"/>
+	        
+	        <!-- OASIS 1.1 has been released but not copied to local directory -->
+	        <!--
+	        <uri name="urn:oasis:names:tc:entity:xmlns:xml:catalog" 
+	        uri="oasis/entity/release/1.1/catalog.xsd"/>
+	        <system systemId="urn:oasis:names:tc:entity:xmlns:xml:catalog" 
+	        uri="oasis/entity/release/1.1/catalog.xsd"/>
+	-->
+	        <!-- The XML Namespace schema -->
+	        <!-- The version at http://www.w3.org/2001/xml.xsd needs to be downloaded -->
+	        <!--
+<uri name="http://www.w3.org/2001/xml.xsd" 
+	        uri="w3c/xsd/xml.xsd"/>
+	        <system systemId="http://www.w3.org/2001/xml.xsd" 
+	        uri="w3c/xsd/xml.xsd"/>
+	-->
+	        <!-- The OGC-supplied XML Schema for XLINKS -->
+	        <uri name="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" 
+	        uri="../xsd/SCHEMAS_OPENGIS_NET/xlink/1.0.0/xlinks.xsd"/>
+	        <system systemId="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" 
+	        uri="../xsd/SCHEMAS_OPENGIS_NET/xlink/1.0.0/xlinks.xsd"/>
+	        <!-- the schemas in the OGC rep use relpaths for schemaLocation references to other OGC schemas - yuck -->
+	        <uri name="../../xlink/1.0.0/xlinks.xsd" 
+	        uri="../xsd/SCHEMAS_OPENGIS_NET/xlink/1.0.0/xlinks.xsd"/>
+	        <system systemId="../../xlink/1.0.0/xlinks.xsd" 
+	        uri="../xsd/SCHEMAS_OPENGIS_NET/xlink/1.0.0/xlinks.xsd"/>
+	
+	        <!-- some rewriteURI added for Oxygen 8.2 -->
+	        <!-- according to http://www.oxygenxml.com/forum/ftopic840.htm 
+	        "The catalog acts as an entity resolver so it gets the fully expanded location of the schema (although you write it as a relative location in the XML file). Then the catalog does not have a way to say anything that ends in this should be resolved to that. If you still want to use such instance documents then you have two options:
+	        1. Place the schema in the same folder as the instance file so that the application will find it.
+	        2. Add in the catalog mappings from all the possible expanded locations of the schema to the actual location. " -->     
+	        <!--    translation of relative rewrite to use fully expanded form
+	    <rewriteSystem systemIdStartString="../../xlink/1.0.0" rewritePrefix="SCHEMAS_OPENGIS_NET/xlink/1.0.0"/>    -->
+	    <rewriteSystem systemIdStartString="SCHEMAS_OPENGIS_NET/xlink/1.0.0" rewritePrefix="SCHEMAS_OPENGIS_NET/xlink/1.0.0"/>      
+
+	        <!-- The OGC-supplied XML Schema for XLINKS, in an earlier location -->
+	        <!--
+	        <uri name="http://schemas.opengis.net/gml/3.1.0/xlink/xlinks.xsd" 
+	        uri="SCHEMAS_OPENGIS_NET/gml/3.1.0/xlink/xlinks.xsd"/>
+	        <system systemId="http://schemas.opengis.net/gml/3.1.0/xlink/xlinks.xsd" 
+	        uri="SCHEMAS_OPENGIS_NET/gml/3.1.0/xlink/xlinks.xsd"/>
+	-->
+	
+	<!-- ===================================================== -->
+<!-- The following groups of elements provide local paths for a set of resources as an alternative to web paths -->
+	        <!-- The first entry in each pair uses the "uri" version, and the second the "system" version of the redirect -->
+	        <!-- the two alternatives are provided in order to support various processing environments, which appear to behave slightly differently -->
+	
+	        <!-- Exact copy of  GML 2.1.2  -->
+	        <rewriteURI uriStartString="http://schemas.opengis.net/gml/2.1.2" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/gml/2.1.2"/>
+	        <rewriteSystem systemIdStartString="http://schemas.opengis.net/gml/2.1.2" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/gml/2.1.2"/>
+	
+	        <!-- GML 3.1.1 profile
+	         with deprecated components removed, 
+	         and with one member from a choice group selected for cases where the choice represents only a syntax preference -->
+	        <rewriteURI uriStartString="http://schemas.opengis.net/gml/3.1.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/gml/3.1.1"/>
+	        <rewriteSystem systemIdStartString="http://schemas.opengis.net/gml/3.1.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/gml/3.1.1"/>
+	        <!-- the schemas in the OGC rep use relpaths for schemaLocation references to other OGC schemas - yuck -->
+	        <rewriteURI uriStartString="../../gml/3.1.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/gml/3.1.1"/>
+	        <rewriteSystem systemIdStartString="../../gml/3.1.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/gml/3.1.1"/>
+	
+	        <!-- GML 3.2.1 profile
+	         with deprecated components removed, 
+	         and with one member from a choice group selected for cases where the choice represents only a syntax preference -->
+	        <rewriteURI uriStartString="http://schemas.opengis.net/gml/3.2.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/gml/3.2.1"/>
+	        <rewriteSystem systemIdStartString="http://schemas.opengis.net/gml/3.2.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/gml/3.2.1"/>
+	
+	<!-- These were in Simon's file but I don't know where these are in the new OGC zip file-->
+	        <!-- redirect local relpaths to the GML profiles -->
+	<!--
+	        <rewriteURI uriStartString="../../../../gml/trunk/gml" 
+	        rewritePrefix="OGC/branches/gml_s"/>
+	        <rewriteSystem systemIdStartString="../../../../gml/trunk/gml" 
+	        rewritePrefix="OGC/branches/gml_s"/>
+	-->
+	        <!-- Exact copy of  Discrete Coverages schema, v 0.2.0  
+	        <rewriteURI uriStartString="http://bp.schemas.opengis.net/06-188r1/cv/0.2.0" 
+	        rewritePrefix="bp.schemas.opengis.net/06-188r1/cv/0.2.0"/>
+	        <rewriteSystem systemIdStartString="http://bp.schemas.opengis.net/06-188r1/cv/0.2.0" 
+	        rewritePrefix="bp.schemas.opengis.net/06-188r1/cv/0.2.0"/>
+	-->
+	        <!-- Exact copy of  Discrete Coverages schema, v 0.2.1  
+	        <rewriteURI uriStartString="http://bp.schemas.opengis.net/06-188r1/cv/0.2.1" 
+	        rewritePrefix="bp.schemas.opengis.net\06-188r1/cv/0.2.1"/>
+	        <rewriteSystem systemIdStartString="http://bp.schemas.opengis.net/06-188r1/cv/0.2.1" 
+	        rewritePrefix="bp.schemas.opengis.net\06-188r1/cv/0.2.1"/>
+	-->
+	        <!-- Exact copy of  SWE Common schema, v 1.0.0  -->
+	        <rewriteURI uriStartString="http://schemas.opengis.net/sweCommon/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sweCommon/1.0.0"/>
+	        <rewriteSystem systemIdStartString="http://schemas.opengis.net/sweCommon/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sweCommon/1.0.0"/>
+	        <!-- the schemas in the OGC rep use relpaths for schemaLocation references to other OGC schemas - yuck -->
+	        <rewriteURI uriStartString="../../sweCommon/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sweCommon/1.0.0"/>
+	        <rewriteSystem systemIdStartString="../../sweCommon/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sweCommon/1.0.0"/>
+	
+	        <!-- Exact copy of  SWE Common schema, v 1.0.1  -->
+	        <rewriteURI uriStartString="http://schemas.opengis.net/sweCommon/1.0.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sweCommon/1.0.1"/>
+	        <rewriteSystem systemIdStartString="http://schemas.opengis.net/sweCommon/1.0.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sweCommon/1.0.1"/>
+	        <!-- the schemas in the OGC rep use relpaths for schemaLocation references to other OGC schemas - yuck -->
+	        <rewriteURI uriStartString="../../sweCommon/1.0.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sweCommon/1.0.1"/>
+	        <rewriteSystem systemIdStartString="../../sweCommon/1.0.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sweCommon/1.0.1"/>
+	
+	        <!-- Exact copy of  SensorML schema, v 1.0.0  -->
+	        <rewriteURI uriStartString="http://schemas.opengis.net/sensorML/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sensorML/1.0.0"/>
+	        <rewriteSystem systemIdStartString="http://schemas.opengis.net/sensorML/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sensorML/1.0.0"/>
+	        <!-- the schemas in the OGC rep use relpaths for schemaLocation references to other OGC schemas - yuck -->
+	        <rewriteURI uriStartString="../../sensorML/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sensorML/1.0.0"/>
+	        <rewriteSystem systemIdStartString="../../sensorML/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sensorML/1.0.0"/>
+	
+	        <!-- Exact copy of  SensorML schema, v 1.0.1  -->
+	        <rewriteURI uriStartString="http://schemas.opengis.net/sensorML/1.0.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sensorML/1.0.1"/>
+	        <rewriteSystem systemIdStartString="http://schemas.opengis.net/sensorML/1.0.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sensorML/1.0.1"/>
+	        <!-- the schemas in the OGC rep use relpaths for schemaLocation references to other OGC schemas - yuck -->
+	        <rewriteURI uriStartString="../../sensorML/1.0.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sensorML/1.0.1"/>
+	        <rewriteSystem systemIdStartString="../../sensorML/1.0.1" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sensorML/1.0.1"/>
+	
+	        <!-- Exact copy of Intelligence Community Intelligence Security Marking (IC ISM) Data Element
+	    Dictionary Version 2.0 -->
+	        <rewriteURI uriStartString="http://schemas.opengis.net/ic/2.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/ic/2.0"/>
+	        <rewriteSystem systemIdStartString="http://schemas.opengis.net/ic/2.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/ic/2.0"/>
+	        <!-- the schemas in the OGC rep use relpaths for schemaLocation references to other OGC schemas - yuck -->
+	        <rewriteURI uriStartString="../../ic/2.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/ic/2.0"/>
+	        <rewriteSystem systemIdStartString="../../ic/2.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/ic/2.0"/>
+	
+	        <!-- Exact copy of  Observations and Measurements schema, v 1.0.0  -->
+	        <rewriteURI uriStartString="http://schemas.opengis.net/om/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/om/1.0.0"/>
+	        <rewriteSystem systemIdStartString="http://schemas.opengis.net/om/1.0.0" 
+	        rewritePrefix="../SCHEMAS_OPENGIS_NET/om/1.0.0"/>
+	
+	        <!-- Exact copy of  Sampling Features schema, v 1.0.0  -->
+	        <rewriteURI uriStartString="http://schemas.opengis.net/sampling/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sampling/1.0.0"/>
+	        <rewriteSystem systemIdStartString="http://schemas.opengis.net/sampling/1.0.0" 
+	        rewritePrefix="../xsd/SCHEMAS_OPENGIS_NET/sampling/1.0.0"/>
+	
+	        <!-- ===================== CGI GeoSciML Resources ===================== -->
+	        <!-- Exact copy of  GeoSciML schema, v 2.0 
+	        <rewriteURI uriStartString="https://www.seegrid.csiro.au/subversion/GeoSciML/trunk/schema/GeoSciML" 
+	        rewritePrefix="cgi-iugs.org/GeoSciML"/>
+	        <rewriteSystem systemIdStartString="https://www.seegrid.csiro.au/subversion/GeoSciML/trunk/schema/GeoSciML" 
+	        rewritePrefix="cgi-iugs.org/GeoSciML"/>
+	 -->
+	        <!-- Exact copy of  GeoSciML Utilities schema, v 1.0  
+	        <rewriteURI uriStartString="https://www.seegrid.csiro.au/subversion/GeoSciML/trunk/schema/Utilities" 
+	        rewritePrefix="cgi-iugs.org/Utilities"/>
+	        <rewriteSystem systemIdStartString="https://www.seegrid.csiro.au/subversion/GeoSciML/trunk/schema/Utilities" 
+	        rewritePrefix="cgi-iugs.org/Utilities"/>
+	-->
+        
+	        <!-- ===================== GGIC MineralOccurrence Resources ===================== -->
+	        <!-- Exact copy of  GGIC MineralOccurrences schema, v 1.0.0 
+	        <rewriteURI uriStartString="https://www.seegrid.csiro.au/subversion/xmml/GGIC/trunk/schema/MineralOccurrence/1.0/" 
+	        rewritePrefix="ggic.gov.au/MineralOccurrence/1.0.0"/>
+	        <rewriteSystem systemIdStartString="https://www.seegrid.csiro.au/subversion/xmml/GGIC/trunk/schema/MineralOccurrence/1.0/" 
+	        rewritePrefix="ggic.gov.au/MineralOccurrence/1.0.0"/>
+	 -->
+	<!-- ===================================================== -->
+</catalog>
