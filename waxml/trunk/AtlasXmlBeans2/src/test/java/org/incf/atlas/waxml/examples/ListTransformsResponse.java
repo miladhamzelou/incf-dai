@@ -1,4 +1,6 @@
 package org.incf.atlas.waxml.examples;
+import static org.junit.Assert.assertTrue;
+
 import java.io.StringWriter;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import net.opengis.gml.x32.PointType;
 
 import org.incf.atlas.waxml.generated.CoordinateChainTransformType;
 import org.incf.atlas.waxml.generated.ListTransformationsResponseDocument;
+import org.incf.atlas.waxml.generated.TransformationResponseDocument;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseType.CoordinateTransformationChain;
 import org.incf.atlas.waxml.generated.ListTransformationsResponseType.TransformationList;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
@@ -21,8 +24,24 @@ import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
 
 import org.incf.atlas.waxml.generated.*;
 import org.incf.atlas.waxml.utilities.*;
+import org.junit.Test;
 
-public class ListTransforms {
+public class ListTransformsResponse {
+	@Test
+	public void validFullResponse() {
+		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+		opt.setSaveNamespacesFirst();
+		opt.setSaveAggressiveNamespaces();
+		opt.setUseDefaultNamespace();
+
+		XmlObject co = completeResponse();
+		ArrayList errorList = new ArrayList();
+		boolean validXml = Utilities.validateXml(opt, co, errorList);
+		assertTrue(errorList.toString(), validXml);
+
+	}
+	
 public String asXml(){
 	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
@@ -30,6 +49,40 @@ public String asXml(){
 	opt.setSaveAggressiveNamespaces();
 	opt.setUseDefaultNamespace();
 	
+	ListTransformationsResponseDocument co = completeResponse();
+	
+	
+	
+	
+	 ArrayList errorList = new ArrayList();
+	 opt.setErrorListener(errorList);
+	
+	 
+	 // Validate the XML.
+	 boolean isValid = co.validate(opt);
+	 
+	 // If the XML isn't valid, loop through the listener's contents,
+	 // printing contained messages.
+	 if (!isValid)
+	 {
+	      for (int i = 0; i < errorList.size(); i++)
+	      {
+	          XmlError error = (XmlError)errorList.get(i);
+	          
+	          System.out.println("\n");
+	          System.out.println("Message: " + error.getMessage() + "\n");
+	          System.out.println("Location of invalid XML: " + 
+	              error.getCursorLocation().xmlText() + "\n");
+	      }
+	 }
+	 
+	
+	return co.xmlText(opt);
+
+	
+}
+
+public ListTransformationsResponseDocument completeResponse() {
 	ListTransformationsResponseDocument co =   ListTransformationsResponseDocument.Factory.newInstance();
 	co.addNewListTransformationsResponse();
 	
@@ -80,35 +133,6 @@ public String asXml(){
 	ex2.setOutputSrsName(new QName("Mouse_AGEA_1.0"));
 	ex2.setAccuracy(1);
 	ex2.setStringValue("RequestUrl_2");
-	
-	
-	
-	
-	 ArrayList errorList = new ArrayList();
-	 opt.setErrorListener(errorList);
-	
-	 
-	 // Validate the XML.
-	 boolean isValid = co.validate(opt);
-	 
-	 // If the XML isn't valid, loop through the listener's contents,
-	 // printing contained messages.
-	 if (!isValid)
-	 {
-	      for (int i = 0; i < errorList.size(); i++)
-	      {
-	          XmlError error = (XmlError)errorList.get(i);
-	          
-	          System.out.println("\n");
-	          System.out.println("Message: " + error.getMessage() + "\n");
-	          System.out.println("Location of invalid XML: " + 
-	              error.getCursorLocation().xmlText() + "\n");
-	      }
-	 }
-	 
-	
-	return co.xmlText(opt);
-
-	
+	return co;
 }
 }

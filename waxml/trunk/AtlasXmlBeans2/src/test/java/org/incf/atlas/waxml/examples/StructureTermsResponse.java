@@ -1,5 +1,7 @@
 package org.incf.atlas.waxml.examples;
 
+import static org.junit.Assert.assertTrue;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import net.opengis.gml.x32.EnvelopeType;
 import net.opengis.gml.x32.PointType;
 
 import org.apache.xmlbeans.XmlError;
+import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.*;
 import org.incf.atlas.waxml.generated.FeatureReferenceType.*;
@@ -16,8 +19,24 @@ import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.StructureTermType.Code;
 import org.incf.atlas.waxml.generated.StructureTermsResponseType.*;
 import org.incf.atlas.waxml.utilities.*;
+import org.junit.Test;
 
 public class StructureTermsResponse {
+	@Test
+	public void validFullResponse() {
+		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+		opt.setSaveNamespacesFirst();
+		opt.setSaveAggressiveNamespaces();
+		opt.setUseDefaultNamespace();
+
+		XmlObject co = completeResponse();
+		ArrayList errorList = new ArrayList();
+		boolean validXml = Utilities.validateXml(opt, co, errorList);
+		assertTrue(errorList.toString(), validXml);
+
+	}
+	
 public String AsXML(){
 	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
@@ -25,6 +44,30 @@ public String AsXML(){
 	opt.setSaveAggressiveNamespaces();
 	opt.setUseDefaultNamespace();
 	
+	StructureTermsResponseDocument document = completeResponse();
+	
+	ArrayList errorList = new ArrayList();
+	 opt.setErrorListener(errorList);
+	 boolean isValid = document.validate(opt);
+	 
+	 // If the XML isn't valid, loop through the listener's contents,
+	 // printing contained messages.
+	 if (!isValid)
+	 {
+	      for (int i = 0; i < errorList.size(); i++)
+	      {
+	          XmlError error = (XmlError)errorList.get(i);
+	          
+	          System.out.println("\n");
+	          System.out.println("Message: " + error.getMessage() + "\n");
+	          System.out.println("Location of invalid XML: " + 
+	              error.getCursorLocation().xmlText() + "\n");
+	      }
+	 }
+		return document.xmlText(opt);
+}
+
+public StructureTermsResponseDocument completeResponse() {
 	StructureTermsResponseDocument document =	StructureTermsResponseDocument.Factory.newInstance(); 
 	
 	StructureTermsResponseType rootDoc =	document.addNewStructureTermsResponse();
@@ -113,25 +156,6 @@ t1lc.setAxisLabels(AxsList2);
 	t1ft.addNewUrl().setStringValue("URI");
 	t1ft.getUrl().setSrsName("Mouse_ABAvoxel_1.0");
 	t1ft.setFormat(GeomFormatEnum.SHAPE.toString());
-	
-	ArrayList errorList = new ArrayList();
-	 opt.setErrorListener(errorList);
-	 boolean isValid = document.validate(opt);
-	 
-	 // If the XML isn't valid, loop through the listener's contents,
-	 // printing contained messages.
-	 if (!isValid)
-	 {
-	      for (int i = 0; i < errorList.size(); i++)
-	      {
-	          XmlError error = (XmlError)errorList.get(i);
-	          
-	          System.out.println("\n");
-	          System.out.println("Message: " + error.getMessage() + "\n");
-	          System.out.println("Location of invalid XML: " + 
-	              error.getCursorLocation().xmlText() + "\n");
-	      }
-	 }
-		return document.xmlText(opt);
+	return document;
 }
 }

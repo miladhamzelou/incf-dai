@@ -25,7 +25,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class CoordinateTransform  {
+public class CoordinateTransformResponse  {
 	
 public String asXml(){
 	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();

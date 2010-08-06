@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
+import junit.framework.TestCase;
+
 import net.opengis.gml.x32.PointType;
 
 import org.apache.xmlbeans.XmlError;
@@ -13,7 +15,7 @@ import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
 
-public class GenesResponse {
+public class GenesResponse  {
 
 	public String AsXml() {
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();

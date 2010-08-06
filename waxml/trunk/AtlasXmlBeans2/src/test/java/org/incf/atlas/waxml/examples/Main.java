@@ -13,7 +13,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-       CoordinateTransform ct = new CoordinateTransform();
+       CoordinateTransformResponse ct = new CoordinateTransformResponse();
        String ctResponse = ct.asXml();
         try {
         	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/CoordinateTransformatioChainResponse.xml"));
@@ -57,7 +57,7 @@ public class Main {
 		e.printStackTrace();
 	}
 	
-	ListTransforms lr = new ListTransforms();
+	ListTransformsResponse lr = new ListTransformsResponse();
     String listTransformsResponse = lr.asXml();
      try {
      	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/ListTransformsResponse.xml"));
@@ -79,7 +79,7 @@ public class Main {
 		e.printStackTrace();
 	}
 	
-	ImagesResponseMulti irm = new ImagesResponseMulti();
+	ImagesMultiExampleResponse irm = new ImagesMultiExampleResponse();
     String ImagesResponsemulti = irm.AsXml();
      try {
      	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/ImagesResponse_multipleImages.xml"));
