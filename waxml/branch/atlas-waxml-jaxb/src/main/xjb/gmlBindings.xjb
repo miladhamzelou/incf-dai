@@ -1,0 +1,87 @@
+<jxb:bindings version="2.0"
+	xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <jxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/coordinateOperations.xsd" 
+      node="/xsd:schema">
+    <jxb:bindings node="./xsd:element[@name='operationParameter']">
+      <jxb:class name="OperationParameter2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='parameterValue']">
+      <jxb:class name="ParameterValue2"/>
+    </jxb:bindings>
+  </jxb:bindings>
+
+  <jxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/coordinateReferenceSystems.xsd" 
+      node="/xsd:schema">
+    <jxb:bindings node="./xsd:element[@name='imageDatum']">
+      <jxb:class name="ImageDatum2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='geodeticDatum']">
+      <jxb:class name="GeodeticDatum2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='temporalDatum']">
+      <jxb:class name="TemporalDatum2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='engineeringDatum']">
+      <jxb:class name="EngineeringDatum2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='verticalDatum']">
+      <jxb:class name="VerticalDatum2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='conversion']">
+      <jxb:class name="Conversion2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='ellipsoidalCS']">
+      <jxb:class name="EllipsoidalCS2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='cartesianCS']">
+      <jxb:class name="CartesianCS2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='sphericalCS']">
+      <jxb:class name="SphericalCS2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='verticalCS']">
+      <jxb:class name="VerticalCS2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='cylindricalCS']">
+      <jxb:class name="CylindricalCS2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='linearCS']">
+      <jxb:class name="LinearCS2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='polarCS']">
+      <jxb:class name="PolarCS2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='userDefinedCS']">
+      <jxb:class name="UserDefinedCS2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='affineCS']">
+      <jxb:class name="AffineCS2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='timeCS']">
+      <jxb:class name="TimeCS2"/>
+    </jxb:bindings>
+  </jxb:bindings>
+
+  <jxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/datums.xsd" 
+      node="/xsd:schema">
+    <jxb:bindings node="./xsd:element[@name='ellipsoid']">
+      <jxb:class name="Ellipsoid2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='primeMeridian']">
+      <jxb:class name="PrimeMeridian2"/>
+    </jxb:bindings>
+    <jxb:bindings node="./xsd:element[@name='secondDefiningParameter']">
+      <jxb:class name="SecondDefiningParameter2"/>
+    </jxb:bindings>
+  </jxb:bindings>
+
+  <jxb:bindings schemaLocation="http://schemas.opengis.net/gml/3.2.1/geometryPrimitives.xsd" 
+      node="/xsd:schema">
+    <jxb:bindings node="./xsd:complexType[@name='AbstractGriddedSurfaceType']//xsd:attribute[@name='rows']">
+      <jxb:property name="rows2"/>
+    </jxb:bindings>
+  </jxb:bindings>
+
+</jxb:bindings>
