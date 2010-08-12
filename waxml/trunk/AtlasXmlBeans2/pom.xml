@@ -61,6 +61,7 @@
 					<quiet>false</quiet>
 					<noJavac>false</noJavac>
 					<catalogLocation>${basedir}/src/main/catalog/XmlCatalog.xml</catalogLocation>
+          		    <memoryMaximumSize>1024m</memoryMaximumSize>
 					<download>false</download>
 					<sourceSchemas>
 						<sourceSchema>WaxMlSchema/StructureTermsResponse.xsd</sourceSchema>
