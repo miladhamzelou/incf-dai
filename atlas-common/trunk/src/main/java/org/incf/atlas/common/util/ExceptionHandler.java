@@ -1,6 +1,7 @@
 package org.incf.atlas.common.util;
 
 import java.io.StringWriter;
+import java.util.List;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -90,12 +91,29 @@ public class ExceptionHandler {
 				NAMESPACE_URI, CONTEXT_PATH);
 	}
 	
+	public String toString() {
+		StringBuilder buf = new StringBuilder();
+		List<ExceptionType> exceptions = exceptionReport.getException();
+		for (ExceptionType exception : exceptions) {
+			buf.append("  Exception code: ");
+			buf.append(exception.getExceptionCode()).append('\n');
+			List<String> lines = exception.getExceptionText();
+			for (String line : lines) {
+				buf.append("    ").append(line).append('\n');
+			}
+		}
+		return buf.toString();
+	}
+	
 	// testing only
 	public static void main(String[] args) throws JAXBException {
 		ExceptionHandler eh = new ExceptionHandler("1.0.0", "en-US");
 		eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
-				new String[] { "Line 1.", "Line 2." });
+				new String[] { "Line 1a.", "Line 1b." });
+		eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+				new String[] { "Line 2a.", "Line 2b." });
 		System.out.println(eh.getXMLExceptionReport());
+		System.out.println(eh.toString());
 	}
 
 }

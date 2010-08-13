@@ -15,6 +15,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -133,25 +134,27 @@ public final class XMLUtilities {
 		return representation;
 	}
 
-//	protected static JAXBContext jaxbContext = null;
-//
-//	/**
-//	 * Lazily instantiates a single version of the JAXBContext since it is slow
-//	 * to create and can be reused throughout the lifetime of the app.
-//	 * 
-//	 * @return
-//	 */
-//	public static JAXBContext getWBCJAXBContext() {
-//		if (jaxbContext == null) {
-//			try {
-//				jaxbContext = JAXBContext.newInstance("org.incf.waxml");
-//			} catch (JAXBException e) {
-//				throw new RuntimeException(e);
-//			}
-//		}
-//		return jaxbContext;
-//	}
+	public static Document object2Document(
+			Object object, String namespaceUri, String contextPath) 
+			throws ParserConfigurationException, JAXBException {
+		DocumentBuilderFactory docFac = DocumentBuilderFactory.newInstance();
+		DocumentBuilder docBuilder = docFac.newDocumentBuilder();
+		Document doc = docBuilder.newDocument();
+		final Marshaller marshaller = 
+			JAXBContext.newInstance(contextPath).createMarshaller();
+	
+		marshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", 
+				new AtlasNamespacePrefixMapper());
 
+		// marshal object into representation's dom
+		Class clazz = object.getClass();
+		QName qName = new QName(namespaceUri, clazz.getSimpleName());
+		JAXBElement jaxbElement = new JAXBElement(qName, clazz, object);
+		marshaller.marshal(jaxbElement, doc);
+		
+		return doc;
+	}
+	
     public static void main(String[] args) throws FileNotFoundException {
     	String inFile = "src/main/resources/exampleResponses/GetCapabilitiesResponse.xml";
     	String outFile = "src/main/resources/exampleResponses/GetCapabilitiesResponse1.xml";

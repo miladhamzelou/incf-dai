@@ -12,7 +12,8 @@ public class AtlasNamespacePrefixMapper extends NamespacePrefixMapper {
 		{ "http://www.opengis.net/wps/1.0.0", "wps"},
 		{ "http://www.w3.org/1999/xlink", "xlink" },
 		{ "http://www.opengis.net/gml/3.2", "gml" },
-		{ "http://www.incf.org/waxML", "wax" },
+//		{ "http://www.incf.org/waxML", "wax" },
+		{ "http://www.incf.org/WaxML/", "wax" },
 	};
 	
 	private Map<String, String> prefixMap;
