@@ -17,6 +17,7 @@ public class Constants {
     private String defaultService;
     private String defaultVersion;
     private Set<String> srsNames;
+    private boolean validateXml;
 	
 	// singleton pattern
 	private Constants() {
@@ -42,6 +43,8 @@ public class Constants {
                 srsNames.add(srsName);
             }
         }
+        
+        validateXml = Boolean.parseBoolean(props.getProperty("validateXml"));
 	}
 	
 	// singleton pattern
@@ -74,6 +77,10 @@ public class Constants {
     
     public Set<String> getSrsNames() {
         return srsNames;
+    }
+    
+    public boolean validateXml() {
+    	return validateXml;
     }
     
 }
