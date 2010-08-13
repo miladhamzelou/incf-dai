@@ -27,6 +27,8 @@ import org.incf.atlas.aba.util.DataInputs;
 import org.incf.atlas.aba.util.ExceptionCode;
 import org.incf.atlas.aba.util.ExceptionHandler;
 import org.incf.atlas.waxml.generated.*;
+import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
+import org.incf.atlas.waxml.utilities.Utilities;
 
 import org.restlet.Context;
 import org.restlet.data.MediaType;
@@ -44,10 +46,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
-public class TransformPOI extends BaseResouce {
+public class CorrelationMapByPOI extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(
-			TransformPOI.class);
+			CorrelationMapByPOI.class);
+
+	ABAConfigurator config = ABAConfigurator.INSTANCE;
 
 	//private String dataInputString;
 	//private DataInputs dataInputs;
@@ -58,10 +62,12 @@ public class TransformPOI extends BaseResouce {
 	int randomGMLID1 = 0;
 	int randomGMLID2 = 0;
 
-	public TransformPOI(Context context, Request request, 
+	public CorrelationMapByPOI(Context context, Request request, 
 			Response response) {
+
 		super(context, request, response);
-		
+
+		System.out.println("Welcome to CorrelationMapByPOI Method");
 		logger.debug("Instantiated {}.", getClass());
 
 /*		System.out.println("You are in TransformPOIResource");
@@ -71,14 +77,14 @@ public class TransformPOI extends BaseResouce {
 		//dataInputs = new DataInputs(dataInputString);
 
 		//FIXME - amemon - read the hostname from the config file 
-		ABAConfigurator config = ABAConfigurator.INSTANCE;
 		hostName = config.getValue("incf.deploy.host.name");
 		System.out.println("****HOSTNAME**** - " + hostName);
 		portNumber = ":8080";
 
-		servicePath = "atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI"; 
+		servicePath = "atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=CorrelationMapByPOI";
 
 		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
+
 	}
 
 
@@ -87,7 +93,7 @@ public class TransformPOI extends BaseResouce {
 
 		ABAServiceVO vo = new ABAServiceVO();
 
-        try { 
+        try {
 
 		    // make sure we have something in dataInputs
 		    if (dataInputsString == null || dataInputsString.length() == 0) {
@@ -102,19 +108,17 @@ public class TransformPOI extends BaseResouce {
 		    // parse dataInputs string
 	        DataInputs dataInputs = new DataInputs(dataInputsString);
 
-	        vo.setFromSRSCodeOne(dataInputs.getValue("inputSrsName"));
-	        vo.setFromSRSCode(dataInputs.getValue("inputSrsName"));
-	        vo.setToSRSCodeOne(dataInputs.getValue("targetSrsName"));
-	        vo.setToSRSCode(dataInputs.getValue("targetSrsName"));
+	        vo.setFromSRSCodeOne(dataInputs.getValue("srsName"));
+	        vo.setFromSRSCode(dataInputs.getValue("srsName"));
+	        vo.setToSRSCodeOne("Mouse_AGEA_1.0");
+	        vo.setToSRSCode("Mouse_AGEA_1.0");
 	        vo.setFilter(dataInputs.getValue("filter"));
 
 	        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
-	        System.out.println("To SRS Code: " + vo.getToSRSCodeOne());
 	        System.out.println("Filter: " + vo.getFilter());
 
 	        // validate data inputs
 	        validateSrsName(vo.getFromSRSCodeOne());
-	        validateSrsName(vo.getToSRSCodeOne());
 	        Double[] poiCoords = validateCoordinate(dataInputs);
 
 	        vo.setOriginalCoordinateX(String.valueOf(poiCoords[0].intValue()));
@@ -144,6 +148,7 @@ public class TransformPOI extends BaseResouce {
 		}
 
 		vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+
 		//End
 
 		//Start - Exception Handling
@@ -156,7 +161,23 @@ public class TransformPOI extends BaseResouce {
 	        return getExceptionRepresentation();
 		}
 		//End
-		
+
+		String abaHostName = config.getValue("incf.aba.host.name");
+		String abaPortNumber = config.getValue("incf.aba.port.number");
+		String abaServicePath = config.getValue("incf.aba.service.path");
+
+		//Start - Construct the getcoorelationmap url
+		StringBuffer responseString = new StringBuffer();
+		String mapType = vo.getFilter().replaceAll("maptype:", "");
+		String imageURLPrefix = "http://" + abaHostName + abaPortNumber
+		+ abaServicePath + "all_" + mapType + "?correlation&";
+
+		responseString.append(imageURLPrefix).append(
+		"seedPoint=" + vo.getTransformedCoordinateX() + ","
+					 + vo.getTransformedCoordinateY() + ","
+					 + vo.getTransformedCoordinateZ() );
+		//End
+
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         java.util.Date date = new java.util.Date();
         String currentTime = dateFormat.format(date);
@@ -182,37 +203,30 @@ public class TransformPOI extends BaseResouce {
 		opt.setSaveNamespacesFirst();
 		opt.setSaveAggressiveNamespaces();
 		opt.setUseDefaultNamespace();
-		
-		TransformationResponseDocument document = TransformationResponseDocument.Factory.newInstance(); 
 
-		TransformationResponseType rootDoc =	document.addNewTransformationResponse();
-		// QueryInfo and criteria should be done as a utility
-		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
-		QueryInfoType query = rootDoc.addNewQueryInfo();
-		QueryInfoType.Criteria criterias = query.addNewCriteria();
+		CorrelationMapResponseDocument document = CorrelationMapResponseDocument.Factory.newInstance();
 
-		query.addNewQueryUrl();
-		query.getQueryUrl().setName("TransformPOI");
-		query.getQueryUrl().setStringValue(url);
-		query.setTimeCreated(Calendar.getInstance());
+		CorrelatioMapType imagesRes = document.addNewCorrelationMapResponse();
+	    //QueryInfo and criteria should be done as a utility
+		//addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
+		QueryInfoType query = imagesRes.addNewQueryInfo();
+
+		Utilities.addMethodNameToQueryInfo(query, "GetCorrelationMapByPOI", url);
+
+		Criteria criterias = query.addNewCriteria();
 
 /*		InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);
-		poiCriteria.setName("TransformPOI");
+		poiCriteria.setName("POI");
 		PointType pnt = poiCriteria.addNewPOI().addNewPoint();
-		pnt.setId(String.valueOf(randomGMLID1));
-		pnt.addNewPos();
-		pnt.getPos().setStringValue(vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " " + vo.getOriginalCoordinateZ());
-		InputStringType targetsrsCriteria = (InputStringType) criterias
-		.addNewInput().changeType(InputStringType.type);
-*/
-		InputStringType targetsrsCriteria = (InputStringType) criterias
-		.addNewInput().changeType(InputStringType.type);
+		pnt.setId("id-onGeomRequiredByGML");
+		pnt.setSrsName("Mouse_ABAvoxel_1.0");
 
-		targetsrsCriteria.setName("outputSrsName");
-		targetsrsCriteria.setValue(vo.getToSRSCode());
+		pnt.addNewPos();
+		pnt.getPos().setStringValue("1 1 1");
+*/		
 		
 		InputStringType xCriteria = (InputStringType) criterias.addNewInput()
-				.changeType(InputStringType.type);
+		.changeType(InputStringType.type);
 		xCriteria.setName("x");
 		xCriteria.setValue(vo.getOriginalCoordinateX());
 		
@@ -226,36 +240,32 @@ public class TransformPOI extends BaseResouce {
 		zCriteria.setName("z");
 		zCriteria.setValue(vo.getOriginalCoordinateZ());
 
-		InputStringType filterCodeCriteria = (InputStringType) criterias
-		.addNewInput().changeType(InputStringType.type);
+		InputStringType filterCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
 		filterCodeCriteria.setName("filter");
-		filterCodeCriteria.setValue("cerebellum");
+		filterCodeCriteria.setValue("maptype:coronal");
 
-		POIType poi = rootDoc.addNewPOI();
-		PointType poipnt = poi.addNewPoint();
-		poipnt.setId(String.valueOf(randomGMLID2));
-		poipnt.addNewPos();
-		poipnt.getPos().setStringValue(vo.getTransformedCoordinateX() + " " + vo.getTransformedCoordinateY() + " " + vo.getTransformedCoordinateZ());
 
-	ArrayList errorList = new ArrayList();
-	 opt.setErrorListener(errorList);
-	 boolean isValid = document.validate(opt);
-	 
-	 // If the XML isn't valid, loop through the listener's contents,
-	 // printing contained messages.
-	 if (!isValid)
-	 {
-	      for (int i = 0; i < errorList.size(); i++)
-	      {
-	          XmlError error = (XmlError)errorList.get(i);
-	          
-	          System.out.println("\n");
-	          System.out.println("Message: " + error.getMessage() + "\n");
-	          System.out.println("Location of invalid XML: " + 
-	              error.getCursorLocation().xmlText() + "\n");
-	      }
-	 }
-	 
+		imagesRes.setCorrelationUrl(responseString.toString());
+		
+		ArrayList errorList = new ArrayList();
+		opt.setErrorListener(errorList);
+		boolean isValid = document.validate(opt);
+		 
+		// If the XML isn't valid, loop through the listener's contents,
+		// printing contained messages.
+		if (!isValid)
+		{
+		     for (int i = 0; i < errorList.size(); i++)
+		     {
+		         XmlError error = (XmlError)errorList.get(i);
+		         
+		         System.out.println("\n");
+		         System.out.println("Message: " + error.getMessage() + "\n");
+		         System.out.println("Location of invalid XML: " + 
+		             error.getCursorLocation().xmlText() + "\n");
+		     }
+		}
+
 		//return document.xmlText(opt);
 		return new StringRepresentation(document.xmlText(opt),MediaType.APPLICATION_XML);
 
@@ -266,7 +276,7 @@ public class TransformPOI extends BaseResouce {
 		QueryURL queryURL = new QueryURL();
 		queryURL.setName("TransformPOI");
 		queryURL.setValue(url);//Change
-
+		
 		//Query Info setters
 		Point srcPoint = new Point();
 		srcPoint.setSrsName(vo.getFromSRSCode());//Change

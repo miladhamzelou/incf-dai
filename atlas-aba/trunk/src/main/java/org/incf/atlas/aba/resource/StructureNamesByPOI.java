@@ -1,9 +1,10 @@
 package org.incf.atlas.aba.resource;
 
-import java.math.BigInteger;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Random;
 import java.util.StringTokenizer;
 
 import javax.xml.bind.JAXBContext;
@@ -12,32 +13,31 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.namespace.QName;
 
-import net.opengis.gml._3.Point;
-
+import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.aba.util.ABAConfigurator;
 import org.incf.atlas.aba.util.ABAUtil;
 import org.incf.atlas.aba.util.AtlasNamespacePrefixMapper;
 import org.incf.atlas.aba.util.DataInputs;
 import org.incf.atlas.aba.util.ExceptionCode;
 import org.incf.atlas.aba.util.ExceptionHandler;
-import org.incf.waxml.ObjectFactory;
-import org.incf.waxml.QueryInfo;
-import org.incf.waxml.StructureCode;
-import org.incf.waxml.StructureTerm;
-import org.incf.waxml.StructureTerms;
-import org.incf.waxml.StructureTermsResponse;
-import org.incf.waxml.QueryInfo.Criteria;
-import org.incf.waxml.QueryInfo.Criteria.Input;
-
+import org.incf.atlas.waxml.generated.IncfNameType;
+import org.incf.atlas.waxml.generated.InputStringType;
+import org.incf.atlas.waxml.generated.QueryInfoType;
+import org.incf.atlas.waxml.generated.StructureTermType;
+import org.incf.atlas.waxml.generated.StructureTermsResponseDocument;
+import org.incf.atlas.waxml.generated.StructureTermsResponseType;
+import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
+import org.incf.atlas.waxml.generated.StructureTermType.Code;
+import org.incf.atlas.waxml.generated.StructureTermsResponseType.StructureTerms;
+import org.incf.atlas.waxml.utilities.Utilities;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
-import org.restlet.ext.jaxb.JaxbRepresentation;
 import org.restlet.resource.DomRepresentation;
 import org.restlet.resource.Representation;
-import org.restlet.resource.Resource;
 import org.restlet.resource.ResourceException;
+import org.restlet.resource.StringRepresentation;
 import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,7 +71,9 @@ public class StructureNamesByPOI extends BaseResouce {
 		hostName = config.getValue("incf.deploy.host.name");
 		System.out.println("****HOSTNAME**** - " + hostName);
 		portNumber = ":8080";
-		servicePath = "/atlas-aba?Request=Execute&Identifier=GetStructureNamesByPOI";
+
+		servicePath = "atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI";
+		//servicePath = "/atlas-aba?Request=Execute&Identifier=GetStructureNamesByPOI";
 
 		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
 
@@ -118,7 +120,7 @@ public class StructureNamesByPOI extends BaseResouce {
 	        if (exceptionHandler != null) {
 	            return getExceptionRepresentation();
 	        }
-			
+	        
 /*		String fromSRSCode = "";
 		String vocabulary = "";
 		String filter = "";
@@ -163,6 +165,18 @@ public class StructureNamesByPOI extends BaseResouce {
 				structureName = tokens.nextToken();
 				System.out.println("Structure Name is - " + structureName);
 			}
+
+			//Start - Exception Handling
+			if ( structureName == null || structureName.equals("") ) {
+		        ExceptionHandler eh = getExceptionHandler();
+		        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		                new String[] { "No Structures Found." });
+
+		        // there is no point in going further, so return
+		        return getExceptionRepresentation();
+			}
+			//End
+
 		} else if ( vo.getFilter().equalsIgnoreCase("structureset:anatomic")) { 
 			responseString = util.getAnatomicStructureNameByPOI(vo);
 			StringTokenizer tokens = new StringTokenizer(responseString); 
@@ -170,6 +184,16 @@ public class StructureNamesByPOI extends BaseResouce {
 				structureName = tokens.nextToken();
 				System.out.println("Structure Name is - " + structureName);
 			}
+			//Start - Exception Handling
+			if ( structureName == null || structureName.equals("") ) {
+		        ExceptionHandler eh = getExceptionHandler();
+		        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		                new String[] { "No Structures Found." });
+
+		        // there is no point in going further, so return
+		        return getExceptionRepresentation();
+			}
+			//End
 		} else {
 	        ExceptionHandler eh = getExceptionHandler();
 	        eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
@@ -184,10 +208,128 @@ public class StructureNamesByPOI extends BaseResouce {
         String currentTime = dateFormat.format(date);
         vo.setCurrentTime(currentTime);
 
+        //Generating 2 random number to be used as GMLID
+        int randomGMLID1 = 0;
+        Random randomGenerator1 = new Random();
+	    for (int idx = 1; idx <= 10; ++idx){
+	      randomGMLID1 = randomGenerator1.nextInt(100);
+	    }
+
         url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
         vo.setUrlString(url);
 
-		ObjectFactory of = new ObjectFactory();
+    	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+    	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+    	opt.setSaveNamespacesFirst();
+    	opt.setSaveAggressiveNamespaces();
+    	opt.setUseDefaultNamespace();
+
+        StructureTermsResponseDocument document =	StructureTermsResponseDocument.Factory.newInstance(); 
+    	
+    	StructureTermsResponseType rootDoc =	document.addNewStructureTermsResponse();
+    	QueryInfoType query = rootDoc.addNewQueryInfo();
+    	
+    	Utilities.addMethodNameToQueryInfo(query, "GetStructureNamesByPOI  ", url);
+
+    	Criteria criterias = query.addNewCriteria();
+    	
+    	//Changes
+/*    	InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);
+    	poiCriteria.setName("POI");
+    	PointType pnt = poiCriteria.addNewPOI().addNewPoint();
+    	pnt.setId(String.valueOf(randomGMLID1));
+    	pnt.setSrsName(vo.getFromSRSCode());
+    	pnt.addNewPos();
+    	//pnt.getPos().setStringValue(Double.parseDouble(vo.getOriginalCoordinateX()) + " "+ Double.parseDouble(vo.getOriginalCoordinateY()) + " " +Double.parseDouble(vo.getOriginalCoordinateZ()));
+    	pnt.getPos().setStringValue(vo.getOriginalCoordinateX() + " "+ vo.getOriginalCoordinateY() + " " +vo.getOriginalCoordinateZ());
+*/
+    	
+    	InputStringType srsCriteria = (InputStringType) criterias.addNewInput()
+    	.changeType(InputStringType.type);
+    	srsCriteria.setName("srsName");
+    	srsCriteria.setValue(vo.getFromSRSCode());
+
+    	InputStringType xCriteria = (InputStringType) criterias.addNewInput()
+    	.changeType(InputStringType.type);
+
+    	xCriteria.setName("x");
+		xCriteria.setValue(vo.getOriginalCoordinateX());
+		
+		InputStringType yCriteria = (InputStringType) criterias.addNewInput()
+			.changeType(InputStringType.type);
+		yCriteria.setName("y");
+		yCriteria.setValue(vo.getOriginalCoordinateY());
+		
+		InputStringType zCriteria = (InputStringType) criterias.addNewInput()
+			.changeType(InputStringType.type);
+		zCriteria.setName("z");
+		zCriteria.setValue(vo.getOriginalCoordinateZ());
+
+    	InputStringType srsCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+    	srsCodeCriteria.setName("StructureVocabulary");
+    	srsCodeCriteria.setValue(vo.getVocabulary());
+    	InputStringType filterCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
+    	filterCodeCriteria.setName("StructureFilter");
+		filterCodeCriteria.setValue(vo.getFilter());
+
+		query.addNewQueryUrl();
+		query.getQueryUrl().setName("StructureNamesByPOI");
+		query.getQueryUrl().setStringValue(url);
+		query.setTimeCreated(Calendar.getInstance());
+
+    	StructureTerms terms = rootDoc.addNewStructureTerms();
+    	StructureTermType term1 = terms.addNewStructureTerm();
+    	Code t1code =  term1.addNewCode();
+    	t1code.setCodeSpace(vo.getFromSRSCode());
+    	t1code.setIsDefault(true);
+    	//t1code.setStructureID("");
+    	t1code.setStringValue(structureName);
+
+    	//term1.setUri("");
+    	IncfNameType t1name = term1.addNewName();
+    	//t1name.setStringValue("");
+    	term1.addNewDescription().setStringValue("Term - " + structureName + " derived from ABA hub based on the supplied POI.");
+
+/*    	FeatureReferenceType t1ft = term1.addNewFeature();
+    	Centroid t1c = t1ft.addNewCentroid();
+    	t1c.addNewPoint().addNewPos().setStringValue(" ");
+    	t1c.getPoint().setId(" ");
+    	t1c.getPoint().setSrsName(" ");
+    	BoundingShapeType t1bound = t1ft.addNewBoundedBy();
+    	t1bound.addNewEnvelope();
+    	t1bound.getEnvelope().setSrsName(" ");
+    	DirectPositionType t1lc = t1bound.getEnvelope().addNewLowerCorner();
+    	DirectPositionType t1uc = t1bound.getEnvelope().addNewUpperCorner();
+    	t1lc.setStringValue(" ");
+    	t1uc.setStringValue(" ");
+    	
+    	t1ft.addNewUrl().setStringValue(" ");
+    	t1ft.getUrl().setSrsName(" ");
+    	t1ft.setFormat(GeomFormatEnum.SHAPE.toString());
+*/    	
+    	ArrayList errorList = new ArrayList();
+    	 opt.setErrorListener(errorList);
+    	 boolean isValid = document.validate(opt);
+    	 
+    	 // If the XML isn't valid, loop through the listener's contents,
+    	 // printing contained messages.
+/*    	 if (!isValid)
+    	 {
+    	      for (int i = 0; i < errorList.size(); i++)
+    	      {
+    	          XmlError error = (XmlError)errorList.get(i);
+    	          
+    	          System.out.println("\n");
+    	          System.out.println("Message: " + error.getMessage() + "\n");
+    	          System.out.println("Location of invalid XML: " + 
+    	              error.getCursorLocation().xmlText() + "\n");
+    	      }
+    	 }
+*/    		
+			return new StringRepresentation(document.xmlText(opt),MediaType.APPLICATION_XML);
+        
+        //Start - old implementation
+/*		ObjectFactory of = new ObjectFactory();
 		StructureTermsResponse structureTermsResponse = 
 			of.createStructureTermsResponse();
 
@@ -234,33 +376,15 @@ public class StructureNamesByPOI extends BaseResouce {
 
 		structureTermsResponse.setQueryInfo(queryInfo);
 		structureTermsResponse.setStructureTerms(structureTerms);
-
-/*		QueryURL queryURL = new QueryURL();
-		queryURL.setName("TransformPOI");
-		queryURL.setValue(url);//Change
-		queryInfo.getTimeCreatedAndQueryURLAndCriteria().add(queryURL);
-		queryInfo.getTimeCreatedAndQueryURLAndCriteria().add(currentTime);//Change
-		queryInfo.getTimeCreatedAndQueryURLAndCriteria().add(criteria);
-
-		//TransformPOI responses
-		POI poi = new POI();
-		POI.Point destPoint = new POI.Point();
-		destPoint.setDestName(vo.getToSRSCode());//Change
-		destPoint.setPos(vo.getTransformedCoordinateX() + " " + vo.getTransformedCoordinateY() + " " + vo.getTransformedCoordinateZ());//Change
-		poi.setPoint(destPoint);
-
-		transformationResponse.setQueryInfo(queryInfo);
-		transformationResponse.setPOI(poi);
-
-		//ABAUtil util = new ABAUtil();
-		//transformationPOIMain = util.getCoordinateTransformationChain(vo, coordinateChain);
 */
+        //End - old implementation
+
 
 		//generate representation based on media type
-		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
-			return getDomRepresentation(structureTermsResponse);
+/*		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
+			return getDomRepresentation(document);
 		}
-
+*/
 /*
 		//generate representation based on media type
 		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {

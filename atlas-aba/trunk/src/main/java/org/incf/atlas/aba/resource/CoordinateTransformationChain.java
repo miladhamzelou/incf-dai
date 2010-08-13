@@ -20,6 +20,7 @@ import org.restlet.ext.jaxb.JaxbRepresentation;
 import org.restlet.resource.Representation;
 import org.restlet.resource.Resource;
 import org.restlet.resource.ResourceException;
+import org.restlet.resource.StringRepresentation;
 import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -122,21 +123,27 @@ public class CoordinateTransformationChain extends BaseResouce {
 		hostName = config.getValue("incf.deploy.host.name");
 		System.out.println("****HOSTNAME**** - " + hostName);
 		String portNumber = ":8080";
-		servicePath = "/atlas-aba?Request=Execute&Identifier=GetTransformationChain";
+
+		servicePath = "atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain";
+		//servicePath = "/atlas-aba?Request=Execute&Identifier=GetTransformationChain";
 
         url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
         vo.setUrlString(url);
-        
-		ObjectFactory of = new ObjectFactory();
-		CoordinateTransformationChainResponse coordinateChain = of.createCoordinateTransformationChainResponse();
 
+/*		ObjectFactory of = new ObjectFactory();
+		CoordinateTransformationChainResponse coordinateChain = of.createCoordinateTransformationChainResponse();
+*/
 		ABAUtil util = new ABAUtil(); 
-		coordinateChain = util.getCoordinateTransformationChain(vo, coordinateChain);
+		String responseString = util.getCoordinateTransformationChain(vo);
+
+		//return document.xmlText(opt);
+		return new StringRepresentation(responseString,MediaType.APPLICATION_XML);
+
 		//generate representation based on media type
-		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
+/*		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
 			return new JaxbRepresentation<CoordinateTransformationChainResponse>(coordinateChain);
 		}
-
+*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
