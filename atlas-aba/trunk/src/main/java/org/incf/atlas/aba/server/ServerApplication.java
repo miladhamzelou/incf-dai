@@ -2,6 +2,7 @@ package org.incf.atlas.aba.server;
 
 import org.incf.atlas.aba.resource.Capabilities;
 import org.incf.atlas.aba.resource.CoordinateTransformationChain;
+import org.incf.atlas.aba.resource.CorrelationMapByPOI;
 import org.incf.atlas.aba.resource.FaviconResource;
 import org.incf.atlas.aba.resource.Images2DByPOI;
 import org.incf.atlas.aba.resource.NotYetImplemented;
@@ -180,8 +181,10 @@ public class ServerApplication extends Application {
 		router.attach(GET_2D_IMAGES_BY_POI, Images2DByPOI.class);
 		router.attach(GET_2D_IMAGES_BY_POI_R, Images2DByPOI.class);
 		
-		router.attach(GET_CORRELATION_MAP_BY_POI, NotYetImplemented.class);
-		router.attach(GET_CORRELATION_MAP_BY_POI_R, NotYetImplemented.class);
+		System.out.println(" Before forwarding - Welcome to CorrelationMapByPOI Method");
+
+		router.attach(GET_CORRELATION_MAP_BY_POI, CorrelationMapByPOI.class);
+		router.attach(GET_CORRELATION_MAP_BY_POI_R, CorrelationMapByPOI.class);
 		
 		router.attach(GET_GENES_BY_POI, NotYetImplemented.class);
 		router.attach(GET_GENES_BY_POI_R, NotYetImplemented.class);
@@ -197,9 +200,9 @@ public class ServerApplication extends Application {
 
 		router.attach("/ping/{pingType}", PingResource.class);
 		
-		router.attach("/{uriSuffix}", UnrecognizedUri.class);
+/*		router.attach("/{uriSuffix}", UnrecognizedUri.class);
 		router.attach("?{uriSuffix}", UnrecognizedUri.class);
-
+*/
 		logger.error("No router matched.");
 
 		return router;
