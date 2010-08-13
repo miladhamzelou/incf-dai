@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-/*
+/* 100803
 $ mysql -A -h mysql.crbs.ucsd.edu -u allen -p***** -D AllenBrainAtlas
 
 Existing tables:
@@ -83,6 +83,78 @@ SELECT imageid, zoomifiednisslurl,thumbnailurl, expressthumbnailurl,
 FROM image
 WHERE imageseriesid = ?
 AND position = ?
+
+Several question arise:
+- Performance?
+- What do we return?
+	zoomifiednisslurl
+	thumbnailurl
+	expressthumbnailurl
+    downloadimagepath
+    other metadata
+    ABA's Get Image URL (need more values: zoom, mime, top, left, width, height)
+    Lydia's web app image URL (need more values: zoom level)
+ - In the "closest | close" fit search
+ 	which, and if "close" how do we handle a list
+ 	what's the algorithm -- this is were PostGIS/Postgres is needed
+   
+
+ */
+
+/* 100805
+$ mysql -A -h mysql.crbs.ucsd.edu -u allen -p***** -D AllenBrainAtlas
+
+Existing tables:
+image_series (26,072 rows)
+image (685,744 rows)
+
+(1) Set up (one-time)
+Create a new table:
+CREATE TABLE image_series_map (
+  id BIGINT AUTO INCREMENT PRIMARY KEY,
+  imageseriesid BIGINT,
+  plane VARCHAR(255),
+  xcoord DOUBLE,
+  ycoord DOUBLE,
+  zcoord DOUBLE,
+  xpixel INT,
+  ypixel INT,
+  position INT,
+  imageid BIGINT
+) ENGINE = InnoDB;
+
+Get list of imageSeriesId's:
+SELECT imageseriesid, plane
+FROM imageseries
+WHERE imageseriesid > ?start
+ORDER BY imageseriesid
+
+Populate image_series_map with map data and corresponding imageid:
+for each (imageseriesid, plane) (26,072 times)
+  read map file: http://www.brain-map.org/aba/api/map/[imageseriesid].map
+  for each map file line (hundreds of thousands)
+    INSERT INTO image_series_map
+      (map.imageseriesid, plane, xcoord, ycoord, zcoord, xpixel, ypixel, map.position, map.imageid)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?,
+      SELECT im.imageid
+      FROM image im
+      WHERE im.imageseriesid = ?
+      AND im.position = ?);
+    
+(2) Get2DImagesByPOI procedure:
+DataInputs: x, y, z, filter (coronal | sagittal)
+Scale x, y, z by 0.01
+
+SELECT imageid, xpixel, ypixel
+FROM image_series_map
+WHERE plane = '(coronal | sagittal)'
+AND [(closest | close) fit]
+
+(If desired) Using imageid:
+SELECT zoomifiednisslurl,thumbnailurl, expressthumbnailurl, downloadimagepath, 
+  [other metadata?]
+FROM image
+WHERE imageid = ?
 
 Several question arise:
 - Performance?

@@ -61,8 +61,12 @@ public class XmlValidator {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(validationErrors.toString());
+		//System.out.println(validationErrors.toString());
 		return validationErrors.length() > 0 ? false : true;
+	}
+	
+	public String getValidationErrors() {
+		return validationErrors.toString();
 	}
 
 //	public boolean validate(String xmlToValidate) {
