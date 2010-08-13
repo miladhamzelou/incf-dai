@@ -22,56 +22,56 @@ The WPS !GetCapabilities and !DescribeProcess requests are applicable to all hub
   <tr>
     <th align="left">!DescribeTransfomation</th>
     <td align="center">X</td>
-    <td align="center">X</td>
     <td align="center"></td>
-    <td align="center">X</td>
+    <td align="center"></td>
+    <td align="center"></td>
   </tr>
   <tr>
     <th align="left">Get2DImagesByPOI</th>
     <td align="center">X</td>
+    <td align="center"></td>
     <td align="center">X</td>
-    <td align="center">X</td>
-    <td align="center">X</td>
+    <td align="center"></td>
   </tr>
   <tr>
     <th align="left">Get2DImagesByURI</th>
     <td align="center"></td>
+    <td align="center"></td>
     <td align="center">X</td>
-    <td align="center">X</td>
-    <td align="center">X</td>
+    <td align="center"></td>
   </tr>
   <tr>
     <th align="left">GetCellsByPOI</th>
     <td align="center"></td>
+    <td align="center"></td>
     <td align="center">X</td>
-    <td align="center">X</td>
-    <td align="center">X</td>
+    <td align="center"></td>
   </tr>
   <tr>
     <th align="left">GetCellsByURI</th>
     <td align="center"></td>
+    <td align="center"></td>
     <td align="center">X</td>
-    <td align="center">X</td>
-    <td align="center">X</td>
+    <td align="center"></td>
   </tr>
   <tr>
     <th align="left">GetCorrelationMapByPOI</th>
     <td align="center">X</td>
-    <td align="center">X</td>
     <td align="center"></td>
-    <td align="center">X</td>
+    <td align="center"></td>
+    <td align="center"></td>
   </tr>
   <tr>
     <th align="left">GetGenesByPOI</th>
     <td align="center">X</td>
     <td align="center">X</td>
     <td align="center"></td>
-    <td align="center">X</td>
+    <td align="center"></td>
   </tr>
   <tr>
     <th align="left">GetStructureNamesByPOI</th>
     <td align="center">X</td>
-    <td align="center">X</td>
+    <td align="center"></td>
     <td align="center">X</td>
     <td align="center">X</td>
   </tr>
@@ -99,9 +99,9 @@ The WPS !GetCapabilities and !DescribeProcess requests are applicable to all hub
   <tr>
     <th align="left">Retrieve2DImage</th>
     <td align="center">X</td>
+    <td align="center"></td>
     <td align="center">X</td>
-    <td align="center">X</td>
-    <td align="center">X</td>
+    <td align="center"></td>
   </tr>
   <tr>
     <th align="left">TransformPOI</th>
