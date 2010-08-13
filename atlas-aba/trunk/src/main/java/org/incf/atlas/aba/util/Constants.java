@@ -28,7 +28,7 @@ public class Constants {
 			throw new IllegalStateException("Unable to load resource '" 
 					+ PROPS + "'.", e);
 		}
-		
+
         defaultLanguage = props.getProperty("defaultLanguage");
         defaultResponseForm = props.getProperty("defaultResponseForm");
         defaultService = props.getProperty("defaultService");
