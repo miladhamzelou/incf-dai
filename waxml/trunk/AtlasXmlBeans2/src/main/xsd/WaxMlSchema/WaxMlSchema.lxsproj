@@ -5,14 +5,15 @@
 		<File Uri=".\StructureTermsResponse.xsd"/>
 		<File Uri=".\GenesResponse.xsd"/>
 		<File Uri=".\CorelationMapResponse.xsd"/>
-		<File Uri=".\allSrsTransformResponses.xsd"/>
 		<File Uri=".\ImagesResponse.xsd"/>
 		<File Uri=".\TransformationResponse.xsd"/>
 		<File Uri=".\Retrieve2DImageResponse.xsd"/>
 		<File Uri=".\Retrieve2DimagesResponse.xsd"/>
-		<File Uri=".\allCoordinateTransformationResponses.xsd"/>
 		<File Uri=".\newBaseResponseTemplate.xsd"/>
 		<File Uri=".\ListTransformationResponse.xsd"/>
+		<File Uri=".\CoordinateChainTransformationResponses.xsd"/>
+		<File Uri=".\DescribeSrsResponse.xsd"/>
+		<File Uri=".\ListSrsResponse.xsd"/>
 		<SubGroup Name="Documents">
 			<File Uri=".\SampleDocuments\TransformResponse.xml"/>
 			<File Uri=".\SampleDocuments\CoordinateTransformInfo.xml"/>
@@ -30,8 +31,9 @@
 		</SubGroup>
 		<SubGroup Name="Transforms"/>
 		<SubGroup Name="common">
-			<File Uri=".\WaxML_Base.xsd"/>
 			<File Uri=".\common\CoordinateTransformationCommon.xsd"/>
+			<File Uri=".\common\SrsCommon.xsd"/>
+			<File Uri=".\common\WaxML_Base.xsd"/>
 		</SubGroup>
 	</Project>
 </XmlStudioProject>

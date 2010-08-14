@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Created by Liquid XML Data Binding Libraries (www.liquid-technologies.com) for Liquid Technologies Limited-->
 <XmlStudioProjectOptions xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" Version="8.1.4.2482">
-	<OpenFile Uri=".\allCoordinateTransformationResponses.xsd"/>
+	<OpenFile Uri=".\common\SrsCommon.xsd"/>
 	<OpenFile Uri=".\common\CoordinateTransformationCommon.xsd"/>
-	<OpenFile Uri=".\WaxML_Base.xsd"/>
-	<OpenFile Uri=".\allSrsTransformResponses.xsd"/>
+	<OpenFile Uri=".\common\WaxML_Base.xsd"/>
+	<OpenFile Uri=".\ListSrsResponse.xsd"/>
+	<OpenFile Uri=".\TransformationResponse.xsd"/>
 </XmlStudioProjectOptions>
