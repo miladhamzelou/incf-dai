@@ -1,14 +1,11 @@
 package org.incf.atlas.ucsd.resource;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Properties;
 
 import javax.xml.xquery.XQConnection;
 import javax.xml.xquery.XQDataSource;
-import javax.xml.xquery.XQException;
 import javax.xml.xquery.XQPreparedExpression;
 import javax.xml.xquery.XQResultSequence;
 
@@ -25,14 +22,22 @@ import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//test:
+//http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&request=GetCapabilities
+
 public class Capabilities extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
+	// cache directory relative to tomcat/webapps/
 	private static final String CACHE_DIR_NAME = 
-//		"/usr/local/tomcat/webapps/atlas-ucsd/WEB-INF/cache";
-	"atlas-ucsd/WEB-INF/cache";
+	    "/usr/local/tomcat/webapps/"
+	    + "atlas-ucsd/WEB-INF/cache";
+	
+	// cached file
 	private static final String RESPONSE_FILE_NAME = "Capabilities.xml";
+	
+	// xquery file from which to build cached file
 	private static final String RESPONSE_BASE_NAME = 
 		"/database/Capabilities.xq";
 	
@@ -40,8 +45,6 @@ public class Capabilities extends BaseResouce {
 		super(context, request, response);
 		
 		logger.debug("Instantiated {}.", getClass());
-		logger.debug("* * * path? {}", request.getResourceRef().getPath());
-		
 	}
 
 	/* 
@@ -76,10 +79,10 @@ public class Capabilities extends BaseResouce {
         
         // make cache directory
         File cacheDir = new File(CACHE_DIR_NAME);
+        cacheDir.mkdir();
         
         logger.debug("cacheDir: {}", cacheDir.getAbsolutePath());
         
-        cacheDir.mkdir();
 		try {
 
 			// run query

@@ -11,7 +11,7 @@
   </ows:ServiceIdentification>
   <wps:ProcessOfferings>
     {
-      for $pd in doc("file:///usr/local/tomcat/webapps/atlas-ucsd/WEB-INF/classes/database/ProcessDescriptions.xq")/wps:ProcessDescriptions/ProcessDescription
+      for $pd in doc("/usr/local/tomcat/webapps/atlas-ucsd/WEB-INF/classes/database/ProcessDescriptions.xq")/wps:ProcessDescriptions/ProcessDescription
       return 
         <wps:Process wps:processVersion="{$pd/@wps:processVersion}"> {
           $pd/ows:Identifier | 

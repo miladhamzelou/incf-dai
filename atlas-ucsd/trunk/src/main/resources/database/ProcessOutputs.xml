@@ -1,0 +1,72 @@
+    <ProcessOutputs>
+      <Output>
+        <ows:Identifier>ImageURL</ows:Identifier>
+        <ows:Title>2D Image at POI result</ows:Title>
+        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ComplexOutput>
+           <Default>
+             <Format>
+               <MimeType>application/vnd.incf.waxml</MimeType>
+               <Encoding>UTF-8</Encoding>
+               <Schema>http://www.incf.oef/atlas/WaxML/schema</Schema> 
+             </Format>
+           </Default>
+           <Supported>
+             <Format>
+               <MimeType>application/vnd.incf.waxml</MimeType>
+               <Encoding>UTF-8</Encoding>
+               <Schema>http://www.incf.oef/atlas/WaxML/schema</Schema> 
+             </Format>
+          </Supported>
+        </ComplexOutput>  
+      </Output>
+    </ProcessOutputs>
+
+
+            <ProcessOutputs> -- ok
+                  <Output> -- unbounded, but just one like this example
+                        <ows:Identifier>ImageURL</ows:Identifier> -- ok
+                        <ows:Title>2D Image at POI result</ows:Title> -- ok
+                        <ows:Abstract>2D Image at POI result</ows:Abstract> -- optional but we can use it
+                        <ComplexOutput> -- ok
+                              <Default> -- ok
+                                    <Format> -- ok
+                                          <MimeType>text/ascii</MimeType> -- as I read the xsd, there should be only one <MimeType>. I'd suggest application/xml. What would you like to use?
+ 
+IZ: yes, let’s just use application/vnd.incf.waxml
+ 
+                                          <MimeType>text/html</MimeType>
+                                          <MimeType>application/vnd.incf.waxml</MimeType>
+                                          <Encoding>UTF-8</Encoding> -- optional. Do you want to use and specify UTF-8?
+ 
+ 
+IZ: it is not critical, but I’d rather keep it. At least to make sure don’t want UTF7 or ascii. Or Ebcdic. Strings all make sense only to the extent an encoding is specified, especially when we deal with an international group…
+ 
+                                          <Schema>http://foo.bar/waxml/201001/response.xsd</Schema> -- I think this should be the WasML schema. See additional comments below. 
+ 
+IZ: yes. I’d refer to DaveV on this.
+ 
+                                    </Format>
+                              </Default>
+                              <Supported> -- ok
+                                    <Format> -- we can have multiple supported formats, but in our case I think we should have just one which is the same as the default fault since we have only one output format under our current design.
+ 
+IZ: agree. XML (WaxML) and UTF8
+ 
+                                          <MimeType>text/xml</MimeType>
+                                          <Encoding>UTF-8</Encoding>
+                                          <Schema>http://foo.bar/gml/3.1.0/polygon.xsd</Schema>
+                                    </Format>
+                                    <Format>
+                                          <MimeType>text/html</MimeType>
+                                          <Encoding>UTF-8</Encoding>
+                                    </Format>
+                              </Supported>
+                        </ComplexOutput>
+                  </Output>
+            </ProcessOutputs>
+ 
+<Schema> Right now we have one WaxML schema: WaxML_Base.xsd. Is this going to be on a public site INCF users and look at? I would say yes, and if so, what is the URI? Since we have have just one xsd do you know how we reference in internal part for the response to each function?
+ 
+ 
+IZ: yes, we will move this stuff to INCF after another round of error checking and after we have ABA and UCSD hubs compliant. Everybody: what URI for the schema would you prefer? http://www.incf.oef/atlas/WaxML/schema or something like that?

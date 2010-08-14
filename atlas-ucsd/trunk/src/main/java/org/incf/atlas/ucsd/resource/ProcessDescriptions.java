@@ -20,16 +20,30 @@ import org.restlet.data.Request;
 import org.restlet.data.Response;
 import org.restlet.resource.FileRepresentation;
 import org.restlet.resource.Representation;
-import org.restlet.resource.Resource;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+// test:
+// http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=DescribeProcess
+
 public class ProcessDescriptions extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
+    // cache directory relative to tomcat/webapps/
+    private static final String CACHE_DIR_NAME = 
+        "/usr/local/tomcat/webapps/"
+        + "atlas-ucsd/WEB-INF/cache";
+    
+    // cached file
+    private static final String RESPONSE_FILE_NAME = "ProcessDescriptions.xml";
+    
+    // xquery file from which to build cached file
+    private static final String RESPONSE_BASE_NAME = 
+        "/usr/local/tomcat/webapps/atlas-ucsd/WEB-INF/classes/database/ProcessDescriptions.xq";
+    
 	public ProcessDescriptions(Context context, Request request,
 			Response response) {
 		super(context, request, response);
@@ -48,9 +62,18 @@ public class ProcessDescriptions extends BaseResouce {
 		
         // if there are exceptions, send an excepton report
         if (exceptionHandler != null) {
+            logger.error("Exception Report returned to client: \n{}", 
+                    exceptionHandler.toString());
             return getExceptionRepresentation();
         }
         
+        // look for cached file fisrt
+        File cachedResponse = new File(CACHE_DIR_NAME, RESPONSE_FILE_NAME);
+        if (cachedResponse.exists()) {
+            return new FileRepresentation(cachedResponse, 
+                    MediaType.APPLICATION_XML);
+        }
+    
         // set serialization properties
         Properties props = new Properties();
         props.setProperty("method", "xml");
@@ -58,29 +81,34 @@ public class ProcessDescriptions extends BaseResouce {
         props.setProperty("omit-xml-declaration", "no");
         props.setProperty("{http://saxon.sf.net/}indent-spaces", "2");
         
-        String prelude = "declare variable $doc := doc(\"file:///usr/local/tomcat/webapps/atlas-aba/WEB-INF/classes/database/ProcessInputs.xml\");";
-        File tempDir = new File("/usr/local/tomcat/webapps/atlas-aba/WEB-INF/temp");
-        tempDir.mkdir();
-		File tempFile = new File(tempDir, "ProcessDescriptions.xml");
-		try {
-
-			// run query
-			XQDataSource ds = new SaxonXQDataSource();
-			XQConnection conn = ds.getConnection();
-	        XQPreparedExpression exp = conn.prepareExpression(prelude
-	                + readFileAsString("/usr/local/tomcat/webapps/atlas-aba/WEB-INF/classes/database/ProcessDescriptions.xq"));
-			XQResultSequence result = exp.executeQuery();
-			
-	        // serialize to temporary file (TODO could be cached)
-			result.writeSequence(new FileWriter(tempFile), props);
-		} catch (Exception e) {
-			throw new ResourceException(e);
-		}
-
-		// TODO validate
+        // make cache directory
+        File cacheDir = new File(CACHE_DIR_NAME);
+        cacheDir.mkdir();
         
-		// return as file
-        return new FileRepresentation(tempFile, MediaType.APPLICATION_XML);
+        logger.debug("cacheDir: {}", cacheDir.getAbsolutePath());
+        
+        String prelude = "declare variable $doc := doc(\"file:///usr/local/tomcat/webapps/atlas-ucsd/WEB-INF/classes/database/ProcessInputs.xml\");";
+        try {
+
+            // run query
+            XQDataSource ds = new SaxonXQDataSource();
+            XQConnection conn = ds.getConnection();
+            XQPreparedExpression exp = conn.prepareExpression(prelude
+                    + readFileAsString(RESPONSE_BASE_NAME));
+            XQResultSequence result = exp.executeQuery();
+            
+            // serialize to cache
+            result.writeSequence(new FileWriter(cachedResponse), props);
+        } catch (Exception e) {
+            logger.error("Exception in query exection and caching: ", e);
+            throw new ResourceException(e);
+        }
+
+        // TODO validate
+        
+        // return as file
+        return new FileRepresentation(cachedResponse, 
+                MediaType.APPLICATION_XML);
 	}
 	
 	private String readFileAsString(String filePath) throws IOException{
