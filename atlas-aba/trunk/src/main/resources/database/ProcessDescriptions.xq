@@ -25,20 +25,6 @@
   </ProcessDescription>
   
   <ProcessDescription wps:processVersion="1.0.0">
-    <ows:Identifier>ListSRSs</ows:Identifier>
-    <ows:Title>List SRS Names</ows:Title>
-    <ows:Abstract></ows:Abstract>
-    <!-- There are no inputs for this function. -->
-    <ProcessOutputs>
-      <Output>
-        <ows:Identifier></ows:Identifier>
-        <ows:Title></ows:Title>
-        <ows:Abstract></ows:Abstract>
-      </Output>
-    </ProcessOutputs>
-  </ProcessDescription>
-  
-  <ProcessDescription wps:processVersion="1.0.0">
     <ows:Identifier>DescribeTransformation</ows:Identifier>
     <ows:Title>Describe Transformation</ows:Title>
     <ows:Abstract></ows:Abstract>
@@ -48,115 +34,6 @@
         <ows:Identifier></ows:Identifier>
         <ows:Title></ows:Title>
         <ows:Abstract></ows:Abstract>
-      </Output>
-    </ProcessOutputs>
-  </ProcessDescription>
-  
-  <ProcessDescription wps:processVersion="1.0.0">
-    <ows:Identifier>ListTransformations</ows:Identifier>
-    <ows:Title>List Transformations</ows:Title>
-    <ows:Abstract></ows:Abstract>
-    <!-- To be determined. -->
-    <ProcessOutputs>
-      <Output>
-        <ows:Identifier></ows:Identifier>
-        <ows:Title></ows:Title>
-        <ows:Abstract></ows:Abstract>
-      </Output>
-    </ProcessOutputs>
-  </ProcessDescription>
-  
-  <ProcessDescription wps:processVersion="1.0.0">
-    <ows:Identifier>TransformPOI</ows:Identifier>
-    <ows:Title>Transform POI</ows:Title>
-    <ows:Abstract></ows:Abstract>
-    <DataInputs>
-      <Input minOccurs="1" maxOccurs="1">
-      {
-        for $x in $doc/ProcessInputs/Input
-        where $x/@id='inputSrsName'
-        return $x/*
-      }
-      </Input>
-      <Input minOccurs="1" maxOccurs="1">
-      {
-        for $x in $doc/ProcessInputs/Input
-        where $x/@id='targetSrsName'
-        return $x/*
-      }
-      </Input>
-      <Input minOccurs="1" maxOccurs="1">
-      {
-        for $x in $doc/ProcessInputs/Input
-        where $x/@id='x'
-        return $x/*
-      }
-      </Input>
-      <Input minOccurs="1" maxOccurs="1">
-      {
-        for $x in $doc/ProcessInputs/Input
-        where $x/@id='y'
-        return $x/*
-      }
-      </Input>
-      <Input minOccurs="1" maxOccurs="1">
-      {
-        for $x in $doc/ProcessInputs/Input
-        where $x/@id='z'
-        return $x/*
-      }
-      </Input>
-      <Input minOccurs="0" maxOccurs="1">
-      {
-        for $x in $doc/ProcessInputs/Input
-        where $x/@id='filter'
-        return $x/*
-      }
-      </Input>
-    </DataInputs>
-    <ProcessOutputs>
-      <Output>
-        <ows:Identifier></ows:Identifier>
-        <ows:Title></ows:Title>
-        <ows:Abstract></ows:Abstract>
-      </Output>
-    </ProcessOutputs>
-  </ProcessDescription>
-  
-  <ProcessDescription wps:processVersion="1.0.0">
-    <ows:Identifier>GetTransformationChain</ows:Identifier>
-    <ows:Title>Get Transformation Chain</ows:Title>
-    <ows:Abstract></ows:Abstract>
-    <DataInputs>
-      <Input minOccurs="1" maxOccurs="1">
-      {
-        for $x in $doc/ProcessInputs/Input
-        where $x/@id='inputSrsName'
-        return $x/*
-      }
-      </Input>
-      <Input minOccurs="1" maxOccurs="1">
-      {
-        for $x in $doc/ProcessInputs/Input
-        where $x/@id='targetSrsName'
-        return $x/*
-      }
-      </Input>
-      <Input minOccurs="0" maxOccurs="1">
-      {
-        for $x in $doc/ProcessInputs/Input
-        where $x/@id='filter'
-        return $x/*
-      }
-      </Input>
-    </DataInputs>
-    <ProcessOutputs>
-      <Output>
-        <ows:Identifier>TransformationChain</ows:Identifier>
-        <ows:Title>Transformation Chain</ows:Title>
-        <LiteralOutput>
-          <ows:DataType>xs:String</ows:DataType>
-        </LiteralOutput>
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
@@ -362,6 +239,72 @@
   </ProcessDescription>
   
   <ProcessDescription wps:processVersion="1.0.0">
+    <ows:Identifier>GetTransformationChain</ows:Identifier>
+    <ows:Title>Get Transformation Chain</ows:Title>
+    <ows:Abstract></ows:Abstract>
+    <DataInputs>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='inputSrsName'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='targetSrsName'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="0" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='filter'
+        return $x/*
+      }
+      </Input>
+    </DataInputs>
+    <ProcessOutputs>
+      <Output>
+        <ows:Identifier>TransformationChain</ows:Identifier>
+        <ows:Title>Transformation Chain</ows:Title>
+        <LiteralOutput>
+          <ows:DataType>xs:String</ows:DataType>
+        </LiteralOutput>
+      </Output>
+    </ProcessOutputs>
+  </ProcessDescription>
+  
+  <ProcessDescription wps:processVersion="1.0.0">
+    <ows:Identifier>ListSRSs</ows:Identifier>
+    <ows:Title>List SRS Names</ows:Title>
+    <ows:Abstract></ows:Abstract>
+    <!-- There are no inputs for this function. -->
+    <ProcessOutputs>
+      <Output>
+        <ows:Identifier></ows:Identifier>
+        <ows:Title></ows:Title>
+        <ows:Abstract></ows:Abstract>
+      </Output>
+    </ProcessOutputs>
+  </ProcessDescription>
+  
+  <ProcessDescription wps:processVersion="1.0.0">
+    <ows:Identifier>ListTransformations</ows:Identifier>
+    <ows:Title>List Transformations</ows:Title>
+    <ows:Abstract></ows:Abstract>
+    <!-- To be determined. -->
+    <ProcessOutputs>
+      <Output>
+        <ows:Identifier></ows:Identifier>
+        <ows:Title></ows:Title>
+        <ows:Abstract></ows:Abstract>
+      </Output>
+    </ProcessOutputs>
+  </ProcessDescription>
+  
+  <ProcessDescription wps:processVersion="1.0.0">
     <ows:Identifier>Retrieve2DImage</ows:Identifier>
     <ows:Title>Retrieve 2D Image</ows:Title>
     <ows:Abstract>This function gets a URL reference to a 2D image based
@@ -417,28 +360,63 @@
         <ows:Identifier></ows:Identifier>
         <ows:Title></ows:Title>
         <ows:Abstract></ows:Abstract>
-        <ComplexOutput>
-          <Default>
-            <Format>
-              <MimeType>text/ascii</MimeType>
-              <MimeType>text/html</MimeType>
-              <MimeType>application/vnd.incf.waxml</MimeType>
-              <Encoding>UTF-8</Encoding>
-              <Schema>http://foo.bar/waxml/201001/response.xsd</Schema>
-            </Format>
-          </Default>
-          <Supported>
-            <Format>
-              <MimeType>text/xml</MimeType>
-              <Encoding>UTF-8</Encoding>
-              <Schema>http://foo.bar/gml/3.1.0/polygon.xsd</Schema>
-            </Format>
-            <Format>
-              <MimeType>text/html</MimeType>
-              <Encoding>UTF-8</Encoding>
-            </Format>
-          </Supported>
-        </ComplexOutput>
+      </Output>
+    </ProcessOutputs>
+  </ProcessDescription>
+  
+  <ProcessDescription wps:processVersion="1.0.0">
+    <ows:Identifier>TransformPOI</ows:Identifier>
+    <ows:Title>Transform POI</ows:Title>
+    <ows:Abstract></ows:Abstract>
+    <DataInputs>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='inputSrsName'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='targetSrsName'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='x'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='y'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="1" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='z'
+        return $x/*
+      }
+      </Input>
+      <Input minOccurs="0" maxOccurs="1">
+      {
+        for $x in $doc/ProcessInputs/Input
+        where $x/@id='filter'
+        return $x/*
+      }
+      </Input>
+    </DataInputs>
+    <ProcessOutputs>
+      <Output>
+        <ows:Identifier></ows:Identifier>
+        <ows:Title></ows:Title>
+        <ows:Abstract></ows:Abstract>
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
