@@ -5,6 +5,7 @@ import org.incf.atlas.aba.resource.CoordinateTransformationChain;
 import org.incf.atlas.aba.resource.CorrelationMapByPOI;
 import org.incf.atlas.aba.resource.FaviconResource;
 import org.incf.atlas.aba.resource.Images2DByPOI;
+import org.incf.atlas.aba.resource.ListTransformations;
 import org.incf.atlas.aba.resource.NotYetImplemented;
 import org.incf.atlas.aba.resource.PingResource;
 import org.incf.atlas.aba.resource.ProcessDescriptions;
@@ -169,8 +170,8 @@ public class ServerApplication extends Application {
 		router.attach(DESCRIBE_TRANSFORMATION, NotYetImplemented.class);
 		router.attach(DESCRIBE_TRANSFORMATION_R, NotYetImplemented.class);
 		
-		router.attach(LIST_TRANSFORMATIONS, NotYetImplemented.class);
-		router.attach(LIST_TRANSFORMATIONS_R, NotYetImplemented.class);
+		router.attach(LIST_TRANSFORMATIONS, ListTransformations.class);
+		router.attach(LIST_TRANSFORMATIONS_R, ListTransformations.class);
 		
 		router.attach(TRANSFORM_POI, TransformPOI.class);
 		router.attach(TRANSFORM_POI_R, TransformPOI.class);
