@@ -15,29 +15,39 @@ We have the ABA Hub up serving limited WPS functions on incf-dev-local. So far w
 
  * Execute : TransformPOI
 
-    http://incf-dev-local.crbs.ucsd.edu/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_ABAVoxel_1.0;targetSrsName=Mouse_AGEA_1.0;x=280;y=112;z=162;filter=cerebellum
+http://132.239.131.188:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;targetSrsName=Mouse_AGEA_1.0;x=1;y=112;z=162;filter=cerebellum
+
 
  * Execute : !GetTransformationChain
 
-    http://incf-dev-local.crbs.ucsd.edu/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;targetSrsName=Mouse_ABAReference_1.0;filter=Cerebellum
+http://132.239.131.188:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;targetSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+
 
  * Execute : GetStructureNamesByPOI
 
-    http://incf-dev-local.crbs.ucsd.edu/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine
+http://132.239.131.188:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine
+
 
  * Execute : Get2DImagesByPOI
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=ABAvoxel;x=6272;y=3678;z=4874;gene=C1ql2;zoom=25
 
+
+ * Execute : !ListTransformations
+
+http://132.239.131.188:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;targetSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+
+
+ * Execute : GetCorrelationMapByPOI
+
+http://132.239.131.188:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal
+
+
 == WPS Functions under Development ==
 
  * Execute : ListSRSs
  * Execute : DescribeSRS
-
- * Execute : !ListTransformations
  * Execute : !DescribeTransformation
- 
- * Execute : GetCorrelationMapByPOI
  * Execute : GetGenesByPOI
  
 == Ancillary URLs ==
