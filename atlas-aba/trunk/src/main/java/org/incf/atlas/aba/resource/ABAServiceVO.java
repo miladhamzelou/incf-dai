@@ -27,6 +27,15 @@ public class ABAServiceVO {
 	}
 
 	private String wms = "";
+	private String flag = "";
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
 	private String imageBaseName = "";
 	private String imageServiceName = "";
 	private String minX = "";

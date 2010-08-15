@@ -81,7 +81,7 @@ public class CorrelationMapByPOI extends BaseResouce {
 		System.out.println("****HOSTNAME**** - " + hostName);
 		portNumber = ":8080";
 
-		servicePath = "atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=CorrelationMapByPOI";
+		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=CorrelationMapByPOI";
 
 		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
 

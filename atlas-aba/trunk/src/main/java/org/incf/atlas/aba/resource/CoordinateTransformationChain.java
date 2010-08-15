@@ -29,7 +29,7 @@ public class CoordinateTransformationChain extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(
 			CoordinateTransformationChain.class);
-	
+
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
@@ -80,8 +80,8 @@ public class CoordinateTransformationChain extends BaseResouce {
 
 	        vo.setFromSRSCodeOne(dataInputs.getValue("inputSrsName"));
 	        vo.setFromSRSCode(dataInputs.getValue("inputSrsName"));
-	        vo.setToSRSCodeOne(dataInputs.getValue("targetSrsName"));
-	        vo.setToSRSCode(dataInputs.getValue("targetSrsName"));
+	        vo.setToSRSCodeOne(dataInputs.getValue("outputSrsName"));
+	        vo.setToSRSCode(dataInputs.getValue("outputSrsName"));
 	        vo.setFilter(dataInputs.getValue("filter"));
 
 	        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
@@ -124,7 +124,7 @@ public class CoordinateTransformationChain extends BaseResouce {
 		System.out.println("****HOSTNAME**** - " + hostName);
 		String portNumber = ":8080";
 
-		servicePath = "atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain";
+		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain";
 		//servicePath = "/atlas-aba?Request=Execute&Identifier=GetTransformationChain";
 
         url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
@@ -137,7 +137,7 @@ public class CoordinateTransformationChain extends BaseResouce {
 		String responseString = util.getCoordinateTransformationChain(vo);
 
 		//return document.xmlText(opt);
-		return new StringRepresentation(responseString,MediaType.APPLICATION_XML);
+		return new StringRepresentation(responseString, MediaType.APPLICATION_XML);
 
 		//generate representation based on media type
 /*		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {

@@ -33,9 +33,10 @@ public class BaseResouce extends Resource {
     protected ExceptionHandler exceptionHandler;
     
     public BaseResouce(Context context, Request request, Response response) {
-        super(context, request, response);
+
+    	super(context, request, response);
         constants = Constants.getInstance();
-        
+
         service = (String) request.getAttributes().get("service");
         version = (String) request.getAttributes().get("version");
         dataInputsString = (String) request.getAttributes().get("dataInputs");
@@ -43,21 +44,26 @@ public class BaseResouce extends Resource {
         
         // every request must include service key/value
         checkService();
-        
+/*        if (this instanceOf Capabilities) {
+            checkVersion();
+        }
+=======
+>>>>>>> .r197
+*/
         // every request may include responseForm key/value
         checkResponseForm();
         
         // every request's response will be xml
         getVariants().add(new Variant(MediaType.APPLICATION_XML));
     }
-    
+
     protected ExceptionHandler getExceptionHandler() {
         if (exceptionHandler == null) {
             exceptionHandler = new ExceptionHandler();
         }
         return exceptionHandler;
     }
-    
+
     protected Representation getExceptionRepresentation() 
             throws ResourceException {
         
@@ -81,7 +87,7 @@ public class BaseResouce extends Resource {
      */
     protected void checkService() {
         if (!service.equals(constants.getDefaultService())) {
-            
+
             // prepare an ExceptionReport
             ExceptionHandler eh = getExceptionHandler();
             eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
@@ -90,7 +96,7 @@ public class BaseResouce extends Resource {
                     String.format("The supported service is %s.", 
                                     constants.getDefaultService()),
                     });
-            
+
         }
     }
 
@@ -100,7 +106,7 @@ public class BaseResouce extends Resource {
      */
     protected void checkVersion() {
         if (!version.equals(constants.getDefaultVersion())) {
-            
+
             // prepare an ExceptionReport
             ExceptionHandler eh = getExceptionHandler();
             eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
@@ -109,7 +115,7 @@ public class BaseResouce extends Resource {
                     String.format("The supported version is %s.", 
                                     constants.getDefaultVersion()),
                     });
-            
+
         }
     }
 
@@ -136,7 +142,7 @@ public class BaseResouce extends Resource {
                     String.format("The only supported Response Form is %s.", 
                             constants.getDefaultResponseForm()),
                     });
-            
+
         }
     }
     
