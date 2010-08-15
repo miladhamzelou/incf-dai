@@ -201,9 +201,9 @@ public class ServerApplication extends Application {
 
 		router.attach("/ping/{pingType}", PingResource.class);
 		
-/*		router.attach("/{uriSuffix}", UnrecognizedUri.class);
+		router.attach("/{uriSuffix}", UnrecognizedUri.class);
 		router.attach("?{uriSuffix}", UnrecognizedUri.class);
-*/
+
 		logger.error("No router matched.");
 
 		return router;
