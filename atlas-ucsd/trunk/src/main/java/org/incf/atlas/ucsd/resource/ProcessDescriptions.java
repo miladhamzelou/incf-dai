@@ -32,11 +32,6 @@ public class ProcessDescriptions extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
-    // cache directory relative to tomcat/webapps/
-    private static final String CACHE_DIR_NAME = 
-        "/usr/local/tomcat/webapps/"
-        + "atlas-ucsd/WEB-INF/cache";
-    
     // cached file
     private static final String RESPONSE_FILE_NAME = "ProcessDescriptions.xml";
     
@@ -68,7 +63,7 @@ public class ProcessDescriptions extends BaseResouce {
         }
         
         // look for cached file fisrt
-        File cachedResponse = new File(CACHE_DIR_NAME, RESPONSE_FILE_NAME);
+        File cachedResponse = new File(cacheDir, RESPONSE_FILE_NAME);
         if (cachedResponse.exists()) {
             return new FileRepresentation(cachedResponse, 
                     MediaType.APPLICATION_XML);
@@ -82,12 +77,14 @@ public class ProcessDescriptions extends BaseResouce {
         props.setProperty("{http://saxon.sf.net/}indent-spaces", "2");
         
         // make cache directory
-        File cacheDir = new File(CACHE_DIR_NAME);
         cacheDir.mkdir();
         
         logger.debug("cacheDir: {}", cacheDir.getAbsolutePath());
         
-        String prelude = "declare variable $doc := doc(\"file:///usr/local/tomcat/webapps/atlas-ucsd/WEB-INF/classes/database/ProcessInputs.xml\");";
+//        String prelude = "declare variable $doc := doc(\"file://" + tomcatDir
+//		+ "/webapps/atlas-ucsd/WEB-INF/classes/database/ProcessInputs.xml\");";
+        String prelude = "declare variable $doc := doc(\"file://" 
+        		+ xmlDbDir.getAbsolutePath() + "/ProcessInputs.xml\");";
         try {
 
             // run query
@@ -109,15 +106,6 @@ public class ProcessDescriptions extends BaseResouce {
         // return as file
         return new FileRepresentation(cachedResponse, 
                 MediaType.APPLICATION_XML);
-	}
-	
-	private String readFileAsString(String filePath) throws IOException{
-	    byte[] buffer = new byte[(int) new File(filePath).length()];
-	    BufferedInputStream f = new BufferedInputStream(
-	    		new FileInputStream(filePath));
-	    f.read(buffer);
-	    f.close();
-	    return new String(buffer);
 	}
 	
 }

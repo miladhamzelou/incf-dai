@@ -29,22 +29,21 @@ public class Capabilities extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
-	// cache directory relative to tomcat/webapps/
-	private static final String CACHE_DIR_NAME = 
-	    "/usr/local/tomcat/webapps/"
-	    + "atlas-ucsd/WEB-INF/cache";
-	
 	// cached file
 	private static final String RESPONSE_FILE_NAME = "Capabilities.xml";
 	
 	// xquery file from which to build cached file
 	private static final String RESPONSE_BASE_NAME = 
-		"/database/Capabilities.xq";
+//		"/database/Capabilities.xq";
+		"Capabilities.xq";
 	
 	public Capabilities(Context context, Request request, Response response) {
 		super(context, request, response);
 		
 		logger.debug("Instantiated {}.", getClass());
+		
+		logger.debug("user.dir: {}", System.getProperty("user.dir"));
+		logger.debug("catalina.base: {}", System.getProperty("catalina.base"));
 	}
 
 	/* 
@@ -64,7 +63,7 @@ public class Capabilities extends BaseResouce {
 	    }
 	    
 	    // look for cached file fisrt
-	    File cachedResponse = new File(CACHE_DIR_NAME, RESPONSE_FILE_NAME);
+	    File cachedResponse = new File(cacheDir, RESPONSE_FILE_NAME);
 	    if (cachedResponse.exists()) {
 	        return new FileRepresentation(cachedResponse, 
 	        		MediaType.APPLICATION_XML);
@@ -78,21 +77,38 @@ public class Capabilities extends BaseResouce {
         props.setProperty("{http://saxon.sf.net/}indent-spaces", "2");
         
         // make cache directory
-        File cacheDir = new File(CACHE_DIR_NAME);
         cacheDir.mkdir();
         
         logger.debug("cacheDir: {}", cacheDir.getAbsolutePath());
         
+//        String prelude = "declare variable $doc := doc(\"file://" + tomcatDir
+//			+ "/webapps/atlas-ucsd/WEB-INF/classes/database/ProcessDescriptions.xq\");";
+        String prelude = "declare variable $doc := doc(\"file://" 
+    		+ xmlDbDir.getAbsolutePath() + "/ProcessDescriptions.xq\");";
 		try {
 
 			// run query
 			XQDataSource ds = new SaxonXQDataSource();
+			
+			logger.debug("cp1");
+			
 			XQConnection conn = ds.getConnection();
-			XQPreparedExpression exp = conn.prepareExpression(
-					this.getClass().getResourceAsStream(RESPONSE_BASE_NAME));
+			
+			logger.debug("cp2");
+			
+//			XQPreparedExpression exp = conn.prepareExpression(
+//					this.getClass().getResourceAsStream(RESPONSE_BASE_NAME));
+            XQPreparedExpression exp = conn.prepareExpression(prelude
+                    + readFileAsString(new File(xmlDbDir, RESPONSE_BASE_NAME)));
+			
+			logger.debug("cp3");
+			
 			XQResultSequence result = exp.executeQuery();
 			
 	        // serialize to cache
+			
+			logger.debug("cp4");
+			
 			result.writeSequence(new FileWriter(cachedResponse), props);
 		} catch (Exception e) {
 			logger.error("Exception in query exection and caching: ", e);
@@ -101,6 +117,9 @@ public class Capabilities extends BaseResouce {
 
 		// TODO validate
         
+		
+		logger.debug("cp5");
+		
 		// return as file
         return new FileRepresentation(cachedResponse, 
         		MediaType.APPLICATION_XML);

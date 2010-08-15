@@ -1,5 +1,10 @@
 package org.incf.atlas.ucsd.resource;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 import javax.xml.bind.JAXBException;
 
 import org.incf.atlas.common.util.ExceptionCode;
@@ -29,6 +34,9 @@ public class BaseResouce extends Resource {
     private String version;
     protected String dataInputsString;
     private String responseForm;
+    protected String tomcatDir;
+    protected File cacheDir;
+    protected File xmlDbDir;
     
     protected ExceptionHandler exceptionHandler;
     
@@ -40,6 +48,9 @@ public class BaseResouce extends Resource {
         version = (String) request.getAttributes().get("version");
         dataInputsString = (String) request.getAttributes().get("dataInputs");
         responseForm = (String) request.getAttributes().get("responseForm");
+        tomcatDir = System.getProperty("catalina.base");
+        cacheDir = new File(tomcatDir + "/webapps/atlas-ucsd/WEB-INF/cache");
+        xmlDbDir = new File(tomcatDir + "/webapps/atlas-ucsd/WEB-INF/classes/database");
         
         // every request must include service key/value
         checkService();
@@ -215,5 +226,24 @@ public class BaseResouce extends Resource {
             validateCoordinate("z", dataInputs.getValue("z")) };
     }
 
+	protected String readFileAsString(String filePath) throws IOException{
+//	    byte[] buffer = new byte[(int) new File(filePath).length()];
+//	    BufferedInputStream f = new BufferedInputStream(
+//	    		new FileInputStream(filePath));
+//	    f.read(buffer);
+//	    f.close();
+//	    return new String(buffer);
+		return readFileAsString(new File(filePath));
+	}
+	
+	protected String readFileAsString(File file) throws IOException{
+	    byte[] buffer = new byte[(int) file.length()];
+	    BufferedInputStream f = new BufferedInputStream(
+	    		new FileInputStream(file));
+	    f.read(buffer);
+	    f.close();
+	    return new String(buffer);
+	}
+	
 }
 
