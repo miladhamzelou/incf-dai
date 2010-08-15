@@ -76,7 +76,7 @@ public class TransformPOI extends BaseResouce {
 		System.out.println("****HOSTNAME**** - " + hostName);
 		portNumber = ":8080";
 
-		servicePath = "atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI"; 
+		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI"; 
 
 		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
 	}
@@ -104,8 +104,8 @@ public class TransformPOI extends BaseResouce {
 
 	        vo.setFromSRSCodeOne(dataInputs.getValue("inputSrsName"));
 	        vo.setFromSRSCode(dataInputs.getValue("inputSrsName"));
-	        vo.setToSRSCodeOne(dataInputs.getValue("targetSrsName"));
-	        vo.setToSRSCode(dataInputs.getValue("targetSrsName"));
+	        vo.setToSRSCodeOne(dataInputs.getValue("outputSrsName"));
+	        vo.setToSRSCode(dataInputs.getValue("outputSrsName"));
 	        vo.setFilter(dataInputs.getValue("filter"));
 
 	        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
@@ -234,12 +234,13 @@ public class TransformPOI extends BaseResouce {
 		POIType poi = rootDoc.addNewPOI();
 		PointType poipnt = poi.addNewPoint();
 		poipnt.setId(String.valueOf(randomGMLID2));
+		poipnt.setSrsName(vo.getToSRSCode());
 		poipnt.addNewPos();
 		poipnt.getPos().setStringValue(vo.getTransformedCoordinateX() + " " + vo.getTransformedCoordinateY() + " " + vo.getTransformedCoordinateZ());
 
-	ArrayList errorList = new ArrayList();
-	 opt.setErrorListener(errorList);
-	 boolean isValid = document.validate(opt);
+		ArrayList errorList = new ArrayList();
+		opt.setErrorListener(errorList);
+		boolean isValid = document.validate(opt);
 	 
 	 // If the XML isn't valid, loop through the listener's contents,
 	 // printing contained messages.

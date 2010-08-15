@@ -72,7 +72,7 @@ public class StructureNamesByPOI extends BaseResouce {
 		System.out.println("****HOSTNAME**** - " + hostName);
 		portNumber = ":8080";
 
-		servicePath = "atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI";
+		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI";
 		//servicePath = "/atlas-aba?Request=Execute&Identifier=GetStructureNamesByPOI";
 
 		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
@@ -273,7 +273,7 @@ public class StructureNamesByPOI extends BaseResouce {
 		filterCodeCriteria.setValue(vo.getFilter());
 
 		query.addNewQueryUrl();
-		query.getQueryUrl().setName("StructureNamesByPOI");
+		query.getQueryUrl().setName("GetStructureNamesByPOI");
 		query.getQueryUrl().setStringValue(url);
 		query.setTimeCreated(Calendar.getInstance());
 
