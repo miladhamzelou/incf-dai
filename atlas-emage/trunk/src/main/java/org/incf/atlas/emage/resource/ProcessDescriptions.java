@@ -16,7 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 // test:
-// http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=DescribeProcess
+// http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emage?service=WPS&version=1.0.0&request=DescribeProcess
 
 public class ProcessDescriptions extends BaseResouce {
 

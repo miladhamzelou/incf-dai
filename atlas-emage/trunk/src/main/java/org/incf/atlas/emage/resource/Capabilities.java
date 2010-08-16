@@ -15,8 +15,8 @@ import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-//test:
-//http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&request=GetCapabilities
+// test:
+// http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emage?service=WPS&request=GetCapabilities
 
 public class Capabilities extends BaseResouce {
 
