@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:Capabilities xmlns:ows="http://www.opengis.net/ows/1.1"
+                  xmlns:wps="http://www.opengis.net/wps/1.0.0"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  service="WPS"
+                  version="1.0.0"
+                  xml:lang="en-US">
+   <ows:ServiceIdentification>
+      <ows:Title>UCSD Atlas Services</ows:Title>
+      <ows:Abstract>UCSD Atlas Services provide access to data available from the
+      University of California, San Diego resource.</ows:Abstract>
+      <ows:ServiceType>WPS</ows:ServiceType>
+      <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+   </ows:ServiceIdentification>
+   <wps:ProcessOfferings>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>DescribeSRS</ows:Identifier>
+         <ows:Title>Describe SRS</ows:Title>
+         <ows:Abstract/>
+      </wps:Process>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>Get2DImagesByPOI</ows:Identifier>
+         <ows:Title>Get 2D Images by POI</ows:Title>
+         <ows:Abstract/>
+      </wps:Process>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>Get2DImagesByURI</ows:Identifier>
+         <ows:Title>Get 2D Images by URI</ows:Title>
+         <ows:Abstract/>
+      </wps:Process>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>GetCellsByPOI</ows:Identifier>
+         <ows:Title>Get Cells by POI</ows:Title>
+         <ows:Abstract/>
+      </wps:Process>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>GetCellsByURI</ows:Identifier>
+         <ows:Title>Get 2D Images by POI</ows:Title>
+         <ows:Abstract/>
+      </wps:Process>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
+         <ows:Title>Get Structure Names by POI</ows:Title>
+         <ows:Abstract/>
+      </wps:Process>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>GetTransformationChain</ows:Identifier>
+         <ows:Title>Get Transformation Chain</ows:Title>
+         <ows:Abstract/>
+      </wps:Process>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>ListSRSs</ows:Identifier>
+         <ows:Title>List SRS Names</ows:Title>
+         <ows:Abstract/>
+      </wps:Process>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>ListTransformations</ows:Identifier>
+         <ows:Title>List Transformations</ows:Title>
+         <ows:Abstract/>
+      </wps:Process>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>Retrieve2DImage</ows:Identifier>
+         <ows:Title>Retrieve 2D Image</ows:Title>
+         <ows:Abstract>This function gets a URL reference to a 2D image based
+      on the source URL provided and "cropped" based on the specified lower
+      left (xmin, ymin) and upper right (xmax, ymax).
+    </ows:Abstract>
+      </wps:Process>
+      <wps:Process wps:processVersion="1.0.0">
+         <ows:Identifier>TransformPOI</ows:Identifier>
+         <ows:Title>Transform POI</ows:Title>
+         <ows:Abstract/>
+      </wps:Process>
+   </wps:ProcessOfferings>
+   <wps:Languages>
+      <wps:Default>
+         <ows:Language>en-US</ows:Language>
+      </wps:Default>
+      <wps:Supported>
+         <ows:Language>en-US</ows:Language>
+      </wps:Supported>
+   </wps:Languages>
+</wps:Capabilities>

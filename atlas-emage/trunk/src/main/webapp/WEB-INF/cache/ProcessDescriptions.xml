@@ -1,0 +1,796 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wps:ProcessDescriptions xmlns:ows="http://www.opengis.net/ows/1.1"
+                         xmlns:wps="http://www.opengis.net/wps/1.0.0"
+                         service="WPS"
+                         version="1.0.0"
+                         xml:lang="en-US">
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>DescribeSRS</ows:Identifier>
+      <ows:Title>Describe SRS</ows:Title>
+      <ows:Abstract/>
+      <DataInputs>
+         <Input>
+            <ows:Identifier>srsName</ows:Identifier>
+            <ows:Title>Atlas SRS Name</ows:Title>
+            <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+                  <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+                  <ows:Value>Mouse_AGEA_1.0</ows:Value>
+                  <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+                  <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+                  <ows:Value>Mouse_WHS_1.0</ows:Value>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+      </DataInputs>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>ImageURL</ows:Identifier>
+            <ows:Title>2D Image at POI result</ows:Title>
+            <ows:Abstract>2D Image at POI result</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/DescribeSRSResponse.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/DescribeSRSResponse.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>Get2DImagesByPOI</ows:Identifier>
+      <ows:Title>Get 2D Images by POI</ows:Title>
+      <ows:Abstract/>
+      <DataInputs>
+         <Input>
+            <ows:Identifier>srsName</ows:Identifier>
+            <ows:Title>Atlas SRS Name</ows:Title>
+            <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+                  <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+                  <ows:Value>Mouse_AGEA_1.0</ows:Value>
+                  <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+                  <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+                  <ows:Value>Mouse_WHS_1.0</ows:Value>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>x</ows:Identifier>
+            <ows:Title>X-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the X dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>y</ows:Identifier>
+            <ows:Title>Y-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Y dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>z</ows:Identifier>
+            <ows:Title>Z-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Z dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input minOccurs="0">
+            <ows:Identifier>filter</ows:Identifier>
+            <ows:Title>Filter</ows:Title>
+            <ows:Abstract>.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>maptype:coronal</ows:Value>
+                  <ows:Value>maptype:horizontal</ows:Value>
+                  <ows:Value>maptype:sagittal</ows:Value>
+                  <ows:Value>structureset:anatomic</ows:Value>
+                  <ows:Value>structureset:fine</ows:Value>
+                  <ows:AnyValue/>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+      </DataInputs>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>ImageURL</ows:Identifier>
+            <ows:Title>2D Image at POI result</ows:Title>
+            <ows:Abstract>2D Image at POI result</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/ImagesResponse.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/ImagesResponse.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>Get2DImagesByURI</ows:Identifier>
+      <ows:Title>Get 2D Images by URI</ows:Title>
+      <ows:Abstract/>
+      <DataInputs>
+         <Input>
+            <ows:Identifier>srsName</ows:Identifier>
+            <ows:Title>Atlas SRS Name</ows:Title>
+            <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+                  <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+                  <ows:Value>Mouse_AGEA_1.0</ows:Value>
+                  <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+                  <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+                  <ows:Value>Mouse_WHS_1.0</ows:Value>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>x</ows:Identifier>
+            <ows:Title>X-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the X dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>y</ows:Identifier>
+            <ows:Title>Y-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Y dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>z</ows:Identifier>
+            <ows:Title>Z-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Z dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input minOccurs="0">
+            <ows:Identifier>filter</ows:Identifier>
+            <ows:Title>Filter</ows:Title>
+            <ows:Abstract>.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>maptype:coronal</ows:Value>
+                  <ows:Value>maptype:horizontal</ows:Value>
+                  <ows:Value>maptype:sagittal</ows:Value>
+                  <ows:Value>structureset:anatomic</ows:Value>
+                  <ows:Value>structureset:fine</ows:Value>
+                  <ows:AnyValue/>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+      </DataInputs>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>ImageURL</ows:Identifier>
+            <ows:Title>2D Image at POI result</ows:Title>
+            <ows:Abstract>2D Image at POI result</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/ImagesResponse.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/ImagesResponse.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>GetCellsByPOI</ows:Identifier>
+      <ows:Title>Get Cells by POI</ows:Title>
+      <ows:Abstract/>
+      <DataInputs>
+         <Input>
+            <ows:Identifier>srsName</ows:Identifier>
+            <ows:Title>Atlas SRS Name</ows:Title>
+            <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+                  <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+                  <ows:Value>Mouse_AGEA_1.0</ows:Value>
+                  <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+                  <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+                  <ows:Value>Mouse_WHS_1.0</ows:Value>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>x</ows:Identifier>
+            <ows:Title>X-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the X dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>y</ows:Identifier>
+            <ows:Title>Y-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Y dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>z</ows:Identifier>
+            <ows:Title>Z-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Z dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input minOccurs="0">
+            <ows:Identifier>filter</ows:Identifier>
+            <ows:Title>Filter</ows:Title>
+            <ows:Abstract>.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>maptype:coronal</ows:Value>
+                  <ows:Value>maptype:horizontal</ows:Value>
+                  <ows:Value>maptype:sagittal</ows:Value>
+                  <ows:Value>structureset:anatomic</ows:Value>
+                  <ows:Value>structureset:fine</ows:Value>
+                  <ows:AnyValue/>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+      </DataInputs>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>ImageURL</ows:Identifier>
+            <ows:Title>2D Image at POI result</ows:Title>
+            <ows:Abstract>2D Image at POI result</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/CellsResponse.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/CellsResponse.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>GetCellsByURI</ows:Identifier>
+      <ows:Title>Get 2D Images by POI</ows:Title>
+      <ows:Abstract/>
+      <DataInputs>
+         <Input>
+            <ows:Identifier>srsName</ows:Identifier>
+            <ows:Title>Atlas SRS Name</ows:Title>
+            <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+                  <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+                  <ows:Value>Mouse_AGEA_1.0</ows:Value>
+                  <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+                  <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+                  <ows:Value>Mouse_WHS_1.0</ows:Value>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>x</ows:Identifier>
+            <ows:Title>X-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the X dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>y</ows:Identifier>
+            <ows:Title>Y-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Y dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>z</ows:Identifier>
+            <ows:Title>Z-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Z dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input minOccurs="0">
+            <ows:Identifier>filter</ows:Identifier>
+            <ows:Title>Filter</ows:Title>
+            <ows:Abstract>.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>maptype:coronal</ows:Value>
+                  <ows:Value>maptype:horizontal</ows:Value>
+                  <ows:Value>maptype:sagittal</ows:Value>
+                  <ows:Value>structureset:anatomic</ows:Value>
+                  <ows:Value>structureset:fine</ows:Value>
+                  <ows:AnyValue/>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+      </DataInputs>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>ImageURL</ows:Identifier>
+            <ows:Title>2D Image at POI result</ows:Title>
+            <ows:Abstract>2D Image at POI result</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/CellsByUriResponse.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/CellsByUriResponse.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
+      <ows:Title>Get Structure Names by POI</ows:Title>
+      <ows:Abstract/>
+      <DataInputs>
+         <Input>
+            <ows:Identifier>srsName</ows:Identifier>
+            <ows:Title>Atlas SRS Name</ows:Title>
+            <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+                  <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+                  <ows:Value>Mouse_AGEA_1.0</ows:Value>
+                  <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+                  <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+                  <ows:Value>Mouse_WHS_1.0</ows:Value>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>x</ows:Identifier>
+            <ows:Title>X-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the X dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>y</ows:Identifier>
+            <ows:Title>Y-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Y dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>z</ows:Identifier>
+            <ows:Title>Z-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Z dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input minOccurs="0">
+            <ows:Identifier>vocabulary</ows:Identifier>
+            <ows:Title>Vocabulary</ows:Title>
+            <ows:Abstract>.</ows:Abstract>
+            <LiteralData>
+               <ows:AnyValue/>
+            </LiteralData>
+         </Input>
+         <Input minOccurs="0">
+            <ows:Identifier>filter</ows:Identifier>
+            <ows:Title>Filter</ows:Title>
+            <ows:Abstract>.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>maptype:coronal</ows:Value>
+                  <ows:Value>maptype:horizontal</ows:Value>
+                  <ows:Value>maptype:sagittal</ows:Value>
+                  <ows:Value>structureset:anatomic</ows:Value>
+                  <ows:Value>structureset:fine</ows:Value>
+                  <ows:AnyValue/>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+      </DataInputs>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>ImageURL</ows:Identifier>
+            <ows:Title>2D Image at POI result</ows:Title>
+            <ows:Abstract>2D Image at POI result</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/StructureTermsResponse.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/StructureTermsResponse.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>GetTransformationChain</ows:Identifier>
+      <ows:Title>Get Transformation Chain</ows:Title>
+      <ows:Abstract/>
+      <DataInputs>
+         <Input>
+            <ows:Identifier>inputSrsName</ows:Identifier>
+            <ows:Title>Input SRS Name</ows:Title>
+            <ows:Abstract>The "in" or "from" SRS (Spatial Reference System) name.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+                  <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+                  <ows:Value>Mouse_AGEA_1.0</ows:Value>
+                  <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+                  <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+                  <ows:Value>Mouse_WHS_1.0</ows:Value>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>outputSrsName</ows:Identifier>
+            <ows:Title>Output SRS Name</ows:Title>
+            <ows:Abstract>The "out" or "to" SRS (Spatial Reference System) name.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+                  <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+                  <ows:Value>Mouse_AGEA_1.0</ows:Value>
+                  <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+                  <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+                  <ows:Value>Mouse_WHS_1.0</ows:Value>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+         <Input minOccurs="0">
+            <ows:Identifier>filter</ows:Identifier>
+            <ows:Title>Filter</ows:Title>
+            <ows:Abstract>.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>maptype:coronal</ows:Value>
+                  <ows:Value>maptype:horizontal</ows:Value>
+                  <ows:Value>maptype:sagittal</ows:Value>
+                  <ows:Value>structureset:anatomic</ows:Value>
+                  <ows:Value>structureset:fine</ows:Value>
+                  <ows:AnyValue/>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+      </DataInputs>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>ImageURL</ows:Identifier>
+            <ows:Title>2D Image at POI result</ows:Title>
+            <ows:Abstract>2D Image at POI result</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/CoordinateChainTransformationResponse.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/CoordinateChainTransformationResponse.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>ListSRSs</ows:Identifier>
+      <ows:Title>List SRS Names</ows:Title>
+      <ows:Abstract/>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>ImageURL</ows:Identifier>
+            <ows:Title>2D Image at POI result</ows:Title>
+            <ows:Abstract>2D Image at POI result</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/ListSrsResponse.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/ListSrsResponse.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>ListTransformations</ows:Identifier>
+      <ows:Title>List Transformations</ows:Title>
+      <ows:Abstract/>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>ImageURL</ows:Identifier>
+            <ows:Title>2D Image at POI result</ows:Title>
+            <ows:Abstract>2D Image at POI result</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/ListTransformation.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/ListTransformation.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>Retrieve2DImage</ows:Identifier>
+      <ows:Title>Retrieve 2D Image</ows:Title>
+      <ows:Abstract>This function gets a URL reference to a 2D image based
+      on the source URL provided and "cropped" based on the specified lower
+      left (xmin, ymin) and upper right (xmax, ymax).
+    </ows:Abstract>
+      <DataInputs>
+         <Input>
+            <ows:Identifier>sourceType</ows:Identifier>
+            <ows:Title>Source Type</ows:Title>
+            <ows:Abstract>Type of image source that will be queried.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>WMS</ows:Value>
+                  <ows:Value>zoomify</ows:Value>
+                  <ows:Value>static</ows:Value>
+                  <ows:AnyValue/>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>sourceURL</ows:Identifier>
+            <ows:Title>Source URL</ows:Title>
+            <ows:Abstract>The URL of the image whose fragment URL will be returned.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:anyURL"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>xmin</ows:Identifier>
+            <ows:Title>Left X-Coordinate Value</ows:Title>
+            <ows:Abstract>Left x-coordinate of the desired image fragment.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>xmax</ows:Identifier>
+            <ows:Title>Right X-Coordinate Value</ows:Title>
+            <ows:Abstract>Right x-coordinate of the desired image fragment.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>ymin</ows:Identifier>
+            <ows:Title>Lower Y-Coordinate Value</ows:Title>
+            <ows:Abstract>Lower y-coordinate of the desired image fragment.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>ymax</ows:Identifier>
+            <ows:Title>Upper Y-Coordinate Value</ows:Title>
+            <ows:Abstract>Upper y-coordinate of the desired image fragment.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+      </DataInputs>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>ImageURL</ows:Identifier>
+            <ows:Title>2D Image at POI result</ows:Title>
+            <ows:Abstract>2D Image at POI result</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/Retrieve2DImagesResponse.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/Retrieve2DImagesResponse.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+   <ProcessDescription wps:processVersion="1.0.0">
+      <ows:Identifier>TransformPOI</ows:Identifier>
+      <ows:Title>Transform POI</ows:Title>
+      <ows:Abstract/>
+      <DataInputs>
+         <Input>
+            <ows:Identifier>inputSrsName</ows:Identifier>
+            <ows:Title>Input SRS Name</ows:Title>
+            <ows:Abstract>The "in" or "from" SRS (Spatial Reference System) name.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+                  <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+                  <ows:Value>Mouse_AGEA_1.0</ows:Value>
+                  <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+                  <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+                  <ows:Value>Mouse_WHS_1.0</ows:Value>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>outputSrsName</ows:Identifier>
+            <ows:Title>Output SRS Name</ows:Title>
+            <ows:Abstract>The "out" or "to" SRS (Spatial Reference System) name.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>Mouse_ABAreference_1.0</ows:Value>
+                  <ows:Value>Mouse_ABAvoxel_1.0</ows:Value>
+                  <ows:Value>Mouse_AGEA_1.0</ows:Value>
+                  <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
+                  <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+                  <ows:Value>Mouse_WHS_1.0</ows:Value>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>x</ows:Identifier>
+            <ows:Title>X-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the X dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>y</ows:Identifier>
+            <ows:Title>Y-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Y dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input>
+            <ows:Identifier>z</ows:Identifier>
+            <ows:Title>Z-Coordinate Value</ows:Title>
+            <ows:Abstract>Value in the Z dimension as defined in the SRS.</ows:Abstract>
+            <LiteralData>
+               <ows:DataType ows:reference="xs:double"/>
+            </LiteralData>
+         </Input>
+         <Input minOccurs="0">
+            <ows:Identifier>filter</ows:Identifier>
+            <ows:Title>Filter</ows:Title>
+            <ows:Abstract>.</ows:Abstract>
+            <LiteralData>
+               <ows:AllowedValues>
+                  <ows:Value>maptype:coronal</ows:Value>
+                  <ows:Value>maptype:horizontal</ows:Value>
+                  <ows:Value>maptype:sagittal</ows:Value>
+                  <ows:Value>structureset:anatomic</ows:Value>
+                  <ows:Value>structureset:fine</ows:Value>
+                  <ows:AnyValue/>
+               </ows:AllowedValues>
+            </LiteralData>
+         </Input>
+      </DataInputs>
+      <ProcessOutputs>
+         <Output>
+            <ows:Identifier>TransformationResponse</ows:Identifier>
+            <ows:Title>Transformation Response</ows:Title>
+            <ows:Abstract>The transformation of input SRS coordinates to output SRS coordinates.</ows:Abstract>
+            <ComplexOutput>
+               <Default>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/TransformationResponse.xsd</Schema>
+                  </Format>
+               </Default>
+               <Supported>
+                  <Format>
+                     <MimeType>application/vnd.incf.waxml</MimeType>
+                     <Encoding>UTF-8</Encoding>
+                     <Schema>http://www.incf.oef/atlas/WaxML/schema/TransformationResponse.xsd</Schema>
+                  </Format>
+               </Supported>
+            </ComplexOutput>
+         </Output>
+      </ProcessOutputs>
+   </ProcessDescription>
+</wps:ProcessDescriptions>
