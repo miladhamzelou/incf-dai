@@ -21,6 +21,7 @@ public class Main {
             out.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
+		System.out.println("Error CoordinateTransformResponse");
 		e.printStackTrace();
 	}
 	  GenesResponse gr = new GenesResponse();
@@ -31,6 +32,7 @@ public class Main {
            out.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
+		System.out.println("Error GenesREsponse");
 		e.printStackTrace();
 	}
 	
@@ -43,6 +45,7 @@ public class Main {
          out.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
+		System.out.println("Error StructureTermsResponse");
 		e.printStackTrace();
 	}
 	
@@ -54,6 +57,7 @@ public class Main {
          out.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
+		System.out.println("Error TransformationResponse");
 		e.printStackTrace();
 	}
 	
@@ -65,6 +69,7 @@ public class Main {
          out.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
+		System.out.println("Error ListTransformsRespone");
 		e.printStackTrace();
 	}
 	
@@ -75,7 +80,8 @@ public class Main {
          out.write(ImagesResponse);
          out.close();
 	} catch (IOException e) {
-		// TODO Auto-generated catch block
+		// TODO Auto-generated ca tch block
+		System.out.println("Error ImagesResponse");
 		e.printStackTrace();
 	}
 	
@@ -87,6 +93,7 @@ public class Main {
          out.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
+		System.out.println("Error ImagesMultiExampleResponse");
 		e.printStackTrace();
 	}
 	
@@ -98,6 +105,7 @@ public class Main {
          out.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
+		System.out.println("Error ImagesByUriResponse");
 		e.printStackTrace();
 	}
 	
@@ -109,7 +117,7 @@ public class Main {
          out.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
+		System.out.println("Error Images2drESPONSE");e.printStackTrace();
 	}
 	
 	CorrelationMapResponse cmr = new CorrelationMapResponse();
@@ -120,8 +128,22 @@ public class Main {
          out.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
+		System.out.println("Error CorrelationMapResponse");
 		e.printStackTrace();
 	}
+	
+	ListSRSResponse srs1 = new ListSRSResponse();
+	String SrsResponseFull = srs1.AsXml();
+	 try {
+	     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/ListSRSResponse_full.xml"));
+	         out.write(SrsResponseFull);
+	         out.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Error ListSRSResponse");
+			e.printStackTrace();
+		}
+		
 	System.out.println("done");
        
 	}

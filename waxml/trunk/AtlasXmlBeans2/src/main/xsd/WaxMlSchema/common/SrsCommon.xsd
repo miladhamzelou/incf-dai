@@ -10,7 +10,7 @@
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:normalizedString">
-                            <xs:attribute name="srsCode" type="xs:QName" />
+                            <xs:attribute name="srsCode" type="xs:token" />
                             <xs:attribute name="srsBase" type="xs:normalizedString" />
                             <xs:attribute name="srsVersion" type="xs:normalizedString" />
                             <xs:attribute name="species" type="xs:normalizedString" />
@@ -20,7 +20,7 @@
                 </xs:complexType>
             </xs:element>
             <xs:element name="Description" type="wax:Incfdescription" />
-            <xs:element xmlns:q1="http://www.isotc211.org/2005/gmd" name="Author" type="q1:CI_ResponsibleParty_Type" />
+            <xs:element xmlns:q1="http://www.isotc211.org/2005/gmd" name="Author" type="wax:AuthorType" />
             <xs:element name="DateCreated" type="xs:date" />
             <xs:element name="DateUpdated" type="xs:date" />
             <xs:element name="Origin" type="wax:incfCodeType" />
@@ -79,14 +79,22 @@
             <xs:element name="Description" type="wax:Incfdescription" />
             <xs:element name="Author">
                 <xs:complexType>
-                    <xs:simpleContent>
-                        <xs:extension base="xs:string">
-                            <xs:attribute name="dateSubmitted" type="xs:date" />
-                            <xs:attribute name="authorCode" type="xs:string" />
-                        </xs:extension>
-                    </xs:simpleContent>
+                    <xs:complexContent>
+                        <xs:extension base="wax:AuthorType" />
+                    </xs:complexContent>
                 </xs:complexType>
             </xs:element>
         </xs:sequence>
+        <xs:attribute name="code" type="xs:string" />
+        <xs:attribute name="name" type="xs:string" />
+        <xs:attribute ref="gml:id" />
+    </xs:complexType>
+    <xs:complexType name="AuthorType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="dateSubmitted" type="xs:date" />
+                <xs:attribute name="authorCode" type="xs:string" />
+            </xs:extension>
+        </xs:simpleContent>
     </xs:complexType>
 </xs:schema>

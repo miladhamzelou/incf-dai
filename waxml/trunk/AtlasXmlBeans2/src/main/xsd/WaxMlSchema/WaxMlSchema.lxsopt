@@ -5,5 +5,4 @@
 	<OpenFile Uri=".\common\CoordinateTransformationCommon.xsd"/>
 	<OpenFile Uri=".\common\WaxML_Base.xsd"/>
 	<OpenFile Uri=".\ListSrsResponse.xsd"/>
-	<OpenFile Uri=".\TransformationResponse.xsd"/>
 </XmlStudioProjectOptions>

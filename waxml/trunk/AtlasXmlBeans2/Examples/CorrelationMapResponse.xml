@@ -1,4 +1,4 @@
-<correlationMapResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<CorrelationMapResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <QueryInfo>
     <QueryUrl name="GetCorrelationMapByPOI">URL</QueryUrl>
     <Criteria>
@@ -17,4 +17,4 @@
     </Criteria>
   </QueryInfo>
   <CorrelationUrl>URL</CorrelationUrl>
-</correlationMapResponse>
+</CorrelationMapResponse>

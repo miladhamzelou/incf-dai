@@ -85,14 +85,14 @@ public class DescribeSrsResponse   {
 		SRSType.Name srsname = srs.addNewName();
 		srsname.setStringValue("Mouse_ABAreference_1.0");
 		srsname.setUrn("INCF:0101");
-		srsname.setSrsCode(new QName("INCF:0101"));
+		srsname.setSrsCode("INCF:0101");
 		srsname.setSrsBase("ABAreference");
 		srsname.setSrsVersion("1.0");
 		srsname.setSpecies("Mouse");
 		
 		Incfdescription desc = srs.addNewDescription();
 		
-		CIResponsiblePartyType author = srs.addNewAuthor();
+		AuthorType author = srs.addNewAuthor();
 		
 		IncfCodeType orgin = srs.addNewOrigin();
 		

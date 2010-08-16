@@ -108,6 +108,7 @@ Optional</xs:documentation>
     </xs:complexType>
     <xs:complexType name="incf_DocumentCitation">
         <xs:sequence>
+            <xs:element name="Description" type="xs:string" />
             <xs:element name="Abstract" type="xs:string" />
         </xs:sequence>
         <xs:attribute name="uri" type="xs:anyURI" />
