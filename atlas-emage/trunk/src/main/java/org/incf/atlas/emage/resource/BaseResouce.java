@@ -36,7 +36,6 @@ public class BaseResouce extends Resource {
     private String responseForm;
     protected String tomcatDir;
     protected File cacheDir;
-    protected File xmlDbDir;
     
     protected ExceptionHandler exceptionHandler;
     
@@ -49,8 +48,7 @@ public class BaseResouce extends Resource {
         dataInputsString = (String) request.getAttributes().get("dataInputs");
         responseForm = (String) request.getAttributes().get("responseForm");
         tomcatDir = System.getProperty("catalina.base");
-        cacheDir = new File(tomcatDir + "/webapps/atlas-ucsd/WEB-INF/cache");
-        xmlDbDir = new File(tomcatDir + "/webapps/atlas-ucsd/WEB-INF/classes/database");
+        cacheDir = new File(tomcatDir + "/webapps/atlas-emage/WEB-INF/cache");
         
         // every request must include service key/value
         checkService();
