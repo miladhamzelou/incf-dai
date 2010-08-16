@@ -2,7 +2,8 @@
     xmlns:ows="http://www.opengis.net/ows/1.1"
     xmlns:wps="http://www.opengis.net/wps/1.0.0">
 
-      <Input id="srsName">
+      <inp id="srsName">
+      <Input>
         <ows:Identifier>srsName</ows:Identifier>
         <ows:Title>Atlas SRS Name</ows:Title>
         <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
@@ -17,8 +18,10 @@
           </ows:AllowedValues>
         </LiteralData>
       </Input>
+      </inp>
 
-      <Input id="inputSrsName">
+      <inp id="inputSrsName">
+      <Input>
         <ows:Identifier>inputSrsName</ows:Identifier>
         <ows:Title>Input SRS Name</ows:Title>
         <ows:Abstract>The "in" or "from" SRS (Spatial Reference System) name.</ows:Abstract>
@@ -33,10 +36,12 @@
           </ows:AllowedValues>
         </LiteralData>
       </Input>
+      </inp>
 
-      <Input id="targetSrsName">
-        <ows:Identifier>targetSrsName</ows:Identifier>
-        <ows:Title>Target SRS Name</ows:Title>
+      <inp id="outputSrsName">
+      <Input>
+        <ows:Identifier>outputSrsName</ows:Identifier>
+        <ows:Title>Output SRS Name</ows:Title>
         <ows:Abstract>The "out" or "to" SRS (Spatial Reference System) name.</ows:Abstract>
         <LiteralData>
           <ows:AllowedValues>
@@ -49,8 +54,10 @@
           </ows:AllowedValues>
         </LiteralData>
       </Input>
+      </inp>
 
-      <Input id="filter">
+      <inp id="filter">
+      <Input minOccurs="0">
         <ows:Identifier>filter</ows:Identifier>
         <ows:Title>Filter</ows:Title>
         <ows:Abstract>.</ows:Abstract>
@@ -65,8 +72,10 @@
           </ows:AllowedValues>
         </LiteralData>
       </Input>
+      </inp>
       
-      <Input id="vocabulary">
+      <inp id="vocabulary">
+      <Input minOccurs="0">
         <ows:Identifier>vocabulary</ows:Identifier>
         <ows:Title>Vocabulary</ows:Title>
         <ows:Abstract>.</ows:Abstract>
@@ -74,8 +83,10 @@
           <ows:AnyValue/>
         </LiteralData>
       </Input>
+      </inp>
       
-      <Input id="x">
+      <inp id="x">
+      <Input>
         <ows:Identifier>x</ows:Identifier>
         <ows:Title>X-Coordinate Value</ows:Title>
         <ows:Abstract>Value in the X dimension as defined in the SRS.</ows:Abstract>
@@ -83,8 +94,10 @@
           <ows:DataType ows:reference="xs:double"/>
         </LiteralData>
       </Input>
+      </inp>
       
-      <Input id="y">
+      <inp id="y">
+      <Input>
         <ows:Identifier>y</ows:Identifier>
         <ows:Title>Y-Coordinate Value</ows:Title>
         <ows:Abstract>Value in the Y dimension as defined in the SRS.</ows:Abstract>
@@ -92,8 +105,10 @@
           <ows:DataType ows:reference="xs:double"/>
         </LiteralData>
       </Input>
+      </inp>
       
-      <Input id="z">
+      <inp id="z">
+      <Input>
         <ows:Identifier>z</ows:Identifier>
         <ows:Title>Z-Coordinate Value</ows:Title>
         <ows:Abstract>Value in the Z dimension as defined in the SRS.</ows:Abstract>
@@ -101,8 +116,10 @@
           <ows:DataType ows:reference="xs:double"/>
         </LiteralData>
       </Input>
+      </inp>
       
-      <Input id="xmin">
+      <inp id="xmin">
+      <Input>
         <ows:Identifier>xmin</ows:Identifier>
         <ows:Title>Left X-Coordinate Value</ows:Title>
         <ows:Abstract>Left x-coordinate of the desired image fragment.</ows:Abstract>
@@ -110,8 +127,10 @@
           <ows:DataType ows:reference="xs:double"/>
         </LiteralData>
       </Input>
+      </inp>
       
-      <Input id="xmax">
+      <inp id="xmax">
+      <Input>
         <ows:Identifier>xmax</ows:Identifier>
         <ows:Title>Right X-Coordinate Value</ows:Title>
         <ows:Abstract>Right x-coordinate of the desired image fragment.</ows:Abstract>
@@ -119,8 +138,10 @@
           <ows:DataType ows:reference="xs:double"/>
         </LiteralData>
       </Input>
+      </inp>
       
-      <Input id="ymin">
+      <inp id="ymin">
+      <Input>
         <ows:Identifier>ymin</ows:Identifier>
         <ows:Title>Lower Y-Coordinate Value</ows:Title>
         <ows:Abstract>Lower y-coordinate of the desired image fragment.</ows:Abstract>
@@ -128,8 +149,10 @@
           <ows:DataType ows:reference="xs:double"/>
         </LiteralData>
       </Input>
+      </inp>
       
-      <Input id="ymax">
+      <inp id="ymax">
+      <Input>
         <ows:Identifier>ymax</ows:Identifier>
         <ows:Title>Upper Y-Coordinate Value</ows:Title>
         <ows:Abstract>Upper y-coordinate of the desired image fragment.</ows:Abstract>
@@ -137,8 +160,10 @@
           <ows:DataType ows:reference="xs:double"/>
         </LiteralData>
       </Input>
+      </inp>
       
-      <Input id="sourceType">
+      <inp id="sourceType">
+      <Input>
         <ows:Identifier>sourceType</ows:Identifier>
         <ows:Title>Source Type</ows:Title>
         <ows:Abstract>Type of image source that will be queried.</ows:Abstract>
@@ -151,8 +176,10 @@
           </ows:AllowedValues>
         </LiteralData>
       </Input>
+      </inp>
       
-      <Input id="sourceURL">
+      <inp id="sourceURL">
+      <Input>
         <ows:Identifier>sourceURL</ows:Identifier>
         <ows:Title>Source URL</ows:Title>
         <ows:Abstract>The URL of the image whose fragment URL will be returned.</ows:Abstract>
@@ -160,5 +187,6 @@
           <ows:DataType ows:reference="xs:anyURL"/>
         </LiteralData>
       </Input>
+      </inp>
       
 </ProcessInputs>

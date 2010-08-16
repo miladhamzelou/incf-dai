@@ -1,19 +1,9 @@
 package org.incf.atlas.ucsd.resource;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Properties;
 
-import javax.xml.xquery.XQConnection;
-import javax.xml.xquery.XQDataSource;
-import javax.xml.xquery.XQPreparedExpression;
-import javax.xml.xquery.XQResultSequence;
-
-import net.sf.saxon.xqj.SaxonXQDataSource;
-
+import org.incf.atlas.common.util.ExceptionCode;
+import org.incf.atlas.common.util.ExceptionHandler;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
@@ -34,10 +24,6 @@ public class ProcessDescriptions extends BaseResouce {
 	
     // cached file
     private static final String RESPONSE_FILE_NAME = "ProcessDescriptions.xml";
-    
-    // xquery file from which to build cached file
-    private static final String RESPONSE_BASE_NAME = 
-        "/usr/local/tomcat/webapps/atlas-ucsd/WEB-INF/classes/database/ProcessDescriptions.xq";
     
 	public ProcessDescriptions(Context context, Request request,
 			Response response) {
@@ -69,43 +55,15 @@ public class ProcessDescriptions extends BaseResouce {
                     MediaType.APPLICATION_XML);
         }
     
-        // set serialization properties
-        Properties props = new Properties();
-        props.setProperty("method", "xml");
-        props.setProperty("indent", "yes");
-        props.setProperty("omit-xml-declaration", "no");
-        props.setProperty("{http://saxon.sf.net/}indent-spaces", "2");
+        // prepare an ExceptionReport
+        String message = "File " + RESPONSE_FILE_NAME + " not found.";
+        ExceptionHandler exHandler = getExceptionHandler();
+        exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+                new String[] { message });
+        logger.error(message);
         
-        // make cache directory
-        cacheDir.mkdir();
-        
-        logger.debug("cacheDir: {}", cacheDir.getAbsolutePath());
-        
-//        String prelude = "declare variable $doc := doc(\"file://" + tomcatDir
-//		+ "/webapps/atlas-ucsd/WEB-INF/classes/database/ProcessInputs.xml\");";
-        String prelude = "declare variable $doc := doc(\"file://" 
-        		+ xmlDbDir.getAbsolutePath() + "/ProcessInputs.xml\");";
-        try {
-
-            // run query
-            XQDataSource ds = new SaxonXQDataSource();
-            XQConnection conn = ds.getConnection();
-            XQPreparedExpression exp = conn.prepareExpression(prelude
-                    + readFileAsString(RESPONSE_BASE_NAME));
-            XQResultSequence result = exp.executeQuery();
-            
-            // serialize to cache
-            result.writeSequence(new FileWriter(cachedResponse), props);
-        } catch (Exception e) {
-            logger.error("Exception in query exection and caching: ", e);
-            throw new ResourceException(e);
-        }
-
-        // TODO validate
-        
-        // return as file
-        return new FileRepresentation(cachedResponse, 
-                MediaType.APPLICATION_XML);
+        // generate xml
+        return exHandler.getDomExceptionReport();
 	}
 	
 }

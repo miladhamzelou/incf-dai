@@ -13,6 +13,23 @@
 
     <plugins>
 
+       <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <!-- delete the data files and hsql database on clean -->
+          <filesets>
+            <fileset>
+              <directory>${basedir}/src/main/webapp/WEB-INF/cache</directory>
+              <includes>
+                <include>**/*.*</include>
+              </includes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
       <!-- This is needed otherwise maven seems to use Java v1.4 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -22,8 +39,25 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-    </plugins>
 
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>org.incf.atlas.ucsd.util.CachedXmlBuilder</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+	
     <!-- resolve variables in resource files in the build process -->
     <resources>
       <resource>
