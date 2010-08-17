@@ -83,103 +83,61 @@ This table summarizes the planned set of Atlas requests.
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th>Request</th>
     <th>Identifier</th>
     <th>DataInputs<br/>(keys)</th>
-    <th>Hub<br/>Applicability</th>
-    <th>Expected<br/>Output</th>
   </tr>
   <tr>
-    <td>Execute</td>
-    <td>ListSRSs</td>
-    <td>n/a</td>
-    <td>ABA<br/>UCSD</td>
-    <td>XML</td>
-  </tr>
-  <tr>
-    <td>Execute</td>
     <td>!DescribeTransformation</td>
     <td>TBD</td>
-    <td>ABA<br/>UCSD</td>
-    <td>XML</td>
   </tr>
   <tr>
-    <td>Execute</td>
-    <td>!ListTransformations</td>
-    <td>TBD</td>
-    <td>ABA<br/>UCSD</td>
-    <td>XML</td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>TransformPOI</td>
-    <td>inputSrsName<br/>targetSrsName<br/>x<br/>y<br/>z<br/>filter</td>
-    <td>ABA<br/>UCSD</td>
-    <td>XML</td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>!GetTransformationChain</td>
-    <td>inputSrsName<br/>targetSrsName<br/>filter</td>
-    <td>Central<br/>ABA<br/>UCSD</td>
-    <td>XML</td>
-  </tr>
-  <tr>
-    <td>Execute</td>
     <td>Get2DImagesByPOI</td>
     <td>srsName<br/>x<br/>y<br/>z<br/>filter</td>
-    <td>ABA<br/>UCSD</td>
-    <td>XML</td>
   </tr>
   <tr>
-    <td>Execute</td>
     <td>Get2DImagesByURI</td>
     <td>srsName<br/>filter</td>
-    <td>UCSD</td>
-    <td>XML</td>
   </tr>
   <tr>
-    <td>Execute</td>
+    <td>GetCellsByPOI</td>
+    <td>?</td>
+  </tr>
+  <tr>
+    <td>GetCellsByURI</td>
+    <td>?</td>
+  </tr>
+  <tr>
     <td>GetCorrelationMapByPOI</td>
     <td>srsName<br/>x<br/>y<br/>z<br/>filter</td>
-    <td>ABA only</td>
-    <td>XML</td>
   </tr>
   <tr>
-    <td>Execute</td>
     <td>GetGenesByPOI</td>
     <td>srsName<br/>x<br/>y<br/>z<br/></td>
-    <td>ABA<br/>EMAGE</td>
-    <td>XML</td>
   </tr>
   <tr>
-    <td>Execute</td>
     <td>GetStructureNamesByPOI</td>
     <td>srsName<br/>x<br/>y<br/>z<br/>vocabulary<br/>filter</td>
-    <td>ABA<br/>UCSD</td>
-    <td>XML</td>
   </tr>
   <tr>
-    <td>Execute</td>
+    <td>!GetTransformationChain</td>
+    <td>inputSrsName<br/>targetSrsName<br/>filter</td>
+  </tr>
+  <tr>
+    <td>ListSRSs</td>
+    <td>n/a</td>
+  </tr>
+  <tr>
+    <td>!ListTransformations</td>
+    <td>TBD</td>
+  </tr>
+  <tr>
     <td>Retrieve2DImageByPOI</td>
     <td>sourceType<br/>sourceURL<br/>srsName<br/>xmin<br/>xmax<br/>ymin<br/>ymax<br/>
 filter</td>
-    <td>ABA<br/>UCSD</td>
-    <td>XML root element:<br/>Retrieve2DImageResponse</td>
   </tr>
   <tr>
-    <td>Execute</td>
-    <td>GetCellsByURI</td>
-    <td>?</td>
-    <td>UCSD</td>
-    <td>XML</td>
-  </tr>
-  <tr>
-    <td>Execute</td>
-    <td>GetCellsByPOI</td>
-    <td>?</td>
-    <td>UCSD</td>
-    <td>XML</td>
+    <td>TransformPOI</td>
+    <td>inputSrsName<br/>targetSrsName<br/>x<br/>y<br/>z<br/>filter</td>
   </tr>
 </table>
 
