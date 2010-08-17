@@ -99,14 +99,6 @@ This table summarizes the planned set of Atlas requests.
     <td>srsName<br/>filter</td>
   </tr>
   <tr>
-    <td>GetCellsByPOI</td>
-    <td>?</td>
-  </tr>
-  <tr>
-    <td>GetCellsByURI</td>
-    <td>?</td>
-  </tr>
-  <tr>
     <td>GetCorrelationMapByPOI</td>
     <td>srsName<br/>x<br/>y<br/>z<br/>filter</td>
   </tr>
@@ -299,7 +291,13 @@ TBD
 
 ==GetCellsByPOI==
 
+Temporary -- Data Inputs: 
+TBD
+
 ==GetCellsByURI==
+
+Temporary -- Data Inputs: 
+TBD
 
 ==GetCorrelationMapByPOI==
 
