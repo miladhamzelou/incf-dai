@@ -1,11 +1,16 @@
 package org.incf.atlas.aba.resource;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 import javax.xml.bind.JAXBException;
 
 import org.incf.atlas.aba.util.Constants;
 import org.incf.atlas.aba.util.DataInputs;
-import org.incf.atlas.aba.util.ExceptionCode;
-import org.incf.atlas.aba.util.ExceptionHandler;
+import org.incf.atlas.common.util.ExceptionCode;
+import org.incf.atlas.common.util.ExceptionHandler;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
@@ -24,16 +29,17 @@ public class BaseResouce extends Resource {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
     
-    private Constants constants;
+    protected Constants constants;
     private String service;
     private String version;
     protected String dataInputsString;
     private String responseForm;
+    protected String tomcatDir;
+    protected File cacheDir;
     
     protected ExceptionHandler exceptionHandler;
     
     public BaseResouce(Context context, Request request, Response response) {
-
     	super(context, request, response);
         constants = Constants.getInstance();
 
@@ -41,15 +47,12 @@ public class BaseResouce extends Resource {
         version = (String) request.getAttributes().get("version");
         dataInputsString = (String) request.getAttributes().get("dataInputs");
         responseForm = (String) request.getAttributes().get("responseForm");
+        tomcatDir = System.getProperty("catalina.base");
+        cacheDir = new File(tomcatDir + "/webapps/atlas-emage/WEB-INF/cache");
         
         // every request must include service key/value
         checkService();
-/*        if (this instanceOf Capabilities) {
-            checkVersion();
-        }
-=======
->>>>>>> .r197
-*/
+        
         // every request may include responseForm key/value
         checkResponseForm();
         
@@ -59,11 +62,13 @@ public class BaseResouce extends Resource {
 
     protected ExceptionHandler getExceptionHandler() {
         if (exceptionHandler == null) {
-            exceptionHandler = new ExceptionHandler();
+            exceptionHandler = new ExceptionHandler(
+            		constants.getDefaultVersion(), 
+            		constants.getDefaultLanguage());
         }
         return exceptionHandler;
     }
-
+    
     protected Representation getExceptionRepresentation() 
             throws ResourceException {
         
@@ -86,8 +91,14 @@ public class BaseResouce extends Resource {
      * requests.
      */
     protected void checkService() {
-        if (!service.equals(constants.getDefaultService())) {
+    	
+    	// if unrecognized uri, value will be null, so skip check
+    	if (service == null) {
+    		return;
+    	}
 
+    	if (!service.equals(constants.getDefaultService())) {
+            
             // prepare an ExceptionReport
             ExceptionHandler eh = getExceptionHandler();
             eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
@@ -96,7 +107,7 @@ public class BaseResouce extends Resource {
                     String.format("The supported service is %s.", 
                                     constants.getDefaultService()),
                     });
-
+            
         }
     }
 
@@ -105,8 +116,14 @@ public class BaseResouce extends Resource {
      * requests except GetCapabilities.
      */
     protected void checkVersion() {
-        if (!version.equals(constants.getDefaultVersion())) {
+    	
+    	// if unrecognized uri, value will be null, so skip check
+    	if (version == null) {
+    		return;
+    	}
 
+    	if (!version.equals(constants.getDefaultVersion())) {
+            
             // prepare an ExceptionReport
             ExceptionHandler eh = getExceptionHandler();
             eh.addExceptionToReport(ExceptionCode.INVALID_PARAMETER_VALUE, null, 
@@ -115,7 +132,7 @@ public class BaseResouce extends Resource {
                     String.format("The supported version is %s.", 
                                     constants.getDefaultVersion()),
                     });
-
+            
         }
     }
 
@@ -207,5 +224,26 @@ public class BaseResouce extends Resource {
             validateCoordinate("z", dataInputs.getValue("z")) };
     }
 
+	protected String readFileAsString(String filePath) throws IOException{
+//	    byte[] buffer = new byte[(int) new File(filePath).length()];
+//	    BufferedInputStream f = new BufferedInputStream(
+//	    		new FileInputStream(filePath));
+//	    f.read(buffer);
+//	    f.close();
+//	    return new String(buffer);
+		return readFileAsString(new File(filePath));
+	}
+	
+	protected String readFileAsString(File file) throws IOException{
+	    byte[] buffer = new byte[(int) file.length()];
+	    BufferedInputStream f = new BufferedInputStream(
+	    		new FileInputStream(file));
+	    f.read(buffer);
+	    f.close();
+	    return new String(buffer);
+	}
+	
 }
+
+
 

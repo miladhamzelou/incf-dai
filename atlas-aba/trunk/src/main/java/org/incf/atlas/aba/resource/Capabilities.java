@@ -11,6 +11,8 @@ import javax.xml.xquery.XQResultSequence;
 
 import net.sf.saxon.xqj.SaxonXQDataSource;
 
+import org.incf.atlas.common.util.ExceptionCode;
+import org.incf.atlas.common.util.ExceptionHandler;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
@@ -22,9 +24,15 @@ import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//test:
+//http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities
+
 public class Capabilities extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
+	// cached file
+	private static final String RESPONSE_FILE_NAME = "Capabilities.xml";
 	
 	public Capabilities(Context context, Request request, Response response) {
 		super(context, request, response);
@@ -43,44 +51,27 @@ public class Capabilities extends BaseResouce {
 	    
 	    // if there are exceptions, send an excepton report
 	    if (exceptionHandler != null) {
+	    	logger.error("Exception Report returned to client: \n{}", 
+	    			exceptionHandler.toString());
 	        return getExceptionRepresentation();
 	    }
 		
-        // set serialization properties
-        Properties props = new Properties();
-        props.setProperty("method", "xml");
-        props.setProperty("indent", "yes");
-        props.setProperty("omit-xml-declaration", "no");
-        props.setProperty("{http://saxon.sf.net/}indent-spaces", "2");
+	    // look for cached file fisrt
+	    File cachedResponse = new File(cacheDir, RESPONSE_FILE_NAME);
+	    if (cachedResponse.exists()) {
+	        return new FileRepresentation(cachedResponse, 
+	        		MediaType.APPLICATION_XML);
+	    }
+	    
+        // prepare an ExceptionReport
+	    String message = "File " + RESPONSE_FILE_NAME + " not found.";
+        ExceptionHandler exHandler = getExceptionHandler();
+        exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+                new String[] { message });
+        logger.error(message);
         
-//        File tempDir = new File("atlas-aba/WEB-INF/temp");
-        File tempDir = new File("/usr/local/tomcat/webapps/atlas-aba/WEB-INF/temp");
-        
-        
-        logger.debug("tempDir: {}", tempDir.getAbsolutePath());
-        
-        
-        tempDir.mkdir();
-		File tempFile = new File(tempDir, "Capabilities.xml");
-		try {
-
-			// run query
-			XQDataSource ds = new SaxonXQDataSource();
-			XQConnection conn = ds.getConnection();
-			XQPreparedExpression exp = conn.prepareExpression(
-					this.getClass().getResourceAsStream("/database/Capabilities.xq"));
-			XQResultSequence result = exp.executeQuery();
-			
-	        // serialize to temporary file (TODO could be cached)
-			result.writeSequence(new FileWriter(tempFile), props);
-		} catch (Exception e) {
-			throw new ResourceException(e);
-		}
-
-		// TODO validate
-        
-		// return as file
-        return new FileRepresentation(tempFile, MediaType.APPLICATION_XML);
+        // generate xml
+        return exHandler.getDomExceptionReport();
 	}
 	
 }
