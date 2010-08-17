@@ -339,11 +339,9 @@ None
 
 ===!ListTransformations===
 
-Temporary -- Data Inputs: 
-TBD
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th colspan="2">ListTransformations</th>
+    <th colspan="2">!ListTransformations</th>
   </tr>
   <tr>
     <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName]</td>
@@ -358,9 +356,7 @@ TBD
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>sourceType<br/>
-sourceURL<br/>
-[AtlasRequestInterfaceSpec#SRS_Names inputSrsName]<br/>
+    <td>[AtlasRequestInterfaceSpec#SRS_Names inputSrsName]<br/>
 [AtlasRequestInterfaceSpec#SRS_Names outputSrsName]</td>
   </tr>
   <tr>
