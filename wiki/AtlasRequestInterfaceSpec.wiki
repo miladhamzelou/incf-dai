@@ -221,8 +221,6 @@ Atlas Functions
 
 ===!DescribeTransfomation===
 
-Temporary -- Data Inputs: 
-TBD
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th colspan="2">!DescribeTransformation</th>
