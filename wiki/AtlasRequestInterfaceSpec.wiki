@@ -341,6 +341,41 @@ None
 
 Temporary -- Data Inputs: 
 TBD
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th colspan="2">ListTransformations</th>
+  </tr>
+  <tr>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName]</td>
+  </tr>
+  <tr>
+    <th align="left">Description</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Applicability</th>
+    <td>See [AtlasFunctionHubApplicabilityTable Applibility Table]</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
+    <td>sourceType<br/>
+sourceURL<br/>
+[AtlasRequestInterfaceSpec#SRS_Names inputSrsName]<br/>
+[AtlasRequestInterfaceSpec#SRS_Names outputSrsName]</td>
+  </tr>
+  <tr>
+    <th align="left">Normal Return</th>
+    <td>XML document.</td>
+  </tr>
+  <tr>
+    <th align="left">Error Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Example</th>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=[...];outputSrsName=[...]</td>
+  </tr>
+</table>
 
 ===Retrieve2DImage===
 
