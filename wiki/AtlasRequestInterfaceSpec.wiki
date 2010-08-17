@@ -4,17 +4,30 @@
 
 The Atlas base URIs identify the server location (URL) and the server application or context.
 
- * Format
+ * Format: http://[server]:[port]/atlas-[hub]
 
-    http://[server]:[port]/atlas-[hub]
-
- * Example:
-
-    http://incf-dev-local:8080/atlas-aba
+ * Example: http://incf-dev-local:8080/atlas-aba
 
 == Full URIs == 
 
 The URIs will be consistent with, but a subset of, the OGC (Open Geospatial Consortium) WPS (Web Processing Service) standard. 
+
+- - - - - - -
+    Atlas HTTP GET requests include an appended query string. Following the
+    OGC (Open Geospacial Consortium) WPS (Web Processing Services), the query 
+    string keys, case and order sensitive, are
+    - service (all requests)
+    - version (all requests except GetCapabilities)
+    - request (all requests)
+    - Identifier (all Execute requests)
+    - DataInputs (most Execute requests)
+
+    service = WPS
+    version = version
+    request = { GetCapabilities | DescribeProcess | Execute }
+    Identifier = (enumerated below)
+    DataInputs = { varies by identifier }
+- - - - - - -
 
 A complete URI will consist of 
 
@@ -77,7 +90,12 @@ _filter_ will be one of these values:
  * structureset:anatomic
  * structureset:fine
 
-==!GetCapabilities==
+==Atlas Functions==
+
+[AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
+[AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]
+
+===!GetCapabilities===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -113,7 +131,7 @@ _filter_ will be one of these values:
   </tr>
 </table>
 
-==!DescribeProcess==
+===!DescribeProcess===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
