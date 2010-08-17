@@ -92,8 +92,25 @@ _filter_ will be one of these values:
 
 ==Atlas Functions==
 
-[AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
-[AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]
+Standard WPS Requests
+ * [AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
+ * [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]
+
+Atlas Functions
+ * [AtlasRequestInterfaceSpec#DescribeSRS DescribeSRS]
+ * [AtlasRequestInterfaceSpec#DescribeTransformation DescribeTransformation]
+ * [AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]
+ * [AtlasRequestInterfaceSpec#Get2DImagesByURI Get2DImagesByURI]
+ * [AtlasRequestInterfaceSpec#GetCellsByPOI GetCellsByPOI]
+ * [AtlasRequestInterfaceSpec#GetCellsByURI GetCellsByURI]
+ * [AtlasRequestInterfaceSpec#GetCorrlationMap GetCorrelationMap]
+ * [AtlasRequestInterfaceSpec#GetGenesByPOI GetGenesByPOI]
+ * [AtlasRequestInterfaceSpec#GetStructureNamesByPOI GetStructureNamesByPOI]
+ * [AtlasRequestInterfaceSpec#GetTransformationChain GetTransformationChain]
+ * [AtlasRequestInterfaceSpec#ListSRSs ListSRSs]
+ * [AtlasRequestInterfaceSpec#ListTransformations ListTransformations]
+ * [AtlasRequestInterfaceSpec#Retrieve2DImage Retrieve2DImage]
+ * [AtlasRequestInterfaceSpec#TransformPOI TransformPOI]
 
 ===!GetCapabilities===
 
@@ -167,7 +184,7 @@ _filter_ will be one of these values:
   </tr>
 </table>
 
-==DescribeSRS==
+===DescribeSRS===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -202,12 +219,12 @@ _filter_ will be one of these values:
   </tr>
 </table>
 
-==!DescribeTransfomation==
+===!DescribeTransfomation===
 
 Temporary -- Data Inputs: 
 TBD
 
-==Get2DImagesByPOI==
+===Get2DImagesByPOI===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -246,27 +263,27 @@ TBD
   </tr>
 </table>
 
-==Get2DImagesByURI==
+===Get2DImagesByURI===
 
 Temporary -- Data Inputs: 
 filter
 
-==GetCellsByPOI==
+===GetCellsByPOI===
 
 Temporary -- Data Inputs: 
 TBD
 
-==GetCellsByURI==
+===GetCellsByURI===
 
 Temporary -- Data Inputs: 
 TBD
 
-==GetCorrelationMapByPOI==
+===GetCorrelationMapByPOI===
 
 Temporary -- Data Inputs: 
 inputSrsName outputSrsName x y z filter
 
-==GetGenesByPOI==
+===GetGenesByPOI===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -305,27 +322,27 @@ inputSrsName outputSrsName x y z filter
 </table>
 
 
-==GetStructureNamesByPOI==
+===GetStructureNamesByPOI===
 
 Temporary -- Data Inputs: 
 srsName x y z vocabulary filter
 
-==!GetTransformationChain==
+===!GetTransformationChain===
 
 Temporary -- Data Inputs: 
 inputSrsName outputSrsName filter
 
-==ListSRSs==
+===ListSRSs===
 
 Temporary -- Data Inputs: 
 None
 
-==!ListTransformations==
+===!ListTransformations===
 
 Temporary -- Data Inputs: 
 TBD
 
-==Retrieve2DImage==
+===Retrieve2DImage===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -367,7 +384,7 @@ sourceURL<br/>
   </tr>
 </table>
 
-==TransformPOI==
+===TransformPOI===
 
 Temporary -- Data Inputs: 
 inputSrsName outputSrsNamex y z filter
