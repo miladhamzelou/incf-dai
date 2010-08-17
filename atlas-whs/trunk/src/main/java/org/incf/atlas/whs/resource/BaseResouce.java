@@ -164,7 +164,7 @@ public class BaseResouce extends Resource {
     }
     
     protected void validateSrsName(String srsName) {
-        if (!constants.getSrsNames().contains(srsName)) {
+        if (!constants.getSrsNames().contains(srsName.toLowerCase())) {
             
             // prepare an ExceptionReport
             ExceptionHandler eh = getExceptionHandler();
