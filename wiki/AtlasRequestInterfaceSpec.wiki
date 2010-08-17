@@ -77,65 +77,6 @@ _filter_ will be one of these values:
  * structureset:anatomic
  * structureset:fine
 
-== Summary of Atlas Functions ==
-
-This table summarizes the planned set of Atlas requests.
-
-<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
-  <tr>
-    <th>Identifier</th>
-    <th>DataInputs<br/>(keys)</th>
-  </tr>
-  <tr>
-    <td>!DescribeTransformation</td>
-    <td>TBD</td>
-  </tr>
-  <tr>
-    <td>Get2DImagesByPOI</td>
-    <td>srsName<br/>x<br/>y<br/>z<br/>filter</td>
-  </tr>
-  <tr>
-    <td>Get2DImagesByURI</td>
-    <td>srsName<br/>filter</td>
-  </tr>
-  <tr>
-    <td>GetCorrelationMapByPOI</td>
-    <td>srsName<br/>x<br/>y<br/>z<br/>filter</td>
-  </tr>
-  <tr>
-    <td>GetGenesByPOI</td>
-    <td>srsName<br/>x<br/>y<br/>z<br/></td>
-  </tr>
-  <tr>
-    <td>GetStructureNamesByPOI</td>
-    <td>srsName<br/>x<br/>y<br/>z<br/>vocabulary<br/>filter</td>
-  </tr>
-  <tr>
-    <td>!GetTransformationChain</td>
-    <td>inputSrsName<br/>targetSrsName<br/>filter</td>
-  </tr>
-  <tr>
-    <td>ListSRSs</td>
-    <td>n/a</td>
-  </tr>
-  <tr>
-    <td>!ListTransformations</td>
-    <td>TBD</td>
-  </tr>
-  <tr>
-    <td>Retrieve2DImageByPOI</td>
-    <td>sourceType<br/>sourceURL<br/>srsName<br/>xmin<br/>xmax<br/>ymin<br/>ymax<br/>
-filter</td>
-  </tr>
-  <tr>
-    <td>TransformPOI</td>
-    <td>inputSrsName<br/>targetSrsName<br/>x<br/>y<br/>z<br/>filter</td>
-  </tr>
-</table>
-
-
-
-
 ==!GetCapabilities==
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
@@ -289,6 +230,9 @@ TBD
 
 ==Get2DImagesByURI==
 
+Temporary -- Data Inputs: 
+filter
+
 ==GetCellsByPOI==
 
 Temporary -- Data Inputs: 
@@ -364,6 +308,46 @@ Temporary -- Data Inputs:
 TBD
 
 ==Retrieve2DImage==
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th colspan="2">Retrieve2DImage</th>
+  </tr>
+  <tr>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=Retrieve2DImage&DataInputs=sourceType=[sourceType];sourceURL=[sourceURL]]srsName=[srsName];xmin=[xmin];xmax=[xmax];ymin=[ymin];ymax=[ymax];filter=[filter]</td>
+  </tr>
+  <tr>
+    <th align="left">Description</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Applicability</th>
+    <td>See [AtlasFunctionHubApplicabilityTable Applibility Table]</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
+    <td>sourceType<br/>
+sourceURL<br/>
+[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
+[AtlasRequestInterfaceSpec#Coordinates xmin]<br/>
+[AtlasRequestInterfaceSpec#Coordinates xmax]<br/>
+[AtlasRequestInterfaceSpec#Coordinates ymin]<br/>
+[AtlasRequestInterfaceSpec#Coordinates ymax]<br/>
+[AtlasRequestInterfaceSpec#Filter filter]</td>
+  </tr>
+  <tr>
+    <th align="left">Normal Return</th>
+    <td>XML document.</td>
+  </tr>
+  <tr>
+    <th align="left">Error Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Example</th>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Retrieve2DImage&DataInputs=sourceType=[sourceType];sourceURL=[...]]srsName=[...];xmin=[...];xmax=[...];ymin=[...];ymax=[...];filter=[...]</td>
+  </tr>
+</table>
 
 ==TransformPOI==
 
