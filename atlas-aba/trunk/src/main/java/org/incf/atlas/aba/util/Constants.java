@@ -37,7 +37,7 @@ public class Constants {
         String[] sNames = props.getProperty("srsNames").split(",");
         srsNames = new HashSet<String>();
         for (int i = 0; i < sNames.length; i++) {
-            String srsName = sNames[i].trim();
+            String srsName = sNames[i].trim().toLowerCase();
             if (srsName != null && srsName.length() != 0) {
                 srsNames.add(srsName);
             }

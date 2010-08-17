@@ -11,6 +11,23 @@
     <finalName>atlas-aba</finalName>
 
     <plugins>
+       <plugin>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+          <!-- delete the data files and hsql database on clean -->
+          <filesets>
+            <fileset>
+              <directory>${basedir}/src/main/webapp/WEB-INF/cache</directory>
+              <includes>
+                <include>**/*.*</include>
+              </includes>
+              <followSymlinks>false</followSymlinks>
+            </fileset>
+          </filesets>
+        </configuration>
+      </plugin>
+
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxb2-maven-plugin</artifactId>
@@ -50,8 +67,26 @@
           <target>1.5</target>
         </configuration>
       </plugin>
+      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <phase>process-classes</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <mainClass>org.incf.atlas.ucsd.util.CachedXmlBuilder</mainClass>
+        </configuration>
+      </plugin>
+      
     </plugins>
-
+  
     <!-- resolve variables in resource files in the build process -->
     <resources>
       <resource>
@@ -62,6 +97,11 @@
   </build>
 
   <dependencies>
+    <dependency>
+      <groupId>org.incf</groupId>
+      <artifactId>atlas-common</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
     <dependency>
       <groupId>org.restlet</groupId>
       <artifactId>org.restlet</artifactId>
