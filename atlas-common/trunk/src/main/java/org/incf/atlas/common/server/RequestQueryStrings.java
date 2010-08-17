@@ -1,6 +1,11 @@
 package org.incf.atlas.common.server;
 
 
+/**
+ * Specifies the supported Atlas HTTP GET query string formats.
+ * 
+ * @author dave
+ */
 public interface RequestQueryStrings {
 
     /*
@@ -23,58 +28,61 @@ public interface RequestQueryStrings {
     // elements of Atlas GET query strings (case sensitive!)
     public static final String SERVICE = "?service={service}";
     public static final String VERSION = "&version={version}";
-    public static final String SERV_VER = SERVICE + VERSION;
-    public static final String REQ_KEY = "&request=";
-    public static final String EXEC_ID_KEY = REQ_KEY +"Execute&Identifier=";
+    public static final String REQUEST_KEY = "&request=";
+    public static final String EXECUTE_REQUEST = 
+    		SERVICE + VERSION + "&request=Execute&Identifier=";
     public static final String DATA_INPUTS = "&DataInputs={dataInputs}";
     
-    // supported query strings (not all are supported at all hubs)
+    // GetCapabilites - supported at all hubs
+    // does not include version because response specifies supported version
     public static final String GET_CAPABILITIES =
-        SERVICE + REQ_KEY + "GetCapabilities";
+    		SERVICE + REQUEST_KEY + "GetCapabilities";
 
+    // DescribeProcess - supported at all hubs
     public static final String DESCRIBE_PROCESS =
-        SERV_VER + REQ_KEY + "DescribeProcess";
+    		SERVICE + VERSION + REQUEST_KEY + "DescribeProcess";
     
+    // execute requests (not all are supported at all hubs)
     public static final String DESCRIBE_SRS =
-        SERV_VER + EXEC_ID_KEY + "DescribeSRS" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "DescribeSRS" + DATA_INPUTS;
     
     public static final String DESCRIBE_TRANSFORMATION =
-        SERV_VER + EXEC_ID_KEY + "DescribeTransfomation" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "DescribeTransfomation" + DATA_INPUTS;
     
     public static final String GET_2D_IMAGES_BY_POI =
-        SERV_VER + EXEC_ID_KEY + "Get2DImagesByPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "Get2DImagesByPOI" + DATA_INPUTS;
     
     public static final String GET_2D_IMAGES_BY_URI =
-        SERV_VER + EXEC_ID_KEY + "Get2DImagesByPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "Get2DImagesByPOI" + DATA_INPUTS;
     
     public static final String GET_CELLS_BY_POI =
-        SERV_VER + EXEC_ID_KEY + "Get2DImagesByPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "Get2DImagesByPOI" + DATA_INPUTS;
     
     public static final String GET_CELLS_BY_URI =
-        SERV_VER + EXEC_ID_KEY + "Get2DImagesByPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "Get2DImagesByPOI" + DATA_INPUTS;
     
     public static final String GET_CORRELATION_MAP_BY_POI =
-        SERV_VER + EXEC_ID_KEY + "GetCorrelationMapByPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "GetCorrelationMapByPOI" + DATA_INPUTS;
     
     public static final String GET_GENES_BY_POI =
-        SERV_VER + EXEC_ID_KEY + "GetGenesByPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "GetGenesByPOI" + DATA_INPUTS;
     
     public static final String GET_STRUCTURE_NAMES_BY_POI =
-        SERV_VER + EXEC_ID_KEY + "GetStructureNamesByPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "GetStructureNamesByPOI" + DATA_INPUTS;
     
     public static final String GET_TRANSFORMATION_CHAIN =
-        SERV_VER + EXEC_ID_KEY + "GetTransformationChain" + DATA_INPUTS;
-    
+    		EXECUTE_REQUEST + "GetTransformationChain" + DATA_INPUTS;
+    	
     public static final String LIST_SRS_S =
-        SERV_VER + EXEC_ID_KEY + "ListSRSs";          // no data inputs
+        	EXECUTE_REQUEST + "ListSRSs";          // no data inputs
     
     public static final String LIST_TRANSFORMATIONS =
-        SERV_VER + EXEC_ID_KEY + "ListTransformations" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "ListTransformations" + DATA_INPUTS;
     
     public static final String RETRIEVE_2D_IMAGE =
-        SERV_VER + EXEC_ID_KEY + "Retrieve2DImage" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "Retrieve2DImage" + DATA_INPUTS;
     
     public static final String TRANSFORM_POI =
-        SERV_VER + EXEC_ID_KEY + "TransformPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "TransformPOI" + DATA_INPUTS;
     
 }
