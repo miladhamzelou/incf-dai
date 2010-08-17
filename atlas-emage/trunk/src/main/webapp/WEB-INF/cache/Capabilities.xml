@@ -6,9 +6,9 @@
                   version="1.0.0"
                   xml:lang="en-US">
    <ows:ServiceIdentification>
-      <ows:Title>UCSD Atlas Services</ows:Title>
-      <ows:Abstract>UCSD Atlas Services provide access to data available from the
-      University of California, San Diego resource.</ows:Abstract>
+      <ows:Title>EMAGE Atlas Services</ows:Title>
+      <ows:Abstract>EMAGE Atlas Services provide access to data available from the
+      EMAGE resource.</ows:Abstract>
       <ows:ServiceType>WPS</ows:ServiceType>
       <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
    </ows:ServiceIdentification>
@@ -19,28 +19,8 @@
          <ows:Abstract/>
       </wps:Process>
       <wps:Process wps:processVersion="1.0.0">
-         <ows:Identifier>Get2DImagesByPOI</ows:Identifier>
-         <ows:Title>Get 2D Images by POI</ows:Title>
-         <ows:Abstract/>
-      </wps:Process>
-      <wps:Process wps:processVersion="1.0.0">
-         <ows:Identifier>Get2DImagesByURI</ows:Identifier>
-         <ows:Title>Get 2D Images by URI</ows:Title>
-         <ows:Abstract/>
-      </wps:Process>
-      <wps:Process wps:processVersion="1.0.0">
-         <ows:Identifier>GetCellsByPOI</ows:Identifier>
-         <ows:Title>Get Cells by POI</ows:Title>
-         <ows:Abstract/>
-      </wps:Process>
-      <wps:Process wps:processVersion="1.0.0">
-         <ows:Identifier>GetCellsByURI</ows:Identifier>
-         <ows:Title>Get 2D Images by POI</ows:Title>
-         <ows:Abstract/>
-      </wps:Process>
-      <wps:Process wps:processVersion="1.0.0">
-         <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
-         <ows:Title>Get Structure Names by POI</ows:Title>
+         <ows:Identifier>GetGenesByPOI</ows:Identifier>
+         <ows:Title>Get Genes by POI</ows:Title>
          <ows:Abstract/>
       </wps:Process>
       <wps:Process wps:processVersion="1.0.0">
@@ -57,14 +37,6 @@
          <ows:Identifier>ListTransformations</ows:Identifier>
          <ows:Title>List Transformations</ows:Title>
          <ows:Abstract/>
-      </wps:Process>
-      <wps:Process wps:processVersion="1.0.0">
-         <ows:Identifier>Retrieve2DImage</ows:Identifier>
-         <ows:Title>Retrieve 2D Image</ows:Title>
-         <ows:Abstract>This function gets a URL reference to a 2D image based
-      on the source URL provided and "cropped" based on the specified lower
-      left (xmin, ymin) and upper right (xmax, ymax).
-    </ows:Abstract>
       </wps:Process>
       <wps:Process wps:processVersion="1.0.0">
          <ows:Identifier>TransformPOI</ows:Identifier>
