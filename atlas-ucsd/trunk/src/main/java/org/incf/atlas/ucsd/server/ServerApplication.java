@@ -1,6 +1,8 @@
 package org.incf.atlas.ucsd.server;
 
+import org.incf.atlas.common.server.RequestQueryStrings;
 import org.incf.atlas.ucsd.resource.Capabilities;
+import org.incf.atlas.ucsd.resource.NotSupported;
 import org.incf.atlas.ucsd.resource.NotYetImplemented;
 import org.incf.atlas.ucsd.resource.PingResource;
 import org.incf.atlas.ucsd.resource.ProcessDescriptions;
@@ -14,66 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.bridge.SLF4JBridgeHandler;
 
-public class ServerApplication extends Application {
+public class ServerApplication extends Application 
+		implements RequestQueryStrings {
 
 	private static final Logger logger = LoggerFactory.getLogger(
 			ServerApplication.class);
-	
-	/*
-	There are 4 patterns and all have service, version, request, and 
-	ResponseForm (note upper case on the latter). For every Execute we will 
-	also have Identifier and most, but not all, will have DataInputs (both 
-	leading upper case).
-
-	service = WPS
-	version = version
-	request = { GetCapabilities | DescribeProcess | Execute }
-	Identifier = { ..... | .....  our standard set }
-	DataInputs = { varies by identifier }
-	ResponseForm = [ response format }
-	 */
-
-	// elements of Atlas GET query string
-	// note query key case!
-	//	service, version, request -- leading lower
-	//  Identifier, DataInputs, ResponseForm -- leading upper
-	private static final String SERVICE = "?service={service}";
-	private static final String VERSION = "&version={version}";
-	private static final String SERV_VER = SERVICE + VERSION;
-	private static final String REQ_KEY = "&request=";
-	private static final String EXEC_ID_KEY = REQ_KEY +"Execute&Identifier=";
-	private static final String DATA_INPUTS = "&DataInputs={dataInputs}";
-	
-	// query string patterns for routing; each makes ResponseForm optional
-	private static final String GET_CAPABILITIES =
-		SERVICE + REQ_KEY + "GetCapabilities";
-	private static final String DESCRIBE_PROCESS =
-		SERV_VER + REQ_KEY + "DescribeProcess";
-	private static final String DESCRIBE_SRS =
-		SERV_VER + EXEC_ID_KEY + "DescribeSRS" + DATA_INPUTS;
-	
-	// no data inputs
-	private static final String LIST_SRS_S =
-		SERV_VER + EXEC_ID_KEY + "ListSRSs";
-	
-	private static final String DESCRIBE_TRANSFORMATION =
-		SERV_VER + EXEC_ID_KEY + "DescribeTransfomation" + DATA_INPUTS;
-	private static final String LIST_TRANSFORMATIONS =
-		SERV_VER + EXEC_ID_KEY + "ListTransformations" + DATA_INPUTS;
-	private static final String TRANSFORM_POI =
-		SERV_VER + EXEC_ID_KEY + "TransformPOI" + DATA_INPUTS;
-	private static final String GET_TRANSFORMATION_CHAIN =
-		SERV_VER + EXEC_ID_KEY + "GetTransformationChain" + DATA_INPUTS;
-	private static final String GET_2D_IMAGES_BY_POI =
-		SERV_VER + EXEC_ID_KEY + "Get2DImagesByPOI" + DATA_INPUTS;
-	private static final String GET_CORRELATION_MAP_BY_POI =
-		SERV_VER + EXEC_ID_KEY + "GetCorrelationMapByPOI" + DATA_INPUTS;
-	private static final String GET_GENES_BY_POI =
-		SERV_VER + EXEC_ID_KEY + "GetGenesByPOI" + DATA_INPUTS;
-	private static final String GET_STRUCTURE_NAMES_BY_POI =
-		SERV_VER + EXEC_ID_KEY + "GetStructureNamesByPOI" + DATA_INPUTS;
-	private static final String RETRIEVE_2D_IMAGE =
-		SERV_VER + EXEC_ID_KEY + "Retrieve2DImage" + DATA_INPUTS;
 	
 	public ServerApplication() {
 
@@ -96,23 +43,23 @@ public class ServerApplication extends Application {
 	public Restlet createRoot() {
 		Router router = new Router(getContext());
 		
-		router.attach(GET_CAPABILITIES, Capabilities.class);
-		router.attach(DESCRIBE_PROCESS, ProcessDescriptions.class);
-		router.attach(DESCRIBE_SRS, NotYetImplemented.class);
-		router.attach(LIST_SRS_S, NotYetImplemented.class);
-		router.attach(DESCRIBE_TRANSFORMATION, NotYetImplemented.class);
-		router.attach(LIST_TRANSFORMATIONS, NotYetImplemented.class);
-		router.attach(TRANSFORM_POI, NotYetImplemented.class);
-		router.attach(GET_TRANSFORMATION_CHAIN, NotYetImplemented.class);
-		router.attach(GET_2D_IMAGES_BY_POI, NotYetImplemented.class);
-		router.attach(GET_CORRELATION_MAP_BY_POI, NotYetImplemented.class);
-		router.attach(GET_GENES_BY_POI, NotYetImplemented.class);
-		router.attach(GET_STRUCTURE_NAMES_BY_POI, NotYetImplemented.class);
-		router.attach(RETRIEVE_2D_IMAGE, NotYetImplemented.class);
+		router.attach(GET_CAPABILITIES,           Capabilities.class);
+		router.attach(DESCRIBE_PROCESS,           ProcessDescriptions.class);
+		router.attach(DESCRIBE_SRS,               NotYetImplemented.class);
+        router.attach(DESCRIBE_TRANSFORMATION,    NotSupported.class);
+        router.attach(GET_2D_IMAGES_BY_POI,       NotYetImplemented.class);
+        router.attach(GET_2D_IMAGES_BY_URI,       NotYetImplemented.class);
+        router.attach(GET_CELLS_BY_POI,           NotYetImplemented.class);
+        router.attach(GET_CELLS_BY_URI,           NotYetImplemented.class);
+        router.attach(GET_CORRELATION_MAP_BY_POI, NotSupported.class);
+        router.attach(GET_GENES_BY_POI,           NotSupported.class);
+        router.attach(GET_STRUCTURE_NAMES_BY_POI, NotYetImplemented.class);
+        router.attach(GET_TRANSFORMATION_CHAIN,   NotYetImplemented.class);
+		router.attach(LIST_SRS_S,                 NotYetImplemented.class);
+		router.attach(LIST_TRANSFORMATIONS,       NotYetImplemented.class);
+		router.attach(RETRIEVE_2D_IMAGE,          NotYetImplemented.class);
+        router.attach(TRANSFORM_POI,              NotYetImplemented.class);
 		
-		// attach resource handlers based on the URI
-//		router.attach("/favicon.ico", FaviconResource.class);
-
 		router.attach("/ping/{pingType}", PingResource.class);
 		
 		router.attachDefault(UnrecognizedUri.class);
