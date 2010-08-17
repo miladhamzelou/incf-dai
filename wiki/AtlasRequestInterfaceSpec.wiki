@@ -382,7 +382,7 @@ inputSrsName outputSrsName x y z filter
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=6600;y=4000;z=5600</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600</td>
   </tr>
 </table>
 
