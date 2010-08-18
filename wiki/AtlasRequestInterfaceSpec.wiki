@@ -1,6 +1,6 @@
-= INCF Atlas Server Request Interface =
+=INCF Atlas Server Request Interface=
 
-== Base URIs ==
+==Base URIs==
 
 The Atlas base URIs identify the server location (URL) and the server application or context.
 
@@ -8,11 +8,11 @@ The Atlas base URIs identify the server location (URL) and the server applicatio
 
  * Example: http://incf-dev-local:8080/atlas-aba
 
-== Full URIs == 
+==Full URIs== 
 
 Full Atlas URIs are consistent with, but a subset of, the OGC (Open Geospatial Consortium) WPS (Web Processing Service) standard. 
 
-The Base URIs will be appended with a query string which will include these case- and order-sensitive keys:
+The [AtlasRequestInterfaceSpec#Base_URIs Base URIs] will be appended with a query string which will include these case- and order-sensitive keys:
  * service
    * all requests
    * value = WPS
@@ -26,12 +26,11 @@ The Base URIs will be appended with a query string which will include these case
    * all Execute requests
    * values enumerated below
  * !DataInputs
-   * described below
+   * [AtlasRequestInterfaceSpec#Query_String_Details described below]
 
 For example:
  * http://incf-dev-local.crbs.ucd.edu/atlas-aba?service=WPS&request=GetCapabilities
- * http://incf-dev-local.crbs.ucd.edu/atlas-aba?
-service=WPS&version=1.0.0&request=DescribeProcess
+ * http://incf-dev-local.crbs.ucd.edu/atlas-aba?service=WPS&version=1.0.0&request=DescribeProcess
  * http://incf-dev-local.crbs.ucd.edu/atlas-aba?
 service=WPS&version=1.0.0&request=Execute&identifier=GetGenesByPOI&dataInputs=srsCode=WHS;x=263.7;y=159.4;z=227.8
 
