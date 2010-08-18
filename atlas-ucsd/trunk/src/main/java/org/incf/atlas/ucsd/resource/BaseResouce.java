@@ -36,7 +36,6 @@ public class BaseResouce extends Resource {
     private String responseForm;
     protected String tomcatDir;
     protected File cacheDir;
-    protected File xmlDbDir;
     
     protected ExceptionHandler exceptionHandler;
     
@@ -50,7 +49,6 @@ public class BaseResouce extends Resource {
         responseForm = (String) request.getAttributes().get("responseForm");
         tomcatDir = System.getProperty("catalina.base");
         cacheDir = new File(tomcatDir + "/webapps/atlas-ucsd/WEB-INF/cache");
-        xmlDbDir = new File(tomcatDir + "/webapps/atlas-ucsd/WEB-INF/classes/database");
         
         // every request must include service key/value
         checkService();
@@ -71,16 +69,10 @@ public class BaseResouce extends Resource {
         return exceptionHandler;
     }
     
-    protected Representation getExceptionRepresentation() 
-            throws ResourceException {
+    protected Representation getExceptionRepresentation() {
         
         // generate xml
-        String exceptionReportXml = null;
-        try {
-            exceptionReportXml = exceptionHandler.getXMLExceptionReport();
-        } catch (JAXBException e) {
-            throw new ResourceException(e);
-        }
+        String exceptionReportXml = exceptionHandler.getXMLExceptionReport();
         
         // return it
         getResponse().setStatus(Status.CLIENT_ERROR_FORBIDDEN);

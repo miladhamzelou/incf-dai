@@ -1,13 +1,8 @@
 package org.incf.atlas.ucsd.resource;
 
-import net.opengis.ows._1.ExceptionReport;
-
 import org.incf.atlas.common.util.ExceptionCode;
 import org.incf.atlas.common.util.ExceptionHandler;
-import org.incf.atlas.common.util.XMLUtilities;
-import org.incf.atlas.ucsd.util.Constants;
 import org.restlet.Context;
-import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
 import org.restlet.resource.Representation;
@@ -35,14 +30,12 @@ public class UnrecognizedUri extends BaseResouce {
 
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
-		
-		// prepare an ExceptionReport
-	    ExceptionHandler exHandler = getExceptionHandler();
-		exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
-				new String[] { message });
-		
-		// generate xml
-		return exHandler.getDomExceptionReport();
+        
+        // prepare an ExceptionReport
+        ExceptionHandler exHandler = getExceptionHandler();
+        exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+                new String[] { message });
+        return getExceptionRepresentation();
 	}
 
 }
