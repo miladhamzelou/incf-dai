@@ -88,7 +88,7 @@ public class GenesByPOI extends BaseResouce {
 	     validate filter - what to do with it?
 	     prepare http GET to ABA
 	     get ABA response
-	     how many <agea-rank>'s to return? criteria for which?
+	     how many <agea-rank>'s to return? criteria for which? top 1
 	     aba provides
 	    	ageapositionid
 	      	count
@@ -100,20 +100,20 @@ public class GenesByPOI extends BaseResouce {
 	     WaxML GenesResponse.xsd returns
 	     	Gene
 		     	Symbol
-		     		codeSpace
-		     		gml:id
-		     		symbol
-		     	MarkerAccessionId
+		     		codeSpace = "ABA"
+		     		gml:id = symbol
+		     		symbol = symbol
+		     	MarkerAccessionId -- make optional
 		     	    separator
 		     	    Prefix
 		     	    Identifier
 		     	    FullIdentifier
-		     	Name
-		     	Organism
+		     	Name = symbol
+		     	Organism = "mouse"
 	     	ExpressionLevel
-	     		GeneSymbol xlin:href
+	     		GeneSymbol xlin:href = gml:id (symbol)
 	     		Stage
-	     		Level
+	     		Level = aba energy
 	     		ResourceUri
 	    how to map aba response to Atlas response?
 	    do the mapping using XMLBeans objects

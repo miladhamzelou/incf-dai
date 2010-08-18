@@ -169,6 +169,20 @@ Several question arise:
  - In the "closest | close" fit search
  	which, and if "close" how do we handle a list
  	what's the algorithm -- this is were PostGIS/Postgres is needed
+ 	
+100818 meeting
+ GET: http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute
+ &Identifier=Get2DImagesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z]
+         validate srsName - s/b AGEA?
+         validate x y z
+         validate filter - what to do with it?
+         prepare http GET to ABA
+         get ABA response
+         how many <agea-rank>'s to return? criteria for which?
+         --
+         use lydia approach
+         
+
    
 
  */
