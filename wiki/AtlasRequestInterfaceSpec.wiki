@@ -199,7 +199,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applibility Table]</td>
+    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -234,7 +234,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applibility Table]</td>
+    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -269,7 +269,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applibility Table]</td>
+    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -328,7 +328,7 @@ inputSrsName outputSrsName x y z filter
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applibility Table]</td>
+    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -382,7 +382,7 @@ None
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applibility Table]</td>
+    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -418,7 +418,7 @@ None
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applibility Table]</td>
+    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
