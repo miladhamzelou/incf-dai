@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/waxML" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/waxML" version="0.8" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:complexType name="BaseResponseType">
+        <xs:sequence>
+            <xs:element name="queryInfo" type="wax:QueryInfoType" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="QueryInfoType">
+        <xs:sequence>
+            <xs:element name="timeCreated" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation> Time that this process was run, and this document was created</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="queryUrl" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>                      The URL that was used to make this document.
+Optional</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:anyURI">
+                            <xs:attribute name="name" type="xs:Name" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="criteria" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="input" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Name of the input parameter, and it's value. This can be any element, eg a gml point</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:complexContent>
+                                    <xs:extension base="wax:InputType" />
+                                </xs:complexContent>
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="InputType" abstract="true">
+        <xs:attribute name="name" type="xs:Name" />
+    </xs:complexType>
+    <xs:complexType name="InputStringType">
+        <xs:complexContent>
+            <xs:extension base="wax:InputType">
+                <xs:sequence>
+                    <xs:element name="value" type="xs:string" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="InputPOIType">
+        <xs:complexContent>
+            <xs:extension base="wax:InputType">
+                <xs:choice>
+                    <xs:element name="POI" type="wax:POIType" />
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="InputAnyType">
+        <xs:complexContent>
+            <xs:extension base="wax:InputType">
+                <xs:sequence>
+                    <xs:any />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="POI" type="wax:POIType" />
+    <xs:complexType name="POIType">
+        <xs:choice>
+            <xs:element ref="gml:Point" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:element name="boundedBy" type="gml:BoundingShapeType" />
+    <xs:complexType name="CoordinateTransformationInfoType">
+        <xs:sequence>
+            <xs:element name="coordinateTransformation" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:attribute name="order" type="xs:int" use="required" />
+                    <xs:attribute name="code" type="xs:string" use="required" />
+                    <xs:attribute name="hub" type="xs:Name" use="required" />
+                    <xs:attribute name="inputSrsName" type="xs:QName" use="required" />
+                    <xs:attribute name="targetSrsName" type="xs:QName" use="required" />
+                    <xs:attribute name="accuracy" type="xs:float" />
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="coordinateTransformationInfoResponse" type="wax:CoordinateTransformationInfoResponseType" />
+    <xs:complexType name="CoordinateTransformationInfoResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="coordinateTransformationInfo" type="wax:CoordinateTransformationInfoType" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="structureTermsResponse" type="wax:StructureTermsResponseType" />
+    <xs:complexType name="StructureTermsResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="structureTerms" minOccurs="1" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="structureTerm" type="wax:StructureTermType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="StructureTermType">
+        <xs:sequence>
+            <xs:element name="structureCode" type="wax:incfCodeType" />
+            <xs:element ref="wax:name" minOccurs="0" maxOccurs="1" />
+            <xs:element ref="wax:description" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="feature" type="wax:FeatureReferenceType" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="FeatureReferenceType">
+        <xs:sequence>
+            <xs:element name="centroid">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element ref="gml:Point" />
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+            <xs:element ref="wax:boundedBy" />
+            <xs:element xmlns:q1="http://www.isotc211.org/2005/gmd" name="Url">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:anyURI">
+                            <xs:attribute name="srsName" type="xs:token" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="format" type="wax:geometryFomatCodeList" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="incfCodeType">
+        <xs:complexContent>
+            <xs:extension base="gml:CodeWithAuthorityType">
+                <xs:attribute name="isDefault" type="xs:boolean" />
+                <xs:attribute ref="gml:id" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:simpleType name="geometryFomatCodeList">
+        <xs:union memberTypes="wax:geomFormatEnum xs:string" />
+    </xs:simpleType>
+    <xs:simpleType name="geomFormatEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="shape" />
+            <xs:enumeration value="SimpleFeaturesText" />
+            <xs:enumeration value="gml-sf" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="transformationResponse" type="wax:TransformationResponseType" />
+    <xs:complexType name="TransformationResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element ref="wax:POI" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ImagesResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="Image2Dcollection" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="image2dType" type="wax:Image2DType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="imagesResponse" type="wax:ImagesResponseType" />
+    <xs:complexType name="Image2DType">
+        <xs:sequence>
+            <xs:element name="imageSource" minOccurs="1" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:anyURI">
+                            <xs:attribute name="thumbnanil" type="xs:anyURI" />
+                            <xs:attribute name="metadata" type="xs:anyURI" />
+                            <xs:attribute name="name" type="xs:normalizedString" />
+                            <xs:attribute name="srsName" type="xs:token" />
+                            <xs:attribute name="format" type="wax:IncfRemoteFormats" />
+                            <xs:attribute name="relavance" type="xs:float" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="imagePosition">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="imagePlaneEquation" type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
+                        <xs:element name="imagePlanePlacement " type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
+                        <xs:element name="corner" minOccurs="0" maxOccurs="4">
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element ref="gml:Point" />
+                                </xs:sequence>
+                                <xs:attribute name="position" type="wax:PositionEnum" />
+                            </xs:complexType>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="incfSrsType">
+        <xs:simpleContent>
+            <xs:extension base="gml:NameList">
+                <xs:attribute name="srsName" type="xs:token" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="PositionEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="topleft" />
+            <xs:enumeration value="bottomleft" />
+            <xs:enumeration value="topright" />
+            <xs:enumeration value="bottomright" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="genesResponse" type="wax:GenesResponseType" />
+    <xs:complexType name="GenesResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="genesByPOI" type="wax:GeneByPoiType" minOccurs="0" maxOccurs="1" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GeneByPoiType">
+        <xs:sequence>
+            <xs:element name="gene" type="wax:GeneType" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="expressionLevel" type="wax:GeneExpressionLevelType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GeneType">
+        <xs:sequence>
+            <xs:element name="symbol" type="wax:GeneSymbolType" />
+            <xs:element ref="wax:name" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="markerAccesionId" type="wax:AssessionIdType" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="organism" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>The name of the organism. Use the codespace attribute for any external reference.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AssessionIdType">
+        <xs:sequence>
+            <xs:element name="prefix" type="wax:IncfNameType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The pefix, eg MGI for MGI:12345</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="identifier" type="wax:incfCodeType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The identifier, eg 12345 for MGI:2345
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="fullIdentifier" type="xs:anyURI" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>MGI:12345</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="spearator" />
+    </xs:complexType>
+    <xs:complexType name="GeneExpressionLevelType">
+        <xs:annotation>
+            <xs:documentation>This is an xlink to another GeneSymbolType element. Eg to link to a gene/symbol[@gml:id=ABc123], a geneExpressionLevel  with this attribute would include this attribute
+@xlink:href='ABc123'
+</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="geneSymbol" type="wax:GeneSymbolType">
+                <xs:annotation>
+                    <xs:documentation>Contains the code for the geneSymbol. This symbol MUST be found in the gene elements in the genesByPOI list.
+
+
+The codeSpace attribute can optionally be used to add information to indentify the source.
+xlink can be used to link a gene. Eg to link to a gene/symbol[@gml:id=ABc123], a geneExpressionLevel  with this attribute would include this attribute
+@xlink:href='ABc123'
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="level" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>contain whatever the resource has - a number or natural language description such as `strong'. The codeSpace attribute can optionally be used to add information to indentify the source.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="stage" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Contains "NEED REFERNCE"
+The codeSpace attribute can optionally be used to add information to indentify the source.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="resourceUri" type="wax:IncfResourceType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Contains an URL to a relevant page at the resource</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GeneSymbolType">
+        <xs:complexContent>
+            <xs:extension base="wax:incfCodeType">
+                <xs:attribute ref="xlink:href">
+                    <xs:annotation>
+                        <xs:documentation>This is an xlink to another GeneSymbolType element. Eg to link to a gene/symbol[@gml:id=ABc123], a geneExpressionLevel  with this attribute would include this attribute
+@xlink:href='ABc123'
+</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="IncfResourceType">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI" />
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="IncfNameType">
+        <xs:simpleContent>
+            <xs:extension base="xs:Name" />
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="name" type="wax:IncfNameType" />
+    <xs:element name="description" type="gml:StringOrRefType" />
+    <xs:complexType name="Incfdescription">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xlink:href" />
+                <xs:attribute ref="gml:id" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="IncfRemoteFormatEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="WMS/jpg" />
+            <xs:enumeration value="WMS/gif" />
+            <xs:enumeration value="WMS/png" />
+            <xs:enumeration value="zoomify" />
+            <xs:enumeration value="image/jpeg" />
+            <xs:enumeration value="image/png" />
+            <xs:enumeration value="image/gif" />
+            <xs:enumeration value="text/html" />
+            <xs:enumeration value="url" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IncfRemoteFormats">
+        <xs:union memberTypes="wax:IncfRemoteFormatEnum xs:string" />
+    </xs:simpleType>
+    <xs:complexType name="IncfUri">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+                <xs:attribute ref="xlink:title" />
+                <xs:attribute name="format" type="wax:IncfRemoteFormats" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="ImageUrlListType">
+        <xs:choice minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="url" type="wax:IncfUri" />
+        </xs:choice>
+        <xs:attribute name="name" type="xs:string" />
+    </xs:complexType>
+    <xs:complexType name="CorrelatioMapType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:choice>
+                    <xs:element name="imagesReferenceCollection" minOccurs="1" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:choice>
+                                <xs:element name="imageReferences" type="wax:ImageUrlListType" />
+                            </xs:choice>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="correlationMapResponse" type="wax:CorrelatioMapType" />
+</xs:schema>

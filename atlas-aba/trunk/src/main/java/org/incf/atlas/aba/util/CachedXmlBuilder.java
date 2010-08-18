@@ -9,6 +9,7 @@ import java.io.InputStream;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
@@ -47,7 +48,8 @@ public class CachedXmlBuilder {
         Result result = new StreamResult(output);
         
         // do transform
-        transFac.newTransformer(xslt).transform(xmlSource, result);
+        Transformer t = transFac.newTransformer(xslt);
+        t.transform(xmlSource, result);
     }
     
     public void execute() throws TransformerException, FileNotFoundException {

@@ -97,7 +97,7 @@
 	<!-- End INCF-UCSDServer properties --> 
 
 	<!-- Start INCF-ABA properties --> 
- 
+
 	<property>
         <name>incf.aba.host.name</name>
         <value>mouse.brain-map.org</value>
@@ -105,7 +105,8 @@
 
 	<property>
         <name>incf.deploy.host.name</name>
-        <value>incf-dev-local.crbs.ucsd.edu</value>
+        <value>132.239.131.188</value>
+        <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
     </property>
 
 	<property>

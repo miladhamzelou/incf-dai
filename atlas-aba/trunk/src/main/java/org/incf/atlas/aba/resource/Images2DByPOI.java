@@ -20,8 +20,8 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 import org.incf.atlas.aba.util.DataInputs;
-import org.incf.atlas.aba.util.ExceptionCode;
-import org.incf.atlas.aba.util.ExceptionHandler;
+import org.incf.atlas.common.util.ExceptionCode;
+import org.incf.atlas.common.util.ExceptionHandler;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;

@@ -8,8 +8,8 @@ import java.util.Set;
 import org.incf.atlas.aba.util.ABAConfigurator;
 import org.incf.atlas.aba.util.ABAUtil;
 import org.incf.atlas.aba.util.DataInputs;
-import org.incf.atlas.aba.util.ExceptionCode;
-import org.incf.atlas.aba.util.ExceptionHandler;
+import org.incf.atlas.common.util.ExceptionCode;
+import org.incf.atlas.common.util.ExceptionHandler;
 import org.incf.atlas.generated.transformationchain.CoordinateTransformationChainResponse;
 import org.incf.atlas.generated.transformationchain.ObjectFactory;
 import org.restlet.Context;
@@ -96,24 +96,6 @@ public class CoordinateTransformationChain extends BaseResouce {
 	        if (exceptionHandler != null) {
 	            return getExceptionRepresentation();
 	        }
-
-		// text return for debugging
-/*		Set<String> dataInputKeys = dataInputs.getKeys();
-		for (String key : dataInputKeys) {
-			if (key.equalsIgnoreCase("inputSrsName")) {
-				fromSRSCode = dataInputs.getValue(key);
-				vo.setFromSRSCode(fromSRSCode);
-				vo.setFromSRSCodeOne(fromSRSCode);
-			} else if (key.equalsIgnoreCase("targetSrsName")) {
-				toSRSCode = dataInputs.getValue(key);
-				vo.setToSRSCode(toSRSCode);
-				vo.setToSRSCodeOne(toSRSCode);
-			} else if (key.equalsIgnoreCase("filter")) {
-				filter = dataInputs.getValue(key);
-				vo.setFilter(filter);
-			}
-		}
-*/
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         java.util.Date date = new java.util.Date();

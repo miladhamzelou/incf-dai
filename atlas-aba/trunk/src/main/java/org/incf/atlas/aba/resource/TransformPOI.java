@@ -24,8 +24,8 @@ import org.incf.atlas.aba.util.ABAUtil;
 import org.incf.atlas.aba.util.AtlasNamespacePrefixMapper;
 import org.incf.atlas.aba.util.Constants;
 import org.incf.atlas.aba.util.DataInputs;
-import org.incf.atlas.aba.util.ExceptionCode;
-import org.incf.atlas.aba.util.ExceptionHandler;
+import org.incf.atlas.common.util.ExceptionCode;
+import org.incf.atlas.common.util.ExceptionHandler;
 import org.incf.atlas.waxml.generated.*;
 
 import org.restlet.Context;
@@ -121,6 +121,14 @@ public class TransformPOI extends BaseResouce {
 	        vo.setOriginalCoordinateY(String.valueOf(poiCoords[1].intValue()));
 	        vo.setOriginalCoordinateZ(String.valueOf(poiCoords[2].intValue()));
 
+	        System.out.println("X: "+vo.getOriginalCoordinateX());
+	        System.out.println("Y: "+vo.getOriginalCoordinateY());
+	        System.out.println("Z: "+vo.getOriginalCoordinateZ());
+
+	        System.out.println("X1: "+dataInputs.getValue("x"));
+	        System.out.println("Y1: "+dataInputs.getValue("y"));
+	        System.out.println("Z1: "+dataInputs.getValue("z"));
+
 	        // if any validation exceptions, no reason to continue
 	        if (exceptionHandler != null) {
 	            return getExceptionRepresentation();
@@ -196,15 +204,6 @@ public class TransformPOI extends BaseResouce {
 		query.getQueryUrl().setStringValue(url);
 		query.setTimeCreated(Calendar.getInstance());
 
-/*		InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);
-		poiCriteria.setName("TransformPOI");
-		PointType pnt = poiCriteria.addNewPOI().addNewPoint();
-		pnt.setId(String.valueOf(randomGMLID1));
-		pnt.addNewPos();
-		pnt.getPos().setStringValue(vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " " + vo.getOriginalCoordinateZ());
-		InputStringType targetsrsCriteria = (InputStringType) criterias
-		.addNewInput().changeType(InputStringType.type);
-*/
 		InputStringType targetsrsCriteria = (InputStringType) criterias
 		.addNewInput().changeType(InputStringType.type);
 
