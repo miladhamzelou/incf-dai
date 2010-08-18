@@ -48,7 +48,7 @@ UCSD HUB
 
     http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_WHS_1.0;x=1;y=4.3;z=1.78;filter=cerebellum
 
- * Execute : GetCorrelationMapByPOI
+ * Execute : Get2DImagesByPOI
 
     http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:Sagittal;tolerance=20
 
