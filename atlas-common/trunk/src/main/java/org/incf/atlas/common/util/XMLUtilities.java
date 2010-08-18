@@ -8,22 +8,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
-import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import org.restlet.data.MediaType;
-import org.restlet.resource.DomRepresentation;
 import org.w3c.dom.Document;
 
 public final class XMLUtilities {
@@ -108,52 +100,6 @@ public final class XMLUtilities {
         }
     }
     
-	public static synchronized DomRepresentation getDomRepresentation(
-			Object object, String namespaceUri, String contextPath) {
-		DomRepresentation representation = null;
-		try {
-			
-			// create representation and get its empty dom
-			representation = new DomRepresentation(MediaType.TEXT_XML);
-			Document doc = representation.getDocument();
-
-			final Marshaller marshaller = 
-					JAXBContext.newInstance(contextPath).createMarshaller();
-			
-			marshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", 
-					new AtlasNamespacePrefixMapper());
-
-			// marshal object into representation's dom
-			Class clazz = object.getClass();
-			QName qName = new QName(namespaceUri, clazz.getSimpleName());
-			JAXBElement jaxbElement = new JAXBElement(qName, clazz, object);
-			marshaller.marshal(jaxbElement, doc);
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-		return representation;
-	}
-
-	public static Document object2Document(
-			Object object, String namespaceUri, String contextPath) 
-			throws ParserConfigurationException, JAXBException {
-		DocumentBuilderFactory docFac = DocumentBuilderFactory.newInstance();
-		DocumentBuilder docBuilder = docFac.newDocumentBuilder();
-		Document doc = docBuilder.newDocument();
-		final Marshaller marshaller = 
-			JAXBContext.newInstance(contextPath).createMarshaller();
-	
-		marshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", 
-				new AtlasNamespacePrefixMapper());
-
-		// marshal object into representation's dom
-		Class clazz = object.getClass();
-		QName qName = new QName(namespaceUri, clazz.getSimpleName());
-		JAXBElement jaxbElement = new JAXBElement(qName, clazz, object);
-		marshaller.marshal(jaxbElement, doc);
-		
-		return doc;
-	}
 	
     public static void main(String[] args) throws FileNotFoundException {
     	String inFile = "src/main/resources/exampleResponses/GetCapabilitiesResponse.xml";
