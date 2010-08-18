@@ -72,7 +72,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
     <th align="left">GetStructureNamesByPOI</th>
     <td align="center">X</td>
     <td align="center"></td>
-    <td align="center">X</td>
+    <td align="center">x</td>
     <td align="center">X</td>
   </tr>
   <tr>
