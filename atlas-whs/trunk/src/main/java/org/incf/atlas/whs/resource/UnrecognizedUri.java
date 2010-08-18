@@ -30,14 +30,12 @@ public class UnrecognizedUri extends BaseResouce {
 
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
-		
-		// prepare an ExceptionReport
-	    ExceptionHandler exHandler = getExceptionHandler();
-		exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
-				new String[] { message });
-		
-		// generate xml
-		return exHandler.getDomExceptionReport();
+        
+        // prepare an ExceptionReport
+        ExceptionHandler exHandler = getExceptionHandler();
+        exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+                new String[] { message });
+        return getExceptionRepresentation();
 	}
 
 }

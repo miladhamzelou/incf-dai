@@ -42,8 +42,9 @@ public class Capabilities extends BaseResouce {
 	    
 	    // if there are exceptions, send an excepton report
 	    if (exceptionHandler != null) {
+	    	String xmlReport = exceptionHandler.getXMLExceptionReport();
 	    	logger.error("Exception Report returned to client: \n{}", 
-	    			exceptionHandler.toString());
+	    			xmlReport);
 	        return getExceptionRepresentation();
 	    }
 	    
@@ -60,9 +61,7 @@ public class Capabilities extends BaseResouce {
         exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
                 new String[] { message });
         logger.error(message);
-        
-        // generate xml
-        return exHandler.getDomExceptionReport();
+        return getExceptionRepresentation();
 	}
 	
 }
