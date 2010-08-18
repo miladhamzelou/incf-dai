@@ -143,6 +143,17 @@ public class Main {
 			System.out.println("Error ListSRSResponse");
 			e.printStackTrace();
 		}
+		DescribeSrsResponse ssrs = new DescribeSrsResponse();
+		String dSrsResponseFull = ssrs.AsXml();
+		 try {
+		     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/DescribeSRSResponse_full.xml"));
+		         out.write(dSrsResponseFull);
+		         out.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Error DescribeSrsResponse");
+				e.printStackTrace();
+			}
 		
 	System.out.println("done");
        

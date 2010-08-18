@@ -75,6 +75,7 @@ public ListSRSResponseDocument completeResponse() {
 	ListSRSResponseDocument document =	ListSRSResponseDocument.Factory.newInstance(); 
 	
 	ListSRSResponseType rootDoc =	document.addNewListSRSResponse();
+	rootDoc.newCursor().insertComment("Test Comment");
 	QueryInfoSrs(rootDoc.addNewQueryInfo(), "URL");
 	SRSList srsList = rootDoc.addNewSRSList();
 	SRSType srs1 =  srsList.addNewSRS();
@@ -97,7 +98,7 @@ public ListSRSResponseDocument completeResponse() {
 	
 	return document;
 }
-public void SrsExample1(SRSType srs){
+public static void SrsExample1(SRSType srs){
 	
 	 // <SRSName srsCode=”INCF:0101” srsBase=”ABAreference” srsVersion=”1.0” Species=”Mouse” URN=””> Mouse_ABAreference_1.0/>
 	Name name =srs.addNewName();
@@ -154,16 +155,13 @@ createNueroDimentions(plusY, "Posterior", 2, "#Posterior");
 NeurodimensionType plusZ =dimensions.addNewPlusZ();
 createNueroDimentions(plusZ, "Anterior", 9, "#Anterior");
 
-      /*  <Source URI=’…’, format=’…’>
-            <Description>DescriptiveText</Description>
-            <Abstract>text</Abstract>
+      /*  <Source  format=’…’>
+            URI
         </Source>
       */
-IncfDocumentCitation cite = srs.addNewSource();
-cite.setAbstract("ABstract Abstract");
-cite.setUri("UriREferece");
-cite.setFormat("text/ascii|text/xml|what");
-cite.setDescription("Description");
+IncfUriSliceSource cite = srs.addNewSource();
+cite.setStringValue("UriREferece");
+cite.setFormat("Nifti_1.0");
        //<DerivedFrom srsName=”…” method=”…”/>
        DerivedFrom derived = srs.addNewDerivedFrom();
        derived.setSrsName("Mouse_ABAvoxel_1.0");
@@ -174,12 +172,12 @@ cite.setDescription("Description");
 	
 	return;
 }
-public void createNueroDimentions(NeurodimensionType dimension, String name, float maxValue, String xRef){
+public static void createNueroDimentions(NeurodimensionType dimension, String name, float maxValue, String xRef){
 	dimension.setStringValue(name);
 	dimension.setMaxValue(maxValue);
 	dimension.setHref(xRef);
 }
-public void QueryInfoSrs(QueryInfoType queryInfo, String callUrl)
+public static void QueryInfoSrs(QueryInfoType queryInfo, String callUrl)
 {
 	queryInfo.addNewQueryUrl().setStringValue(callUrl);
 	
@@ -187,7 +185,7 @@ public void QueryInfoSrs(QueryInfoType queryInfo, String callUrl)
 	return ;
 }
 
-public OrientationType orientation(OrientationType orient, String code, String name) {
+public static OrientationType orientation(OrientationType orient, String code, String name) {
 	
 	orient.setCode(code);
 	orient.setId(code); // this is what is linked, to

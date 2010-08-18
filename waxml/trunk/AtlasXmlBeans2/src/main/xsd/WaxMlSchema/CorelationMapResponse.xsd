@@ -27,9 +27,8 @@
     <xs:element name="CorrelationMapResponse" type="wax:CorrelatioMapType" />
     <xs:complexType name="ImageUrlListType">
         <xs:choice minOccurs="1" maxOccurs="unbounded">
-            <xs:element name="Url" type="wax:IncfUri" />
+            <xs:element name="Url" type="wax:IncfUriRemoteFormat" />
         </xs:choice>
         <xs:attribute name="name" type="xs:string" />
     </xs:complexType>
-    
 </xs:schema>

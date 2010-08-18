@@ -56,7 +56,9 @@
 				<configuration>
 				<!--  	<outputJar>XmlBeansAtlasWaxML.jar</outputJar>
 					-->
-					<compiler>${JAVA_HOME}/bin/javac</compiler>
+				<!--  
+				<compiler>${JAVA_HOME}/bin/javac</compiler>
+				-->	
 					<verbose>true</verbose>
 					<quiet>false</quiet>
 					<noJavac>false</noJavac>
@@ -76,7 +78,8 @@
 					     <sourceSchema>WaxMlSchema/DescribeSrsResponse.xsd</sourceSchema>
 					     <sourceSchema>WaxMlSchema/ListSrsResponse.xsd</sourceSchema>
 					     <sourceSchema>WaxMlSchema/ListTransformationResponse.xsd</sourceSchema>
-					          
+					     
+					     <sourceSchema>SCHEMAS_OPENGIS_NET/ows/2.0/owsExceptionReport.xsd</sourceSchema>  
 					<!--	<sourceSchema>WaxMlSchema/WaxML_Base.xsd</sourceSchema>
 					  <sourceSchema>SCHEMAS_OPENGIS_NET/wps/1.0.0/wpsAll.xsd</sourceSchema>
 					-->	

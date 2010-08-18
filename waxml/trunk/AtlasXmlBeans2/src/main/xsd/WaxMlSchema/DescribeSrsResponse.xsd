@@ -5,12 +5,19 @@
     <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
     <xs:include schemaLocation="common/WaxML_Base.xsd" />
     <xs:include schemaLocation="common/SrsCommon.xsd" />
+    <xs:include schemaLocation="ListSrsResponse.xsd" />
     <xs:element name="DescribeSRSResponse" type="wax:DescribeSRSResponseType" />
     <xs:complexType name="DescribeSRSResponseType">
         <xs:complexContent>
-            <xs:extension base="wax:BaseResponseType">
+            <xs:extension base="wax:ListSRSResponseType">
                 <xs:sequence>
-                    <xs:element name="SRS" type="wax:SRSType" minOccurs="0" maxOccurs="1" />
+                    <xs:element name="Slices" minOccurs="0" maxOccurs="1">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="Slice" type="wax:SliceType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>

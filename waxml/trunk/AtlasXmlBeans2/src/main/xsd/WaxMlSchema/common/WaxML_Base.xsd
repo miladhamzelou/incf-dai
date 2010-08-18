@@ -77,11 +77,19 @@ Optional</xs:documentation>
         </xs:simpleContent>
     </xs:complexType>
     <xs:element name="Description" type="gml:StringOrRefType" />
-    <xs:complexType name="IncfUri">
+    <xs:complexType name="IncfUriRemoteFormat">
         <xs:simpleContent>
             <xs:extension base="xs:anyURI">
                 <xs:attribute ref="xlink:title" />
                 <xs:attribute name="format" type="wax:IncfRemoteFormats" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="IncfUriSliceSource">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+                <xs:attribute ref="xlink:title" />
+                <xs:attribute name="format" type="wax:incfSourceFormats" />
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -166,6 +174,16 @@ Optional</xs:documentation>
     </xs:simpleType>
     <xs:simpleType name="incfImageServices">
         <xs:union memberTypes="wax:incfImageServicesEnum xs:string" />
+    </xs:simpleType>
+    <xs:simpleType name="incfSourceFormatsEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Nifti_1.0" />
+            <xs:enumeration value="Analyze_7.5" />
+            <xs:enumeration value="other" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="incfSourceFormats">
+        <xs:union memberTypes="wax:incfSourceFormatsEnum xs:string" />
     </xs:simpleType>
     <xs:complexType name="UnitsOfMeasureType">
         <xs:attribute name="unitsName" type="xs:string" />
