@@ -46,7 +46,7 @@ UCSD HUB
 
  * Execute : TransformPOI
 
-    http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=MousePaxinos_1.0;outputSrsName=Mouse_WHS_1.0;x=1;y=4.3;z=1.78;filter=cerebellum
+    http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_WHS_1.0;x=1;y=4.3;z=1.78;filter=cerebellum
 
  * Execute : GetCorrelationMapByPOI
 
