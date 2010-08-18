@@ -22,8 +22,8 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   <tr>
     <th align="left">!DescribeTransfomation</th>
     <td align="center">x</td>
-    <td align="center"></td>
-    <td align="center"></td>
+    <td align="center">x</td>
+    <td align="center">x</td>
     <td align="center"></td>
   </tr>
   <tr>
