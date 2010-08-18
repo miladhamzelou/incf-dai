@@ -10,36 +10,23 @@ The Atlas base URIs identify the server location (URL) and the server applicatio
 
 == Full URIs == 
 
-The URIs will be consistent with, but a subset of, the OGC (Open Geospatial Consortium) WPS (Web Processing Service) standard. 
+Full Atlas URIs are consistent with, but a subset of, the OGC (Open Geospatial Consortium) WPS (Web Processing Service) standard. 
 
-- - - - - - -
-    Atlas HTTP GET requests include an appended query string. Following the
-    OGC (Open Geospacial Consortium) WPS (Web Processing Services), the query 
-    string keys, case and order sensitive, are
-    - service (all requests)
-    - version (all requests except GetCapabilities)
-    - request (all requests)
-    - Identifier (all Execute requests)
-    - DataInputs (most Execute requests)
-
-    service = WPS
-    version = version
-    request = { GetCapabilities | DescribeProcess | Execute }
-    Identifier = (enumerated below)
-    DataInputs = { varies by identifier }
-- - - - - - -
-
-A complete URI will consist of 
-
- * a base URI
- * a query string consisting of
-   * service (mandatory)
-   * version (not for GetCapabilities, otherwise mandatory)
-   * Request (mandatory)
-   * Identifier (mandatory if Request is Execute, not used otherwise)
-   * Data inputs (mandatory where specified)
-
-The Request is mandatory the other query string elements depend on the type of Request.
+The Base URIs will be appended with a query string which will include these case- and order-sensitive keys:
+ * service
+   * all requests
+   * value = WPS
+ * version
+   * all requests except !GetCapabilities
+   * value be that returned by the !GetCapabilities request
+ * request
+   * all requests
+   * value =  { !GetCapabilities | !DescribeProcess | Execute }
+ * Identifier
+   * all Execute requests
+   * values enumerated below
+ * !DataInputs
+   * described below
 
 For example:
  * http://incf-dev-local.crbs.ucd.edu/atlas-aba?service=WPS&request=GetCapabilities
@@ -48,7 +35,7 @@ service=WPS&version=1.0.0&request=DescribeProcess
  * http://incf-dev-local.crbs.ucd.edu/atlas-aba?
 service=WPS&version=1.0.0&request=Execute&identifier=GetGenesByPOI&dataInputs=srsCode=WHS;x=263.7;y=159.4;z=227.8
 
-== Query String Details ==
+==Query String Details==
 
 Full URI = Base URI + Query String
 
