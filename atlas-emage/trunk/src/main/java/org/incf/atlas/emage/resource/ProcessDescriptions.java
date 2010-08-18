@@ -40,30 +40,29 @@ public class ProcessDescriptions extends BaseResouce {
 	 */
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
-		
-        // if there are exceptions, send an excepton report
-        if (exceptionHandler != null) {
-            logger.error("Exception Report returned to client: \n{}", 
-                    exceptionHandler.toString());
-            return getExceptionRepresentation();
-        }
-        
-        // look for cached file fisrt
-        File cachedResponse = new File(cacheDir, RESPONSE_FILE_NAME);
-        if (cachedResponse.exists()) {
-            return new FileRepresentation(cachedResponse, 
-                    MediaType.APPLICATION_XML);
-        }
-    
+	    
+	    // if there are exceptions, send an excepton report
+	    if (exceptionHandler != null) {
+	    	String xmlReport = exceptionHandler.getXMLExceptionReport();
+	    	logger.error("Exception Report returned to client: \n{}", 
+	    			xmlReport);
+	        return getExceptionRepresentation();
+	    }
+	    
+	    // look for cached file fisrt
+	    File cachedResponse = new File(cacheDir, RESPONSE_FILE_NAME);
+	    if (cachedResponse.exists()) {
+	        return new FileRepresentation(cachedResponse, 
+	        		MediaType.APPLICATION_XML);
+	    }
+	    
         // prepare an ExceptionReport
-        String message = "File " + RESPONSE_FILE_NAME + " not found.";
+	    String message = "File " + RESPONSE_FILE_NAME + " not found.";
         ExceptionHandler exHandler = getExceptionHandler();
         exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
                 new String[] { message });
         logger.error(message);
-        
-        // generate xml
-        return exHandler.getDomExceptionReport();
+        return getExceptionRepresentation();
 	}
 	
 }

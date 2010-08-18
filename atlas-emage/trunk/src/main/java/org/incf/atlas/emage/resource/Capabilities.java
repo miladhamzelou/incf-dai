@@ -40,14 +40,15 @@ public class Capabilities extends BaseResouce {
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
 	    
-	    // if there are exceptions, send an excepton report
+	    // if there are exceptions, send an exception report
 	    if (exceptionHandler != null) {
+	    	String xmlReport = exceptionHandler.getXMLExceptionReport();
 	    	logger.error("Exception Report returned to client: \n{}", 
-	    			exceptionHandler.toString());
+	    			xmlReport);
 	        return getExceptionRepresentation();
 	    }
 	    
-	    // look for cached file fisrt
+	    // look for cached file first
 	    File cachedResponse = new File(cacheDir, RESPONSE_FILE_NAME);
 	    if (cachedResponse.exists()) {
 	        return new FileRepresentation(cachedResponse, 
@@ -60,9 +61,7 @@ public class Capabilities extends BaseResouce {
         exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
                 new String[] { message });
         logger.error(message);
-        
-        // generate xml
-        return exHandler.getDomExceptionReport();
+        return getExceptionRepresentation();
 	}
 	
 }

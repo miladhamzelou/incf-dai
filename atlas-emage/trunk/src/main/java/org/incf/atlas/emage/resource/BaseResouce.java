@@ -69,16 +69,10 @@ public class BaseResouce extends Resource {
         return exceptionHandler;
     }
     
-    protected Representation getExceptionRepresentation() 
-            throws ResourceException {
+    protected Representation getExceptionRepresentation() {
         
         // generate xml
-        String exceptionReportXml = null;
-        try {
-            exceptionReportXml = exceptionHandler.getXMLExceptionReport();
-        } catch (JAXBException e) {
-            throw new ResourceException(e);
-        }
+        String exceptionReportXml = exceptionHandler.getXMLExceptionReport();
         
         // return it
         getResponse().setStatus(Status.CLIENT_ERROR_FORBIDDEN);
