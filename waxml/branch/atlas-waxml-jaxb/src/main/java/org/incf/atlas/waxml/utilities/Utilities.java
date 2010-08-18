@@ -3,11 +3,7 @@ package org.incf.atlas.waxml.utilities;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.apache.xmlbeans.XmlError;
-import org.apache.xmlbeans.XmlObject;
-import org.apache.xmlbeans.XmlOptions;
-import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseDocument;
-import org.incf.atlas.waxml.generated.QueryInfoType;
+import org.incf.waxml.QueryInfoType;
 
 public class Utilities {
 	public static HashMap SuggestedNamespaces() {
