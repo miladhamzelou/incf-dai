@@ -14,6 +14,7 @@ public class Utilities {
 		HashMap suggestedPrefixes = new HashMap();
 		
 		suggestedPrefixes.put("http://www.opengis.net/gml/3.2", "gml");
+		suggestedPrefixes.put("http://www.opengis.net/ows/2.0", "ows");
 		// uncomment if ou want all the elements prefixed with wax:
 		suggestedPrefixes.put("http://www.incf.org/WaxML/", null);
 		suggestedPrefixes.put("http://www.w3.org/2001/XMLSchema-instance", "xsi");

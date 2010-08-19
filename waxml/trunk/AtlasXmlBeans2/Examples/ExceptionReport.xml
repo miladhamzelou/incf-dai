@@ -1,0 +1,10 @@
+<ows:ExceptionReport xmlns:ows="http://www.opengis.net/ows/2.0" version="1.0.0" xml:lang="en-US">
+  <ows:Exception exceptionCode="NotApplicableCode" locator="locator">
+    <ows:ExceptionText>Line 1a.</ows:ExceptionText>
+    <ows:ExceptionText>Line 1b.</ows:ExceptionText>
+  </ows:Exception>
+  <ows:Exception exceptionCode="NotApplicableCode" locator="locator">
+    <ows:ExceptionText>Line 2a.</ows:ExceptionText>
+    <ows:ExceptionText>Line 2b.</ows:ExceptionText>
+  </ows:Exception>
+</ows:ExceptionReport>
