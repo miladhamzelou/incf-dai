@@ -19,6 +19,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
+import org.incf.atlas.common.util.XMLUtilities;
 import org.incf.atlas.ucsd.resource.UCSDServiceVO;
 import org.incf.atlas.ucsd.resource.Utilities;
 import org.incf.atlas.waxml.generated.CoordinateChainTransformType;
@@ -3219,8 +3220,8 @@ public class UCSDUtil {
 		String z = ";z=45";
 
 
-		UCSDUtil util = new UCSDUtil();
-		String responseString = util.internalCoordinateTransformations(transformationChainURL, x, y, z);
+		XMLUtilities util = new XMLUtilities();
+		String responseString = util.coordinateTransformation(transformationChainURL, x, y, z);
 		System.out.println("ResponseString - " + responseString);
     	if (responseString.startsWith("Error:")) {
     		System.out.println("****ERROR");
@@ -3230,7 +3231,7 @@ public class UCSDUtil {
 	}
 
 
-	public String internalCoordinateTransformations( String transformationChainURL, String x, String y, String z ) {
+/*	public String internalCoordinateTransformations( String transformationChainURL, String x, String y, String z ) {
 
 		UCSDUtil util = new UCSDUtil();
 		String responseString = "";
@@ -3326,7 +3327,7 @@ public class UCSDUtil {
 		}
 		return null;
 	}
-
+*/
  	public String convertFromFileToString(String path) {
 		
 		byte[] byteContents = null; 

@@ -31,6 +31,7 @@ import org.geotools.data.wms.WebMapServer;
 import org.geotools.ows.ServiceException;
 import org.incf.atlas.common.util.ExceptionCode;
 import org.incf.atlas.common.util.ExceptionHandler;
+import org.incf.atlas.common.util.XMLUtilities;
 import org.incf.atlas.ucsd.util.DataInputs;
 import org.incf.atlas.ucsd.util.UCSDConfigurator;
 import org.incf.atlas.ucsd.util.UCSDUtil;
@@ -101,6 +102,7 @@ public class Get2DImagesByPOI extends BaseResouce {
 		String paxinosCoordinatesString = "";
 		String abareferenceCoordinatesString = "";
 		UCSDUtil util = new UCSDUtil();
+		XMLUtilities xmlUtilities = new XMLUtilities();
 		ArrayList completeImageList = new ArrayList();
 		
         try { 
@@ -158,7 +160,7 @@ public class Get2DImagesByPOI extends BaseResouce {
 		    	String portNumber = ":8080";
 		    	String servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 		    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
-	        	paxinosCoordinatesString = util.internalCoordinateTransformations(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
+	        	paxinosCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
 	        	//Start - exception handling
 	        	if (paxinosCoordinatesString.startsWith("Error:")) {
@@ -187,7 +189,7 @@ public class Get2DImagesByPOI extends BaseResouce {
 		    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 		    	servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 		    	transformationChainURL = "http://"+hostName+portNumber+servicePath;	
-		    	abareferenceCoordinatesString = util.internalCoordinateTransformations(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
+		    	abareferenceCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
 	        	//Start - exception handling
 	        	if (abareferenceCoordinatesString.startsWith("ERROR:")) {
