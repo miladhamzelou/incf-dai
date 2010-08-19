@@ -43,7 +43,7 @@ public class ServerApplication extends Application
 		buf.append("\nWaiting for connections ...");
 		logger.info(buf.toString());
 	}
-	
+
 	@Override
 	public Restlet createRoot() {
 		Router router = new Router(getContext());
