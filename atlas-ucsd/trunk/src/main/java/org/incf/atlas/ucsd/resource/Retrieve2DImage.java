@@ -1,5 +1,7 @@
 package org.incf.atlas.ucsd.resource;
 
+import java.net.URL;
+import java.net.URLDecoder;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -106,14 +108,20 @@ public class Retrieve2DImage extends BaseResouce {
 	        System.out.println("SRSName - " + vo.getFromSRSCode());
 	        String sourceType = dataInputs.getValue("sourceType");
 	        System.out.println("SourceType - " + sourceType);
-	        //String sourceURL = dataInputs.getValue("sourceURL");
-	        System.out.println("SourceURL - " + sourceURL);
 	        vo.setMinX(dataInputs.getValue("xmin"));
 	        vo.setMaxX(dataInputs.getValue("xmax"));
 	        vo.setMinY(dataInputs.getValue("ymin"));
 	        vo.setMaxY(dataInputs.getValue("ymax"));
 	        vo.setFilter(dataInputs.getValue("filter"));
-	        
+
+	        String sourceURL = dataInputs.getValue("sourceURL");
+	        System.out.println("SourceURL - " + sourceURL);
+
+	        String decodedURL = URLDecoder.decode(sourceURL, "UTF-8");
+	        System.out.println("Decoded URL - " + decodedURL);
+
+	        //URLDecoder decodedURL = new URLDecoder("sourceURL");
+
 	        // validate data inputs
 	        validateSrsName(vo.getFromSRSCodeOne());
 
@@ -124,7 +132,7 @@ public class Retrieve2DImage extends BaseResouce {
 
 		//Start - Call the main method here
 	    //String wmsURL = "http://"+imageServerHostname+servicePath+vo.getImageServiceName()+".map&LAYERS="+vo.getImageBaseName()+"&FORMAT=png24&VERSION=1.1.1&REQUEST=GetMap&SRS=EPSG:4326&WIDTH=256&HEIGHT=256&BBOX="+vo.getMinX()+","+vo.getMinY()+","+vo.getMaxX()+","+vo.getMaxY();
-		String wmsURL = sourceURL+"&SRS=EPSG:4326&WIDTH=256&HEIGHT=256&BBOX="+vo.getMinX()+","+vo.getMinY()+","+vo.getMaxX()+","+vo.getMaxY();
+		String wmsURL = decodedURL+"&SRS=EPSG:4326&WIDTH=256&HEIGHT=256&BBOX="+vo.getMinX()+","+vo.getMinY()+","+vo.getMaxX()+","+vo.getMaxY();
 	    //End
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

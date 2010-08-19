@@ -1035,7 +1035,8 @@ public class UCSDUtil {
  					of.createCoordinateTransformationChain();
 */
 	 		    if ( vo.getFromSRSCodeOne() != null ) {
-		 		    if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ||
+		 		    	 vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
 		 		  		implementingHub1 = "UCSD";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
@@ -1161,7 +1162,8 @@ public class UCSDUtil {
 	 		    }
 
 	 		    if ( vo.getFromSRSCodeTwo() != null ) {
-		 		    if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_paxinos_1.0") ||
+			 		    	 vo.getToSRSCodeTwo().equalsIgnoreCase("mouse_paxinos_1.0") ) {
 		 		  		implementingHub2 = "UCSD";
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationTwoURL(transformationURL2);
@@ -1279,7 +1281,8 @@ public class UCSDUtil {
 	 		    }
 
 	 		    if ( vo.getFromSRSCodeThree() != null ) {
-		 		    if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_paxinos_1.0") ||
+			 		    	 vo.getToSRSCodeThree().equalsIgnoreCase("mouse_paxinos_1.0") ) {
 		 		  		implementingHub3 = "UCSD";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -1394,7 +1397,8 @@ public class UCSDUtil {
 	 		    }
 	 		    
 	 		    if ( vo.getFromSRSCodeFour() != null ) {
-		 		    if ( vo.getFromSRSCodeFour().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeFour().equalsIgnoreCase("mouse_paxinos_1.0") ||
+			 		    	 vo.getToSRSCodeFour().equalsIgnoreCase("mouse_paxinos_1.0") ) {
 		 		  		implementingHub4 = "UCSD";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
