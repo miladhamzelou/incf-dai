@@ -3327,9 +3327,9 @@ public class ABAUtil {
 		// 1) Define and Get parameters from URL
 		System.out.println(" Parameters... ");
 		String fromSpaceName = vo.getFromSRSCode();
-		String coordinateX = vo.getOriginalCoordinateX();
-		String coordinateY = vo.getOriginalCoordinateY();
-		String coordinateZ = vo.getOriginalCoordinateZ();
+		String coordinateX = vo.getTransformedCoordinateX();
+		String coordinateY = vo.getTransformedCoordinateY();
+		String coordinateZ = vo.getTransformedCoordinateZ();
 		String vocabulary = vo.getVocabulary();
 
 		// Define config Properties
@@ -3465,9 +3465,9 @@ public class ABAUtil {
 		System.out.println(" Parameters... ");
 
 		String fromSpaceName = vo.getFromSRSCode();
-		String coordinateX = vo.getOriginalCoordinateX();
-		String coordinateY = vo.getOriginalCoordinateY();
-		String coordinateZ = vo.getOriginalCoordinateZ();
+		String coordinateX = vo.getTransformedCoordinateX();
+		String coordinateY = vo.getTransformedCoordinateY();
+		String coordinateZ = vo.getTransformedCoordinateZ();
 		String vocabulary = vo.getVocabulary();
 
 		// Define config Properties
@@ -3511,7 +3511,7 @@ public class ABAUtil {
 			return responseString.toString();
 		}
 
-		if (fromSpaceName.equals("mouse_whs_1.0")) {
+/*		if (fromSpaceName.equals("mouse_whs_1.0")) {
 
 			System.out
 					.println("Inside mouse_whs_1.0 original coordinates transformation");
@@ -3542,7 +3542,7 @@ public class ABAUtil {
 			coordinateZ = transformedCoordinates[2];
 
 		}
-
+*/
 		try {
 
 			System.out.println("Starts Transformation matrix process...");

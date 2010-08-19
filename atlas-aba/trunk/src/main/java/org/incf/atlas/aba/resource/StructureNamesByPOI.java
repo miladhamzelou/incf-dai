@@ -20,6 +20,7 @@ import org.incf.atlas.aba.util.AtlasNamespacePrefixMapper;
 import org.incf.atlas.aba.util.DataInputs;
 import org.incf.atlas.common.util.ExceptionCode;
 import org.incf.atlas.common.util.ExceptionHandler;
+import org.incf.atlas.common.util.XMLUtilities;
 import org.incf.atlas.waxml.generated.IncfNameType;
 import org.incf.atlas.waxml.generated.InputStringType;
 import org.incf.atlas.waxml.generated.QueryInfoType;
@@ -56,10 +57,12 @@ public class StructureNamesByPOI extends BaseResouce {
 	String url = "";
 	String responseString = "";
 
+	ABAConfigurator config = ABAConfigurator.INSTANCE;
+
 	public StructureNamesByPOI(Context context, Request request, 
 			Response response) {
 		super(context, request, response);
-		
+
 /*		System.out.println("You are in StructureNamesByPOIResource");
 		dataInputString = (String) request.getAttributes().get("dataInputs"); 
 		System.out.println("dataInputString " + dataInputString );
@@ -85,14 +88,14 @@ public class StructureNamesByPOI extends BaseResouce {
 
 		ABAServiceVO vo = new ABAServiceVO();
 
-		try { 
+		try {
 
 		    // make sure we have something in dataInputs
 		    if (dataInputsString == null || dataInputsString.length() == 0) {
 		        ExceptionHandler eh = getExceptionHandler();
 		        eh.addExceptionToReport(ExceptionCode.MISSING_PARAMETER_VALUE, null, 
 		                new String[] { "All DataInputs were missing." });
-		        
+
 		        // there is no point in going further, so return
 		        return getExceptionRepresentation();
 		    }
@@ -120,41 +123,51 @@ public class StructureNamesByPOI extends BaseResouce {
 	        if (exceptionHandler != null) {
 	            return getExceptionRepresentation();
 	        }
-	        
-/*		String fromSRSCode = "";
-		String vocabulary = "";
-		String filter = "";
-		String coordinateX = "";
-		String coordinateY = "";
-		String coordinateZ = "";
-		String responseString = "";
 
-		// text return for debugging
-		ABAServiceVO vo = new ABAServiceVO();
-		Set<String> dataInputKeys = dataInputs.getKeys();
-		for (String key : dataInputKeys) {
-			if (key.equalsIgnoreCase("srsName")) {
-				fromSRSCode = dataInputs.getValue(key);
-				vo.setFromSRSCode(fromSRSCode);
-				vo.setFromSRSCodeOne(fromSRSCode);
-			} else if (key.equalsIgnoreCase("vocabulary")) {
-				vocabulary = dataInputs.getValue(key);
-				vo.setVocabulary(vocabulary);
-			} else if (key.equalsIgnoreCase("filter")) {
-				filter = dataInputs.getValue(key);
-				vo.setFilter(filter);
-			} else if (key.equalsIgnoreCase("x")) {
-				coordinateX = dataInputs.getValue(key);
-				vo.setOriginalCoordinateX(coordinateX);
-			} else if (key.equalsIgnoreCase("y")) {
-				coordinateY = dataInputs.getValue(key);
-				vo.setOriginalCoordinateY(coordinateY);
-			} else if (key.equalsIgnoreCase("z")) {
-				coordinateZ = dataInputs.getValue(key);
-				vo.setOriginalCoordinateZ(coordinateZ);
-			}
-		}
-*/
+	        //Start - Common code used for coordinate transformation
+	        String transformedCoordinatesString = "";
+			// Convert the coordinates ABAVOXEL into PAXINOS
+	        if ( vo.getFromSRSCode().equalsIgnoreCase("mouse_abavoxel_1.0") ) { 
+		        	vo.setTransformedCoordinateX(vo.getOriginalCoordinateX());
+		        	vo.setTransformedCoordinateY(vo.getOriginalCoordinateY());
+		        	vo.setTransformedCoordinateZ(vo.getOriginalCoordinateZ());
+		    } else { 
+	        	//Call getTransformationChain method here...
+		    	//ABAVoxel
+		    	vo.setOriginalCoordinateX(";x="+vo.getOriginalCoordinateX());
+		    	vo.setOriginalCoordinateY(";y="+vo.getOriginalCoordinateY());
+		    	vo.setOriginalCoordinateZ(";z="+vo.getOriginalCoordinateZ());
+		    	vo.setToSRSCode("Mouse_Abavoxel_1.0");
+		    	vo.setToSRSCodeOne("Mouse_Abavoxel_1.0");
+
+		    	//Construct GetTransformationChain URL
+		    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+		    	String hostName = config.getValue("incf.deploy.host.name");
+		    	String portNumber = ":8080";
+		    	String servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
+		    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
+		    	XMLUtilities xmlUtilities = new XMLUtilities();
+		    	transformedCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
+
+	        	//Start - exception handling
+	        	if (transformedCoordinatesString.startsWith("Error:")) {
+	        		//System.out.println("********************ERROR*********************");
+			        ExceptionHandler eh = getExceptionHandler();
+	        		System.out.println("********************ERROR*********************");
+			        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+			                new String[] { transformedCoordinatesString });
+			        // there is no point in going further, so return
+			        return getExceptionRepresentation();
+	        	}
+	        	//End - exception handling
+	        	ABAUtil util = new ABAUtil();
+	        	String[] tempArray = util.getTabDelimNumbers(transformedCoordinatesString);
+	        	vo.setTransformedCoordinateX(tempArray[0]);
+	        	vo.setTransformedCoordinateY(tempArray[1]);
+	        	vo.setTransformedCoordinateZ(tempArray[2]);
+		    }
+	        //End
+	        
 		String structureName = ""; 
 		//Start - Call the main method here
 		ABAUtil util = new ABAUtil();

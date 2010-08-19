@@ -26,6 +26,7 @@ import org.incf.atlas.aba.util.Constants;
 import org.incf.atlas.aba.util.DataInputs;
 import org.incf.atlas.common.util.ExceptionCode;
 import org.incf.atlas.common.util.ExceptionHandler;
+import org.incf.atlas.common.util.XMLUtilities;
 import org.incf.atlas.waxml.generated.*;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.utilities.Utilities;
@@ -130,15 +131,56 @@ public class CorrelationMapByPOI extends BaseResouce {
 	            return getExceptionRepresentation();
 	        }
 
-		// text return for debugging
-		//Set<String> dataInputKeys = dataInputs.getKeys();
-		System.out.println("-2");
 
 		//Start - Call the main method here
 		ABAUtil util = new ABAUtil();
-		String completeCoordinatesString = util.spaceTransformation(vo);
+		
+        //Start - Common code used for coordinate transformation
+        String transformedCoordinatesString = "";
+		// Convert the coordinates ABAVOXEL into PAXINOS
+        if ( vo.getFromSRSCode().equalsIgnoreCase("Mouse_AGEA_1.0") ) { 
+	        	vo.setTransformedCoordinateX(vo.getOriginalCoordinateX());
+	        	vo.setTransformedCoordinateY(vo.getOriginalCoordinateY());
+	        	vo.setTransformedCoordinateZ(vo.getOriginalCoordinateZ());
+	    } else { 
+        	//Call getTransformationChain method here...
+	    	//ABAVoxel
+	    	vo.setOriginalCoordinateX(";x="+vo.getOriginalCoordinateX());
+	    	vo.setOriginalCoordinateY(";y="+vo.getOriginalCoordinateY());
+	    	vo.setOriginalCoordinateZ(";z="+vo.getOriginalCoordinateZ());
+	    	vo.setToSRSCode("Mouse_AGEA_1.0");
+	    	vo.setToSRSCodeOne("Mouse_AGEA_1.0");
 
-		if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+	    	//Construct GetTransformationChain URL
+	    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+	    	String hostName = config.getValue("incf.deploy.host.name");
+	    	String portNumber = ":8080";
+	    	String servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
+	    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
+	    	XMLUtilities xmlUtilities = new XMLUtilities();
+	    	transformedCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
+
+        	//Start - exception handling
+        	if (transformedCoordinatesString.startsWith("Error:")) {
+        		//System.out.println("********************ERROR*********************");
+		        ExceptionHandler eh = getExceptionHandler();
+        		System.out.println("********************ERROR*********************");
+		        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		                new String[] { transformedCoordinatesString });
+		        // there is no point in going further, so return
+		        return getExceptionRepresentation();
+        	}
+        	//End - exception handling
+        	String[] tempArray = util.getTabDelimNumbers(transformedCoordinatesString);
+        	vo.setTransformedCoordinateX(tempArray[0]);
+        	vo.setTransformedCoordinateY(tempArray[1]);
+        	vo.setTransformedCoordinateZ(tempArray[2]);
+	    }
+        //End
+
+		//String completeCoordinatesString = util.spaceTransformation(vo);
+
+/*		if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
 	        ExceptionHandler eh = getExceptionHandler();
 	        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
 	                new String[] { "No Such Transformation is available under ABA Hub." });
@@ -146,8 +188,8 @@ public class CorrelationMapByPOI extends BaseResouce {
 	        // there is no point in going further, so return
 	        return getExceptionRepresentation();
 		}
-
 		vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+*/
 
 		//End
 
