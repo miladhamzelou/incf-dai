@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.xml.namespace.QName;
 
@@ -76,7 +77,8 @@ public class ImagesResponse  {
 				.newInstance();
 
 		ImagesResponseType imagesRes = document.addNewImagesResponse();
-		// QueryInfo and criteria should be done as a utility
+		imagesRes.newCursor().insertComment("Generated " + Calendar.getInstance().getTime());
+// QueryInfo and criteria should be done as a utility
 		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
 		QueryInfoType query = imagesRes.addNewQueryInfo();
 		Utilities.addMethodNameToQueryInfo(query,"Get2DImagesByPOI","URL");
@@ -92,7 +94,7 @@ public class ImagesResponse  {
 		// pnt.addNewPos();
 		// pnt.getPos().setStringValue("1 1 1");
 
-
+Utilities.addInputStringCriteria(criterias, "srsName", "Mouse_ABAvoxel_1.0");
 		
 		InputStringType xCriteria = (InputStringType) criterias.addNewInput()
 				.changeType(InputStringType.type);
@@ -119,6 +121,28 @@ public class ImagesResponse  {
 
 		Image2Dcollection images = imagesRes.addNewImage2Dcollection();
 		Image2DType image1 = images.addNewImage2D();
+		String formatComment = "format ~ mime type " +
+				"{WMS/jpg|" +
+
+            "WMS/gif|" +
+            "WMS/png|" +
+           "zoomify|" +
+            "image/jpeg|" +
+            "image/png|" +
+           "image/gif|" +
+           "text/html|" +
+            "url}"+ " found in incfRemoteFormatEnum";
+		
+		String thumbnailComment = "optional thumbnail";
+		String typeComment = "type is type of service {wms-jpg|" +
+           "wms-png|" +
+            "wms-gif|" +
+            "zoomify|" +
+           "url}" +" from type incfImageServicesEnum";
+		image1.newCursor().insertComment(formatComment);
+		image1.newCursor().insertComment(thumbnailComment);
+		image1.newCursor().insertComment(typeComment);
+		
 		ImageSource i1source = image1.addNewImageSource();
 		i1source.setStringValue("URL");
 		i1source.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());

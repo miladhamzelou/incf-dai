@@ -1,3 +1,4 @@
+<!--Generated Fri Aug 20 10:52:41 PDT 2010-->
 <GenesResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlin="http://www.w3.org/1999/xlink">
   <QueryInfo>
     <QueryUrl name="GetGenesByPOI">URL</QueryUrl>
@@ -21,7 +22,9 @@
   </QueryInfo>
   <GenesByPOI>
     <Gene>
-      <Symbol codeSpace="required" gml:id="AAAAAB">Bmp4</Symbol>
+      <!--Codespace required. Ideally it will be a base identifier the org responsible for the naming-->
+      <!--gml:id is required, and is used to reference this item in the document-->
+      <Symbol codeSpace="uri:incf.org" gml:id="AAAAAB">Bmp4</Symbol>
       <MarkerAccessionId separator=":">
         <Prefix>string</Prefix>
         <Identifier>string</Identifier>
@@ -41,6 +44,8 @@
       <Organism codeSpace="http://www.incf.org/organisms" isDefault="true">mouse</Organism>
     </Gene>
     <ExpressionLevel>
+      <!--href references Bmp4 by gml:id-->
+      <!--references Bmp4 by name.-->
       <GeneSymbol xlin:href="#AAAAB"/>
       <Stage>TS11</Stage>
       <Level>strong</Level>

@@ -3,6 +3,7 @@ package org.incf.atlas.waxml.examples;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import net.opengis.gml.x32.PointType;
 
@@ -50,6 +51,8 @@ public class TransformationResponse {
 
 		TransformationResponseType rootDoc = document
 				.addNewTransformationResponse();
+		rootDoc.newCursor().insertComment("Generated " + Calendar.getInstance().getTime());
+
 		// QueryInfo and criteria should be done as a utility
 		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
 		QueryInfoType query = rootDoc.addNewQueryInfo();
@@ -66,7 +69,7 @@ public class TransformationResponse {
 		// pnt.setSrsName("Mouse_ABAVoxel_1.0");
 		// pnt.addNewPos();
 		// pnt.getPos().setStringValue("280 112 162");
-
+Utilities.addInputStringCriteria(criterias,"inputSrsName", "Mouse_ABAVoxel_1.0");
 		InputStringType targetsrsCriteria = (InputStringType) criterias
 				.addNewInput().changeType(InputStringType.type);
 		targetsrsCriteria.setName("outputSrsName");
@@ -94,10 +97,13 @@ public class TransformationResponse {
 
 		POIType poi = rootDoc.addNewPOI();
 		PointType poipnt = poi.addNewPoint();
-		poipnt.setId("id-onGeomRequiredByGML");
+		poipnt.setId("AnyIndentifier");
+		poipnt.newCursor().insertComment("id on Point Required By GML\n Scoped to the document only");
 		poipnt.setSrsName("Mouse_AGEA_1.0");
 		poipnt.addNewPos();
+		
 		poipnt.getPos().setStringValue("2 2 2");
+		poipnt.getPos().newCursor().insertComment("X Y Z");
 		return document;
 	}
 }

@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.xml.namespace.QName;
 
@@ -81,9 +82,13 @@ public class DescribeSrsResponse   {
 		
 		DescribeSRSResponseType rootDoc =	document.addNewDescribeSRSResponse();
 			
-			rootDoc.newCursor().insertComment("Test Comment");
+			rootDoc.newCursor().insertComment("Generated " + Calendar.getInstance().getTime());
 			ListSRSResponse.QueryInfoSrs(rootDoc.addNewQueryInfo(), "URL");
-			SRSList srsList = rootDoc.addNewSRSList();
+			rootDoc.getQueryInfo().getQueryUrl().setName("DescribeSRS");
+			Utilities.addInputStringCriteria(rootDoc.getQueryInfo().addNewCriteria(),
+					"srsName", "Mouse_ABAreference_1.0");	
+			
+		SRSList srsList = rootDoc.addNewSRSList();
 			SRSType srs1 =  srsList.addNewSRS();
 			ListSRSResponse.SrsExample1(srs1);
 			
@@ -103,17 +108,18 @@ public class DescribeSrsResponse   {
 			ListSRSResponse.orientation(orientaiton1,"Anterior","Anterior");
 			
 			Slices s = rootDoc.addNewSlices();
-			s.addNewSlice();
-			
+			exampleSlice(	s.addNewSlice(), 1);
+
 			return document;
 		}
 	
 	public static void exampleSlice(SliceType slice, int identifier){
+		slice.newCursor().insertComment("orientation {coronal|sagittal|horizontal}");
 		slice.setOrientation(SliceType.Orientation.HORIZONTAL);
 		slice.setXOrientation("positive dorsal");
 		slice.setYOrientation("positive coronal"); 
 				slice.setConstant(1);
-				slice.setCode("REference Number for Slice");
+				slice.setCode("Reference Number for Slice");
 				
 	}
 	

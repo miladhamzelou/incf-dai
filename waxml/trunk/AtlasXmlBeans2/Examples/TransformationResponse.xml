@@ -1,7 +1,11 @@
+<!--Generated Fri Aug 20 10:52:41 PDT 2010-->
 <TransformationResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
   <QueryInfo>
     <QueryUrl name="TransformPOI">URL</QueryUrl>
     <Criteria>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="inputSrsName">
+        <Value>Mouse_ABAVoxel_1.0</Value>
+      </Input>
       <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="outputSrsName">
         <Value>Mouse_AGEA_1.0</Value>
       </Input>
@@ -20,7 +24,10 @@
     </Criteria>
   </QueryInfo>
   <POI>
-    <gml:Point gml:id="id-onGeomRequiredByGML" srsName="Mouse_AGEA_1.0">
+    <!--id on Point Required By GML
+ Scoped to the document only-->
+    <gml:Point gml:id="AnyIndentifier" srsName="Mouse_AGEA_1.0">
+      <!--X Y Z-->
       <gml:pos>2 2 2</gml:pos>
     </gml:Point>
   </POI>

@@ -1,3 +1,4 @@
+<!--Generated Fri Aug 20 10:52:41 PDT 2010-->
 <ImagesResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
   <QueryInfo>
     <QueryUrl name="Get2DImagesByPOI">URL</QueryUrl>
@@ -20,6 +21,9 @@
     </Criteria>
   </QueryInfo>
   <Image2Dcollection>
+    <!--format ~ mime type {WMS/jpg|WMS/gif|WMS/png|zoomify|image/jpeg|image/png|image/gif|text/html|url} found in incfRemoteFormatEnum-->
+    <!--optional thumbnail-->
+    <!--type is type of service {wms-jpg|wms-png|wms-gif|zoomify|url} from type incfImageServicesEnum-->
     <Image2D>
       <ImageSource format="image/jpeg" relavance="0.6" srsName="srscode" thumbnanil="http://example.com/image.jpg" metadata="URL" type="url">URL</ImageSource>
       <ImagePosition>

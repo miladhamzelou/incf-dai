@@ -3,6 +3,7 @@
 <XmlStudioProjectOptions xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" Version="8.1.4.2482">
 	<OpenFile Uri=".\common\SrsCommon.xsd"/>
 	<OpenFile Uri=".\common\CoordinateTransformationCommon.xsd"/>
-	<OpenFile Uri=".\common\WaxML_Base.xsd"/>
+	<OpenFile Uri=".\DescribeSrsResponse.xsd"/>
 	<OpenFile Uri=".\ListSrsResponse.xsd"/>
+	<OpenFile Uri=".\GenesResponse.xsd"/>
 </XmlStudioProjectOptions>

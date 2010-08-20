@@ -3,6 +3,7 @@ package org.incf.atlas.waxml.examples;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import net.opengis.gml.x32.PointType;
 
@@ -64,6 +65,7 @@ public class Retrieve2dImageResponse {
 		Retrieve2DImageResponseDocument document = Retrieve2DImageResponseDocument.Factory.newInstance();
 		
 		Retrieve2DImageResponseType imagesRes = document.addNewRetrieve2DImageResponse();
+		imagesRes.newCursor().insertComment("Generated " + Calendar.getInstance().getTime());
 	// QueryInfo and criteria should be done as a utility
 		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
 		QueryInfoType query = imagesRes.addNewQueryInfo();

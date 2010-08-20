@@ -3,6 +3,7 @@ package org.incf.atlas.waxml.examples;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import junit.framework.TestCase;
 
@@ -52,6 +53,8 @@ public class GenesResponse  {
 				.newInstance();
 
 		GenesResponseType genes = document.addNewGenesResponse();
+		genes.newCursor().insertComment("Generated " + Calendar.getInstance().getTime());
+
 		// QueryInfo and criteria should be done as a utility
 		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
 		QueryInfoType query = genes.addNewQueryInfo();
@@ -98,7 +101,13 @@ public class GenesResponse  {
 		// adding a gene should be a utility method
 		GeneType gene1 = genePoiBlock.addNewGene();
 		GeneSymbolType g1symbol = gene1.addNewSymbol();
-		g1symbol.setCodeSpace("required");
+		
+		String codepspaceComment ="Codespace required. Ideally it will be a base identifier the org responsible for the naming ";
+		String gmlIdComment ="gml:id is required, and is used to reference this item in the document";
+		g1symbol.newCursor().insertComment(codepspaceComment);
+		g1symbol.newCursor().insertComment(gmlIdComment);
+		
+g1symbol.setCodeSpace("uri:incf.org");
 		g1symbol.setId("AAAAAB");
 		g1symbol.setStringValue("Bmp4");
 		IncfNameType g1name = gene1.addNewName();
@@ -135,6 +144,8 @@ public class GenesResponse  {
 		GeneExpressionLevelType expression1 = genePoiBlock
 				.addNewExpressionLevel();
 		GeneSymbolType e1symbol = expression1.addNewGeneSymbol();
+		e1symbol.newCursor().insertComment("href references Bmp4 by gml:id");
+
 		e1symbol.setHref("#AAAAB");
 		expression1.addNewLevel().setStringValue("strong");
 		expression1.addNewStage().setStringValue("TS11");
@@ -146,6 +157,7 @@ public class GenesResponse  {
 		GeneExpressionLevelType expression2 = genePoiBlock
 				.addNewExpressionLevel();
 		GeneSymbolType e2symbol = expression2.addNewGeneSymbol();
+		e1symbol.newCursor().insertComment("references Bmp4 by name.");
 		e2symbol.setStringValue("Bmp4");
 		expression2.addNewLevel().setStringValue("detected");
 		expression2.addNewStage().setStringValue("10.5dpc");

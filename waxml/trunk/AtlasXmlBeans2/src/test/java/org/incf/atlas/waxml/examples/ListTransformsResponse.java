@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.StringWriter;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.xml.namespace.QName;
 
@@ -84,9 +85,10 @@ public String asXml(){
 
 public ListTransformationsResponseDocument completeResponse() {
 	ListTransformationsResponseDocument co =   ListTransformationsResponseDocument.Factory.newInstance();
-	co.addNewListTransformationsResponse();
+co.addNewListTransformationsResponse();
 	
-	
+co.getListTransformationsResponse().newCursor().insertComment("Generated " + Calendar.getInstance().getTime());
+
 	
 	//Query Info
 	co.getListTransformationsResponse().addNewQueryInfo();

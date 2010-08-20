@@ -3,6 +3,7 @@ package org.incf.atlas.waxml.examples;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import net.opengis.gml.x32.BoundingShapeType;
@@ -71,7 +72,8 @@ public StructureTermsResponseDocument completeResponse() {
 	StructureTermsResponseDocument document =	StructureTermsResponseDocument.Factory.newInstance(); 
 	
 	StructureTermsResponseType rootDoc =	document.addNewStructureTermsResponse();
-	QueryInfoType query = rootDoc.addNewQueryInfo();
+	rootDoc.newCursor().insertComment("Generated " + Calendar.getInstance().getTime());
+QueryInfoType query = rootDoc.addNewQueryInfo();
 	Utilities.addMethodNameToQueryInfo(query, "GetStructureNamesByPOI  ",
 	"URL");
 	
@@ -106,11 +108,11 @@ zCriteria.setName("y");
 zCriteria.setValue("162");
 
 	InputStringType srsCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
-	srsCodeCriteria.setName("StructureVocabulary");
+	srsCodeCriteria.setName("vocabulary");
 	srsCodeCriteria.setValue("Mouse_ABAvoxel_1.0");
 	
 	InputStringType filterCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
-	filterCodeCriteria.setName("StructureFilter");
+	filterCodeCriteria.setName("filter");
 	filterCodeCriteria.setValue("structureset:Fine");
 
 	

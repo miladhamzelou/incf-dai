@@ -1,6 +1,7 @@
 package org.incf.atlas.waxml.examples;
 import java.io.StringWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import javax.xml.namespace.QName;
@@ -70,7 +71,8 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 	CoordinateTransformationChainResponseDocument co =   CoordinateTransformationChainResponseDocument.Factory.newInstance();
 	co.addNewCoordinateTransformationChainResponse();
 	
-	
+	co.getCoordinateTransformationChainResponse().newCursor().insertComment("Generated " + Calendar.getInstance().getTime());
+
 	//Query Info
 	co.getCoordinateTransformationChainResponse().addNewQueryInfo();
 	QueryInfoType qi = co.getCoordinateTransformationChainResponse().getQueryInfo();
@@ -95,8 +97,10 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 	ouputSrsConstraint.setName("outputSrsName");
 	ouputSrsConstraint.setValue("Mouse_ABAreference_1.0");
 	
+	Utilities.addInputStringCriteria(criterias, "filter", "Cerebellum");
 	 
 	CoordinateTransformationChain ct= co.getCoordinateTransformationChainResponse().addNewCoordinateTransformationChain();
+	ct.newCursor().insertComment("CoordinateTransformation  + a required order attribute");
 	CoordinateChainTransformType ex1 = ct.addNewCoordinateTransformation();
 	ex1.setOrder(1);
 	
