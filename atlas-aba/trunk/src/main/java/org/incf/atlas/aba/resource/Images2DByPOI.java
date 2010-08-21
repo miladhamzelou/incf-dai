@@ -171,19 +171,14 @@ Several question arise:
  	what's the algorithm -- this is were PostGIS/Postgres is needed
  	
 100818 meeting
- GET: http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute
+         how many <agea-rank>'s to return? criteria for which? GET: http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute
  &Identifier=Get2DImagesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z]
          validate srsName - s/b AGEA?
          validate x y z
          validate filter - what to do with it?
          prepare http GET to ABA
+http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=6600,4000,5600
          get ABA response
-         how many <agea-rank>'s to return? criteria for which?
-         --
-         use lydia approach
-         
-
-   
 
  */
 
@@ -215,7 +210,6 @@ public class Images2DByPOI extends BaseResouce {
 		super(context, request, response);
 
 		logger.debug("Instantiated {}.", getClass());
-		
 	}
 
 	/* 
@@ -303,7 +297,7 @@ public class Images2DByPOI extends BaseResouce {
 				buf.append(image.toString()).append('\n');
 				logger.debug(buf.toString());
 			}
-        }
+        } // for
         
         // build/return xml response
         /*
@@ -585,6 +579,18 @@ public class Images2DByPOI extends BaseResouce {
 	    	System.out.println("IOException while parsing ");
 	    }
 	    return imageId;
+	}
+	
+	/**
+	 * Example: http://www.brain-map.org/aba/api/gene/C1ql2.xml
+	 * 
+	 * @param geneSymbol
+	 * @return
+	 */
+	private String assembleGeneFinderURI(String x, String y, String z) {
+		return String.format(
+			"http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=%s,%s,%s", 
+			x, y, z);
 	}
 	
 	/**

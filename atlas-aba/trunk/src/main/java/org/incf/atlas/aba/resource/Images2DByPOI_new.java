@@ -14,9 +14,27 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
+import org.apache.xmlbeans.XmlError;
+import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.aba.util.DataInputs;
 import org.incf.atlas.common.util.ExceptionCode;
 import org.incf.atlas.common.util.ExceptionHandler;
+import org.incf.atlas.waxml.generated.Corners;
+import org.incf.atlas.waxml.generated.Image2DType;
+import org.incf.atlas.waxml.generated.ImagesResponseDocument;
+import org.incf.atlas.waxml.generated.ImagesResponseType;
+import org.incf.atlas.waxml.generated.IncfImageServicesEnum;
+import org.incf.atlas.waxml.generated.IncfRemoteFormatEnum;
+import org.incf.atlas.waxml.generated.IncfSrsType;
+import org.incf.atlas.waxml.generated.InputStringType;
+import org.incf.atlas.waxml.generated.PositionEnum;
+import org.incf.atlas.waxml.generated.QueryInfoType;
+import org.incf.atlas.waxml.generated.Corners.Corner;
+import org.incf.atlas.waxml.generated.Image2DType.ImagePosition;
+import org.incf.atlas.waxml.generated.Image2DType.ImageSource;
+import org.incf.atlas.waxml.generated.ImagesResponseType.Image2Dcollection;
+import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
+import org.incf.atlas.waxml.utilities.Utilities;
 import org.restlet.Context;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
@@ -29,6 +47,10 @@ import org.slf4j.LoggerFactory;
 public class Images2DByPOI_new extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
+	
+	// used for ABA Get Image URI query string
+	private static final String ZOOM = "-1";	// highest resolution available
+	private static final String MIME = "2";		// jpeg/image
 	
 	public Images2DByPOI_new(Context context, Request request, Response response) {
 		super(context, request, response);
@@ -64,7 +86,15 @@ Confirm "Mouse_AGEA_1.0"?
         // validate data inputs
         validateSrsName(srsName);
 
-        Double[] poiCoords = validateCoordinate(dataInputs);
+        Double[] poiFromClient = validateCoordinate(dataInputs);
+        
+        logger.debug("POI from client (srs, xyz): {}, {}, {}, {}", 
+        		new String[] { srsName, 
+        			String.valueOf(poiFromClient[0]), 
+        			String.valueOf(poiFromClient[1]), 
+        			String.valueOf(poiFromClient[2]) } );
+        
+        // TODO translate incoming coordinates to WHS 0.9
         
         // TODO get/validate filter; defaults to sagittal
         String filter = dataInputs.getValue("filter");
@@ -77,7 +107,8 @@ Confirm "Mouse_AGEA_1.0"?
         }
         
         // 1. get strong gene(s) at POI
-        int nbrStrongGenes = 1;
+        // TODO transform to agea coordinates
+        int nbrStrongGenes = 1;			// for now only get 1 strong gene
         List<String> strongGenes = retrieveStrongGenesAtPOI(
         		dataInputs.getValue("x"), dataInputs.getValue("y"), 
         		dataInputs.getValue("z"), nbrStrongGenes);
@@ -87,13 +118,13 @@ Confirm "Mouse_AGEA_1.0"?
         	// TODO logger.error none found, exceptionRpt, bail
         }
       
-        // 2. get image series'es for stong genes and desired plane
+        // 2. get image series'es for strong genes and desired plane
         List<ImageSeries> imageSerieses = new ArrayList<ImageSeries>();
 		for (String geneSymbol : strongGenes) {
-			ImageSeries is = retrieveImagesSeriesForGene(geneSymbol, 
+			ImageSeries imageSeries = retrieveImagesSeriesForGene(geneSymbol, 
 					desiredPlane);
-			if (is != null) {
-				imageSerieses.add(is);
+			if (imageSeries != null) {
+				imageSerieses.add(imageSeries);
 			}
 		}
 		
@@ -108,16 +139,18 @@ Confirm "Mouse_AGEA_1.0"?
         	
         	// get atlas map
     		// find closest point, get other values including position
-//        	Image image = getClosestPosition(is, poi);
+        	// TODO transform to aba_voxel coordinates
+        	Point3d abaVoxelPoi= new Point3d();
+        	Image image = getClosestPosition(is, abaVoxelPoi);
         	
     		// get best image id in image series based on position
     		// match position to find image in series, get imageid
     		//  /image-series/images/image/position
     		//  /image-series/images/image/imageid
-//        	String imageId = retrieveImageIdForPosition(is.imageSeriesId, 
-//        			image.abaImagePosition);
-//        	
-//        	image.imageId = imageId;
+        	String imageId = retrieveImageIdForPosition(is.imageSeriesId, 
+        			image.abaImagePosition);
+        	
+        	image.imageId = imageId;
         	
         	// zoom level not applicable
         	//image.zoomLevel = zoomLevel;
@@ -399,6 +432,22 @@ Confirm "Mouse_AGEA_1.0"?
 				imageSeriesId);
 	}
 	
+	/**
+	 * Example: 
+	 * http://www.brain-map.org/aba/api/image
+	 * ?zoom=[zoom]&path=[filePath]&mime=[mime]
+	 * 
+	 * @param filePath
+	 * @param zoom
+	 * @param mime
+	 * @return
+	 */
+	private String assembleImageURI(String filePath, String zoom, String mime) {
+		return String.format(
+			"http://www.brain-map.org/aba/api/image?zoom=%s&path=%s&mime=%s", 
+			zoom, filePath, mime);
+	}
+	
 	private class ImageSeries {
 		public String imageSeriesId;
 		public ImageSeriesPlane imageSeriesPlane;
@@ -423,7 +472,7 @@ Confirm "Mouse_AGEA_1.0"?
 		public Point3d abaCoordinates;
 		public int abaXPixelPosition;
 		public int abaYPixelPosition;
-		public int abaImagePosition;
+		public String abaImagePosition;
 		
 		// from (xPath) /image-series/images/image/* (partial)
 		public String imagecreatedate;
@@ -467,4 +516,127 @@ Confirm "Mouse_AGEA_1.0"?
 		}
 	}
 	
+	public static String AsXml() {
+		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+		opt.setSaveNamespacesFirst();
+		opt.setSaveAggressiveNamespaces();
+		opt.setUseDefaultNamespace();
+
+		ImagesResponseDocument document = completeResponse();
+
+		ArrayList errorList = new ArrayList();
+		opt.setErrorListener(errorList);
+		boolean isValid = document.validate(opt);
+
+		// If the XML isn't valid, loop through the listener's contents,
+		// printing contained messages.
+		if (!isValid) {
+			for (int i = 0; i < errorList.size(); i++) {
+				XmlError error = (XmlError) errorList.get(i);
+
+				System.out.println("\n");
+				System.out.println("Message: " + error.getMessage() + "\n");
+				System.out.println("Location of invalid XML: "
+						+ error.getCursorLocation().xmlText() + "\n");
+			}
+		}
+		return document.xmlText(opt);
+	}
+
+	public static ImagesResponseDocument completeResponse() {
+		ImagesResponseDocument document = ImagesResponseDocument.Factory
+				.newInstance();
+
+		ImagesResponseType imagesRes = document.addNewImagesResponse();
+		// QueryInfo and criteria should be done as a utility
+		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
+		QueryInfoType query = imagesRes.addNewQueryInfo();
+		Utilities.addMethodNameToQueryInfo(query,"Get2DImagesByPOI","URL");
+		
+		Criteria criterias = query.addNewCriteria();
+
+		// InputPOIType poiCriteria = (InputPOIType)
+		// criterias.addNewInput().changeType(InputPOIType.type);
+		// poiCriteria.setName("POI");
+		// PointType pnt = poiCriteria.addNewPOI().addNewPoint();
+		// pnt.setId("id-onGeomRequiredByGML");
+		// pnt.setSrsName("Mouse_ABAvoxel_1.0");
+		// pnt.addNewPos();
+		// pnt.getPos().setStringValue("1 1 1");
+
+
+		
+		InputStringType xCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		xCriteria.setName("x");
+		xCriteria.setValue("263");
+
+		InputStringType yCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		yCriteria.setName("y");
+		yCriteria.setValue("159");
+
+		InputStringType zCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		zCriteria.setName("y");
+		zCriteria.setValue("227");
+		InputStringType filterCodeCriteria = (InputStringType) criterias
+				.addNewInput().changeType(InputStringType.type);
+		filterCodeCriteria.setName("filter");
+		filterCodeCriteria.setValue("maptype:coronal");
+		InputStringType toleranceCodeCriteria = (InputStringType) criterias
+				.addNewInput().changeType(InputStringType.type);
+		toleranceCodeCriteria.setName("Tolerance");
+		toleranceCodeCriteria.setValue("1.0");
+
+		Image2Dcollection images = imagesRes.addNewImage2Dcollection();
+		Image2DType image1 = images.addNewImage2D();
+		ImageSource i1source = image1.addNewImageSource();
+		i1source.setStringValue("URL");
+		i1source.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());
+		i1source.setRelavance((float) 0.6);
+		i1source.setSrsName("srscode");
+		i1source.setThumbnanil("http://example.com/image.jpg");
+		i1source.setMetadata("URL");
+		i1source.setType(IncfImageServicesEnum.URL.toString());
+
+		ImagePosition i1position = image1.addNewImagePosition();
+		IncfSrsType planeequation = i1position.addNewImagePlaneEquation();
+		planeequation.setSrsName("SRS");
+		planeequation.setStringValue("1 2 3 4");
+		IncfSrsType placement = i1position.addNewImagePlanePlacement();
+		placement.setSrsName("SRS");
+		placement.setStringValue("1 2 3 4 5 6.0");
+		Corners corners = i1position.addNewCorners();
+
+		Corner corner1 = corners.addNewCorner();
+		corner1.setPosition(PositionEnum.TOPLEFT);
+		corner1.addNewPoint().addNewPos().setStringValue("1 1 1");
+		corner1.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+		corner1.getPoint().setId("image1TopLeft");
+
+		Corner corner2 = corners.addNewCorner();
+		corner2.setPosition(PositionEnum.BOTTOMLEFT);
+		corner2.addNewPoint().addNewPos().setStringValue("1 1 1");
+		corner2.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+		corner2.getPoint().setId("image1BOTTOMLEFT");
+
+		Corner corner3 = corners.addNewCorner();
+		corner3.setPosition(PositionEnum.TOPRIGHT);
+		corner3.addNewPoint().addNewPos().setStringValue("1 1 1");
+		corner3.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+		corner3.getPoint().setId("image1TOPRIGHT");
+
+		Corner corner4 = corners.addNewCorner();
+		corner4.setPosition(PositionEnum.BOTTOMRIGHT);
+		corner4.addNewPoint().addNewPos().setStringValue("1 1 1");
+		corner4.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+		corner4.getPoint().setId("image1BOTTOMRIGHT");
+		return document;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(AsXml());	
+	}
 }
