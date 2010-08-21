@@ -4,6 +4,10 @@ Digital Atlasing Infrastructure Task Force
 I. Zaslavsky, editor
  https://docs.google.com/View?id=dd9x97wk_2drhhj6fp
 
+A Powerpoint presentation describing availablke spatial reference systems:
+
+https://docs.google.com/leaf?id=0B6iM3IMv4N2qYjlmZjcwYjUtOGQ2Mi00MmU0LTgwOGMtYThhYjg1MWY1MWZm&hl=en&authkey=CPCHmrUN
+
 
 The Waxholm Markup Language (WaxML) Schema is at:
 
