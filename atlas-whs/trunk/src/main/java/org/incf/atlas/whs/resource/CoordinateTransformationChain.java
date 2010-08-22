@@ -103,8 +103,8 @@ public class CoordinateTransformationChain extends BaseResouce {
 		System.out.println("****HOSTNAME**** - " + hostName);
 		String portNumber = ":8080";
 
-		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain";
-		//servicePath = "/atlas-aba?Request=Execute&Identifier=GetTransformationChain";
+		servicePath = "/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain";
+		//servicePath = "/atlas-whs?Request=Execute&Identifier=GetTransformationChain";
 
         url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
         vo.setUrlString(url);

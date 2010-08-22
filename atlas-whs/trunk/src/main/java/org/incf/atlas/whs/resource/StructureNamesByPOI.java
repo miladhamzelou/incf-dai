@@ -170,7 +170,7 @@ public class StructureNamesByPOI extends BaseResouce {
 			        ExceptionHandler eh = getExceptionHandler();
 	        		System.out.println("********************ERROR*********************");
 			        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
-			                new String[] { transformedCoordinatesString });
+			                new String[] { transformedCoordinatesString.replace("&amp;", "&") });
 			        // there is no point in going further, so return
 			        return getExceptionRepresentation();
 	        	}

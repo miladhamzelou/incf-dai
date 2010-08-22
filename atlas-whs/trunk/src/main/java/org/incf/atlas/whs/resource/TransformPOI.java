@@ -144,7 +144,7 @@ public class TransformPOI extends BaseResouce {
 		if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
 	        ExceptionHandler eh = getExceptionHandler();
 	        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
-	                new String[] { "No Such Transformation is available under ABA Hub." });
+	                new String[] { "No Such Transformation is available under WHS Hub." });
 
 	        // there is no point in going further, so return
 	        return getExceptionRepresentation();
