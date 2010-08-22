@@ -50,7 +50,7 @@ import org.xml.sax.SAXException;
 
 public final class XMLUtilities {
 
-    /**
+	/**
      * Print an XML string in "pretty" format to an output stream.
      * 
      * @param xmlString
@@ -145,6 +145,16 @@ public final class XMLUtilities {
 		String responseString = "";
 		String resultStringFromURL = "";
 
+		Configurator config = Configurator.INSTANCE;
+
+		String abaReference = config.getValue("srsname.abareference.10");
+		String abaVoxel = config.getValue("srsname.abavoxel.10");
+		String agea = config.getValue("srsname.agea.10");
+		String whs09 = config.getValue("srsname.whs.09");
+		String whs10 = config.getValue("srsname.whs.10");
+		String emap = config.getValue("srsname.emap.10");
+		String paxinos = config.getValue("srsname.paxinos.10");
+
 		System.out.println("transformationChainURL String - " + transformationChainURL);
 
 		try { 
@@ -161,16 +171,16 @@ public final class XMLUtilities {
 			for (int i = 0; i < elementValue.length; i++ ) {
 
 				String resultURLReturnElementValue = null;
-				String abavoxel = "Mouse_ABAvoxel_1.0"; 
-				String abareference = "Mouse_ABAreference_1.0"; 
-				String paxinos = "Mouse_Paxinos_1.0"; 
-				String agea = "Mouse_AGEA_1.0"; 
-				String whs = "Mouse_WHS_1.0";
-				String emap = "Mouse_EMAP-T26_1.0";
+/*				String abavoxel = abaVoxel; 
+				String abareference = abaReference; 
+				String paxinos = paxinos; 
+				String agea = agea; 
+				String whs = whs09;
+				String emap = emap;
+*/
+				resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z).replace(";filter=", filter);
 
-				//resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z).replace(";filter=", filter);
-
-				resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z).replace(";filter=", filter).replace("mouse_abareference_1.0", abareference).replace("mouse_abavoxel_1.0", abavoxel).replace("mouse_agea_1.0", agea).replace("mouse_whs_1.0", whs).replace("mouse_paxinos_1.0", paxinos).replace("mouse_emap-t26_1.0", emap);
+				//resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z).replace(";filter=", filter).replace(abaReference, abareference).replace("mouse_abavoxel_1.0", abavoxel).replace("mouse_agea_1.0", agea).replace("mouse_whs_1.0", whs).replace("mouse_paxinos_1.0", paxinos).replace("mouse_emap-t26_1.0", emap);
 
 				System.out.println("Element Value - " + i + ": " + resultURL);
 				resultURLReturnString = util.convertFromURLToString(resultURL);
