@@ -8,7 +8,7 @@
   <description>INCF Atlas ABA (Allen Brain Atlas) Hub Server</description>
 
   <build>
-    <finalName>atlas-aba-test</finalName>
+    <finalName>atlas-aba</finalName>
 
     <plugins>
        <plugin>
