@@ -180,5 +180,41 @@
 
 	<!-- End WEBSERVICE properties --> 
 	
+	<!-- Start SRSNames properties --> 
+ 	<property>
+        <name>srsname.abareference.10</name>
+        <value>Mouse_ABAreference_1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.abavoxel.10</name>
+        <value>Mouse_ABAvoxel_1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.agea.10</name>
+        <value>Mouse_AGEA_1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.whs.09</name>
+        <value>Mouse_WHS_0.9</value>
+    </property>
+
+	<property>
+        <name>srsname.whs.10</name>
+        <value>Mouse_WHS_1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.paxinos.10</name>
+        <value>Mouse_Paxinos_1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.emap.10</name>
+        <value>Mouse_EMAP-T26_1.0</value>
+    </property>
+	<!-- End SRSNames properties --> 
 	
 </aba-config-properties>
