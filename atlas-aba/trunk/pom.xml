@@ -8,7 +8,7 @@
   <description>INCF Atlas ABA (Allen Brain Atlas) Hub Server</description>
 
   <build>
-    <finalName>atlas-aba</finalName>
+    <finalName>atlas-aba-test</finalName>
 
     <plugins>
        <plugin>
@@ -28,6 +28,7 @@
         </configuration>
       </plugin>
 
+<!--  
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jaxb2-maven-plugin</artifactId>
@@ -40,6 +41,7 @@
           </execution>
         </executions>
         <configuration>
+        -->
           <!-- default is ${basedir}/src/main/xsd 
           <schemaDirectory>${basedir}/src/main/resources</schemaDirectory>
           -->
@@ -53,10 +55,12 @@
           <!--
           <schemaFiles>CoordinateTransformationChainResponse.xsd,wpsSchema/wpsGetCapabilities_response.xsd,WaxMlSchema/WaxML_Base.xsd</schemaFiles>
           -->
+          <!--  
 		  <strict>true</strict>
 		  <verbose>true</verbose>       
         </configuration>
       </plugin>
+      -->
 
       <!-- This is needed otherwise maven seems to use Java v1.4 -->
       <plugin>

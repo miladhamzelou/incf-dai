@@ -1,226 +1,66 @@
 package org.incf.atlas.aba.resource;
 
 import java.io.BufferedReader;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import javax.vecmath.Point3d;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
+import org.apache.xmlbeans.XmlError;
+import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.aba.util.DataInputs;
 import org.incf.atlas.common.util.ExceptionCode;
 import org.incf.atlas.common.util.ExceptionHandler;
+import org.incf.atlas.waxml.generated.Corners;
+import org.incf.atlas.waxml.generated.Image2DType;
+import org.incf.atlas.waxml.generated.ImagesResponseDocument;
+import org.incf.atlas.waxml.generated.ImagesResponseType;
+import org.incf.atlas.waxml.generated.IncfImageServicesEnum;
+import org.incf.atlas.waxml.generated.IncfRemoteFormatEnum;
+import org.incf.atlas.waxml.generated.IncfSrsType;
+import org.incf.atlas.waxml.generated.InputStringType;
+import org.incf.atlas.waxml.generated.PositionEnum;
+import org.incf.atlas.waxml.generated.QueryInfoType;
+import org.incf.atlas.waxml.generated.Corners.Corner;
+import org.incf.atlas.waxml.generated.Image2DType.ImagePosition;
+import org.incf.atlas.waxml.generated.Image2DType.ImageSource;
+import org.incf.atlas.waxml.generated.ImagesResponseType.Image2Dcollection;
+import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
+import org.incf.atlas.waxml.utilities.Utilities;
 import org.restlet.Context;
-import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
-import org.restlet.resource.DomRepresentation;
 import org.restlet.resource.Representation;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.Variant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 
-/* 100803
-$ mysql -A -h mysql.crbs.ucsd.edu -u allen -p***** -D AllenBrainAtlas
-
-Existing tables:
-image_series (26,072 rows)
-image (685,744 rows)
-
-(1) Set up (one-time)
-Create a new table:
-CREATE TABLE image_series_map (
-  id BIGINT AUTO INCREMENT PRIMARY KEY,
-  imageseriesid BIGINT,
-  plane VARCHAR(255),
-  xcoord DOUBLE,
-  ycoord DOUBLE,
-  zcoord DOUBLE,
-  xpixel INT,
-  ypixel INT,
-  position INT
-) ENGINE = InnoDB;
-
-Get list of imageSeriesId's:
-SELECT imageseriesid. plane
-FROM imageseries;
-
-Populate image_series_map:
-for each imageseriesid (26,072 times)
-  read map file: http://www.brain-map.org/aba/api/map/[imageseriesid].map
-  for each map file line (hundreds of thousands)
-    INSERT INTO image_series_map
-      (imageseriesid, plane, xcoord, ycoord, zcoord, xpixel, ypixel, position)
-    VALUES (?, ?, ?, ?, ?, ?, ?);
-
-(2) Get2DImagesByPOI procedure:
-DataInputs: x, y, z, filter (coronal | sagittal)
-Scale x, y, z by 0.01
-
-SELECT imageseriesid, xpixel, ypixel, position
-FROM image_series_map
-WHERE [(closest | close) fit]
-AND plane = '(coronal | sagittal)'
-
-Using imageseriesid and position:
-SELECT imageid, zoomifiednisslurl,thumbnailurl, expressthumbnailurl,
-  downloadimagepath, [other metadata?]
-FROM image
-WHERE imageseriesid = ?
-AND position = ?
-
-Several question arise:
-- Performance?
-- What do we return?
-	zoomifiednisslurl
-	thumbnailurl
-	expressthumbnailurl
-    downloadimagepath
-    other metadata
-    ABA's Get Image URL (need more values: zoom, mime, top, left, width, height)
-    Lydia's web app image URL (need more values: zoom level)
- - In the "closest | close" fit search
- 	which, and if "close" how do we handle a list
- 	what's the algorithm -- this is were PostGIS/Postgres is needed
-   
-
- */
-
-/* 100805
-$ mysql -A -h mysql.crbs.ucsd.edu -u allen -p***** -D AllenBrainAtlas
-
-Existing tables:
-image_series (26,072 rows)
-image (685,744 rows)
-
-(1) Set up (one-time)
-Create a new table:
-CREATE TABLE image_series_map (
-  id BIGINT AUTO INCREMENT PRIMARY KEY,
-  imageseriesid BIGINT,
-  plane VARCHAR(255),
-  xcoord DOUBLE,
-  ycoord DOUBLE,
-  zcoord DOUBLE,
-  xpixel INT,
-  ypixel INT,
-  position INT,
-  imageid BIGINT
-) ENGINE = InnoDB;
-
-Get list of imageSeriesId's:
-SELECT imageseriesid, plane
-FROM imageseries
-WHERE imageseriesid > ?start
-ORDER BY imageseriesid
-
-Populate image_series_map with map data and corresponding imageid:
-for each (imageseriesid, plane) (26,072 times)
-  read map file: http://www.brain-map.org/aba/api/map/[imageseriesid].map
-  for each map file line (hundreds of thousands)
-    INSERT INTO image_series_map
-      (map.imageseriesid, plane, xcoord, ycoord, zcoord, xpixel, ypixel, map.position, map.imageid)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?,
-      SELECT im.imageid
-      FROM image im
-      WHERE im.imageseriesid = ?
-      AND im.position = ?);
-    
-(2) Get2DImagesByPOI procedure:
-DataInputs: x, y, z, filter (coronal | sagittal)
-Scale x, y, z by 0.01
-
-SELECT imageid, xpixel, ypixel
-FROM image_series_map
-WHERE plane = '(coronal | sagittal)'
-AND [(closest | close) fit]
-
-(If desired) Using imageid:
-SELECT zoomifiednisslurl,thumbnailurl, expressthumbnailurl, downloadimagepath, 
-  [other metadata?]
-FROM image
-WHERE imageid = ?
-
-Several question arise:
-- Performance?
-- What do we return?
-	zoomifiednisslurl
-	thumbnailurl
-	expressthumbnailurl
-    downloadimagepath
-    other metadata
-    ABA's Get Image URL (need more values: zoom, mime, top, left, width, height)
-    Lydia's web app image URL (need more values: zoom level)
- - In the "closest | close" fit search
- 	which, and if "close" how do we handle a list
- 	what's the algorithm -- this is were PostGIS/Postgres is needed
- 	
-100818 meeting
-         how many <agea-rank>'s to return? criteria for which? GET: http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute
- &Identifier=Get2DImagesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z]
-         validate srsName - s/b AGEA?
-         validate x y z
-         validate filter - what to do with it?
-         prepare http GET to ABA
-http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=6600,4000,5600
-         get ABA response
-
- */
-
-/**
- * Expected GET statement: http://<host:port>/atlas-aba
- *  ?service={service}
- *  &version={version}
- *  &request=Execute
- * 	&Identifier=Get2DImagesByPOI
- *  &DataInputs=srsName={srsName};x={x};y={y};z={z};gene={geneSymbol};zoom={zoomLevel}
- *  &ResponseForm={responseForm}
- *  
- *      
- * search procedure
- * with inputs x, y, z find closest line in image_series_map
- * with position, imageseriesid
- * 
- * 
- * 
- * 
- * @author dave
- *
- */
 public class Images2DByPOI extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
-		
+	
+	// used for ABA Get Image URI query string
+	private static final String ZOOM = "-1";	// highest resolution available
+	private static final String MIME = "2";		// jpeg/image
+	
 	public Images2DByPOI(Context context, Request request, Response response) {
 		super(context, request, response);
 
 		logger.debug("Instantiated {}.", getClass());
 	}
 
-	/* 
-	 * Handle GET requests.
-	 * 
-	 * (non-Javadoc)
-	 * @see org.wholebrainproject.wbc.server.resource.DataRepositoryResource#represent(org.restlet.resource.Variant)
-	 */
 	@Override
 	public Representation represent(Variant variant) throws ResourceException {
-	    
+		
 	    // make sure we have something in dataInputs
 	    if (dataInputsString == null || dataInputsString.length() == 0) {
 	        ExceptionHandler eh = getExceptionHandler();
@@ -236,197 +76,177 @@ public class Images2DByPOI extends BaseResouce {
 
         String srsName = dataInputs.getValue("srsName");
         
+        // TODO validate srsName
+/*
+Q: what is required value of srsName in Get2DImagesByPOI for using the x, y, z
+values to go to ABA with
+http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=6600,4000,5600 
+Confirm "Mouse_AGEA_1.0"?
+ */
         // validate data inputs
         validateSrsName(srsName);
-        Double[] poiCoords = validateCoordinate(dataInputs);
+
+        String srsFromClient = srsName;
+        Double[] poiFrClient = validateCoordinate(dataInputs);
+        Point3d poiFromClient = new Point3d(poiFrClient[0], poiFrClient[1], 
+        		poiFrClient[2]);
+        
+        logger.debug("POI from client (srs, xyz): {}, {}", srsFromClient, 
+        		poiFromClient.toString());
+        
+        // TODO get/validate filter; defaults to sagittal
+        String filter = dataInputs.getValue("filter");
+        ImageSeriesPlane desiredPlane = filter.equals("maptype:coronal")
+        		? ImageSeriesPlane.CORONAL : ImageSeriesPlane.SAGITTAL;
+        
+        // TODO translate incoming coordinates to WHS 0.9?
+        // TODO need agea coordinates
+        // TODO for now just copy
+        String srsGetStrongGenes = srsFromClient;
+        Point3d poiGetStrongGenes = new Point3d(poiFromClient);
         
         // if any validation exceptions, no reason to continue
         if (exceptionHandler != null) {
             return getExceptionRepresentation();
         }
         
-        // ok, now we have valid data input values
-        Point3d poi = new Point3d(
-                new double[] { poiCoords[0], poiCoords[1], poiCoords[2] });
-        String geneSymbol = dataInputs.getValue("gene");
-        int zoomLevel = Integer.parseInt(dataInputs.getValue("zoom"));
+        logger.debug("POI for strong genes (srs, xyz): {}, {}", 
+        		srsGetStrongGenes, poiGetStrongGenes.toString());
         
-        // set serialization properties
-        Properties props = new Properties();
-        props.setProperty("method", "xml");
-        props.setProperty("indent", "yes");
-        props.setProperty("omit-xml-declaration", "no");
-        props.setProperty("{http://saxon.sf.net/}indent-spaces", "2");
-        
-        // get aba coronal and sagittal image series ids based on gene
-		//  /gene/image-series/image-series/plane { coronal | sagittal }
-		//  /gene/image-series/image-series/imageseriesid
-		List<ImageSeries> imageSerieses = retrieveImagesSeriesesForGene(
-				geneSymbol);
+        // 1. get strong gene(s) at POI
+        int nbrStrongGenes = 1;			// for now only get 1 strong gene
+        List<String> strongGenes = retrieveStrongGenesAtPOI(
+        		String.valueOf(poiGetStrongGenes.x), 
+        		String.valueOf(poiGetStrongGenes.y), 
+        		String.valueOf(poiGetStrongGenes.z), nbrStrongGenes);
+
+        // make sure we have something
+        if (strongGenes.size() == 0) {
+        	// TODO logger.error none found, exceptionRpt, bail
+        }
+      
+        // 2. get image series'es for strong genes and desired plane
+        List<ImageSeries> imageSerieses = new ArrayList<ImageSeries>();
+		for (String geneSymbol : strongGenes) {
+			ImageSeries imageSeries = retrieveImagesSeriesForGene(geneSymbol, 
+					desiredPlane);
+			if (imageSeries != null) {
+				imageSerieses.add(imageSeries);
+			}
+		}
 		
+        // make sure we have something
+        if (imageSerieses.size() == 0) {
+        	// TODO logger.error none found, exceptionRpt, bail
+        }
+      
+        // TODO translate incoming coordinates to WHS 0.9?
+        // TODO need aba voxel coordinates
+        // TODO for now just copy
+        String srsForProximity = srsFromClient;
+        Point3d poiForProximity = new Point3d(poiFromClient);
+        
+		// divide POI coords by 100
+		Point3d poi100 = new Point3d();
+		poi100.scale(0.01, poiForProximity);
+		
+        logger.debug("POI for strong genes (srs, xyz): {}, {}", 
+        		srsGetStrongGenes, poi100.toString());
+        
+        // 3. get ......... for each image series
 		List<Image> images = new ArrayList<Image>();
-		
-		// for both
-        for (ImageSeries is : imageSerieses) {
+        for (ImageSeries imageSeries : imageSerieses) {
+        	
+        	Image image = new Image(imageSeries);
         	
         	// get atlas map
     		// find closest point, get other values including position
-        	Image image = getClosestPosition(is, poi);
+        	// TODO transform to aba_voxel coordinates
+        	getClosestPosition(imageSeries, poi100, image);
         	
     		// get best image id in image series based on position
     		// match position to find image in series, get imageid
     		//  /image-series/images/image/position
     		//  /image-series/images/image/imageid
-        	String imageId = retrieveImageIdForPosition(is.imageSeriesId, 
-        			image.abaImagePosition);
+        	retrieveImageForPosition(imageSeries.imageSeriesId, 
+        			image.abaImagePosition, image);
         	
-        	image.imageId = imageId;
-        	image.zoomLevel = zoomLevel;
+//        	image.imageId = imageId;
+        	
+        	// zoom level not applicable
+        	//image.zoomLevel = zoomLevel;
         	
     		// assemble aba view image uri
-        	image.imageURI = assembleViewImageURI(image);
+        	image.imageURI = assembleImageURI(image.downloadImagePath, ZOOM, 
+        			MIME);
         	images.add(image);
 			
 			// debug
 			if (logger.isDebugEnabled()) {
 				StringBuilder buf = new StringBuilder();
 				buf.append("\nGet2DImage POI: ");
-				buf.append(poi.x).append(", ");
-				buf.append(poi.y).append(", ");
-				buf.append(poi.z).append('\n');
-				buf.append(image.toString()).append('\n');
+//				buf.append(poi.x).append(", ");
+//				buf.append(poi.y).append(", ");
+//				buf.append(poi.z).append('\n');
+//				buf.append(image.toString()).append('\n');
 				logger.debug(buf.toString());
 			}
         } // for
         
-        // build/return xml response
-        /*
-        Get2DImageByPOI-response
-          dataInputs
-            srsName
-            poi
-              x
-              y
-              z
-            geneSymbol
-            zoomLevel
-          images
-            image
-              imagePlane
-              imageURI
-            image
-              imagePlane
-              imageURI
-         */
-	    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	    DocumentBuilder parser = null;
-		try {
-			parser = factory.newDocumentBuilder();
-		} catch (ParserConfigurationException e) {
-			throw new ResourceException(e);
-		}
-	    Document doc = parser.newDocument();		
-	    Element root = doc.createElement("Get2DImageByPOI-response");
-	    doc.appendChild(root);
-	    
-	    Element eDataInputs = doc.createElement("dataInputs");
-	    
-	    Element eSrsName = doc.createElement("srsName");
-	    eSrsName.setTextContent(srsName);
-	    eDataInputs.appendChild(eSrsName);
-	    
-	    Element ePoi = doc.createElement("poi");
-	    Element eX = doc.createElement("x");
-	    eX.setTextContent(String.valueOf(poi.x));
-	    ePoi.appendChild(eX);
-	    Element eY = doc.createElement("y");
-	    eY.setTextContent(String.valueOf(poi.y));
-	    ePoi.appendChild(eY);
-	    Element eZ = doc.createElement("x");
-	    eZ.setTextContent(String.valueOf(poi.x));
-	    ePoi.appendChild(eZ);
-	    eDataInputs.appendChild(ePoi);
-
-	    Element eGeneSymbol = doc.createElement("geneSymbol");
-	    eGeneSymbol.setTextContent(geneSymbol);
-	    eDataInputs.appendChild(eGeneSymbol);
-	    
-	    Element eZoomLevel = doc.createElement("zoomLevel");
-	    eZoomLevel.setTextContent(String.valueOf(zoomLevel));
-	    eDataInputs.appendChild(eZoomLevel);
-	    
-	    root.appendChild(eDataInputs);
-
-	    Element eImages = doc.createElement("images");
-	    for (Image im : images) {
-	    	Element eImage = doc.createElement("image");
-	    	
-	    	Element eImageId = doc.createElement("imageId");
-	    	eImageId.setTextContent(im.imageId);
-	    	eImage.appendChild(eImageId);
-	    	
-	    	Element eImageSeriesId = doc.createElement("imageSeriesId");
-	    	eImageSeriesId.setTextContent(im.imageSeries.imageSeriesId);
-	    	eImage.appendChild(eImageSeriesId);
-	    	
-	    	Element eImageSeriesPlane = doc.createElement("imageSeriesPlane");
-	    	eImageSeriesPlane.setTextContent(im.imageSeries.imageSeriesPlane.toString());
-	    	eImage.appendChild(eImageSeriesPlane);
-	    	
-	    	Element eImagesCheckedForProximity = doc.createElement("imagesCheckedForProximity");
-	    	eImagesCheckedForProximity.setTextContent(String.valueOf(im.imagesCheckedForProximity));
-	    	eImage.appendChild(eImagesCheckedForProximity);
-
-	    	Element eAbaCoordinates = doc.createElement("abaCoordinates");
-		    Element eAbaX = doc.createElement("x");
-		    eAbaX.setTextContent(String.valueOf(im.abaCoordinates.x));
-		    eAbaCoordinates.appendChild(eAbaX);
-		    Element eAbaY = doc.createElement("y");
-		    eAbaY.setTextContent(String.valueOf(im.abaCoordinates.y));
-		    eAbaCoordinates.appendChild(eAbaY);
-		    Element eAbaZ = doc.createElement("x");
-		    eAbaZ.setTextContent(String.valueOf(im.abaCoordinates.x));
-		    eAbaCoordinates.appendChild(eAbaZ);
-		    eImage.appendChild(eAbaCoordinates);
-
-	    	Element eAbaXPixelPosition = doc.createElement("abaXPixelPosition");
-	    	eAbaXPixelPosition.setTextContent(String.valueOf(im.abaXPixelPosition));
-	    	eImage.appendChild(eAbaXPixelPosition);
-	    	
-	    	Element eAbaYPixelPosition = doc.createElement("abaYPixelPosition");
-	    	eAbaYPixelPosition.setTextContent(String.valueOf(im.abaYPixelPosition));
-	    	eImage.appendChild(eAbaYPixelPosition);
-	    	
-	    	Element eAbaImagePosition = doc.createElement("abaImagePosition");
-	    	eAbaImagePosition.setTextContent(String.valueOf(im.abaImagePosition));
-	    	eImage.appendChild(eAbaImagePosition);
-	    	
-	    	Element eImageURI = doc.createElement("imageURI");
-	    	eImageURI.setTextContent(im.imageURI);
-	    	eImage.appendChild(eImageURI);
-
-	    	eImages.appendChild(eImage);
-	    }
-	    root.appendChild(eImages);
-
-        
-		try {
-
-		} catch (Exception e) {
-			throw new ResourceException(e);
-		}
-
-		// TODO validate
-        
-		String s = "\n" + images.get(0).imageURI + "\n" 
-				+ images.get(1).imageURI + "\n";
-		
-		// return as file
-        return new DomRepresentation(MediaType.APPLICATION_XML, doc);
+		// TODO
+		return null;
 	}
 	
-	private List<ImageSeries> retrieveImagesSeriesesForGene(String geneSymbol) {
-        List<ImageSeries> imageSerieses = new ArrayList<ImageSeries>();
+	private List<String> retrieveStrongGenesAtPOI(String x, String y, 
+			String z, int nbrStrongGenes) {
+        List<String> strongGenes = new ArrayList<String>();
+	    try {
+	        URL u = new URL(assembleGeneFinderURI(x, y, z));
+	        InputStream in = u.openStream();
+	        XMLInputFactory factory = XMLInputFactory.newInstance();
+	        XMLStreamReader parser = factory.createXMLStreamReader(in);
+	          
+	        boolean inGeneSymbol = false;
+	        String geneSymbol = null;
+	        int i = 0;
+	        for (int event = parser.next();  
+	        		event != XMLStreamConstants.END_DOCUMENT;
+	        		event = parser.next()) {
+	        	if (event == XMLStreamConstants.START_ELEMENT) {
+	        		if (parser.getLocalName().equals("genesymbol")) {
+	        			inGeneSymbol = true;
+	        		}
+	        	} else if (event == XMLStreamConstants.CHARACTERS) {
+	        		if (inGeneSymbol) {
+	        			geneSymbol = parser.getText();
+	        			strongGenes.add(geneSymbol);
+	        			i++;
+	        			if (i >= nbrStrongGenes) {
+	        				break;
+	        			}
+	        			inGeneSymbol = false;
+	        		}
+	        	}
+	        }
+	        parser.close();
+	        
+	        // debug
+	        for (String gene : strongGenes) {
+	        	logger.debug("gene: {}", gene);
+	        }
+	    }
+	    catch (XMLStreamException ex) {
+	    	System.out.println(ex);
+	    }
+	    catch (IOException ex) {
+	    	System.out.println("IOException while parsing ");
+	    }
+	    return strongGenes;
+	}
+	
+	private ImageSeries retrieveImagesSeriesForGene(String geneSymbol,
+			ImageSeriesPlane desiredPlane) {
+		ImageSeries imageSeries = null;
 	    try {
 	        URL u = new URL(assembleGeneInfoURI(geneSymbol));
 	        InputStream in = u.openStream();
@@ -452,12 +272,9 @@ public class Images2DByPOI extends BaseResouce {
 	        			inISid = false;
 	        		} else if (inPlane) {
 	        			plane = parser.getText();
-	        			if (plane.equals("coronal")) {
-	        				imageSerieses.add(new ImageSeries(isId, 
-	        						ImageSeriesPlane.CORONAL));
-	        			} else if (plane.equals("sagittal")) {
-	        				imageSerieses.add(new ImageSeries(isId, 
-	        						ImageSeriesPlane.SAGITTAL));
+	        			if (plane.equals(desiredPlane.toString())) {
+	        				imageSeries = new ImageSeries(isId, 
+	        						desiredPlane);
 	        			}
 	        			inPlane = false;
 	        		}
@@ -465,27 +282,32 @@ public class Images2DByPOI extends BaseResouce {
 	        }
 	        parser.close();
 	        
-	        // debug
-	        for (ImageSeries is : imageSerieses) {
-	        	logger.debug("imageSeries: {}, {}", is.imageSeriesId, is.imageSeriesPlane);
+	        if (imageSeries != null) {
+	        	logger.debug("imageSeries: {}, {}", imageSeries.imageSeriesId, 
+	        			imageSeries.imageSeriesPlane);
 	        }
-	    }
-	    catch (XMLStreamException ex) {
+	    } catch (XMLStreamException ex) {
 	    	System.out.println(ex);
 	    }
 	    catch (IOException ex) {
 	    	System.out.println("IOException while parsing ");
 	    }
-	    return imageSerieses;
+	    return imageSeries;
 	}
 	
-	private Image getClosestPosition(ImageSeries imageSeries, Point3d poi) {
-		Image image = new Image(imageSeries);
+	/**
+	 * Finds the position value in the image series map that is closest to the
+	 * POI. This partially populates an Image object but does NOT include the
+	 * image id.
+	 * 
+	 * @param imageSeries
+	 * @param poi
+	 * @return
+	 */
+	private void getClosestPosition(ImageSeries imageSeries, Point3d poi100,
+			Image image) {
+//		Image image = new Image(imageSeries);
 		try {
-			
-			// divide POI coords by 100
-			Point3d poi100 = new Point3d();
-			poi100.scale(0.01, poi);
 			
 			URL u = new URL(assembleAtlasMapURI(imageSeries.imageSeriesId));
 			BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -523,19 +345,21 @@ public class Images2DByPOI extends BaseResouce {
 					Double.parseDouble(bestLineSegs[2]));
 			image.abaXPixelPosition = Integer.parseInt(bestLineSegs[3]);
 			image.abaYPixelPosition = Integer.parseInt(bestLineSegs[4]);
-			image.abaImagePosition = bestLineSegs[5];
+//			image.abaImagePosition = bestLineSegs[5];
 			
 			logger.debug("Points examined: {}", count);
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return image;
+//		return image;
 	}
 	
-	private String retrieveImageIdForPosition(String imageSeriesId,
-			String position) {
-        String imageId = null;
+	private void retrieveImageForPosition(String imageSeriesId, String position, 
+			Image image) {
+//        String imageId = null;
+//        String thumbnailurl = null;
+//        String downloadImagePath = null;
 	    try {
 	        URL u = new URL(assembleMetaInfoURI(imageSeriesId));
 	        InputStream in = u.openStream();
@@ -544,6 +368,9 @@ public class Images2DByPOI extends BaseResouce {
 	          
 	        boolean inImId = false;
 	        boolean inPosition = false;
+	        boolean inThumbnailurl = false;
+	        boolean inDownloadImagePath = false;
+	        boolean positionMatch = false;
 //	        String imId = null;
 	        for (int event = parser.next();  
 	        		event != XMLStreamConstants.END_DOCUMENT;
@@ -553,24 +380,37 @@ public class Images2DByPOI extends BaseResouce {
 	        			inImId = true;
 	        		} else if (parser.getLocalName().equals("position")) {
 	        			inPosition = true;
+	        		} else if (parser.getLocalName().equals("thumbnailurl")) {
+	        			inThumbnailurl = true;
+	        		} else if (parser.getLocalName().equals("downloadImagePath")) {
+	        			inDownloadImagePath = true;
 	        		}
 	        	} else if (event == XMLStreamConstants.CHARACTERS) {
 	        		if (inImId) {
-	        			imageId = parser.getText();
+	        			image.imageId = parser.getText();
 	        			inImId = false;
 	        		} else if (inPosition) {
 	        			if (parser.getText().equals(position)) {
-//	        				imageId = imId;
-	        				break;
+	        				positionMatch = true;
 	        			}
 	        			inPosition = false;
+	        		}
+	        		if (positionMatch) {
+	        			if (inThumbnailurl) {
+	        				image.thumbnailurl = parser.getText();
+	        			} else if (inDownloadImagePath) {
+	        				image.downloadImagePath = parser.getText();
+	        				break;
+	        			}
 	        		}
 	        	}
 	        }
 	        parser.close();
 	        
 	        // debug
-	        logger.debug("imageId: {}", imageId);
+	        logger.debug("imageId: {}", image.imageId);
+	        logger.debug("thumbnailurl: {}", image.thumbnailurl);
+	        logger.debug("downloadImagePath: {}", image.downloadImagePath);
 	    }
 	    catch (XMLStreamException ex) {
 	    	System.out.println(ex);
@@ -578,7 +418,7 @@ public class Images2DByPOI extends BaseResouce {
 	    catch (IOException ex) {
 	    	System.out.println("IOException while parsing ");
 	    }
-	    return imageId;
+//	    return imageId;
 	}
 	
 	/**
@@ -630,29 +470,19 @@ public class Images2DByPOI extends BaseResouce {
 	}
 	
 	/**
-	 * Example: http://mouse.brain-map.org/viewImage.do?imageId=71424523
-	 * 			&coordSystem=pixel&x=5916&y=3356&z=25
+	 * Example: 
+	 * http://www.brain-map.org/aba/api/image
+	 * ?zoom=[zoom]&path=[filePath]&mime=[mime]
 	 * 
-	 * @param imageId
-	 * @param abaPixelX
-	 * @param abaPixelY
-	 * @param zoomLevel
+	 * @param filePath
+	 * @param zoom
+	 * @param mime
 	 * @return
 	 */
-//	private String assembleViewImageURI(String imageId, String abaPixelX, 
-//			String abaPixelY, String zoomLevel) {
-//		return String.format(
-//				"http://mouse.brain-map.org/viewImage.do?imageId=%s"
-//					+ "&coordSystem=pixel&x=%s&y=%s&z=%s", 
-//				imageId, abaPixelX, abaPixelY, zoomLevel);
-//	}
-	
-	private String assembleViewImageURI(Image image) {
+	private String assembleImageURI(String filePath, String zoom, String mime) {
 		return String.format(
-				"http://mouse.brain-map.org/viewImage.do?imageId=%s"
-					+ "&coordSystem=pixel&x=%s&y=%s&z=%s", 
-				image.imageId, image.abaXPixelPosition, 
-				image.abaYPixelPosition, image.zoomLevel);
+			"http://www.brain-map.org/aba/api/image?zoom=%s&path=%s&mime=%s", 
+			zoom, filePath, mime);
 	}
 	
 	private class ImageSeries {
@@ -670,14 +500,36 @@ public class Images2DByPOI extends BaseResouce {
 	
 	private class Image {
 		public String imageId;
-		public ImageSeries imageSeries;
-		public Point3d abaCoordinates;
+		public ImageSeries imageSeries;			// image series
 		public int imagesCheckedForProximity;
+		public int zoomLevel;
+		public String imageURI;
+		
+		// from image series map closest point line
+		public Point3d abaCoordinates;
 		public int abaXPixelPosition;
 		public int abaYPixelPosition;
 		public String abaImagePosition;
-		public int zoomLevel;
-		public String imageURI;
+		
+		// from (xPath) /image-series/images/image/* (partial)
+		public String imagecreatedate;
+		public String imageid;
+		public String referenceAtlasIndex;
+		public String zoomifiednissurl;
+		public String thumbnailurl;
+		public String expressthumbnailurl;
+		public String downloadImagePath;
+		public String downloadExpressionPath;
+		
+		// from (xPath) /IMAGE_PROPERTIES/*
+		public int width;
+		public int height;
+		public int numTiles;
+		public int numTiers;
+		public int numImages;
+		public String version;
+		public int tileZize;
+		
 		public Image(ImageSeries imageSeries) {
 			this.imageSeries = imageSeries;
 		}
@@ -693,8 +545,135 @@ public class Images2DByPOI extends BaseResouce {
 	}
 	
 	public enum ImageSeriesPlane {
-		CORONAL,
-		SAGITTAL
+		CORONAL, SAGITTAL;
+		
+		@Override 
+		public String toString() {
+			return super.toString().toLowerCase();
+		}
 	}
 	
+	public static String AsXml() {
+		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+		opt.setSaveNamespacesFirst();
+		opt.setSaveAggressiveNamespaces();
+		opt.setUseDefaultNamespace();
+
+		ImagesResponseDocument document = completeResponse();
+
+		ArrayList errorList = new ArrayList();
+		opt.setErrorListener(errorList);
+		boolean isValid = document.validate(opt);
+
+		// If the XML isn't valid, loop through the listener's contents,
+		// printing contained messages.
+		if (!isValid) {
+			for (int i = 0; i < errorList.size(); i++) {
+				XmlError error = (XmlError) errorList.get(i);
+
+				System.out.println("\n");
+				System.out.println("Message: " + error.getMessage() + "\n");
+				System.out.println("Location of invalid XML: "
+						+ error.getCursorLocation().xmlText() + "\n");
+			}
+		}
+		return document.xmlText(opt);
+	}
+
+	public static ImagesResponseDocument completeResponse() {
+		ImagesResponseDocument document = ImagesResponseDocument.Factory
+				.newInstance();
+
+		ImagesResponseType imagesRes = document.addNewImagesResponse();
+		// QueryInfo and criteria should be done as a utility
+		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
+		QueryInfoType query = imagesRes.addNewQueryInfo();
+		Utilities.addMethodNameToQueryInfo(query,"Get2DImagesByPOI","URL");
+		
+		Criteria criterias = query.addNewCriteria();
+
+		// InputPOIType poiCriteria = (InputPOIType)
+		// criterias.addNewInput().changeType(InputPOIType.type);
+		// poiCriteria.setName("POI");
+		// PointType pnt = poiCriteria.addNewPOI().addNewPoint();
+		// pnt.setId("id-onGeomRequiredByGML");
+		// pnt.setSrsName("Mouse_ABAvoxel_1.0");
+		// pnt.addNewPos();
+		// pnt.getPos().setStringValue("1 1 1");
+
+
+		
+		InputStringType xCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		xCriteria.setName("x");
+		xCriteria.setValue("263");
+
+		InputStringType yCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		yCriteria.setName("y");
+		yCriteria.setValue("159");
+
+		InputStringType zCriteria = (InputStringType) criterias.addNewInput()
+				.changeType(InputStringType.type);
+		zCriteria.setName("y");
+		zCriteria.setValue("227");
+		InputStringType filterCodeCriteria = (InputStringType) criterias
+				.addNewInput().changeType(InputStringType.type);
+		filterCodeCriteria.setName("filter");
+		filterCodeCriteria.setValue("maptype:coronal");
+		InputStringType toleranceCodeCriteria = (InputStringType) criterias
+				.addNewInput().changeType(InputStringType.type);
+		toleranceCodeCriteria.setName("Tolerance");
+		toleranceCodeCriteria.setValue("1.0");
+
+		Image2Dcollection images = imagesRes.addNewImage2Dcollection();
+		Image2DType image1 = images.addNewImage2D();
+		ImageSource i1source = image1.addNewImageSource();
+		i1source.setStringValue("URL");
+		i1source.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());
+		i1source.setRelavance((float) 0.6);
+		i1source.setSrsName("srscode");
+		i1source.setThumbnanil("http://example.com/image.jpg");
+		i1source.setMetadata("URL");
+		i1source.setType(IncfImageServicesEnum.URL.toString());
+
+		ImagePosition i1position = image1.addNewImagePosition();
+		IncfSrsType planeequation = i1position.addNewImagePlaneEquation();
+		planeequation.setSrsName("SRS");
+		planeequation.setStringValue("1 2 3 4");
+		IncfSrsType placement = i1position.addNewImagePlanePlacement();
+		placement.setSrsName("SRS");
+		placement.setStringValue("1 2 3 4 5 6.0");
+		Corners corners = i1position.addNewCorners();
+
+		Corner corner1 = corners.addNewCorner();
+		corner1.setPosition(PositionEnum.TOPLEFT);
+		corner1.addNewPoint().addNewPos().setStringValue("1 1 1");
+		corner1.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+		corner1.getPoint().setId("image1TopLeft");
+
+		Corner corner2 = corners.addNewCorner();
+		corner2.setPosition(PositionEnum.BOTTOMLEFT);
+		corner2.addNewPoint().addNewPos().setStringValue("1 1 1");
+		corner2.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+		corner2.getPoint().setId("image1BOTTOMLEFT");
+
+		Corner corner3 = corners.addNewCorner();
+		corner3.setPosition(PositionEnum.TOPRIGHT);
+		corner3.addNewPoint().addNewPos().setStringValue("1 1 1");
+		corner3.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+		corner3.getPoint().setId("image1TOPRIGHT");
+
+		Corner corner4 = corners.addNewCorner();
+		corner4.setPosition(PositionEnum.BOTTOMRIGHT);
+		corner4.addNewPoint().addNewPos().setStringValue("1 1 1");
+		corner4.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+		corner4.getPoint().setId("image1BOTTOMRIGHT");
+		return document;
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(AsXml());	
+	}
 }

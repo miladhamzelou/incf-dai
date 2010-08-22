@@ -1,9 +1,9 @@
+
 package org.incf.atlas.aba.server;
 
 import org.incf.atlas.aba.resource.Capabilities;
 import org.incf.atlas.aba.resource.CoordinateTransformationChain;
 import org.incf.atlas.aba.resource.CorrelationMapByPOI;
-import org.incf.atlas.aba.resource.FaviconResource;
 import org.incf.atlas.aba.resource.Images2DByPOI;
 import org.incf.atlas.aba.resource.ListTransformations;
 import org.incf.atlas.aba.resource.NotSupported;
