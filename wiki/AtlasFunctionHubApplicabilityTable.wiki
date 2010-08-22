@@ -80,7 +80,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
     <td align="center">X</td>
     <td align="center">X</td>
     <td align="center">X</td>
-    <td align="center"></td>
+    <td align="center">X</td>
   </tr>
   <tr>
     <th align="left">ListSRSs</th>
@@ -94,7 +94,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
     <td align="center">X</td>
     <td align="center">X</td>
     <td align="center">X</td>
-    <td align="center"></td>
+    <td align="center">X</td>
   </tr>
   <tr>
     <th align="left">Retrieve2DImage</th>
@@ -108,6 +108,6 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
     <td align="center">X</td>
     <td align="center">X</td>
     <td align="center">X</td>
-    <td align="center"></td>
+    <td align="center">X</td>
   </tr>
 </table>
