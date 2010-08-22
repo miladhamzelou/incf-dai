@@ -14,6 +14,7 @@
             <ows:Value>Mouse_AGEA_1.0</ows:Value>
             <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
             <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+            <ows:Value>Mouse_WHS_0.9</ows:Value>
             <ows:Value>Mouse_WHS_1.0</ows:Value>
           </ows:AllowedValues>
         </LiteralData>
@@ -32,6 +33,7 @@
             <ows:Value>Mouse_AGEA_1.0</ows:Value>
             <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
             <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+            <ows:Value>Mouse_WHS_0.9</ows:Value>
             <ows:Value>Mouse_WHS_1.0</ows:Value>
           </ows:AllowedValues>
         </LiteralData>
@@ -50,6 +52,7 @@
             <ows:Value>Mouse_AGEA_1.0</ows:Value>
             <ows:Value>Mouse_EMAP-T26_1.0</ows:Value>
             <ows:Value>Mouse_Paxinos_1.0</ows:Value>
+            <ows:Value>Mouse_WHS_0.9</ows:Value>
             <ows:Value>Mouse_WHS_1.0</ows:Value>
           </ows:AllowedValues>
         </LiteralData>
