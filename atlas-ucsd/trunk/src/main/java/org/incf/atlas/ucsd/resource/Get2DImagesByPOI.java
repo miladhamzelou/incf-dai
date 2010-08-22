@@ -68,9 +68,18 @@ public class Get2DImagesByPOI extends BaseResouce {
 	private final Logger logger = LoggerFactory.getLogger(
 			Get2DImagesByPOI.class);
 
+	UCSDConfigurator config = UCSDConfigurator.INSTANCE;
+
+	String abaReference = config.getValue("srsname.abareference.10");
+	String abaVoxel = config.getValue("srsname.abavoxel.10");
+	String agea = config.getValue("srsname.agea.10");
+	String whs09 = config.getValue("srsname.whs.09");
+	String whs10 = config.getValue("srsname.whs.10");
+	String emap = config.getValue("srsname.emap.10");
+	String paxinos = config.getValue("srsname.paxinos.10");
+
 	//private String dataInputString;
 	//private DataInputs dataInputs;
-	UCSDConfigurator config = UCSDConfigurator.INSTANCE;
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
@@ -141,8 +150,8 @@ public class Get2DImagesByPOI extends BaseResouce {
 			System.out.println("Before getPaxinosImageList");
 
 			// Convert the coordinates ABAVOXEL into PAXINOS
-	        if ( vo.getFromSRSCode().equalsIgnoreCase("mouse_abareference_1.0") ||
-		         vo.getFromSRSCode().equalsIgnoreCase("mouse_paxinos_1.0") ) { 
+	        if ( vo.getFromSRSCode().equalsIgnoreCase(abaReference) ||
+		         vo.getFromSRSCode().equalsIgnoreCase(paxinos) ) { 
 		        	vo.setTransformedCoordinateX(vo.getOriginalCoordinateX());
 		        	vo.setTransformedCoordinateY(vo.getOriginalCoordinateY());
 		        	vo.setTransformedCoordinateZ(vo.getOriginalCoordinateZ());
@@ -152,7 +161,7 @@ public class Get2DImagesByPOI extends BaseResouce {
 		    	vo.setOriginalCoordinateX(";x="+vo.getOriginalCoordinateX());
 		    	vo.setOriginalCoordinateY(";y="+vo.getOriginalCoordinateY());
 		    	vo.setOriginalCoordinateZ(";z="+vo.getOriginalCoordinateZ());
-		    	vo.setToSRSCode("Mouse_Paxinos_1.0");
+		    	vo.setToSRSCode(paxinos);
 
 		    	//Construct GetTransformationChain URL
 		    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
@@ -183,7 +192,7 @@ public class Get2DImagesByPOI extends BaseResouce {
 						vo.getFromSRSCode(), "paxinos", vo.getTransformedCoordinateX(), vo.getTransformedCoordinateY(), vo.getTransformedCoordinateZ(), vo.getFilter(), vo.getTolerance());
 
 		    	//ABAREFERENCE Images
-		    	vo.setToSRSCode("Mouse_ABAreference_1.0");
+		    	vo.setToSRSCode(abaReference);
 
 		    	//Construct GetTransformationChain URL
 		    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
@@ -192,7 +201,7 @@ public class Get2DImagesByPOI extends BaseResouce {
 		    	abareferenceCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
 	        	//Start - exception handling
-	        	if (abareferenceCoordinatesString.startsWith("ERROR:")) {
+	        	if (abareferenceCoordinatesString.startsWith("Error:")) {
 			        ExceptionHandler eh = getExceptionHandler();
 			        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
 			                new String[] { abareferenceCoordinatesString });
