@@ -8,7 +8,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   <tr>
     <td></td>
     <th align="center">ABA Hub</th>
-    <th align="center">EMAGE Hub</th>
+    <th align="center">EMAP Hub</th>
     <th align="center">UCSD Hub</th>
     <th align="center">WHS Hub</th>
   </tr>
