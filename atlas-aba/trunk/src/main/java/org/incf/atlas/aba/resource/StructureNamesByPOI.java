@@ -31,7 +31,9 @@ import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.StructureTermType.Code;
 import org.incf.atlas.waxml.generated.StructureTermsResponseType.StructureTerms;
 import org.incf.atlas.waxml.utilities.Utilities;
+import org.restlet.Component;
 import org.restlet.Context;
+import org.restlet.VirtualHost;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
@@ -49,6 +51,16 @@ public class StructureNamesByPOI extends BaseResouce {
 	private final Logger logger = LoggerFactory.getLogger(
 			StructureNamesByPOI.class);
 
+	ABAConfigurator config = ABAConfigurator.INSTANCE;
+
+	String abaReference = config.getValue("srsname.abareference.10");
+	String abaVoxel = config.getValue("srsname.abavoxel.10");
+	String agea = config.getValue("srsname.agea.10");
+	String whs09 = config.getValue("srsname.whs.09");
+	String whs10 = config.getValue("srsname.whs.10");
+	String emap = config.getValue("srsname.emap.10");
+	String paxinos = config.getValue("srsname.paxinos.10");
+
 	//private String dataInputString;
 	//private DataInputs dataInputs;
 	String hostName = "";
@@ -56,8 +68,6 @@ public class StructureNamesByPOI extends BaseResouce {
 	String servicePath = "";
 	String url = "";
 	String responseString = "";
-
-	ABAConfigurator config = ABAConfigurator.INSTANCE;
 
 	public StructureNamesByPOI(Context context, Request request, 
 			Response response) {
@@ -127,7 +137,7 @@ public class StructureNamesByPOI extends BaseResouce {
 	        //Start - Common code used for coordinate transformation
 	        String transformedCoordinatesString = "";
 			// Convert the coordinates ABAVOXEL into PAXINOS
-	        if ( vo.getFromSRSCode().equalsIgnoreCase("mouse_abavoxel_1.0") ) { 
+	        if ( vo.getFromSRSCode().equalsIgnoreCase(abaVoxel) ) { 
 		        	vo.setTransformedCoordinateX(vo.getOriginalCoordinateX());
 		        	vo.setTransformedCoordinateY(vo.getOriginalCoordinateY());
 		        	vo.setTransformedCoordinateZ(vo.getOriginalCoordinateZ());
@@ -137,14 +147,14 @@ public class StructureNamesByPOI extends BaseResouce {
 		    	vo.setOriginalCoordinateX(";x="+vo.getOriginalCoordinateX());
 		    	vo.setOriginalCoordinateY(";y="+vo.getOriginalCoordinateY());
 		    	vo.setOriginalCoordinateZ(";z="+vo.getOriginalCoordinateZ());
-		    	vo.setToSRSCode("Mouse_Abavoxel_1.0");
-		    	vo.setToSRSCodeOne("Mouse_Abavoxel_1.0");
+		    	vo.setToSRSCode(abaVoxel);
+		    	vo.setToSRSCodeOne(abaVoxel);
 
 		    	//Construct GetTransformationChain URL
 		    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 		    	String hostName = config.getValue("incf.deploy.host.name");
 		    	String portNumber = ":8080";
-		    	String servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
+		    	String servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 		    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
 		    	XMLUtilities xmlUtilities = new XMLUtilities();
 		    	transformedCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
@@ -266,17 +276,17 @@ public class StructureNamesByPOI extends BaseResouce {
     	.changeType(InputStringType.type);
 
     	xCriteria.setName("x");
-		xCriteria.setValue(vo.getOriginalCoordinateX());
+		xCriteria.setValue(vo.getOriginalCoordinateX().replace(";x=", ""));
 		
 		InputStringType yCriteria = (InputStringType) criterias.addNewInput()
 			.changeType(InputStringType.type);
 		yCriteria.setName("y");
-		yCriteria.setValue(vo.getOriginalCoordinateY());
+		yCriteria.setValue(vo.getOriginalCoordinateY().replace(";y=", ""));
 		
 		InputStringType zCriteria = (InputStringType) criterias.addNewInput()
 			.changeType(InputStringType.type);
 		zCriteria.setName("z");
-		zCriteria.setValue(vo.getOriginalCoordinateZ());
+		zCriteria.setValue(vo.getOriginalCoordinateZ().replace(";z=", ""));
 
     	InputStringType srsCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
     	srsCodeCriteria.setName("StructureVocabulary");
@@ -303,107 +313,14 @@ public class StructureNamesByPOI extends BaseResouce {
     	//t1name.setStringValue("");
     	term1.addNewDescription().setStringValue("Term - " + structureName + " derived from ABA hub based on the supplied POI.");
 
-/*    	FeatureReferenceType t1ft = term1.addNewFeature();
-    	Centroid t1c = t1ft.addNewCentroid();
-    	t1c.addNewPoint().addNewPos().setStringValue(" ");
-    	t1c.getPoint().setId(" ");
-    	t1c.getPoint().setSrsName(" ");
-    	BoundingShapeType t1bound = t1ft.addNewBoundedBy();
-    	t1bound.addNewEnvelope();
-    	t1bound.getEnvelope().setSrsName(" ");
-    	DirectPositionType t1lc = t1bound.getEnvelope().addNewLowerCorner();
-    	DirectPositionType t1uc = t1bound.getEnvelope().addNewUpperCorner();
-    	t1lc.setStringValue(" ");
-    	t1uc.setStringValue(" ");
-    	
-    	t1ft.addNewUrl().setStringValue(" ");
-    	t1ft.getUrl().setSrsName(" ");
-    	t1ft.setFormat(GeomFormatEnum.SHAPE.toString());
-*/    	
     	ArrayList errorList = new ArrayList();
-    	 opt.setErrorListener(errorList);
-    	 boolean isValid = document.validate(opt);
-    	 
-    	 // If the XML isn't valid, loop through the listener's contents,
-    	 // printing contained messages.
-/*    	 if (!isValid)
-    	 {
-    	      for (int i = 0; i < errorList.size(); i++)
-    	      {
-    	          XmlError error = (XmlError)errorList.get(i);
-    	          
-    	          System.out.println("\n");
-    	          System.out.println("Message: " + error.getMessage() + "\n");
-    	          System.out.println("Location of invalid XML: " + 
-    	              error.getCursorLocation().xmlText() + "\n");
-    	      }
-    	 }
-*/    		
-			return new StringRepresentation(document.xmlText(opt),MediaType.APPLICATION_XML);
+    	opt.setErrorListener(errorList);
+    	boolean isValid = document.validate(opt);
+
+		return new StringRepresentation(document.xmlText(opt),MediaType.APPLICATION_XML);
         
-        //Start - old implementation
-/*		ObjectFactory of = new ObjectFactory();
-		StructureTermsResponse structureTermsResponse = 
-			of.createStructureTermsResponse();
-
-		java.math.BigInteger intValue = new BigInteger("1369");
-
-		StructureCode structureCode = new StructureCode();
-		structureCode.setCodeSpace(vo.getVocabulary());
-		structureCode.setId(intValue);
-		structureCode.setValue(structureName);
-
-		StructureTerm structureTerm = new StructureTerm();
-		structureTerm.setDescription("");
-		structureTerm.setStructureCode(structureCode);
-
-		StructureTerms structureTerms = new StructureTerms();
-		structureTerms.setStructureTerm(structureTerm);
-
-		Point point = new Point();
-		point.setPos(vo.getOriginalCoordinateX() + ", "+ vo.getOriginalCoordinateY() + ", " +vo.getOriginalCoordinateZ());
-		point.setSrsName(vo.getFromSRSCode());
-
-		Input input1 = new Input();
-		input1.setName("POI");
-		input1.setPoint(point);
-
-		Input input2 = new Input();
-		input2.setName("StructureVocabulary");
-		input2.setValue(vo.getVocabulary());
-
-		Input input3 = new Input();
-		input3.setName("StructureFilter");
-		input3.setValue(vo.getFilter());
-
-		QueryInfo.Criteria criteria = new QueryInfo.Criteria();
-		criteria.getInput().add(input1);
-		criteria.getInput().add(input2);
-		criteria.getInput().add(input3);
-
-		//Query Info setters
-		QueryInfo queryInfo = new QueryInfo();
-		queryInfo.setQueryUrl(vo.getUrlString());
-		queryInfo.setTimeCreated(currentTime);
-		queryInfo.setCriteria(criteria);
-
-		structureTermsResponse.setQueryInfo(queryInfo);
-		structureTermsResponse.setStructureTerms(structureTerms);
-*/
         //End - old implementation
 
-
-		//generate representation based on media type
-/*		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
-			return getDomRepresentation(document);
-		}
-*/
-/*
-		//generate representation based on media type
-		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
-			return new JaxbRepresentation<StructureTermsResponse>(structureTermsResponse);
-		}
-*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

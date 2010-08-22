@@ -53,7 +53,7 @@ public class ABAConfigurator {
 		InputStream path = null;
 
 		path = getClass().getResourceAsStream( 
-		"/aba-config-properties-development.xml");
+		"/aba-config-properties.xml");
 
 		System.out.println("Config Path is - " + path);
 		return path;

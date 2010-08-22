@@ -54,6 +54,14 @@ public class CorrelationMapByPOI extends BaseResouce {
 
 	ABAConfigurator config = ABAConfigurator.INSTANCE;
 
+	String abaReference = config.getValue("srsname.abareference.10");
+	String abaVoxel = config.getValue("srsname.abavoxel.10");
+	String agea = config.getValue("srsname.agea.10");
+	String whs09 = config.getValue("srsname.whs.09");
+	String whs10 = config.getValue("srsname.whs.10");
+	String emap = config.getValue("srsname.emap.10");
+	String paxinos = config.getValue("srsname.paxinos.10");
+
 	//private String dataInputString;
 	//private DataInputs dataInputs;
 	String hostName = "";
@@ -111,8 +119,8 @@ public class CorrelationMapByPOI extends BaseResouce {
 
 	        vo.setFromSRSCodeOne(dataInputs.getValue("srsName"));
 	        vo.setFromSRSCode(dataInputs.getValue("srsName"));
-	        vo.setToSRSCodeOne("Mouse_AGEA_1.0");
-	        vo.setToSRSCode("Mouse_AGEA_1.0");
+	        vo.setToSRSCodeOne(agea);
+	        vo.setToSRSCode(agea);
 	        vo.setFilter(dataInputs.getValue("filter"));
 
 	        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
@@ -138,7 +146,7 @@ public class CorrelationMapByPOI extends BaseResouce {
         //Start - Common code used for coordinate transformation
         String transformedCoordinatesString = "";
 		// Convert the coordinates ABAVOXEL into PAXINOS
-        if ( vo.getFromSRSCode().equalsIgnoreCase("Mouse_AGEA_1.0") ) { 
+        if ( vo.getFromSRSCode().equalsIgnoreCase(agea) ) { 
 	        	vo.setTransformedCoordinateX(vo.getOriginalCoordinateX());
 	        	vo.setTransformedCoordinateY(vo.getOriginalCoordinateY());
 	        	vo.setTransformedCoordinateZ(vo.getOriginalCoordinateZ());
@@ -148,8 +156,8 @@ public class CorrelationMapByPOI extends BaseResouce {
 	    	vo.setOriginalCoordinateX(";x="+vo.getOriginalCoordinateX());
 	    	vo.setOriginalCoordinateY(";y="+vo.getOriginalCoordinateY());
 	    	vo.setOriginalCoordinateZ(";z="+vo.getOriginalCoordinateZ());
-	    	vo.setToSRSCode("Mouse_AGEA_1.0");
-	    	vo.setToSRSCodeOne("Mouse_AGEA_1.0");
+	    	vo.setToSRSCode(agea);
+	    	vo.setToSRSCodeOne(agea);
 
 	    	//Construct GetTransformationChain URL
 	    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
@@ -261,7 +269,7 @@ public class CorrelationMapByPOI extends BaseResouce {
 		poiCriteria.setName("POI");
 		PointType pnt = poiCriteria.addNewPOI().addNewPoint();
 		pnt.setId("id-onGeomRequiredByGML");
-		pnt.setSrsName("Mouse_ABAvoxel_1.0");
+		pnt.setSrsName(abaVoxel);
 
 		pnt.addNewPos();
 		pnt.getPos().setStringValue("1 1 1");

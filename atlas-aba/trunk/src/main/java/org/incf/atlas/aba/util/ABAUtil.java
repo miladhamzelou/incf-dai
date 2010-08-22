@@ -41,6 +41,14 @@ public class ABAUtil {
 
 	ABAConfigurator config = ABAConfigurator.INSTANCE;
 
+	String abaReference = config.getValue("srsname.abareference.10");
+	String abaVoxel = config.getValue("srsname.abavoxel.10");
+	String agea = config.getValue("srsname.agea.10");
+	String whs09 = config.getValue("srsname.whs.09");
+	String whs10 = config.getValue("srsname.whs.10");
+	String emap = config.getValue("srsname.emap.10");
+	String paxinos = config.getValue("srsname.paxinos.10");
+
 	public String getCoordinateTransformationChain(ABAServiceVO vo) {
 
 		System.out.println("Start - getCoordinateTransformationChain Method...");
@@ -54,7 +62,7 @@ public class ABAUtil {
 			ABAUtil util = new ABAUtil();
 
 			//mouse_abavoxel_1.0 to mouse_agea_1.0
-			if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+			if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -62,7 +70,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 		
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 				
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -70,7 +78,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -78,7 +86,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -86,7 +94,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -94,7 +102,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -102,7 +110,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -110,22 +118,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
-
-				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
-					responseString = util.listTransformations( vo );
-				} else {
-					responseString = util.getTransformationChain( vo );
-				}
-
-			//via mouse_whs_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
-
-				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_paxinos_1.0");
-				vo.setFromSRSCodeTwo("mouse_whs_1.0");
-				vo.setToSRSCodeOne("mouse_whs_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -134,13 +127,28 @@ public class ABAUtil {
 				}
 
 			//via mouse_whs_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_agea_1.0");
-				vo.setToSRSCodeOne("mouse_whs_1.0");
-				vo.setFromSRSCodeTwo("mouse_whs_1.0");
-				vo.setToSRSCodeTwo("mouse_paxinos_1.0");
+				vo.setFromSRSCodeOne(paxinos);
+				vo.setFromSRSCodeTwo(whs09);
+				vo.setToSRSCodeOne(whs09);
+				vo.setToSRSCodeTwo(agea);
+
+				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
+					responseString = util.listTransformations( vo );
+				} else {
+					responseString = util.getTransformationChain( vo );
+				}
+
+			//via mouse_whs_1.0
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
+
+				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
+				vo.setFromSRSCodeOne(agea);
+				vo.setToSRSCodeOne(whs09);
+				vo.setFromSRSCodeTwo(whs09);
+				vo.setToSRSCodeTwo(paxinos);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -149,15 +157,15 @@ public class ABAUtil {
 				}
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_paxinos_1.0");
-				vo.setToSRSCodeOne("mouse_whs_1.0");
-				vo.setFromSRSCodeTwo("mouse_whs_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
-				vo.setFromSRSCodeThree("mouse_agea_1.0");
-				vo.setToSRSCodeThree("mouse_abavoxel_1.0");
+				vo.setFromSRSCodeOne(paxinos);
+				vo.setToSRSCodeOne(whs09);
+				vo.setFromSRSCodeTwo(whs09);
+				vo.setToSRSCodeTwo(agea);
+				vo.setFromSRSCodeThree(agea);
+				vo.setToSRSCodeThree(abaVoxel);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -166,15 +174,15 @@ public class ABAUtil {
 				}
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setToSRSCodeOne("mouse_agea_1.0");
-				vo.setFromSRSCodeTwo("mouse_agea_1.0");
-				vo.setToSRSCodeTwo("mouse_whs_1.0");
-				vo.setFromSRSCodeThree("mouse_whs_1.0");
-				vo.setToSRSCodeThree("mouse_paxinos_1.0");
+				vo.setFromSRSCodeOne(abaVoxel);
+				vo.setToSRSCodeOne(agea);
+				vo.setFromSRSCodeTwo(agea);
+				vo.setToSRSCodeTwo(whs09);
+				vo.setFromSRSCodeThree(whs09);
+				vo.setToSRSCodeThree(paxinos);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -183,16 +191,16 @@ public class ABAUtil {
 				}
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0, then mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 
-				vo.setFromSRSCodeOne("mouse_abareference_1.0");
-				vo.setToSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeTwo("mouse_abavoxel_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
-				vo.setFromSRSCodeThree("mouse_agea_1.0");
-				vo.setToSRSCodeThree("mouse_whs_1.0");
-				vo.setFromSRSCodeFour("mouse_whs_1.0");
-				vo.setToSRSCodeFour("mouse_paxinos_1.0");
+				vo.setFromSRSCodeOne(abaReference);
+				vo.setToSRSCodeOne(abaVoxel);
+				vo.setFromSRSCodeTwo(abaVoxel);
+				vo.setToSRSCodeTwo(agea);
+				vo.setFromSRSCodeThree(agea);
+				vo.setToSRSCodeThree(whs09);
+				vo.setFromSRSCodeFour(whs09);
+				vo.setToSRSCodeFour(paxinos);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -201,31 +209,16 @@ public class ABAUtil {
 				}
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0, then mouse_abavoxel_1.0
-		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
-				vo.setFromSRSCodeOne("mouse_paxinos_1.0");
-				vo.setToSRSCodeOne("mouse_whs_1.0");
-				vo.setFromSRSCodeTwo("mouse_whs_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
-				vo.setFromSRSCodeThree("mouse_agea_1.0");
-				vo.setToSRSCodeThree("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeFour("mouse_abavoxel_1.0");
-				vo.setToSRSCodeFour("mouse_abareference_1.0");
-
-				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
-					responseString = util.listTransformations( vo );
-				} else {
-					responseString = util.getTransformationChain( vo );
-				}
-
-			//via mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
-
-				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setToSRSCodeOne("mouse_agea_1.0");
-				vo.setFromSRSCodeTwo("mouse_agea_1.0");
-				vo.setToSRSCodeTwo("mouse_whs_1.0");
+				vo.setFromSRSCodeOne(paxinos);
+				vo.setToSRSCodeOne(whs09);
+				vo.setFromSRSCodeTwo(whs09);
+				vo.setToSRSCodeTwo(agea);
+				vo.setFromSRSCodeThree(agea);
+				vo.setToSRSCodeThree(abaVoxel);
+				vo.setFromSRSCodeFour(abaVoxel);
+				vo.setToSRSCodeFour(abaReference);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -234,13 +227,28 @@ public class ABAUtil {
 				}
 
 			//via mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_whs_1.0");
-				vo.setToSRSCodeOne("mouse_agea_1.0");
-				vo.setFromSRSCodeTwo("mouse_agea_1.0");
-				vo.setToSRSCodeTwo("mouse_abavoxel_1.0");
+				vo.setFromSRSCodeOne(abaVoxel);
+				vo.setToSRSCodeOne(agea);
+				vo.setFromSRSCodeTwo(agea);
+				vo.setToSRSCodeTwo(whs09);
+
+				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
+					responseString = util.listTransformations( vo );
+				} else {
+					responseString = util.getTransformationChain( vo );
+				}
+
+			//via mouse_agea_1.0
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
+
+				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
+				vo.setFromSRSCodeOne(whs09);
+				vo.setToSRSCodeOne(agea);
+				vo.setFromSRSCodeTwo(agea);
+				vo.setToSRSCodeTwo(abaVoxel);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -249,13 +257,13 @@ public class ABAUtil {
 				}
 
             //via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_abareference_1.0");
-				vo.setToSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeTwo("mouse_abavoxel_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
+				vo.setFromSRSCodeOne(abaReference);
+				vo.setToSRSCodeOne(abaVoxel);
+				vo.setFromSRSCodeTwo(abaVoxel);
+				vo.setToSRSCodeTwo(agea);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -264,13 +272,13 @@ public class ABAUtil {
 				}
 
 			//via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_agea_1.0");
-				vo.setToSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeTwo("mouse_abavoxel_1.0");
-				vo.setToSRSCodeTwo("mouse_abareference_1.0");
+				vo.setFromSRSCodeOne(agea);
+				vo.setToSRSCodeOne(abaVoxel);
+				vo.setFromSRSCodeTwo(abaVoxel);
+				vo.setToSRSCodeTwo(abaReference);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -279,15 +287,15 @@ public class ABAUtil {
 				}
 
 	        //via mouse_abavoxel_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_abareference_1.0");
-				vo.setToSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeTwo("mouse_abavoxel_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
-				vo.setFromSRSCodeThree("mouse_agea_1.0");
-				vo.setToSRSCodeThree("mouse_whs_1.0");
+				vo.setFromSRSCodeOne(abaReference);
+				vo.setToSRSCodeOne(abaVoxel);
+				vo.setFromSRSCodeTwo(abaVoxel);
+				vo.setToSRSCodeTwo(agea);
+				vo.setFromSRSCodeThree(agea);
+				vo.setToSRSCodeThree(whs09);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -296,15 +304,15 @@ public class ABAUtil {
 				}
 
 			//via mouse_abavoxel_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_whs_1.0");
-				vo.setToSRSCodeOne("mouse_agea_1.0");
-				vo.setFromSRSCodeTwo("mouse_agea_1.0");
-				vo.setToSRSCodeTwo("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeThree("mouse_abavoxel_1.0");
-				vo.setToSRSCodeThree("mouse_abareference_1.0");
+				vo.setFromSRSCodeOne(whs09);
+				vo.setToSRSCodeOne(agea);
+				vo.setFromSRSCodeTwo(agea);
+				vo.setToSRSCodeTwo(abaVoxel);
+				vo.setFromSRSCodeThree(abaVoxel);
+				vo.setToSRSCodeThree(abaReference);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -414,8 +422,8 @@ public class ABAUtil {
  					of.createCoordinateTransformationChain();
 */
 	 		    if ( vo.getFromSRSCodeOne() != null ) {
-		 		    if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ||
-		 		    		vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) ||
+		 		    		vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub1 = "UCSD";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		
@@ -444,7 +452,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationOneURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
@@ -469,7 +477,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationOneURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
@@ -494,7 +502,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationOneURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
@@ -519,7 +527,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationOneURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
@@ -548,8 +556,8 @@ public class ABAUtil {
 	 		    }
 
 	 		    if ( vo.getFromSRSCodeTwo() != null ) {
-		 		    if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_paxinos_1.0") ||
-		 		    	 vo.getToSRSCodeTwo().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(paxinos) ||
+		 		    	 vo.getToSRSCodeTwo().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub2 = "UCSD";
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationTwoURL(transformationURL2);
@@ -574,7 +582,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationTwoURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		    } else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_whs_1.0") ) {
+		 		    } else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(whs09) ) {
 		 		  	
 		 		    	implementingHub2 = "ABA";
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
@@ -599,7 +607,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationTwoURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		    } else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_agea_1.0") ) {
+		 		    } else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub2 = "ABA";
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationTwoURL(transformationURL2);
@@ -622,7 +630,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationTwoURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_abareference_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub2 = "ABA";
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationTwoURL(transformationURL2);
@@ -645,7 +653,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationTwoURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(abaVoxel) ) {
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationTwoURL(transformationURL2);
 		 		  		code = vo.getFromSRSCodeTwo() + "_To_" + vo.getToSRSCodeTwo(); 
@@ -672,8 +680,8 @@ public class ABAUtil {
 	 		    }
 
 	 		    if ( vo.getFromSRSCodeThree() != null ) {
-		 		    if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_paxinos_1.0") ||
-		 		    	 vo.getToSRSCodeThree().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeThree().equalsIgnoreCase(paxinos) ||
+		 		    	 vo.getToSRSCodeThree().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub3 = "UCSD";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -697,7 +705,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationThreeURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_whs_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -720,7 +728,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationThreeURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_agea_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -743,7 +751,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationThreeURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abareference_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -766,7 +774,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationThreeURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaVoxel) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -793,8 +801,8 @@ public class ABAUtil {
 	 		    }
 	 		    
 	 		    if ( vo.getFromSRSCodeFour() != null ) {
-		 		    if ( vo.getFromSRSCodeFour().equalsIgnoreCase("mouse_paxinos_1.0") || 
-		 		    	 vo.getToSRSCodeFour().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeFour().equalsIgnoreCase(paxinos) || 
+		 		    	 vo.getToSRSCodeFour().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub4 = "UCSD";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
@@ -818,7 +826,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationFourURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_whs_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
@@ -841,7 +849,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationFourURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_agea_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
@@ -864,7 +872,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationFourURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abareference_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
@@ -887,7 +895,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationFourURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaVoxel) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
@@ -1032,8 +1040,8 @@ public class ABAUtil {
  					of.createCoordinateTransformationChain();
 */
 	 		    if ( vo.getFromSRSCodeOne() != null ) {
-		 		    if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ||
-		 		    	 vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) ||
+		 		    	 vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub1 = "UCSD";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
@@ -1059,7 +1067,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationOneURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
@@ -1083,7 +1091,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationOneURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
@@ -1107,7 +1115,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationOneURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+		 		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
@@ -1131,7 +1139,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationOneURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeOne()+";outputSrsName="+vo.getToSRSCodeOne()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
@@ -1159,8 +1167,8 @@ public class ABAUtil {
 	 		    }
 
 	 		    if ( vo.getFromSRSCodeTwo() != null ) {
-		 		    if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_paxinos_1.0") || 
-		 		    	 vo.getToSRSCodeTwo().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(paxinos) || 
+		 		    	 vo.getToSRSCodeTwo().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub2 = "UCSD";
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationTwoURL(transformationURL2);
@@ -1184,7 +1192,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationTwoURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		    } else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_whs_1.0") ) {
+		 		    } else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(whs09) ) {
 		 		  	
 		 		    	implementingHub2 = "ABA";
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
@@ -1208,7 +1216,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setValue(vo.getTransformationTwoURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
 */
-		 		    } else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_agea_1.0") ) {
+		 		    } else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub2 = "ABA";
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationTwoURL(transformationURL2);
@@ -1230,7 +1238,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationTwoURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_abareference_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub2 = "ABA";
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationTwoURL(transformationURL2);
@@ -1252,7 +1260,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationTwoURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(abaVoxel) ) {
 		 		  		transformationURL2 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeTwo()+";outputSrsName="+vo.getToSRSCodeTwo()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationTwoURL(transformationURL2);
 		 		  		code = vo.getFromSRSCodeTwo() + "_To_" + vo.getToSRSCodeTwo(); 
@@ -1278,8 +1286,8 @@ public class ABAUtil {
 	 		    }
 
 	 		    if ( vo.getFromSRSCodeThree() != null ) {
-		 		    if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_paxinos_1.0") ||
-		 		    	 vo.getToSRSCodeThree().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeThree().equalsIgnoreCase(paxinos) ||
+		 		    	 vo.getToSRSCodeThree().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub3 = "UCSD";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -1302,7 +1310,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationThreeURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_whs_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -1324,7 +1332,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationThreeURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_agea_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -1346,7 +1354,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationThreeURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abareference_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -1368,7 +1376,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationThreeURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaVoxel) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeThree()+";outputSrsName="+vo.getToSRSCodeThree()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationThreeURL(transformationURL3);
@@ -1394,8 +1402,8 @@ public class ABAUtil {
 	 		    }
 	 		    
 	 		    if ( vo.getFromSRSCodeFour() != null ) {
-		 		    if ( vo.getFromSRSCodeFour().equalsIgnoreCase("mouse_paxinos_1.0") || 
-		 		    	 vo.getToSRSCodeFour().equalsIgnoreCase("mouse_paxinos_1.0") ) { 
+		 		    if ( vo.getFromSRSCodeFour().equalsIgnoreCase(paxinos) || 
+		 		    	 vo.getToSRSCodeFour().equalsIgnoreCase(paxinos) ) { 
 		 		  		implementingHub4 = "UCSD";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
@@ -1418,7 +1426,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationFourURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_whs_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
@@ -1440,7 +1448,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationFourURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_agea_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
@@ -1462,7 +1470,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationFourURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abareference_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
@@ -1484,7 +1492,7 @@ public class ABAUtil {
 		 				coordinateTransformation.setAccuracy(accuracy);
 		 				coordinateTransformation.setValue(vo.getTransformationFourURL());
 		 				coordinateTransformationInfo.getCoordinateTransformation().add(coordinateTransformation);
-*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+*/		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaVoxel) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName="+vo.getFromSRSCodeFour()+";outputSrsName="+vo.getToSRSCodeFour()+";x=;y=;z=;filter=";
 		 		  		vo.setTransformationFourURL(transformationURL4);
@@ -1565,105 +1573,105 @@ public class ABAUtil {
 			ABAUtil util = new ABAUtil();
 
 			//mouse_abavoxel_1.0 to mouse_agea_1.0
-			if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+			if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				xmlResponseString = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 				
 				xmlResponseString = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				xmlResponseString = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				xmlResponseString = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 
 				xmlResponseString = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
 				xmlResponseString = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
-			} /* else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+			} /* else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				xmlResponseString = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 
 				xmlResponseString = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
 			//Indirect Transformations
 			//via mouse_whs_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
 			//via mouse_whs_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0, then mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0, then mouse_abavoxel_1.0
-		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
 			//via mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
 			//via mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
             //via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
 			//via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
 	        //via mouse_abavoxel_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
 
 			//via mouse_abavoxel_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				xmlResponseString = util.indirectSpaceTransformation( vo );
@@ -1706,7 +1714,7 @@ public class ABAUtil {
 	try {
 
 		//By Steve Lamont
-		if (fromSpace.trim().equalsIgnoreCase("mouse_abavoxel_1.0") && toSpace.trim().equalsIgnoreCase("mouse_agea_1.0")) {
+		if (fromSpace.trim().equalsIgnoreCase(abaVoxel) && toSpace.trim().equalsIgnoreCase(agea)) {
 
 			System.out.println("Inside ABAVOX 2 mouse_agea_1.0...");
 			
@@ -1733,7 +1741,7 @@ public class ABAUtil {
 		}
 
 		//By Steve Lamont
-		else if (fromSpace.trim().equalsIgnoreCase("mouse_agea_1.0") && toSpace.trim().equalsIgnoreCase("mouse_abavoxel_1.0")) {
+		else if (fromSpace.trim().equalsIgnoreCase(agea) && toSpace.trim().equalsIgnoreCase(abaVoxel)) {
 
 			System.out.println("Inside mouse_agea_1.0 2 ABAVOX...");
 
@@ -1764,7 +1772,7 @@ public class ABAUtil {
 		}
 
 		//By Steve Lamont
-		else if (fromSpace.trim().equalsIgnoreCase("mouse_whs_1.0") && toSpace.trim().equalsIgnoreCase("mouse_agea_1.0")) {
+		else if (fromSpace.trim().equalsIgnoreCase(whs09) && toSpace.trim().equalsIgnoreCase(agea)) {
 
 			System.out.println("Inside mouse_whs_1.0 2 mouse_agea_1.0...");
 
@@ -1790,7 +1798,7 @@ public class ABAUtil {
 		}
 
 		//By Steve Lamont
-		else if (fromSpace.trim().equalsIgnoreCase("mouse_agea_1.0") && toSpace.trim().equalsIgnoreCase("mouse_whs_1.0")) {
+		else if (fromSpace.trim().equalsIgnoreCase(agea) && toSpace.trim().equalsIgnoreCase(whs09)) {
 
 			System.out.println("Inside mouse_agea_1.0 2 mouse_whs_1.0...");
 
@@ -1821,7 +1829,7 @@ public class ABAUtil {
 		}
 
 		//By Steve Lamont
-		else if (fromSpace.trim().equalsIgnoreCase("mouse_abareference_1.0") && toSpace.trim().equalsIgnoreCase("mouse_abavoxel_1.0")) {
+		else if (fromSpace.trim().equalsIgnoreCase(abaReference) && toSpace.trim().equalsIgnoreCase(abaVoxel)) {
 
 			System.out.println("Inside ABAREF 2 ABAVOX...");
 
@@ -1835,7 +1843,7 @@ public class ABAUtil {
 		}
 
 		//By Steve Lamont
-		else if ( fromSpace.trim().equalsIgnoreCase("mouse_abavoxel_1.0") && toSpace.trim().equalsIgnoreCase("mouse_abareference_1.0") ) { 
+		else if ( fromSpace.trim().equalsIgnoreCase(abaVoxel) && toSpace.trim().equalsIgnoreCase(abaReference) ) { 
 
 			System.out.println("Inside ABAVOX 2 ABAREF...");
 
@@ -1910,13 +1918,13 @@ public class ABAUtil {
 			ABAUtil util = new ABAUtil();
 
 			//via mouse_whs_1.0
-			if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+			if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_paxinos_1.0");
-				vo.setFromSRSCodeTwo("mouse_whs_1.0");
-				vo.setToSRSCodeOne("mouse_whs_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
+				vo.setFromSRSCodeOne(paxinos);
+				vo.setFromSRSCodeTwo(whs09);
+				vo.setToSRSCodeOne(whs09);
+				vo.setToSRSCodeTwo(agea);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -1979,13 +1987,13 @@ public class ABAUtil {
 				System.out.println("mouse_paxinos_1.0 to mouse_agea_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 				
 			//via mouse_whs_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_agea_1.0");
-				vo.setToSRSCodeOne("mouse_whs_1.0");
-				vo.setFromSRSCodeTwo("mouse_whs_1.0");
-				vo.setToSRSCodeTwo("mouse_paxinos_1.0");
+				vo.setFromSRSCodeOne(agea);
+				vo.setToSRSCodeOne(whs09);
+				vo.setFromSRSCodeTwo(whs09);
+				vo.setToSRSCodeTwo(paxinos);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -2048,15 +2056,15 @@ public class ABAUtil {
 				System.out.println("mouse_agea_1.0 to mouse_paxinos_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_paxinos_1.0");
-				vo.setToSRSCodeOne("mouse_whs_1.0");
-				vo.setFromSRSCodeTwo("mouse_whs_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
-				vo.setFromSRSCodeThree("mouse_agea_1.0");
-				vo.setToSRSCodeThree("mouse_abavoxel_1.0");
+				vo.setFromSRSCodeOne(paxinos);
+				vo.setToSRSCodeOne(whs09);
+				vo.setFromSRSCodeTwo(whs09);
+				vo.setToSRSCodeTwo(agea);
+				vo.setFromSRSCodeThree(agea);
+				vo.setToSRSCodeThree(abaVoxel);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -2145,15 +2153,15 @@ public class ABAUtil {
 				System.out.println("mouse_paxinos_1.0 to mouse_abavoxel_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setToSRSCodeOne("mouse_agea_1.0");
-				vo.setFromSRSCodeTwo("mouse_agea_1.0");
-				vo.setToSRSCodeTwo("mouse_whs_1.0");
-				vo.setFromSRSCodeThree("mouse_whs_1.0");
-				vo.setToSRSCodeThree("mouse_paxinos_1.0");
+				vo.setFromSRSCodeOne(abaVoxel);
+				vo.setToSRSCodeOne(agea);
+				vo.setFromSRSCodeTwo(agea);
+				vo.setToSRSCodeTwo(whs09);
+				vo.setFromSRSCodeThree(whs09);
+				vo.setToSRSCodeThree(paxinos);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -2241,18 +2249,18 @@ public class ABAUtil {
 				System.out.println("mouse_abavoxel_1.0 TO mouse_paxinos_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 
 				//via  mouse_whs_1.0, and then mouse_agea_1.0, then mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 
-				vo.setFromSRSCodeOne("mouse_abareference_1.0");
-				vo.setToSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeTwo("mouse_abavoxel_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
-				vo.setFromSRSCodeThree("mouse_agea_1.0");
-				vo.setToSRSCodeThree("mouse_whs_1.0");
-				vo.setFromSRSCodeFour("mouse_whs_1.0");
-				vo.setToSRSCodeFour("mouse_paxinos_1.0");
+				vo.setFromSRSCodeOne(abaReference);
+				vo.setToSRSCodeOne(abaVoxel);
+				vo.setFromSRSCodeTwo(abaVoxel);
+				vo.setToSRSCodeTwo(agea);
+				vo.setFromSRSCodeThree(agea);
+				vo.setToSRSCodeThree(whs09);
+				vo.setFromSRSCodeFour(whs09);
+				vo.setToSRSCodeFour(paxinos);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -2366,17 +2374,17 @@ public class ABAUtil {
 				System.out.println("mouse_abareference_1.0 TO mouse_paxinos_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 
 				//via  mouse_whs_1.0, and then mouse_agea_1.0, then mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
 					//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-					vo.setFromSRSCodeOne("mouse_paxinos_1.0");
-					vo.setToSRSCodeOne("mouse_whs_1.0");
-					vo.setFromSRSCodeTwo("mouse_whs_1.0");
-					vo.setToSRSCodeTwo("mouse_agea_1.0");
-					vo.setFromSRSCodeThree("mouse_agea_1.0");
-					vo.setToSRSCodeThree("mouse_abavoxel_1.0");
-					vo.setFromSRSCodeFour("mouse_abavoxel_1.0");
-					vo.setToSRSCodeFour("mouse_abareference_1.0");
+					vo.setFromSRSCodeOne(paxinos);
+					vo.setToSRSCodeOne(whs09);
+					vo.setFromSRSCodeTwo(whs09);
+					vo.setToSRSCodeTwo(agea);
+					vo.setFromSRSCodeThree(agea);
+					vo.setToSRSCodeThree(abaVoxel);
+					vo.setFromSRSCodeFour(abaVoxel);
+					vo.setToSRSCodeFour(abaReference);
 
 					//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 					rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -2490,13 +2498,13 @@ public class ABAUtil {
 					System.out.println("mouse_paxinos_1.0 TO mouse_abareference_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 
 			//via mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setToSRSCodeOne("mouse_agea_1.0");
-				vo.setFromSRSCodeTwo("mouse_agea_1.0");
-				vo.setToSRSCodeTwo("mouse_whs_1.0");
+				vo.setFromSRSCodeOne(abaVoxel);
+				vo.setToSRSCodeOne(agea);
+				vo.setFromSRSCodeTwo(agea);
+				vo.setToSRSCodeTwo(whs09);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -2558,13 +2566,13 @@ public class ABAUtil {
 				System.out.println("mouse_abavoxel_1.0 TO mouse_whs_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 
 			//via mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_whs_1.0");
-				vo.setToSRSCodeOne("mouse_agea_1.0");
-				vo.setFromSRSCodeTwo("mouse_agea_1.0");
-				vo.setToSRSCodeTwo("mouse_abavoxel_1.0");
+				vo.setFromSRSCodeOne(whs09);
+				vo.setToSRSCodeOne(agea);
+				vo.setFromSRSCodeTwo(agea);
+				vo.setToSRSCodeTwo(abaVoxel);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -2626,13 +2634,13 @@ public class ABAUtil {
 				System.out.println("mouse_whs_1.0 TO mouse_abavoxel_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 
             //via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_abareference_1.0");
-				vo.setToSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeTwo("mouse_abavoxel_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
+				vo.setFromSRSCodeOne(abaReference);
+				vo.setToSRSCodeOne(abaVoxel);
+				vo.setFromSRSCodeTwo(abaVoxel);
+				vo.setToSRSCodeTwo(agea);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -2694,13 +2702,13 @@ public class ABAUtil {
 				System.out.println("mouse_abareference_1.0 TO mouse_agea_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 
 			//via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_agea_1.0");
-				vo.setToSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeTwo("mouse_abavoxel_1.0");
-				vo.setToSRSCodeTwo("mouse_abareference_1.0");
+				vo.setFromSRSCodeOne(agea);
+				vo.setToSRSCodeOne(abaVoxel);
+				vo.setFromSRSCodeTwo(abaVoxel);
+				vo.setToSRSCodeTwo(abaReference);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -2762,15 +2770,15 @@ public class ABAUtil {
 				System.out.println("mouse_agea_1.0 TO mouse_abareference_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 
 	        //via mouse_abavoxel_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_abareference_1.0");
-				vo.setToSRSCodeOne("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeTwo("mouse_abavoxel_1.0");
-				vo.setToSRSCodeTwo("mouse_agea_1.0");
-				vo.setFromSRSCodeThree("mouse_agea_1.0");
-				vo.setToSRSCodeThree("mouse_whs_1.0");
+				vo.setFromSRSCodeOne(abaReference);
+				vo.setToSRSCodeOne(abaVoxel);
+				vo.setFromSRSCodeTwo(abaVoxel);
+				vo.setToSRSCodeTwo(agea);
+				vo.setFromSRSCodeThree(agea);
+				vo.setToSRSCodeThree(whs09);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -2858,15 +2866,15 @@ public class ABAUtil {
 				System.out.println("mouse_abareference_1.0 TO mouse_whs_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
 
 			//via mouse_abavoxel_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") && vo.getToSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				vo.setFromSRSCodeOne("mouse_whs_1.0");
-				vo.setToSRSCodeOne("mouse_agea_1.0");
-				vo.setFromSRSCodeTwo("mouse_agea_1.0");
-				vo.setToSRSCodeTwo("mouse_abavoxel_1.0");
-				vo.setFromSRSCodeThree("mouse_abavoxel_1.0");
-				vo.setToSRSCodeThree("mouse_abareference_1.0");
+				vo.setFromSRSCodeOne(whs09);
+				vo.setToSRSCodeOne(agea);
+				vo.setFromSRSCodeTwo(agea);
+				vo.setToSRSCodeTwo(abaVoxel);
+				vo.setFromSRSCodeThree(abaVoxel);
+				vo.setToSRSCodeThree(abaReference);
 
 				//First convert - mouse_paxinos_1.0 to mouse_whs_1.0
 				rawTransformationStringOne = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ() );
@@ -3026,31 +3034,31 @@ public class ABAUtil {
 
 	 		    //order Number, fromSRSCode2toSRSCode, condition about UCSD or ABA, fromSRSCode, toSRSCode, transformationURL
 	 		    if ( vo.getFromSRSCodeOne() != null ) {
-		 		    if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub1 = "UCSD";
 		 		  		transformationURL1 = "http://" + ucsdTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeOne() + "2" + vo.getToSRSCodeOne(); 
 		 		    	orderNumber = "1";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub1).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeOne()).append("\" toSRSCode=\"").append(vo.getToSRSCodeOne()).append("\">").append(transformationURL1).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_whs_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeOne() + "2" + vo.getToSRSCodeOne(); 
 		 		    	orderNumber = "1";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub1).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeOne()).append("\" toSRSCode=\"").append(vo.getToSRSCodeOne()).append("\">").append(transformationURL1).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_agea_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeOne() + "2" + vo.getToSRSCodeOne(); 
 		 		    	orderNumber = "1";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub1).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeOne()).append("\" toSRSCode=\"").append(vo.getToSRSCodeOne()).append("\">").append(transformationURL1).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abareference_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeOne() + "2" + vo.getToSRSCodeOne(); 
 		 		    	orderNumber = "1";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub1).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeOne()).append("\" toSRSCode=\"").append(vo.getToSRSCodeOne()).append("\">").append(transformationURL1).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 		 		  		implementingHub1 = "ABA";
 		 		  		transformationURL1 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeOne() + "2" + vo.getToSRSCodeOne(); 
@@ -3060,31 +3068,31 @@ public class ABAUtil {
 	 		    }
 
 	 		    if ( vo.getFromSRSCodeTwo() != null ) {
-		 		    if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub2 = "UCSD";
 		 		  		transformationURL2 = "http://" + ucsdTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeTwo() + "2" + vo.getToSRSCodeTwo(); 
 		 		    	orderNumber = "2";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub2).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeTwo()).append("\" toSRSCode=\"").append(vo.getToSRSCodeTwo()).append("\">").append(transformationURL2).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_whs_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub2 = "ABA";
 		 		  		transformationURL2 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeTwo() + "2" + vo.getToSRSCodeTwo(); 
 		 		    	orderNumber = "2";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub2).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeTwo()).append("\" toSRSCode=\"").append(vo.getToSRSCodeTwo()).append("\">").append(transformationURL2).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_agea_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub2 = "ABA";
 		 		  		transformationURL2 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeTwo() + "2" + vo.getToSRSCodeTwo(); 
 		 		    	orderNumber = "2";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub2).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeTwo()).append("\" toSRSCode=\"").append(vo.getToSRSCodeTwo()).append("\">").append(transformationURL2).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_abareference_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub2 = "ABA";
 		 		  		transformationURL2 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeTwo() + "2" + vo.getToSRSCodeTwo(); 
 		 		    	orderNumber = "2";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub2).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeTwo()).append("\" toSRSCode=\"").append(vo.getToSRSCodeTwo()).append("\">").append(transformationURL2).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeTwo().equalsIgnoreCase(abaVoxel) ) {
 		 		  		transformationURL2 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeTwo() + "2" + vo.getToSRSCodeTwo(); 
 		 		    	orderNumber = "2";
@@ -3094,31 +3102,31 @@ public class ABAUtil {
 	 		    }
 
 	 		    if ( vo.getFromSRSCodeThree() != null ) {
-		 		    if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeThree().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub3 = "UCSD";
 		 		  		transformationURL3 = "http://" + ucsdTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeThree() + "2" + vo.getToSRSCodeThree(); 
 		 		    	orderNumber = "3";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub3).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeThree()).append("\" toSRSCode=\"").append(vo.getToSRSCodeThree()).append("\">").append(transformationURL3).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_whs_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeThree() + "2" + vo.getToSRSCodeThree(); 
 		 		    	orderNumber = "3";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub3).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeThree()).append("\" toSRSCode=\"").append(vo.getToSRSCodeThree()).append("\">").append(transformationURL3).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_agea_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeThree() + "2" + vo.getToSRSCodeThree(); 
 		 		    	orderNumber = "3";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub3).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeThree()).append("\" toSRSCode=\"").append(vo.getToSRSCodeThree()).append("\">").append(transformationURL3).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abareference_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeThree() + "2" + vo.getToSRSCodeThree(); 
 		 		    	orderNumber = "3";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub3).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeThree()).append("\" toSRSCode=\"").append(vo.getToSRSCodeThree()).append("\">").append(transformationURL3).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaVoxel) ) {
 		 		  		implementingHub3 = "ABA";
 		 		  		transformationURL3 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeThree() + "2" + vo.getToSRSCodeThree(); 
@@ -3128,31 +3136,31 @@ public class ABAUtil {
 	 		    }
 	 		    
 	 		    if ( vo.getFromSRSCodeFour() != null ) {
-		 		    if ( vo.getFromSRSCodeFour().equalsIgnoreCase("mouse_paxinos_1.0") ) {
+		 		    if ( vo.getFromSRSCodeFour().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub4 = "UCSD";
 		 		  		transformationURL4 = "http://" + ucsdTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeFour() + "&amp;toSRSCode=" + vo.getToSRSCodeFour() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeFour() + "2" + vo.getToSRSCodeFour(); 
 		 		    	orderNumber = "4";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub4).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeFour()).append("\" toSRSCode=\"").append(vo.getToSRSCodeFour()).append("\">").append(transformationURL4).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_whs_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeFour() + "&amp;toSRSCode=" + vo.getToSRSCodeFour() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeFour() + "2" + vo.getToSRSCodeFour(); 
 		 		    	orderNumber = "4";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub4).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeFour()).append("\" toSRSCode=\"").append(vo.getToSRSCodeFour()).append("\">").append(transformationURL4).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_agea_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeFour() + "&amp;toSRSCode=" + vo.getToSRSCodeFour() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeFour() + "2" + vo.getToSRSCodeFour(); 
 		 		    	orderNumber = "4";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub4).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeFour()).append("\" toSRSCode=\"").append(vo.getToSRSCodeFour()).append("\">").append(transformationURL4).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abareference_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeFour() + "&amp;toSRSCode=" + vo.getToSRSCodeFour() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeFour() + "2" + vo.getToSRSCodeFour(); 
 		 		    	orderNumber = "4";
 		 		    	sb.append("<coordinateTransformation order=\"").append(orderNumber).append("\" code=\"").append(code).append("\" implementingHub=\"").append(implementingHub4).append("\" fromSRSCode=\"").append(vo.getFromSRSCodeFour()).append("\" toSRSCode=\"").append(vo.getToSRSCodeFour()).append("\">").append(transformationURL4).append("</coordinateTransformation>\n");
-		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+		 		  	} else if ( vo.getFromSRSCodeThree().equalsIgnoreCase(abaVoxel) ) {
 		 		  		implementingHub4 = "ABA";
 		 		  		transformationURL4 = "http://" + abaTransformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeFour() + "&amp;toSRSCode=" + vo.getToSRSCodeFour() + "&amp;x=&amp;y=&amp;z=&amp;output=xml";
 		 		  		code = vo.getFromSRSCodeFour() + "2" + vo.getToSRSCodeFour(); 
@@ -3369,16 +3377,16 @@ public class ABAUtil {
 		}
 		// End - Exception Handling
 
-/*		if (fromSpaceName.equals("mouse_whs_1.0")) {
+/*		if (fromSpaceName.equals(whs09)) {
 
 			System.out
 					.println("Inside mouse_whs_1.0 original coordinates transformation");
 			ABAUtil util1 = new ABAUtil();
 
 			vo.setFromSRSCode(fromSpaceName);
-			vo.setToSRSCode("mouse_abavoxel_1.0");
+			vo.setToSRSCode(abaVoxel);
 			vo.setFromSRSCodeOne(fromSpaceName);
-			vo.setToSRSCodeOne("mouse_abavoxel_1.0");
+			vo.setToSRSCodeOne(abaVoxel);
 			vo.setOriginalCoordinateX(coordinateX);
 			vo.setOriginalCoordinateY(coordinateY);
 			vo.setOriginalCoordinateZ(coordinateZ);
@@ -3412,7 +3420,7 @@ public class ABAUtil {
 			// Cannot say fromSpaceName as the structure look up is supported
 			// only for mouse_abavoxel_1.0
 			String structureNamesString = util.getStructureNameLookup(
-					"mouse_abavoxel_1.0", coordinateX, coordinateY, coordinateZ);
+					abaVoxel, coordinateX, coordinateY, coordinateZ);
 
 			String[] structureNames = util
 					.getTabDelimNumbers(structureNamesString);
@@ -3511,15 +3519,15 @@ public class ABAUtil {
 			return responseString.toString();
 		}
 
-/*		if (fromSpaceName.equals("mouse_whs_1.0")) {
+/*		if (fromSpaceName.equals(whs09)) {
 
 			System.out
 					.println("Inside mouse_whs_1.0 original coordinates transformation");
 			ABAUtil util1 = new ABAUtil();
 			vo.setFromSRSCode(fromSpaceName);
-			vo.setToSRSCode("mouse_abavoxel_1.0");
+			vo.setToSRSCode(abaVoxel);
 			vo.setFromSRSCodeOne(fromSpaceName);
-			vo.setToSRSCodeOne("mouse_abavoxel_1.0");
+			vo.setToSRSCodeOne(abaVoxel);
 			vo.setOriginalCoordinateX(coordinateX);
 			vo.setOriginalCoordinateY(coordinateY);
 			vo.setOriginalCoordinateZ(coordinateZ);
@@ -3554,7 +3562,7 @@ public class ABAUtil {
 			// Cannot say fromSpaceName as the structure look up is supported
 			// only for mouse_abavoxel_1.0
 			String structureNamesString = util.getStructureNameLookup(
-					"mouse_abavoxel_1.0", coordinateX, coordinateY, coordinateZ);
+					abaVoxel, coordinateX, coordinateY, coordinateZ);
 
 			String[] structureNames = util
 					.getTabDelimNumbers(structureNamesString);
@@ -3606,7 +3614,7 @@ public class ABAUtil {
 
 	try {
 	
-		if ( atlasSpaceName.trim().equalsIgnoreCase("mouse_abavoxel_1.0") ) {
+		if ( atlasSpaceName.trim().equalsIgnoreCase(abaVoxel) ) {
 
 			String transformationHostName = config.getValue("incf.transformationservice.host.name");
 			String transformationPortNumber = config.getValue("incf.transformationservice.port.number");
@@ -3628,7 +3636,7 @@ public class ABAUtil {
 			}
 			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
 
-		} else if ( atlasSpaceName.trim().equalsIgnoreCase("mouse_whs_1.0") ) { 
+		} /*else if ( atlasSpaceName.trim().equalsIgnoreCase(whs09) ) { 
 
 			String transformationHostName = config.getValue("incf.transformationservice.host.name");
 			String transformationPortNumber = config.getValue("incf.transformationservice.port.number");
@@ -3651,7 +3659,7 @@ public class ABAUtil {
 			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
 
 		}
-		
+*/		
 	} catch (MalformedURLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
