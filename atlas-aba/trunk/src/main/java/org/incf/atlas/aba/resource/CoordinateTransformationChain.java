@@ -10,8 +10,6 @@ import org.incf.atlas.aba.util.ABAUtil;
 import org.incf.atlas.aba.util.DataInputs;
 import org.incf.atlas.common.util.ExceptionCode;
 import org.incf.atlas.common.util.ExceptionHandler;
-import org.incf.atlas.generated.transformationchain.CoordinateTransformationChainResponse;
-import org.incf.atlas.generated.transformationchain.ObjectFactory;
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
