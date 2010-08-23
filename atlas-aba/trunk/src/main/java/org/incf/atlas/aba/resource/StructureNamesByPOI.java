@@ -197,7 +197,29 @@ public class StructureNamesByPOI extends BaseResouce {
 
 		        // there is no point in going further, so return
 		        return getExceptionRepresentation();
+			} else if ( structureName.endsWith("found") ) {//No structures found
+		        ExceptionHandler eh = getExceptionHandler();
+		        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		                new String[] { "No Structures Found." });
+
+		        // there is no point in going further, so return
+		        return getExceptionRepresentation();
+			} else if ( structureName.endsWith("range") ) {
+		        ExceptionHandler eh = getExceptionHandler();
+		        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		                new String[] { "Coordinates - Out of Range." });
+
+		        // there is no point in going further, so return
+		        return getExceptionRepresentation();
+			} else if ( structureName.endsWith("issue") ) {
+		        ExceptionHandler eh = getExceptionHandler();
+		        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		                new String[] { "Please contact the administrator to resolve this issue" }); 
+
+		        // there is no point in going further, so return
+		        return getExceptionRepresentation();
 			}
+
 			//End
 
 		} else if ( vo.getFilter().equalsIgnoreCase("structureset:anatomic")) { 
@@ -212,6 +234,27 @@ public class StructureNamesByPOI extends BaseResouce {
 		        ExceptionHandler eh = getExceptionHandler();
 		        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
 		                new String[] { "No Structures Found." });
+
+		        // there is no point in going further, so return
+		        return getExceptionRepresentation();
+			} else if ( structureName.endsWith("found") ) { //No structure found
+		        ExceptionHandler eh = getExceptionHandler();
+		        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		                new String[] { "No Structures Found." });
+
+		        // there is no point in going further, so return
+		        return getExceptionRepresentation();
+			} else if ( structureName.endsWith("range") ) { //Out of range
+		        ExceptionHandler eh = getExceptionHandler();
+		        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		                new String[] { "Coordinates - Out of Range." });
+
+		        // there is no point in going further, so return
+		        return getExceptionRepresentation();
+			} else if ( structureName.endsWith("issue") ) {
+		        ExceptionHandler eh = getExceptionHandler();
+		        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+		                new String[] { "Please contact the administrator to resolve this issue" }); 
 
 		        // there is no point in going further, so return
 		        return getExceptionRepresentation();

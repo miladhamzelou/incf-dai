@@ -3350,66 +3350,6 @@ public class ABAUtil {
 		String outOfRange = "";
 		String responseString = "";
 
-		// Start - Exception Handling
-		if (fromSpaceName == null || fromSpaceName.trim().equals("")) {
-			responseString = "SRS Code is missing. Please provide the srs code";
-			return responseString;
-		}
-
-		if (vocabulary == null || vocabulary.trim().equals("")) {
-			responseString = "Vocabulary is missing. Please provide vocabulary";
-			return responseString;
-		}
-
-		if (coordinateX == null || coordinateX.trim().equals("")) {
-			responseString = "Coordinate X is missing. Please provide Coordinate X";
-			return responseString;
-		}
-
-		if (coordinateY == null || coordinateY.trim().equals("")) {
-			responseString = "Coordinate Y is missing. Please provide Coordinate Y";
-			return responseString;
-		}
-
-		if (coordinateZ == null || coordinateZ.trim().equals("")) {
-			responseString = "Coordinate Z is missing. Please provide Coordinate Z";
-			return responseString;
-		}
-		// End - Exception Handling
-
-/*		if (fromSpaceName.equals(whs09)) {
-
-			System.out
-					.println("Inside mouse_whs_1.0 original coordinates transformation");
-			ABAUtil util1 = new ABAUtil();
-
-			vo.setFromSRSCode(fromSpaceName);
-			vo.setToSRSCode(abaVoxel);
-			vo.setFromSRSCodeOne(fromSpaceName);
-			vo.setToSRSCodeOne(abaVoxel);
-			vo.setOriginalCoordinateX(coordinateX);
-			vo.setOriginalCoordinateY(coordinateY);
-			vo.setOriginalCoordinateZ(coordinateZ);
-
-			// Special step to translate coordinates from mouse_whs_1.0 to mouse_abavoxel_1.0
-			String transformedCoordinatesString = util1
-					.spaceTransformation(vo);
-
-			String[] transformedCoordinates = util1
-					.getTabDelimNumbers(transformedCoordinatesString);
-
-			// Exception Handling
-			if (transformedCoordinates[0].trim().equalsIgnoreCase("out")) {
-				responseString = "Out of Range";
-				return responseString.toString();
-			}
-
-			coordinateX = transformedCoordinates[0];
-			coordinateY = transformedCoordinates[1];
-			coordinateZ = transformedCoordinates[2];
-
-		}
-*/
 		try {
 
 			System.out.println("Starts Transformation matrix process...");
@@ -3430,14 +3370,15 @@ public class ABAUtil {
 			outOfRange = structureNames[2];
 
 			// Start - Changes
-			if (outOfRange != null && outOfRange.trim().equalsIgnoreCase("out")) {
-				responseString = "Out of Range";
+			if (fineStructureName == null || fineStructureName.equals("")) {
+				responseString = "No structure found";
+			} else if(outOfRange != null && outOfRange.trim().endsWith("range")) {
+				responseString = "Out of range";
 			} else if (fineStructureName.trim().equals("-")) {
-				responseString = "No data found";
-			} else if (!fineStructureName.trim().equals("")
-					|| fineStructureName != null) {
+				responseString = "No structure found";
+			} else {
 				responseString = "Fine Structure Name: "
-						.concat(fineStructureName);
+					.concat(fineStructureName);
 			}
 			// End - Changes
 
@@ -3488,69 +3429,6 @@ public class ABAUtil {
 
 		StringBuffer responseString = new StringBuffer();
 
-		// Start - Exception Handling
-		if (fromSpaceName == null || fromSpaceName.trim().equals("")) {
-			responseString
-					.append("SRS Code is missing. Please provide the srs code");
-			return responseString.toString();
-		}
-
-		if (vocabulary == null || vocabulary.trim().equals("")) {
-			responseString
-					.append("Vocabulary is missing. Please provide vocabulary");
-			return responseString.toString();
-		}
-
-		if (coordinateX == null || coordinateX.trim().equals("")) {
-			responseString
-					.append("Coordinate X is missing. Please provide Coordinate X");
-			return responseString.toString();
-		}
-
-		if (coordinateY == null || coordinateY.trim().equals("")) {
-			responseString
-					.append("Coordinate Y is missing. Please provide Coordinate Y");
-			return responseString.toString();
-		}
-
-		if (coordinateZ == null || coordinateZ.trim().equals("")) {
-			responseString
-					.append("Coordinate Z is missing. Please provide Coordinate Z");
-			return responseString.toString();
-		}
-
-/*		if (fromSpaceName.equals(whs09)) {
-
-			System.out
-					.println("Inside mouse_whs_1.0 original coordinates transformation");
-			ABAUtil util1 = new ABAUtil();
-			vo.setFromSRSCode(fromSpaceName);
-			vo.setToSRSCode(abaVoxel);
-			vo.setFromSRSCodeOne(fromSpaceName);
-			vo.setToSRSCodeOne(abaVoxel);
-			vo.setOriginalCoordinateX(coordinateX);
-			vo.setOriginalCoordinateY(coordinateY);
-			vo.setOriginalCoordinateZ(coordinateZ);
-
-			// Special step to translate coordinates from mouse_whs_1.0 to abavoxel
-			String transformedCoordinatesString = util1
-					.spaceTransformation(vo);
-
-			String[] transformedCoordinates = util1
-					.getTabDelimNumbers(transformedCoordinatesString);
-
-			// Exception Handling
-			if (transformedCoordinates[0].trim().equalsIgnoreCase("out")) {
-				responseString.append("Out of Range");
-				return responseString.toString();
-			}
-
-			coordinateX = transformedCoordinates[0];
-			coordinateY = transformedCoordinates[1];
-			coordinateZ = transformedCoordinates[2];
-
-		}
-*/
 		try {
 
 			System.out.println("Starts Transformation matrix process...");
@@ -3572,21 +3450,19 @@ public class ABAUtil {
 			String outOfRange = structureNames[2];
 
 			// Start - Changes
-			if (outOfRange != null && outOfRange.trim().equalsIgnoreCase("out")) {
-				responseString.append("Out of Range");
+			if (anatomicStructureName == null || anatomicStructureName.equals("")) {
+				responseString.append("No structure found");
+			} else if(outOfRange != null && outOfRange.trim().endsWith("out")) {
+				responseString.append("Out of range");
 			} else if (anatomicStructureName.trim().equals("-")) {
-				responseString.append("No data found");
-			} else if (!anatomicStructureName.trim().equals("")
-					|| anatomicStructureName != null) {
+				responseString.append("No structure found");
+			} else {
 				responseString.append("Anatomic Structure Name: "
-						.concat(anatomicStructureName));
+					.concat(anatomicStructureName));
 			}
 			// End - Changes
 			System.out.println("Anatomic Structure - "
 					+ responseString.toString());
-
-			// End
-			System.out.println("Ends running transformation matrix...");
 
 		} catch (Exception e) {
 
