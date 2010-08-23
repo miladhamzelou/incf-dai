@@ -97,9 +97,9 @@
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
-    <ows:Identifier>Get2DImagesByURI</ows:Identifier>
-    <ows:Title>Get 2D Images by URI</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Identifier>Images2DByURI</ows:Identifier>
+    <ows:Title>2D Images by URI Response</ows:Title>
+    <ows:Abstract>2D Image(s) by URI response.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='x']/*"/>
@@ -148,9 +148,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>CellsByPOI</ows:Identifier>
+        <ows:Title>Cells by POI Response</ows:Title>
+        <ows:Abstract>Cell(s) by POI response.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -187,9 +187,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>CellsByURI</ows:Identifier>
+        <ows:Title>Cells by URI Response</ows:Title>
+        <ows:Abstract>Cells(s) by URI response.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
