@@ -111,3 +111,6 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
     <td align="center">*X*</td>
   </tr>
 </table>
+
+ * *X* - Priority implementations
+ * x - Planned implementations
