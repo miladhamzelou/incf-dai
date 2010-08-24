@@ -32,13 +32,13 @@ For example:
  * http://incf-dev-local.crbs.ucd.edu/atlas-aba?service=WPS&request=GetCapabilities
  * http://incf-dev-local.crbs.ucd.edu/atlas-aba?service=WPS&version=1.0.0&request=DescribeProcess
  * http://incf-dev-local.crbs.ucd.edu/atlas-aba?
-service=WPS&version=1.0.0&request=Execute&identifier=GetGenesByPOI&dataInputs=srsCode=WHS;x=263.7;y=159.4;z=227.8
+service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsCode=WHS;x=263.7;y=159.4;z=227.8
 
 ==Query String Details==
 
 Full URI = Base URI + Query String
 
-?request={request}&identifier={identifier}&dataInputs={data-inputs}
+?request={request}&Identifier={identifier}&DataInputs={data-inputs}
 
 Request = { GetCapabilities | DescribeProcess | Execute }
 
@@ -46,11 +46,9 @@ Identifier = { function-name }
 
 ===Data Inputs===
 
-DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
+!DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
 
-DataInuts keys:
-
-
+!DataInputs keys:
  * sourceType = { WMS }
  * x, y, z, xmin, xmax, ymin, ymax = { double }
  * vocabulary = { { hub } : { srs | vocabulary } : { code } }
@@ -63,7 +61,8 @@ _srsName, inputSrsName, outputSrsName_ will be one of these values:
  * Mouse_AGEA_1.0
  * Mouse_EMAP-T26_1.0
  * Mouse_Paxinos_1.0
- * Mouse_WHS_1.0 }
+ * Mouse_WHS_0.9
+ * Mouse_WHS_1.0
 
 ====Coordinates====
 _x, y, z, xmin, xmax, ymin, ymax_ are type double
@@ -283,6 +282,39 @@ Atlas Functions
 
 Temporary -- Data Inputs: 
 filter
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th colspan="2">Get2DImagesByURI</th>
+  </tr>
+  <tr>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=Get2DImagesByURI&DataInputs= ... TBD ...</td>
+  </tr>
+  <tr>
+    <th align="left">Description</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Applicability</th>
+    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
+    <td>... TBD ...</td>
+  </tr>
+  <tr>
+    <th align="left">Normal Return</th>
+    <td>XML document.</td>
+  </tr>
+  <tr>
+    <th align="left">Error Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Example</th>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByURI&DataInputs=... TBD ...</td>
+  </tr>
+</table>
+
 
 ===GetCellsByPOI===
 
