@@ -31,8 +31,7 @@ The [AtlasRequestInterfaceSpec#Base_URIs Base URIs] will be appended with a quer
 For example:
  * http://incf-dev-local.crbs.ucd.edu/atlas-aba?service=WPS&request=GetCapabilities
  * http://incf-dev-local.crbs.ucd.edu/atlas-aba?service=WPS&version=1.0.0&request=DescribeProcess
- * http://incf-dev-local.crbs.ucd.edu/atlas-aba?
-service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsCode=WHS;x=263.7;y=159.4;z=227.8
+ * http://incf-dev-local.crbs.ucd.edu/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsCode=WHS;x=263.7;y=159.4;z=227.8
 
 ==Query String Details==
 
@@ -40,9 +39,15 @@ Full URI = Base URI + Query String
 
 ?service=WPS&version={version}&request={request}&Identifier={identifier}&DataInputs={data-inputs}
 
+service = WPS
+
+version = the version returned by the !GetCapabilities request
+
 request = { !GetCapabilities | !DescribeProcess | Execute }
 
 Identifier = { function-name }
+
+!DataInputs = if applicable, content varies with process
 
 ===Data Inputs===
 
