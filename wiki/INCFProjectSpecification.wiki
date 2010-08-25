@@ -4,10 +4,9 @@ Digital Atlasing Infrastructure Task Force
 I. Zaslavsky, editor
  https://docs.google.com/View?id=dd9x97wk_2drhhj6fp
 
-A Powerpoint presentation describing availablke spatial reference systems:
+A Powerpoint presentation describing available spatial reference systems:
 
- https://docs.google.com/leaf?id=0B6iM3IMv4N2qYjlmZjcwYjUtOGQ2Mi00MmU0LTgwOGMtYThhYjg1MWY1MWZm&hl=en&authkey=CPCHmrUN
-
+ https://docs.google.com/leaf?id=0B6iM3IMv4N2qODdkMWE4ZTctMGZkZS00NGE1LTg3ZTgtYzk0NzUwYmRlMTdm&hl=en&authkey=CLaq67oL
 
 The Waxholm Markup Language (WaxML) Schema is at:
 
@@ -34,6 +33,4 @@ Neuroinformatics'2010 Demo "Representation of Coordinate Reference Systems for 
  https://docs.google.com/leaf?id=0B4DIwjjoNBb-ZGM3MTJiZmItNjdhZC00MWFmLWFiMDgtM2Q3YTcyNGZiYTk5&hl=en&authkey=CKLnkpoK
 
  The final version: https://docs.google.com/leaf?id=0B4DIwjjoNBb-YmNmYWYwOGYtZmI2Ni00MTYxLWEzYWQtMDViNjNmMzU5Yzhl&hl=en&authkey=CIrB2aQH
-
-
 
