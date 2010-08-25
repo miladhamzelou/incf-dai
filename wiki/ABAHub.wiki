@@ -70,6 +70,17 @@ UCSD HUB
     http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 
 
+WHS:
+
+ * Execute : TransformPOI
+
+    http://132.239.131.188:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;x=-1.5;y=0;z=0;filter=cerebellum
+
+ * Execute : GetStructureNamesByPOI
+
+    http://132.239.131.188:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=Mouse_paxinos_1.0;filter=structureset:Fine
+
+
 == WPS Functions under Development ==
 
  * Execute : ListSRSs
