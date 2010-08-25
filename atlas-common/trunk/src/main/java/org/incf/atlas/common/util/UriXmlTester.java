@@ -15,7 +15,7 @@ import javax.xml.transform.stream.StreamSource;
 
 public class UriXmlTester {
 	
-	public static final String HUB = "atlas-aba";
+	public static final String HUB = "atlas-emap";
 	public static final String HOST = 
 		"http://incf-dev-local.crbs.ucsd.edu:8080/";
 	

@@ -9,6 +9,25 @@ import org.junit.Test;
 public class CoordinateTransformTest {
 	
 	@Test
+	public void abaVoxelToFromAgea() {
+		
+		// start with a point
+		Point3d abaVoxel = new Point3d(100.0, 200.0, 300.0);
+		
+		// convert one way, check results
+		Point3d agea = CoordinateTransform.abaVoxelToAgea(abaVoxel);
+		assertTrue(Math.abs(agea.x - (2500.0)) < 0.0001);
+		assertTrue(Math.abs(agea.y - (5000.0)) < 0.0001);
+		assertTrue(Math.abs(agea.z - (7500.0)) < 0.0001);
+
+		// round trip it, check results
+		Point3d abaVoxelrt = CoordinateTransform.ageaToAbaVoxel(agea);
+		assertTrue(Math.abs(abaVoxelrt.x - 100.0) < 0.00001);
+		assertTrue(Math.abs(abaVoxelrt.y - 200.0) < 0.00001);
+		assertTrue(Math.abs(abaVoxelrt.z - 300.0) < 0.00001);
+	}
+
+	@Test
 	public void whs09ToFromWhs10() {
 		
 		// start with a point
