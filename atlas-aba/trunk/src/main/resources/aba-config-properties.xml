@@ -20,13 +20,8 @@
     </property>
 	<!-- end database properties for servlet -->
 
-	<!-- begin logger properties -->
-
-    <property>
-        <name>atlas.windowslogger.filepath</name>	
-        <value>C:/Asif/work/devtools/Tomcat5.5.17/webapps/axis/WEB-INF/classes/net/birn/config/webservices-log4jproperties.txt</value>
-    </property>
-
+	<!-- begin logger properties-->
+	<!--FIXME-->
     <property>
         <name>atlas.linuxlogger.filepath</name>	
     	<value>/opt/gridsphere/projects/smartflow/src/net/birn/smartatlas/config/webservices-log4jproperties.txt</value>
@@ -64,14 +59,17 @@
 
 	<property>
         <name>ucsd.host.name</name>
-        <value>132.239.131.188</value>
+        <value></value>
+        <!-- <value>132.239.131.188</value> -->
         <!--<value>incf-dev-local.crbs.ucsd.edu</value>-->
         <!--<value>incf.crbs.ucsd.edu</value>-->
     </property>
 
 	<property>
         <name>ucsd.port.number</name>
-        <value>:8080</value>
+        <value>
+        <!-- :8080 -->
+        </value>
     </property>
 
 	<property>
@@ -105,7 +103,14 @@
 
 	<property>
         <name>incf.deploy.host.name</name>
-        <value>132.239.131.188</value>
+        <value></value>
+        <!-- <value>132.239.131.188</value> -->
+        <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
+    </property>
+
+	<property>
+        <name>incf.deploy.port.delimitor</name>
+        <value>:</value>
         <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
     </property>
 

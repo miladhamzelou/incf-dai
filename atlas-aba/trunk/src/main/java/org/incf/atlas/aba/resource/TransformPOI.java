@@ -1,19 +1,17 @@
 package org.incf.atlas.aba.resource;
 
-import java.sql.Date;
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Random;
-import java.util.Set;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.namespace.QName;
-
 
 import net.opengis.gml.x32.PointType;
 
@@ -54,31 +52,22 @@ public class TransformPOI extends BaseResouce {
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
-	String url = "";
 	int randomGMLID1 = 0;
 	int randomGMLID2 = 0;
-
+	URI uri = null;
+	
 	public TransformPOI(Context context, Request request, 
 			Response response) {
 		super(context, request, response);
 		
 		logger.debug("Instantiated {}.", getClass());
 
-/*		System.out.println("You are in TransformPOIResource");
-		dataInputString = (String) request.getAttributes().get("dataInputs"); 
-		System.out.println("dataInputString " + dataInputString );
-*/
-		//dataInputs = new DataInputs(dataInputString);
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		//FIXME - amemon - read the hostname from the config file 
-		ABAConfigurator config = ABAConfigurator.INSTANCE;
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		portNumber = ":8080";
-
-		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI"; 
-
-		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
 	}
 
 
@@ -121,13 +110,13 @@ public class TransformPOI extends BaseResouce {
 	        vo.setOriginalCoordinateY(String.valueOf(poiCoords[1].intValue()));
 	        vo.setOriginalCoordinateZ(String.valueOf(poiCoords[2].intValue()));
 
+/*	        vo.setOriginalCoordinateX(dataInputs.getValue("x"));
+	        vo.setOriginalCoordinateY(dataInputs.getValue("y"));
+	        vo.setOriginalCoordinateZ(dataInputs.getValue("z"));
+*/
 	        System.out.println("X: "+vo.getOriginalCoordinateX());
 	        System.out.println("Y: "+vo.getOriginalCoordinateY());
 	        System.out.println("Z: "+vo.getOriginalCoordinateZ());
-
-	        System.out.println("X1: "+dataInputs.getValue("x"));
-	        System.out.println("Y1: "+dataInputs.getValue("y"));
-	        System.out.println("Z1: "+dataInputs.getValue("z"));
 
 	        // if any validation exceptions, no reason to continue
 	        if (exceptionHandler != null) {
@@ -182,8 +171,7 @@ public class TransformPOI extends BaseResouce {
 	    System.out.println("Random GML ID1: - " + randomGMLID1);
 	    System.out.println("Random GML ID2: - " + randomGMLID2);
 
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
+        vo.setUrlString(uri.toString());
 
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
@@ -201,7 +189,7 @@ public class TransformPOI extends BaseResouce {
 
 		query.addNewQueryUrl();
 		query.getQueryUrl().setName("TransformPOI");
-		query.getQueryUrl().setStringValue(url);
+		query.getQueryUrl().setStringValue(uri.toString());
 		query.setTimeCreated(Calendar.getInstance());
 
 		InputStringType targetsrsCriteria = (InputStringType) criterias

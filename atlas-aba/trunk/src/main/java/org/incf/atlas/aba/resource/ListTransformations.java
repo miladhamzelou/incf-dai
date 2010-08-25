@@ -1,6 +1,7 @@
 package org.incf.atlas.aba.resource;
 
 
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Set;
@@ -31,7 +32,11 @@ public class ListTransformations extends BaseResouce {
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
+	URI uri = null;
 	String url = "";
+	String incfDeployHostname = "";
+	String incfDeployPortnumber = "";
+	
 	ABAConfigurator config = ABAConfigurator.INSTANCE;
 
 	public ListTransformations(Context context, Request request, 
@@ -40,14 +45,15 @@ public class ListTransformations extends BaseResouce {
 		
 		logger.debug("Instantiated {}.", getClass());
 
-/*		System.out.println("You are in ListTransformations");
-		dataInputString = (String) request.getAttributes().get("dataInputs"); 
-		System.out.println("dataInputString " + dataInputString );
-		
-		dataInputs = new DataInputs(dataInputString);
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+			url = uri.toString();
+			incfDeployHostname = uri.getHost();
+			incfDeployPortnumber = String.valueOf(uri.getPort());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-		getVariants().add(new Variant(MediaType.APPLICATION_XML));
-*/	
 		}
 
 	/* 
@@ -117,20 +123,10 @@ public class ListTransformations extends BaseResouce {
         java.util.Date date = new java.util.Date();
         String currentTime = dateFormat.format(date);
         vo.setCurrentTime(currentTime);
+        vo.setUrlString(uri.toString());
+        vo.setIncfDeployHostname(incfDeployHostname);
+        vo.setIncfDeployPortNumber(incfDeployPortnumber);
 
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		String portNumber = ":8080";
-
-		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations";
-		//servicePath = "/atlas-aba?Request=Execute&Identifier=GetTransformationChain";
-
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
-
-/*		ObjectFactory of = new ObjectFactory();
-		CoordinateTransformationChainResponse coordinateChain = of.createCoordinateTransformationChainResponse();
-*/
         //Start - ListTransformation Method Call Identifier 
         vo.setFlag("ListTransformations");
         //End

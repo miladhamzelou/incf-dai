@@ -1,6 +1,7 @@
 package org.incf.atlas.aba.resource;
 
 
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Set;
@@ -28,10 +29,9 @@ public class CoordinateTransformationChain extends BaseResouce {
 	private final Logger logger = LoggerFactory.getLogger(
 			CoordinateTransformationChain.class);
 
-	String hostName = "";
-	String portNumber = "";
-	String servicePath = "";
-	String url = "";
+	URI uri = null;
+	String incfDeployHostname = "";
+	String incfDeployPortnumber = "";
 	ABAConfigurator config = ABAConfigurator.INSTANCE;
 
 	public CoordinateTransformationChain(Context context, Request request, 
@@ -39,15 +39,14 @@ public class CoordinateTransformationChain extends BaseResouce {
 		super(context, request, response);
 		
 		logger.debug("Instantiated {}.", getClass());
-
-/*		System.out.println("You are in GetCoordinateTransformationChain");
-		dataInputString = (String) request.getAttributes().get("dataInputs"); 
-		System.out.println("dataInputString " + dataInputString );
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+			incfDeployHostname = uri.getHost();
+			incfDeployPortnumber = String.valueOf(uri.getPort());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		dataInputs = new DataInputs(dataInputString);
-
-		getVariants().add(new Variant(MediaType.APPLICATION_XML));
-*/	
 		}
 
 	/* 
@@ -82,10 +81,6 @@ public class CoordinateTransformationChain extends BaseResouce {
 	        vo.setToSRSCode(dataInputs.getValue("outputSrsName"));
 	        vo.setFilter(dataInputs.getValue("filter"));
 
-	        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
-	        System.out.println("To SRS Code: " + vo.getToSRSCodeOne());
-	        System.out.println("Filter: " + vo.getFilter());
-
 	        // validate data inputs
 	        validateSrsName(vo.getFromSRSCodeOne());
 	        validateSrsName(vo.getToSRSCodeOne());
@@ -100,19 +95,10 @@ public class CoordinateTransformationChain extends BaseResouce {
         String currentTime = dateFormat.format(date);
         vo.setCurrentTime(currentTime);
 
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		String portNumber = ":8080";
+        vo.setUrlString(uri.toString());
+        vo.setIncfDeployHostname(incfDeployHostname);
+        vo.setIncfDeployPortNumber(incfDeployPortnumber);
 
-		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain";
-		//servicePath = "/atlas-aba?Request=Execute&Identifier=GetTransformationChain";
-
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
-
-/*		ObjectFactory of = new ObjectFactory();
-		CoordinateTransformationChainResponse coordinateChain = of.createCoordinateTransformationChainResponse();
-*/
 		ABAUtil util = new ABAUtil(); 
 		String responseString = util.getCoordinateTransformationChain(vo);
 

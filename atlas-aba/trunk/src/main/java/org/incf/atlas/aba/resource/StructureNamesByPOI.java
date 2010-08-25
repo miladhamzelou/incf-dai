@@ -1,5 +1,6 @@
 package org.incf.atlas.aba.resource;
 
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -60,7 +61,8 @@ public class StructureNamesByPOI extends BaseResouce {
 	String whs10 = config.getValue("srsname.whs.10");
 	String emap = config.getValue("srsname.emap.10");
 	String paxinos = config.getValue("srsname.paxinos.10");
-
+	URI uri = null;
+	
 	//private String dataInputString;
 	//private DataInputs dataInputs;
 	String hostName = "";
@@ -81,14 +83,12 @@ public class StructureNamesByPOI extends BaseResouce {
 */
 		//FIXME - amemon - read the hostname from the config file 
 		ABAConfigurator config = ABAConfigurator.INSTANCE;
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		portNumber = ":8080";
 
-		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI";
-		//servicePath = "/atlas-aba?Request=Execute&Identifier=GetStructureNamesByPOI";
-
-		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -152,8 +152,11 @@ public class StructureNamesByPOI extends BaseResouce {
 
 		    	//Construct GetTransformationChain URL
 		    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-		    	String hostName = config.getValue("incf.deploy.host.name");
-		    	String portNumber = ":8080";
+
+		    	String hostName = uri.getHost();
+		    	String delimitor = config.getValue("incf.deploy.port.delimitor");
+		    	String portNumber = delimitor + uri.getPort();
+		    	
 		    	String servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 		    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
 		    	XMLUtilities xmlUtilities = new XMLUtilities();
@@ -281,8 +284,7 @@ public class StructureNamesByPOI extends BaseResouce {
 	      randomGMLID1 = randomGenerator1.nextInt(100);
 	    }
 
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
+        vo.setUrlString(uri.toString());
 
     	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
     	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());

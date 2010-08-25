@@ -36,7 +36,6 @@ public class Capabilities extends BaseResouce {
 	
 	public Capabilities(Context context, Request request, Response response) {
 		super(context, request, response);
-		
 		logger.debug("Instantiated {}.", getClass());
 	}
 
@@ -63,7 +62,7 @@ public class Capabilities extends BaseResouce {
 	        return new FileRepresentation(cachedResponse, 
 	        		MediaType.APPLICATION_XML);
 	    }
-	    
+
         // prepare an ExceptionReport
 	    String message = "File " + RESPONSE_FILE_NAME + " not found.";
         ExceptionHandler exHandler = getExceptionHandler();

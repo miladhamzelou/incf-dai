@@ -1,5 +1,6 @@
 package org.incf.atlas.aba.resource;
 
+import java.net.URI;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -61,7 +62,8 @@ public class CorrelationMapByPOI extends BaseResouce {
 	String whs10 = config.getValue("srsname.whs.10");
 	String emap = config.getValue("srsname.emap.10");
 	String paxinos = config.getValue("srsname.paxinos.10");
-
+	URI uri = null;
+	
 	//private String dataInputString;
 	//private DataInputs dataInputs;
 	String hostName = "";
@@ -76,23 +78,13 @@ public class CorrelationMapByPOI extends BaseResouce {
 
 		super(context, request, response);
 
-		System.out.println("Welcome to CorrelationMapByPOI Method");
 		logger.debug("Instantiated {}.", getClass());
 
-/*		System.out.println("You are in TransformPOIResource");
-		dataInputString = (String) request.getAttributes().get("dataInputs"); 
-		System.out.println("dataInputString " + dataInputString );
-*/
-		//dataInputs = new DataInputs(dataInputString);
-
-		//FIXME - amemon - read the hostname from the config file 
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		portNumber = ":8080";
-
-		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=CorrelationMapByPOI";
-
-		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -130,9 +122,9 @@ public class CorrelationMapByPOI extends BaseResouce {
 	        validateSrsName(vo.getFromSRSCodeOne());
 	        Double[] poiCoords = validateCoordinate(dataInputs);
 
-	        vo.setOriginalCoordinateX(String.valueOf(poiCoords[0].intValue()));
-	        vo.setOriginalCoordinateY(String.valueOf(poiCoords[1].intValue()));
-	        vo.setOriginalCoordinateZ(String.valueOf(poiCoords[2].intValue()));
+	        vo.setOriginalCoordinateX(dataInputs.getValue("x"));
+	        vo.setOriginalCoordinateY(dataInputs.getValue("y"));
+	        vo.setOriginalCoordinateZ(dataInputs.getValue("z"));
 
 	        // if any validation exceptions, no reason to continue
 	        if (exceptionHandler != null) {
@@ -161,8 +153,11 @@ public class CorrelationMapByPOI extends BaseResouce {
 
 	    	//Construct GetTransformationChain URL
 	    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-	    	String hostName = config.getValue("incf.deploy.host.name");
-	    	String portNumber = ":8080";
+	    	
+	    	String hostName = uri.getHost();
+	    	String delimitor = config.getValue("incf.deploy.port.delimitor");
+	    	String portNumber = delimitor + uri.getPort();
+
 	    	String servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 	    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
 	    	XMLUtilities xmlUtilities = new XMLUtilities();
@@ -245,8 +240,8 @@ public class CorrelationMapByPOI extends BaseResouce {
 	    System.out.println("Random GML ID1: - " + randomGMLID1);
 	    System.out.println("Random GML ID2: - " + randomGMLID2);
 
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
+        //url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
+        vo.setUrlString(uri.toString());
 
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
