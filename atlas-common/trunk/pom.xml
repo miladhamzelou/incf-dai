@@ -61,6 +61,11 @@
     </dependency>
     -->
     <dependency>
+      <groupId>java3d</groupId>
+      <artifactId>vecmath</artifactId>
+      <version>1.3.1</version>
+    </dependency>
+    <dependency>
       <!-- jul (java.util.logging). Restlets use JUL so this dependency
            translates JUL statements to slf4j. -->
       <groupId>org.slf4j</groupId>
