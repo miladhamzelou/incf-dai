@@ -395,7 +395,7 @@ Atlas Functions
     <th colspan="2">GetCorrelationMapByPOI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z];filter=[filter]</td>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName];x=[x];y=[y];z=[z];filter=[filter]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -424,7 +424,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=3892;y=2748;z=1434;filter=maptype:coronal</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=inputSrsName=[...];outputSrsName=[...];x=3892;y=2748;z=1434;filter=maptype:coronal</td>
   </tr>
 </table>
 
@@ -468,14 +468,12 @@ Atlas Functions
 
 ===GetStructureNamesByPOI===
 
-Temporary -- Data Inputs: 
-srsName x y z vocabulary filter
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th colspan="2">GetStructureNamesByPOI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z]</td>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z];vocabulary=[vocabulary];filter=[filter]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -504,7 +502,7 @@ Vocabulary]<br/>
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;vocabulary=[...];filter=[...]</td>
   </tr>
 </table>
 
@@ -515,7 +513,7 @@ Vocabulary]<br/>
     <th colspan="2">!GetTransformationChain</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName]</td>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName];filter=[filter]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -541,7 +539,7 @@ Vocabulary]<br/>
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=[...];outputSrsName=[...]</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=[...];outputSrsName=[...];filter=[filter]</td>
   </tr>
 </table>
 
@@ -552,7 +550,7 @@ Vocabulary]<br/>
     <th colspan="2">!ListSRSs</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListSRSs&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName]</td>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListSRSs</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -576,7 +574,7 @@ Vocabulary]<br/>
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs&DataInputs=inputSrsName=[...];outputSrsName=[...]</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs</td>
   </tr>
 </table>
 
@@ -665,7 +663,7 @@ sourceURL<br/>
     <th colspan="2">TransformPOI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=[inputSrsName];x=[x];y=[y];z=[z];filter=[filter]</td>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName];xmin=[xmin];xmax=[xmax];ymin=[ymin],ymax=[ymax];filter=[filter]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -695,6 +693,6 @@ sourceURL<br/>
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=[...];outputSrsName=[...];x=[...];y=[...];a=[...];filter=[...]</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=[...];outputSrsName=[...];xmin=[...];xmax=[...];ymin=[...],ymax=[...];filter=[...]</td>
   </tr>
 </table>
