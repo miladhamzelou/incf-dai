@@ -68,7 +68,6 @@ public class StructureNamesByPOI extends BaseResouce {
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
-	String url = "";
 	String responseString = "";
 
 	public StructureNamesByPOI(Context context, Request request, 
@@ -297,7 +296,7 @@ public class StructureNamesByPOI extends BaseResouce {
     	StructureTermsResponseType rootDoc =	document.addNewStructureTermsResponse();
     	QueryInfoType query = rootDoc.addNewQueryInfo();
     	
-    	Utilities.addMethodNameToQueryInfo(query, "GetStructureNamesByPOI  ", url);
+    	Utilities.addMethodNameToQueryInfo(query, "GetStructureNamesByPOI  ", uri.toString());
 
     	Criteria criterias = query.addNewCriteria();
     	
@@ -342,7 +341,7 @@ public class StructureNamesByPOI extends BaseResouce {
 
 		query.addNewQueryUrl();
 		query.getQueryUrl().setName("GetStructureNamesByPOI");
-		query.getQueryUrl().setStringValue(url);
+		query.getQueryUrl().setStringValue(uri.toString());
 		query.setTimeCreated(Calendar.getInstance());
 
     	StructureTerms terms = rootDoc.addNewStructureTerms();

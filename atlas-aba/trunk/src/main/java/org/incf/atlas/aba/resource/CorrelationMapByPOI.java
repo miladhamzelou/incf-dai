@@ -69,7 +69,6 @@ public class CorrelationMapByPOI extends BaseResouce {
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
-	String url = "";
 	int randomGMLID1 = 0;
 	int randomGMLID2 = 0;
 
@@ -256,7 +255,7 @@ public class CorrelationMapByPOI extends BaseResouce {
 		//addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
 		QueryInfoType query = imagesRes.addNewQueryInfo();
 
-		Utilities.addMethodNameToQueryInfo(query, "GetCorrelationMapByPOI", url);
+		Utilities.addMethodNameToQueryInfo(query, "GetCorrelationMapByPOI", uri.toString());
 
 		Criteria criterias = query.addNewCriteria();
 
