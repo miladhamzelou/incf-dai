@@ -70,7 +70,15 @@ UCSD HUB
     http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 
 
-WHS:
+WHS Hub
+
+ * Execute : GetTransformationChain
+
+    http://132.239.131.188:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+
+ * Execute : ListTransformations
+
+    http://132.239.131.188:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 
  * Execute : TransformPOI
 
@@ -79,6 +87,22 @@ WHS:
  * Execute : GetStructureNamesByPOI
 
     http://132.239.131.188:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=Mouse_paxinos_1.0;filter=structureset:Fine
+
+
+EMAP Hub
+
+ * Execute : TransformPOI
+
+    http://132.239.131.188:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_EMAP-T26_1.0;x=12;y=-29;z=-73;filter=cerebellum
+
+ * Execute : GetTransformationChain
+
+    http://132.239.131.188:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+
+ * Execute : ListTransformations
+
+    http://132.239.131.188:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+
 
 
 == WPS Functions under Development ==
