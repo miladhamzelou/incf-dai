@@ -1,5 +1,6 @@
 package org.incf.atlas.ucsd.resource;
 
+import java.net.URI;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -51,31 +52,21 @@ public class TransformPOI extends BaseResouce {
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
-	String url = "";
 	int randomGMLID1 = 0;
 	int randomGMLID2 = 0;
-
+	URI uri = null;
+	
 	public TransformPOI(Context context, Request request, 
 			Response response) {
 		super(context, request, response);
 		
 		logger.debug("Instantiated {}.", getClass());
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-/*		System.out.println("You are in TransformPOIResource");
-		dataInputString = (String) request.getAttributes().get("dataInputs"); 
-		System.out.println("dataInputString " + dataInputString );
-*/
-		//dataInputs = new DataInputs(dataInputString);
-
-		//FIXME - amemon - read the hostname from the config file 
-		UCSDConfigurator config = UCSDConfigurator.INSTANCE;
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		portNumber = ":8080";
-
-		servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI"; 
-
-		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
 	}
 
 
@@ -177,8 +168,7 @@ public class TransformPOI extends BaseResouce {
 	    System.out.println("Random GML ID1: - " + randomGMLID1);
 	    System.out.println("Random GML ID2: - " + randomGMLID2);
 
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
+        vo.setUrlString(uri.toString());
 
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
@@ -196,7 +186,7 @@ public class TransformPOI extends BaseResouce {
 
 		query.addNewQueryUrl();
 		query.getQueryUrl().setName("TransformPOI");
-		query.getQueryUrl().setStringValue(url);
+		query.getQueryUrl().setStringValue(uri.toString());
 		query.setTimeCreated(Calendar.getInstance());
 
 /*		InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);

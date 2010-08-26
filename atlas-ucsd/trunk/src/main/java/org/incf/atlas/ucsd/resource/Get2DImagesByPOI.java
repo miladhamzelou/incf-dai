@@ -2,6 +2,7 @@ package org.incf.atlas.ucsd.resource;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URL;
 import java.sql.Date;
 import java.text.DateFormat;
@@ -83,7 +84,7 @@ public class Get2DImagesByPOI extends BaseResouce {
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
-	String url = "";
+	URI uri = null;
 	int randomGMLID1 = 0;
 	int randomGMLID2 = 0;
 
@@ -93,14 +94,12 @@ public class Get2DImagesByPOI extends BaseResouce {
 		
 		logger.debug("Instantiated {}.", getClass());
 
-		//FIXME - amemon - read the hostname from the config file 
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		portNumber = ":8080";
-
-		servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI"; 
-
-		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
 	}
 
 
@@ -165,8 +164,9 @@ public class Get2DImagesByPOI extends BaseResouce {
 
 		    	//Construct GetTransformationChain URL
 		    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-		    	String hostName = config.getValue("incf.deploy.host.name");
-		    	String portNumber = ":8080";
+		    	String hostName = uri.getHost();
+		    	String delimitor = config.getValue("incf.deploy.port.delimitor");
+		    	String portNumber = delimitor + uri.getPort();
 		    	String servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 		    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
 	        	paxinosCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
@@ -248,8 +248,7 @@ public class Get2DImagesByPOI extends BaseResouce {
 	    System.out.println("Random GML ID1: - " + randomGMLID1);
 	    System.out.println("Random GML ID2: - " + randomGMLID2);
 
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
+        vo.setUrlString(uri.toString());
 
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
@@ -265,7 +264,7 @@ public class Get2DImagesByPOI extends BaseResouce {
 		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
 		QueryInfoType query = imagesRes.addNewQueryInfo();
 		query.setTimeCreated(Calendar.getInstance());
-		Utilities.addMethodNameToQueryInfo(query,"Get2DImagesByPOI", url);
+		Utilities.addMethodNameToQueryInfo(query,"Get2DImagesByPOI", uri.toString());
 		
 		Criteria criterias = query.addNewCriteria();
 
@@ -696,19 +695,19 @@ private String createXMLQueryStringForImageList(String polygonString,
 	   	    	//FIXME - Needs to come from the config file.
 	   	    	String port = ":9090";
 	   	    	String webDir = "crbsatlas/mapfiles";
-	   	    	
+
 	   	    	//Linux Map Server URL
 	   	    	String imageURLString = "http://" + host + "/cgi-bin/mapserv?map="+webDir+"/" + serviceName + ".map";
-	   	    	
+
 	   	    	//Windows Map Server URL
 	   	    	//String imageURLString = "http://" + host + port + "/cgi-bin/mapserv.exe?map="+webDir+"/" + serviceName + ".map";
 
 	   	    	System.out.println("WMS URL String - " + imageURLString );
 
 				URL url = new URL( imageURLString );
-				
+
 				WebMapServer wms = new WebMapServer(url);
-				
+
 				WMSCapabilities capabilities = wms.getCapabilities(); 
 				Layer layer = capabilities.getLayer();
 				dataModel.setMinX(String.valueOf( layer.getLatLonBoundingBox().getMinX() ) );

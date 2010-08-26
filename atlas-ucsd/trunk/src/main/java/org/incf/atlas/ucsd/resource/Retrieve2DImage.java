@@ -1,5 +1,6 @@
 package org.incf.atlas.ucsd.resource;
 
+import java.net.URI;
 import java.net.URL;
 import java.net.URLDecoder;
 import java.sql.Date;
@@ -49,34 +50,29 @@ public class Retrieve2DImage extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(
 			Retrieve2DImage.class);
+	
+	UCSDConfigurator config = UCSDConfigurator.INSTANCE;
 
 	//private String dataInputString;
 	//private DataInputs dataInputs;
-	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
-	String url = "";
 	int randomGMLID1 = 0;
 	int randomGMLID2 = 0;
 	String sourceURL = "";
-	
+
+	URI uri = null;
+
 	public Retrieve2DImage(Context context, Request request, 
 			Response response) {
 		super(context, request, response);
 		
 		logger.debug("Instantiated {}.", getClass());
-
-		//FIXME - amemon - read the hostname from the config file 
-		UCSDConfigurator config = UCSDConfigurator.INSTANCE;
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		portNumber = ":8080";
-
-/*		System.out.println("Before");
-		sourceURL = (String)request.getAttributes().get("sourceURL");
-		System.out.println("After");
-*/		
-		servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=Retrieve2DImage"; 
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -85,7 +81,7 @@ public class Retrieve2DImage extends BaseResouce {
 	public Representation represent(Variant variant) throws ResourceException {
 
 		UCSDServiceVO vo = new UCSDServiceVO();
-		
+
         try { 
 
 		    // make sure we have something in dataInputs
@@ -97,9 +93,9 @@ public class Retrieve2DImage extends BaseResouce {
 		        // there is no point in going further, so return
 		        return getExceptionRepresentation();
 		    }
-		    
+
 		    System.out.println("*********<<dataInputsString>>********* - " + dataInputsString );
-		    
+
 		    // parse dataInputs string
 	        DataInputs dataInputs = new DataInputs(dataInputsString);
 
@@ -152,8 +148,7 @@ public class Retrieve2DImage extends BaseResouce {
 	    System.out.println("Random GML ID1: - " + randomGMLID1);
 	    System.out.println("Random GML ID2: - " + randomGMLID2);
 
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
+        vo.setUrlString(uri.toString());
 
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
@@ -166,7 +161,7 @@ public class Retrieve2DImage extends BaseResouce {
 		Retrieve2DImageResponseType imagesRes = document.addNewRetrieve2DImageResponse();
 		QueryInfoType query = imagesRes.addNewQueryInfo();
 		query.setTimeCreated(Calendar.getInstance());
-		Utilities.addMethodNameToQueryInfo(query,"GetMap",url);
+		Utilities.addMethodNameToQueryInfo(query,"GetMap",uri.toString());
 
 		Criteria criterias = query.addNewCriteria();
 		

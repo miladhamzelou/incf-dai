@@ -1,5 +1,6 @@
 package org.incf.atlas.ucsd.resource;
 
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -27,14 +28,25 @@ public class ListTransformations extends BaseResouce {
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
-	String url = "";
+
 	UCSDConfigurator config = UCSDConfigurator.INSTANCE;
+	URI uri = null;
+
+	String incfDeployHostName = "";
+	String incfDeployPortNumber = "";
 
 	public ListTransformations(Context context, Request request, 
 			Response response) {
 		super(context, request, response);
 		
 		logger.debug("Instantiated {}.", getClass());
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+			incfDeployHostName = uri.getHost();
+ 			incfDeployPortNumber = String.valueOf(uri.getPort());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		}
 
@@ -88,15 +100,9 @@ public class ListTransformations extends BaseResouce {
         String currentTime = dateFormat.format(date);
         vo.setCurrentTime(currentTime);
 
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		String portNumber = ":8080";
-
-		servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations";
-		//servicePath = "/atlas-ucsd?Request=Execute&Identifier=GetTransformationChain";
-
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
+        vo.setUrlString(uri.toString());
+        vo.setIncfDeployHostname(incfDeployHostName);
+        vo.setIncfDeployPortNumber(incfDeployPortNumber);
 
 /*		ObjectFactory of = new ObjectFactory();
 		CoordinateTransformationChainResponse coordinateChain = of.createCoordinateTransformationChainResponse();

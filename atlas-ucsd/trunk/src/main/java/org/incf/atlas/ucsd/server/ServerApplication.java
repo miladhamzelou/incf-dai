@@ -10,6 +10,7 @@ import org.incf.atlas.ucsd.resource.NotYetImplemented;
 import org.incf.atlas.ucsd.resource.PingResource;
 import org.incf.atlas.ucsd.resource.ProcessDescriptions;
 import org.incf.atlas.ucsd.resource.Retrieve2DImage;
+import org.incf.atlas.ucsd.resource.StructureNamesByPOI;
 import org.incf.atlas.ucsd.resource.TransformPOI;
 import org.incf.atlas.ucsd.resource.UnrecognizedUri;
 import org.restlet.Application;
@@ -58,7 +59,7 @@ public class ServerApplication extends Application
         router.attach(GET_CELLS_BY_URI,           NotYetImplemented.class);
         router.attach(GET_CORRELATION_MAP_BY_POI, NotSupported.class);
         router.attach(GET_GENES_BY_POI,           NotSupported.class);
-        router.attach(GET_STRUCTURE_NAMES_BY_POI, NotYetImplemented.class);
+        router.attach(GET_STRUCTURE_NAMES_BY_POI, StructureNamesByPOI.class);
         router.attach(GET_TRANSFORMATION_CHAIN,   CoordinateTransformationChain.class);
 		router.attach(LIST_SRS_S,                 NotYetImplemented.class);
 		router.attach(LIST_TRANSFORMATIONS,       ListTransformations.class);

@@ -26,6 +26,8 @@ public class UCSDServiceVO {
 		// TODO Auto-generated constructor stub
 	}
 
+	private String structureName = "";
+	private String structureDescription = "";
 	private String sliceConstant = "";
 	private String coefficientA = "";
 	private String coefficientB = "";
@@ -90,6 +92,25 @@ public class UCSDServiceVO {
 	private String toSRSCodeTwo;
 	private String toSRSCodeThree;
 	private String toSRSCodeFour;
+
+	private String incfDeployHostname = "";
+	public String getIncfDeployHostname() {
+		return incfDeployHostname;
+	}
+
+	public void setIncfDeployHostname(String incfDeployHostname) {
+		this.incfDeployHostname = incfDeployHostname;
+	}
+
+	public String getIncfDeployPortNumber() {
+		return incfDeployPortNumber;
+	}
+
+	public void setIncfDeployPortNumber(String incfDeployPortNumber) {
+		this.incfDeployPortNumber = incfDeployPortNumber;
+	}
+
+	private String incfDeployPortNumber = "";
 
 	public String getUrlString() {
 		return urlString;
@@ -557,6 +578,22 @@ public class UCSDServiceVO {
 
 	public void setSliceConstant(String sliceConstant) {
 		this.sliceConstant = sliceConstant;
+	}
+
+	public String getStructureName() {
+		return structureName;
+	}
+
+	public void setStructureName(String structureName) {
+		this.structureName = structureName;
+	}
+
+	public String getStructureDescription() {
+		return structureDescription;
+	}
+
+	public void setStructureDescription(String structureDescription) {
+		this.structureDescription = structureDescription;
 	}
 
 	
