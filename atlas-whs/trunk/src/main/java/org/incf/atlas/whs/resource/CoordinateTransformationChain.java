@@ -1,5 +1,6 @@
 package org.incf.atlas.whs.resource;
 
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Set;
@@ -30,7 +31,11 @@ public class CoordinateTransformationChain extends BaseResouce {
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
-	String url = "";
+
+	URI uri = null;
+	String incfDeployHostname = "";
+	String incfDeployPortnumber = "";
+
 	WHSConfigurator config = WHSConfigurator.INSTANCE;
 
 	public CoordinateTransformationChain(Context context, Request request, 
@@ -38,15 +43,14 @@ public class CoordinateTransformationChain extends BaseResouce {
 		super(context, request, response);
 		
 		logger.debug("Instantiated {}.", getClass());
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+			incfDeployHostname = uri.getHost();
+			incfDeployPortnumber = String.valueOf(uri.getPort());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-/*		System.out.println("You are in GetCoordinateTransformationChain");
-		dataInputString = (String) request.getAttributes().get("dataInputs"); 
-		System.out.println("dataInputString " + dataInputString );
-		
-		dataInputs = new DataInputs(dataInputString);
-
-		getVariants().add(new Variant(MediaType.APPLICATION_XML));
-*/	
 		}
 
 	/* 
@@ -99,30 +103,15 @@ public class CoordinateTransformationChain extends BaseResouce {
         String currentTime = dateFormat.format(date);
         vo.setCurrentTime(currentTime);
 
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		String portNumber = ":8080";
+        vo.setUrlString(uri.toString());
+        vo.setIncfDeployHostname(incfDeployHostname);
+        vo.setIncfDeployPortNumber(incfDeployPortnumber);
 
-		servicePath = "/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain";
-		//servicePath = "/atlas-whs?Request=Execute&Identifier=GetTransformationChain";
-
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
-
-/*		ObjectFactory of = new ObjectFactory();
-		CoordinateTransformationChainResponse coordinateChain = of.createCoordinateTransformationChainResponse();
-*/
 		WHSUtil util = new WHSUtil(); 
 		String responseString = util.getCoordinateTransformationChain(vo);
 
-		//return document.xmlText(opt);
 		return new StringRepresentation(responseString, MediaType.APPLICATION_XML);
 
-		//generate representation based on media type
-/*		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
-			return new JaxbRepresentation<CoordinateTransformationChainResponse>(coordinateChain);
-		}
-*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

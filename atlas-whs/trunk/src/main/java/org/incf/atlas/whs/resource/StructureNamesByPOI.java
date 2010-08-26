@@ -1,5 +1,6 @@
 package org.incf.atlas.whs.resource;
 
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,7 +60,6 @@ public class StructureNamesByPOI extends BaseResouce {
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
-	String url = "";
 	String responseString = "";
 	Response response = null;
 	
@@ -72,27 +72,18 @@ public class StructureNamesByPOI extends BaseResouce {
 	String whs10 = config.getValue("srsname.whs.10");
 	String emap = config.getValue("srsname.emap.10");
 	String paxinos = config.getValue("srsname.paxinos.10");
+	URI uri = null;
 
 	public StructureNamesByPOI(Context context, Request request, 
 			Response response) {
 		super(context, request, response);
 		response = response;
-/*		System.out.println("You are in StructureNamesByPOIResource");
-		dataInputString = (String) request.getAttributes().get("dataInputs"); 
-		System.out.println("dataInputString " + dataInputString );
 
-		dataInputs = new DataInputs(dataInputString);
-*/
-		//FIXME - amemon - read the hostname from the config file 
-		WHSConfigurator config = WHSConfigurator.INSTANCE;
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		portNumber = ":8080";
-
-		servicePath = "/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI";
-		//servicePath = "/atlas-whs?Request=Execute&Identifier=GetStructureNamesByPOI";
-
-		//getVariants().add(new Variant(MediaType.APPLICATION_XML));
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -129,9 +120,13 @@ public class StructureNamesByPOI extends BaseResouce {
 	        validateSrsName(vo.getFromSRSCodeOne());
 	        Double[] poiCoords = validateCoordinate(dataInputs);
 
-	        vo.setOriginalCoordinateX(String.valueOf(poiCoords[0].intValue()));
+/*	        vo.setOriginalCoordinateX(String.valueOf(poiCoords[0].intValue()));
 	        vo.setOriginalCoordinateY(String.valueOf(poiCoords[1].intValue()));
 	        vo.setOriginalCoordinateZ(String.valueOf(poiCoords[2].intValue()));
+
+*/	        vo.setOriginalCoordinateX(dataInputs.getValue("x"));
+	        vo.setOriginalCoordinateY(dataInputs.getValue("y"));
+	        vo.setOriginalCoordinateZ(dataInputs.getValue("z"));
 
 	        // if any validation exceptions, no reason to continue
 	        if (exceptionHandler != null) {
@@ -157,8 +152,9 @@ public class StructureNamesByPOI extends BaseResouce {
 
 		    	//Construct GetTransformationChain URL
 		    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-		    	String hostName = config.getValue("incf.deploy.host.name");
-		    	String portNumber = ":8080";
+	 			String incfDeploymentHostName = uri.getHost();
+	 			String incfportNumber = config.getValue("incf.deploy.port.delimitor")+uri.getPort();
+
 		    	String servicePath = "/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 		    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
 		    	XMLUtilities xmlUtilities = new XMLUtilities();
@@ -199,6 +195,27 @@ public class StructureNamesByPOI extends BaseResouce {
 
 	        // there is no point in going further, so return
 	        return getExceptionRepresentation();
+		} else if ( structureName.endsWith("found") ) { //No structure found
+	        ExceptionHandler eh = getExceptionHandler();
+	        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+	                new String[] { "No Structures Found." });
+
+	        // there is no point in going further, so return
+	        return getExceptionRepresentation();
+		} else if ( structureName.endsWith("range") ) { //Out of range
+	        ExceptionHandler eh = getExceptionHandler();
+	        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+	                new String[] { "Coordinates - Out of Range." });
+
+	        // there is no point in going further, so return
+	        return getExceptionRepresentation();
+		} else if ( structureName.endsWith("issue") ) {
+	        ExceptionHandler eh = getExceptionHandler();
+	        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+	                new String[] { "Please contact the administrator to resolve this issue" }); 
+
+	        // there is no point in going further, so return
+	        return getExceptionRepresentation();
 		}
 		//End
 
@@ -214,8 +231,7 @@ public class StructureNamesByPOI extends BaseResouce {
 	      randomGMLID1 = randomGenerator1.nextInt(100);
 	    }
 
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
+        vo.setUrlString(uri.toString());
 
     	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
     	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
@@ -228,7 +244,7 @@ public class StructureNamesByPOI extends BaseResouce {
     	StructureTermsResponseType rootDoc =	document.addNewStructureTermsResponse();
     	QueryInfoType query = rootDoc.addNewQueryInfo();
     	
-    	Utilities.addMethodNameToQueryInfo(query, "GetStructureNamesByPOI  ", url);
+    	Utilities.addMethodNameToQueryInfo(query, "GetStructureNamesByPOI  ", uri.toString());
 
     	Criteria criterias = query.addNewCriteria();
     	
@@ -262,7 +278,7 @@ public class StructureNamesByPOI extends BaseResouce {
 
 		query.addNewQueryUrl();
 		query.getQueryUrl().setName("GetStructureNamesByPOI");
-		query.getQueryUrl().setStringValue(url);
+		query.getQueryUrl().setStringValue(uri.toString());
 		query.setTimeCreated(Calendar.getInstance());
 
     	StructureTerms terms = rootDoc.addNewStructureTerms();

@@ -36,6 +36,24 @@ public class WHSServiceVO {
 		this.flag = flag;
 	}
 
+	private String incfDeployHostname = "";
+	public String getIncfDeployHostname() {
+		return incfDeployHostname;
+	}
+
+	public void setIncfDeployHostname(String incfDeployHostname) {
+		this.incfDeployHostname = incfDeployHostname;
+	}
+
+	public String getIncfDeployPortNumber() {
+		return incfDeployPortNumber;
+	}
+
+	public void setIncfDeployPortNumber(String incfDeployPortNumber) {
+		this.incfDeployPortNumber = incfDeployPortNumber;
+	}
+
+	private String incfDeployPortNumber = "";
 	private String imageBaseName = "";
 	private String imageServiceName = "";
 	private String minX = "";

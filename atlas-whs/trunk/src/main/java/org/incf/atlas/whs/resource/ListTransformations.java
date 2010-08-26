@@ -1,5 +1,6 @@
 package org.incf.atlas.whs.resource;
 
+import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Set;
@@ -30,7 +31,11 @@ public class ListTransformations extends BaseResouce {
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
-	String url = "";
+
+	URI uri = null;
+	String incfDeployHostname = "";
+	String incfDeployPortnumber = "";
+
 
 	WHSConfigurator config = WHSConfigurator.INSTANCE;
 
@@ -40,15 +45,15 @@ public class ListTransformations extends BaseResouce {
 		
 		logger.debug("Instantiated {}.", getClass());
 
-/*		System.out.println("You are in ListTransformations");
-		dataInputString = (String) request.getAttributes().get("dataInputs"); 
-		System.out.println("dataInputString " + dataInputString );
-		
-		dataInputs = new DataInputs(dataInputString);
-
-		getVariants().add(new Variant(MediaType.APPLICATION_XML));
-*/	
+		try { 
+			uri = new URI(request.getResourceRef().toString());
+			incfDeployHostname = uri.getHost();
+			incfDeployPortnumber = String.valueOf(uri.getPort());
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+
+	}
 
 	/* 
 	 * Handle GET requests.
@@ -118,15 +123,9 @@ public class ListTransformations extends BaseResouce {
         String currentTime = dateFormat.format(date);
         vo.setCurrentTime(currentTime);
 
-		hostName = config.getValue("incf.deploy.host.name");
-		System.out.println("****HOSTNAME**** - " + hostName);
-		String portNumber = ":8080";
-
-		servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations";
-		//servicePath = "/atlas-aba?Request=Execute&Identifier=GetTransformationChain";
-
-        url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(url);
+        vo.setUrlString(uri.toString());
+        vo.setIncfDeployHostname(incfDeployHostname);
+        vo.setIncfDeployPortNumber(incfDeployPortnumber);
 
 /*		ObjectFactory of = new ObjectFactory();
 		CoordinateTransformationChainResponse coordinateChain = of.createCoordinateTransformationChainResponse();
