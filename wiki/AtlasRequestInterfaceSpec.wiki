@@ -197,7 +197,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document. [http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/DescribeSrsResponse.xsd WaxML Schema] [http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/Examples/DescribeSRSResponse_full.xml Example XML]</td>
+    <td>XML document. [http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/DescribeSrsResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -232,7 +232,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document. [http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document. [http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/TransformationResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -271,7 +271,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ImagesResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -306,7 +306,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ImagesResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -341,7 +341,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document. ... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -376,7 +376,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document. ... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -416,7 +416,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/CorelationMapResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -454,7 +454,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/GenesResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -494,7 +494,7 @@ Vocabulary]<br/>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/StructureTermsResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -531,7 +531,7 @@ Vocabulary]<br/>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/CoordinateChainTransformationResponses.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -566,7 +566,7 @@ Vocabulary]<br/>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ListSrsResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -602,7 +602,7 @@ Vocabulary]<br/>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchemaListTransformationResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -644,7 +644,7 @@ sourceURL<br/>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/Retrieve2DImagesResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -685,7 +685,7 @@ sourceURL<br/>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/TransformationResponse.xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
