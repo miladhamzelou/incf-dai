@@ -232,7 +232,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.</td>
+    <td>XML document. [http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -271,7 +271,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -285,14 +285,12 @@ Atlas Functions
 
 ===Get2DImagesByURI===
 
-Temporary -- Data Inputs: 
-filter
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th colspan="2">Get2DImagesByURI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=Get2DImagesByURI&DataInputs= ... TBD ...</td>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=Get2DImagesByURI&DataInputs= ... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -304,11 +302,11 @@ filter
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>... TBD ...</td>
+    <td>... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -316,20 +314,18 @@ filter
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByURI&DataInputs=... TBD ...</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByURI&DataInputs=... TO BE DETERMINED ...</td>
   </tr>
 </table>
 
 ===GetCellsByPOI===
 
-Temporary -- Data Inputs: 
-TBD
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th colspan="2">GetCellsByPOI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCellsByPOI&DataInputs= ... TBD ...</td>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCellsByPOI&DataInputs= ... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -341,11 +337,11 @@ TBD
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>... TBD ...</td>
+    <td>... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -353,20 +349,18 @@ TBD
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCellsByPOI&DataInputs=... TBD ...</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCellsByPOI&DataInputs=... TO BE DETERMINED ...</td>
   </tr>
 </table>
 
 ===GetCellsByURI===
 
-Temporary -- Data Inputs: 
-TBD
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th colspan="2">GetCellsByURI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCellsByURI&DataInputs= ... TBD ...</td>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCellsByURI&DataInputs= ... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -378,11 +372,11 @@ TBD
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>... TBD ...</td>
+    <td>... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -390,7 +384,7 @@ TBD
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCellsByURI&DataInputs=... TBD ...</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCellsByURI&DataInputs=... TO BE DETERMINED ...</td>
   </tr>
 </table>
 
@@ -425,7 +419,7 @@ inputSrsName outputSrsName x y z filter
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -477,7 +471,7 @@ None
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -519,7 +513,7 @@ sourceURL<br/>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
@@ -562,7 +556,7 @@ inputSrsName outputSrsNamex y z filter
   </tr>
   <tr>
     <th align="left">Normal Return</th>
-    <td>XML document.</td>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
   </tr>
   <tr>
     <th align="left">Error Return</th>
