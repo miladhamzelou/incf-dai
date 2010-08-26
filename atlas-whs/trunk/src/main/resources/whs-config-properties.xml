@@ -14,7 +14,7 @@
         <name>server.database.atlasdbuser</name>
         <value>atlas</value>
     </property>
-    <property> 
+    <property>
         <name>server.database.atlasdbpassword</name>
         <value>beer</value>
     </property>
@@ -64,7 +64,7 @@
 
 	<property>
         <name>ucsd.host.name</name>
-        <value>132.239.131.188</value>
+        <value></value>
         <!--<value>incf-dev-local.crbs.ucsd.edu</value>-->
         <!--<value>incf.crbs.ucsd.edu</value>-->
     </property>
@@ -100,13 +100,14 @@
 
 	<property>
         <name>incf.deploy.host.name</name>
-        <value>132.239.131.188</value>
+        <value></value>
         <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
     </property>
 
 	<property>
-        <name>incf.aba.port.number</name>
-        <value></value>
+        <name>incf.deploy.port.delimitor</name>
+        <value>:</value>
+        <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
     </property>
 
 	<property>
