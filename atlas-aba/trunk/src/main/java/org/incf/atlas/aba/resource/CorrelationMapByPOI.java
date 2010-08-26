@@ -71,7 +71,10 @@ public class CorrelationMapByPOI extends BaseResouce {
 	String servicePath = "";
 	int randomGMLID1 = 0;
 	int randomGMLID2 = 0;
+	String incfDeployHostname = "";
+	String incfDeployPortnumber = "";
 
+	
 	public CorrelationMapByPOI(Context context, Request request, 
 			Response response) {
 
@@ -81,6 +84,8 @@ public class CorrelationMapByPOI extends BaseResouce {
 
 		try { 
 			uri = new URI(request.getResourceRef().toString());
+			incfDeployHostname = uri.getHost();
+			incfDeployPortnumber = String.valueOf(uri.getPort());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -157,7 +162,7 @@ public class CorrelationMapByPOI extends BaseResouce {
 	    	String delimitor = config.getValue("incf.deploy.port.delimitor");
 	    	String portNumber = delimitor + uri.getPort();
 
-	    	String servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
+	    	String servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 	    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
 	    	XMLUtilities xmlUtilities = new XMLUtilities();
 	    	transformedCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
@@ -210,6 +215,10 @@ public class CorrelationMapByPOI extends BaseResouce {
 		String abaPortNumber = config.getValue("incf.aba.port.number");
 		String abaServicePath = config.getValue("incf.aba.service.path");
 
+        vo.setUrlString(uri.toString());
+        vo.setIncfDeployHostname(incfDeployHostname);
+        vo.setIncfDeployPortNumber(incfDeployPortnumber);
+
 		//Start - Construct the getcoorelationmap url
 		StringBuffer responseString = new StringBuffer();
 		String mapType = vo.getFilter().replaceAll("maptype:", "");
@@ -240,8 +249,6 @@ public class CorrelationMapByPOI extends BaseResouce {
 	    System.out.println("Random GML ID2: - " + randomGMLID2);
 
         //url = "http://" + hostName + portNumber + servicePath + "&DataInputs=" + dataInputsString;
-        vo.setUrlString(uri.toString());
-
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
 		opt.setSaveNamespacesFirst();
