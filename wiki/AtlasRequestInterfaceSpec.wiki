@@ -393,6 +393,44 @@ Atlas Functions
 Temporary -- Data Inputs: 
 inputSrsName outputSrsName x y z filter
 
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th colspan="2">GetCorrelationMapByPOI</th>
+  </tr>
+  <tr>
+    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z];filter=[filter]</td>
+  </tr>
+  <tr>
+    <th align="left">Description</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Applicability</th>
+    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
+    <td>[AtlasRequestInterfaceSpec#SRS_Names inputSrsName]<br/>
+[AtlasRequestInterfaceSpec#SRS_Names outputSrsName]<br/>
+[AtlasRequestInterfaceSpec#Coordinates x]<br/>
+[AtlasRequestInterfaceSpec#Coordinates y]<br/>
+[AtlasRequestInterfaceSpec#Coordinates z]<br/>
+[AtlasRequestInterfaceSpec#Filter filter]</td>
+  </tr>
+  <tr>
+    <th align="left">Normal Return</th>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/...xsd WaxML Schema]</td>
+  </tr>
+  <tr>
+    <th align="left">Error Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Example</th>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=3892;y=2748;z=1434;filter=maptype:coronal</td>
+  </tr>
+</table>
+
 ===GetGenesByPOI===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
