@@ -26,7 +26,7 @@
                 <xs:complexType>
                     <xs:simpleContent>
                         <xs:extension base="xs:anyURI">
-                            <xs:attribute name="thumbnanil" type="xs:anyURI" />
+                            <xs:attribute name="thumbnail" type="xs:anyURI" />
                             <xs:attribute name="metadata" type="xs:anyURI" />
                             <xs:attribute name="name" type="xs:normalizedString" />
                             <xs:attribute name="srsName" type="xs:token" />

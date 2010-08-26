@@ -5,5 +5,8 @@
 	<OpenFile Uri=".\common\CoordinateTransformationCommon.xsd"/>
 	<OpenFile Uri=".\DescribeSrsResponse.xsd"/>
 	<OpenFile Uri=".\ListSrsResponse.xsd"/>
-	<OpenFile Uri=".\GenesResponse.xsd"/>
+	<OpenFile Uri=".\Retrieve2DImageResponse.xsd"/>
+	<OpenFile Uri=".\common\WaxML_Base.xsd"/>
+	<OpenFile Uri=".\Retrieve2DimagesResponse.xsd"/>
+	<OpenFile Uri=".\ImagesResponse.xsd"/>
 </XmlStudioProjectOptions>

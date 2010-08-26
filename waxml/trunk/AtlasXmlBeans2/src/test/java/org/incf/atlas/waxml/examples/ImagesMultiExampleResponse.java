@@ -140,10 +140,12 @@ String typeComment = "type is type of service {wms-jpg|" +
     "wms-gif|" +
     "zoomify|" +
    "url}" +" from type incfImageServicesEnum";
+image1.newCursor().insertComment("There can be more than one");
 image1.newCursor().insertComment(formatComment);
 image1.newCursor().insertComment(thumbnailComment);
 image1.newCursor().insertComment(typeComment);
 ImageSource i1source = image1.addNewImageSource();
+i1source.newCursor().insertComment("Name can be included. See second example");
 		i1source.setStringValue("URL");
 		i1source.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());
 		i1source.setRelavance((float) 0.6);
@@ -187,6 +189,8 @@ ImageSource i1source = image1.addNewImageSource();
 		
 		Image2DType image2 = images.addNewImage2D();
 		ImageSource i2source = image2.addNewImageSource();
+		i2source.newCursor().insertComment("Name is a good place for the Gene Name or an image title");
+		i2source.setName("SomeGeneName");
 		i2source.setStringValue("URL");
 		i2source.setFormat(IncfRemoteFormatEnum.IMAGE_PNG.toString());
 		i2source.setRelavance((float) 0.6);

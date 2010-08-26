@@ -39,6 +39,7 @@
 				<configuration>
 					<source>1.5</source>
 					<target>1.5</target>
+	
 				</configuration>
 			</plugin>
 			<plugin>
@@ -56,9 +57,9 @@
 				<configuration>
 				<!--  	<outputJar>XmlBeansAtlasWaxML.jar</outputJar>
 					-->
-				<!--  
+				  
 				<compiler>${JAVA_HOME}/bin/javac</compiler>
-				-->	
+					
 					<verbose>true</verbose>
 					<quiet>false</quiet>
 					<noJavac>false</noJavac>
@@ -69,7 +70,7 @@
 						<sourceSchema>WaxMlSchema/StructureTermsResponse.xsd</sourceSchema>
 						<sourceSchema>WaxMlSchema/GenesResponse.xsd</sourceSchema>
 						<sourceSchema>WaxMlSchema/CoordinateChainTransformationResponses.xsd</sourceSchema>
-						<sourceSchema>WaxMlSchema/CorelationMapResponse.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/CorrelationMapResponse.xsd</sourceSchema>
 						<sourceSchema>WaxMlSchema/ImagesResponse.xsd</sourceSchema>
 						<sourceSchema>WaxMlSchema/Retrieve2DimageResponse.xsd</sourceSchema>
 						<sourceSchema>WaxMlSchema/Retrieve2DimagesResponse.xsd</sourceSchema>
