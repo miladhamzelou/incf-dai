@@ -1,6 +1,6 @@
 =How To Create a Hub=
 
-  # Have some data to offer.
+  # Have some data to offer. Remember that an INCF Atlas Hub is a _front end_ to your data that provides a common interface to your data.
   # Have a desire to follow INCF [http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec Atlas Interface Specification] which is based on the OGC WPS standard. This describes the client-server _contract_ in terms of requests from a client to the hub and responses from the hub to a client.
   # Review the [https://docs.google.com/Doc?docid=0Af-22shvZFIQZGQ5eDk3d2tfMmRyaGhqNmZw&hl=en INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview] which describes INCF Atlas rpoject.
   # Determine what coordinate system you would like to use.
@@ -8,28 +8,8 @@
   # Use the atlas-common code. This is optional, but this library, or hub building toolkit, is used by the INCF Atlas development team at UCSD. It includes code that is common across multiple hubs such as standard SRS transformations and exception reporting.
   # Implement the requests GetCapabilities and DescribeProcess. These standard WPS request describes the Execute requests methods offered by the hub and allow a hub to be cataloged.
   # Examine the [http://code.google.com/p/incf-dai/wiki/AtlasFunctionHubApplicabilityTable  Atlas Function-Hub Applicability Table].
-  # Select the functions you wish to offer at your hub.
-  
+  # Select the functions you wish to offer at your hub. Beyond the standard GetCapabilities and DescribeProcee requests, it is expected this minimal set of functions would be offered by a hub: DescibeSRS, DescribeTransformations, GetStructureNamesByPOI, ListSRSs, ListTransformations, and TransformPOI.
   # Review section 6 of the [https://docs.google.com/Doc?docid=0Af-22shvZFIQZGQ5eDk3d2tfMmRyaGhqNmZw&hl=en INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview].
-
-
-api what is it
-we have transformations
-
-library of std transformations
-  hub buiding toolkit
-  schema
-svn
-expected LS LT DS DT GSN T(local to some common)
-not supported
-not yet implemented
-atlas-common (an option)
-building exception responses
-Lift GetStructureNamesByPOI
-publish test register at INCF central
-add to applicability table
-adhere to interface spec
-waxML
-
-
-think of what type of data you have
+  # Use the standard [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS/WPS Exception Report] for reporting exceptions or conditions that prevent the hub from returning a normal response.
+  # Consider using the WPS exception report to report INCF Atlas-defined functions not supported at your hub or not yet implemented.
+  # Publish, test, and register your hub with INCF Atlas Central.
