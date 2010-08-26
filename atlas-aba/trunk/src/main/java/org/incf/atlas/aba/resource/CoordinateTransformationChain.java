@@ -32,6 +32,7 @@ public class CoordinateTransformationChain extends BaseResouce {
 	URI uri = null;
 	String incfDeployHostname = "";
 	String incfDeployPortnumber = "";
+
 	ABAConfigurator config = ABAConfigurator.INSTANCE;
 
 	public CoordinateTransformationChain(Context context, Request request, 
@@ -48,7 +49,8 @@ public class CoordinateTransformationChain extends BaseResouce {
 		}
 		
 		}
-
+	
+	
 	/* 
 	 * Handle GET requests.
 	 * 
