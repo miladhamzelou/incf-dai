@@ -58,7 +58,7 @@
 				<!--  	<outputJar>XmlBeansAtlasWaxML.jar</outputJar>
 					-->
 				  
-				<compiler>${JAVA_HOME}/bin/javac</compiler>
+				<!-- <compiler>${JAVA_HOME}/bin/javac</compiler> -->
 					
 					<verbose>true</verbose>
 					<quiet>false</quiet>

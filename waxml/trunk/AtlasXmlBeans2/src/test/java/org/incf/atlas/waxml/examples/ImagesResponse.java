@@ -148,7 +148,7 @@ Utilities.addInputStringCriteria(criterias, "srsName", "Mouse_ABAvoxel_1.0");
 		i1source.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());
 		i1source.setRelavance((float) 0.6);
 		i1source.setSrsName("srscode");
-		i1source.setThumbnanil("http://example.com/image.jpg");
+		i1source.setThumbnail("http://example.com/image.jpg");
 		i1source.setMetadata("URL");
 		i1source.setType(IncfImageServicesEnum.URL.toString());
 

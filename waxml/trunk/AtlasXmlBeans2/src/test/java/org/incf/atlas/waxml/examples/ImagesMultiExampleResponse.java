@@ -150,7 +150,7 @@ i1source.newCursor().insertComment("Name can be included. See second example");
 		i1source.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());
 		i1source.setRelavance((float) 0.6);
 		i1source.setSrsName("srscode");
-		i1source.setThumbnanil("http://example.com/image.jpg");
+		i1source.setThumbnail("http://example.com/image.jpg");
 		i1source.setMetadata("URL");
 		i1source.setType(IncfImageServicesEnum.URL.toString());
 		
@@ -195,7 +195,7 @@ i1source.newCursor().insertComment("Name can be included. See second example");
 		i2source.setFormat(IncfRemoteFormatEnum.IMAGE_PNG.toString());
 		i2source.setRelavance((float) 0.6);
 		i2source.setSrsName("srscode");
-		i2source.setThumbnanil("http://example.com/image.jpg");
+		i2source.setThumbnail("http://example.com/image.jpg");
 		i2source.setMetadata("URL");
 		i2source.setType(IncfImageServicesEnum.WMS_PNG.toString());
 		
