@@ -249,30 +249,6 @@ public class WHSUtil {
 
 	try {
 	
-/*		if ( atlasSpaceName.trim().equalsIgnoreCase(abaVoxel) ) {
-
-			String transformationHostName = config.getValue("incf.transformationservice.host.name");
-			String transformationPortNumber = config.getValue("incf.transformationservice.port.number");
-			String transformationServicePath = config.getValue("incf.transformationservice.abavoxelstructure.path");
-	
-			//Start - Create and run URL, and read the string from the webpage
-			String transforMatrixURL = "http://" + transformationHostName + transformationPortNumber + transformationServicePath + "atlas="+atlasSpaceName+"&x=" + originalCoordinateX + "&y=" + originalCoordinateY + "&z=" + originalCoordinateZ;
-			System.out.println("Transformation matrix url is - " + transforMatrixURL);
-			System.out.println("X in transformation matrix method is - " + originalCoordinateX);
-			URL url = new URL(transforMatrixURL);
-			URLConnection urlCon = url.openConnection();
-			urlCon.setUseCaches(false);
-			BufferedReader in = new BufferedReader(new InputStreamReader(urlCon
-					.getInputStream()));
-			String inputLine;
-			while ((inputLine = in.readLine()) != null) {
-				System.out.println("inputLine - "+inputLine);
-				transformedCoordinateString = transformedCoordinateString + inputLine;
-			}
-			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
-
-		} */
-		
 		if ( atlasSpaceName.trim().equalsIgnoreCase(whs09) ) { 
 
 			String transformationHostName = config.getValue("incf.transformationservice.host.name");
@@ -295,6 +271,19 @@ public class WHSUtil {
 			}
 			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
 
+			// Start - Changes
+			if (transformedCoordinateString == null || transformedCoordinateString.equals("")) {
+				transformedCoordinateString = "No structure found";
+			} else if(transformedCoordinateString != null && transformedCoordinateString.trim().endsWith("range.")) {
+				transformedCoordinateString = "Out of range";
+			} else if (transformedCoordinateString.trim().equals("-")) {
+				transformedCoordinateString = "No structure found";
+			} else {
+				transformedCoordinateString = "Structure Name: "
+					.concat(transformedCoordinateString);
+			}
+			// End - Changes
+			
 		}
 		
 	} catch (MalformedURLException e) {
@@ -801,8 +790,8 @@ public class WHSUtil {
 	 			String whsPortNumber = config.getValue("ucsd.port.number");
 	 			String whsTransformationMatrixURLPrefix = whsHostName + whsPortNumber + whsServicePath;
 
-	 			String incfDeploymentHostName = config.getValue("incf.deploy.host.name");
-	 			String incfportNumber = config.getValue("ucsd.port.number");
+	 			String incfDeploymentHostName = vo.getIncfDeployHostname();
+	 			String incfportNumber = config.getValue("incf.deploy.port.delimitor")+vo.getIncfDeployPortNumber();
 
 	 			String incfTransformationMatrixURLPrefix = incfDeploymentHostName + incfportNumber;
 
@@ -1448,7 +1437,7 @@ public class WHSUtil {
 		opt.setSaveNamespacesFirst();
 		opt.setSaveAggressiveNamespaces();
 		opt.setUseDefaultNamespace();
-		
+
 		ListTransformationsResponseDocument co =   ListTransformationsResponseDocument.Factory.newInstance();
 		co.addNewListTransformationsResponse();
 
@@ -1520,8 +1509,8 @@ public class WHSUtil {
 	 			String whsPortNumber = config.getValue("ucsd.port.number");
 	 			String whsTransformationMatrixURLPrefix = whsHostName + whsPortNumber + whsServicePath;
 
-	 			String incfDeploymentHostName = config.getValue("incf.deploy.host.name");
-	 			String incfportNumber = config.getValue("ucsd.port.number");
+	 			String incfDeploymentHostName = vo.getIncfDeployHostname();
+	 			String incfportNumber = config.getValue("incf.deploy.port.delimitor")+vo.getIncfDeployPortNumber();
 
 	 			String incfTransformationMatrixURLPrefix = incfDeploymentHostName + incfportNumber;
 
