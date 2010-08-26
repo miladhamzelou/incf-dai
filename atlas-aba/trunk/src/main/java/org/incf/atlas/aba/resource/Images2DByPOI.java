@@ -48,7 +48,7 @@ public class Images2DByPOI extends BaseResouce {
 // http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal
 	
 	// used for ABA Get Image URI query string
-	private static final String HIRES = "-1";	// highest resolution available
+	private static final String HI_RES = "-1";	// highest resolution available
 	private static final String THUMB = "0";	// thumbnail
 	private static final String MIME = "2";		// jpeg/image
 	
@@ -180,16 +180,19 @@ public class Images2DByPOI extends BaseResouce {
 		List<Image> images = new ArrayList<Image>();
         for (ImageSeries imageSeries : imageSerieses) {
         	
-        	Image image = new Image(imageSeries);
+        	// begin to add values to image
+        	Image image = new Image(imageSeries.imageSeriesId);
         	
         	// get atlas map
     		// find closest point, get other values including position
+        	// add more (atlas map) values to image
         	// TODO transform to aba_voxel coordinates
         	getClosestPosition(imageSeries, poi100, image);
 	        
 	        logger.debug("Position: {}", image.abaImagePosition);
 	                	
     		// get best image id in image series based on position
+	        // add more (image elements) values to image
     		// match position to find image in series, get imageid
     		//  /image-series/images/image/position
     		//  /image-series/images/image/imageid
@@ -203,7 +206,7 @@ public class Images2DByPOI extends BaseResouce {
         	
     		// assemble aba view image uri
         	image.imageURI = assembleImageURI(image.downloadImagePath, 
-        			HIRES, MIME);
+        			HI_RES, MIME);
         	image.thumbnailurl = assembleImageURI(image.downloadImagePath, 
         			THUMB, MIME);
 	        
@@ -402,6 +405,7 @@ public class Images2DByPOI extends BaseResouce {
 	        XMLInputFactory factory = XMLInputFactory.newInstance();
 	        XMLStreamReader parser = factory.createXMLStreamReader(in);
 	          
+	        boolean inImDisplayName = false;
 	        boolean inImId = false;
 	        boolean inPosition = false;
 	        boolean inThumbnailurl = false;
@@ -411,8 +415,10 @@ public class Images2DByPOI extends BaseResouce {
 	        		event != XMLStreamConstants.END_DOCUMENT;
 	        		event = parser.next()) {
 	        	if (event == XMLStreamConstants.START_ELEMENT) {
-	        		if (parser.getLocalName().equals("imageid")) {
-	        			inImId = true;
+	        		if (parser.getLocalName().equals("imagedisplayname")) {
+	        			inImDisplayName = true;
+	        		} else if (parser.getLocalName().equals("imageid")) {
+		        		inImId = true;
 	        		} else if (parser.getLocalName().equals("position")) {
 	        			inPosition = true;
 	        		} else if (parser.getLocalName().equals("thumbnailurl")) {
@@ -421,7 +427,13 @@ public class Images2DByPOI extends BaseResouce {
 	        			inDownloadImagePath = true;
 	        		}
 	        	} else if (event == XMLStreamConstants.CHARACTERS) {
-	        		if (inImId) {
+	        		
+	        		// element sequence is significant! imagedisplayname and
+	        		// imageid precede position which is match value
+	        		if (inImDisplayName) {
+	        			image.imagedisplayname = parser.getText();
+	        			inImDisplayName = false;
+	        		} else if (inImId) {
 	        			image.imageId = parser.getText();
 	        			inImId = false;
 	        		} else if (inPosition) {
@@ -537,7 +549,8 @@ public class Images2DByPOI extends BaseResouce {
 	
 	private class Image {
 		public String imageId;
-		public ImageSeries imageSeries;			// image series
+//		public ImageSeries imageSeries;			// image series
+		public String imageSeriesId;
 		public int imagesCheckedForProximity;
 		public int zoomLevel;
 		public String imageURI;
@@ -550,6 +563,7 @@ public class Images2DByPOI extends BaseResouce {
 		
 		// from (xPath) /image-series/images/image/* (partial)
 		public String imagecreatedate;
+		public String imagedisplayname;
 		public String imageid;
 		public String referenceAtlasIndex;
 		public String zoomifiednissurl;
@@ -569,14 +583,14 @@ public class Images2DByPOI extends BaseResouce {
 		
 		public String imageUrl;
 		
-		public Image(ImageSeries imageSeries) {
-			this.imageSeries = imageSeries;
+		public Image(String imageSeriesId) {
+			this.imageSeriesId = imageSeriesId;
 		}
 		public String toString() {
 			return String.format("Image: id: %s; ImageSeries: %s, "
 					+ "abaCoordinates: %d, %d, %d; abaXYPixelPosition %d, %d; "
 					+ "abaImagePosition: %s, zoomLevel: %d, imageURI: %s", 
-					imageId, imageSeries, (int) abaCoordinates.x, 
+					imageId, imageSeriesId, (int) abaCoordinates.x, 
 					(int) abaCoordinates.y, (int) abaCoordinates.z,
 					abaXPixelPosition, abaYPixelPosition, abaImagePosition, 
 					zoomLevel, imageURI);
@@ -692,9 +706,10 @@ public class Images2DByPOI extends BaseResouce {
 		ImageSource i1source = image1.addNewImageSource();
 		i1source.setStringValue(im.imageURI);
 		i1source.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());
+		i1source.setName(im.imagedisplayname);
 //		i1source.setRelavance((float) 0.6);
 //		i1source.setSrsName("srscode");
-		i1source.setThumbnanil(im.thumbnailurl);
+		i1source.setThumbnail(im.thumbnailurl);
 //		i1source.setMetadata("URL");
 //		i1source.setType(IncfImageServicesEnum.URL.toString());
 //
