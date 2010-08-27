@@ -15,7 +15,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.namespace.QName;
 
-
 import net.opengis.gml.x32.PointType;
 
 import org.apache.xmlbeans.XmlError;
@@ -51,7 +50,6 @@ public class TransformPOI extends BaseResouce {
 
 	//private String dataInputString;
 	//private DataInputs dataInputs;
-	String url = "";
 	int randomGMLID1 = 0;
 	int randomGMLID2 = 0;
 	URI uri = null;
@@ -189,7 +187,7 @@ public class TransformPOI extends BaseResouce {
 
 		query.addNewQueryUrl();
 		query.getQueryUrl().setName("TransformPOI");
-		query.getQueryUrl().setStringValue(url);
+		query.getQueryUrl().setStringValue(uri.toString());
 		query.setTimeCreated(Calendar.getInstance());
 
 		InputStringType targetsrsCriteria = (InputStringType) criterias
