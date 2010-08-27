@@ -76,7 +76,8 @@ public class BaseResouce extends Resource {
         
         // return it
         getResponse().setStatus(Status.CLIENT_ERROR_FORBIDDEN);
-        return new StringRepresentation(exceptionReportXml);
+        return new StringRepresentation(exceptionReportXml, 
+        		MediaType.APPLICATION_XML);
     }
     
     
