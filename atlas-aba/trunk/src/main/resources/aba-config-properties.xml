@@ -84,7 +84,7 @@
 
 	<property>
         <name>ucsd.whs.service.path</name>
-        <value>/incf-services/service/WHSServiceController?</value>
+        <value>/atlas-whs?</value>
     </property>
 
 	<property>
