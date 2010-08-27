@@ -72,7 +72,7 @@
 						<sourceSchema>WaxMlSchema/CoordinateChainTransformationResponses.xsd</sourceSchema>
 						<sourceSchema>WaxMlSchema/CorrelationMapResponse.xsd</sourceSchema>
 						<sourceSchema>WaxMlSchema/ImagesResponse.xsd</sourceSchema>
-						<sourceSchema>WaxMlSchema/Retrieve2DimageResponse.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/Retrieve2DImageResponse.xsd</sourceSchema>
 						<sourceSchema>WaxMlSchema/Retrieve2DimagesResponse.xsd</sourceSchema>
 					    <sourceSchema>WaxMlSchema/TransformationResponse.xsd</sourceSchema>
 					    
@@ -85,7 +85,7 @@
 					  <sourceSchema>SCHEMAS_OPENGIS_NET/wps/1.0.0/wpsAll.xsd</sourceSchema>
 					-->	
 					</sourceSchemas>
-					<schemaDirectory>${basedir}/src/main/xsd</schemaDirectory>
+					<schemaDirectory>${basedir}/src/main/xsd/</schemaDirectory>
 				<!-- 	<sourceGenerationDirectory>${basedir}/src/java/</sourceGenerationDirectory>
 					<generatedSchemaDirectory>${basedir}/src/xmlbeans-xsds</generatedSchemaDirectory>
 				 -->
