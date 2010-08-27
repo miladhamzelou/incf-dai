@@ -112,7 +112,7 @@ public class ListTransformations extends BaseResouce {
         //End
 
 		UCSDUtil util = new UCSDUtil(); 
-		String responseString = util.getCoordinateTransformationChain(vo);
+		String responseString = util.getTransformationChain(vo);
 
 		//return document.xmlText(opt);
 		return new StringRepresentation(responseString,MediaType.APPLICATION_XML);
