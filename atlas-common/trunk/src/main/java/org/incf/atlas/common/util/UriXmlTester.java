@@ -15,7 +15,7 @@ import javax.xml.transform.stream.StreamSource;
 
 public class UriXmlTester {
 	
-	public static final String HUB = "atlas-emap";
+	public static final String HUB = "atlas-ucsd";
 	public static final String HOST = 
 		"http://incf-dev-local.crbs.ucsd.edu:8080/";
 	
@@ -24,10 +24,13 @@ public class UriXmlTester {
 	public static final String DESCRIBEPROCESS = HOST + HUB
 		+ "?service=WPS&version=1.0.0&request=DescribeProcess";
 	public static final String GET2DIMAGESBYPOI = HOST + HUB
-		+ "?service=WPS&version=1.0.0&request=Execute"
-		+ "&Identifier=Get2DImagesByPOI"
-		+ "&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600"
-		+ ";filter=maptype:coronal";
+	+ "?service=WPS&version=1.0.0&request=Execute"
+	+ "&Identifier=Get2DImagesByPOI"
+	+ "&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600"
+	+ ";filter=maptype:coronal";
+	public static final String GET2DIMAGESBYURI = HOST + HUB
+	+ "?service=WPS&version=1.0.0&request=Execute"
+	+ "&Identifier=Get2DImagesByURI&DataInputs=xxx";
 
     private static final String PRETTY_PRINT_SS = "/PrettyPrint.xslt";
 
@@ -41,9 +44,10 @@ public class UriXmlTester {
 
         execute(GETCAPABILITIES);
         execute(DESCRIBEPROCESS);
+        execute(GET2DIMAGESBYURI);
         
-        System.out.println("Working ...");
-        execute(GET2DIMAGESBYPOI);
+//        System.out.println("Working ...");
+//        execute(GET2DIMAGESBYPOI);
 	}
 
 	public void execute(String function) throws TransformerException, IOException {

@@ -53,13 +53,13 @@ public interface RequestQueryStrings {
     		EXECUTE_REQUEST + "Get2DImagesByPOI" + DATA_INPUTS;
     
     public static final String GET_2D_IMAGES_BY_URI =
-    		EXECUTE_REQUEST + "Get2DImagesByPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "Get2DImagesByURI" + DATA_INPUTS;
     
     public static final String GET_CELLS_BY_POI =
-    		EXECUTE_REQUEST + "Get2DImagesByPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "GetCellsByPOI" + DATA_INPUTS;
     
     public static final String GET_CELLS_BY_URI =
-    		EXECUTE_REQUEST + "Get2DImagesByPOI" + DATA_INPUTS;
+    		EXECUTE_REQUEST + "GetCellsByURI" + DATA_INPUTS;
     
     public static final String GET_CORRELATION_MAP_BY_POI =
     		EXECUTE_REQUEST + "GetCorrelationMapByPOI" + DATA_INPUTS;
