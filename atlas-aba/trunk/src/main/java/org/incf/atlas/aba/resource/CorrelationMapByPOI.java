@@ -156,7 +156,7 @@ public class CorrelationMapByPOI extends BaseResouce {
 	    	vo.setToSRSCodeOne(agea);
 
 	    	//Construct GetTransformationChain URL
-	    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+	    	//http://k:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 	    	
 	    	String hostName = uri.getHost();
 	    	String delimitor = config.getValue("incf.deploy.port.delimitor");
