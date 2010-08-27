@@ -5,8 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import javax.xml.bind.JAXBException;
-
 import org.incf.atlas.aba.util.Constants;
 import org.incf.atlas.aba.util.DataInputs;
 import org.incf.atlas.common.util.ExceptionCode;
@@ -18,7 +16,6 @@ import org.restlet.data.Response;
 import org.restlet.data.Status;
 import org.restlet.resource.Representation;
 import org.restlet.resource.Resource;
-import org.restlet.resource.ResourceException;
 import org.restlet.resource.StringRepresentation;
 import org.restlet.resource.Variant;
 import org.slf4j.Logger;
@@ -76,7 +73,8 @@ public class BaseResouce extends Resource {
         
         // return it
         getResponse().setStatus(Status.CLIENT_ERROR_FORBIDDEN);
-        return new StringRepresentation(exceptionReportXml);
+        return new StringRepresentation(exceptionReportXml, 
+        		MediaType.APPLICATION_XML);
     }
     
     
