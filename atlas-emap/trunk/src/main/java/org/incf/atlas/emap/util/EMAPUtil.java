@@ -746,7 +746,8 @@ public class EMAPUtil {
 		//InputStringType ouputSrsConstraint = InputStringType.Factory.newInstance();
 		ouputSrsConstraint.setName("outputSrsName");
 		ouputSrsConstraint.setValue(vo.getToSRSCode());
-		
+		Utilities.addInputStringCriteria(criterias, "filter", vo.getFilter());
+
 		CoordinateTransformationChain ct = co.getCoordinateTransformationChainResponse().addNewCoordinateTransformationChain();
 		
 /*		ObjectFactory of = new ObjectFactory();
@@ -1256,7 +1257,7 @@ public class EMAPUtil {
 		//InputStringType ouputSrsConstraint = InputStringType.Factory.newInstance();
 		ouputSrsConstraint.setName("outputSrsName");
 		ouputSrsConstraint.setValue(vo.getToSRSCode());
-		
+		Utilities.addInputStringCriteria(criterias, "filter", vo.getFilter());
 		 
 		TransformationList ct = co.getListTransformationsResponse().addNewTransformationList();
 		
