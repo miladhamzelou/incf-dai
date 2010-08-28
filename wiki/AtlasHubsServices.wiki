@@ -37,7 +37,7 @@ Currently the project is using four servers to develop and demonstrate the hubs 
   </tr>
   <tr>
     <td>incf.crbs.ucsd.edu</td>
-    <td>Production<br/>Not currently operational</td>
+    <td>Production<br/>(not currently operational)</td>
     <td>Most stable</td>
     <td>Stockholm</td>
   </tr>
