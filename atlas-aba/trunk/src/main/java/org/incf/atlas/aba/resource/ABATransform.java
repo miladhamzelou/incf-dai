@@ -50,9 +50,9 @@ public class ABATransform
 		xyz2[j] += xyz1[i] * ABAr_to_ABAv[j][i];
 
 	return new int[] {
-	    ( int ) Math.round( xyz2[0] ),
-	    ( int ) Math.round( xyz2[1] ),
-	    ( int ) Math.round( xyz2[2] ),
+	    ( int ) Math.round( xyz2[0]/25 ),
+	    ( int ) Math.round( xyz2[1]/25 ),
+	    ( int ) Math.round( xyz2[2]/25 ),
 	};
 
     }
@@ -85,4 +85,3 @@ public class ABATransform
 
 }
     
-
