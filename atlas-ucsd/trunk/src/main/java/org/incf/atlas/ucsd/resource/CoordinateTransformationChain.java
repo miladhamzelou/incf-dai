@@ -104,7 +104,7 @@ public class CoordinateTransformationChain extends BaseResouce {
         vo.setIncfDeployPortNumber(incfDeployPortNumber);
 
 		UCSDUtil util = new UCSDUtil(); 
-		String responseString = util.getTransformationChain(vo);
+		String responseString = util.getCoordinateTransformationChain(vo);
 
 		//return document.xmlText(opt);
 		return new StringRepresentation(responseString, MediaType.APPLICATION_XML);

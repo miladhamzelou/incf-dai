@@ -25,6 +25,7 @@ import org.incf.atlas.ucsd.util.DataInputs;
 import org.incf.atlas.ucsd.util.UCSDConfigurator;
 import org.incf.atlas.ucsd.util.UCSDUtil;
 import org.incf.atlas.waxml.generated.*;
+import org.incf.atlas.waxml.utilities.Utilities;
 
 import org.restlet.Context;
 import org.restlet.data.MediaType;
@@ -200,6 +201,8 @@ public class TransformPOI extends BaseResouce {
 */
 		InputStringType targetsrsCriteria = (InputStringType) criterias
 		.addNewInput().changeType(InputStringType.type);
+
+		Utilities.addInputStringCriteria(criterias,"inputSrsName", vo.getFromSRSCode());
 
 		targetsrsCriteria.setName("outputSrsName");
 		targetsrsCriteria.setValue(vo.getToSRSCode());

@@ -4,6 +4,7 @@ import org.incf.atlas.common.server.RequestQueryStrings;
 import org.incf.atlas.ucsd.resource.Capabilities;
 import org.incf.atlas.ucsd.resource.CoordinateTransformationChain;
 import org.incf.atlas.ucsd.resource.Get2DImagesByPOI;
+import org.incf.atlas.ucsd.resource.ListSRS;
 import org.incf.atlas.ucsd.resource.ListTransformations;
 import org.incf.atlas.ucsd.resource.NotSupported;
 import org.incf.atlas.ucsd.resource.NotYetImplemented;
@@ -61,7 +62,7 @@ public class ServerApplication extends Application
         router.attach(GET_GENES_BY_POI,           NotSupported.class);
         router.attach(GET_STRUCTURE_NAMES_BY_POI, StructureNamesByPOI.class);
         router.attach(GET_TRANSFORMATION_CHAIN,   CoordinateTransformationChain.class);
-		router.attach(LIST_SRS_S,                 NotYetImplemented.class);
+		router.attach(LIST_SRS_S,                 ListSRS.class);
 		router.attach(LIST_TRANSFORMATIONS,       ListTransformations.class);
 		router.attach(RETRIEVE_2D_IMAGE,          Retrieve2DImage.class);
         router.attach(TRANSFORM_POI,              TransformPOI.class);
