@@ -12,7 +12,7 @@ See the [http://code.google.com/p/incf-dai/wiki/AtlasFunctionHubApplicabilityTab
 
 Currently the project is using four servers to develop and demonstrate the hubs and functions.
 
-<table>
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>URL</th>
     <th>Purpose</th>
