@@ -15,7 +15,6 @@ import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.aba.resource.ABAServiceVO;
 import org.incf.atlas.aba.resource.ABATransform;
-import org.incf.atlas.aba.resource.Utilities;
 
 /*import org.incf.atlas.generated.transformationchain.CoordinateTransformationChain;
 import org.incf.atlas.generated.transformationchain.CoordinateTransformationChainResponse;
@@ -35,6 +34,7 @@ import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseType.
 import org.incf.atlas.waxml.generated.ListTransformationsResponseType.TransformationList;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
+import org.incf.atlas.waxml.utilities.Utilities;
 
 public class ABAUtil {
 
@@ -496,6 +496,8 @@ public class ABAUtil {
 		ouputSrsConstraint.setName("outputSrsName");
 		ouputSrsConstraint.setValue(vo.getToSRSCode());
 		
+		Utilities.addInputStringCriteria(criterias, "filter", vo.getFilter());
+
 		CoordinateTransformationChain ct = co.getCoordinateTransformationChainResponse().addNewCoordinateTransformationChain();
 		
 /*		ObjectFactory of = new ObjectFactory();
@@ -1005,7 +1007,8 @@ public class ABAUtil {
 		//InputStringType ouputSrsConstraint = InputStringType.Factory.newInstance();
 		ouputSrsConstraint.setName("outputSrsName");
 		ouputSrsConstraint.setValue(vo.getToSRSCode());
-		
+
+		Utilities.addInputStringCriteria(criterias, "filter", vo.getFilter());
 		 
 		TransformationList ct = co.getListTransformationsResponse().addNewTransformationList();
 		
