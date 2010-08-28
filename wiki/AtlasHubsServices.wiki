@@ -115,11 +115,11 @@ UCSD HUB
 
  * Execute : ListSRS
 
-http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+    http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
 
-http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
 
-http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+    http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
 
 
 WHS Hub
@@ -190,19 +190,3 @@ EMAP Hub
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-
-
-== WPS Functions under Development ==
-
- * Execute : DescribeSRS
- * Execute : DescribeTransformation
- 
-== Ancillary URLs ==
-
- * http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba/favicon.ico
-
-    Returns the INCF favicon. In some cases the favicon is not displaying properly. I need to check this out.
-
- * http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba/ping/server
-
-    Returns a string acknowledging server connection.
