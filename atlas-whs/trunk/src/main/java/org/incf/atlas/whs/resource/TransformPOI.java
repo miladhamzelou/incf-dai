@@ -193,6 +193,8 @@ public class TransformPOI extends BaseResouce {
 		InputStringType targetsrsCriteria = (InputStringType) criterias
 		.addNewInput().changeType(InputStringType.type);
 
+		Utilities.addInputStringCriteria(criterias,"inputSrsName", vo.getFromSRSCode());
+
 		targetsrsCriteria.setName("outputSrsName");
 		targetsrsCriteria.setValue(vo.getToSRSCode());
 		

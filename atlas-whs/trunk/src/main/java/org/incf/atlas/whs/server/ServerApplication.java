@@ -3,6 +3,7 @@ package org.incf.atlas.whs.server;
 import org.incf.atlas.common.server.RequestQueryStrings;
 import org.incf.atlas.whs.resource.Capabilities;
 import org.incf.atlas.whs.resource.CoordinateTransformationChain;
+import org.incf.atlas.whs.resource.ListSRS;
 import org.incf.atlas.whs.resource.ListTransformations;
 import org.incf.atlas.whs.resource.NotSupported;
 import org.incf.atlas.whs.resource.NotYetImplemented;
@@ -59,7 +60,7 @@ public class ServerApplication extends Application
         router.attach(GET_GENES_BY_POI,           NotSupported.class);
         router.attach(GET_STRUCTURE_NAMES_BY_POI, StructureNamesByPOI.class);
         router.attach(GET_TRANSFORMATION_CHAIN,   CoordinateTransformationChain.class);
-		router.attach(LIST_SRS_S,                 NotYetImplemented.class);
+		router.attach(LIST_SRS_S,                 ListSRS.class);
 		router.attach(LIST_TRANSFORMATIONS,       ListTransformations.class);
 		router.attach(RETRIEVE_2D_IMAGE,          NotSupported.class);
         router.attach(TRANSFORM_POI,              TransformPOI.class);

@@ -25,7 +25,7 @@ import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseType.
 import org.incf.atlas.waxml.generated.ListTransformationsResponseType.TransformationList;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
-import org.incf.atlas.whs.resource.Utilities;
+import org.incf.atlas.waxml.utilities.Utilities;
 import org.incf.atlas.whs.resource.WHSServiceVO;
 
 
@@ -746,7 +746,8 @@ public class WHSUtil {
 		//InputStringType ouputSrsConstraint = InputStringType.Factory.newInstance();
 		ouputSrsConstraint.setName("outputSrsName");
 		ouputSrsConstraint.setValue(vo.getToSRSCode());
-		
+		Utilities.addInputStringCriteria(criterias, "filter", vo.getFilter());
+
 		CoordinateTransformationChain ct = co.getCoordinateTransformationChainResponse().addNewCoordinateTransformationChain();
 		
 /*		ObjectFactory of = new ObjectFactory();
@@ -1256,7 +1257,8 @@ public class WHSUtil {
 		//InputStringType ouputSrsConstraint = InputStringType.Factory.newInstance();
 		ouputSrsConstraint.setName("outputSrsName");
 		ouputSrsConstraint.setValue(vo.getToSRSCode());
-		
+		Utilities.addInputStringCriteria(criterias, "filter", vo.getFilter());
+
 		 
 		TransformationList ct = co.getListTransformationsResponse().addNewTransformationList();
 		

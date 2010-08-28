@@ -270,10 +270,10 @@ public class StructureNamesByPOI extends BaseResouce {
 		zCriteria.setValue(vo.getOriginalCoordinateZ().replace(";z=", ""));
 
     	InputStringType srsCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
-    	srsCodeCriteria.setName("StructureVocabulary");
+    	srsCodeCriteria.setName("vocabulary");
     	srsCodeCriteria.setValue(vo.getVocabulary());
     	InputStringType filterCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
-    	filterCodeCriteria.setName("StructureFilter");
+    	filterCodeCriteria.setName("filter");
 		filterCodeCriteria.setValue(vo.getFilter());
 
 		query.addNewQueryUrl();
