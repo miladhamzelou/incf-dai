@@ -301,15 +301,6 @@ public class StructureNamesByPOI extends BaseResouce {
     	Criteria criterias = query.addNewCriteria();
     	
     	//Changes
-/*    	InputPOIType poiCriteria = (InputPOIType) criterias.addNewInput().changeType(InputPOIType.type);
-    	poiCriteria.setName("POI");
-    	PointType pnt = poiCriteria.addNewPOI().addNewPoint();
-    	pnt.setId(String.valueOf(randomGMLID1));
-    	pnt.setSrsName(vo.getFromSRSCode());
-    	pnt.addNewPos();
-    	//pnt.getPos().setStringValue(Double.parseDouble(vo.getOriginalCoordinateX()) + " "+ Double.parseDouble(vo.getOriginalCoordinateY()) + " " +Double.parseDouble(vo.getOriginalCoordinateZ()));
-    	pnt.getPos().setStringValue(vo.getOriginalCoordinateX() + " "+ vo.getOriginalCoordinateY() + " " +vo.getOriginalCoordinateZ());
-*/
     	
     	InputStringType srsCriteria = (InputStringType) criterias.addNewInput()
     	.changeType(InputStringType.type);
@@ -333,13 +324,13 @@ public class StructureNamesByPOI extends BaseResouce {
 		zCriteria.setValue(vo.getOriginalCoordinateZ().replace(";z=", ""));
 
     	InputStringType srsCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
-    	srsCodeCriteria.setName("StructureVocabulary");
+    	srsCodeCriteria.setName("vocabulary");
     	srsCodeCriteria.setValue(vo.getVocabulary());
     	InputStringType filterCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
-    	filterCodeCriteria.setName("StructureFilter");
+    	filterCodeCriteria.setName("filter");
 		filterCodeCriteria.setValue(vo.getFilter());
 
-		query.addNewQueryUrl();
+		//query.addNewQueryUrl();
 		query.getQueryUrl().setName("GetStructureNamesByPOI");
 		query.getQueryUrl().setStringValue(uri.toString());
 		query.setTimeCreated(Calendar.getInstance());
@@ -371,61 +362,6 @@ public class StructureNamesByPOI extends BaseResouce {
 
 		return null;
 
-	}
-
-	public static synchronized DomRepresentation getDomRepresentation(
-			Object object) {
-		DomRepresentation representation = null;
-		try {
-			// create representation and get its empty dom
-			representation = new DomRepresentation(MediaType.TEXT_XML);
-			System.out.println("1");
-			Document d = representation.getDocument();
-			System.out.println("2");
-
-			final Marshaller marshaller = getWBCJAXBContext()
-					.createMarshaller();
-			System.out.println("3");
-			
-			marshaller.setProperty("com.sun.xml.bind.namespacePrefixMapper", 
-					new AtlasNamespacePrefixMapper());
-			System.out.println("4");
-
-			// marshal object into representation's dom
-			Class clazz = object.getClass();
-			System.out.println("5");
-			QName qName = new QName(
-					"http://www.incf.org/waxML",
-					clazz.getSimpleName());
-			System.out.println("6");
-			JAXBElement jaxbElement = new JAXBElement(qName, clazz, object);
-			System.out.println("7");
-			marshaller.marshal(jaxbElement, d);
-			System.out.println("8");
-
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-		return representation;
-	}
-
-	protected static JAXBContext jaxbContext = null;
-
-	/**
-	 * Lazily instantiates a single version of the JAXBContext since it is slow
-	 * to create and can be reused throughout the lifetime of the app.
-	 * 
-	 * @return
-	 */
-	public static JAXBContext getWBCJAXBContext() {
-		if (jaxbContext == null) {
-			try {
-				jaxbContext = JAXBContext.newInstance("org.incf.waxml");
-			} catch (JAXBException e) {
-				throw new RuntimeException(e);
-			}
-		}
-		return jaxbContext;
 	}
 
 }

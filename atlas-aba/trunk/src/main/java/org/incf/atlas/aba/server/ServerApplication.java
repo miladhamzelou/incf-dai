@@ -5,6 +5,7 @@ import org.incf.atlas.aba.resource.Capabilities;
 import org.incf.atlas.aba.resource.CoordinateTransformationChain;
 import org.incf.atlas.aba.resource.CorrelationMapByPOI;
 import org.incf.atlas.aba.resource.Images2DByPOI;
+import org.incf.atlas.aba.resource.ListSRS;
 import org.incf.atlas.aba.resource.ListTransformations;
 import org.incf.atlas.aba.resource.NotSupported;
 import org.incf.atlas.aba.resource.NotYetImplemented;
@@ -62,7 +63,7 @@ public class ServerApplication extends Application
         router.attach(GET_GENES_BY_POI,           NotYetImplemented.class);
         router.attach(GET_STRUCTURE_NAMES_BY_POI, StructureNamesByPOI.class);
         router.attach(GET_TRANSFORMATION_CHAIN,   CoordinateTransformationChain.class);
-		router.attach(LIST_SRS_S,                 NotYetImplemented.class);
+		router.attach(LIST_SRS_S,                 ListSRS.class);
 		router.attach(LIST_TRANSFORMATIONS,       ListTransformations.class);
 		router.attach(RETRIEVE_2D_IMAGE,          NotYetImplemented.class);
         router.attach(TRANSFORM_POI,              TransformPOI.class);

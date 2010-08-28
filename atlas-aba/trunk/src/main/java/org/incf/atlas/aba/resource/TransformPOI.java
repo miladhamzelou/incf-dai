@@ -26,6 +26,8 @@ import org.incf.atlas.common.util.ExceptionCode;
 import org.incf.atlas.common.util.ExceptionHandler;
 import org.incf.atlas.waxml.generated.*;
 
+import org.incf.atlas.waxml.utilities.Utilities;
+
 import org.restlet.Context;
 import org.restlet.data.MediaType;
 import org.restlet.data.Request;
@@ -194,6 +196,8 @@ public class TransformPOI extends BaseResouce {
 
 		InputStringType targetsrsCriteria = (InputStringType) criterias
 		.addNewInput().changeType(InputStringType.type);
+
+		Utilities.addInputStringCriteria(criterias,"inputSrsName", vo.getFromSRSCode());
 
 		targetsrsCriteria.setName("outputSrsName");
 		targetsrsCriteria.setValue(vo.getToSRSCode());

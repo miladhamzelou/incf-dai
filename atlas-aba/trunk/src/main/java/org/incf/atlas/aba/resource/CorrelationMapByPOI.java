@@ -74,6 +74,9 @@ public class CorrelationMapByPOI extends BaseResouce {
 	String incfDeployHostname = "";
 	String incfDeployPortnumber = "";
 
+	String coordinateX = "";
+	String coordinateY = "";
+	String coordinateZ = "";
 	
 	public CorrelationMapByPOI(Context context, Request request, 
 			Response response) {
@@ -130,6 +133,10 @@ public class CorrelationMapByPOI extends BaseResouce {
 	        vo.setOriginalCoordinateY(dataInputs.getValue("y"));
 	        vo.setOriginalCoordinateZ(dataInputs.getValue("z"));
 
+	        coordinateX = dataInputs.getValue("x");
+	        coordinateY = dataInputs.getValue("y");
+	        coordinateZ = dataInputs.getValue("z");
+	        
 	        // if any validation exceptions, no reason to continue
 	        if (exceptionHandler != null) {
 	            return getExceptionRepresentation();
@@ -276,20 +283,22 @@ public class CorrelationMapByPOI extends BaseResouce {
 		pnt.getPos().setStringValue("1 1 1");
 */		
 		
+		Utilities.addInputStringCriteria(criterias, "srsName", vo.getFromSRSCode());
+
 		InputStringType xCriteria = (InputStringType) criterias.addNewInput()
 		.changeType(InputStringType.type);
 		xCriteria.setName("x");
-		xCriteria.setValue(vo.getOriginalCoordinateX());
+		xCriteria.setValue(coordinateX);
 		
 		InputStringType yCriteria = (InputStringType) criterias.addNewInput()
 				.changeType(InputStringType.type);
 		yCriteria.setName("y");
-		yCriteria.setValue(vo.getOriginalCoordinateY());
+		yCriteria.setValue(coordinateY);
 		
 		InputStringType zCriteria = (InputStringType) criterias.addNewInput()
 				.changeType(InputStringType.type);
 		zCriteria.setName("z");
-		zCriteria.setValue(vo.getOriginalCoordinateZ());
+		zCriteria.setValue(coordinateZ);
 
 		InputStringType filterCodeCriteria = (InputStringType) criterias.addNewInput().changeType(InputStringType.type);
 		filterCodeCriteria.setName("filter");
