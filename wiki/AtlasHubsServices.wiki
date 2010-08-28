@@ -15,6 +15,38 @@ Currently the project is using four servers to develop and demonstrate the hubs 
  * incf-dev-local.crbs.ucsd.edu - more stable, development and testing, location: UCSD
  * incf-dev.crbs.ucsd.edu - more stable, staging and testing, location: Stockholm
  * incf.crbs.ucsd.edu - most stable, production (not currently in use), location: Stockholm
+<table>
+  <tr>
+    <th>URL</th>
+    <th>Purpose</th>
+    <th>Relative<br/>Stability</th>
+    <th>Location</th>
+  </tr>
+    <td>132.239.131.188</td>
+    <td>Active development and testing</td>
+    <td>Unstable</td>
+    <td>San Diego</td>
+  <tr>
+    <td>incf-dev-local.crbs.ucsd.edu</td>
+    <td>Development and testing</td>
+    <td>More stable</td>
+    <td>San Diego</td>
+  </tr>
+  <tr>
+    <td>incf-dev.crbs.ucsd.edu</td>
+    <td>Staging and testing</td>
+    <td>More stable</td>
+    <td>Stockholm</td>
+  </tr>
+  <tr>
+    <td>incf.crbs.ucsd.edu</td>
+    <td>Production<br/>Not currently operational</td>
+    <td>Most stable</td>
+    <td>Stockholm</td>
+  </tr>
+  <tr>
+  </tr>
+</table>
 
 ==Working Example Requests/Processes==
 
