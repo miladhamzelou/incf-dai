@@ -91,27 +91,27 @@ public class ListSRS extends BaseResouce {
 
 	    Random randomGenerator2 = new Random();
 	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID2 = randomGenerator1.nextInt(100);
+	      randomGMLID2 = randomGenerator2.nextInt(100);
 	    }
 
 	    Random randomGenerator3 = new Random();
 	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID3 = randomGenerator1.nextInt(100);
+	      randomGMLID3 = randomGenerator3.nextInt(100);
 	    }
 
 	    Random randomGenerator4 = new Random();
 	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID4 = randomGenerator1.nextInt(100);
+	      randomGMLID4 = randomGenerator4.nextInt(100);
 	    }
 
 	    Random randomGenerator5 = new Random();
 	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID5 = randomGenerator1.nextInt(100);
+	      randomGMLID5 = randomGenerator5.nextInt(100);
 	    }
 
 	    Random randomGenerator6 = new Random();
 	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID6 = randomGenerator1.nextInt(100);
+	      randomGMLID6 = randomGenerator6.nextInt(100);
 	    }
 
         try { 
@@ -233,7 +233,7 @@ public class ListSRS extends BaseResouce {
 	cite.setStringValue("http://mouse.brain-map.org/welcome.do");
 	cite.setFormat("Slices");
     DerivedFrom derived = srs.addNewDerivedFrom();
-    derived.setSrsName("Mouse_ABAreference_1.0");
+    //derived.setSrsName("Mouse_ABAreference_1.0");
     //derived.setMethod("MethodName");
     srs.setDateCreated(Calendar.getInstance());
 	srs.setDateUpdated(Calendar.getInstance());
@@ -262,7 +262,7 @@ public class ListSRS extends BaseResouce {
 		
 		IncfCodeType origin = 	srs.addNewOrigin();
 		//origin.setCodeSpace("URN");
-		origin.setStringValue("front-left-top");
+		origin.setStringValue("front-right-top");
 
 	     //   <Area structureName=”whole brain” structureURN=”…”/>
 	Area area = srs.addNewArea();
@@ -290,7 +290,7 @@ public class ListSRS extends BaseResouce {
 	cite.setStringValue("http://mouse.brain-map.org/welcome.do");
 	//cite.setFormat("Slices");
     DerivedFrom derived = srs.addNewDerivedFrom();
-    derived.setSrsName("Mouse_ABAvoxel_1.0");
+    //derived.setSrsName("Mouse_ABAvoxel_1.0");
     //derived.setMethod("MethodName");
     srs.setDateCreated(Calendar.getInstance());
 	srs.setDateUpdated(Calendar.getInstance());
@@ -319,7 +319,7 @@ public class ListSRS extends BaseResouce {
 		
 		IncfCodeType origin = 	srs.addNewOrigin();
 		//origin.setCodeSpace("URN");
-		origin.setStringValue("front-left-top");
+		origin.setStringValue("front-right-top");
 
 	     //   <Area structureName=”whole brain” structureURN=”…”/>
 	Area area = srs.addNewArea();
@@ -347,7 +347,7 @@ public class ListSRS extends BaseResouce {
 	cite.setStringValue("http://mouse.brain-map.org/welcome.do");
 	//cite.setFormat("Slices");
     DerivedFrom derived = srs.addNewDerivedFrom();
-    derived.setSrsName("Mouse_AGEA_1.0");
+    derived.setSrsName("Mouse_ABAvoxel_1.0");
     //derived.setMethod("MethodName");
     srs.setDateCreated(Calendar.getInstance());
 	srs.setDateUpdated(Calendar.getInstance());
@@ -404,7 +404,7 @@ public class ListSRS extends BaseResouce {
 	//cite.setStringValue("http://mouse.brain-map.org/welcome.do");
 	cite.setFormat("Slices");
     DerivedFrom derived = srs.addNewDerivedFrom();
-    derived.setSrsName("Mouse_Paxinos_1.0");
+    //derived.setSrsName("Mouse_Paxinos_1.0");
     //derived.setMethod("MethodName");
     srs.setDateCreated(Calendar.getInstance());
 	srs.setDateUpdated(Calendar.getInstance());
@@ -433,7 +433,7 @@ public class ListSRS extends BaseResouce {
 		
 		IncfCodeType origin = 	srs.addNewOrigin();
 		//origin.setCodeSpace("URN");
-		origin.setStringValue("back-left-bottom");
+		origin.setStringValue("back-right-bottom");
 
 	     //   <Area structureName=”whole brain” structureURN=”…”/>
 	Area area = srs.addNewArea();
@@ -461,7 +461,7 @@ public class ListSRS extends BaseResouce {
 	cite.setStringValue("http://software.incf.org/software/waxholm-space");
 	cite.setFormat("Zipped NIFTI");
     DerivedFrom derived = srs.addNewDerivedFrom();
-    derived.setSrsName("Mouse_WHS_0.9");
+    //derived.setSrsName("Mouse_WHS_0.9");
     //derived.setMethod("MethodName");
     srs.setDateCreated(Calendar.getInstance());
 	srs.setDateUpdated(Calendar.getInstance());
@@ -518,7 +518,7 @@ public class ListSRS extends BaseResouce {
 	cite.setStringValue("http://software.incf.org/software/waxholm-space");
 	cite.setFormat("Zipped NIFTI");
     DerivedFrom derived = srs.addNewDerivedFrom();
-    derived.setSrsName("Mouse_WHS_1.0");
+    derived.setSrsName("Mouse_WHS_0.9");
     //derived.setMethod("MethodName");
     srs.setDateCreated(Calendar.getInstance());
 	srs.setDateUpdated(Calendar.getInstance());
@@ -543,7 +543,7 @@ public class ListSRS extends BaseResouce {
 		//abaReferenceSRS(srs1);
 		//abaVoxelSRS(srs2);
 		//abaAGEASRS(srs3);
-		//abaPaxinosSRS(srs4);
+		//abaPaxinosSRS(srs1);
 		abaWHS09SRS(srs1);
 		abaWHS10SRS(srs2);
 		
