@@ -45,13 +45,13 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
 ===ABA Hub===
 
- * !GetCapabilities -- returns a validated WPS XML response
+ * !GetCapabilities
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities
 
- * !DescribeProcess -- returns a validated WPS XML response
+ * !DescribeProcess
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=DescribeProcess
 
@@ -101,13 +101,13 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
 ===EMAP Hub===
 
- * !GetCapabilities -- returns a validated WPS XML response
+ * !GetCapabilities
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&request=GetCapabilities
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&request=GetCapabilities
 
- * !DescribeProcess -- returns a validated WPS XML response
+ * !DescribeProcess
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=DescribeProcess
 
@@ -133,13 +133,13 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
 ===UCSD Hub===
 
- * !GetCapabilities -- returns a validated WPS XML response
+ * !GetCapabilities
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&request=GetCapabilities
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&request=GetCapabilities
 
- * !DescribeProcess -- returns a validated WPS XML response
+ * !DescribeProcess
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=DescribeProcess
 
@@ -190,13 +190,13 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
 ===WHS Hub===
 
-  * !GetCapabilities -- returns a validated WPS XML response
+  * !GetCapabilities
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&request=GetCapabilities
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&request=GetCapabilities
 
- * !DescribeProcess -- returns a validated WPS XML response
+ * !DescribeProcess
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=DescribeProcess
 
@@ -231,24 +231,3 @@ Currently the project is using four servers to develop and demonstrate the hubs 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
-
-
-EMAP Hub
-
- * Execute : TransformPOI
-
-    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_EMAP-T26_1.0;x=12;y=-29;z=-73;filter=cerebellum
-
-    http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_EMAP-T26_1.0;x=12;y=-29;z=-73;filter=cerebellum
-
- * Execute : GetTransformationChain
-
-    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-
-    http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-
- * Execute : ListTransformations
-
-    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-
-    http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
