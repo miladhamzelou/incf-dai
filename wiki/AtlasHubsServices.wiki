@@ -119,13 +119,13 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_EMAP-T26_1.0;x=12;y=-29;z=-73;filter=cerebellum
 
- * Execute : GetTransformationChain
+ * Execute : !GetTransformationChain
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 
- * Execute : ListTransformations
+ * Execute : !ListTransformations
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 
