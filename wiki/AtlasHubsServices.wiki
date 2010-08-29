@@ -19,14 +19,10 @@ Currently the project is using four servers to develop and demonstrate the hubs 
     <th>Relative<br/>Stability</th>
     <th>Location</th>
   </tr>
-    <td>132.239.131.188</td>
-    <td>Active development and testing</td>
-    <td>Unstable</td>
-    <td>San Diego</td>
   <tr>
     <td>incf-dev-local.crbs.ucsd.edu</td>
     <td>Development and testing</td>
-    <td>More stable</td>
+    <td>Least stable</td>
     <td>San Diego</td>
   </tr>
   <tr>
