@@ -1,3 +1,4 @@
+#labels Featured
 We have all the 4 Hubs (ABA, UCSD, EMAP, and WHS) up serving WPS functions on 132.239.131.188(Development Environment), incf-dev-local.crbs.ucsd.edu(Staging Environment), and incf-dev.crbs.ucsd.edu(Production Environment). 
 
 == Working WPS Functions ==
