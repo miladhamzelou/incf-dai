@@ -1,4 +1,3 @@
-#labels Featured
 #Description of the planned server(s) and development architecture.
 
 = Overview =
