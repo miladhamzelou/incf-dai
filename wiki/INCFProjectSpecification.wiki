@@ -1,3 +1,4 @@
+#labels Featured
 INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview
 Version 0.5, July 2010. 
 Digital Atlasing Infrastructure Task Force
@@ -33,4 +34,3 @@ Neuroinformatics'2010 Demo "Representation of Coordinate Reference Systems for 
  https://docs.google.com/leaf?id=0B4DIwjjoNBb-ZGM3MTJiZmItNjdhZC00MWFmLWFiMDgtM2Q3YTcyNGZiYTk5&hl=en&authkey=CKLnkpoK
 
  The final version: https://docs.google.com/leaf?id=0B4DIwjjoNBb-YmNmYWYwOGYtZmI2Ni00MTYxLWEzYWQtMDViNjNmMzU5Yzhl&hl=en&authkey=CIrB2aQH
-
