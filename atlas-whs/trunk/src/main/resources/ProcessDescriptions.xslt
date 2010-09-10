@@ -11,7 +11,7 @@
   <Encoding>UTF-8</Encoding>
 </xsl:variable>
 
-<xsl:variable name="prefix" select="'http://www.incf.oef/atlas/WaxML/schema/'"/>
+<xsl:variable name="prefix" select="'http://www.incf.org/atlas/WaxML/schema/'"/>
 
 <xsl:template match="/">
 
@@ -24,16 +24,26 @@
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>DescribeSRS</ows:Identifier>
-    <ows:Title>Describe SRS</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Title>Describe Atlas SRS</ows:Title>
+    <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
     <DataInputs>
-<xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
+      <Input>
+        <ows:Identifier>srsName</ows:Identifier>
+        <ows:Title>Atlas SRS Name</ows:Title>
+        <ows:Abstract>The Atlas SRS (Spatial Reference System) name whose description is requested.</ows:Abstract>
+        <LiteralData>
+          <ows:AllowedValues>
+            <ows:Value>Mouse_WHS_0.9</ows:Value>
+            <ows:Value>Mouse_WHS_1.0</ows:Value>
+          </ows:AllowedValues>
+        </LiteralData>
+      </Input>
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>DescribeSRSOutput</ows:Identifier>
+        <ows:Title>DescribeSRS Output</ows:Title>
+        <ows:Abstract>The response from this request describes the principal SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -60,7 +70,7 @@
 </xsl:attribute>
     <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
     <ows:Title>Get Structure Names by POI</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>Get structure names at a POI (point of interest) specified in the request.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='x']/*"/>
@@ -71,9 +81,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>GetStructureNamesByPOIOutput</ows:Identifier>
+        <ows:Title>GetStructureNamesByPOI Output</ows:Title>
+        <ows:Abstract>The response from this request contains structure names at the specified POI (point of interest).</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -100,13 +110,13 @@
 </xsl:attribute>
     <ows:Identifier>ListSRSs</ows:Identifier>
     <ows:Title>List SRS Names</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
     <!-- There are no inputs for this function. -->
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>ListSRSsOutput</ows:Identifier>
+        <ows:Title>ListSRSs Output</ows:Title>
+        <ows:Abstract>The response from this request lists the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
