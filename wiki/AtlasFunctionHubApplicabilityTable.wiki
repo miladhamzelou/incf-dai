@@ -14,6 +14,38 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
     <th align="center">WHS Hub</th>
   </tr>
   <tr>
+    <th align="left">GetProcessesByIdentifier</th>
+    <td align="center">*X*</td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td align="center"></td>
+  </tr>
+  <tr>
+    <th align="left">ListHubs</th>
+    <td align="center">*X*</td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td align="center"></td>
+  </tr>
+  <tr>
+    <th align="left">ListHubServices</th>
+    <td align="center">*X*</td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td align="center"></td>
+  </tr>
+  <tr>
+    <th align="left">ListProcesses</th>
+    <td align="center">*X*</td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td align="center"></td>
+  </tr>
+  <tr>
     <th align="left">DescribeSRS</th>
     <td align="center"></td>
     <td align="center">*X*</td>
@@ -31,7 +63,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">Get2DImagesByPOI</th>
-    <td align="center"></td>
+    <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center"></td>
     <td align="center">*X*</td>
@@ -87,7 +119,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">!GetTransformationChain</th>
-    <td align="center"></td>
+    <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -95,7 +127,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">ListSRSs</th>
-    <td align="center"></td>
+    <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
