@@ -7,6 +7,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <td></td>
+    <th align="center">Central</th>
     <th align="center">ABA Hub</th>
     <th align="center">EMAP Hub</th>
     <th align="center">UCSD Hub</th>
@@ -14,6 +15,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">DescribeSRS</th>
+    <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -21,6 +23,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">!DescribeTransfomation</th>
+    <td align="center"></td>
     <td align="center">x</td>
     <td align="center">x</td>
     <td align="center">x</td>
@@ -28,6 +31,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">Get2DImagesByPOI</th>
+    <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center"></td>
     <td align="center">*X*</td>
@@ -37,11 +41,13 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
     <th align="left">Get2DImagesByURI</th>
     <td align="center"></td>
     <td align="center"></td>
+    <td align="center"></td>
     <td align="center">x</td>
     <td align="center"></td>
   </tr>
   <tr>
     <th align="left">GetCellsByPOI</th>
+    <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center">x</td>
@@ -51,11 +57,13 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
     <th align="left">GetCellsByURI</th>
     <td align="center"></td>
     <td align="center"></td>
+    <td align="center"></td>
     <td align="center">x</td>
     <td align="center"></td>
   </tr>
   <tr>
     <th align="left">GetCorrelationMapByPOI</th>
+    <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center"></td>
     <td align="center"></td>
@@ -63,6 +71,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">GetGenesByPOI</th>
+    <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center"></td>
@@ -70,6 +79,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">GetStructureNamesByPOI</th>
+    <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center"></td>
     <td align="center">x</td>
@@ -77,6 +87,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">!GetTransformationChain</th>
+    <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -84,6 +95,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">ListSRSs</th>
+    <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -91,6 +103,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">!ListTransformations</th>
+    <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -98,6 +111,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">Retrieve2DImage</th>
+    <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center"></td>
     <td align="center">*X*</td>
@@ -105,6 +119,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">TransformPOI</th>
+    <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
