@@ -135,7 +135,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to all
   </tr>
   <tr>
     <th align="left">!ListTransformations</th>
-    <td align="center"></td>
+    <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
