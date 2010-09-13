@@ -11,7 +11,8 @@
   <Encoding>UTF-8</Encoding>
 </xsl:variable>
 
-<xsl:variable name="prefix" select="'http://www.incf.oef/atlas/WaxML/schema/'"/>
+<!--<xsl:variable name="prefix" select="'http://www.incf.org/atlas/WaxML/schema/'"/>-->
+<xsl:variable name="prefix" select="'http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/'"/>
 
 <xsl:template match="/">
 
@@ -24,16 +25,16 @@
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>DescribeSRS</ows:Identifier>
-    <ows:Title>Describe SRS</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Title>Describe Atlas SRS</ows:Title>
+    <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>DescribeSRSOutput</ows:Identifier>
+        <ows:Title>DescribeSRS Output</ows:Title>
+        <ows:Abstract>The response from this request describes the principal SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -137,13 +138,13 @@
 </xsl:attribute>
     <ows:Identifier>ListSRSs</ows:Identifier>
     <ows:Title>List SRS Names</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
     <!-- There are no inputs for this function. -->
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>ListSRSsOutput</ows:Identifier>
+        <ows:Title>ListSRSs Output</ows:Title>
+        <ows:Abstract>The response from this request lists the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
