@@ -11,7 +11,8 @@
   <Encoding>UTF-8</Encoding>
 </xsl:variable>
 
-<xsl:variable name="prefix" select="'http://www.incf.org/atlas/WaxML/schema/'"/>
+<!--<xsl:variable name="prefix" select="'http://www.incf.org/atlas/WaxML/schema/'"/>-->
+<xsl:variable name="prefix" select="'http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/'"/>
 
 <xsl:template match="/">
 
@@ -30,7 +31,7 @@
       <Input>
         <ows:Identifier>srsName</ows:Identifier>
         <ows:Title>Atlas SRS Name</ows:Title>
-        <ows:Abstract>The Atlas SRS (Spatial Reference System) name whose description is requested.</ows:Abstract>
+        <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
         <LiteralData>
           <ows:AllowedValues>
             <ows:Value>Mouse_WHS_0.9</ows:Value>
