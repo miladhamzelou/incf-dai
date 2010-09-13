@@ -38,7 +38,7 @@
           <target>1.5</target>
         </configuration>
       </plugin>
-
+<!-- 
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -55,6 +55,7 @@
           <mainClass>org.incf.atlas.emap.util.CachedXmlBuilder</mainClass>
         </configuration>
       </plugin>
+       -->
     </plugins>
   
     <!-- resolve variables in resource files in the build process -->
