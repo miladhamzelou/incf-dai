@@ -40,6 +40,7 @@
         </configuration>
       </plugin>
 
+<!-- 
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -56,6 +57,7 @@
           <mainClass>org.incf.atlas.ucsd.util.CachedXmlBuilder</mainClass>
         </configuration>
       </plugin>
+       -->
     </plugins>
 	
     <!-- resolve variables in resource files in the build process -->
