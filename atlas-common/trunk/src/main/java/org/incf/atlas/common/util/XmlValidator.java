@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.net.URL;
 
 import javax.xml.XMLConstants;
@@ -152,21 +153,27 @@ public class XmlValidator {
 	}
 	
 	// dev testing only
-	public static void main(String[] a) {
+	public static void main(String[] a) throws Exception {
 //		final String SCHEMA = "src/main/resources/wpsSchema/wpsGetCapabilities_response.xsd";
 //		final String XML = "src/main/resources/database/Capabilities.xq";
 		
-//		final String SCHEMA = "src/main/resources/wpsSchema/wpsDescribeProcess_response.xsd";
-//		final String XML = "/database/ProcessDescriptions.xml";
+		final String SCHEMA = "src/main/xsd/wpsSchema/wpsDescribeProcess_response.xsd";
+		final String XML = "src/main/resources/ProcessDescriptionsMaster.xml";
 		
-		final String SCHEMA = "src/main/xsd/owsExceptionReport.xsd";
-		final String XML = "src/main/resources/exampleResponses/ExceptionReport.xml";
+//		final String SCHEMA = "src/main/xsd/owsExceptionReport.xsd";
+//		final String XML = "src/main/resources/exampleResponses/ExceptionReport.xml";
+		
+//		final URL url = new URL("http://schemas.opengis.net/wps/1.0.0/wpsDescribeProcess_response.xsd");
+//		final InputStream isSchema = url.openStream();
+//		final InputStream isFile = new FileInputStream(XML);
 		
 		XmlValidator validator = new XmlValidator();
 		if (validator.validate(new File(XML), new File(SCHEMA))) {
+//		if (validator.validate(isFile, isSchema)) {
 			System.out.println(XML + ": Passed validation");
 		} else {
 			System.out.println(XML + ": Failed validation");
+			System.out.println(validator.getValidationErrors());
 		}
 	}
 

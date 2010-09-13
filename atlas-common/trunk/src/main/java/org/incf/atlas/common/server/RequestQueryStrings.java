@@ -42,6 +42,19 @@ public interface RequestQueryStrings {
     public static final String DESCRIBE_PROCESS =
     		SERVICE + VERSION + REQUEST_KEY + "DescribeProcess";
     
+    // execute requests (central only)
+    public static final String GET_PROCESSES_BY_IDENTIFIER =
+		EXECUTE_REQUEST + "GetProcessesByIdentifier" + DATA_INPUTS;
+
+    public static final String LIST_HUBS =
+		EXECUTE_REQUEST + "ListHubs" + DATA_INPUTS;
+
+    public static final String LIST_HUB_SERVICES =
+		EXECUTE_REQUEST + "ListHubServices" + DATA_INPUTS;
+
+    public static final String LIST_PROCESSES =
+		EXECUTE_REQUEST + "ListProcesses" + DATA_INPUTS;
+
     // execute requests (not all are supported at all hubs)
     public static final String DESCRIBE_SRS =
     		EXECUTE_REQUEST + "DescribeSRS" + DATA_INPUTS;

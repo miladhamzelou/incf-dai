@@ -11,7 +11,8 @@
   <Encoding>UTF-8</Encoding>
 </xsl:variable>
 
-<xsl:variable name="prefix" select="'http://www.incf.oef/atlas/WaxML/schema/'"/>
+<!--<xsl:variable name="prefix" select="'http://www.incf.org/atlas/WaxML/schema/'"/>-->
+<xsl:variable name="prefix" select="'http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/'"/>
 
 <xsl:template match="/">
 
@@ -19,21 +20,23 @@
     xmlns:ows="http://www.opengis.net/ows/1.1"
     xmlns:wps="http://www.opengis.net/wps/1.0.0">
     
+  <!-- DESCRIBE SRS -->  
+  <proc id="DescribeSRS">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>DescribeSRS</ows:Identifier>
-    <ows:Title>Describe SRS</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Title>Describe Atlas SRS</ows:Title>
+    <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>DescribeSRSOutput</ows:Identifier>
+        <ows:Title>DescribeSRS Output</ows:Title>
+        <ows:Abstract>The response from this request describes the principal SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -53,20 +56,23 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- DESCRIBE TRANSFORMATIONS -->  
+  <proc id="DescribeTransformation">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
-    <ows:Identifier>DescribeTransformations</ows:Identifier>
-    <ows:Title>Describe Transformations</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Identifier>DescribeTransformation</ows:Identifier>
+    <ows:Title>Describe Transformation</ows:Title>
+    <ows:Abstract>Describes the transformation supported by this server.</ows:Abstract>
     <!-- To be determined. -->
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>DescribeTransformationsOutput</ows:Identifier>
+        <ows:Title>DescribeTransformations Output</ows:Title>
+        <ows:Abstract>The response from this request describes the transformations supported by this server.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -86,14 +92,17 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- GET 2D IMAGES BY POI -->  
+  <proc id="Get2DImagesByPOI">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>Get2DImagesByPOI</ows:Identifier>
     <ows:Title>Get 2D Images by POI</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>Get 2D images at a POI (point of interest) specified in the request.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='x']/*"/>
@@ -103,9 +112,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>Get2DImagesByPOIOutput</ows:Identifier>
+        <ows:Title>Get2DImagesByPOI Output</ows:Title>
+        <ows:Abstract>The response from this request contains URIs to images at the specified POI (point of interest).</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -125,14 +134,17 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+   </proc>
   
+  <!-- GET 2D IMAGES BY URI -->  
+  <proc id="Get2DImagesByURI">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
-    <ows:Identifier>Images2DByURI</ows:Identifier>
-    <ows:Title>2D Images by URI Response</ows:Title>
-    <ows:Abstract>2D Image(s) by URI response.</ows:Abstract>
+    <ows:Identifier>Get2DImagesByURI</ows:Identifier>
+    <ows:Title>Get 2D Images by URI</ows:Title>
+    <ows:Abstract>Get 2D images with the URI specified in the request.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='x']/*"/>
@@ -142,9 +154,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>Get2DImagesByURIOutput</ows:Identifier>
+        <ows:Title>Get2DImagesByURI Output</ows:Title>
+        <ows:Abstract>The response from this request contains URIs to 2D images with the specified URI.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -164,14 +176,17 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- GET CELLS BY POI -->  
+  <proc id="GetCellsByPOI">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>GetCellsByPOI</ows:Identifier>
     <ows:Title>Get Cells by POI</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>Get cells at a POI (point of interest) specified in the request.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='x']/*"/>
@@ -181,9 +196,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>CellsByPOI</ows:Identifier>
-        <ows:Title>Cells by POI Response</ows:Title>
-        <ows:Abstract>Cell(s) by POI response.</ows:Abstract>
+        <ows:Identifier>GetCellsByPOIOutput</ows:Identifier>
+        <ows:Title>GetCellsByPOI Output</ows:Title>
+        <ows:Abstract>The response from this request contains URIs to cells at the specified POI (point of interest).</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -203,14 +218,17 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- GET CELLS BY URI -->  
+  <proc id="GetCellsByURI">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>GetCellsByURI</ows:Identifier>
-    <ows:Title>Get 2D Images by POI</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Title>Get Cells by URI</ows:Title>
+    <ows:Abstract>Get cells with the URI specified in the request.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='x']/*"/>
@@ -220,9 +238,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>CellsByURI</ows:Identifier>
-        <ows:Title>Cells by URI Response</ows:Title>
-        <ows:Abstract>Cells(s) by URI response.</ows:Abstract>
+        <ows:Identifier>GetCellsByURIOutput</ows:Identifier>
+        <ows:Title>GetCellsByURI Output</ows:Title>
+        <ows:Abstract>The response from this request contains URIs to cells with the specified URI.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -242,14 +260,17 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- GET CORRELATION MAP BY POI -->
+  <proc id="GetCorrelationMapByPOI">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>GetCorrelationMapByPOI</ows:Identifier>
     <ows:Title>Get Correlation Map by POI</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>Get correlation map at a POI (point of interest) specified in the request.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='x']/*"/>
@@ -259,9 +280,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>GetCorrelationMapByPOIOutput</ows:Identifier>
+        <ows:Title>GetCorrelationMapByPOI Output</ows:Title>
+        <ows:Abstract>The response from this request contains a correlation map at a POI (point of interest) specified in the request.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -281,14 +302,17 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
-  
+  </proc>
+ 
+  <!-- GET GENES BY POI -->
+  <proc id="GetGenesByPOI">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>GetGenesByPOI</ows:Identifier>
     <ows:Title>Get Genes by POI</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>Get genes at a POI (point of interest) specified in the request.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='x']/*"/>
@@ -299,9 +323,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>GenesAtPOI</ows:Identifier>
-        <ows:Title>Genes at POI result</ows:Title>
-        <ows:Abstract>Genes at POI result</ows:Abstract>
+        <ows:Identifier>GetGenesByPOIOutput</ows:Identifier>
+        <ows:Title>GetGenesByPOI Output</ows:Title>
+        <ows:Abstract>The response from this request contains a list of genes at a POI (point of interest) specified in the request.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -321,14 +345,17 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- GET STRUCTURE NAMES BY POI -->  
+  <proc id="GetStructureNamesByPOI">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
     <ows:Title>Get Structure Names by POI</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>Get structure names at a POI (point of interest) specified in the request.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='srsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='x']/*"/>
@@ -339,9 +366,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>GetStructureNamesByPOIOutput</ows:Identifier>
+        <ows:Title>GetStructureNamesByPOI Output</ows:Title>
+        <ows:Abstract>The response from this request contains structure names at the specified POI (point of interest).</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -361,14 +388,17 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- GET TRANSFORMATION CHAIN -->
+  <proc id="GetTransformationChain">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>GetTransformationChain</ows:Identifier>
     <ows:Title>Get Transformation Chain</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>Get the chain of transformations required to transform coordinates from and to the given input and output SRS (Spatial Reference System) names.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='inputSrsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='outputSrsName']/*"/>
@@ -376,9 +406,9 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>GetTransformationChainOutput</ows:Identifier>
+        <ows:Title>GetTransformationChain Output</ows:Title>
+        <ows:Abstract>The response from this request contains the chain of transformations required to transform coordinates from and to the given input and output SRS (Spatial Reference System) names.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -398,20 +428,23 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- LIST SRS'S -->
+  <proc id="ListSRSs">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>ListSRSs</ows:Identifier>
     <ows:Title>List SRS Names</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
     <!-- There are no inputs for this function. -->
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>ListSRSsOutput</ows:Identifier>
+        <ows:Title>ListSRSs Output</ows:Title>
+        <ows:Abstract>The response from this request lists the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -431,20 +464,23 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- LIST TRANSFORMATIONS -->
+  <proc id="ListTransformations">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>ListTransformations</ows:Identifier>
     <ows:Title>List Transformations</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>List coordinate transformations available at this server.</ows:Abstract>
     <!-- To be determined. -->
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>ListTransformationsOutput</ows:Identifier>
+        <ows:Title>ListTransformations Output</ows:Title>
+        <ows:Abstract>The response from this request lists the transformations available at this server.</ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -464,15 +500,18 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- RETRIEVE 2D IMAGE -->
+  <proc id="Retrieve2DImage">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>Retrieve2DImage</ows:Identifier>
     <ows:Title>Retrieve 2D Image</ows:Title>
-    <ows:Abstract>This function gets a URL reference to a 2D image based
-      on the source URL provided and "cropped" based on the specified lower
+    <ows:Abstract>This function gets a URI reference to a 2D image based
+      on the source URI provided and "cropped" based on the specified lower
       left (xmin, ymin) and upper right (xmax, ymax).
     </ows:Abstract>
     <DataInputs>
@@ -485,9 +524,12 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>ImageURL</ows:Identifier>
-        <ows:Title>2D Image at POI result</ows:Title>
-        <ows:Abstract>2D Image at POI result</ows:Abstract>
+        <ows:Identifier>Retrieve2DImageOutput</ows:Identifier>
+        <ows:Title>Retrieve2DImage Output</ows:Title>
+        <ows:Abstract>The response from this request returns a URI reference to 
+          a 2D image based on the source URI provided and "cropped" based on 
+          the specified lower left (xmin, ymin) and upper right (xmax, ymax).
+        </ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -507,14 +549,18 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
+  <!-- TRANSFORM POI -->
+  <proc id="TransformPOI">
   <ProcessDescription>
 <xsl:attribute name="wps:processVersion">
   <xsl:value-of select="$ver" />
 </xsl:attribute>
     <ows:Identifier>TransformPOI</ows:Identifier>
     <ows:Title>Transform POI</ows:Title>
-    <ows:Abstract></ows:Abstract>
+    <ows:Abstract>Transform a POI (point of interest) from one SRS (Spatial
+      Reference System) to another.</ows:Abstract>
     <DataInputs>
 <xsl:copy-of select="ProcessInputs/inp[@id='inputSrsName']/*"/>
 <xsl:copy-of select="ProcessInputs/inp[@id='outputSrsName']/*"/>
@@ -525,9 +571,12 @@
     </DataInputs>
     <ProcessOutputs>
       <Output>
-        <ows:Identifier>TransformationResponse</ows:Identifier>
-        <ows:Title>Transformation Response</ows:Title>
-        <ows:Abstract>The transformation of input SRS coordinates to output SRS coordinates.</ows:Abstract>
+        <ows:Identifier>TransformPOIOutput</ows:Identifier>
+        <ows:Title>TransformPOI Output</ows:Title>
+        <ows:Abstract>The response from this request returns coordinates in
+          the output SRS (Spatial Reference System) that were transformed from
+          the givin coordinates in the input SRS.
+        </ows:Abstract>
         <ComplexOutput>
            <Default>
              <Format>
@@ -547,6 +596,7 @@
       </Output>
     </ProcessOutputs>
   </ProcessDescription>
+  </proc>
   
 </wps:ProcessDescriptions>
 
