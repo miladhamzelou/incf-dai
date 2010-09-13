@@ -28,7 +28,7 @@ public class DataInputs {
 	
 	private void parse(String dataInputString) {
 		
-		// srsCode=WHS;x=263.7;y=159.4;z=227.8
+		// srsName=xxx;x=263.7;y=159.4;z=227.8
 		String[] inputs = dataInputString.split(";");
 		for (String input : inputs) {
 			String[] inputKeyValue = input.split("=");

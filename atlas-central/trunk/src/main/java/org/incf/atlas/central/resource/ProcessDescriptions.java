@@ -9,6 +9,7 @@ import org.restlet.data.MediaType;
 import org.restlet.data.Request;
 import org.restlet.data.Response;
 import org.restlet.resource.FileRepresentation;
+import org.restlet.resource.InputRepresentation;
 import org.restlet.resource.Representation;
 import org.restlet.resource.ResourceException;
 import org.restlet.resource.Variant;
@@ -16,14 +17,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 // test:
-// http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=DescribeProcess
+// http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=DescribeProcess
 
 public class ProcessDescriptions extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
     // cached file
-    private static final String RESPONSE_FILE_NAME = "ProcessDescriptions.xml";
+    private static final String RESPONSE_FILE_NAME = "/CentralProcessDescriptions.xml";
     
 	public ProcessDescriptions(Context context, Request request,
 			Response response) {
@@ -49,20 +50,23 @@ public class ProcessDescriptions extends BaseResouce {
 	        return getExceptionRepresentation();
 	    }
 	    
-	    // look for cached file first
-	    File cachedResponse = new File(cacheDir, RESPONSE_FILE_NAME);
-	    if (cachedResponse.exists()) {
-	        return new FileRepresentation(cachedResponse, 
-	        		MediaType.APPLICATION_XML);
-	    }
-	    
-        // prepare an ExceptionReport
-	    String message = "File " + RESPONSE_FILE_NAME + " not found.";
-        ExceptionHandler exHandler = getExceptionHandler();
-        exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
-                new String[] { message });
-        logger.error(message);
-        return getExceptionRepresentation();
+	    Representation representation = null;
+	    try {
+	    	representation = new InputRepresentation(
+					this.getClass().getResourceAsStream(RESPONSE_FILE_NAME), 
+					MediaType.APPLICATION_XML);
+		} catch (Exception e) {
+			logger.error("Exception:", e);
+		    
+	        // prepare an ExceptionReport
+		    String message = "File " + RESPONSE_FILE_NAME + " not found.";
+	        ExceptionHandler exHandler = getExceptionHandler();
+	        exHandler.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+	                new String[] { message });
+	        logger.error(message);
+	        representation = getExceptionRepresentation();
+		}
+        return representation;
 	}
 	
 }

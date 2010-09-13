@@ -45,7 +45,7 @@ public class BaseResouce extends Resource {
         dataInputsString = (String) request.getAttributes().get("dataInputs");
         responseForm = (String) request.getAttributes().get("responseForm");
         tomcatDir = System.getProperty("catalina.base");
-        cacheDir = new File(tomcatDir + "/webapps/atlas-whs/WEB-INF/cache");
+        cacheDir = new File(tomcatDir + "/webapps/atlas-central/WEB-INF/cache");
         
         // every request must include service key/value
         checkService();
