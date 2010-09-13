@@ -2,6 +2,7 @@ package org.incf.atlas.aba.resource;
 
 import java.io.File;
 import java.io.FileWriter;
+import java.net.URISyntaxException;
 import java.util.Properties;
 
 import javax.xml.xquery.XQConnection;
@@ -32,7 +33,7 @@ public class Capabilities extends BaseResouce {
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	// cached file
-	private static final String RESPONSE_FILE_NAME = "Capabilities.xml";
+	private static final String RESPONSE_FILE_NAME = "/AbaCapabilities.xml";
 	
 	public Capabilities(Context context, Request request, Response response) {
 		super(context, request, response);
@@ -57,7 +58,14 @@ public class Capabilities extends BaseResouce {
 	    }
 	    
 	    // look for cached file first
-	    File cachedResponse = new File(cacheDir, RESPONSE_FILE_NAME);
+//	    File cachedResponse = new File(cacheDir, RESPONSE_FILE_NAME);
+	    File cachedResponse = null;
+		try {
+			cachedResponse = new File(this.getClass().getResource(RESPONSE_FILE_NAME).toURI());
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	    if (cachedResponse.exists()) {
 	        return new FileRepresentation(cachedResponse, 
 	        		MediaType.APPLICATION_XML);

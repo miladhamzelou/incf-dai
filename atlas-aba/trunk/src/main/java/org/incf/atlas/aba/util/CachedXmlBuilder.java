@@ -48,8 +48,7 @@ public class CachedXmlBuilder {
         Result result = new StreamResult(output);
         
         // do transform
-        Transformer t = transFac.newTransformer(xslt);
-        t.transform(xmlSource, result);
+        transFac.newTransformer(xslt).transform(xmlSource, result);
     }
     
     public void execute() throws TransformerException, FileNotFoundException {
