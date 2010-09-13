@@ -597,6 +597,173 @@
     </ProcessOutputs>
   </ProcessDescription>
   </proc>
+
+  <!--                        -->  
+  <!-- CENTRAL ONLY PROCESSES -->  
+  <!--                        -->  
+  
+  <!-- GET PROCESSES BY IDENTIFIER -->
+  <proc id="GetProcessesByIdentifier">
+  <ProcessDescription>
+<xsl:attribute name="wps:processVersion">
+  <xsl:value-of select="$ver" />
+</xsl:attribute>
+    <ows:Identifier>GetProcessesByIdentifier</ows:Identifier>
+    <ows:Title>Get Processes by Identifier</ows:Title>
+    <ows:Abstract>
+      Get processes available on some or all Atlas hubs.
+    </ows:Abstract>
+    <!-- To be determined. -->
+    <ProcessOutputs>
+      <Output>
+        <ows:Identifier>GetProcessesByIdentifierOutput</ows:Identifier>
+        <ows:Title>GetProcessesByIdentifier Output</ows:Title>
+        <ows:Abstract>
+          The response from this request lists the transformations available at 
+          some or all Atlas hubs.
+        </ows:Abstract>
+        <ComplexOutput>
+           <Default>
+             <Format>
+<xsl:copy-of select="$mime" />               
+<xsl:copy-of select="$encode" />               
+<Schema><xsl:copy-of select="$prefix"/>Xxx.xsd</Schema> 
+             </Format>
+           </Default>
+           <Supported>
+             <Format>
+<xsl:copy-of select="$mime" />               
+<xsl:copy-of select="$encode" />               
+<Schema><xsl:copy-of select="$prefix"/>Xxx.xsd</Schema> 
+             </Format>
+          </Supported>
+        </ComplexOutput>  
+      </Output>
+    </ProcessOutputs>
+  </ProcessDescription>
+  </proc>
+  
+  <!-- LIST HUBS -->
+  <proc id="ListHubs">
+  <ProcessDescription>
+<xsl:attribute name="wps:processVersion">
+  <xsl:value-of select="$ver" />
+</xsl:attribute>
+    <ows:Identifier>ListHubs</ows:Identifier>
+    <ows:Title>List Hubs</ows:Title>
+    <ows:Abstract>
+      List the Atlas hubs.
+    </ows:Abstract>
+    <!-- To be determined. -->
+    <ProcessOutputs>
+      <Output>
+        <ows:Identifier>ListHubsOutput</ows:Identifier>
+        <ows:Title>ListHubs Output</ows:Title>
+        <ows:Abstract>
+          The response from this request lists all the Atlas hubs.
+        </ows:Abstract>
+        <ComplexOutput>
+           <Default>
+             <Format>
+<xsl:copy-of select="$mime" />               
+<xsl:copy-of select="$encode" />               
+<Schema><xsl:copy-of select="$prefix"/>Xxx.xsd</Schema> 
+             </Format>
+           </Default>
+           <Supported>
+             <Format>
+<xsl:copy-of select="$mime" />               
+<xsl:copy-of select="$encode" />               
+<Schema><xsl:copy-of select="$prefix"/>Xxx.xsd</Schema> 
+             </Format>
+          </Supported>
+        </ComplexOutput>  
+      </Output>
+    </ProcessOutputs>
+  </ProcessDescription>
+  </proc>
+  
+  <!-- LIST HUB SERVICES -->
+  <proc id="ListHubServices">
+  <ProcessDescription>
+<xsl:attribute name="wps:processVersion">
+  <xsl:value-of select="$ver" />
+</xsl:attribute>
+    <ows:Identifier>ListHubServices</ows:Identifier>
+    <ows:Title>List Hub Services</ows:Title>
+    <ows:Abstract>
+      List the services available at Atlas hubs.
+    </ows:Abstract>
+    <!-- To be determined. -->
+    <ProcessOutputs>
+      <Output>
+        <ows:Identifier>ListHubServicesOutput</ows:Identifier>
+        <ows:Title>ListHubServices Output</ows:Title>
+        <ows:Abstract>
+          The response from this request lists the services available at Atlas 
+          hubs.
+        </ows:Abstract>
+        <ComplexOutput>
+           <Default>
+             <Format>
+<xsl:copy-of select="$mime" />               
+<xsl:copy-of select="$encode" />               
+<Schema><xsl:copy-of select="$prefix"/>Xxx.xsd</Schema> 
+             </Format>
+           </Default>
+           <Supported>
+             <Format>
+<xsl:copy-of select="$mime" />               
+<xsl:copy-of select="$encode" />               
+<Schema><xsl:copy-of select="$prefix"/>Xxx.xsd</Schema> 
+             </Format>
+          </Supported>
+        </ComplexOutput>  
+      </Output>
+    </ProcessOutputs>
+  </ProcessDescription>
+  </proc>
+  
+  <!-- LIST PROCESSES -->
+  <proc id="ListProcesses">
+  <ProcessDescription>
+<xsl:attribute name="wps:processVersion">
+  <xsl:value-of select="$ver" />
+</xsl:attribute>
+    <ows:Identifier>ListProcesses</ows:Identifier>
+    <ows:Title>List Processes</ows:Title>
+    <ows:Abstract>
+      List the processes available at Atlas hubs.
+    </ows:Abstract>
+    <!-- To be determined. -->
+    <ProcessOutputs>
+      <Output>
+        <ows:Identifier>ListProcessesOutput</ows:Identifier>
+        <ows:Title>ListProcesses Output</ows:Title>
+        <ows:Abstract>
+          The response from this request lists processes available at Atlas 
+          hubs.
+        </ows:Abstract>
+        <ComplexOutput>
+           <Default>
+             <Format>
+<xsl:copy-of select="$mime" />               
+<xsl:copy-of select="$encode" />               
+<Schema><xsl:copy-of select="$prefix"/>Xxx.xsd</Schema> 
+             </Format>
+           </Default>
+           <Supported>
+             <Format>
+<xsl:copy-of select="$mime" />               
+<xsl:copy-of select="$encode" />               
+<Schema><xsl:copy-of select="$prefix"/>Xxx.xsd</Schema> 
+             </Format>
+          </Supported>
+        </ComplexOutput>  
+      </Output>
+    </ProcessOutputs>
+  </ProcessDescription>
+  </proc>
   
 </wps:ProcessDescriptions>
 

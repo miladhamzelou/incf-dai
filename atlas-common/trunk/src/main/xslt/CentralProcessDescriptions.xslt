@@ -20,6 +20,14 @@
     xmlns:ows="http://www.opengis.net/ows/1.1"
     xmlns:wps="http://www.opengis.net/wps/1.0.0">
     
+<xsl:copy-of select="wps:ProcessDescriptions/proc[@id='GetProcessesByIdentifier']/*"/>
+    
+<xsl:copy-of select="wps:ProcessDescriptions/proc[@id='ListHubs']/*"/>
+    
+<xsl:copy-of select="wps:ProcessDescriptions/proc[@id='ListHubServices']/*"/>
+    
+<xsl:copy-of select="wps:ProcessDescriptions/proc[@id='ListProcesses']/*"/>
+    
 <xsl:copy-of select="wps:ProcessDescriptions/proc[@id='Get2DImagesByPOI']/*"/>
     
 <xsl:copy-of select="wps:ProcessDescriptions/proc[@id='GetTransformationChain']/*"/>

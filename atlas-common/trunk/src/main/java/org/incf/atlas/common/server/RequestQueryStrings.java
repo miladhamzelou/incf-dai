@@ -47,7 +47,7 @@ public interface RequestQueryStrings {
 		EXECUTE_REQUEST + "GetProcessesByIdentifier" + DATA_INPUTS;
 
     public static final String LIST_HUBS =
-		EXECUTE_REQUEST + "ListHubs" + DATA_INPUTS;
+		EXECUTE_REQUEST + "ListHubs";
 
     public static final String LIST_HUB_SERVICES =
 		EXECUTE_REQUEST + "ListHubServices" + DATA_INPUTS;
