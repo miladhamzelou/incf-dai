@@ -2,6 +2,7 @@
 =Atlas Hubs=
 
 We have four hubs currently that demonstrate implemented INCF Atlas functions.
+ * [http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#Central Central]
  * [http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#ABA_Hub ABA Hub]
  * [http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#EMAP_Hub EMAP Hub]
  * [http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#UCSD_Hub UCSD Hub]
@@ -44,6 +45,16 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 </table>
 
 ==Working Example Requests/Processes==
+
+===Central===
+
+ * !GetCapabilities
+
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&request=GetCapabilities
+
+ * !DescribeProcess
+
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=DescribeProcess
 
 ===ABA Hub===
 
