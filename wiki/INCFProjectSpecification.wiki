@@ -5,6 +5,12 @@ Digital Atlasing Infrastructure Task Force
 I. Zaslavsky, editor
  https://docs.google.com/View?id=dd9x97wk_2drhhj6fp
 
+Version 0.6. Now formatted as a specification (please edit with track changes and email back):
+
+http://geo.sdsc.edu/ilya/presentations/INCF_Atlas_Services_and_WaxML_version_06pic.doc
+
+
+
 A Powerpoint presentation describing available spatial reference systems:
 
  https://docs.google.com/leaf?id=0B6iM3IMv4N2qODdkMWE4ZTctMGZkZS00NGE1LTg3ZTgtYzk0NzUwYmRlMTdm&hl=en&authkey=CLaq67oL
