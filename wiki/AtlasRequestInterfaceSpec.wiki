@@ -175,6 +175,114 @@ Atlas Functions
   </tr>
 </table>
 
+===!GetProcessesByIdentifier===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th colspan="2">!GetCapabilities</th>
+  </tr>
+  <tr>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&request=GetCapabilities</td>
+  </tr>
+  <tr>
+    <th align="left">Description</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Applicability</th>
+    <td>All hubs</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
+    <td>None</td>
+  </tr>
+  <tr>
+    <th align="left">Normal Return</th>
+    <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd WPS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Error Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Example</th>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
+  </tr>
+</table>
+
+===!ListHubs===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th colspan="2">!GetCapabilities</th>
+  </tr>
+  <tr>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&request=GetCapabilities</td>
+  </tr>
+  <tr>
+    <th align="left">Description</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Applicability</th>
+    <td>All hubs</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
+    <td>None</td>
+  </tr>
+  <tr>
+    <th align="left">Normal Return</th>
+    <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd WPS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Error Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Example</th>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
+  </tr>
+</table>
+
+===!ListProcesses===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th colspan="2">!ListProcesses</th>
+  </tr>
+  <tr>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&request=Execute&Identifier=ListProcesses</td>
+  </tr>
+  <tr>
+    <th align="left">Description</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Applicability</th>
+    <td>All hubs</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
+    <td>None</td>
+  </tr>
+  <tr>
+    <th align="left">Normal Return</th>
+    <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd WPS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Error Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Example</th>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
+  </tr>
+</table>
+
 ===DescribeSRS===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
