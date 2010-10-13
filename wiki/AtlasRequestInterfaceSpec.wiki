@@ -88,6 +88,9 @@ Standard WPS Requests
  * [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]
 
 Atlas Functions
+ * [AtlasRequestInterfaceSpec#GetProcessesByIdentifier GetProcessesByIdentifier]
+ * [AtlasRequestInterfaceSpec#ListHubs ListHubs]
+ * [AtlasRequestInterfaceSpec#ListProcesses ListProcesses]
  * [AtlasRequestInterfaceSpec#DescribeSRS DescribeSRS]
  * [AtlasRequestInterfaceSpec#DescribeTransformation DescribeTransformation]
  * [AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]
@@ -179,11 +182,11 @@ Atlas Functions
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th colspan="2">!GetCapabilities</th>
+    <th colspan="2">!GetProcessesByIdentifier</th>
   </tr>
   <tr>
     <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]$service=WPS&request=GetCapabilities</td>
+    <td>http://[host:port]/[hub]$service=WPS&request=Execute&Identifier=GetProcessesByIdentifier</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -215,11 +218,11 @@ Atlas Functions
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th colspan="2">!GetCapabilities</th>
+    <th colspan="2">!ListHubs</th>
   </tr>
   <tr>
     <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]$service=WPS&request=GetCapabilities</td>
+    <td>http://[host:port]/[hub]$service=WPS&request=Execute&Idntifier=ListHubs</td>
   </tr>
   <tr>
     <th align="left">Description</th>
