@@ -133,6 +133,13 @@
       <artifactId>httpclient</artifactId>
       <version>4.0</version>
     </dependency>
+    
+    <dependency>
+    	<groupId>postgresql</groupId>
+    	<artifactId>postgresql</artifactId>
+    	<version>8.4-701.jdbc3</version>
+	</dependency>
+    
   </dependencies>
   
 </project>
