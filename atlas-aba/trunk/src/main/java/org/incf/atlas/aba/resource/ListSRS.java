@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.Random;
 
 import javax.xml.bind.JAXBContext;
@@ -56,13 +57,7 @@ public class ListSRS extends BaseResouce {
 
 	//private String dataInputString;
 	//private DataInputs dataInputs;
-	int randomGMLID1 = 0;
-	int randomGMLID2 = 0;
-	int randomGMLID3 = 0;
-	int randomGMLID4 = 0;
-	int randomGMLID5 = 0;
-	int randomGMLID6 = 0;
-
+	int randomGMLID = 0;
 	String authorCode = "";
 	String authorName = "";
 	String orientationDescription = "";
@@ -89,36 +84,6 @@ public class ListSRS extends BaseResouce {
 
 		ABAServiceVO vo = new ABAServiceVO();
 
-	    Random randomGenerator1 = new Random();
-	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID1 = randomGenerator1.nextInt(100);
-	    }
-
-	    Random randomGenerator2 = new Random();
-	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID2 = randomGenerator2.nextInt(100);
-	    }
-
-	    Random randomGenerator3 = new Random();
-	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID3 = randomGenerator3.nextInt(100);
-	    }
-
-	    Random randomGenerator4 = new Random();
-	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID4 = randomGenerator4.nextInt(100);
-	    }
-
-	    Random randomGenerator5 = new Random();
-	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID5 = randomGenerator5.nextInt(100);
-	    }
-
-	    Random randomGenerator6 = new Random();
-	    for (int idx = 1; idx <= 10; ++idx){
-	      randomGMLID6 = randomGenerator6.nextInt(100);
-	    }
-
         try { 
 
         	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
@@ -126,14 +91,13 @@ public class ListSRS extends BaseResouce {
         	opt.setSaveNamespacesFirst();
         	opt.setSaveAggressiveNamespaces();
         	opt.setUseDefaultNamespace();
-        	
+
         	ListSRSResponseDocument document = completeResponse();
-        	
-        	
+
         	ArrayList errorList = new ArrayList();
         	 opt.setErrorListener(errorList);
         	 boolean isValid = document.validate(opt);
-        	 
+
         	 // If the XML isn't valid, loop through the listener's contents,
         	 // printing contained messages.
         	 if (!isValid)
@@ -191,347 +155,79 @@ public class ListSRS extends BaseResouce {
 	}
 
 	//First SRS
-	public static void abaReferenceSRS(SRSType srs){
+	public static void addSRS(SRSList srsList, ArrayList list, int size){
+
+		ABAServiceVO vo = null;
+		
+		try { 
+
+	    Iterator iterator = list.iterator();
+	    SRSType srs = null;
+		
+	    while (iterator.hasNext()) {
+
+	    System.out.println("**************************Count is********************* " + list.size());
+		srs =  srsList.addNewSRS();
+
+		vo = (ABAServiceVO)iterator.next();
 		
 		Name name = srs.addNewName();
-		name.setStringValue("Mouse_ABAreference_1.0");
-		name.setSrsCode("INCF:0101");
-		name.setSrsBase("ABAreference");
-		name.setSrsVersion("1.0");
-		name.setSpecies("Mouse");
+		name.setStringValue(vo.getSrsName());
+		name.setSrsCode(vo.getSrsCode());
+		name.setSrsBase(vo.getSrsDescription());
+		name.setSrsVersion(vo.getSrsVersion());
+		name.setSpecies(vo.getSpecies());
 		//name.setUrn("ReferenceUrl");//Uncomment this once i find the value
 
 		Incfdescription srsdescription = srs.addNewDescription();
-		srsdescription.setStringValue("ABAreference");
+		srsdescription.setStringValue(vo.getSrsDescription());
 
 		AuthorType author = 	srs.addNewAuthor();
-		author.setAuthorCode("ABA");
+		author.setAuthorCode(vo.getSrsAuthorCode());
 		author.setDateSubmitted(Calendar.getInstance());
 		
 		IncfCodeType origin = 	srs.addNewOrigin();
 		//origin.setCodeSpace("URN");
-		origin.setStringValue("bregma");
+		origin.setStringValue(vo.getOrigin());
 
-	     //   <Area structureName=”whole brain” structureURN=”…”/>
-	Area area = srs.addNewArea();
-	area.setStructureName("whole brain");
-	//area.setStructureURN("URN");
-
-	UnitOfMeasureType unit = srs.addNewUnits();
-	unit.setUom("mm");
-
-	NeurodimensionsType dimensions = srs.addNewNeurodimensions();
-	NeurodimensionType minusX = dimensions.addNewMinusX();
-	createNueroDimentions(minusX, "Right", -6, "#left");
-			NeurodimensionType minusY = dimensions.addNewMinusY();
-			createNueroDimentions(minusY, "Dorsal", -1, "#Right");
-	NeurodimensionType minusZ = dimensions.addNewMinusZ();
-	createNueroDimentions(minusZ, "Posterior", -9, "#Ventral");
-	NeurodimensionType plusX =dimensions.addNewPlusX();
-	createNueroDimentions(plusX, "Left", 6, "#Dorsal");
-	NeurodimensionType plusY =dimensions.addNewPlusY();
-	createNueroDimentions(plusY, "Ventral", 7, "#Posterior");
-	NeurodimensionType plusZ =dimensions.addNewPlusZ();
-	createNueroDimentions(plusZ, "Anterior", 6, "#Anterior");
-
-	IncfUriSliceSource cite = srs.addNewSource();
-	cite.setStringValue("http://mouse.brain-map.org/welcome.do");
-	cite.setFormat("Slices");
-    DerivedFrom derived = srs.addNewDerivedFrom();
-    //derived.setSrsName("Mouse_ABAreference_1.0");
-    //derived.setMethod("MethodName");
-    srs.setDateCreated(Calendar.getInstance());
-	srs.setDateUpdated(Calendar.getInstance());
-
-	return;
+	    //<Area structureName=”whole brain” structureURN=”…”/>
+		Area area = srs.addNewArea();
+		area.setStructureName(vo.getRegionOfValidity());
+		//area.setStructureURN("URN");
 	
+		UnitOfMeasureType unit = srs.addNewUnits();
+		unit.setUom(vo.getUnitsAbbreviation());
+	
+		NeurodimensionsType dimensions = srs.addNewNeurodimensions();
+		NeurodimensionType minusX = dimensions.addNewMinusX();
+		createNueroDimentions(minusX, vo.getNeuroMinusXCode(), Float.parseFloat(vo.getDimensionMinX()), "#"+vo.getNeuroMinusXCode());
+		NeurodimensionType minusY = dimensions.addNewMinusY();
+		createNueroDimentions(minusY, vo.getNeuroMinusYCode(), Float.parseFloat(vo.getDimensionMinY()), "#"+vo.getNeuroMinusYCode());
+		NeurodimensionType minusZ = dimensions.addNewMinusZ();
+		createNueroDimentions(minusZ, vo.getNeuroMinusZCode(), Float.parseFloat(vo.getDimensionMinZ()), "#"+vo.getNeuroMinusZCode());
+		NeurodimensionType plusX =dimensions.addNewPlusX();
+		createNueroDimentions(plusX, vo.getNeuroPlusXCode(), Float.parseFloat(vo.getDimensionMaxX()), "#"+vo.getNeuroPlusXCode());
+		NeurodimensionType plusY =dimensions.addNewPlusY();
+		createNueroDimentions(plusY, vo.getNeuroPlusYCode(), Float.parseFloat(vo.getDimensionMaxY()), "#"+vo.getNeuroPlusYCode());
+		NeurodimensionType plusZ =dimensions.addNewPlusZ();
+		createNueroDimentions(plusZ, vo.getNeuroPlusZCode(), Float.parseFloat(vo.getDimensionMaxZ()), "#"+vo.getNeuroPlusZCode());
+	
+		IncfUriSliceSource cite = srs.addNewSource();
+		cite.setStringValue(vo.getSourceURI());
+		cite.setFormat(vo.getSourceFileFormat());//Could be null
+	    DerivedFrom derived = srs.addNewDerivedFrom();
+	    derived.setSrsName(vo.getDerivedFromSRSCode());
+	    //derived.setMethod("MethodName");
+	    srs.setDateCreated(Calendar.getInstance());
+		srs.setDateUpdated(Calendar.getInstance());
+	
+		}
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+		return;
 	}
 
-	//Second SRS
-	public static void abaVoxelSRS(SRSType srs){
-		
-		Name name = srs.addNewName();
-		name.setStringValue("Mouse_ABAvoxel_1.0");
-		name.setSrsCode("INCF:0100");
-		name.setSrsBase("ABAvoxel");
-		name.setSrsVersion("1.0");
-		name.setSpecies("Mouse");
-		//name.setUrn("ReferenceUrl");//Uncomment this once i find the value
-
-		Incfdescription srsdescription = srs.addNewDescription();
-		srsdescription.setStringValue("ABAvoxel");
-
-		AuthorType author = 	srs.addNewAuthor();
-		author.setAuthorCode("ABA");
-		author.setDateSubmitted(Calendar.getInstance());
-		
-		IncfCodeType origin = 	srs.addNewOrigin();
-		//origin.setCodeSpace("URN");
-		origin.setStringValue("front-right-top");
-
-	     //   <Area structureName=”whole brain” structureURN=”…”/>
-	Area area = srs.addNewArea();
-	area.setStructureName("whole brain");
-	//area.setStructureURN("URN");
-
-	UnitOfMeasureType unit = srs.addNewUnits();
-	unit.setUom("px");
-
-	NeurodimensionsType dimensions = srs.addNewNeurodimensions();
-	NeurodimensionType minusX = dimensions.addNewMinusX();
-	createNueroDimentions(minusX, "Anterior", 0, "#left");
-	NeurodimensionType minusY = dimensions.addNewMinusY();
-	createNueroDimentions(minusY, "Dorsal", 0, "#Right");
-	NeurodimensionType minusZ = dimensions.addNewMinusZ();
-	createNueroDimentions(minusZ, "Right", 0, "#Ventral");
-	NeurodimensionType plusX =dimensions.addNewPlusX();
-	createNueroDimentions(plusX, "Posterior", 528, "#Dorsal");
-	NeurodimensionType plusY =dimensions.addNewPlusY();
-	createNueroDimentions(plusY, "Ventral", 320, "#Posterior");
-	NeurodimensionType plusZ =dimensions.addNewPlusZ();
-	createNueroDimentions(plusZ, "Left", 456, "#Anterior");
-
-	IncfUriSliceSource cite = srs.addNewSource();
-	cite.setStringValue("http://mouse.brain-map.org/welcome.do");
-	//cite.setFormat("Slices");
-    DerivedFrom derived = srs.addNewDerivedFrom();
-    //derived.setSrsName("Mouse_ABAvoxel_1.0");
-    //derived.setMethod("MethodName");
-    srs.setDateCreated(Calendar.getInstance());
-	srs.setDateUpdated(Calendar.getInstance());
-
-	return;
-	
-	}
-
-	//Third SRS
-	public static void abaAGEASRS(SRSType srs){
-		
-		Name name = srs.addNewName();
-		name.setStringValue("Mouse_AGEA_1.0");
-		name.setSrsCode("INCF:0102");
-		name.setSrsBase("AGEA");
-		name.setSrsVersion("1.0");
-		name.setSpecies("Mouse");
-		//name.setUrn("ReferenceUrl");//Uncomment this once i find the value
-
-		Incfdescription srsdescription = srs.addNewDescription();
-		srsdescription.setStringValue("AGEA");
-
-		AuthorType author = 	srs.addNewAuthor();
-		author.setAuthorCode("ABA");
-		author.setDateSubmitted(Calendar.getInstance());
-		
-		IncfCodeType origin = 	srs.addNewOrigin();
-		//origin.setCodeSpace("URN");
-		origin.setStringValue("front-right-top");
-
-	     //   <Area structureName=”whole brain” structureURN=”…”/>
-	Area area = srs.addNewArea();
-	area.setStructureName("whole brain");
-	//area.setStructureURN("URN");
-
-	UnitOfMeasureType unit = srs.addNewUnits();
-	unit.setUom("px");
-
-	NeurodimensionsType dimensions = srs.addNewNeurodimensions();
-	NeurodimensionType minusX = dimensions.addNewMinusX();
-	createNueroDimentions(minusX, "Anterior", 0, "#left");
-	NeurodimensionType minusY = dimensions.addNewMinusY();
-	createNueroDimentions(minusY, "Dorsal", 0, "#Right");
-	NeurodimensionType minusZ = dimensions.addNewMinusZ();
-	createNueroDimentions(minusZ, "Right", 0, "#Ventral");
-	NeurodimensionType plusX =dimensions.addNewPlusX();
-	createNueroDimentions(plusX, "Posterior", 13200, "#Dorsal");
-	NeurodimensionType plusY =dimensions.addNewPlusY();
-	createNueroDimentions(plusY, "Ventral", 8000, "#Posterior");
-	NeurodimensionType plusZ =dimensions.addNewPlusZ();
-	createNueroDimentions(plusZ, "Left", 11400, "#Anterior");
-
-	IncfUriSliceSource cite = srs.addNewSource();
-	cite.setStringValue("http://mouse.brain-map.org/welcome.do");
-	//cite.setFormat("Slices");
-    DerivedFrom derived = srs.addNewDerivedFrom();
-    derived.setSrsName("Mouse_ABAvoxel_1.0");
-    //derived.setMethod("MethodName");
-    srs.setDateCreated(Calendar.getInstance());
-	srs.setDateUpdated(Calendar.getInstance());
-
-	return;
-	
-	}
-
-	//Fourth SRS
-	public static void abaPaxinosSRS(SRSType srs){
-		
-		Name name = srs.addNewName();
-		name.setStringValue("Mouse_Paxinos_1.0");
-		name.setSrsCode("INCF:0200");
-		name.setSrsBase("Paxinos");
-		name.setSrsVersion("1.0");
-		name.setSpecies("Mouse");
-		//name.setUrn("ReferenceUrl");//Uncomment this once i find the value
-
-		Incfdescription srsdescription = srs.addNewDescription();
-		srsdescription.setStringValue("Mouse Brain in Stereotaxic Coordinates, Paxinos-Watson.");
-
-		AuthorType author = 	srs.addNewAuthor();
-		author.setAuthorCode("Paxinos");
-		author.setDateSubmitted(Calendar.getInstance());
-		
-		IncfCodeType origin = 	srs.addNewOrigin();
-		//origin.setCodeSpace("URN");
-		origin.setStringValue("bregma");
-
-	     //   <Area structureName=”whole brain” structureURN=”…”/>
-	Area area = srs.addNewArea();
-	area.setStructureName("whole brain");
-	//area.setStructureURN("URN");
-
-	UnitOfMeasureType unit = srs.addNewUnits();
-	unit.setUom("mm");
-
-	NeurodimensionsType dimensions = srs.addNewNeurodimensions();
-	NeurodimensionType minusX = dimensions.addNewMinusX();
-	createNueroDimentions(minusX, "Right", -6, "#left");
-			NeurodimensionType minusY = dimensions.addNewMinusY();
-			createNueroDimentions(minusY, "Dorsal", -1, "#Right");
-	NeurodimensionType minusZ = dimensions.addNewMinusZ();
-	createNueroDimentions(minusZ, "Posterior", -9, "#Ventral");
-	NeurodimensionType plusX =dimensions.addNewPlusX();
-	createNueroDimentions(plusX, "Left", 6, "#Dorsal");
-	NeurodimensionType plusY =dimensions.addNewPlusY();
-	createNueroDimentions(plusY, "Ventral", 7, "#Posterior");
-	NeurodimensionType plusZ =dimensions.addNewPlusZ();
-	createNueroDimentions(plusZ, "Anterior", 6, "#Anterior");
-
-	IncfUriSliceSource cite = srs.addNewSource();
-	//cite.setStringValue("http://mouse.brain-map.org/welcome.do");
-	cite.setFormat("Slices");
-    DerivedFrom derived = srs.addNewDerivedFrom();
-    //derived.setSrsName("Mouse_Paxinos_1.0");
-    //derived.setMethod("MethodName");
-    srs.setDateCreated(Calendar.getInstance());
-	srs.setDateUpdated(Calendar.getInstance());
-
-	return;
-	
-	}
-
-	//Fifth SRS
-	public static void abaWHS09SRS(SRSType srs){
-		
-		Name name = srs.addNewName();
-		name.setStringValue("Mouse_WHS_0.9");
-		name.setSrsCode("INCF:0001");
-		name.setSrsBase("WHS");
-		name.setSrsVersion("0.9");
-		name.setSpecies("Mouse");
-		//name.setUrn("ReferenceUrl");//Uncomment this once i find the value
-
-		Incfdescription srsdescription = srs.addNewDescription();
-		srsdescription.setStringValue("WHS pre-release.");
-
-		AuthorType author = 	srs.addNewAuthor();
-		author.setAuthorCode("WHS");
-		author.setDateSubmitted(Calendar.getInstance());
-		
-		IncfCodeType origin = 	srs.addNewOrigin();
-		//origin.setCodeSpace("URN");
-		origin.setStringValue("back-right-bottom");
-
-	     //   <Area structureName=”whole brain” structureURN=”…”/>
-	Area area = srs.addNewArea();
-	area.setStructureName("whole brain");
-	//area.setStructureURN("URN");
-
-	UnitOfMeasureType unit = srs.addNewUnits();
-	unit.setUom("px");
-
-	NeurodimensionsType dimensions = srs.addNewNeurodimensions();
-	NeurodimensionType minusX = dimensions.addNewMinusX();
-	createNueroDimentions(minusX, "Right", 0, "#left");
-			NeurodimensionType minusY = dimensions.addNewMinusY();
-			createNueroDimentions(minusY, "Posterior", 0, "#Right");
-	NeurodimensionType minusZ = dimensions.addNewMinusZ();
-	createNueroDimentions(minusZ, "Ventral", 0, "#Ventral");
-	NeurodimensionType plusX =dimensions.addNewPlusX();
-	createNueroDimentions(plusX, "Left", 511, "#Dorsal");
-	NeurodimensionType plusY =dimensions.addNewPlusY();
-	createNueroDimentions(plusY, "Anterior", 1023, "#Posterior");
-	NeurodimensionType plusZ =dimensions.addNewPlusZ();
-	createNueroDimentions(plusZ, "Dorsal", 511, "#Anterior");
-
-	IncfUriSliceSource cite = srs.addNewSource();
-	cite.setStringValue("http://software.incf.org/software/waxholm-space");
-	cite.setFormat("Zipped NIFTI");
-    DerivedFrom derived = srs.addNewDerivedFrom();
-    //derived.setSrsName("Mouse_WHS_0.9");
-    //derived.setMethod("MethodName");
-    srs.setDateCreated(Calendar.getInstance());
-	srs.setDateUpdated(Calendar.getInstance());
-
-	return;
-	
-	}
-
-	//Sixth SRS
-	public static void abaWHS10SRS(SRSType srs){
-		
-		Name name = srs.addNewName();
-		name.setStringValue("Mouse_WHS_1.0");
-		name.setSrsCode("INCF:0002");
-		name.setSrsBase("WHS");
-		name.setSrsVersion("1.0");
-		name.setSpecies("Mouse");
-		//name.setUrn("ReferenceUrl");//Uncomment this once i find the value
-
-		Incfdescription srsdescription = srs.addNewDescription();
-		srsdescription.setStringValue("WHS release.");
-
-		AuthorType author = 	srs.addNewAuthor();
-		author.setAuthorCode("WHS");
-		author.setDateSubmitted(Calendar.getInstance());
-		
-		IncfCodeType origin = 	srs.addNewOrigin();
-		//origin.setCodeSpace("URN");
-		origin.setStringValue("AC-midline");
-
-	     //   <Area structureName=”whole brain” structureURN=”…”/>
-	Area area = srs.addNewArea();
-	area.setStructureName("whole brain");
-	//area.setStructureURN("URN");
-
-	UnitOfMeasureType unit = srs.addNewUnits();
-	unit.setUom("mm");
-
-	NeurodimensionsType dimensions = srs.addNewNeurodimensions();
-	NeurodimensionType minusX = dimensions.addNewMinusX();
-	createNueroDimentions(minusX, "Right", Float.parseFloat("-5.3965"), "#left");
-			NeurodimensionType minusY = dimensions.addNewMinusY();
-			createNueroDimentions(minusY, "Posterior", Float.parseFloat("-11.997"), "#Right");
-	NeurodimensionType minusZ = dimensions.addNewMinusZ();
-	createNueroDimentions(minusZ, "Ventral", Float.parseFloat("-5.5255"), "#Ventral");
-	NeurodimensionType plusX =dimensions.addNewPlusX();
-	createNueroDimentions(plusX, "Left", Float.parseFloat("5.59"), "#Dorsal");
-	NeurodimensionType plusY =dimensions.addNewPlusY();
-	createNueroDimentions(plusY, "Anterior", Float.parseFloat("10"), "#Posterior");
-	NeurodimensionType plusZ =dimensions.addNewPlusZ();
-	createNueroDimentions(plusZ, "Dorsal", Float.parseFloat("5.46"), "#Anterior");
-
-	IncfUriSliceSource cite = srs.addNewSource();
-	cite.setStringValue("http://software.incf.org/software/waxholm-space");
-	cite.setFormat("Zipped NIFTI");
-    DerivedFrom derived = srs.addNewDerivedFrom();
-    derived.setSrsName("Mouse_WHS_0.9");
-    //derived.setMethod("MethodName");
-    srs.setDateCreated(Calendar.getInstance());
-	srs.setDateUpdated(Calendar.getInstance());
-
-	return;
-	
-	}
-	
 	public ListSRSResponseDocument completeResponse() {
 		ListSRSResponseDocument document =	ListSRSResponseDocument.Factory.newInstance(); 
 		
@@ -539,34 +235,31 @@ public class ListSRS extends BaseResouce {
 		//rootDoc.newCursor().insertComment("Test Comment");
 		QueryInfoSrs(rootDoc.addNewQueryInfo(), uri.toString());
 		SRSList srsList = rootDoc.addNewSRSList();
-		SRSType srs1 =  srsList.addNewSRS();
-		SRSType srs2 =  srsList.addNewSRS();
-		SRSType srs3 =  srsList.addNewSRS();
-		//SRSType srs4 =  srsList.addNewSRS();
-		//SRSType srs5 =  srsList.addNewSRS();
-		//SRSType srs6 =  srsList.addNewSRS();
-		abaReferenceSRS(srs1);
-		abaVoxelSRS(srs2);
-		abaAGEASRS(srs3);
-		//abaPaxinosSRS(srs4);
-		//abaWHS09SRS(srs5);
-		//abaWHS10SRS(srs6);
+
+    	//Start - Get data from the database
+		ArrayList list = new ArrayList();
+		ABAServiceDAOImpl impl = new ABAServiceDAOImpl();
+		list = impl.getSRSsData();
+		//End
 		
-		Orientations o = rootDoc.addNewOrientations();
-		OrientationType orientaiton1 = o.addNewOrientation();
-		//orientation(orientaiton1,code,name);
-		orientation(orientaiton1,"Left","Left",String.valueOf(randomGMLID1), "standard", "Standard", "Left of midline.");
-		orientaiton1 = o.addNewOrientation();
-		orientation(orientaiton1,"Right","Right",String.valueOf(randomGMLID2), "standard", "Standard", "Right of midline.");
-		orientaiton1 = o.addNewOrientation();
-		orientation(orientaiton1,"Ventral","Ventral",String.valueOf(randomGMLID3), "standard", "Standard", "Towards the abdomen/front.");
-		orientaiton1 = o.addNewOrientation();
-		orientation(orientaiton1,"Dorsal","Dorsal",String.valueOf(randomGMLID4), "standard", "Standard", "Toward spinal column/back.");
-		orientaiton1 = o.addNewOrientation();
-		orientation(orientaiton1,"Posterior","Posterior",String.valueOf(randomGMLID5), "standard", "Standard", "Towards the back.");
-		orientaiton1 = o.addNewOrientation();
-		orientation(orientaiton1,"Anterior","Anterior",String.valueOf(randomGMLID6), "standard", "Standard", "Towards the front.");
+		addSRS(srsList, list, list.size());
+
+		ArrayList list2 = impl.getOrientationData();
+		Orientations o = null;
 		
+		Iterator iterator2 = list2.iterator();
+		ABAServiceVO vo = null;
+
+	    Random randomGenerator = new Random();
+		while ( iterator2.hasNext()) {
+		    for (int idx = 1; idx <= 10; ++idx){
+			      randomGMLID = randomGenerator.nextInt(100);
+			    }
+			vo = (ABAServiceVO) iterator2.next(); 
+			o = rootDoc.addNewOrientations();
+			OrientationType orientaiton1 = o.addNewOrientation();
+			orientation(orientaiton1,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription());
+		}
 		return document;
 	}
 

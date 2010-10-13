@@ -78,7 +78,7 @@ public class TransformPOI extends BaseResouce {
 
 		ABAServiceVO vo = new ABAServiceVO();
 
-        try { 
+        try {
 
 		    // make sure we have something in dataInputs
 		    if (dataInputsString == null || dataInputsString.length() == 0) {
@@ -108,13 +108,13 @@ public class TransformPOI extends BaseResouce {
 	        validateSrsName(vo.getToSRSCodeOne());
 	        Double[] poiCoords = validateCoordinate(dataInputs);
 
-	        vo.setOriginalCoordinateX(String.valueOf(poiCoords[0].intValue()));
-	        vo.setOriginalCoordinateY(String.valueOf(poiCoords[1].intValue()));
-	        vo.setOriginalCoordinateZ(String.valueOf(poiCoords[2].intValue()));
-
-/*	        vo.setOriginalCoordinateX(dataInputs.getValue("x"));
+	        vo.setOriginalCoordinateX(dataInputs.getValue("x"));
 	        vo.setOriginalCoordinateY(dataInputs.getValue("y"));
 	        vo.setOriginalCoordinateZ(dataInputs.getValue("z"));
+
+/*	        vo.setOriginalCoordinateX(String.valueOf(poiCoords[0].intValue()));
+	        vo.setOriginalCoordinateY(String.valueOf(poiCoords[1].intValue()));
+	        vo.setOriginalCoordinateZ(String.valueOf(poiCoords[2].intValue()));
 */
 	        System.out.println("X: "+vo.getOriginalCoordinateX());
 	        System.out.println("Y: "+vo.getOriginalCoordinateY());

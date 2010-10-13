@@ -26,35 +26,10 @@ public class ABAServiceVO {
 		// TODO Auto-generated constructor stub
 	}
 
+	private String incfDeployHostname = "";
 	private String wms = "";
 	private String flag = "";
-	public String getFlag() {
-		return flag;
-	}
-
-	public void setFlag(String flag) {
-		this.flag = flag;
-	}
-
-	private String incfDeployHostname = "";
-	public String getIncfDeployHostname() {
-		return incfDeployHostname;
-	}
-
-	public void setIncfDeployHostname(String incfDeployHostname) {
-		this.incfDeployHostname = incfDeployHostname;
-	}
-
-	public String getIncfDeployPortNumber() {
-		return incfDeployPortNumber;
-	}
-
-	public void setIncfDeployPortNumber(String incfDeployPortNumber) {
-		this.incfDeployPortNumber = incfDeployPortNumber;
-	}
-
 	private String incfDeployPortNumber = "";
-
 	private String imageBaseName = "";
 	private String imageServiceName = "";
 	private String minX = "";
@@ -74,7 +49,6 @@ public class ABAServiceVO {
 	private String filter = "";
 	private String currentTime = "";
 	private String urlString = "";
-
 	private String originalCoordinateX = "";
 	private String originalCoordinateY = "";
 	private String originalCoordinateZ = "";
@@ -85,33 +59,88 @@ public class ABAServiceVO {
 	private String srcSRSCode = "";
 	private String destSRSCode = "";
 	private String vocabulary = "";
-
 	private String transformationOne;
 	private String transformationTwo;
 	private String transformationThree;
 	private String transformationFour;
-
 	private String fromSRSCode;
 	private String toSRSCode;
-	
 	private String transformationOneURL;
 	private String transformationTwoURL;
 	private String transformationThreeURL;
 	private String transformationFourURL;
-	
 	private String xmlStringForTransformationInfoWithExecution;
 	private String xmlStringForTransformationInfo; 
 	private String errorMessage;
-	
 	private String fromSRSCodeOne;
 	private String fromSRSCodeTwo;
 	private String fromSRSCodeThree;
 	private String fromSRSCodeFour;
-	
 	private String toSRSCodeOne;
 	private String toSRSCodeTwo;
 	private String toSRSCodeThree;
 	private String toSRSCodeFour;
+
+	//Start - SRS Related
+	private String srsCode = "";
+	private String srsName = "";
+	private String srsDescription = "";
+	private String srsAuthorCode = "";
+	private String srsDateSubmitted = "";
+	private String origin = "";
+	private String unitsAbbreviation = "";
+	private String unitsName = "";
+	private String neuroPlusXCode = "";
+	private String neuroMinusXCode = "";
+	private String neuroPlusYCode = "";
+	private String neuroMinusYCode = "";
+	private String neuroPlusZCode = "";
+	private String neuroMinusZCode = "";
+	private String sourceURI = "";
+	private String sourceFileFormat = "";
+	private String srsAbstract = "";
+	private String derivedFromSRSCode = "";
+	private String derivedMethod = "";
+	private String species = "";
+	private String srsBase = "";
+	private String regionOfValidity = "";
+	private String regionURI = "";
+	private String srsVersion = "";
+	private String dimensionMinX = "";
+	private String dimensionMaxX = "";
+	private String dimensionMinY = "";
+	private String dimensionMaxY = "";
+	private String dimensionMinZ = "";
+	private String dimensionMaxZ = "";
+	private String orientationName = "";
+	private String orientationDescription = "";
+	private String orientationAuthor = "";
+	private String orientationDateSubmitted = "";
+
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	public String getIncfDeployHostname() {
+		return incfDeployHostname;
+	}
+
+	public void setIncfDeployHostname(String incfDeployHostname) {
+		this.incfDeployHostname = incfDeployHostname;
+	}
+
+	public String getIncfDeployPortNumber() {
+		return incfDeployPortNumber;
+	}
+
+	public void setIncfDeployPortNumber(String incfDeployPortNumber) {
+		this.incfDeployPortNumber = incfDeployPortNumber;
+	}
 
 	public String getUrlString() {
 		return urlString;
@@ -524,5 +553,286 @@ public class ABAServiceVO {
 		this.vocabulary = vocabulary;
 	}
 
+	public String getSrsCode() {
+		return srsCode;
+	}
+
+	public void setSrsCode(String srsCode) {
+		this.srsCode = srsCode;
+	}
+
+	public String getSrsName() {
+		return srsName;
+	}
+
+	public void setSrsName(String srsName) {
+		this.srsName = srsName;
+	}
+
+	public String getSrsDescription() {
+		return srsDescription;
+	}
+
+	public void setSrsDescription(String srsDescription) {
+		this.srsDescription = srsDescription;
+	}
+
+	public String getSrsAuthorCode() {
+		return srsAuthorCode;
+	}
+
+	public void setSrsAuthorCode(String srsAuthorCode) {
+		this.srsAuthorCode = srsAuthorCode;
+	}
+
+	public String getSrsDateSubmitted() {
+		return srsDateSubmitted;
+	}
+
+	public void setSrsDateSubmitted(String srsDateSubmitted) {
+		this.srsDateSubmitted = srsDateSubmitted;
+	}
+
+	public String getOrigin() {
+		return origin;
+	}
+
+	public void setOrigin(String origin) {
+		this.origin = origin;
+	}
+
+	public String getUnitsAbbreviation() {
+		return unitsAbbreviation;
+	}
+
+	public void setUnitsAbbreviation(String unitsAbbreviation) {
+		this.unitsAbbreviation = unitsAbbreviation;
+	}
+
+	public String getUnitsName() {
+		return unitsName;
+	}
+
+	public void setUnitsName(String unitsName) {
+		this.unitsName = unitsName;
+	}
+
+	public String getNeuroPlusXCode() {
+		return neuroPlusXCode;
+	}
+
+	public void setNeuroPlusXCode(String neuroPlusXCode) {
+		this.neuroPlusXCode = neuroPlusXCode;
+	}
+
+	public String getNeuroMinusXCode() {
+		return neuroMinusXCode;
+	}
+
+	public void setNeuroMinusXCode(String neuroMinusXCode) {
+		this.neuroMinusXCode = neuroMinusXCode;
+	}
+
+	public String getNeuroPlusYCode() {
+		return neuroPlusYCode;
+	}
+
+	public void setNeuroPlusYCode(String neuroPlusYCode) {
+		this.neuroPlusYCode = neuroPlusYCode;
+	}
+
+	public String getNeuroMinusYCode() {
+		return neuroMinusYCode;
+	}
+
+	public void setNeuroMinusYCode(String neuroMinusYCode) {
+		this.neuroMinusYCode = neuroMinusYCode;
+	}
+
+	public String getNeuroPlusZCode() {
+		return neuroPlusZCode;
+	}
+
+	public void setNeuroPlusZCode(String neuroPlusZCode) {
+		this.neuroPlusZCode = neuroPlusZCode;
+	}
+
+	public String getNeuroMinusZCode() {
+		return neuroMinusZCode;
+	}
+
+	public void setNeuroMinusZCode(String neuroMinusZCode) {
+		this.neuroMinusZCode = neuroMinusZCode;
+	}
+
+	public String getSourceURI() {
+		return sourceURI;
+	}
+
+	public void setSourceURI(String sourceURI) {
+		this.sourceURI = sourceURI;
+	}
+
+	public String getSourceFileFormat() {
+		return sourceFileFormat;
+	}
+
+	public void setSourceFileFormat(String sourceFileFormat) {
+		this.sourceFileFormat = sourceFileFormat;
+	}
+
+	public String getSrsAbstract() {
+		return srsAbstract;
+	}
+
+	public void setSrsAbstract(String srsAbstract) {
+		this.srsAbstract = srsAbstract;
+	}
+
+	public String getDerivedFromSRSCode() {
+		return derivedFromSRSCode;
+	}
+
+	public void setDerivedFromSRSCode(String derivedFromSRSCode) {
+		this.derivedFromSRSCode = derivedFromSRSCode;
+	}
+
+	public String getDerivedMethod() {
+		return derivedMethod;
+	}
+
+	public void setDerivedMethod(String derivedMethod) {
+		this.derivedMethod = derivedMethod;
+	}
+
+	public String getSpecies() {
+		return species;
+	}
+
+	public void setSpecies(String species) {
+		this.species = species;
+	}
+
+	public String getSrsBase() {
+		return srsBase;
+	}
+
+	public void setSrsBase(String srsBase) {
+		this.srsBase = srsBase;
+	}
+
+	public String getRegionOfValidity() {
+		return regionOfValidity;
+	}
+
+	public void setRegionOfValidity(String regionOfValidity) {
+		this.regionOfValidity = regionOfValidity;
+	}
+
+	public String getRegionURI() {
+		return regionURI;
+	}
+
+	public void setRegionURI(String regionURI) {
+		this.regionURI = regionURI;
+	}
+
+	public String getSrsVersion() {
+		return srsVersion;
+	}
+
+	public void setSrsVersion(String srsVersion) {
+		this.srsVersion = srsVersion;
+	}
+
+	public String getDimensionMinX() {
+		return dimensionMinX;
+	}
+
+	public void setDimensionMinX(String dimensionMinX) {
+		this.dimensionMinX = dimensionMinX;
+	}
+
+	public String getDimensionMaxX() {
+		return dimensionMaxX;
+	}
+
+	public void setDimensionMaxX(String dimensionMaxX) {
+		this.dimensionMaxX = dimensionMaxX;
+	}
+
+	public String getDimensionMinY() {
+		return dimensionMinY;
+	}
+
+	public void setDimensionMinY(String dimensionMinY) {
+		this.dimensionMinY = dimensionMinY;
+	}
+
+	public String getDimensionMaxY() {
+		return dimensionMaxY;
+	}
+
+	public void setDimensionMaxY(String dimensionMaxY) {
+		this.dimensionMaxY = dimensionMaxY;
+	}
+
+	public String getDimensionMinZ() {
+		return dimensionMinZ;
+	}
+
+	public void setDimensionMinZ(String dimensionMinZ) {
+		this.dimensionMinZ = dimensionMinZ;
+	}
+
+	public String getDimensionMaxZ() {
+		return dimensionMaxZ;
+	}
+
+	public void setDimensionMaxZ(String dimensionMaxZ) {
+		this.dimensionMaxZ = dimensionMaxZ;
+	}
+
+
+	private String orientationCode = "";
+	public String getOrientationCode() {
+		return orientationCode;
+	}
+
+	public void setOrientationCode(String orientationCode) {
+		this.orientationCode = orientationCode;
+	}
+
+	public String getOrientationName() {
+		return orientationName;
+	}
+
+	public void setOrientationName(String orientationName) {
+		this.orientationName = orientationName;
+	}
+
+	public String getOrientationDescription() {
+		return orientationDescription;
+	}
+
+	public void setOrientationDescription(String orientationDescription) {
+		this.orientationDescription = orientationDescription;
+	}
+
+	public String getOrientationDateSubmitted() {
+		return orientationDateSubmitted;
+	}
+
+	public void setOrientationDateSubmitted(String orientationDateSubmitted) {
+		this.orientationDateSubmitted = orientationDateSubmitted;
+	}
+
+	public String getOrientationAuthor() {
+		return orientationAuthor;
+	}
+
+	public void setOrientationAuthor(String orientationAuthor) {
+		this.orientationAuthor = orientationAuthor;
+	}
 
 }
