@@ -118,7 +118,7 @@ public class StructureNamesByPOI extends BaseResouce {
 	        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
 	        System.out.println("Filter: " + vo.getFilter());
 
-	        // validate data inputs
+	        //validate data inputs
 	        validateSrsName(vo.getFromSRSCodeOne());
 	        Double[] poiCoords = validateCoordinate(dataInputs);
 
@@ -133,7 +133,8 @@ public class StructureNamesByPOI extends BaseResouce {
 
 	        //Start - Common code used for coordinate transformation
 	        String transformedCoordinatesString = "";
-			// Convert the coordinates ABAVOXEL into PAXINOS
+
+	        //Convert the coordinates ABAVOXEL into PAXINOS
 	        if ( vo.getFromSRSCode().equalsIgnoreCase(paxinos) ) { 
 		        	vo.setTransformedCoordinateX(vo.getOriginalCoordinateX());
 		        	vo.setTransformedCoordinateY(vo.getOriginalCoordinateY());
@@ -175,10 +176,10 @@ public class StructureNamesByPOI extends BaseResouce {
 	        	vo.setTransformedCoordinateZ(tempArray[2]);
 		    }
 	        //End
-	        
+
 		String structureName = ""; 
 		//Start - Call the main method here
-		
+
 		String xmlQueryString = xmlQueryStringToGetBrainRegionNames(vo.getTransformedCoordinateX(), 
 				vo.getTransformedCoordinateY(), vo.getTransformedCoordinateZ());
 

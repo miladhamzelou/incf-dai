@@ -1268,7 +1268,7 @@ public class UCSDUtil {
 
 		}
 
-	
+
 	//FIXME - amemon - will eventually go to commons
 	public String spaceTransformation( UCSDServiceVO vo ) {
 

@@ -111,11 +111,11 @@ public class TransformPOI extends BaseResouce {
 	        // validate data inputs
 	        validateSrsName(vo.getFromSRSCodeOne());
 	        validateSrsName(vo.getToSRSCodeOne());
-	        Double[] poiCoords = validateCoordinate(dataInputs);
+/*	        Double[] poiCoords = validateCoordinate(dataInputs);
 	        System.out.println("After Validation X is - " + poiCoords[0]);
 	        System.out.println("After Validation Y is - " + poiCoords[1]);
 	        System.out.println("After Validation Z is - " + poiCoords[2]);
-
+*/
 	        // if any validation exceptions, no reason to continue
 	        if (exceptionHandler != null) {
 	            return getExceptionRepresentation();
