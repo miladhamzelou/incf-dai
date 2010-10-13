@@ -1,5 +1,5 @@
-<!--Generated Tue Aug 24 11:30:48 PDT 2010-->
-<ImagesResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
+<!--Generated Wed Oct 13 16:50:09 PDT 2010-->
+<ImagesResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <QueryInfo>
     <QueryUrl name="Get2DImagesByPOI">URL</QueryUrl>
     <Criteria>
@@ -28,32 +28,11 @@
     <!--optional thumbnail-->
     <!--type is type of service {wms-jpg|wms-png|wms-gif|zoomify|url} from type incfImageServicesEnum-->
     <Image2D>
-      <ImageSource format="image/jpeg" relavance="0.6" srsName="srscode" thumbnanil="http://example.com/image.jpg" metadata="URL" type="url">URL</ImageSource>
+      <ImageSource format="image/jpeg" relavance="0.6" srsName="srscode" thumbnail="http://example.com/image.jpg" metadata="URL" type="url">URL</ImageSource>
       <ImagePosition>
         <ImagePlaneEquation srsName="SRS">1 2 3 4</ImagePlaneEquation>
         <ImagePlanePlacement srsName="SRS">1 2 3 4 5 6.0</ImagePlanePlacement>
-        <Corners>
-          <Corner position="topleft">
-            <gml:Point gml:id="image1TopLeft">
-              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
-            </gml:Point>
-          </Corner>
-          <Corner position="bottomleft">
-            <gml:Point gml:id="image1BOTTOMLEFT">
-              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
-            </gml:Point>
-          </Corner>
-          <Corner position="topright">
-            <gml:Point gml:id="image1TOPRIGHT">
-              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
-            </gml:Point>
-          </Corner>
-          <Corner position="bottomright">
-            <gml:Point gml:id="image1BOTTOMRIGHT">
-              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
-            </gml:Point>
-          </Corner>
-        </Corners>
+        <ImageBoundingBox minX="-11.0001" minY="1.0" minZ="1.0" maxX="2.0" maxY="2.0" maxZ="20999.09"/>
       </ImagePosition>
     </Image2D>
   </Image2Dcollection>

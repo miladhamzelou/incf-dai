@@ -14,6 +14,9 @@
 		<File Uri=".\CoordinateChainTransformationResponses.xsd"/>
 		<File Uri=".\DescribeSrsResponse.xsd"/>
 		<File Uri=".\ListSrsResponse.xsd"/>
+		<File Uri=".\GetProcessByIdentifier.xsd"/>
+		<File Uri=".\ListHubsResponse.xsd"/>
+		<File Uri=".\ListProcessesResponse.xsd"/>
 		<SubGroup Name="Documents">
 			<File Uri=".\SampleDocuments\TransformResponse.xml"/>
 			<File Uri=".\SampleDocuments\CoordinateTransformInfo.xml"/>
@@ -34,6 +37,7 @@
 			<File Uri=".\common\CoordinateTransformationCommon.xsd"/>
 			<File Uri=".\common\SrsCommon.xsd"/>
 			<File Uri=".\common\WaxML_Base.xsd"/>
+			<File Uri=".\ListHubServices.xsd"/>
 		</SubGroup>
 	</Project>
 </XmlStudioProject>

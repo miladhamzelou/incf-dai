@@ -73,10 +73,10 @@ public class Main {
 		e.printStackTrace();
 	}
 	
-	ImagesResponse ir = new ImagesResponse();
+	ImagesResponse_2DImagesByPOI ir = new ImagesResponse_2DImagesByPOI();
     String ImagesResponse = ir.AsXml();
      try {
-     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/ImagesResponse.xml"));
+     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/ImagesResponse_2DImagesByPOI.xml"));
          out.write(ImagesResponse);
          out.close();
 	} catch (IOException e) {

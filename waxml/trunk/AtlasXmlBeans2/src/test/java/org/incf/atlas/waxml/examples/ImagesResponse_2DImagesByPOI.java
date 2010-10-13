@@ -21,13 +21,14 @@ import org.incf.atlas.waxml.generated.*;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseType.CoordinateTransformationChain;
 import org.incf.atlas.waxml.generated.Corners.Corner;
 import org.incf.atlas.waxml.generated.Image2DType.*;
+import org.incf.atlas.waxml.generated.Image2DType.ImagePosition.ImageBoundingBox;
 import org.incf.atlas.waxml.generated.ImagesResponseType.Image2Dcollection;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
 
-public class ImagesResponse  {
+public class ImagesResponse_2DImagesByPOI  {
 	@Test 
 	public void validFullResponse()
 	{
@@ -159,31 +160,39 @@ Utilities.addInputStringCriteria(criterias, "srsName", "Mouse_ABAvoxel_1.0");
 		IncfSrsType placement = i1position.addNewImagePlanePlacement();
 		placement.setSrsName("SRS");
 		placement.setStringValue("1 2 3 4 5 6.0");
-		Corners corners = i1position.addNewCorners();
 
-		Corner corner1 = corners.addNewCorner();
-		corner1.setPosition(PositionEnum.TOPLEFT);
-		corner1.addNewPoint().addNewPos().setStringValue("1 1 1");
-		corner1.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
-		corner1.getPoint().setId("image1TopLeft");
-
-		Corner corner2 = corners.addNewCorner();
-		corner2.setPosition(PositionEnum.BOTTOMLEFT);
-		corner2.addNewPoint().addNewPos().setStringValue("1 1 1");
-		corner2.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
-		corner2.getPoint().setId("image1BOTTOMLEFT");
-
-		Corner corner3 = corners.addNewCorner();
-		corner3.setPosition(PositionEnum.TOPRIGHT);
-		corner3.addNewPoint().addNewPos().setStringValue("1 1 1");
-		corner3.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
-		corner3.getPoint().setId("image1TOPRIGHT");
-
-		Corner corner4 = corners.addNewCorner();
-		corner4.setPosition(PositionEnum.BOTTOMRIGHT);
-		corner4.addNewPoint().addNewPos().setStringValue("1 1 1");
-		corner4.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
-		corner4.getPoint().setId("image1BOTTOMRIGHT");
+		ImageBoundingBox i1box =  i1position.addNewImageBoundingBox();
+		i1box.setMinX(-11.0001);
+		i1box.setMinY(1);
+		i1box.setMinZ(1);
+		i1box.setMaxX(2);
+		i1box.setMaxY(2);
+		i1box.setMaxZ(20999.09);
+		
+	//	Corners corners = i1position.addNewCorners();
+		//		Corner corner1 = corners.addNewCorner();
+//		corner1.setPosition(PositionEnum.TOPLEFT);
+//		corner1.addNewPoint().addNewPos().setStringValue("1 1 1");
+//		corner1.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+//		corner1.getPoint().setId("image1TopLeft");
+//
+//		Corner corner2 = corners.addNewCorner();
+//		corner2.setPosition(PositionEnum.BOTTOMLEFT);
+//		corner2.addNewPoint().addNewPos().setStringValue("1 1 1");
+//		corner2.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+//		corner2.getPoint().setId("image1BOTTOMLEFT");
+//
+//		Corner corner3 = corners.addNewCorner();
+//		corner3.setPosition(PositionEnum.TOPRIGHT);
+//		corner3.addNewPoint().addNewPos().setStringValue("1 1 1");
+//		corner3.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+//		corner3.getPoint().setId("image1TOPRIGHT");
+//
+//		Corner corner4 = corners.addNewCorner();
+//		corner4.setPosition(PositionEnum.BOTTOMRIGHT);
+//		corner4.addNewPoint().addNewPos().setStringValue("1 1 1");
+//		corner4.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
+//		corner4.getPoint().setId("image1BOTTOMRIGHT");
 		return document;
 	}
 }

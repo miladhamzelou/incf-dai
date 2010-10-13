@@ -1,4 +1,4 @@
-<!--Generated Tue Aug 24 11:30:48 PDT 2010-->
+<!--Generated Wed Oct 13 16:50:09 PDT 2010-->
 <CoordinateTransformationChainResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <QueryInfo>
     <QueryUrl name="GetTransformationChain">URL</QueryUrl>
@@ -16,9 +16,9 @@
   </QueryInfo>
   <!--CoordinateTransformation  + a required order attribute-->
   <CoordinateTransformationChain>
-    <CoordinateTransformation order="1" code="Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_1.0" hub="UCSD" inputSrsName="Mouse_Paxinos_1.0" outputSrsName="Mouse_WHS_1.0" accuracy="1.0">RequestUrl_1</CoordinateTransformation>
-    <CoordinateTransformation order="2" code="Mouse_WHS_1.0_To_Mouse_AGEA_1.0_1.0" hub="ABA" inputSrsName="Mouse_WHS_1.0" outputSrsName="Mouse_AGEA_1.0" accuracy="1.0">RequestUrl_2</CoordinateTransformation>
-    <CoordinateTransformation order="3" code="Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0" hub="ABA" inputSrsName="Mouse_AGEA_1.0" outputSrsName="Mouse_ABAvoxel_1.0">RequestUrl_3</CoordinateTransformation>
-    <CoordinateTransformation order="4" code="Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0" hub="ABA" inputSrsName="Mouse_ABAvoxel_1.0" outputSrsName="Mouse_ABAreference_1.0">RequestUrl_3</CoordinateTransformation>
+    <CoordinateTransformation order="1" code="Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_v1.0" hub="UCSD" inputSrsName="Mouse_Paxinos_1.0" outputSrsName="Mouse_WHS_1.0" accuracy="1.0" version="1.0">RequestUrl_1</CoordinateTransformation>
+    <CoordinateTransformation order="2" code="Mouse_WHS_1.0_To_Mouse_AGEA_1.0_v1.0" hub="ABA" inputSrsName="Mouse_WHS_1.0" outputSrsName="Mouse_AGEA_1.0" accuracy="1.0">RequestUrl_2</CoordinateTransformation>
+    <CoordinateTransformation order="3" code="Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_v1.0" hub="ABA" inputSrsName="Mouse_AGEA_1.0" outputSrsName="Mouse_ABAvoxel_1.0">RequestUrl_3</CoordinateTransformation>
+    <CoordinateTransformation order="4" code="Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_v1.0" hub="ABA" inputSrsName="Mouse_ABAvoxel_1.0" outputSrsName="Mouse_ABAreference_1.0">RequestUrl_4</CoordinateTransformation>
   </CoordinateTransformationChain>
 </CoordinateTransformationChainResponse>

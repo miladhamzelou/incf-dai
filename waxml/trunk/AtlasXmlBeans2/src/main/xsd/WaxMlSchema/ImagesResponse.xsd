@@ -43,6 +43,17 @@
                         <xs:element name="ImagePlaneEquation" type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
                         <xs:element name="ImagePlanePlacement " type="wax:incfSrsType" minOccurs="0" maxOccurs="1" />
                         <xs:element name="Corners" type="wax:Corners" minOccurs="0" maxOccurs="1" />
+                        <xs:element name="ImageBoundingBox" minOccurs="0" maxOccurs="1">
+                            <xs:complexType>
+                                <xs:attribute name="srsName" type="xs:token" />
+                                <xs:attribute name="minX" type="xs:double" />
+                                <xs:attribute name="minY" type="xs:double" />
+                                <xs:attribute name="maxX" type="xs:double" />
+                                <xs:attribute name="maxY" type="xs:double" />
+                                <xs:attribute name="minZ" type="xs:double" />
+                                <xs:attribute name="maxZ" type="xs:double" />
+                            </xs:complexType>
+                        </xs:element>
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
@@ -60,6 +71,4 @@
             </xs:element>
         </xs:sequence>
     </xs:complexType>
-    
-    
 </xs:schema>

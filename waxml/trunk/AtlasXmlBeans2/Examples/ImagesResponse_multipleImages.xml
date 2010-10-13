@@ -1,4 +1,4 @@
-<!--Generated Tue Aug 24 11:30:48 PDT 2010-->
+<!--Generated Wed Oct 13 16:50:09 PDT 2010-->
 <ImagesResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
   <QueryInfo>
     <QueryUrl name="Get2DImagesByPOI">URL</QueryUrl>
@@ -27,7 +27,7 @@
     <!--type is type of service {wms-jpg|wms-png|wms-gif|zoomify|url} from type incfImageServicesEnum-->
     <Image2D>
       <!--Name can be included. See second example-->
-      <ImageSource format="image/jpeg" relavance="0.6" srsName="srscode" thumbnanil="http://example.com/image.jpg" metadata="URL" type="url">URL</ImageSource>
+      <ImageSource format="image/jpeg" relavance="0.6" srsName="srscode" thumbnail="http://example.com/image.jpg" metadata="URL" type="url">URL</ImageSource>
       <ImagePosition>
         <ImagePlaneEquation srsName="SRS">1 2 3 4</ImagePlaneEquation>
         <ImagePlanePlacement srsName="SRS">1 2 3 4 5 6.0</ImagePlanePlacement>
@@ -57,7 +57,7 @@
     </Image2D>
     <Image2D>
       <!--Name is a good place for the Gene Name or an image title-->
-      <ImageSource name="SomeGeneName" format="image/png" relavance="0.6" srsName="srscode" thumbnanil="http://example.com/image.jpg" metadata="URL" type="wms-png">URL</ImageSource>
+      <ImageSource name="SomeGeneName" format="image/png" relavance="0.6" srsName="srscode" thumbnail="http://example.com/image.jpg" metadata="URL" type="wms-png">URL</ImageSource>
       <ImagePosition>
         <ImagePlaneEquation srsName="SRS">1 2 3 4</ImagePlaneEquation>
         <ImagePlanePlacement srsName="SRS">1 2 3 4 5 6.0</ImagePlanePlacement>

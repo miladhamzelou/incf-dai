@@ -84,6 +84,7 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 
 
 	InputType input1 =criterias.addNewInput();
+	
 	InputStringType inputSrsConstraint = (InputStringType) input1.changeType(InputStringType.type);
 
 	//InputStringType inputSrsConstraint = InputStringType.Factory.newInstance();
@@ -104,39 +105,43 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 	CoordinateChainTransformType ex1 = ct.addNewCoordinateTransformation();
 	ex1.setOrder(1);
 	
-	ex1.setCode("Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_1.0");
+	ex1.setCode("Mouse_Paxinos_1.0_To_Mouse_WHS_1.0_v1.0");
 	ex1.setHub("UCSD");
 	ex1.setInputSrsName(new QName("Mouse_Paxinos_1.0"));
 	ex1.setOutputSrsName(new QName("Mouse_WHS_1.0"));
 	ex1.setAccuracy(1);
+	ex1.setVersion("1.0");
 	ex1.setStringValue("RequestUrl_1");
 	
 	CoordinateChainTransformType ex2 =ct.addNewCoordinateTransformation();
 	ex2.setOrder(2);
-	ex2.setCode("Mouse_WHS_1.0_To_Mouse_AGEA_1.0_1.0");
+	ex2.setCode("Mouse_WHS_1.0_To_Mouse_AGEA_1.0_v1.0");
 	ex2.setHub("ABA");
 	ex2.setInputSrsName(new QName("Mouse_WHS_1.0"));
 	ex2.setOutputSrsName(new QName("Mouse_AGEA_1.0"));
 	ex2.setAccuracy(1);
+	ex1.setVersion("1.0");
 	ex2.setStringValue("RequestUrl_2");
+	
 	
 	CoordinateChainTransformType ex3 =ct.addNewCoordinateTransformation();
 	ex3.setOrder(3);
-	ex3.setCode("Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0");
+	ex3.setCode("Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_v1.0");
 	ex3.setHub("ABA");
 	ex3.setInputSrsName(new QName("Mouse_AGEA_1.0"));
 	ex3.setOutputSrsName(new QName("Mouse_ABAvoxel_1.0"));
 //	ex3.setAccuracy(1);
+	ex1.setVersion("1.0");
 	ex3.setStringValue("RequestUrl_3");
 	
 	CoordinateChainTransformType ex4 =ct.addNewCoordinateTransformation();
 	ex4.setOrder(4);
-	ex4.setCode("Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_1.0");
+	ex4.setCode("Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_v1.0");
 	ex4.setHub("ABA");
 	ex4.setInputSrsName(new QName("Mouse_ABAvoxel_1.0"));
 	ex4.setOutputSrsName(new QName("Mouse_ABAreference_1.0"));
 //	ex4.setAccuracy(1);
-	ex4.setStringValue("RequestUrl_3");
+	ex4.setStringValue("RequestUrl_4");
 	return co;
 }
 }

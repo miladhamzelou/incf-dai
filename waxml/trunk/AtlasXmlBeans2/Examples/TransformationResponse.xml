@@ -1,13 +1,10 @@
-<!--Generated Tue Aug 24 11:30:48 PDT 2010-->
+<!--Generated Wed Oct 13 16:50:09 PDT 2010-->
 <TransformationResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
   <QueryInfo>
     <QueryUrl name="TransformPOI">URL</QueryUrl>
     <Criteria>
-      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="inputSrsName">
-        <Value>Mouse_ABAVoxel_1.0</Value>
-      </Input>
-      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="outputSrsName">
-        <Value>Mouse_AGEA_1.0</Value>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="transformationCode">
+        <Value>Mouse_ABAvoxel_1.0_To_Mouse_ABAreference_1.0_v1.0</Value>
       </Input>
       <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="x">
         <Value>280</Value>

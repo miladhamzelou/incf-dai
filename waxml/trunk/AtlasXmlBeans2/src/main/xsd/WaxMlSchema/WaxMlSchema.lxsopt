@@ -9,4 +9,9 @@
 	<OpenFile Uri=".\common\WaxML_Base.xsd"/>
 	<OpenFile Uri=".\Retrieve2DimagesResponse.xsd"/>
 	<OpenFile Uri=".\ImagesResponse.xsd"/>
+	<OpenFile Uri=".\newBaseResponseTemplate.xsd"/>
+	<OpenFile Uri="http://schemas.opengis.net/ows/1.1.0/owsAll.xsd"/>
+	<OpenFile Uri=".\ListHubServices.xsd"/>
+	<OpenFile Uri=".\ListTransformationResponse.xsd"/>
+	<OpenFile Uri=".\TransformationResponse.xsd"/>
 </XmlStudioProjectOptions>

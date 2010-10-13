@@ -69,11 +69,8 @@ public class TransformationResponse {
 		// pnt.setSrsName("Mouse_ABAVoxel_1.0");
 		// pnt.addNewPos();
 		// pnt.getPos().setStringValue("280 112 162");
-Utilities.addInputStringCriteria(criterias,"inputSrsName", "Mouse_ABAVoxel_1.0");
-		InputStringType targetsrsCriteria = (InputStringType) criterias
-				.addNewInput().changeType(InputStringType.type);
-		targetsrsCriteria.setName("outputSrsName");
-		targetsrsCriteria.setValue("Mouse_AGEA_1.0");
+
+Utilities.addInputStringCriteria(criterias,"transformationCode", "Mouse_ABAvoxel_1.0_To_Mouse_ABAreference_1.0_v1.0");
 
 		InputStringType xCriteria = (InputStringType) criterias.addNewInput()
 				.changeType(InputStringType.type);
