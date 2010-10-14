@@ -7,7 +7,7 @@ I. Zaslavsky, editor
 
 Version 0.6. Now formatted as a specification (please edit with track changes and email back):
 
- http://geo.sdsc.edu/ilya/presentations/INCF_Atlas_Services_and_WaxML_version_06pic.doc
+ http://geo.sdsc.edu/ilya/presentations/INCF_Atlas_Services_and_WaxML_version_06pic_2.doc
 
 
 
