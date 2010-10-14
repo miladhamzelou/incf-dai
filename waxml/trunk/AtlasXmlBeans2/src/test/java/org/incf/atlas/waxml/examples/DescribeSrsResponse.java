@@ -10,12 +10,15 @@ import javax.xml.namespace.QName;
 
 import junit.framework.TestCase;
 
+import net.opengis.gml.x32.PointType;
+
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.apache.xmlbeans.impl.values.XmlObjectBase;
 
 import org.incf.atlas.waxml.generated.*;
+import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Fiducials;
 import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Slices;
 import org.incf.atlas.waxml.generated.ListSRSResponseType.*;
 import org.incf.atlas.waxml.generated.QueryInfoType.*;
@@ -109,6 +112,8 @@ public class DescribeSrsResponse   {
 			
 			Slices s = rootDoc.addNewSlices();
 			exampleSlice(	s.addNewSlice(), 1);
+Fiducials f = rootDoc.addNewFiducials();
+exampleFiducial(f.addNewFiducial(), 1);
 
 			return document;
 		}
@@ -121,6 +126,28 @@ public class DescribeSrsResponse   {
 				slice.setConstant(1);
 				slice.setCode("Reference Number for Slice");
 				
+	}
+	
+	public static void exampleFiducial(FiducialType fiducial, int identifier){
+		fiducial.setCode("Reference Number for fiducial");
+		fiducial.setName("Fiducial Name 1");
+		fiducial.setFiducialType("anatomic");
+		fiducial.setCertaintyLevel("optional value");
+		fiducial.setDerivedFrom("optional value");
+		
+	AuthorType author=	fiducial.addNewAuthor();
+	author.setAuthorCode("aCode");
+	author.setDateSubmitted(Calendar.getInstance());
+	author.setStringValue("Author Name");
+	
+	Incfdescription desc = 	fiducial.addNewDescription();
+	desc.setStringValue("Deescription");
+	
+	PointType pnt=	 fiducial.addNewPoint();
+	pnt.addNewPos().setStringValue("0 0 0");
+	pnt.setSrsName("Mouse_ABAReference_1.0");
+	pnt.setId("a35");
+
 	}
 	
 }

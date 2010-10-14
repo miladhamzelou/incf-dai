@@ -21,7 +21,7 @@
                     <xs:element name="Fiducials" minOccurs="0" maxOccurs="1">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element name="Fiducial" />
+                                <xs:element name="Fiducial" type="wax:FiducialType" minOccurs="0" maxOccurs="unbounded" />
                             </xs:sequence>
                         </xs:complexType>
                     </xs:element>

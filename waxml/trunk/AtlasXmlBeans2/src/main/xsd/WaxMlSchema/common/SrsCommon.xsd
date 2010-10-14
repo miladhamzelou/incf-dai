@@ -115,4 +115,16 @@ Distance to midline for saggital (latteral)</xs:documentation>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
+    <xs:complexType name="FiducialType">
+        <xs:sequence>
+            <xs:element name="Description" type="wax:Incfdescription" />
+            <xs:element name="Author" type="wax:AuthorType" />
+            <xs:element name="Certainty_level" type="xs:string" />
+            <xs:element name="DerivedFrom" type="xs:string" />
+            <xs:element ref="gml:Point" />
+        </xs:sequence>
+        <xs:attribute name="code" type="xs:string" />
+        <xs:attribute name="name" type="xs:string" />
+        <xs:attribute name="fiducialType" type="xs:string" />
+    </xs:complexType>
 </xs:schema>

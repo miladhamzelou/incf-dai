@@ -1,4 +1,4 @@
-<!--Generated Wed Oct 13 16:50:09 PDT 2010-->
+<!--Generated Wed Oct 13 17:43:18 PDT 2010-->
 <StructureTermsResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
   <QueryInfo>
     <QueryUrl name="GetStructureNamesByPOI  ">URL</QueryUrl>
