@@ -7,7 +7,6 @@ We have four hubs currently that demonstrate implemented INCF Atlas functions.
  * [http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#EMAP_Hub EMAP Hub]
  * [http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#UCSD_Hub UCSD Hub]
  * [http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#WHS_Hub WHS Hub]
- * [http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#INCF_Central INCF Central]
 
 Following the WPS standard, the INCF Atlas initiative has determined 14 execute functions in addition to the standard !GetCapabilities and !DescribeProcess requests. Each hub will implement a subset of the 14 functions.
 
@@ -55,6 +54,10 @@ Currently the project is using four servers to develop and demonstrate the hubs 
  * !DescribeProcess
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=DescribeProcess
+
+* Execute : ListSRS
+
+    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
 
 ===ABA Hub===
 
@@ -245,8 +248,4 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
 
-===INCF Central===
-
- * Execute : ListSRS
-
-    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+ 
