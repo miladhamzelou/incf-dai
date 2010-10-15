@@ -55,7 +55,7 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=DescribeProcess
 
-* Execute : ListSRS
+ * Execute : ListSRS
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
 
