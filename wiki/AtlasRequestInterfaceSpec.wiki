@@ -37,20 +37,46 @@ For example:
 ==Query String Details==
 
 Full URI = Base URI + Query String
+ * The query string begins with question mark (?)
+ * Consists of key=value pairs
+ * After the first key=value pair, others are ampersand-delimited (&)
 
-?service=WPS&version={version}&request={request}&Identifier={identifier}&DataInputs={data-inputs}
+===Format===
+?service=WPS&version={version}&request={request}&Identifier={identifier}&DataInputs={data-inputs}&ResponseForm={response-form}
 
-service = WPS
+===Keys===
 
-version = the version returned by the !GetCapabilities request
+service
+ * Required
+ * Value: Always WPS
 
-request = { !GetCapabilities | !DescribeProcess | Execute }
+version
+ * Required except when request=GetCapabilities
+ * Value: The version returned by the !GetCapabilities request
 
-Identifier = { function-name }
+request
+ * Required
+ * Values: { !GetCapabilities | !DescribeProcess | Execute }
 
-!DataInputs = if applicable, content varies with process
+Identifier
+ * Only applicable if request=Execute
+ * Value: the process name to be executed
+
+!DataInputs
+ * If applicable
+ * Content varies with process
+ * See [AtlasRequestInterfaceSpec#DataInputs Data Inputs]
+
+!ResponseForm
+ * Optional -- defaults to application/waxml
+ * Values: { application/waxml | text/html | text/json | text/plain }
+ * Not all formats are currently supported
 
 ===Data Inputs===
+
+ * The data inputs is a sub-query string of key=value pairs
+ * The key=value pairs are semicolon-delimited (;)
+ * The data inputs vary by process
 
 !DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
 
