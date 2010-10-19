@@ -5,7 +5,7 @@
 
 The Atlas base URIs identify the server location (URL) and the server application or context.
 
- * Format: http://[server]:[port]/atlas-[central | hub]
+ * Format: http://[server]:[port]/atlas-[central-or-hub]
 
  * Example: 
    * http://incf-dev-local:8080/atlas-central
