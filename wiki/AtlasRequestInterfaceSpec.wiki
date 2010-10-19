@@ -235,7 +235,8 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>...TO BE DETERMINED...</td>
+    <td>[AtlasRequestInterfaceSpec#SRS_Names inputSrsName]<br/>
+[AtlasRequestInterfaceSpec#SRS_Names outputSrsName]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -309,7 +310,8 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>... TO BE DETERMINED ...</td>
+    <td>URI<br/>
+[AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -414,8 +416,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#SRS_Names inputSrsName]<br/>
-[AtlasRequestInterfaceSpec#SRS_Names outputSrsName]<br/>
+    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
 [AtlasRequestInterfaceSpec#Coordinates x]<br/>
 [AtlasRequestInterfaceSpec#Coordinates y]<br/>
 [AtlasRequestInterfaceSpec#Coordinates z]<br/>
@@ -457,7 +458,8 @@ Atlas Functions
     <td>[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
 [AtlasRequestInterfaceSpec#Coordinates x]<br/>
 [AtlasRequestInterfaceSpec#Coordinates y]<br/>
-[AtlasRequestInterfaceSpec#Coordinates z]</td>
+[AtlasRequestInterfaceSpec#Coordinates z]<br/>
+[AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -790,10 +792,12 @@ sourceURL<br/>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#Transformation_Code transformationCode]<br/>
+    <td>[AtlasRequestInterfaceSpec#SRS_Names inputSrsName]<br/>
+[AtlasRequestInterfaceSpec#SRS_Names outputSrsName]<br/>
 [AtlasRequestInterfaceSpec#Coordinates x]<br/>
 [AtlasRequestInterfaceSpec#Coordinates y]<br/>
-[AtlasRequestInterfaceSpec#Coordinates z]<br/></td>
+[AtlasRequestInterfaceSpec#Coordinates z]<br/>
+[AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
