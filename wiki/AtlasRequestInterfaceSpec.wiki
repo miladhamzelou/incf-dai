@@ -83,44 +83,48 @@ Identifier
 !DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
 
 ====Data Input Keys====
- * srsName, inputSrsName, outputSrsName
- * transformationCode
- * x, y, z, xmin, xmax, ymin, ymax = { double }
- * vocabulary = { { hub } : { srs | vocabulary } : { code } }
- * filter = {  }
 
 =====SRS Names=====
  * Keys: srsName, inputSrsName, outputSrsName
- * Values: {
-Mouse_ABAreference_1.0 |<br/>
-Mouse_ABAvoxel_1.0 |<br/>
-Mouse_AGEA_1.0 |<br/>
-Mouse_EMAP-T26_1.0 |<br/>
-!Mouse_Paxinos_1.0 |<br/>
-Mouse_WHS_0.9 |<br/>
-Mouse_WHS_1.0 }
+ * Values:
+   * Mouse_ABAreference_1.0
+   * Mouse_ABAvoxel_1.0
+   * Mouse_AGEA_1.0
+   * Mouse_EMAP-T26_1.0
+   * !Mouse_Paxinos_1.0
+   * Mouse_WHS_0.9
+   * Mouse_WHS_1.0
 
 =====Coordinates=====
  * Keys: x, y, z, xmin, xmax, ymin, ymax
- * Values: { integer | double }
+ * Values:
+   * integer
+   * double
 
 =====Filter=====
-_filter_ will be one of these values:
- * maptype:coronal
- * maptype:horizontal
- * maptype:sagittal
- * structureset:anatomic
- * structureset:fine
+ * Key: filter
+ * Values:
+   * maptype:coronal
+   * maptype:horizontal
+   * maptype:sagittal
+   * structureset:anatomic
+   * structureset:fine
 
 =====SourceType=====
+ * Key: sourceType
+ * Values:
 
 =====SourceURL=====
+ * Key: sourceURL
+ * Value: a valid URL
 
 =====URI=====
+ * Key: URI
+ * Value: a valid URI
 
 =====Vocabulary=====
-
-
+ * Key: sourceURL
+ * Values:
 
 ==Atlas Functions==
 
