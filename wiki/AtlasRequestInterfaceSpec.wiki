@@ -79,37 +79,48 @@ Identifier
  * The key=value pairs are semicolon-delimited (;)
  * The data inputs vary by process
 
+====Format====
 !DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
 
-!DataInputs keys:
+====Data Input Keys====
  * srsName, inputSrsName, outputSrsName
  * transformationCode
  * x, y, z, xmin, xmax, ymin, ymax = { double }
  * vocabulary = { { hub } : { srs | vocabulary } : { code } }
  * filter = {  }
 
-====SRS Names====
-_srsName, inputSrsName, outputSrsName_ will be one of these values:
- * Mouse_ABAreference_1.0
- * Mouse_ABAvoxel_1.0
- * Mouse_AGEA_1.0
- * Mouse_EMAP-T26_1.0
- * !Mouse_Paxinos_1.0
- * Mouse_WHS_0.9
- * Mouse_WHS_1.0
+=====SRS Names=====
+ * Keys: srsName, inputSrsName, outputSrsName
+ * Values: {<br/>
+Mouse_ABAreference_1.0 |<br/>
+Mouse_ABAvoxel_1.0 |<br/>
+Mouse_AGEA_1.0 |<br/>
+Mouse_EMAP-T26_1.0 |<br/>
+!Mouse_Paxinos_1.0 |<br/>
+Mouse_WHS_0.9 |<br/>
+Mouse_WHS_1.0 }
 
-====Transformation Code====
+=====Coordinates=====
+ * Keys: x, y, z, xmin, xmax, ymin, ymax
+ * Values: { integer | double }
 
-====Coordinates====
-_x, y, z, xmin, xmax, ymin, ymax_ are type double
-
-====Filter====
+=====Filter=====
 _filter_ will be one of these values:
  * maptype:coronal
  * maptype:horizontal
  * maptype:sagittal
  * structureset:anatomic
  * structureset:fine
+
+=====SourceType=====
+
+=====SourceURL=====
+
+=====URI=====
+
+=====Vocabulary=====
+
+
 
 ==Atlas Functions==
 
