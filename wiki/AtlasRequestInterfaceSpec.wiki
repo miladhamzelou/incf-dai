@@ -91,7 +91,7 @@ Identifier
 
 =====SRS Names=====
  * Keys: srsName, inputSrsName, outputSrsName
- * Values: {<br/>
+ * Values: {
 Mouse_ABAreference_1.0 |<br/>
 Mouse_ABAvoxel_1.0 |<br/>
 Mouse_AGEA_1.0 |<br/>
