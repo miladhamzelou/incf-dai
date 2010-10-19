@@ -5,29 +5,17 @@
 
 The Atlas base URIs identify the server location (URL) and the server application or context.
 
- * Format: http://[server]:[port]/atlas-[hub]
+ * Format: http://[server]:[port]/atlas-[central | hub]
 
- * Example: http://incf-dev-local:8080/atlas-aba
+ * Example: 
+   * http://incf-dev-local:8080/atlas-central
+   * http://incf-dev-local:8080/atlas-aba
 
 ==Full URIs== 
-
-Full Atlas URIs are consistent with, but a subset of, the OGC (Open Geospatial Consortium) WPS (Web Processing Service) standard. 
-
-The [AtlasRequestInterfaceSpec#Base_URIs Base URIs] will be appended with a query string which will include these case- and order-sensitive keys:
- * service
-   * all requests
-   * value = WPS
- * version
-   * all requests except !GetCapabilities
-   * value be that returned by the !GetCapabilities request
- * request
-   * all requests
-   * value =  { !GetCapabilities | !DescribeProcess | Execute }
- * Identifier
-   * all Execute requests
-   * values enumerated below
- * !DataInputs
-   * [AtlasRequestInterfaceSpec#Query_String_Details described below]
+ * Full Atlas URIs are consistent with, but a subset of, the OGC (Open Geospatial Consortium) WPS (Web Processing Service) standard
+ * The full URI consists of
+   * One of the [AtlasRequestInterfaceSpec#Base_URIs Base URIs] 
+   * And an appended [AtlasRequestInterfaceSpec#Query_String_Details query string]
 
 For example:
  * http://incf-dev-local.crbs.ucd.edu/atlas-aba?service=WPS&request=GetCapabilities
