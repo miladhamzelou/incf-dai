@@ -662,7 +662,7 @@ Vocabulary]<br/>
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th colspan="2">!ListSRSs</th>
+    <th colspan="2">ListSRSs</th>
   </tr>
   <tr>
     <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListSRSs</td>
