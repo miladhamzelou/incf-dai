@@ -338,7 +338,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>URI<br/>
+    <td>[AtlasRequestInterfaceSpec#URI URI]<br/>
 [AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
@@ -562,7 +562,7 @@ Atlas Functions
 [AtlasRequestInterfaceSpec#Coordinates x]<br/>
 [AtlasRequestInterfaceSpec#Coordinates y]<br/>
 [AtlasRequestInterfaceSpec#Coordinates z]<br/>
-Vocabulary]<br/>
+[AtlasRequestInterfaceSpec#Vocabulary Vocabulary]<br/>
 [AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
@@ -778,8 +778,8 @@ Vocabulary]<br/>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>sourceType<br/>
-sourceURL<br/>
+    <td>[AtlasRequestInterfaceSpec#Source_TypesourceType]<br/>
+[AtlasRequestInterfaceSpec#Source_URL sourceURL]<br/>
 [AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
 [AtlasRequestInterfaceSpec#Coordinates xmin]<br/>
 [AtlasRequestInterfaceSpec#Coordinates xmax]<br/>
