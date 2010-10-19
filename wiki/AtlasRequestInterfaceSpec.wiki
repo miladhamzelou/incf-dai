@@ -36,7 +36,8 @@ For example:
 
 ==Query String Details==
 
-Full URI = Base URI + Query String
+ * A query string is appended to the base URI to comprise a full Atlas URI
+   * Full URI = Base URI + Query String
  * The query string begins with question mark (?)
  * Consists of key=value pairs
  * After the first key=value pair, others are ampersand-delimited (&)
