@@ -7,14 +7,14 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <td></td>
-    <th align="center">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Central Central]</th>
+    <th align="center">Central]</th>
     <th align="center">ABA Hub</th>
     <th align="center">EMAP Hub</th>
     <th align="center">UCSD Hub</th>
     <th align="center">WHS Hub</th>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#DescribeSRS DescribeSRS]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#DescribeSRS DescribeSRS]</th>
     <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -22,7 +22,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center">*X*</td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]</th>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center"></td>
@@ -30,7 +30,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Get2DImagesByURI Get2DImagesByURI]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Get2DImagesByURI Get2DImagesByURI]</th>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
@@ -38,7 +38,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCellsByPOI GetCellsByPOI]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCellsByPOI GetCellsByPOI]</th>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
@@ -46,7 +46,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCellsByURI GetCellsByURI]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCellsByURI GetCellsByURI]</th>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
@@ -54,7 +54,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCorrelationMapByPOI GetCorrelationMapByPOI]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCorrelationMapByPOI GetCorrelationMapByPOI]</th>
     <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center"></td>
@@ -62,7 +62,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetGenesByPOI GetGenesByPOI]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetGenesByPOI GetGenesByPOI]</th>
     <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -70,7 +70,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetProcessesByIdentifier GetProcessesByIdentifier]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetProcessesByIdentifier GetProcessesByIdentifier]</th>
     <td align="center">*X*</td>
     <td align="center"></td>
     <td align="center"></td>
@@ -78,7 +78,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetStructureNamesByPOI GetStructureNamesByPOI]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetStructureNamesByPOI GetStructureNamesByPOI]</th>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center"></td>
@@ -86,7 +86,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center">*X*</td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetTransformationChain GetTransformationChain]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetTransformationChain GetTransformationChain]</th>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -102,7 +102,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListProcesses ListProcesses]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListProcesses ListProcesses]</th>
     <td align="center">*X*</td>
     <td align="center"></td>
     <td align="center"></td>
@@ -110,7 +110,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListSRSs ListSRSs]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListSRSs ListSRSs]</th>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -118,7 +118,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center">*X*</td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListTransformations ListTransformations]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListTransformations ListTransformations]</th>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -126,7 +126,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center">*X*</td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Retrieve2DImage Retrieve2DImage]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Retrieve2DImage Retrieve2DImage]</th>
     <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center"></td>
@@ -134,7 +134,7 @@ The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to cen
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec# TransformPOI TransformPOI]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec# TransformPOI TransformPOI]</th>
     <td align="center"></td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
