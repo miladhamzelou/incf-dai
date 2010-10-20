@@ -780,7 +780,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#Source_TypesourceType]<br/>
+    <td>[AtlasRequestInterfaceSpec#Source_Type sourceType]<br/>
 [AtlasRequestInterfaceSpec#Source_URL sourceURL]<br/>
 [AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
 [AtlasRequestInterfaceSpec#Coordinates xmin]<br/>
