@@ -564,7 +564,7 @@ Atlas Functions
 [AtlasRequestInterfaceSpec#Coordinates x]<br/>
 [AtlasRequestInterfaceSpec#Coordinates y]<br/>
 [AtlasRequestInterfaceSpec#Coordinates z]<br/>
-[AtlasRequestInterfaceSpec#Vocabulary Vocabulary]<br/>
+[AtlasRequestInterfaceSpec#Vocabulary vocabulary]<br/>
 [AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
