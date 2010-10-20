@@ -1,6 +1,9 @@
 package org.incf.atlas.central.server;
 
 import org.incf.atlas.central.resource.Capabilities;
+import org.incf.atlas.central.resource.GetProcessesByIdentifier;
+import org.incf.atlas.central.resource.ListHubs;
+import org.incf.atlas.central.resource.ListProcesses;
 import org.incf.atlas.central.resource.ListSRS;
 import org.incf.atlas.central.resource.NotSupported;
 import org.incf.atlas.central.resource.NotYetImplemented;
@@ -46,10 +49,10 @@ public class ServerApplication extends Application
 		
 		router.attach(GET_CAPABILITIES,            Capabilities.class);
 		router.attach(DESCRIBE_PROCESS,            ProcessDescriptions.class);
-		router.attach(GET_PROCESSES_BY_IDENTIFIER, NotYetImplemented.class);
-		router.attach(LIST_HUBS,                   NotYetImplemented.class);
+		router.attach(GET_PROCESSES_BY_IDENTIFIER, GetProcessesByIdentifier.class);
+		router.attach(LIST_HUBS,                   ListHubs.class);
 		router.attach(LIST_HUB_SERVICES,           NotYetImplemented.class);
-		router.attach(LIST_PROCESSES,              NotYetImplemented.class);
+		router.attach(LIST_PROCESSES,              ListProcesses.class);
 		router.attach(DESCRIBE_SRS,                NotSupported.class);
         router.attach(DESCRIBE_TRANSFORMATION,     NotSupported.class);
         router.attach(GET_2D_IMAGES_BY_POI,        NotYetImplemented.class);
