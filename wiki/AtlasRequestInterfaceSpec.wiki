@@ -97,7 +97,7 @@ Identifier
    * structureset:anatomic
    * structureset:fine
 
-=====SourceType=====
+=====!SourceType=====
  * Key: sourceType
  * Values:
 
