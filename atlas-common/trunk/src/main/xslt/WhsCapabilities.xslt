@@ -9,8 +9,10 @@
     xmlns:ows="http://www.opengis.net/ows/1.1">
   <ows:ServiceIdentification>
     <ows:Title>WHS Atlas Services</ows:Title>
-    <ows:Abstract>WHS Atlas Services provide access to data available from the
-      WHS resource.</ows:Abstract>
+    <ows:Abstract>
+        WHS Atlas Services provide access to data available from the
+        INCF Waxholm Space resource.
+    </ows:Abstract>
     <ows:ServiceType>WPS</ows:ServiceType>
     <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
   </ows:ServiceIdentification>

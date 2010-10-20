@@ -3,17 +3,23 @@ package org.incf.atlas.common.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 public class XmlFilesBuilder {
@@ -65,6 +71,13 @@ public class XmlFilesBuilder {
     	"WhsCapabilities.xml", 
     };
     
+    // empty file
+    private static final String EMPTY_FILE = "EmptyFile.txt";
+    
+    // ListHubs
+    private static final String LIST_HUBS_SS = "ListHubs.xslt";
+    private static final String LIST_HUBS = "ListHubs.xml";
+    
     private TransformerFactory transFac;
     
     // directories
@@ -108,7 +121,7 @@ public class XmlFilesBuilder {
 
     private void buildXmlFiles(int i) 
 			throws TransformerException, FileNotFoundException {
-    	
+
     	File processDescriptions = new File(resourcesDir, PROCESS_DESCRIPTIONS[i]);
 
     	// generate process descriptions
@@ -119,7 +132,7 @@ public class XmlFilesBuilder {
     	// pretty print process descriptions
     	transform(new FileInputStream(tempFile),
     			new FileInputStream(prettyPrintSs),
-//    			new File(resourcesDir, PROCESS_DESCRIPTIONS[i]));
+    			//		new File(resourcesDir, PROCESS_DESCRIPTIONS[i]));
     			processDescriptions);
 
     	tempFile.delete();
@@ -137,6 +150,40 @@ public class XmlFilesBuilder {
     	tempFile.delete();
     }
 
+    private void buildListHubsFile() 
+			throws TransformerException, FileNotFoundException, ParserConfigurationException {
+
+    	// ss  new File(ssDir, LIST_HUBS_SS)
+    	// input
+    	// resutlt
+//    	Source ss = new StreamSource(new FileInputStream(new File(ssDir, LIST_HUBS_SS)));
+//    	Transformer transformer = transFac.newTransformer(ss);
+//    	DocumentBuilderFactory fac = DocumentBuilderFactory.newInstance();
+//    	DocumentBuilder builder = fac.newDocumentBuilder();
+//    	Document doc = builder.newDocument();
+//    	Source source = new DOMSource(doc);
+//    	Result result = new StreamResult(tempFile);
+//    	if (transformer == null) {
+//    		System.out.println("transformer");
+//    	}
+//    	if (source == null) {
+//    		System.out.println("source");
+//    	}
+//    	if (result == null) {
+//    		System.out.println("result");
+//    	}
+//    	transformer.transform(source, result);
+    	
+    	transform(new FileInputStream(new File(ssDir, LIST_HUBS_SS)), tempFile);
+    	
+    	// pretty print process descriptions
+    	transform(new FileInputStream(tempFile),
+    			new FileInputStream(prettyPrintSs),
+    			new File(resourcesDir, LIST_HUBS));
+
+    	tempFile.delete();
+    }
+
     private void transform(InputStream source, InputStream stylesheet,
             File output) throws TransformerException {
         
@@ -149,13 +196,30 @@ public class XmlFilesBuilder {
         transFac.newTransformer(xslt).transform(xmlSource, result);
     }
     
+    private void transform(InputStream stylesheet, File output) 
+    		throws TransformerException, ParserConfigurationException {
+    	
+    	// use an empty input source, i.e. no input
+    	Document emptyDoc = DocumentBuilderFactory.newInstance()
+    		.newDocumentBuilder().newDocument();
+    	Source emptySource = new DOMSource(emptyDoc);
+    	      
+        // set up inputs and outputs
+        Source xslt = new StreamSource(stylesheet);
+        Result result = new StreamResult(output);
+        
+        // do transform
+        transFac.newTransformer(xslt).transform(emptySource, result);
+    }
+    
     public static void main(String[] args) throws TransformerException, 
     		IOException, ParserConfigurationException, SAXException {
     	XmlFilesBuilder app = new XmlFilesBuilder();
-    	app.buildProcMasterFile();
-    	for (int i = 0; i < PROCESS_DESCRIPTIONS.length; i++) {
-    		app.buildXmlFiles(i);
-    	}
+//    	app.buildProcMasterFile();
+//    	for (int i = 0; i < PROCESS_DESCRIPTIONS.length; i++) {
+//    		app.buildXmlFiles(i);
+//    	}
+    	app.buildListHubsFile();
     }
 
 }

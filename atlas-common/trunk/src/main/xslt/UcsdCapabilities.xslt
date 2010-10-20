@@ -9,8 +9,11 @@
     xmlns:ows="http://www.opengis.net/ows/1.1">
   <ows:ServiceIdentification>
     <ows:Title>UCSD Atlas Services</ows:Title>
-    <ows:Abstract>UCSD Atlas Services provide access to data available from the
-      University of California, San Diego resource.</ows:Abstract>
+    <ows:Abstract>
+        UCSD Atlas Services provide access to data available from the
+        University of California, San Diego, Cell Centered Database (CCDB) 
+        resource.
+    </ows:Abstract>
     <ows:ServiceType>WPS</ows:ServiceType>
     <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
   </ows:ServiceIdentification>

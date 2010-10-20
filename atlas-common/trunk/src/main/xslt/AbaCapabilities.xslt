@@ -9,8 +9,10 @@
     xmlns:ows="http://www.opengis.net/ows/1.1">
   <ows:ServiceIdentification>
     <ows:Title>ABA Atlas Services</ows:Title>
-    <ows:Abstract>ABA Atlas Services provide access to data available from the
-      Allen Brain Atlas resource.</ows:Abstract>
+    <ows:Abstract>
+      ABA Atlas Services provide access to data available from the 
+      Allen Brain Atlas resource.
+    </ows:Abstract>
     <ows:ServiceType>WPS</ows:ServiceType>
     <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
   </ows:ServiceIdentification>
