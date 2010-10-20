@@ -154,7 +154,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>All hubs</td>
+    <td>Central and all hubs</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -190,7 +190,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>All hubs</td>
+    <td>Central and all hubs</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
