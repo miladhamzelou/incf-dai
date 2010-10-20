@@ -85,9 +85,7 @@ Identifier
 
 =====Coordinates=====
  * Keys: x, y, z, xmin, xmax, ymin, ymax
- * Values:
-   * integer
-   * double
+ * Value: double
 
 =====Filter=====
  * Key: filter
@@ -101,6 +99,8 @@ Identifier
 =====!SourceType=====
  * Key: sourceType
  * Values:
+   * wms-png
+   * wms-jpeg
 
 =====SourceURL=====
  * Key: sourceURL
@@ -111,8 +111,8 @@ Identifier
  * Value: a valid URI
 
 =====Vocabulary=====
- * Key: sourceURL
- * Values:
+ * Key: vocabulary
+ * Values: TODO same as srs
 
 ==Atlas Functions==
 
