@@ -13,7 +13,7 @@
                     <xs:element name="Hubs">
                         <xs:complexType>
                             <xs:sequence>
-                                <xs:element ref="wax:Hub" minOccurs="0" maxOccurs="unbounded" />
+                                <xs:element ref="wax:Hub" minOccurs="1" maxOccurs="unbounded" />
                             </xs:sequence>
                         </xs:complexType>
                     </xs:element>

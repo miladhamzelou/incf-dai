@@ -10,8 +10,6 @@
 	<OpenFile Uri=".\Retrieve2DimagesResponse.xsd"/>
 	<OpenFile Uri=".\GenesResponse.xsd"/>
 	<OpenFile Uri=".\newBaseResponseTemplate.xsd"/>
-	<OpenFile Uri=".\GetProcessByIdentifier.xsd"/>
 	<OpenFile Uri=".\common\ListHubServices.xsd"/>
-	<OpenFile Uri=".\ListProcessesResponse.xsd"/>
-	<OpenFile Uri=".\CoordinateChainTransformationResponses.xsd"/>
+	<OpenFile Uri=".\ListHubsResponse.xsd"/>
 </XmlStudioProjectOptions>
