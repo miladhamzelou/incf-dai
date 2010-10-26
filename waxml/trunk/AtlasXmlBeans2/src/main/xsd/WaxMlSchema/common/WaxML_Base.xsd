@@ -189,5 +189,4 @@ Optional</xs:documentation>
         <xs:attribute name="unitsName" type="xs:string" />
         <xs:attribute name="unitsAbbreviation" type="xs:Name" />
     </xs:complexType>
-    <xs:complexType name="hubService" />
 </xs:schema>

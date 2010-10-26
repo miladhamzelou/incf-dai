@@ -37,7 +37,7 @@
 			<File Uri=".\common\CoordinateTransformationCommon.xsd"/>
 			<File Uri=".\common\SrsCommon.xsd"/>
 			<File Uri=".\common\WaxML_Base.xsd"/>
-			<File Uri=".\ListHubServices.xsd"/>
+			<File Uri=".\common\ListHubServices.xsd"/>
 		</SubGroup>
 	</Project>
 </XmlStudioProject>

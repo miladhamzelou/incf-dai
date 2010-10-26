@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
+<!-- List Atlas (WPS). Mention that it can be something else 
+one of the hubs is central (or maybe not, No)-->
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns0="http://www.opengis.net/ows/2.0" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:include schemaLocation="WaxML_Base.xsd" />
+    <xs:import schemaLocation="http://schemas.opengis.net/ows/2.0/owsAll.xsd" namespace="http://www.opengis.net/ows/2.0" />
+    <xs:import schemaLocation="http://schemas.opengis.net/wps/1.0.0/wpsAll.xsd" namespace="http://www.opengis.net/wps/1.0.0" />
+    <xs:element name="Hubservice">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="wax:HubServiceType">
+                    <xs:attribute name="type" type="wax:hubTypes" />
+                    <xs:attribute name="codeSpace" type="xs:string" />
+                    <xs:attribute name="updateFrequencyDays" type="xs:int" />
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="HubServiceType">
+        <xs:sequence>
+            <xs:element ref="ns0:ServiceIdentification" minOccurs="1" maxOccurs="1" />
+            <xs:element xmlns:q1="http://www.opengis.net/wps/1.0.0" ref="q1:ProcessOfferings" minOccurs="1" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="type" type="wax:hubTypes" />
+        <xs:attribute name="codeSpace" type="xs:string" />
+        <xs:attribute name="updateFrequencyDays" type="xs:int" />
+    </xs:complexType>
+    <xs:element name="Hub" type="wax:HubType" />
+    <xs:complexType name="HubType">
+        <xs:sequence>
+            <xs:element name="description" type="wax:Incfdescription" />
+            <xs:element name="WebPresence">
+                <xs:complexType>
+                    <xs:choice>
+                        <xs:element name="LogoIconUrl" type="xs:anyURI" />
+                        <xs:element name="Website" type="xs:anyURI" />
+                    </xs:choice>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Status">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="lastUpdate" type="xs:date" />
+                            <xs:attribute name="CheckFrequnecyDays" type="xs:int" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:sequence>
+                <xs:element name="Contacts">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element xmlns:q2="http://www.isotc211.org/2005/gmd" name="ServiceContact" type="ns0:ResponsiblePartySubsetType" minOccurs="1" maxOccurs="unbounded" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:element name="HubServices">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element ref="wax:Hubservice" minOccurs="0" maxOccurs="unbounded" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="codeSpace" type="xs:string" />
+        <xs:attribute name="title" type="xs:string" />
+        <xs:attribute name="registeredDate" type="xs:date" />
+    </xs:complexType>
+    <xs:simpleType name="hubTypeEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="atlas" />
+            <xs:enumeration value="hub" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="hubTypes">
+        <xs:union memberTypes="wax:hubTypeEnum xs:string" />
+    </xs:simpleType>
+</xs:schema>
