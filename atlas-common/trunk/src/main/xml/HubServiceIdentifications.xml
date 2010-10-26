@@ -1,0 +1,64 @@
+<HubServiceIdentifications service="WPS" version="1.0.0" xml:lang="en-US"
+    xmlns:ows="http://www.opengis.net/ows/1.1"
+    xmlns:wps="http://www.opengis.net/wps/1.0.0">
+
+  <serviceId id="aba">
+  <ows:ServiceIdentification>
+    <ows:Title>ABA Atlas Services</ows:Title>
+    <ows:Abstract>
+      ABA Atlas Services provide access to data available from the 
+      Allen Brain Atlas resource.
+    </ows:Abstract>
+    <ows:ServiceType>WPS</ows:ServiceType>
+    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+  </ows:ServiceIdentification>
+  </serviceId>
+
+  <serviceId id="central">
+  <ows:ServiceIdentification>
+    <ows:Title>INCF Central Atlas Services</ows:Title>
+    <ows:Abstract>INCF Central Atlas Services provide access to data available 
+      from the various Atlas hubs.</ows:Abstract>
+    <ows:ServiceType>WPS</ows:ServiceType>
+    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+  </ows:ServiceIdentification>
+  </serviceId>
+
+  <serviceId id="emap">
+  <ows:ServiceIdentification>
+    <ows:Title>EMAP Atlas Services</ows:Title>
+    <ows:Abstract>
+        EMAP Atlas Services provide access to data available from the
+        Edinburgh Mouse Atlas Project resource.
+    </ows:Abstract>
+    <ows:ServiceType>WPS</ows:ServiceType>
+    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+  </ows:ServiceIdentification>
+  </serviceId>
+
+  <serviceId id="ucsd">
+  <ows:ServiceIdentification>
+    <ows:Title>UCSD Atlas Services</ows:Title>
+    <ows:Abstract>
+        UCSD Atlas Services provide access to data available from the
+        University of California, San Diego, Cell Centered Database (CCDB) 
+        resource.
+    </ows:Abstract>
+    <ows:ServiceType>WPS</ows:ServiceType>
+    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+  </ows:ServiceIdentification>
+  </serviceId>
+
+  <serviceId id="whs">
+  <ows:ServiceIdentification>
+    <ows:Title>WHS Atlas Services</ows:Title>
+    <ows:Abstract>
+        WHS Atlas Services provide access to data available from the
+        INCF Waxholm Space resource.
+    </ows:Abstract>
+    <ows:ServiceType>WPS</ows:ServiceType>
+    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+  </ows:ServiceIdentification>
+  </serviceId>
+
+</HubServiceIdentifications>
