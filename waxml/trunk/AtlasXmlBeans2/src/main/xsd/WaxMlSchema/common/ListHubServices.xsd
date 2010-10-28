@@ -63,7 +63,7 @@ one of the hubs is central (or maybe not, No)-->
             <xs:element name="HubServices">
                 <xs:complexType>
                     <xs:sequence>
-                        <xs:element ref="wax:Hubservice" minOccurs="1" maxOccurs="unbounded" />
+                        <xs:element ref="wax:HubService" minOccurs="1" maxOccurs="unbounded" />
                     </xs:sequence>
                 </xs:complexType>
             </xs:element>
