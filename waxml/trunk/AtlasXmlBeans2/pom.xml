@@ -79,6 +79,10 @@
 					     <sourceSchema>WaxMlSchema/DescribeSrsResponse.xsd</sourceSchema>
 					     <sourceSchema>WaxMlSchema/ListSrsResponse.xsd</sourceSchema>
 					     <sourceSchema>WaxMlSchema/ListTransformationResponse.xsd</sourceSchema>
+	
+						<sourceSchema>WaxMlSchema/ListHubsResponse.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/ListProcessesResponse.xsd</sourceSchema>
+						<sourceSchema>WaxMlSchema/GetProcessByIdentifier.xsd</sourceSchema>
 					     
 					     <sourceSchema>SCHEMAS_OPENGIS_NET/ows/2.0/owsExceptionReport.xsd</sourceSchema>  
 					<!--	<sourceSchema>WaxMlSchema/WaxML_Base.xsd</sourceSchema>

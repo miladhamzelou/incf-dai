@@ -32,7 +32,7 @@ import org.incf.atlas.waxml.examples.ListSRSResponse;
 import org.incf.atlas.waxml.examples.ListSRSResponse.*;
 
 public class DescribeSrsResponse   {
-	@Ignore("not ready")
+	
 	@Test 
 	public void validFullResponse()
 	{
