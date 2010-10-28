@@ -2,17 +2,13 @@
 <!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
 <!-- List Atlas (WPS). Mention that it can be something else 
 one of the hubs is central (or maybe not, No)-->
-<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" 
-xmlns:xlink="http://www.w3.org/1999/xlink" 
-xmlns:ns0="http://www.opengis.net/ows/1.1" 
-elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" 
-xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ns0="http://www.opengis.net/ows/1.1" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
     <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
     <xs:include schemaLocation="WaxML_Base.xsd" />
-<xs:import namespace="http://www.opengis.net/ows/1.1" schemaLocation="http://schemas.opengis.net/ows/1.1.0/owsAll.xsd"/>
+    <xs:import schemaLocation="http://schemas.opengis.net/ows/1.1.0/owsAll.xsd" namespace="http://www.opengis.net/ows/1.1" />
     <xs:import schemaLocation="http://schemas.opengis.net/wps/1.0.0/wpsAll.xsd" namespace="http://www.opengis.net/wps/1.0.0" />
-    <xs:element name="Hubservice">
+    <xs:element name="HubService">
         <xs:complexType>
             <xs:complexContent>
                 <xs:extension base="wax:HubServiceType">
@@ -25,6 +21,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
     </xs:element>
     <xs:complexType name="HubServiceType">
         <xs:sequence>
+            <xs:element name="CapabilitiesUrl" type="xs:anyURI" minOccurs="1" maxOccurs="unbounded" />
             <xs:element ref="ns0:ServiceIdentification" minOccurs="1" maxOccurs="1" />
             <xs:element xmlns:q1="http://www.opengis.net/wps/1.0.0" ref="q1:ProcessOfferings" minOccurs="1" maxOccurs="unbounded" />
         </xs:sequence>
@@ -35,7 +32,7 @@ xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:element name="Hub" type="wax:HubType" />
     <xs:complexType name="HubType">
         <xs:sequence>
-            <xs:element name="description" type="wax:Incfdescription" />
+            <xs:element name="Description" type="wax:Incfdescription" />
             <xs:element name="WebPresence">
                 <xs:complexType>
                     <xs:choice>
