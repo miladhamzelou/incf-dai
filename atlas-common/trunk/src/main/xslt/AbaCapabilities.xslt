@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xalan="http://xml.apache.org/xalan">
+
+<xsl:output method="xml" encoding="UTF-8" indent="yes" xalan:indent-amount="2"/>
 
 <xsl:template match="/">
 
 <wps:Capabilities service="WPS" version="1.0.0" xml:lang="en-US" 
-    xmlns:xlink="http://www.w3.org/1999/xlink" 
     xmlns:wps="http://www.opengis.net/wps/1.0.0" 
-    xmlns:ows="http://www.opengis.net/ows/1.1">
-  <ows:ServiceIdentification>
-    <ows:Title>ABA Atlas Services</ows:Title>
-    <ows:Abstract>
-      ABA Atlas Services provide access to data available from the 
-      Allen Brain Atlas resource.
-    </ows:Abstract>
-    <ows:ServiceType>WPS</ows:ServiceType>
-    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
-  </ows:ServiceIdentification>
+    xmlns:ows="http://www.opengis.net/ows/2.0" 
+    xmlns:xlink="http://www.w3.org/1999/xlink" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.opengis.net/wps/1.0.0 
+        http://http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd">
+<xsl:copy-of select="document('src/main/xml/HubServiceIdentifications.xml')/HubServiceIdentifications/serviceId[@id='aba']/*"/>
   <wps:ProcessOfferings>
 <xsl:for-each select="wps:ProcessDescriptions/ProcessDescription">
     <wps:Process>

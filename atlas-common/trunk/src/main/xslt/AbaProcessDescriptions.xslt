@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xalan="http://xml.apache.org/xalan">
 
 <xsl:variable name="ver" select="'1.0.0'"/>
 
@@ -13,6 +15,8 @@
 
 <!--<xsl:variable name="prefix" select="'http://www.incf.org/atlas/WaxML/schema/'"/>-->
 <xsl:variable name="prefix" select="'http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/'"/>
+
+<xsl:output method="xml" encoding="UTF-8" indent="yes" xalan:indent-amount="2"/>
 
 <xsl:template match="/">
 

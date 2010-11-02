@@ -157,8 +157,11 @@ public class XmlValidator {
 //		final String SCHEMA = "src/main/resources/wpsSchema/wpsGetCapabilities_response.xsd";
 //		final String XML = "src/main/resources/database/Capabilities.xq";
 		
-		final String SCHEMA = "src/main/xsd/wpsSchema/wpsDescribeProcess_response.xsd";
-		final String XML = "src/main/resources/ProcessDescriptionsMaster.xml";
+//		final String SCHEMA = "src/main/xsd/wpsSchema/wpsDescribeProcess_response.xsd";
+//		final String XML = "src/main/resources/ProcessDescriptionsMaster.xml";
+		
+		final String SCHEMA = "/home/dave/workspace/AtlasBeans2/src/main/xsd/WaxMlSchema/ListHubsResponse.xsd";
+		final String XML = "/home/dave/workspace/atlas-central/src/main/resources/ListHubs.xml";
 		
 //		final String SCHEMA = "src/main/xsd/owsExceptionReport.xsd";
 //		final String XML = "src/main/resources/exampleResponses/ExceptionReport.xml";

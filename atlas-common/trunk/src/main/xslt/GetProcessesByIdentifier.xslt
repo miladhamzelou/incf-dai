@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:stylesheet version="1.0" 
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xalan="http://xml.apache.org/xalan">
 
 <xsl:variable name="url" select="'incf-dev-local.crbs.ucsd.edu:8080'"/>
+
+<xsl:output method="xml" encoding="UTF-8" indent="yes" xalan:indent-amount="2"/>
 
 <xsl:template match="/">
 
