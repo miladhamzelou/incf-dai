@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<A:v va="va" xmlns:A="some_url">
+    <A:x xa="xa1">
+        <y ya="ya1">
+            <A:z za="za1"/>
+        </y>
+        <y ya="ya2">yaya</y>
+    </A:x>
+    <A:x xa="xa2">xaxa</A:x>
+    <A:x xa="xa3">
+        <y ya="ya3">
+            <A:z za="za2"/>
+        </y>
+        <y ya="ya4">
+            <A:z za="za3"/>
+            <A:z za="za4"/>
+        </y>
+        <y ya="ya5">yayayayaya</y>
+    </A:x>
+</A:v>

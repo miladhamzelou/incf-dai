@@ -1,9 +1,11 @@
 package org.incf.atlas.central.util;
 
-import java.io.IOException;
 import java.util.HashSet;
-import java.util.Properties;
 import java.util.Set;
+
+import org.apache.commons.configuration.Configuration;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
 
 public class Constants {
 
@@ -19,23 +21,34 @@ public class Constants {
     private Set<String> srsNames;
     private boolean validateXml;
 	
+	private PropertiesConfiguration config;
+
 	// singleton pattern
 	private Constants() {
 		
-		Properties props = new Properties();
+		config = new PropertiesConfiguration();
 		try {
-			props.load(Constants.class.getResourceAsStream(PROPS));
-		} catch (IOException e) {
-			throw new IllegalStateException("Unable to load resource '" 
-					+ PROPS + "'.", e);
+			config.load(Constants.class.getResourceAsStream(PROPS));
+		} catch (ConfigurationException e) {
+			throw new IllegalStateException("Unable to load resources '" 
+					+ PROPS + "'.");
 		}
+
+//		Properties props = new Properties();
+//		try {
+//			props.load(Constants.class.getResourceAsStream(PROPS));
+//		} catch (IOException e) {
+//			throw new IllegalStateException("Unable to load resource '" 
+//					+ PROPS + "'.", e);
+//		}
 		
-        defaultLanguage = props.getProperty("defaultLanguage");
-        defaultResponseForm = props.getProperty("defaultResponseForm");
-        defaultService = props.getProperty("defaultService");
-        defaultVersion = props.getProperty("defaultVersion");
+        defaultLanguage = config.getString("defaultLanguage");
+        defaultResponseForm = config.getString("defaultResponseForm");
+        defaultService = config.getString("defaultService");
+        defaultVersion = config.getString("defaultVersion");
         
-        String[] sNames = props.getProperty("srsNames").split(",");
+//        String[] sNames = config.getString("srsNames").split(",");
+        String[] sNames = config.getStringArray("srsNames");
         srsNames = new HashSet<String>();
         for (int i = 0; i < sNames.length; i++) {
             String srsName = sNames[i].trim().toLowerCase();
@@ -44,7 +57,7 @@ public class Constants {
             }
         }
         
-        validateXml = Boolean.parseBoolean(props.getProperty("validateXml"));
+//        validateXml = config.getBoolean("validateXml");
 	}
 	
 	// singleton pattern
@@ -57,6 +70,10 @@ public class Constants {
 			constants = new Constants();
 		}
 		return constants;
+	}
+	
+	public Configuration getConfiguration() {
+		return config;
 	}
 	
     public String getDefaultLanguage() {

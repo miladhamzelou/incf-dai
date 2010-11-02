@@ -27,7 +27,8 @@ public class XmlValidator {
 	private StringBuilder validationErrors;
 
 	public XmlValidator() {
-		String schemaLanguage = XMLConstants.W3C_XML_SCHEMA_NS_URI;
+//		String schemaLanguage = XMLConstants.W3C_XML_SCHEMA_NS_URI;
+		String schemaLanguage = XMLConstants.XML_NS_URI;
 		schemaFactory = SchemaFactory.newInstance(schemaLanguage);
 		validationErrors = new StringBuilder();
 	}
@@ -132,8 +133,8 @@ public class XmlValidator {
 //		final String SCHEMA = "src/main/resources/wpsSchema/wpsDescribeProcess_response.xsd";
 //		final String XML = "/database/ProcessDescriptions.xml";
 		
-		final String SCHEMA = "src/main/xsd/owsExceptionReport.xsd";
-		final String XML = "src/main/resources/exampleResponses/ExceptionReport.xml";
+		final String SCHEMA = "/home/dave/workspace/AtlasBeans2/src/main/xsd/WaxMlSchema/ListHubsResponse.xsd";
+		final String XML = "src/main/resources/ListHubs.xml";
 		
 		XmlValidator validator = new XmlValidator();
 		if (validator.validate(new File(XML), new File(SCHEMA))) {
