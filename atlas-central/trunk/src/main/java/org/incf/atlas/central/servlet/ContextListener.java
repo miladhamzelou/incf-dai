@@ -23,11 +23,11 @@ public final class ContextListener implements ServletContextListener {
 	
 	private static final String[][] IDENTIFIERS = {
 		{ "describesrs",            "GetProcesses-DescribeSRS.xml" },
-		{ "describetransformation", "GetProcesses-DescribeSRS.xml" },
+		{ "describetransformation", "GetProcesses-DescribeTransformation.xml" },
 		{ "get2dimagesbypoi",       "GetProcesses-Get2DImagesByPOI.xml" },
-		{ "get2dimagesbyuri",       "GetProcesses-Get2DImagesByPOI.xml" },
-		{ "getcellsbypoi",          "GetProcesses-Get2DImagesByPOI.xml" },
-		{ "getcellybyuri",          "GetProcesses-Get2DImagesByPOI.xml" },
+		{ "get2dimagesbyuri",       "GetProcesses-Get2DImagesByURI.xml" },
+		{ "getcellsbypoi",          "GetProcesses-GetCellsByPOI.xml" },
+		{ "getcellybyuri",          "GetProcesses-GetCellsByURI.xml" },
 		{ "getcorrelationmapbypoi", "GetProcesses-GetCorrelationMapByPOI.xml" },
 		{ "getgenesbypoi",          "GetProcesses-GetGenesByPOI.xml" },
 		{ "getstructurenamesbypoi", "GetProcesses-GetStructureNamesByPOI.xml" },
@@ -57,12 +57,21 @@ public final class ContextListener implements ServletContextListener {
 					this.getClass().getResourceAsStream("/CentralDescribeProcess.xml"));
 			context.setAttribute("describeprocess", xmlDescribeProcess);
 			
-			Map<String, String> processIdentifiers = new HashMap<String, String>();
+//			Map<String, String> processIdentifiers = new HashMap<String, String>();
 			for (int i = 0; i < IDENTIFIERS.length; i++) {
-				processIdentifiers.put(IDENTIFIERS[i][0], IDENTIFIERS[i][1]);
+//				processIdentifiers.put(IDENTIFIERS[i][0], IDENTIFIERS[i][1]);
 				String xmlGetProcesses = readAsString(
 						this.getClass().getResourceAsStream("/" + IDENTIFIERS[i][1]));
 				context.setAttribute(IDENTIFIERS[i][0], xmlGetProcesses);
+				
+				if (i == 4) {
+					logger.debug("0: {}, i: {}, file:\n{}", new String[] {
+							IDENTIFIERS[i][0], IDENTIFIERS[i][1], xmlGetProcesses	
+					});
+					logger.debug("Context attr value:\n{}", 
+							context.getAttribute(IDENTIFIERS[i][0]));
+				}
+				
 			}
 //			context.setAttribute("processIdentifiers", processIdentifiers);
 			

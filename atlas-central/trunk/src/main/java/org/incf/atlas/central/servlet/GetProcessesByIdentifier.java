@@ -1,21 +1,25 @@
 package org.incf.atlas.central.servlet;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletResponse;
 
 import org.incf.atlas.central.util.DataInputs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GetProcessesByIdentifier {
+public class GetProcessesByIdentifier implements ExecuteProcessHandler {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	private ServletContext context;
 	
-	private String fileName;
-
-	public GetProcessesByIdentifier(ServletContext context, DataInputs dataInputs) {
+	public GetProcessesByIdentifier(ServletContext context) {
 		this.context = context;
+	}
+	
+	@Override
+	public String getProcessResponse(DataInputs dataInputs, 
+			HttpServletResponse response) {
 		
 		if (dataInputs == null) {
 			// ERROR 
@@ -25,13 +29,11 @@ public class GetProcessesByIdentifier {
 		
 		logger.debug("processIdentifier: {}", processIdentifier);
 		
-		fileName = (String) context.getAttribute(processIdentifier);
+		String xmlResponse = (String) context.getAttribute(processIdentifier);
 		
-		logger.debug("fileName: {}", fileName);
-	}
-	
-	public String getResponse() {
-		return (String) context.getAttribute(fileName);
+		logger.debug("xmlResponse: {}", xmlResponse);
+		
+		return xmlResponse;
 	}
 
 }

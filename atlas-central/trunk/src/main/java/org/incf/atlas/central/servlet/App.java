@@ -38,30 +38,40 @@ public class App extends HttpServlet {
 			// TODO error - request is required
 		}
 		
+		ExecuteProcessHandler handler = null;
 		if (qsRequest.equals("getcapabilities")) {
-			response = (String) context.getAttribute("getcapabilities");
+			handler = new GetCapabilities(context);
+			response = handler.getProcessResponse(null, res);
 		}
 		
 		// TODO validate "version"
 		
 		if (qsRequest.equals("describeprocess")) {
-			response = (String) context.getAttribute("describeprocess");
+			handler = new DescribeProcess(context);
+			response = handler.getProcessResponse(null, res);
 		} else if (qsRequest.equals("execute")) {
 
 			// get dataInputs
 			DataInputs dataInputs = queryString.getDataInputs();
 			
-			// handle identifiers
+			// handle identifiers for request=Execute
 			String qsIdentifier = queryString.getValue("identifier");
 			if (qsIdentifier == null) {
 				// TODO error - identifier is required when request = Execute
 			}
 			if (qsIdentifier.equals("getprocessesbyidentifier")) {
-				response = new GetProcessesByIdentifier(context, dataInputs).getResponse();
+				handler = new GetProcessesByIdentifier(context);
+				response = handler.getProcessResponse(dataInputs, res);
 			} else if (qsIdentifier.equals("listhubs")) {
-				response = (String) context.getAttribute("listhubs");
+				handler = new ListHubs(context);
+				response = handler.getProcessResponse(null, res);
 			} else if (qsIdentifier.equals("listprocesses")) {
-				response = (String) context.getAttribute("listprocesses");
+				handler = new ListProcesses(context);
+				response = handler.getProcessResponse(dataInputs, res);
+				
+			// ASIF: add more else-if's here for additional identifiers
+			// e.g. Get2DImagesByPOI
+				
 			} else {
 				// TODO error - identifier not recognized
 			}

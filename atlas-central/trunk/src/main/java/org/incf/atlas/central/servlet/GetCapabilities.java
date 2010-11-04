@@ -7,13 +7,13 @@ import org.incf.atlas.central.util.DataInputs;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ListHubs implements ExecuteProcessHandler {
+public class GetCapabilities implements ExecuteProcessHandler {
 
 	private final Logger logger = LoggerFactory.getLogger(getClass());
 	
 	private ServletContext context;
 	
-	public ListHubs(ServletContext context) {
+	public GetCapabilities(ServletContext context) {
 		this.context = context;
 	}
 	
@@ -21,7 +21,7 @@ public class ListHubs implements ExecuteProcessHandler {
 	public String getProcessResponse(DataInputs dataInputs, 
 			HttpServletResponse response) {
 		
-		String xmlResponse = (String) context.getAttribute("listhubs");
+		String xmlResponse = (String) context.getAttribute("getcapabilities");
 		
 		logger.debug("xmlResponse: {}", xmlResponse);
 		
