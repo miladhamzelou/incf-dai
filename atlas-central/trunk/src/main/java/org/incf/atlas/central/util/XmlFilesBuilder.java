@@ -8,8 +8,8 @@ import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import org.incf.atlas.common.util.XmlTransformer;
 import org.xml.sax.SAXException;
+import org.incf.atlas.common.util.XmlTransformer;
 
 public class XmlFilesBuilder {
 	
