@@ -28,8 +28,6 @@ public class App extends HttpServlet {
 		QueryString queryString = new QueryString(
 				req.getQueryString().toLowerCase());
 		
-		logger.debug("Query string: {}", queryString);
-		
 		// TODO validate "service"
 		
 		// TODO validate "responseform
@@ -49,6 +47,9 @@ public class App extends HttpServlet {
 		if (qsRequest.equals("describeprocess")) {
 			response = (String) context.getAttribute("describeprocess");
 		} else if (qsRequest.equals("execute")) {
+
+			// get dataInputs
+			DataInputs dataInputs = queryString.getDataInputs();
 			
 			// handle identifiers
 			String qsIdentifier = queryString.getValue("identifier");
@@ -56,7 +57,7 @@ public class App extends HttpServlet {
 				// TODO error - identifier is required when request = Execute
 			}
 			if (qsIdentifier.equals("getprocessesbyidentifier")) {
-				
+				response = new GetProcessesByIdentifier(context, dataInputs).getResponse();
 			} else if (qsIdentifier.equals("listhubs")) {
 				response = (String) context.getAttribute("listhubs");
 			} else if (qsIdentifier.equals("listprocesses")) {

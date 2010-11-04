@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com) -->
 <wax:ListProcessesResponse 
     xmlns:wax="http://www.incf.org/WaxML/" 
     xmlns:ows="http://www.opengis.net/ows/2.0" 
@@ -8,270 +7,271 @@
     xsi:schemaLocation="http://www.incf.org/WaxML/ 
         http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ListProcessesResponse.xsd">
   <wax:QueryInfo>
-	<wax:TimeCreated>2019-10-25T15:49:42.30</wax:TimeCreated>
-	<wax:QueryUrl name="string">http://www.liquid-technologies.com</wax:QueryUrl>
-	<wax:Criteria />
+	<wax:QueryUrl></wax:QueryUrl>
+	<wax:Criteria>
+	</wax:Criteria>
   </wax:QueryInfo>
+  
   <wax:HubServices>
 
-        <wax:HubService>
-          <wax:CapabilitiesUrl>
-            http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&amp;request=GetCapabilities
-          </wax:CapabilitiesUrl>
-  <ows:ServiceIdentification>
-    <ows:Title>ABA Atlas Services</ows:Title>
-    <ows:Abstract>
-      ABA Atlas Services provide access to data available from the 
-      Allen Brain Atlas resource.
-    </ows:Abstract>
-    <ows:ServiceType>WPS</ows:ServiceType>
-    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
-  </ows:ServiceIdentification>
-  <wps:ProcessOfferings>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>DescribeSRS</ows:Identifier>
-      <ows:Title>Describe Atlas SRS</ows:Title>
-      <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>DescribeTransformation</ows:Identifier>
-      <ows:Title>Describe Transformation</ows:Title>
-      <ows:Abstract>Describes the transformation supported by this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>Get2DImagesByPOI</ows:Identifier>
-      <ows:Title>Get 2D Images by POI</ows:Title>
-      <ows:Abstract>Get 2D images at a POI (point of interest) specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetCorrelationMapByPOI</ows:Identifier>
-      <ows:Title>Get Correlation Map by POI</ows:Title>
-      <ows:Abstract>Get correlation map at a POI (point of interest) specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetGenesByPOI</ows:Identifier>
-      <ows:Title>Get Genes by POI</ows:Title>
-      <ows:Abstract>Get genes at a POI (point of interest) specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
-      <ows:Title>Get Structure Names by POI</ows:Title>
-      <ows:Abstract>Get structure names at a POI (point of interest) specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetTransformationChain</ows:Identifier>
-      <ows:Title>Get Transformation Chain</ows:Title>
-      <ows:Abstract>Get the chain of transformations required to transform coordinates from and to the given input and output SRS (Spatial Reference System) names.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>ListSRSs</ows:Identifier>
-      <ows:Title>List SRS Names</ows:Title>
-      <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>ListTransformations</ows:Identifier>
-      <ows:Title>List Transformations</ows:Title>
-      <ows:Abstract>List coordinate transformations available at this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>Retrieve2DImage</ows:Identifier>
-      <ows:Title>Retrieve 2D Image</ows:Title>
-      <ows:Abstract>This function gets a URI reference to a 2D image based
-      on the source URI provided and "cropped" based on the specified lower
-      left (xmin, ymin) and upper right (xmax, ymax).
-    </ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>TransformPOI</ows:Identifier>
-      <ows:Title>Transform POI</ows:Title>
-      <ows:Abstract>Transform a POI (point of interest) from one SRS (Spatial
-      Reference System) to another.</ows:Abstract>
-    </wps:Process>
-  </wps:ProcessOfferings>
-        </wax:HubService>
+    <wax:HubService>
+      <wax:CapabilitiesUrl>
+        http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&amp;request=GetCapabilities
+      </wax:CapabilitiesUrl>
+	  <ows:ServiceIdentification>
+	    <ows:Title>ABA Atlas Services</ows:Title>
+	    <ows:Abstract>
+	      ABA Atlas Services provide access to data available from the 
+	      Allen Brain Atlas resource.
+	    </ows:Abstract>
+	    <ows:ServiceType>WPS</ows:ServiceType>
+	    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+	  </ows:ServiceIdentification>
+	  <wps:ProcessOfferings>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>DescribeSRS</ows:Identifier>
+  	      <ows:Title>Describe Atlas SRS</ows:Title>
+	      <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>DescribeTransformation</ows:Identifier>
+	      <ows:Title>Describe Transformation</ows:Title>
+	      <ows:Abstract>Describes the transformation supported by this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>Get2DImagesByPOI</ows:Identifier>
+	      <ows:Title>Get 2D Images by POI</ows:Title>
+	      <ows:Abstract>Get 2D images at a POI (point of interest) specified in the request.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetCorrelationMapByPOI</ows:Identifier>
+	      <ows:Title>Get Correlation Map by POI</ows:Title>
+	      <ows:Abstract>Get correlation map at a POI (point of interest) specified in the request.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetGenesByPOI</ows:Identifier>
+	      <ows:Title>Get Genes by POI</ows:Title>
+	      <ows:Abstract>Get genes at a POI (point of interest) specified in the request.</ows:Abstract>
+        </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+		  <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
+		  <ows:Title>Get Structure Names by POI</ows:Title>
+		  <ows:Abstract>Get structure names at a POI (point of interest) specified in the request.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetTransformationChain</ows:Identifier>
+	      <ows:Title>Get Transformation Chain</ows:Title>
+	      <ows:Abstract>Get the chain of transformations required to transform coordinates from and to the given input and output SRS (Spatial Reference System) names.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>ListSRSs</ows:Identifier>
+	      <ows:Title>List SRS Names</ows:Title>
+	      <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>ListTransformations</ows:Identifier>
+	      <ows:Title>List Transformations</ows:Title>
+	      <ows:Abstract>List coordinate transformations available at this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>Retrieve2DImage</ows:Identifier>
+	      <ows:Title>Retrieve 2D Image</ows:Title>
+	      <ows:Abstract>This function gets a URI reference to a 2D image based
+	        on the source URI provided and "cropped" based on the specified lower
+	        left (xmin, ymin) and upper right (xmax, ymax).
+	      </ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>TransformPOI</ows:Identifier>
+	      <ows:Title>Transform POI</ows:Title>
+	      <ows:Abstract>Transform a POI (point of interest) from one SRS (Spatial
+	        Reference System) to another.</ows:Abstract>
+	    </wps:Process>
+	  </wps:ProcessOfferings>
+    </wax:HubService>
 
-        <wax:HubService>
-          <wax:CapabilitiesUrl>
-            http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&amp;request=GetCapabilities
-          </wax:CapabilitiesUrl>
-  <ows:ServiceIdentification>
-    <ows:Title>EMAP Atlas Services</ows:Title>
-    <ows:Abstract>
-        EMAP Atlas Services provide access to data available from the
-        Edinburgh Mouse Atlas Project resource.
-    </ows:Abstract>
-    <ows:ServiceType>WPS</ows:ServiceType>
-    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
-  </ows:ServiceIdentification>
-  <wps:ProcessOfferings>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>DescribeSRS</ows:Identifier>
-      <ows:Title>Describe Atlas SRS</ows:Title>
-      <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>DescribeTransformation</ows:Identifier>
-      <ows:Title>Describe Transformation</ows:Title>
-      <ows:Abstract>Describes the transformation supported by this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetGenesByPOI</ows:Identifier>
-      <ows:Title>Get Genes by POI</ows:Title>
-      <ows:Abstract>Get genes at a POI (point of interest) specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetTransformationChain</ows:Identifier>
-      <ows:Title>Get Transformation Chain</ows:Title>
-      <ows:Abstract>Get the chain of transformations required to transform coordinates from and to the given input and output SRS (Spatial Reference System) names.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>ListSRSs</ows:Identifier>
-      <ows:Title>List SRS Names</ows:Title>
-      <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>ListTransformations</ows:Identifier>
-      <ows:Title>List Transformations</ows:Title>
-      <ows:Abstract>List coordinate transformations available at this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>TransformPOI</ows:Identifier>
-      <ows:Title>Transform POI</ows:Title>
-      <ows:Abstract>Transform a POI (point of interest) from one SRS (Spatial
-      Reference System) to another.</ows:Abstract>
-    </wps:Process>
-  </wps:ProcessOfferings>
-        </wax:HubService>
+    <wax:HubService>
+      <wax:CapabilitiesUrl>
+        http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&amp;request=GetCapabilities
+      </wax:CapabilitiesUrl>
+	  <ows:ServiceIdentification>
+	    <ows:Title>EMAP Atlas Services</ows:Title>
+	    <ows:Abstract>
+	        EMAP Atlas Services provide access to data available from the
+	        Edinburgh Mouse Atlas Project resource.
+	    </ows:Abstract>
+	    <ows:ServiceType>WPS</ows:ServiceType>
+	    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+	  </ows:ServiceIdentification>
+	  <wps:ProcessOfferings>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>DescribeSRS</ows:Identifier>
+	      <ows:Title>Describe Atlas SRS</ows:Title>
+	      <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>DescribeTransformation</ows:Identifier>
+	      <ows:Title>Describe Transformation</ows:Title>
+	      <ows:Abstract>Describes the transformation supported by this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetGenesByPOI</ows:Identifier>
+	      <ows:Title>Get Genes by POI</ows:Title>
+	      <ows:Abstract>Get genes at a POI (point of interest) specified in the request.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetTransformationChain</ows:Identifier>
+	      <ows:Title>Get Transformation Chain</ows:Title>
+	      <ows:Abstract>Get the chain of transformations required to transform coordinates from and to the given input and output SRS (Spatial Reference System) names.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>ListSRSs</ows:Identifier>
+	      <ows:Title>List SRS Names</ows:Title>
+	      <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>ListTransformations</ows:Identifier>
+	      <ows:Title>List Transformations</ows:Title>
+	      <ows:Abstract>List coordinate transformations available at this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>TransformPOI</ows:Identifier>
+	      <ows:Title>Transform POI</ows:Title>
+	      <ows:Abstract>Transform a POI (point of interest) from one SRS (Spatial
+	      Reference System) to another.</ows:Abstract>
+	    </wps:Process>
+	  </wps:ProcessOfferings>
+    </wax:HubService>
 
-        <wax:HubService>
-          <wax:CapabilitiesUrl>
-            http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&amp;request=GetCapabilities
-          </wax:CapabilitiesUrl>
-  <ows:ServiceIdentification>
-    <ows:Title>UCSD Atlas Services</ows:Title>
-    <ows:Abstract>
-        UCSD Atlas Services provide access to data available from the
-        University of California, San Diego, Cell Centered Database (CCDB) 
-        resource.
-    </ows:Abstract>
-    <ows:ServiceType>WPS</ows:ServiceType>
-    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
-  </ows:ServiceIdentification>
-  <wps:ProcessOfferings>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>DescribeSRS</ows:Identifier>
-      <ows:Title>Describe Atlas SRS</ows:Title>
-      <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>DescribeTransformation</ows:Identifier>
-      <ows:Title>Describe Transformation</ows:Title>
-      <ows:Abstract>Describes the transformation supported by this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>Get2DImagesByPOI</ows:Identifier>
-      <ows:Title>Get 2D Images by POI</ows:Title>
-      <ows:Abstract>Get 2D images at a POI (point of interest) specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>Get2DImagesByURI</ows:Identifier>
-      <ows:Title>Get 2D Images by URI</ows:Title>
-      <ows:Abstract>Get 2D images with the URI specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetCellsByPOI</ows:Identifier>
-      <ows:Title>Get Cells by POI</ows:Title>
-      <ows:Abstract>Get cells at a POI (point of interest) specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetCellsByURI</ows:Identifier>
-      <ows:Title>Get Cells by URI</ows:Title>
-      <ows:Abstract>Get cells with the URI specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
-      <ows:Title>Get Structure Names by POI</ows:Title>
-      <ows:Abstract>Get structure names at a POI (point of interest) specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetTransformationChain</ows:Identifier>
-      <ows:Title>Get Transformation Chain</ows:Title>
-      <ows:Abstract>Get the chain of transformations required to transform coordinates from and to the given input and output SRS (Spatial Reference System) names.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>ListSRSs</ows:Identifier>
-      <ows:Title>List SRS Names</ows:Title>
-      <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>ListTransformations</ows:Identifier>
-      <ows:Title>List Transformations</ows:Title>
-      <ows:Abstract>List coordinate transformations available at this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>Retrieve2DImage</ows:Identifier>
-      <ows:Title>Retrieve 2D Image</ows:Title>
-      <ows:Abstract>This function gets a URI reference to a 2D image based
-      on the source URI provided and "cropped" based on the specified lower
-      left (xmin, ymin) and upper right (xmax, ymax).
-    </ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>TransformPOI</ows:Identifier>
-      <ows:Title>Transform POI</ows:Title>
-      <ows:Abstract>Transform a POI (point of interest) from one SRS (Spatial
-      Reference System) to another.</ows:Abstract>
-    </wps:Process>
-  </wps:ProcessOfferings>
-        </wax:HubService>
+    <wax:HubService>
+      <wax:CapabilitiesUrl>
+        http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&amp;request=GetCapabilities
+      </wax:CapabilitiesUrl>
+	  <ows:ServiceIdentification>
+	    <ows:Title>UCSD Atlas Services</ows:Title>
+	    <ows:Abstract>
+	        UCSD Atlas Services provide access to data available from the
+	        University of California, San Diego, Cell Centered Database (CCDB) 
+	        resource.
+	    </ows:Abstract>
+	    <ows:ServiceType>WPS</ows:ServiceType>
+	    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+	  </ows:ServiceIdentification>
+	  <wps:ProcessOfferings>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>DescribeSRS</ows:Identifier>
+	      <ows:Title>Describe Atlas SRS</ows:Title>
+	      <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>DescribeTransformation</ows:Identifier>
+	      <ows:Title>Describe Transformation</ows:Title>
+	      <ows:Abstract>Describes the transformation supported by this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>Get2DImagesByPOI</ows:Identifier>
+	      <ows:Title>Get 2D Images by POI</ows:Title>
+	      <ows:Abstract>Get 2D images at a POI (point of interest) specified in the request.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>Get2DImagesByURI</ows:Identifier>
+	      <ows:Title>Get 2D Images by URI</ows:Title>
+	      <ows:Abstract>Get 2D images with the URI specified in the request.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetCellsByPOI</ows:Identifier>
+	      <ows:Title>Get Cells by POI</ows:Title>
+	      <ows:Abstract>Get cells at a POI (point of interest) specified in the request.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetCellsByURI</ows:Identifier>
+	      <ows:Title>Get Cells by URI</ows:Title>
+	      <ows:Abstract>Get cells with the URI specified in the request.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
+	      <ows:Title>Get Structure Names by POI</ows:Title>
+	      <ows:Abstract>Get structure names at a POI (point of interest) specified in the request.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetTransformationChain</ows:Identifier>
+	      <ows:Title>Get Transformation Chain</ows:Title>
+	      <ows:Abstract>Get the chain of transformations required to transform coordinates from and to the given input and output SRS (Spatial Reference System) names.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>ListSRSs</ows:Identifier>
+	      <ows:Title>List SRS Names</ows:Title>
+	      <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>ListTransformations</ows:Identifier>
+	      <ows:Title>List Transformations</ows:Title>
+	      <ows:Abstract>List coordinate transformations available at this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>Retrieve2DImage</ows:Identifier>
+	      <ows:Title>Retrieve 2D Image</ows:Title>
+	      <ows:Abstract>This function gets a URI reference to a 2D image based
+	      on the source URI provided and "cropped" based on the specified lower
+	      left (xmin, ymin) and upper right (xmax, ymax).
+	    </ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>TransformPOI</ows:Identifier>
+	      <ows:Title>Transform POI</ows:Title>
+	      <ows:Abstract>Transform a POI (point of interest) from one SRS (Spatial
+	      Reference System) to another.</ows:Abstract>
+	    </wps:Process>
+	  </wps:ProcessOfferings>
+    </wax:HubService>
 
-        <wax:HubService>
-          <wax:CapabilitiesUrl>
-            http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&amp;request=GetCapabilities
-          </wax:CapabilitiesUrl>
-  <ows:ServiceIdentification>
-    <ows:Title>WHS Atlas Services</ows:Title>
-    <ows:Abstract>
-        WHS Atlas Services provide access to data available from the
-        INCF Waxholm Space resource.
-    </ows:Abstract>
-    <ows:ServiceType>WPS</ows:ServiceType>
-    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
-  </ows:ServiceIdentification>
-  <wps:ProcessOfferings>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>DescribeSRS</ows:Identifier>
-      <ows:Title>Describe Atlas SRS</ows:Title>
-      <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
-      <ows:Title>Get Structure Names by POI</ows:Title>
-      <ows:Abstract>Get structure names at a POI (point of interest) specified in the request.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>GetTransformationChain</ows:Identifier>
-      <ows:Title>Get Transformation Chain</ows:Title>
-      <ows:Abstract>Get the chain of transformations required to transform coordinates from and to the given input and output SRS (Spatial Reference System) names.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>ListSRSs</ows:Identifier>
-      <ows:Title>List SRS Names</ows:Title>
-      <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>ListTransformations</ows:Identifier>
-      <ows:Title>List Transformations</ows:Title>
-      <ows:Abstract>List coordinate transformations available at this server.</ows:Abstract>
-    </wps:Process>
-    <wps:Process wps:processVersion="1.0.0">
-      <ows:Identifier>TransformPOI</ows:Identifier>
-      <ows:Title>Transform POI</ows:Title>
-      <ows:Abstract>Transform a POI (point of interest) from one SRS (Spatial
-      Reference System) to another.</ows:Abstract>
-    </wps:Process>
-  </wps:ProcessOfferings>
-        </wax:HubService>
+    <wax:HubService>
+      <wax:CapabilitiesUrl>
+        http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&amp;request=GetCapabilities
+      </wax:CapabilitiesUrl>
+	  <ows:ServiceIdentification>
+	    <ows:Title>WHS Atlas Services</ows:Title>
+	    <ows:Abstract>
+	        WHS Atlas Services provide access to data available from the
+	        INCF Waxholm Space resource.
+	    </ows:Abstract>
+	    <ows:ServiceType>WPS</ows:ServiceType>
+	    <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+	  </ows:ServiceIdentification>
+	  <wps:ProcessOfferings>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>DescribeSRS</ows:Identifier>
+	      <ows:Title>Describe Atlas SRS</ows:Title>
+	      <ows:Abstract>Describes the principal Atlas SRSs (Spatial Reference Systems) supported by this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetStructureNamesByPOI</ows:Identifier>
+	      <ows:Title>Get Structure Names by POI</ows:Title>
+	      <ows:Abstract>Get structure names at a POI (point of interest) specified in the request.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>GetTransformationChain</ows:Identifier>
+	      <ows:Title>Get Transformation Chain</ows:Title>
+	      <ows:Abstract>Get the chain of transformations required to transform coordinates from and to the given input and output SRS (Spatial Reference System) names.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>ListSRSs</ows:Identifier>
+	      <ows:Title>List SRS Names</ows:Title>
+	      <ows:Abstract>List the SRSs (Spatial Reference Systems) supported at this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>ListTransformations</ows:Identifier>
+	      <ows:Title>List Transformations</ows:Title>
+	      <ows:Abstract>List coordinate transformations available at this server.</ows:Abstract>
+	    </wps:Process>
+	    <wps:Process wps:processVersion="1.0.0">
+	      <ows:Identifier>TransformPOI</ows:Identifier>
+	      <ows:Title>Transform POI</ows:Title>
+	      <ows:Abstract>Transform a POI (point of interest) from one SRS (Spatial
+	      Reference System) to another.</ows:Abstract>
+	    </wps:Process>
+	  </wps:ProcessOfferings>
+    </wax:HubService>
 
   </wax:HubServices>
 </wax:ListProcessesResponse>

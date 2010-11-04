@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringReader;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -19,6 +21,24 @@ public final class ContextListener implements ServletContextListener {
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
+	private static final String[][] IDENTIFIERS = {
+		{ "describesrs",            "GetProcesses-DescribeSRS.xml" },
+		{ "describetransformation", "GetProcesses-DescribeSRS.xml" },
+		{ "get2dimagesbypoi",       "GetProcesses-Get2DImagesByPOI.xml" },
+		{ "get2dimagesbyuri",       "GetProcesses-Get2DImagesByPOI.xml" },
+		{ "getcellsbypoi",          "GetProcesses-Get2DImagesByPOI.xml" },
+		{ "getcellybyuri",          "GetProcesses-Get2DImagesByPOI.xml" },
+		{ "getcorrelationmapbypoi", "GetProcesses-GetCorrelationMapByPOI.xml" },
+		{ "getgenesbypoi",          "GetProcesses-GetGenesByPOI.xml" },
+		{ "getstructurenamesbypoi", "GetProcesses-GetStructureNamesByPOI.xml" },
+		{ "gettransformationchain", "GetProcesses-GetTransformationChain.xml" },
+		{ "listsrss",               "GetProcesses-ListSRSs.xml" },
+		{ "listtransformations",    "GetProcesses-ListTransformations.xml" },
+		{ "retrieve2dimage",        "GetProcesses-Retrieve2DImage.xml" },
+		{ "transformpoi",           "GetProcesses-TransformPOI.xml" },
+	};
+	
+//	private Map<String, String> processIdentifiers;
 	private ServletContext context;
 
 	public void contextInitialized(ServletContextEvent event) {
@@ -36,7 +56,16 @@ public final class ContextListener implements ServletContextListener {
 			String xmlDescribeProcess = readAsString(
 					this.getClass().getResourceAsStream("/CentralDescribeProcess.xml"));
 			context.setAttribute("describeprocess", xmlDescribeProcess);
-
+			
+			Map<String, String> processIdentifiers = new HashMap<String, String>();
+			for (int i = 0; i < IDENTIFIERS.length; i++) {
+				processIdentifiers.put(IDENTIFIERS[i][0], IDENTIFIERS[i][1]);
+				String xmlGetProcesses = readAsString(
+						this.getClass().getResourceAsStream("/" + IDENTIFIERS[i][1]));
+				context.setAttribute(IDENTIFIERS[i][0], xmlGetProcesses);
+			}
+//			context.setAttribute("processIdentifiers", processIdentifiers);
+			
 			String xmlListHubs = readAsString(
 					this.getClass().getResourceAsStream("/ListHubs.xml"));
 			context.setAttribute("listhubs", xmlListHubs);
@@ -53,6 +82,12 @@ public final class ContextListener implements ServletContextListener {
 	public void contextDestroyed(ServletContextEvent event) {
 		context = event.getServletContext();
 		context.removeAttribute("getcapabilities");
+		context.removeAttribute("describeprocess");
+		for (int i = 0; i < IDENTIFIERS.length; i++) {
+			context.removeAttribute(IDENTIFIERS[i][0]);
+		}
+		context.removeAttribute("listhubs");
+		context.removeAttribute("listprocesses");
 	}
 	
 //	private static String readFileAsString(String filePath) 

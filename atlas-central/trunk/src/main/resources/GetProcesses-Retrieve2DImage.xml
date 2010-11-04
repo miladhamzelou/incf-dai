@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wax:GetProcessesResponse 
+    xmlns:wax="http://www.incf.org/WaxML/" 
+    xmlns:ows="http://www.opengis.net/ows/2.0" 
+    xmlns:wps="http://www.opengis.net/wps/1.0.0" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.incf.org/WaxML/ 
+        http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/GetProcessesResponse.xsd">
+  <wax:QueryInfo>
+    <wax:QueryUrl></wax:QueryUrl>
+    <wax:Criteria>
+    </wax:Criteria>
+  </wax:QueryInfo>
+  
+  <wax:HubServices>
+
+    <wax:HubService>
+      <wax:CapabilitiesUrl>
+        http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&amp;request=GetCapabilities
+      </wax:CapabilitiesUrl>
+      <ows:ServiceIdentification>
+        <ows:Title>ABA Atlas Services</ows:Title>
+        <ows:Abstract>
+          ABA Atlas Services provide access to data available from the 
+          Allen Brain Atlas resource.
+        </ows:Abstract>
+        <ows:ServiceType>WPS</ows:ServiceType>
+        <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+      </ows:ServiceIdentification>
+      <wps:ProcessOfferings>
+        <wps:Process wps:processVersion="1.0.0">
+          <ows:Identifier>Retrieve2DImage</ows:Identifier>
+          <ows:Title>Retrieve 2D Image</ows:Title>
+          <ows:Abstract>This function gets a URI reference to a 2D image based
+            on the source URI provided and "cropped" based on the specified lower
+            left (xmin, ymin) and upper right (xmax, ymax).
+          </ows:Abstract>
+        </wps:Process>
+      </wps:ProcessOfferings>
+    </wax:HubService>
+
+    <wax:HubService>
+      <wax:CapabilitiesUrl>
+        http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&amp;request=GetCapabilities
+      </wax:CapabilitiesUrl>
+      <ows:ServiceIdentification>
+        <ows:Title>UCSD Atlas Services</ows:Title>
+        <ows:Abstract>
+            UCSD Atlas Services provide access to data available from the
+            University of California, San Diego, Cell Centered Database (CCDB) 
+            resource.
+        </ows:Abstract>
+        <ows:ServiceType>WPS</ows:ServiceType>
+        <ows:ServiceTypeVersion>1.0.0</ows:ServiceTypeVersion>
+      </ows:ServiceIdentification>
+      <wps:ProcessOfferings>
+        <wps:Process wps:processVersion="1.0.0">
+          <ows:Identifier>Retrieve2DImage</ows:Identifier>
+          <ows:Title>Retrieve 2D Image</ows:Title>
+          <ows:Abstract>This function gets a URI reference to a 2D image based
+            on the source URI provided and "cropped" based on the specified lower
+            left (xmin, ymin) and upper right (xmax, ymax).
+          </ows:Abstract>
+        </wps:Process>
+      </wps:ProcessOfferings>
+    </wax:HubService>
+
+  </wax:HubServices>
+
+</wax:GetProcessesResponse>
