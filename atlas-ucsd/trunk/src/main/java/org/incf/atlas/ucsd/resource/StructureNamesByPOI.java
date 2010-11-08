@@ -122,10 +122,14 @@ public class StructureNamesByPOI extends BaseResouce {
 	        validateSrsName(vo.getFromSRSCodeOne());
 	        Double[] poiCoords = validateCoordinate(dataInputs);
 
-	        vo.setOriginalCoordinateX(String.valueOf(poiCoords[0].intValue()));
+	        vo.setOriginalCoordinateX(dataInputs.getValue("x"));
+	        vo.setOriginalCoordinateY(dataInputs.getValue("y"));
+	        vo.setOriginalCoordinateZ(dataInputs.getValue("z"));
+
+/*	        vo.setOriginalCoordinateX(String.valueOf(poiCoords[0].intValue()));
 	        vo.setOriginalCoordinateY(String.valueOf(poiCoords[1].intValue()));
 	        vo.setOriginalCoordinateZ(String.valueOf(poiCoords[2].intValue()));
-
+*/
 	        // if any validation exceptions, no reason to continue
 	        if (exceptionHandler != null) {
 	            return getExceptionRepresentation();
@@ -139,7 +143,7 @@ public class StructureNamesByPOI extends BaseResouce {
 		        	vo.setTransformedCoordinateX(vo.getOriginalCoordinateX());
 		        	vo.setTransformedCoordinateY(vo.getOriginalCoordinateY());
 		        	vo.setTransformedCoordinateZ(vo.getOriginalCoordinateZ());
-		    } else { 
+		    } else {
 	        	//Call getTransformationChain method here...
 		    	//ABAVoxel
 		    	vo.setOriginalCoordinateX(";x="+vo.getOriginalCoordinateX());
@@ -153,7 +157,7 @@ public class StructureNamesByPOI extends BaseResouce {
 		    	String hostName = uri.getHost();
 		    	String delimitor = config.getValue("incf.deploy.port.delimitor");
 		    	String portNumber = delimitor + uri.getPort();
-		    	String servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
+		    	String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 		    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
 		    	XMLUtilities xmlUtilities = new XMLUtilities();
 		    	transformedCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
