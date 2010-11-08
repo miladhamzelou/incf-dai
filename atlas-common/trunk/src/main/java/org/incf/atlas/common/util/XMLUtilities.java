@@ -174,7 +174,7 @@ public final class XMLUtilities {
 /*				String abavoxel = abaVoxel; 
 				String abareference = abaReference; 
 				String paxinos = paxinos; 
-				String agea = agea; 
+				String agea = agea;
 				String whs = whs09;
 				String emap = emap;
 */
