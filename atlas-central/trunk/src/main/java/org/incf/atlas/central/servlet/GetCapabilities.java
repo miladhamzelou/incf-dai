@@ -17,7 +17,6 @@ public class GetCapabilities implements ExecuteProcessHandler {
 		this.context = context;
 	}
 	
-	@Override
 	public String getProcessResponse(DataInputs dataInputs, 
 			HttpServletResponse response) {
 		
