@@ -110,6 +110,16 @@ public class CoordinateTransformationChain extends BaseResouce {
 		WHSUtil util = new WHSUtil(); 
 		String responseString = util.getCoordinateTransformationChain(vo);
 
+		if ( responseString.startsWith("Error:")) {
+			responseString = responseString.replaceAll("Error: ", "");
+	        ExceptionHandler eh = getExceptionHandler();
+	        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+	                new String[] { responseString });
+	        
+	        // there is no point in going further, so return
+	        return getExceptionRepresentation();
+		}
+
 		return new StringRepresentation(responseString, MediaType.APPLICATION_XML);
 
 		} catch (Exception e) {

@@ -312,7 +312,7 @@ public class WHSUtil {
 			WHSUtil util = new WHSUtil();
 
 			//mouse_abavoxel_1.0 to mouse_agea_1.0
-			if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
+			/*if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -328,7 +328,7 @@ public class WHSUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
+			} else */if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -360,7 +360,7 @@ public class WHSUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
+			} /*else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -376,7 +376,7 @@ public class WHSUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
+			} */else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -427,7 +427,7 @@ public class WHSUtil {
 				}
 
 			//via mouse_whs_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
+			} /*else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo.setFromSRSCodeOne(paxinos);
@@ -527,7 +527,7 @@ public class WHSUtil {
 				}
 
 			//via mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
+			} */else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo.setFromSRSCodeOne(abaVoxel);
@@ -591,7 +591,7 @@ public class WHSUtil {
 				}
 
             //via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
+			} /*else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo.setFromSRSCodeOne(abaReference);
@@ -621,7 +621,7 @@ public class WHSUtil {
 				}
 
 	        //via mouse_abavoxel_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
+			} */else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo.setFromSRSCodeOne(abaReference);
@@ -691,6 +691,8 @@ public class WHSUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 				
+			} else {
+				responseString = "Error: No such transformation chain is supported under this hub."; 
 			}
 
 			//End
