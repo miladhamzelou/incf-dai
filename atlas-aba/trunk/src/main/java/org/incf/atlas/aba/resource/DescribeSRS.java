@@ -1,5 +1,6 @@
 package org.incf.atlas.aba.resource;
 
+
 import java.net.URI;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,14 +20,11 @@ import net.opengis.gml.x32.UnitOfMeasureType;
 
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
-import org.incf.atlas.aba.util.ABAConfigurator;
-import org.incf.atlas.aba.util.ABAUtil;
-import org.incf.atlas.aba.util.AtlasNamespacePrefixMapper;
-import org.incf.atlas.aba.util.Constants;
-import org.incf.atlas.aba.util.DataInputs;
 import org.incf.atlas.common.util.ExceptionCode;
 import org.incf.atlas.common.util.ExceptionHandler;
 import org.incf.atlas.waxml.generated.*;
+import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Fiducials;
+import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Slices;
 import org.incf.atlas.waxml.generated.ListSRSResponseType.Orientations;
 import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSList;
 import org.incf.atlas.waxml.generated.OrientationType.Author;
@@ -50,10 +48,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 
-public class ListSRS extends BaseResouce {
+public class DescribeSRS extends BaseResouce {
 
 	private final Logger logger = LoggerFactory.getLogger(
-			ListSRS.class);
+			DescribeSRS.class);
 
 	//private String dataInputString;
 	//private DataInputs dataInputs;
@@ -64,7 +62,7 @@ public class ListSRS extends BaseResouce {
 
 	URI uri = null;
 	
-	public ListSRS(Context context, Request request, 
+	public DescribeSRS(Context context, Request request, 
 			Response response) {
 		super(context, request, response);
 		
@@ -92,7 +90,7 @@ public class ListSRS extends BaseResouce {
         	opt.setSaveAggressiveNamespaces();
         	opt.setUseDefaultNamespace();
 
-        	ListSRSResponseDocument document = completeResponse();
+        	DescribeSRSResponseDocument document = completeResponse();
 
         	ArrayList errorList = new ArrayList();
         	 opt.setErrorListener(errorList);
@@ -229,11 +227,11 @@ public class ListSRS extends BaseResouce {
 		return;
 	}
 
-	public ListSRSResponseDocument completeResponse() {
+	public DescribeSRSResponseDocument completeResponse() {
 
-		ListSRSResponseDocument document =	ListSRSResponseDocument.Factory.newInstance(); 
+		DescribeSRSResponseDocument document =	DescribeSRSResponseDocument.Factory.newInstance(); 
 		
-		ListSRSResponseType rootDoc =	document.addNewListSRSResponse();
+		DescribeSRSResponseType rootDoc =	document.addNewDescribeSRSResponse();
 		//rootDoc.newCursor().insertComment("Test Comment");
 		QueryInfoSrs(rootDoc.addNewQueryInfo(), uri.toString());
 		SRSList srsList = rootDoc.addNewSRSList();
@@ -262,7 +260,24 @@ public class ListSRS extends BaseResouce {
 			OrientationType orientaiton1 = o.addNewOrientation();
 			orientation(orientaiton1,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription());
 		}
+
+		Slices s = rootDoc.addNewSlices();
+		exampleSlice(	s.addNewSlice(), 1);
+/*		Fiducials f = rootDoc.addNewFiducials();
+		exampleFiducial(f.addNewFiducial(), 1);
+*/
 		return document;
 	}
+
+	public static void exampleSlice(SliceType slice, int identifier){
+		slice.newCursor().insertComment("orientation {coronal|sagittal|horizontal}");
+		slice.setOrientation(SliceType.Orientation.HORIZONTAL);
+		slice.setXOrientation("positive dorsal");
+		slice.setYOrientation("positive coronal"); 
+				slice.setConstant(1);
+				slice.setCode("Reference Number for Slice");
+				
+	}
+
 
 }

@@ -125,7 +125,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
+			} /*else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo );
@@ -440,6 +440,8 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo );
 				}
 				
+			} */ else {
+				responseString = "Error: No such transformation chain is supported under this hub."; 
 			}
 
 			//End
@@ -1840,14 +1842,14 @@ public class ABAUtil {
 	try {
 
 		//By Steve Lamont
-		if (fromSpace.trim().equalsIgnoreCase(abaVoxel) && toSpace.trim().equalsIgnoreCase(agea)) {
+		if (fromSpace.trim().equalsIgnoreCase(abaVoxel) && toSpace.trim().equalsIgnoreCase(agea)) { 
 
 			System.out.println("Inside ABAVOX 2 mouse_agea_1.0...");
-			
+
 			String transformationHostName = config.getValue("incf.transformationservice.host.name");
 			String transformationPortNumber = config.getValue("incf.transformationservice.port.number");
 			String transformationServicePath = config.getValue("incf.transformationservice.atlas.path");
-	
+
 			//Start - Create and run URL, and read the string from the webpage
 			String transforMatrixURL = "http://" + transformationHostName + transformationPortNumber + transformationServicePath + "atlas="+fromSpace.toLowerCase()+"&direction=forward&x=" + originalCoordinateX + "&y=" + originalCoordinateY + "&z=" + originalCoordinateZ;
 			System.out.println("Transformation matrix url is - " + transforMatrixURL); 

@@ -69,55 +69,37 @@ public class ListTransformations extends BaseResouce {
 
 		try { 
 
-		    // make sure we have something in dataInputs
-		    if (dataInputsString == null || dataInputsString.length() == 0) {
-		        ExceptionHandler eh = getExceptionHandler();
-		        eh.addExceptionToReport(ExceptionCode.MISSING_PARAMETER_VALUE, null, 
-		                new String[] { "All DataInputs were missing." });
-		        
-		        // there is no point in going further, so return
-		        return getExceptionRepresentation();
-		    }
-			
-		    // parse dataInputs string
-	        DataInputs dataInputs = new DataInputs(dataInputsString);
+	    // make sure we have something in dataInputs
+	    if (dataInputsString == null || dataInputsString.length() == 0) {
+	        ExceptionHandler eh = getExceptionHandler();
+	        eh.addExceptionToReport(ExceptionCode.MISSING_PARAMETER_VALUE, null, 
+	                new String[] { "All DataInputs were missing." });
+	        
+	        // there is no point in going further, so return
+	        return getExceptionRepresentation();
+	    }
+		
+	    // parse dataInputs string
+        DataInputs dataInputs = new DataInputs(dataInputsString);
 
-	        vo.setFromSRSCodeOne(dataInputs.getValue("inputSrsName"));
-	        vo.setFromSRSCode(dataInputs.getValue("inputSrsName"));
-	        vo.setToSRSCodeOne(dataInputs.getValue("outputSrsName"));
-	        vo.setToSRSCode(dataInputs.getValue("outputSrsName"));
-	        vo.setFilter(dataInputs.getValue("filter"));
+        vo.setFromSRSCodeOne(dataInputs.getValue("inputSrsName"));
+        vo.setFromSRSCode(dataInputs.getValue("inputSrsName"));
+        vo.setToSRSCodeOne(dataInputs.getValue("outputSrsName"));
+        vo.setToSRSCode(dataInputs.getValue("outputSrsName"));
+        vo.setFilter(dataInputs.getValue("filter"));
 
-	        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
-	        System.out.println("To SRS Code: " + vo.getToSRSCodeOne());
-	        System.out.println("Filter: " + vo.getFilter());
+        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
+        System.out.println("To SRS Code: " + vo.getToSRSCodeOne());
+        System.out.println("Filter: " + vo.getFilter());
 
-	        // validate data inputs
-	        validateSrsName(vo.getFromSRSCodeOne());
-	        validateSrsName(vo.getToSRSCodeOne());
+        // validate data inputs
+        validateSrsName(vo.getFromSRSCodeOne());
+        validateSrsName(vo.getToSRSCodeOne());
 
-	        // if any validation exceptions, no reason to continue
-	        if (exceptionHandler != null) {
-	            return getExceptionRepresentation();
-	        }
-
-		// text return for debugging
-/*		Set<String> dataInputKeys = dataInputs.getKeys();
-		for (String key : dataInputKeys) {
-			if (key.equalsIgnoreCase("inputSrsName")) {
-				fromSRSCode = dataInputs.getValue(key);
-				vo.setFromSRSCode(fromSRSCode);
-				vo.setFromSRSCodeOne(fromSRSCode);
-			} else if (key.equalsIgnoreCase("targetSrsName")) {
-				toSRSCode = dataInputs.getValue(key);
-				vo.setToSRSCode(toSRSCode);
-				vo.setToSRSCodeOne(toSRSCode);
-			} else if (key.equalsIgnoreCase("filter")) {
-				filter = dataInputs.getValue(key);
-				vo.setFilter(filter);
-			}
-		}
-*/
+        // if any validation exceptions, no reason to continue
+        if (exceptionHandler != null) {
+            return getExceptionRepresentation();
+        }
 
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         java.util.Date date = new java.util.Date();
@@ -134,14 +116,19 @@ public class ListTransformations extends BaseResouce {
 		ABAUtil util = new ABAUtil(); 
 		String responseString = util.getCoordinateTransformationChain(vo);
 
+		if ( responseString.startsWith("Error:")) {
+			responseString = responseString.replaceAll("Error: ", "");
+	        ExceptionHandler eh = getExceptionHandler();
+	        eh.addExceptionToReport(ExceptionCode.NOT_APPLICABLE_CODE, null, 
+	                new String[] { responseString });
+
+	        // there is no point in going further, so return
+	        return getExceptionRepresentation();
+		}
+
 		//return document.xmlText(opt);
 		return new StringRepresentation(responseString,MediaType.APPLICATION_XML);
 
-		//generate representation based on media type
-/*		if (variant.getMediaType().equals(MediaType.APPLICATION_XML)) {
-			return new JaxbRepresentation<CoordinateTransformationChainResponse>(coordinateChain);
-		}
-*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -169,7 +169,7 @@ public class CorrelationMapByPOI extends BaseResouce {
 	    	String delimitor = config.getValue("incf.deploy.port.delimitor");
 	    	String portNumber = delimitor + uri.getPort();
 
-	    	String servicePath = "/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
+	    	String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 	    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
 	    	XMLUtilities xmlUtilities = new XMLUtilities();
 	    	transformedCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());

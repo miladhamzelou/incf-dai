@@ -4,6 +4,7 @@ package org.incf.atlas.aba.server;
 import org.incf.atlas.aba.resource.Capabilities;
 import org.incf.atlas.aba.resource.CoordinateTransformationChain;
 import org.incf.atlas.aba.resource.CorrelationMapByPOI;
+import org.incf.atlas.aba.resource.DescribeSRS;
 import org.incf.atlas.aba.resource.Images2DByPOI;
 import org.incf.atlas.aba.resource.ListSRS;
 import org.incf.atlas.aba.resource.ListTransformations;
@@ -53,7 +54,7 @@ public class ServerApplication extends Application
 		
 		router.attach(GET_CAPABILITIES,           Capabilities.class);
 		router.attach(DESCRIBE_PROCESS,           ProcessDescriptions.class);
-		router.attach(DESCRIBE_SRS,               NotYetImplemented.class);
+		router.attach(DESCRIBE_SRS,               DescribeSRS.class);
         router.attach(DESCRIBE_TRANSFORMATION,    NotYetImplemented.class);
         router.attach(GET_2D_IMAGES_BY_POI,       Images2DByPOI.class);
         router.attach(GET_2D_IMAGES_BY_URI,       NotSupported.class);
