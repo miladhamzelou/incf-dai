@@ -230,7 +230,8 @@ Atlas Functions
     <th colspan="2">DescribeSRS</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=[srsName]</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=[srsName]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -265,7 +266,8 @@ Atlas Functions
     <th colspan="2">!DescribeTransformation</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=DescribeTransformation&DataInputs=...TO BE DETERMINED...</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=DescribeTransformation&DataInputs=...TO BE DETERMINED...</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -301,7 +303,8 @@ Atlas Functions
     <th colspan="2">Get2DImagesByPOI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z];filter=[filter]</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z];filter=[filter]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -341,7 +344,8 @@ Atlas Functions
     <th colspan="2">Get2DImagesByURI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=Get2DImagesByURI&DataInputs= ... TO BE DETERMINED ...</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=Get2DImagesByURI&DataInputs= ... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -377,7 +381,8 @@ Atlas Functions
     <th colspan="2">GetCellsByPOI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCellsByPOI&DataInputs= ... TO BE DETERMINED ...</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCellsByPOI&DataInputs= ... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -412,7 +417,8 @@ Atlas Functions
     <th colspan="2">GetCellsByURI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCellsByURI&DataInputs= ... TO BE DETERMINED ...</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCellsByURI&DataInputs= ... TO BE DETERMINED ...</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -447,7 +453,8 @@ Atlas Functions
     <th colspan="2">GetCorrelationMapByPOI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName];x=[x];y=[y];z=[z];filter=[filter]</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName];x=[x];y=[y];z=[z];filter=[filter]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -486,7 +493,8 @@ Atlas Functions
     <th colspan="2">GetGenesByPOI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z]</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -526,7 +534,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]$service=WPS&request=Execute&Identifier=GetProcessesByIdentifier</td>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetProcessesByIdentifier&DataInputs=processIdentifier=[processIdentifier</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -538,7 +546,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#Process_Identifier processId]</td>
+    <td>[AtlasRequestInterfaceSpec#Process_Identifier processIdentifier]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -550,7 +558,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetProcessesByIdentifier&DataInputs=processIdentifier=Get2DImagesByPOI</td>
   </tr>
 </table>
 
@@ -561,7 +569,8 @@ Atlas Functions
     <th colspan="2">GetStructureNamesByPOI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z];vocabulary=[vocabulary];filter=[filter]</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z];vocabulary=[vocabulary];filter=[filter]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -601,7 +610,8 @@ Atlas Functions
     <th colspan="2">!GetTransformationChain</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName];filter=[filter]</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName];filter=[filter]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -639,7 +649,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]$service=WPS&request=Execute&Idntifier=ListHubs</td>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Idntifier=ListHubs</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -663,7 +673,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Idntifier=ListHubs</td>
   </tr>
 </table>
 
@@ -675,7 +685,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]$service=WPS&request=Execute&Identifier=ListProcesses</td>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListProcesses</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -699,7 +709,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListProcesses</td>
   </tr>
 </table>
 
@@ -710,7 +720,8 @@ Atlas Functions
     <th colspan="2">ListSRSs</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListSRSs</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListSRSs</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -745,7 +756,8 @@ Atlas Functions
     <th colspan="2">!ListTransformations</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName]</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -781,7 +793,8 @@ Atlas Functions
     <th colspan="2">Retrieve2DImage</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=Retrieve2DImage&DataInputs=sourceType=[sourceType];sourceURL=[sourceURL]]srsName=[srsName];xmin=[xmin];xmax=[xmax];ymin=[ymin];ymax=[ymax];filter=[filter]</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=Retrieve2DImage&DataInputs=sourceType=[sourceType];sourceURL=[sourceURL]]srsName=[srsName];xmin=[xmin];xmax=[xmax];ymin=[ymin];ymax=[ymax];filter=[filter]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -823,7 +836,8 @@ Atlas Functions
     <th colspan="2">TransformPOI</th>
   </tr>
   <tr>
-    <th align="left">GET Request</th>        <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName];xmin=[xmin];xmax=[xmax];ymin=[ymin],ymax=[ymax];filter=[filter]</td>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=[inputSrsName];outputSrsName=[outputSrsName];xmin=[xmin];xmax=[xmax];ymin=[ymin],ymax=[ymax];filter=[filter]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
