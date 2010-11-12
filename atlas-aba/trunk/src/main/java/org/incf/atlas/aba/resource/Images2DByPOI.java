@@ -708,7 +708,7 @@ public class Images2DByPOI extends BaseResouce {
 		i1source.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());
 		i1source.setName(im.imagedisplayname);
 //		i1source.setRelavance((float) 0.6);
-//		i1source.setSrsName("srscode");
+		i1source.setSrsName(responseValues.clientSrsName);
 		i1source.setThumbnail(im.thumbnailurl);
 //		i1source.setMetadata("URL");
 //		i1source.setType(IncfImageServicesEnum.URL.toString());
