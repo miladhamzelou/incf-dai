@@ -1,6 +1,7 @@
 package org.incf.atlas.central.servlet;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.incf.atlas.central.util.DataInputs;
@@ -17,8 +18,8 @@ public class GetProcessesByIdentifier implements ExecuteProcessHandler {
 		this.context = context;
 	}
 	
-	public String getProcessResponse(DataInputs dataInputs, 
-			HttpServletResponse response) {
+	public String getProcessResponse(ServletContext context, HttpServletRequest request, 
+								     HttpServletResponse response, DataInputs dataInputs ) {
 		
 		if (dataInputs == null) {
 			// ERROR 
@@ -33,6 +34,7 @@ public class GetProcessesByIdentifier implements ExecuteProcessHandler {
 		logger.debug("xmlResponse: {}", xmlResponse);
 		
 		return xmlResponse;
+	
 	}
 
 }
