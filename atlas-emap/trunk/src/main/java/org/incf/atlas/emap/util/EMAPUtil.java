@@ -13,7 +13,6 @@ import javax.xml.namespace.QName;
 
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
-
 import org.incf.atlas.emap.resource.EMAPServiceVO;
 import org.incf.atlas.waxml.generated.CoordinateChainTransformType;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseDocument;
@@ -712,17 +711,17 @@ public class EMAPUtil {
 
 	}
 
-	public String getTransformationChain( EMAPServiceVO vo ) { 
+	public String getTransformationChain( EMAPServiceVO vo ) {
 
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
 		opt.setSaveNamespacesFirst();
 		opt.setSaveAggressiveNamespaces();
 		opt.setUseDefaultNamespace();
-		
+
 		CoordinateTransformationChainResponseDocument co =   CoordinateTransformationChainResponseDocument.Factory.newInstance();
 		co.addNewCoordinateTransformationChainResponse();
-		
+
 		//Query Info
 		co.getCoordinateTransformationChainResponse().addNewQueryInfo();
 		QueryInfoType qi = co.getCoordinateTransformationChainResponse().getQueryInfo();
