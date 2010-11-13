@@ -57,14 +57,14 @@ public interface RequestQueryStrings {
 
     // execute requests (not all are supported at all hubs)
     public static final String DESCRIBE_SRS =
-    		EXECUTE_REQUEST + "DescribeSRS" + DATA_INPUTS;
-    
+    		EXECUTE_REQUEST + "DescribeSRS";
+
     public static final String DESCRIBE_TRANSFORMATION =
     		EXECUTE_REQUEST + "DescribeTransfomation" + DATA_INPUTS;
-    
+
     public static final String GET_2D_IMAGES_BY_POI =
     		EXECUTE_REQUEST + "Get2DImagesByPOI" + DATA_INPUTS;
-    
+
     public static final String GET_2D_IMAGES_BY_URI =
     		EXECUTE_REQUEST + "Get2DImagesByURI" + DATA_INPUTS;
     
