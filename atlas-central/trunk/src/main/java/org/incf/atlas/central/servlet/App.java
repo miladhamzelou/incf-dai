@@ -26,7 +26,6 @@ public class App extends HttpServlet {
 		String response = null;
 		
 		QueryString queryString = new QueryString(
-//				req.getQueryString().toLowerCase());
 				req.getQueryString());
 		
 		// TODO validate "service"
@@ -42,14 +41,14 @@ public class App extends HttpServlet {
 		ExecuteProcessHandler handler = null;
 		if (qsRequest.equals("getcapabilities")) {
 			handler = new GetCapabilities(context);
-			response = handler.getProcessResponse(null, res);
+			response = handler.getProcessResponse(context, req, res, null);
 		}
 		
 		// TODO validate "version"
 		
 		if (qsRequest.equals("describeprocess")) {
 			handler = new DescribeProcess(context);
-			response = handler.getProcessResponse(null, res);
+			response = handler.getProcessResponse(context, req, res, null);
 		} else if (qsRequest.equals("execute")) {
 
 			// get dataInputs
@@ -62,17 +61,31 @@ public class App extends HttpServlet {
 			}
 			if (qsIdentifier.equals("getprocessesbyidentifier")) {
 				handler = new GetProcessesByIdentifier(context);
-				response = handler.getProcessResponse(dataInputs, res);
+				response = handler.getProcessResponse(context, req, res, dataInputs);
 			} else if (qsIdentifier.equals("listhubs")) {
 				handler = new ListHubs(context);
-				response = handler.getProcessResponse(null, res);
+				response = handler.getProcessResponse(context, req, res, dataInputs);
 			} else if (qsIdentifier.equals("listprocesses")) {
 				handler = new ListProcesses(context);
-				response = handler.getProcessResponse(dataInputs, res);
-				
-			// ASIF: add more else-if's here for additional identifiers
-			// e.g. Get2DImagesByPOI
-				
+				response = handler.getProcessResponse(context, req, res, dataInputs);
+			} else if (qsIdentifier.equals("listsrss")) {
+				handler = new ListSRS(context);
+				response = handler.getProcessResponse(context, req, res, dataInputs);
+			} else if (qsIdentifier.equals("describesrs")) {
+				handler = new DescribeSRS(context);
+				response = handler.getProcessResponse(context, req, res, dataInputs);
+			} else if (qsIdentifier.equals("gettransformationchain")) {
+				handler = new CoordinateTransformationChain(context);
+				response = handler.getProcessResponse(context, req, res, dataInputs);
+			} else if (qsIdentifier.equals("listtransformations")) {
+				handler = new ListTransformations(context);
+				response = handler.getProcessResponse(context, req, res, dataInputs);
+			} else if (qsIdentifier.equals("get2dimagesbypoi")) {
+				handler = new Get2DImagesByPOI(context);
+				response = handler.getProcessResponse(context, req, res, dataInputs);
+			} else if (qsIdentifier.equals("getstructurenamesbypoi")) { 
+				handler = new StructureNamesByPOI(context);
+				response = handler.getProcessResponse(context, req, res, dataInputs);
 			} else {
 				// TODO error - identifier not recognized
 			}
