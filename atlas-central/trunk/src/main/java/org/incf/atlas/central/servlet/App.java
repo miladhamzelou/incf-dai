@@ -26,7 +26,8 @@ public class App extends HttpServlet {
 		String response = null;
 		
 		QueryString queryString = new QueryString(
-				req.getQueryString().toLowerCase());
+//				req.getQueryString().toLowerCase());
+				req.getQueryString());
 		
 		// TODO validate "service"
 		

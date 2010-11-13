@@ -35,7 +35,11 @@ public class DataInputs {
 		String[] inputs = dataInputsString.split(";");
 		for (String input : inputs) {
 			String[] inputKeyValue = input.split("=");
-			dataInputs.put(inputKeyValue[0], inputKeyValue[1]);
+//			dataInputs.put(inputKeyValue[0], inputKeyValue[1]);
+			
+			// make data input keys lower case
+			// does not apply to data input values
+			dataInputs.put(inputKeyValue[0].toLowerCase(), inputKeyValue[1]);
 		}
 	}
 

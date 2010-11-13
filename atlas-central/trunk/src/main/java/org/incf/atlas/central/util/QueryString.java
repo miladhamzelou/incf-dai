@@ -50,7 +50,12 @@ service=WPS&version=1.0.0&request=Execute&Identifier=GetXxxByPOI&DataInputs=srsN
 			if (key.equalsIgnoreCase("DataInputs")) {
 				dataInputs = new DataInputs(kv.substring(idx + 1));
 			} else {
-				queryKVPairs.put(key, kv.substring(idx + 1));
+//				queryKVPairs.put(key, kv.substring(idx + 1));
+				
+				// make main query keys and values lower case
+				// does not apply to data inputs
+				queryKVPairs.put(key.toLowerCase(), 
+						kv.substring(idx + 1).toLowerCase());
 			}
 		}
 	}
