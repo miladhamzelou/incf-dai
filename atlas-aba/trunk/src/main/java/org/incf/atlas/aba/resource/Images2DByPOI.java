@@ -685,7 +685,7 @@ public class Images2DByPOI extends BaseResouce {
 
 		InputStringType zCriteria = (InputStringType)
 				criterias.addNewInput().changeType(InputStringType.type);
-		zCriteria.setName("y");
+		zCriteria.setName("z");
 		zCriteria.setValue(responseValues.clientZ);
 		
 		InputStringType filterCodeCriteria = (InputStringType)
