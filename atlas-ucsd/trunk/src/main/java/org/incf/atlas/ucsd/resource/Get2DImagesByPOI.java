@@ -196,7 +196,7 @@ public class Get2DImagesByPOI extends BaseResouce {
 
 		    	//Construct GetTransformationChain URL
 		    	//http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-		    	servicePath = "/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
+		    	servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+vo.getFromSRSCode()+";outputSrsName="+vo.getToSRSCode()+";filter=Cerebellum";
 		    	transformationChainURL = "http://"+hostName+portNumber+servicePath;	
 		    	abareferenceCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 
@@ -569,6 +569,13 @@ private String createXMLQueryStringForImageList(String polygonString,
 				.append("</category>");
 		xmlString.append("<regionofinterest>").append(polygonString)
 				.append("</regionofinterest>");
+		
+		if (filterValue.equalsIgnoreCase("sagittal")) {
+			filterValue = "Sagittal";
+		} else if (filterValue.equalsIgnoreCase("coronal")) {
+			filterValue = "Coronal";
+		}
+		
 		xmlString.append("<maptype>").append(filterValue).append(
 				"</maptype>");
 		xmlString.append("<srscode>").append(srsCode).append("</srscode>");

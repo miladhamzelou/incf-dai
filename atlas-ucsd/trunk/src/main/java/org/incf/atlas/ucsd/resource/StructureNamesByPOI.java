@@ -352,7 +352,7 @@ public class StructureNamesByPOI extends BaseResouce {
 		return xmlQuery.toString();
 		
 	}
-	
+
 	/* 
 	 * This method will parse the xmlString coming as a parameter and
 	 * prepare the data model which then returns back to the calling method.

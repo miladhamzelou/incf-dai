@@ -3,6 +3,7 @@ package org.incf.atlas.ucsd.server;
 import org.incf.atlas.common.server.RequestQueryStrings;
 import org.incf.atlas.ucsd.resource.Capabilities;
 import org.incf.atlas.ucsd.resource.CoordinateTransformationChain;
+import org.incf.atlas.ucsd.resource.DescribeSRS;
 import org.incf.atlas.ucsd.resource.Get2DImagesByPOI;
 import org.incf.atlas.ucsd.resource.ListSRS;
 import org.incf.atlas.ucsd.resource.ListTransformations;
@@ -52,7 +53,7 @@ public class ServerApplication extends Application
 
 		router.attach(GET_CAPABILITIES,           Capabilities.class);
 		router.attach(DESCRIBE_PROCESS,           ProcessDescriptions.class);
-		router.attach(DESCRIBE_SRS,               NotYetImplemented.class);
+		router.attach(DESCRIBE_SRS,               DescribeSRS.class);
         router.attach(DESCRIBE_TRANSFORMATION,    NotYetImplemented.class);
         router.attach(GET_2D_IMAGES_BY_POI,       Get2DImagesByPOI.class);
         router.attach(GET_2D_IMAGES_BY_URI,       NotYetImplemented.class);
