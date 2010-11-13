@@ -3,6 +3,7 @@ package org.incf.atlas.whs.server;
 import org.incf.atlas.common.server.RequestQueryStrings;
 import org.incf.atlas.whs.resource.Capabilities;
 import org.incf.atlas.whs.resource.CoordinateTransformationChain;
+import org.incf.atlas.whs.resource.DescribeSRS;
 import org.incf.atlas.whs.resource.ListSRS;
 import org.incf.atlas.whs.resource.ListTransformations;
 import org.incf.atlas.whs.resource.NotSupported;
@@ -50,7 +51,7 @@ public class ServerApplication extends Application
 		
 		router.attach(GET_CAPABILITIES,           Capabilities.class);
 		router.attach(DESCRIBE_PROCESS,           ProcessDescriptions.class);
-		router.attach(DESCRIBE_SRS,               NotYetImplemented.class);
+		router.attach(DESCRIBE_SRS,               DescribeSRS.class);
         router.attach(DESCRIBE_TRANSFORMATION,    NotSupported.class);
         router.attach(GET_2D_IMAGES_BY_POI,       NotSupported.class);
         router.attach(GET_2D_IMAGES_BY_URI,       NotSupported.class);
