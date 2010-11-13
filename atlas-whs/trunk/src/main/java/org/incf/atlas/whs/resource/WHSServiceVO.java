@@ -149,6 +149,99 @@ public class WHSServiceVO {
 	private String orientationAuthor = "";
 	private String orientationDateSubmitted = "";
 
+	//Slice Table
+	private String spaceCode = "";
+	private String slideValueOrigin = "";
+	private String valueDirection = "";
+	private String rightDirection = "";
+	private String upDirection = "";
+	private String plusX = "";
+	private String plusY = "";
+	private String plusZ = "";
+	private String sliceID = "";
+	private String slideValue = "";
+	
+	
+	public String getSpaceCode() {
+		return spaceCode;
+	}
+
+	public void setSpaceCode(String spaceCode) {
+		this.spaceCode = spaceCode;
+	}
+
+	public String getSlideValueOrigin() {
+		return slideValueOrigin;
+	}
+
+	public void setSlideValueOrigin(String slideValueOrigin) {
+		this.slideValueOrigin = slideValueOrigin;
+	}
+
+	public String getValueDirection() {
+		return valueDirection;
+	}
+
+	public void setValueDirection(String valueDirection) {
+		this.valueDirection = valueDirection;
+	}
+
+	public String getRightDirection() {
+		return rightDirection;
+	}
+
+	public void setRightDirection(String rightDirection) {
+		this.rightDirection = rightDirection;
+	}
+
+	public String getUpDirection() {
+		return upDirection;
+	}
+
+	public void setUpDirection(String upDirection) {
+		this.upDirection = upDirection;
+	}
+
+	public String getPlusX() {
+		return plusX;
+	}
+
+	public void setPlusX(String plusX) {
+		this.plusX = plusX;
+	}
+
+	public String getPlusY() {
+		return plusY;
+	}
+
+	public void setPlusY(String plusY) {
+		this.plusY = plusY;
+	}
+
+	public String getPlusZ() {
+		return plusZ;
+	}
+
+	public void setPlusZ(String plusZ) {
+		this.plusZ = plusZ;
+	}
+
+	public String getSliceID() {
+		return sliceID;
+	}
+
+	public void setSliceID(String sliceID) {
+		this.sliceID = sliceID;
+	}
+
+	public String getSlideValue() {
+		return slideValue;
+	}
+
+	public void setSlideValue(String slideValue) {
+		this.slideValue = slideValue;
+	}
+
 	public String getUrlString() {
 		return urlString;
 	}
