@@ -122,5 +122,49 @@ public class ABAServiceDAOImpl {
 		}
 		return list;
 	}
+	
+
+	public ArrayList getSliceData( ABAServiceVO vo ) {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+		
+		try {
+
+		//Used for postgres connection
+		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Statement stmt = conn.createStatement();
+		StringBuffer query = new StringBuffer();
+		query.append( " select * from slice where space_code = '"+vo.getSpaceCode()+"' " );
+
+		System.out.println("getSliceData - Query is - " + query.toString() );
+
+		ResultSet rs = stmt.executeQuery(query.toString()); 
+		//ABAServiceVO vo = null;
+
+		while ( rs.next() ) {
+
+			vo = new ABAServiceVO();
+
+			vo.setSpaceCode(rs.getString("space_code"));
+			vo.setSlideValueOrigin(rs.getString("slide_value_origin"));
+			vo.setValueDirection(rs.getString("value_direction"));
+			vo.setRightDirection(rs.getString("right_direction"));
+			vo.setUpDirection(rs.getString("up_direction"));
+			vo.setPlusX(rs.getString("plus_x"));
+			vo.setPlusY(rs.getString("plus_y"));
+			vo.setPlusZ(rs.getString("plus_z"));
+			vo.setSliceID(rs.getString("slice_id"));
+			vo.setSlideValue(rs.getString("slide_value"));
+
+			list.add(vo);
+
+		}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 }

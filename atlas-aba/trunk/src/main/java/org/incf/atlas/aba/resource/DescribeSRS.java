@@ -20,6 +20,7 @@ import net.opengis.gml.x32.UnitOfMeasureType;
 
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
+import org.incf.atlas.aba.util.ABAUtil;
 import org.incf.atlas.common.util.ExceptionCode;
 import org.incf.atlas.common.util.ExceptionHandler;
 import org.incf.atlas.waxml.generated.*;
@@ -130,7 +131,6 @@ public class DescribeSRS extends BaseResouce {
 	public static void QueryInfoSrs(QueryInfoType queryInfo, String callUrl)
 	{
 		queryInfo.addNewQueryUrl().setStringValue(callUrl);
-		
 		
 		return ;
 	}
@@ -261,23 +261,54 @@ public class DescribeSRS extends BaseResouce {
 			orientation(orientaiton1,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription());
 		}
 
+		//Start - Get Slice data
+		vo.setSpaceCode("ABA_ref");// FIXME - Remove the hardcoded value
+		ABAServiceDAOImpl daoImpl = new ABAServiceDAOImpl();
+		ArrayList sliceDataList = daoImpl.getSliceData(vo);
+		//Start - End Slice data
+		
 		Slices s = rootDoc.addNewSlices();
-		exampleSlice(	s.addNewSlice(), 1);
+		Iterator iterator = sliceDataList.iterator();
+		
+		ABAUtil util = new ABAUtil();
+		
+		while (iterator.hasNext()) { 
+			vo = (ABAServiceVO) iterator.next();
+			sliceElements(	s.addNewSlice(), 1, vo);
+		}
+		
 /*		Fiducials f = rootDoc.addNewFiducials();
 		exampleFiducial(f.addNewFiducial(), 1);
 */
 		return document;
 	}
 
-	public static void exampleSlice(SliceType slice, int identifier){
-		slice.newCursor().insertComment("orientation {coronal|sagittal|horizontal}");
-		slice.setOrientation(SliceType.Orientation.HORIZONTAL);
-		slice.setXOrientation("positive dorsal");
-		slice.setYOrientation("positive coronal"); 
-				slice.setConstant(1);
-				slice.setCode("Reference Number for Slice");
-				
-	}
+	public static void sliceElements(SliceType slice, int identifier, ABAServiceVO vo){
 
+			if ( vo.getValueDirection().equalsIgnoreCase("front") ) { 
+				slice.setOrientation(SliceType.Orientation.CORONAL);
+
+				//(Derived from the coordinate system from Ilya - specific to ABA_REF space only)
+				if ( vo.getPlusX().equalsIgnoreCase("left") ) { 
+					slice.setXOrientation("right");
+				} 
+				if ( vo.getPlusY().equalsIgnoreCase("down") ) {
+					slice.setYOrientation("ventral"); 
+				}
+				
+			} else if ( vo.getValueDirection().equalsIgnoreCase("right") ) {
+				slice.setOrientation(SliceType.Orientation.SAGITTAL);
+			} else {
+				slice.setOrientation(SliceType.Orientation.HORIZONTAL);
+			}
+
+			System.out.println("Value is - " + vo.getSlideValue());
+			System.out.println("Again Value is - " + Float.parseFloat(vo.getSlideValue()));
+
+			//FIXME - Ask Dave to change the 
+			slice.setConstant(Math.round(Float.parseFloat(vo.getSlideValue())));
+			slice.setCode(vo.getSliceID());
+
+	}
 
 }
