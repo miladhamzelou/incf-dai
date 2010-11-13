@@ -1,10 +1,12 @@
 package org.incf.atlas.central.server;
 
 import org.incf.atlas.central.resource.Capabilities;
+import org.incf.atlas.central.resource.CoordinateTransformationChain;
 import org.incf.atlas.central.resource.GetProcessesByIdentifier;
 import org.incf.atlas.central.resource.ListHubs;
 import org.incf.atlas.central.resource.ListProcesses;
 import org.incf.atlas.central.resource.ListSRS;
+import org.incf.atlas.central.resource.ListTransformations;
 import org.incf.atlas.central.resource.NotSupported;
 import org.incf.atlas.central.resource.NotYetImplemented;
 import org.incf.atlas.central.resource.PingResource;
@@ -62,9 +64,9 @@ public class ServerApplication extends Application
         router.attach(GET_CORRELATION_MAP_BY_POI,  NotSupported.class);
         router.attach(GET_GENES_BY_POI,            NotSupported.class);
         router.attach(GET_STRUCTURE_NAMES_BY_POI,  NotSupported.class);
-        router.attach(GET_TRANSFORMATION_CHAIN,    NotYetImplemented.class);
+        router.attach(GET_TRANSFORMATION_CHAIN,    CoordinateTransformationChain.class);
 		router.attach(LIST_SRS_S,                  ListSRS.class);
-		router.attach(LIST_TRANSFORMATIONS,        NotYetImplemented.class);
+		router.attach(LIST_TRANSFORMATIONS,        ListTransformations.class);
 		router.attach(RETRIEVE_2D_IMAGE,           NotSupported.class);
         router.attach(TRANSFORM_POI,               NotSupported.class);
 		
