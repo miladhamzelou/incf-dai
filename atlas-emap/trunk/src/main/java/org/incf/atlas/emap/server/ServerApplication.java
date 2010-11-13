@@ -3,6 +3,8 @@ package org.incf.atlas.emap.server;
 import org.incf.atlas.common.server.RequestQueryStrings;
 import org.incf.atlas.emap.resource.Capabilities;
 import org.incf.atlas.emap.resource.CoordinateTransformationChain;
+import org.incf.atlas.emap.resource.DescribeSRS;
+import org.incf.atlas.emap.resource.ListSRS;
 import org.incf.atlas.emap.resource.ListTransformations;
 import org.incf.atlas.emap.resource.NotSupported;
 import org.incf.atlas.emap.resource.NotYetImplemented;
@@ -48,7 +50,7 @@ public class ServerApplication extends Application
 		
 		router.attach(GET_CAPABILITIES,           Capabilities.class);
 		router.attach(DESCRIBE_PROCESS,           ProcessDescriptions.class);
-		router.attach(DESCRIBE_SRS,               NotYetImplemented.class);
+		router.attach(DESCRIBE_SRS,               DescribeSRS.class);
         router.attach(DESCRIBE_TRANSFORMATION,    NotSupported.class);
         router.attach(GET_2D_IMAGES_BY_POI,       NotSupported.class);
         router.attach(GET_2D_IMAGES_BY_URI,       NotSupported.class);
@@ -58,7 +60,7 @@ public class ServerApplication extends Application
         router.attach(GET_GENES_BY_POI,           NotYetImplemented.class);
         router.attach(GET_STRUCTURE_NAMES_BY_POI, NotSupported.class);
         router.attach(GET_TRANSFORMATION_CHAIN,   CoordinateTransformationChain.class);
-		router.attach(LIST_SRS_S,                 NotYetImplemented.class);
+		router.attach(LIST_SRS_S,                 ListSRS.class);
 		router.attach(LIST_TRANSFORMATIONS,       ListTransformations.class);
 		router.attach(RETRIEVE_2D_IMAGE,          NotSupported.class);
         router.attach(TRANSFORM_POI,              TransformPOI.class);
