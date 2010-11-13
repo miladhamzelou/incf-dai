@@ -247,7 +247,6 @@ public class StructureNamesByPOI extends BaseResouce {
 
 		vo = parseResponseStringForBrainRegionNames(responseString, vo);
 
-
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         java.util.Date date = new java.util.Date();
         String currentTime = dateFormat.format(date);
