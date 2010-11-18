@@ -54,7 +54,7 @@ This matrix indicates which INCF Atlas/WPS (OCG Web Processing Service) processe
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <td></td>
-    <th align="center">Atlas<br/>Central</th>
+    <th align="center">Atlas<br/>Central`**`</th>
     <th align="center">ABA Hub</th>
     <th align="center">EMAP Hub</th>
     <th align="center">UCSD Hub</th>
@@ -193,7 +193,8 @@ This matrix indicates which INCF Atlas/WPS (OCG Web Processing Service) processe
  * *X* - Priority implementations
  * x - Planned implementations
 
-`*` *!GetCapabilities* and *!DescribeProcess* are standard OGC (Open Geospatial Consotrium) requests applicable to all serivces.
+`*` *!GetCapabilities* and *!DescribeProcess* are standard OGC (Open Geospatial Consotrium) requests applicable to all services.<br/>
+`**` Atlas Central unions results from the applicable hubs.
 
 ===Xxx Services===
 
@@ -202,7 +203,7 @@ This matrix indicates which INCF Xxx Service processes are applicable to the var
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <td></td>
-    <th align="center">Xxx<br/>Central</th>
+    <th align="center">Xxx<br/>Central`**`</th>
     <th align="center">ABA Hub</th>
     <th align="center">EMAP Hub</th>
     <th align="center">UCSD Hub</th>
@@ -243,6 +244,7 @@ This matrix indicates which INCF Xxx Service processes are applicable to the var
 </table>
 
 `*` *!GetCapabilities* and *!DescribeProcess* are standard OGC (Open Geospatial Consotrium) requests applicable to all serivces.
+`**` Xxx Central unions results from the applicable hubs.
 
 ===Yyy Services===
 
@@ -252,7 +254,7 @@ This matrix indicates which INCF Yyy Service processes are applicable to the var
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <td></td>
-    <th align="center">Yyy<br/>Central</th>
+    <th align="center">Yyy<br/>Central`**`</th>
     <th align="center">ABA Hub</th>
     <th align="center">EMAP Hub</th>
     <th align="center">UCSD Hub</th>
@@ -292,4 +294,5 @@ This matrix indicates which INCF Yyy Service processes are applicable to the var
   </tr>
 </table>
 
-`*` *!GetCapabilities* and *!DescribeProcess* are standard OGC (Open Geospatial Consotrium) requests applicable to all serivces.
+`*` *!GetCapabilities* and *!DescribeProcess* are standard OGC (Open Geospatial Consotrium) requests applicable to all serivces.<br/>
+`**` Yyy Central unions results from the applicable hubs.
