@@ -534,7 +534,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=GetProcessesByIdentifier&DataInputs=processIdentifier=[processIdentifier</td>
+    <td>http://[host:port]/atlas-central$service=WPS&version=[version]&request=Execute&Identifier=GetProcessesByIdentifier&DataInputs=processIdentifier=[processIdentifier</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -558,7 +558,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetProcessesByIdentifier&DataInputs=processIdentifier=Get2DImagesByPOI</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetProcessesByIdentifier&DataInputs=processIdentifier=Get2DImagesByPOI</td>
   </tr>
 </table>
 
@@ -649,7 +649,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListHubs</td>
+    <td>http://[host:port]/atlas-central$service=WPS&version=[version]&request=Execute&Identifier=ListHubs</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -673,7 +673,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListHubs</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=ListHubs</td>
   </tr>
 </table>
 
@@ -685,7 +685,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]$service=WPS&version=[version]&request=Execute&Identifier=ListProcesses</td>
+    <td>http://[host:port]/atlas-central$service=WPS&version=[version]&request=Execute&Identifier=ListProcesses</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -709,7 +709,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListProcesses</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=ListProcesses</td>
   </tr>
 </table>
 
