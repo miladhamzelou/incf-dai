@@ -40,7 +40,7 @@ service
  * Value: Always WPS
 
 version
- * Required except when request=GetCapabilities
+ * Required except when request=!GetCapabilities
  * Value: The version returned by the !GetCapabilities request
 
 request
