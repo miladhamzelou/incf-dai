@@ -34,7 +34,7 @@ This matrix indicates which INCF processes are applicable to INCF Central.
     <td align="center">x</td>
   </tr>
   <tr>
-    <th align="left">R\Unregister Service</th>
+    <th align="left">Unregister Service</th>
     <td align="center">x</td>
   </tr>
 </table>
