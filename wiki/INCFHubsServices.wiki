@@ -2,12 +2,12 @@
 
 ==INCF Central==
 
-This matrix indicates which INCF Atlas processes are applicable to the various hubs.
+This matrix indicates which INCF processes are applicable to INCF Central.
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <td></td>
-    <th align="center">Central</th>
+    <th align="center">INCF<br/>Central</th>
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]</th>
