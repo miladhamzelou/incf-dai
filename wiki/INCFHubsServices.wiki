@@ -31,11 +31,11 @@ This matrix indicates which INCF processes are applicable to INCF Central.
   </tr>
   <tr>
     <th align="left">Register Service</th>
-    <td align="center">*X*</td>
+    <td align="center">x</td>
   </tr>
   <tr>
     <th align="left">R\Unregister Service</th>
-    <td align="center">*X*</td>
+    <td align="center">x</td>
   </tr>
 </table>
 
