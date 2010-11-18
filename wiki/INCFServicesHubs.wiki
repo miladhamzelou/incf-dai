@@ -193,12 +193,12 @@ This matrix indicates which INCF Atlas/WPS (OCG Web Processing Service) processe
  * *X* - Priority implementations
  * x - Planned implementations
 
-`*` *!GetCapabilities* and *!DescribeProcess* are standard OGC (Open Geospatial Consotrium) requests applicable to all services.<br/>
+`*` *!GetCapabilities* and *!DescribeProcess* are standard OGC (Open Geospatial Consortium) requests applicable to WPS services.<br/>
 `**` Atlas Central unions results from the applicable hubs.
 
 ===Xxx Services===
 
-This matrix indicates which INCF Xxx Service processes are applicable to the various hubs and Xxx central.
+This matrix indicates which INCF Xxx Service functions are applicable to the various hubs and Xxx central.
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -218,14 +218,6 @@ This matrix indicates which INCF Xxx Service processes are applicable to the var
     <td align="center">*X*</td>
   </tr>
   <tr>
-    <th align="left">!DescribeProcess`*`</th>
-    <td align="center">*X*</td>
-    <td align="center">*X*</td>
-    <td align="center">*X*</td>
-    <td align="center">*X*</td>
-    <td align="center">*X*</td>
-  </tr>
-  <tr>
     <th align="left">Aaa</th>
     <td align="center"></td>
     <td align="center"></td>
@@ -243,13 +235,13 @@ This matrix indicates which INCF Xxx Service processes are applicable to the var
   </tr>
 </table>
 
-`*` *!GetCapabilities* and *!DescribeProcess* are standard OGC (Open Geospatial Consotrium) requests applicable to all services.<br/>
+`*` *!GetCapabilities* is a standard OGC (Open Geospatial Consortium) request applicable to all services.<br/>
 `**` Xxx Central unions results from the applicable hubs.
 
 ===Yyy Services===
 
 
-This matrix indicates which INCF Yyy Service processes are applicable to the various hubs and Yyy central.
+This matrix indicates which INCF Yyy Service functions are applicable to the various hubs and Yyy central.
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -269,14 +261,6 @@ This matrix indicates which INCF Yyy Service processes are applicable to the var
     <td align="center">*X*</td>
   </tr>
   <tr>
-    <th align="left">!DescribeProcess`*`</th>
-    <td align="center">*X*</td>
-    <td align="center">*X*</td>
-    <td align="center">*X*</td>
-    <td align="center">*X*</td>
-    <td align="center">*X*</td>
-  </tr>
-  <tr>
     <th align="left">Aaa</th>
     <td align="center"></td>
     <td align="center"></td>
@@ -294,5 +278,5 @@ This matrix indicates which INCF Yyy Service processes are applicable to the var
   </tr>
 </table>
 
-`*` *!GetCapabilities* and *!DescribeProcess* are standard OGC (Open Geospatial Consotrium) requests applicable to all services.<br/>
+`*` *!GetCapabilities* is a standard OGC (Open Geospatial Consortium) request applicable to all services.<br/>
 `**` Yyy Central unions results from the applicable hubs.
