@@ -9,7 +9,8 @@
 	<OpenFile Uri=".\common\WaxML_Base.xsd"/>
 	<OpenFile Uri=".\Retrieve2DimagesResponse.xsd"/>
 	<OpenFile Uri=".\GenesResponse.xsd"/>
-	<OpenFile Uri=".\newBaseResponseTemplate.xsd"/>
 	<OpenFile Uri=".\common\ListHubServices.xsd"/>
+	<OpenFile Uri=".\ListProcessesResponse.xsd"/>
+	<OpenFile Uri=".\GetProcessByIdentifier.xsd"/>
 	<OpenFile Uri=".\ListHubsResponse.xsd"/>
 </XmlStudioProjectOptions>

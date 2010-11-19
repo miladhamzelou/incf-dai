@@ -62,7 +62,7 @@
                         </xs:restriction>
                     </xs:simpleType>
                 </xs:attribute>
-                <xs:attribute name="constant" type="xs:int">
+                <xs:attribute name="constant" type="xs:double">
                     <xs:annotation>
                         <xs:documentation>Example
 Distance to bregma for coronal

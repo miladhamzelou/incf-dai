@@ -1,4 +1,4 @@
-<!--Generated Wed Oct 13 17:43:18 PDT 2010-->
+<!--Generated Thu Nov 18 17:59:57 PST 2010-->
 <DescribeSRSResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlin="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml/3.2">
   <QueryInfo>
     <QueryUrl name="DescribeSRS">URL</QueryUrl>
@@ -12,9 +12,9 @@
     <SRS>
       <Name srsCode="INCF:0101" srsBase="ABAreference" srsVersion="1.0" species="mouse" urn="ReferenceUrl">Mouse_ABAreference_1.0</Name>
       <Description>some description here</Description>
-      <Author authorCode="123" dateSubmitted="2010-10-13-07:00"/>
-      <DateCreated>2010-10-13-07:00</DateCreated>
-      <DateUpdated>2010-10-13-07:00</DateUpdated>
+      <Author authorCode="123" dateSubmitted="2010-11-18-08:00"/>
+      <DateCreated>2010-11-18-08:00</DateCreated>
+      <DateUpdated>2010-11-18-08:00</DateUpdated>
       <Origin codeSpace="URN">bregma</Origin>
       <Area structureName="whole brain" structureURN="URN"/>
       <Units uom="nm"/>
@@ -33,37 +33,37 @@
   <Orientations>
     <Orientation code="Left" gml:id="Left" name="Left">
       <Description>text</Description>
-      <Author dateSubmitted="2010-10-13-07:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
     <Orientation code="Right" gml:id="Right" name="Right">
       <Description>text</Description>
-      <Author dateSubmitted="2010-10-13-07:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
     <Orientation code="Ventral" gml:id="Ventral" name="Ventral">
       <Description>text</Description>
-      <Author dateSubmitted="2010-10-13-07:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
     <Orientation code="Dorsal" gml:id="Dorsal" name="Dorsal">
       <Description>text</Description>
-      <Author dateSubmitted="2010-10-13-07:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
     <Orientation code="Posterior" gml:id="Posterior" name="Posterior">
       <Description>text</Description>
-      <Author dateSubmitted="2010-10-13-07:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
     <Orientation code="Anterior" gml:id="Anterior" name="Anterior">
       <Description>text</Description>
-      <Author dateSubmitted="2010-10-13-07:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
   </Orientations>
   <Slices>
     <!--orientation {coronal|sagittal|horizontal}-->
-    <Slice orientation="horizontal" xOrientation="positive dorsal" yOrientation="positive coronal" constant="1" code="Reference Number for Slice"/>
+    <Slice orientation="horizontal" xOrientation="positive dorsal" yOrientation="positive coronal" constant="1.0" code="Reference Number for Slice"/>
   </Slices>
   <Fiducials>
     <Fiducial code="Reference Number for fiducial" name="Fiducial Name 1" fiducialType="anatomic">
       <Description>Deescription</Description>
-      <Author authorCode="aCode" dateSubmitted="2010-10-13-07:00">Author Name</Author>
+      <Author authorCode="aCode" dateSubmitted="2010-11-18-08:00">Author Name</Author>
       <Certainty_level>optional value</Certainty_level>
       <DerivedFrom>optional value</DerivedFrom>
       <gml:Point srsName="Mouse_ABAReference_1.0" gml:id="a35">
