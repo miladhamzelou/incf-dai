@@ -49,7 +49,5 @@ incf-<hub>
    * Get2DImagesByPOI.xml
    * Get2DImagesByPOI.java
  * GetCapabilities and DescribeProcess are automatically generated based on the content of the `<processIdentifier`>.xml file and other configuration files
- * Find further information on the `<processIdentifier`>.xml file [http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses#Createaprocessdefinitionfile here
-]
- * Find further information on the `<processIdentifier`>.java class [http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses#CreatetheJavaprocesscode.28processlet.29 here
-]
+ * Find further information on the `<processIdentifier`>.xml file [http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses#Createaprocessdefinitionfile here]
+ * Find further information on the `<processIdentifier`>.java class [http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses#CreatetheJavaprocesscode.28processlet.29 here]
