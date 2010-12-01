@@ -25,6 +25,7 @@
    * Create the XMLBeans response object from the WaxML schema generated classes
      * This class will be a subclass of org.apache.xmlbeans.!XmlObject and org.apache.xmlbeans.!XmlTokenSource
    * Stream the response object using a org.deegree.commons.xml.XMLAdapter.writeElement method
+ * Use the init and destroy methods ...
 
 
 Exception handling
