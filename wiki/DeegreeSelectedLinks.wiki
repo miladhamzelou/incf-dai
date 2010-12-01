@@ -1,5 +1,7 @@
 =Deegree: Selected Links=
 
+The Deegree website's navigation can be confusing. These links may help.
+
 ==Javadocs==
  * http://download.deegree.org/deegree3/nightly/services/javadoc/
  * http://download.deegree.org/deegree3/nightly/core/javadoc/
