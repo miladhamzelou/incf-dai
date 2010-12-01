@@ -5,7 +5,7 @@ The Eclipse Maven project will normally be named "incf-`[hub`]", for example, in
 The directory structure in Eclipse will look like this:
 
 src/main/java/
-    org.incf.[hub].atlas.process
+    org.incf.`<hub`>.atlas.process
         [processIdentifier1].java
         [processIdentifier2].java
         ...
