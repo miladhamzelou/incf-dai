@@ -18,14 +18,17 @@
     public void destroy()
     }
 </code>
- * In the process method follow this suggested sequence
-   * Get the values of data inputs from the !ProcessInputs parameter
-   * Validate data input values
-   * Do the essential work of the process using data inputs to produce output
-   * Create the XMLBeans response object from the WaxML schema generated classes
-     * This class will be a subclass of org.apache.xmlbeans.!XmlObject and org.apache.xmlbeans.!XmlTokenSource
-   * Stream the response object using a org.deegree.commons.xml.XMLAdapter.writeElement method
- * Use the init and destroy methods ...
+==Process Method==
+Follow this suggested sequence
+ * Get the values of data inputs from the !ProcessInputs parameter
+ * Validate data input values
+ * Do the essential work of the process using data inputs to produce output
+ * Create the XMLBeans response object from the WaxML schema generated classes
+   * This class will be a subclass of org.apache.xmlbeans.!XmlObject and org.apache.xmlbeans.!XmlTokenSource
+ * Stream the response object using a org.deegree.commons.xml.XMLAdapter.writeElement method
+
+==Init and Destroy Methods==
+ * Use the init and destroy methods to initialize and shutdown any resources, such as database connections. init() is called once, when the process is deployed and destroy() is called once when the process is shut down.
 
 
 Exception handling
