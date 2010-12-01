@@ -4,7 +4,7 @@ The Eclipse Maven project will normally be named <code>incf-<hub></code>, for ex
 
 The directory structure in Eclipse will look like this:
 
-<pre>
+<code>
 incf-<hub>
 
     src/main/java/
@@ -31,7 +31,7 @@ incf-<hub>
         workspace_name
     target/
     pom.xml
-</pre>
+</code>
 
 Create two files:
 
