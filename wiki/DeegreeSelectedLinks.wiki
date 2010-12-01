@@ -1,21 +1,21 @@
 =Deegree: Selected Links=
 
-Javadocs
-http://download.deegree.org/deegree3/nightly/services/javadoc/
-http://download.deegree.org/deegree3/nightly/core/javadoc/
+==Javadocs==
+ * http://download.deegree.org/deegree3/nightly/services/javadoc/
+ * http://download.deegree.org/deegree3/nightly/core/javadoc/
 
-Wiki/Overview
-http://wiki.deegree.org/deegreeWiki/deegree3
+==Wiki/Overview==
+ * http://wiki.deegree.org/deegreeWiki/deegree3
 
-WPS
-http://wiki.deegree.org/deegreeWiki/deegree3/ProcessingService
+==WPS==
+ * http://wiki.deegree.org/deegreeWiki/deegree3/ProcessingService
 
-HowTo Create WPS Processes
-http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses
+==HowTo Create WPS Processes==
+ * http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses
 
-workspace
-http://wiki.deegree.org/deegreeWiki/deegree3/WorkspaceConfiguration
-http://wiki.deegree.org/deegreeWiki/deegree3/WorkspaceConfiguration/ServicesConfiguration
+==Configuration==
+ * http://wiki.deegree.org/deegreeWiki/deegree3/WorkspaceConfiguration
+ * http://wiki.deegree.org/deegreeWiki/deegree3/WorkspaceConfiguration/ServicesConfiguration
 
-Deegree Schemas
-http://schemas.deegree.org/
+==Deegree Schemas==
+ * http://schemas.deegree.org/
