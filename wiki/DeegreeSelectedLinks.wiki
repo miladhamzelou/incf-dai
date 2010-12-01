@@ -12,7 +12,7 @@ The Deegree website's navigation can be confusing. These links may help.
 ==WPS==
  * http://wiki.deegree.org/deegreeWiki/deegree3/ProcessingService
 
-==HowTo Create WPS Processes==
+==!HowTo: Create WPS Processes==
  * http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses
 
 ==Configuration==
