@@ -1,4 +1,6 @@
-How To: Develop Atlas/WPS Processes with Deegree
+=How To: Develop Atlas/WPS Processes with Deegree=
+
+==Project Structure==
 
 The Eclipse Maven project will normally be named incf-`<hub`>, for example, incf-aba.
 
@@ -33,6 +35,12 @@ incf-<hub>
     pom.xml
 </code>
 
-Create two files:
- * An XML ProcessDefinition file in the src/main/webapp/WEB-INF/workspace/processes/ directory
- * A Java class in the org.incf.`<hub`>.atlas.process package that extends org.deegree.services.wps.Processlet
+==Procedure==
+ # Create two files:
+   * An XML !ProcessDefinition file in the src/main/webapp/WEB-INF/workspace/processes/ directory
+   * A Java class in the org.incf.`<hub`>.atlas.process package that extends org.deegree.services.wps.Processlet
+ # Run Maven install
+ # Deploy the `<hub`>.war file to a Tomcat server
+ # Test the process
+
+==Notes==
