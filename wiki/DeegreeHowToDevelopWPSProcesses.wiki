@@ -1,6 +1,6 @@
 How To: Develop Atlas/WPS Processes with Deegree
 
-The Eclipse Maven project will normally be named <pre>incf-<hub></pre>, for example, incf-aba.
+The Eclipse Maven project will normally be named <code>incf-<hub></code>, for example, incf-aba.
 
 The directory structure in Eclipse will look like this:
 
