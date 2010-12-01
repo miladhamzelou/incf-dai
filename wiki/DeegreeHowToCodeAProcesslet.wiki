@@ -9,10 +9,10 @@
     @Override    
     public void process(!ProcessletInputs in, !ProcessletOutputs out, !ProcessletExecutionInfo info);
 
-    @Override
+     @Override
     public void init();
 
-    @Override
+     @Override
     public void destroy();
 </code>
  * In the process method follow this suggested sequence
