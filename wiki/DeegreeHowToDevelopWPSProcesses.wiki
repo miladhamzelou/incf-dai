@@ -6,6 +6,7 @@ The directory structure in Eclipse will look like this:
 
 <pre>
 incf-<hub>
+
     src/main/java/
         org.incf.<hub>.atlas.process
             <processIdentifier1>.java
