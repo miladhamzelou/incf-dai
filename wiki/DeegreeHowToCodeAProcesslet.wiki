@@ -15,7 +15,14 @@
     @Override
     public void destroy();
 </code>
- * In the process method follow this sequence
+ * In the process method follow this suggested sequence
+   * Get the values of data inputs from the ProcessInputs parameter
+   * Validate data input values
+   * Do the essential work of the process using data inputs to produce output
+   * Create the XMLBeans response object from the WaxML schema generated classes
+     * This class will be a subclass of org.apache.xmlbeans.XmlObject and org.apache.xmlbeans.XmlTokenSource
+   * Stream the response object using a org.deegree.commons.xml.XMLAdapter.writeElement method
+
 
 Exception handling
 
