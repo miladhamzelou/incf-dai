@@ -1,4 +1,4 @@
-=HowTo: Develop Atlas/WPS Processes with Deegree=
+=!HowTo: Develop Atlas/WPS Processes with Deegree=
 
 ==Project Structure==
 
@@ -15,7 +15,7 @@ incf-<hub>
             <processIdentifier2>.java
             ...
             <processIdentifierN>.java
-        org.incf.<hub>.atlas.utils
+        org.incf.<hub>.atlas.util
     src/main/resources
         log4j.properties
     src/main/webapp/WEB-INF/
@@ -48,6 +48,7 @@ incf-<hub>
  * The names of the two files should be the process name, for example
    * Get2DImagesByPOI.xml
    * Get2DImagesByPOI.java
- * GetCapabilities and DescribeProcess are automatically generated based on the content of the `<processIdentifier`>.xml file and other configuration files
+ * !GetCapabilities and !DescribeProcess are automatically generated based on the content of the `<processIdentifier`>.xml file and other configuration files
+ * Other supporting classes may be placed in the org.incf.`<hub>`.atlas.util package or other packages you may create. Do not put them in the org.incf.`<hub>`.atlas.process package -- save that package for processlets.
  * Find further information on the `<processIdentifier`>.xml file [http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses#Createaprocessdefinitionfile here]
  * Find further information on the `<processIdentifier`>.java class [http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses#CreatetheJavaprocesscode.28processlet.29 here]
