@@ -38,6 +38,6 @@ If the process cannot be executed or a valid response cannot be constructed (rem
  * Instantiate a org.deegree.services.controller.ows.OWSException passing it appropriate arguments
    * See the Java API docs [http://download.deegree.org/deegree3/nightly/services/javadoc/  javadocs] for org.deegree.services.controller.ows.OWSException.
    * See Section 10.3.3 and table 62 in the [http://portal.opengeospatial.org/files/?artifact_id=24151 OGC WPS Interface Standard]
- * Instantiate and throw an org.deegree.services.wps.ProcessletException passing it the OWSException object.
-   * See the Java API docs [http://download.deegree.org/deegree3/nightly/services/javadoc/  javadocs] for  org.deegree.services.wps.ProcessletException.
+ * Instantiate and throw an org.deegree.services.wps.!ProcessletException passing it the OWSException object.
+   * See the Java API docs [http://download.deegree.org/deegree3/nightly/services/javadoc/  javadocs] for  org.deegree.services.wps.!ProcessletException.
   
