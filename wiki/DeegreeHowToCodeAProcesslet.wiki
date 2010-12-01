@@ -3,10 +3,18 @@
  * Create a new Java class in the org.incf.`<hub`>.atlas.process package
  * Make the name of the class exactly the name of process identifier you are implementing, for example, Get2DImagesByPOI.java
  * Implement the org.deegree.services.wps.Processlet interface
+ * Establish logging
  * Implement the three methods specified in the interface
-   * public void process(ProcessletInputs in, ProcessletOutputs out, ProcessletExecutionInfo info);
-   * public void init();
-   * public void destroy();
+<code>
+    @Override    
+    public void process(!ProcessletInputs in, !ProcessletOutputs out, !ProcessletExecutionInfo info);
+
+    @Override
+    public void init();
+
+    @Override
+    public void destroy();
+</code>
  * In the process method follow this sequence
 
 Exception handling
