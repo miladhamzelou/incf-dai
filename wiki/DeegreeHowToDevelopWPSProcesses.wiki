@@ -4,16 +4,16 @@ The Eclipse Maven project will normally be named "incf-`<hub`>", for example, in
 
 The directory structure in Eclipse will look like this:
 
-src/main/java/<br/>
-    org.incf.`<hub`>.atlas.process<br/>
-        `<processIdentifier1`>.java<br/>
-        `<processIdentifier2`>.java<br/>
-        ...<br/>
-        `<processIdentifierN`>.java<br/>
-    org.incf.`<hub`>.atlas.utils<br/>
+<pre>
+src/main/java/
+    org.incf.<hub>.atlas.process
+        <processIdentifier1>.java
+        <processIdentifier2>.java
+        ...
+        <processIdentifierN>.java
+    org.incf.<hub>.atlas.utils
 src/main/resources
     log4j.properties
-<pre>
 src/main/webapp/WEB-INF/
     workspace/
         processes/
