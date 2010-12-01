@@ -13,13 +13,14 @@ src/main/java/<br/>
     org.incf.`<hub`>.atlas.utils<br/>
 src/main/resources
     log4j.properties
+<pre>
 src/main/webapp/WEB-INF/
     workspace/
         processes/
-            `<processIdentifier1`>.xml
-            `<processIdentifier2`>.xml
+            <processIdentifier1>.xml
+            <processIdentifier2>.xml
             ...
-            `<processIdentifierN`>.xml
+            <processIdentifierN>.xml
         services/
             main.xml
             metadata.xml
@@ -28,6 +29,7 @@ src/main/webapp/WEB-INF/
     workspace_name
 target/
 pom.xml
+</pre>
 
 Create two files:
 
