@@ -34,8 +34,5 @@ incf-<hub>
 </code>
 
 Create two files:
-
- # An XML ProcessDefinition file
-Place this file in the src/main/webapp/WEB-INF/workspace/processes/
- * 
- # org.incf.aba.atlas
+ * An XML ProcessDefinition file in the src/main/webapp/WEB-INF/workspace/processes/ directory
+ * A Java class in the org.incf.`<hub`>.atlas.process package that extends org.deegree.services.wps.Processlet
