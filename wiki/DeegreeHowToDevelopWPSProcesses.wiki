@@ -1,25 +1,25 @@
 How To: Develop Atlas/WPS Processes with Deegree
 
-The Eclipse Maven project will normally be named "incf-`[hub`]", for example, incf-aba.
+The Eclipse Maven project will normally be named "incf-`<hub`>", for example, incf-aba.
 
 The directory structure in Eclipse will look like this:
 
-src/main/java/
-    org.incf.`<hub`>.atlas.process
-        [!processIdentifier1].java
-        [processIdentifier2].java
-        ...
-        [processIdentifierN].java
-    org.incf.[hub].atlas.utils
+src/main/java/<br/>
+    org.incf.`<hub`>.atlas.process<br/>
+        `<processIdentifier1`>.java<br/>
+        `<processIdentifier2`>.java<br/>
+        ...<br/>
+        `<processIdentifierN`>.java<br/>
+    org.incf.`<hub`>.atlas.utils<br/>
 src/main/resources
     log4j.properties
 src/main/webapp/WEB-INF/
     workspace/
         processes/
-            [processIdentifier1].xml
-            [processIdentifier2].xml
+            `<processIdentifier1`>.xml
+            `<processIdentifier2`>.xml
             ...
-            [processIdentifierN].xml
+            `<processIdentifierN`>.xml
         services/
             main.xml
             metadata.xml
