@@ -1,4 +1,4 @@
-=How To: Develop Atlas/WPS Processes with Deegree=
+=HowTo: Develop Atlas/WPS Processes with Deegree=
 
 ==Project Structure==
 
@@ -39,8 +39,17 @@ incf-<hub>
  # Create two files:
    * An XML !ProcessDefinition file in the src/main/webapp/WEB-INF/workspace/processes/ directory
    * A Java class in the org.incf.`<hub`>.atlas.process package that extends org.deegree.services.wps.Processlet
+ # Add any required dependencies to the pom.xml
  # Run Maven install
  # Deploy the `<hub`>.war file to a Tomcat server
  # Test the process
 
 ==Notes==
+ * The names of the two files should be the process name, for example
+   * Get2DImagesByPOI.xml
+   * Get2DImagesByPOI.java
+ * GetCapabilities and DescribeProcess are automatically generated based on the content of the `<processIdentifier`>.xml file and other configuration files
+ * Find further information on the `<processIdentifier`>.xml file [http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses#Createaprocessdefinitionfile here
+]
+ * Find further information on the `<processIdentifier`>.java class [http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses#CreatetheJavaprocesscode.28processlet.29 here
+]
