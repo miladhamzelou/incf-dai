@@ -1,7 +1,11 @@
 =Active Hubs=
 
 We have four hubs currently that demonstrate implemented INCF Atlas functions.
+ * [http://code.google.com/p/incf-dai/wiki/DeegreeActiveHubLinks#Central Central]
  * [http://code.google.com/p/incf-dai/wiki/DeegreeActiveHubLinks#ABA_Hub ABA Hub]
+ * [http://code.google.com/p/incf-dai/wiki/DeegreeActiveHubLinks#EMAP_Hub EMAP Hub]
+ * [http://code.google.com/p/incf-dai/wiki/DeegreeActiveHubLinks#UCSD_Hub UCSD Hub]
+ * [http://code.google.com/p/incf-dai/wiki/DeegreeActiveHubLinks#WHS_Hub WHS Hub]
 
 See the [http://code.google.com/p/incf-dai/wiki/AtlasFunctionHubApplicabilityTable applicability table] for which WPS functions are implemented or planned to be implemented at each of the hubs.
 
@@ -38,9 +42,19 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
 ==Working Example Requests/Processes==
 
+
+===Central===
+
+====Atlas Processes====
+
+ * !GetCapabilities
+
+ * !DescribeProcess
+
+
 ===ABA Hub===
 
-====Atlas Processe====
+====Atlas Processes====
 
  * !GetCapabilities
 
@@ -53,3 +67,30 @@ Currently the project is using four servers to develop and demonstrate the hubs 
  * Execute : Get2DImagesByPOI
 
     http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal
+
+
+===EMAP Hub===
+
+====Atlas Processes====
+
+ * !GetCapabilities
+
+ * !DescribeProcess
+
+
+===UCSD Hub===
+
+====Atlas Processes====
+
+ * !GetCapabilities
+
+ * !DescribeProcess
+
+
+===WHS Hub===
+
+====Atlas Processes====
+
+ * !GetCapabilities
+
+ * !DescribeProcess
