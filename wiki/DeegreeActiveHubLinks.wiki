@@ -48,7 +48,7 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
  * !DescribeProcess
 
-    http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess
+    http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
 
  * Execute : Get2DImagesByPOI
 
