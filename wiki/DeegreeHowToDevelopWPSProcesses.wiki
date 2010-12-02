@@ -31,7 +31,6 @@ incf-<hub>
                 metadata.xml
                 wps.xml
         web.xml
-        workspace_name
     target/
     pom.xml
 </code>
