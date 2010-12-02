@@ -1,0 +1,55 @@
+=Active Hubs=
+
+We have four hubs currently that demonstrate implemented INCF Atlas functions.
+ * [http://code.google.com/p/incf-dai/wiki/DeegreeActiveHubLinks#ABA_Hub ABA Hub]
+
+See the [http://code.google.com/p/incf-dai/wiki/AtlasFunctionHubApplicabilityTable applicability table] for which WPS functions are implemented or planned to be implemented at each of the hubs.
+
+Currently the project is using four servers to develop and demonstrate the hubs and functions.
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th>URL</th>
+    <th>Purpose</th>
+    <th>Relative<br/>Stability</th>
+    <th>Location</th>
+  </tr>
+  <tr>
+    <td>incf-dev-local.crbs.ucsd.edu</td>
+    <td>Development and testing</td>
+    <td>Least stable</td>
+    <td>San Diego</td>
+  </tr>
+  <tr>
+    <td>incf-dev.crbs.ucsd.edu</td>
+    <td>Staging and testing</td>
+    <td>More stable</td>
+    <td>Stockholm</td>
+  </tr>
+  <tr>
+    <td>incf.crbs.ucsd.edu</td>
+    <td>Production<br/>(not currently operational)</td>
+    <td>Most stable</td>
+    <td>Stockholm</td>
+  </tr>
+  <tr>
+  </tr>
+</table>
+
+==Working Example Requests/Processes==
+
+===ABA Hub===
+
+====Atlas Processe====
+
+ * !GetCapabilities
+
+    http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&request=GetCapabilities
+
+ * !DescribeProcess
+
+    http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess
+
+ * Execute : Get2DImagesByPOI
+
+    http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal
