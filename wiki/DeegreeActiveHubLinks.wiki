@@ -55,7 +55,7 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
 
- * Execute : Addition
+ * Execute : Addition (a test process)
 
     http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Addition&DataInputs=a=1;b=2
 
@@ -88,6 +88,10 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
 
+ * Execute : Addition (a test process)
+
+    http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Addition&DataInputs=a=1;b=2
+
 
 ===UCSD Hub===
 
@@ -101,6 +105,10 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
 
+ * Execute : Addition (a test process)
+
+    http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Addition&DataInputs=a=1;b=2
+
 
 ===WHS Hub===
 
@@ -113,3 +121,8 @@ Currently the project is using four servers to develop and demonstrate the hubs 
  * !DescribeProcess
 
     http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+
+
+ * Execute : Addition (a test process)
+
+    http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Addition&DataInputs=a=1;b=2
