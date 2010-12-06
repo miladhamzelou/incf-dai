@@ -55,6 +55,9 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
 
+ * Execute : Addition
+
+    http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Addition&DataInputs=a=1;b=2
 
 ===ABA Hub===
 
