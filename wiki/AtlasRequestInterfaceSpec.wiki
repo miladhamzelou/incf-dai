@@ -219,7 +219,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=DescribeProcess</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL</td>
   </tr>
 </table>
 
@@ -255,7 +255,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Mouse_ABAvoxel_1.0</td>
+    <td></td>
   </tr>
 </table>
 
@@ -292,7 +292,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeTransformation&DataInputs=...TO BE DETERMINED...</td>
+    <td></td>
   </tr>
 </table>
 
@@ -333,7 +333,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=3892;y=2748;z=1434;filter=maptype:coronal</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal</td>
   </tr>
 </table>
 
@@ -370,7 +370,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByURI&DataInputs=... TO BE DETERMINED ...</td>
+    <td></td>
   </tr>
 </table>
 
@@ -406,7 +406,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCellsByPOI&DataInputs=... TO BE DETERMINED ...</td>
+    <td></td>
   </tr>
 </table>
 
@@ -442,7 +442,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCellsByURI&DataInputs=... TO BE DETERMINED ...</td>
+    <td></td>
   </tr>
 </table>
 
@@ -482,7 +482,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=inputSrsName=[...];outputSrsName=[...];x=3892;y=2748;z=1434;filter=maptype:coronal</td>
+    <td></td>
   </tr>
 </table>
 
@@ -522,7 +522,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600</td>
+    <td></td>
   </tr>
 </table>
 
@@ -558,7 +558,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetProcessesByIdentifier&DataInputs=processIdentifier=Get2DImagesByPOI</td>
+    <td></td>
   </tr>
 </table>
 
@@ -599,7 +599,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;vocabulary=[...];filter=[...]</td>
+    <td></td>
   </tr>
 </table>
 
@@ -637,7 +637,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=[...];outputSrsName=[...];filter=[filter]</td>
+    <td></td>
   </tr>
 </table>
 
@@ -673,7 +673,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=ListHubs</td>
+    <td></td>
   </tr>
 </table>
 
@@ -709,7 +709,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=ListProcesses</td>
+    <td></td>
   </tr>
 </table>
 
@@ -745,7 +745,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs</td>
+    <td></td>
   </tr>
 </table>
 
@@ -782,7 +782,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=[...];outputSrsName=[...]</td>
+    <td></td>
   </tr>
 </table>
 
@@ -825,7 +825,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Retrieve2DImage&DataInputs=sourceType=[sourceType];sourceURL=[...]]srsName=[...];xmin=[...];xmax=[...];ymin=[...];ymax=[...];filter=[...]</td>
+    <td></td>
   </tr>
 </table>
 
@@ -864,6 +864,6 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=[...];outputSrsName=[...];xmin=[...];xmax=[...];ymin=[...],ymax=[...];filter=[...]</td>
+    <td></td>
   </tr>
 </table>
