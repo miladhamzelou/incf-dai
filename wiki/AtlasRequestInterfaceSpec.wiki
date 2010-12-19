@@ -8,8 +8,8 @@ The Atlas base URIs identify the server location (URL) and the server applicatio
 
  * Format: http://[server]:[port]/[central-or-hub]/atlas
  * Examples: 
-   * http://incf-dev-local/central/atlas
-   * http://incf-dev-local/aba/atlas
+   * http://incf-dev-local.crbs.ucsd.edu/central/atlas
+   * http://incf-dev-local.crbs.ucsd.edu/aba/atlas
 
 ==Full URIs== 
  * Full Atlas URIs are consistent with, but a subset of, the OGC (Open Geospatial Consortium) WPS (Web Processing Service) standard
@@ -17,9 +17,9 @@ The Atlas base URIs identify the server location (URL) and the server applicatio
    * One of the [AtlasRequestInterfaceSpec#Base_URIs Base URIs] 
    * And an appended [AtlasRequestInterfaceSpec#Query_String_Details query string]
  * Examples:
-   * http://incf-dev-local.crbs.ucd.edu/aba/atlas?service=WPS&request=GetCapabilities
-   * http://incf-dev-local.crbs.ucd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
-   * http://incf-dev-local.crbs.ucd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsCode=WHS;x=263.7;y=159.4;z=227.8
+   * http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&request=GetCapabilities
+   * http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+   * http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsCode=WHS;x=263.7;y=159.4;z=227.8
 
 ==Query String Details==
 
