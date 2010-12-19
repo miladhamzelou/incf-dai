@@ -183,7 +183,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities</td>
+    <td>http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&request=GetCapabilities</td>
   </tr>
 </table>
 
