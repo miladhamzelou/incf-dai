@@ -19,7 +19,7 @@ The Atlas base URIs identify the server location (URL) and the server applicatio
  * Examples:
    * http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&request=GetCapabilities
    * http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
-   * http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsCode=WHS;x=263.7;y=159.4;z=227.8
+   * http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal
 
 ==Query String Details==
 
