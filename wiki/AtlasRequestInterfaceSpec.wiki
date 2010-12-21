@@ -31,7 +31,7 @@ The Atlas base URIs identify the server location (URL) and the server applicatio
 
 ===Format===
 {{{
-?service=WPS&version={version}&request={request}&Identifier={identifier}&DataInputs={data-inputs}&ResponseForm={response-form}
+?service=WPS&version={version}&request={request}&Identifier={identifier}&DataInputs={data-inputs}&lineage={ true | false }
 }}}
 ===Keys===
 
@@ -52,20 +52,21 @@ Identifier
  * Value: the process name to be executed
 
 !DataInputs
- * If applicable
- * Content varies with process
  * See [AtlasRequestInterfaceSpec#DataInputs Data Inputs]
 
-!ResponseForm
- * Optional -- defaults to application/waxml
- * Values: { application/waxml | text/html | text/json | text/plain }
- * Not all formats are currently supported
+lineage
+ * Optional -- defaults to lineage=false
+ * Values: { true | false }
+ * Applicable when request=Execute
+ * If lineage=true, data inputs are echoed in the response
 
 ===Data Inputs===
 
+ * Applicable when request=Execute
  * The data inputs is a sub-query string of key=value pairs
  * The key=value pairs are semicolon-delimited (;)
  * The data inputs vary by process
+ * Some processes will not have any data inputs
 
 ====Format====
 !DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
