@@ -31,7 +31,7 @@ The Atlas base URIs identify the server location (URL) and the server applicatio
 
 ===Format===
 {{{
-?service=WPS&version={version}&request={request}&Identifier={identifier}&DataInputs={data-inputs}&lineage={ true | false }
+?service=WPS&version={version}&request={request}&Identifier={identifier}&DataInputs={data-inputs}&lineage={true|false}
 }}}
 ===Keys===
 
