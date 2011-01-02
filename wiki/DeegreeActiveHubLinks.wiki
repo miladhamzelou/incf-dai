@@ -102,11 +102,11 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
  * Execute : ListSRS
 
-    http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
 
  * Execute : DescribeSRS
 
-    http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS
+    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRSs
 
 
 ===EMAP Hub===
