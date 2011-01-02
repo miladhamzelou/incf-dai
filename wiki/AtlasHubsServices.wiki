@@ -98,17 +98,11 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_AGEA_1.0;x=1;y=112;z=162;filter=cerebellum
 
-http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0;x=1;y=112;z=162;filter=cerebellum
-
  * Execute : !GetTransformationChain
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-
-http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain
-
-http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=transformationCode=Mouse_ABAvoxel_1.0_To_Mouse_WHS_1.0
 
  * Execute : GetStructureNamesByPOI
 
@@ -116,17 +110,11 @@ http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine
 
-http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine
-
  * Execute : !ListTransformations
 
     http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 
     http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-
-http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=transformationCode=Mouse_ABAvoxel_1.0_To_Mouse_WHS_1.0
-
-http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
 
  * Execute : GetCorrelationMapByPOI
 
