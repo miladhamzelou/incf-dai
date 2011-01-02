@@ -41,7 +41,6 @@ import org.incf.atlas.waxml.utilities.Utilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class Get2DImagesByPOI implements Processlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(
@@ -82,7 +81,7 @@ public class Get2DImagesByPOI implements Processlet {
     			throw new InvalidParameterValueException(
     					"srsName '" + srsName + "' is invalid", "srsName");
     		}
-
+    		
     		responseValues = new ResponseValues();
     		responseValues.clientSrsName = srsName;
     		responseValues.clientX = x;
@@ -224,7 +223,7 @@ public class Get2DImagesByPOI implements Processlet {
         	OWSException owsException = new OWSException(message, e, 
         			ControllerException.NO_APPLICABLE_CODE);
         	throw new ProcessletException(owsException);
-        }
+        } 
     }
 
     @Override
@@ -462,6 +461,7 @@ public class Get2DImagesByPOI implements Processlet {
 						image.downloadImagePath });
 	}
 	
+
 	/**
 	 * Example: http://www.brain-map.org/aba/api/gene/C1ql2.xml
 	 * 
@@ -473,7 +473,7 @@ public class Get2DImagesByPOI implements Processlet {
 			"http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=%s,%s,%s", 
 			x, y, z);
 	}
-	
+
 	/**
 	 * Example: http://www.brain-map.org/aba/api/gene/C1ql2.xml
 	 * 
@@ -485,7 +485,7 @@ public class Get2DImagesByPOI implements Processlet {
 				"http://www.brain-map.org/aba/api/gene/%s.xml", 
 				geneSymbol);
 	}
-	
+
 	/**
 	 * Example: http://www.brain-map.org/aba/api/atlas/map/71587929.map
 	 * 
@@ -640,6 +640,7 @@ public class Get2DImagesByPOI implements Processlet {
 	}
 
 	public ImagesResponseDocument completeResponse() {
+
 		ImagesResponseDocument document = ImagesResponseDocument.Factory
 				.newInstance();
 
@@ -649,7 +650,7 @@ public class Get2DImagesByPOI implements Processlet {
 		QueryInfoType query = imagesRes.addNewQueryInfo();
 		Utilities.addMethodNameToQueryInfo(query, "Get2DImagesByPOI", 
 				responseValues.clientUri);
-		
+
 		Criteria criterias = query.addNewCriteria();
 
 		// InputPOIType poiCriteria = (InputPOIType)
@@ -660,8 +661,6 @@ public class Get2DImagesByPOI implements Processlet {
 		// pnt.setSrsName("Mouse_ABAvoxel_1.0");
 		// pnt.addNewPos();
 		// pnt.getPos().setStringValue("1 1 1");
-
-
 		
 		InputStringType srsNameCriteria = (InputStringType) 
 				criterias.addNewInput().changeType(InputStringType.type);
