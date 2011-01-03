@@ -47,10 +47,10 @@ public class Get2DImagesByPOI implements Processlet {
     private static final Logger LOG = LoggerFactory.getLogger(
             Get2DImagesByPOI.class);
     
-    private static final String PROCESS_DEFINITION_DIR = 
-    		"aba/WEB-INF/workspace/processes/";
-    private static final String PROCESS_DEFINITION_FILE = 
-    		PROCESS_DEFINITION_DIR + "Get2DImagesByPOI.xml";
+//    private static final String PROCESS_DEFINITION_DIR = 
+//    		"aba/WEB-INF/workspace/processes/";
+//    private static final String PROCESS_DEFINITION_FILE = 
+//    		PROCESS_DEFINITION_DIR + "Get2DImagesByPOI.xml";
 
 	// used for ABA Get Image URI query string
 	private static final String HI_RES = "-1";	// highest resolution available
@@ -73,8 +73,10 @@ public class Get2DImagesByPOI implements Processlet {
     		String filter = Util.getStringInputValue(in, "filter");
     		
     		// validate against allowed values in process definition file
+    		URL processDefinitionUrl = this.getClass().getResource(
+    				"/" + this.getClass().getSimpleName() + ".xml");
     		AllowedValuesValidator validator = new AllowedValuesValidator(
-    				new File(PROCESS_DEFINITION_FILE));
+    				new File(processDefinitionUrl.toURI()));
     		if (!validator.validate("srsName", srsName)) {
     			throw new InvalidDataInputValueException("The srsName value '" 
     					+ srsName + "' is not amoung the allowed values "
