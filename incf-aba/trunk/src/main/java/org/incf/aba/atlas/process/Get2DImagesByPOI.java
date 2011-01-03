@@ -1,6 +1,7 @@
 package org.incf.aba.atlas.process;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -26,7 +27,6 @@ import org.deegree.services.wps.ProcessletException;
 import org.deegree.services.wps.ProcessletExecutionInfo;
 import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
-import org.deegree.services.wps.input.LiteralInput;
 import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.atlas.waxml.generated.Image2DType;
 import org.incf.atlas.waxml.generated.Image2DType.ImageSource;
@@ -34,22 +34,29 @@ import org.incf.atlas.waxml.generated.ImagesResponseDocument;
 import org.incf.atlas.waxml.generated.ImagesResponseType;
 import org.incf.atlas.waxml.generated.ImagesResponseType.Image2Dcollection;
 import org.incf.atlas.waxml.generated.IncfRemoteFormatEnum;
-import org.incf.atlas.waxml.generated.InputStringType;
-import org.incf.atlas.waxml.generated.QueryInfoType;
-import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.utilities.Utilities;
+import org.incf.common.atlas.exception.InvalidDataInputValueException;
+import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 
 public class Get2DImagesByPOI implements Processlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(
             Get2DImagesByPOI.class);
+    
+    private static final String PROCESS_DEFINITION_DIR = 
+    		"aba/WEB-INF/workspace/processes/";
+    private static final String PROCESS_DEFINITION_FILE = 
+    		PROCESS_DEFINITION_DIR + "Get2DImagesByPOI.xml";
 
 	// used for ABA Get Image URI query string
 	private static final String HI_RES = "-1";	// highest resolution available
 	private static final String THUMB = "0";	// thumbnail
 	private static final String MIME = "2";		// jpeg/image
+	private static final int NBR_STRONG_GENES = 1;	// strong genes to get
 	
 	private ResponseValues responseValues;
 	
@@ -59,54 +66,53 @@ public class Get2DImagesByPOI implements Processlet {
     	try {
 
     		// collect input values
-    		String srsName = ((LiteralInput) in.getParameter("srsName")).getValue();
-    		double x = Double.parseDouble(
-    				((LiteralInput) in.getParameter("x")).getValue());
-    		double y = Double.parseDouble(
-    				((LiteralInput) in.getParameter("y")).getValue());
-    		double z = Double.parseDouble(
-    				((LiteralInput) in.getParameter("z")).getValue());
-    		String filter = ((LiteralInput) in.getParameter("filter")).getValue();
+    		String srsName = Util.getStringInputValue(in, "srsName");
+    		double x = Util.getDoubleInputValue(in, "x");
+    		double y = Util.getDoubleInputValue(in, "y");
+    		double z = Util.getDoubleInputValue(in, "z");
+    		String filter = Util.getStringInputValue(in, "filter");
+    		
+    		// validate against allowed values in process definition file
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(PROCESS_DEFINITION_FILE));
+    		if (!validator.validate("srsName", srsName)) {
+    			throw new InvalidDataInputValueException("The srsName value '" 
+    					+ srsName + "' is not amoung the allowed values "
+    					+ "specified in the AllowedValues element of the "
+    					+ "ProcessDescription.", "srsName");
+    		}
+    		if (!validator.validate("filter", filter)) {
+    			throw new InvalidDataInputValueException("The filter value '" 
+    					+ filter + "' is not amoung the allowed values "
+    					+ "specified in the AllowedValues element of the "
+    					+ "ProcessDescription.", "filter");
+    		}
 
     		LOG.debug(String.format(
     				"DataInputs: srsName: %s, poi: (%f, %f, %f), filter: %s",
     				srsName, x, y, z, filter));
 
-    		if (srsName == null) {
-    			throw new MissingParameterException(
-    					"srsName is a required parameter", "srsName");
-    		}
-
-    		if (!srsName.equalsIgnoreCase("Mouse_AGEA_1.0")) {
-    			throw new InvalidParameterValueException(
-    					"srsName '" + srsName + "' is invalid", "srsName");
-    		}
-    		
     		responseValues = new ResponseValues();
     		responseValues.clientSrsName = srsName;
-    		responseValues.clientX = x;
-    		responseValues.clientY = y;
-    		responseValues.clientZ = z;
-    		responseValues.clientFilter = filter;
 
-    		// TODO validate srsName
-    		// TODO convert srs to agea
+    		// TODO convert srs to agea, if not agea
 
     		String srsFromClient = srsName;
     		Point3d poiFromClient = new Point3d(x, y, z);
 
-    		// TODO get/validate filter; defaults to sagittal
+    		// get plane; defaults to sagittal
     		ImageSeriesPlane desiredPlane = filter.equals("maptype:coronal")
-    		? ImageSeriesPlane.CORONAL : ImageSeriesPlane.SAGITTAL;
+    				? ImageSeriesPlane.CORONAL : ImageSeriesPlane.SAGITTAL;
 
     		// 1. get strong gene(s) at POI
-    		int nbrStrongGenes = 1;			// for now only get 1 strong gene
     		List<String> strongGenes = retrieveStrongGenesAtPOI(x, y, z,
-    				nbrStrongGenes);
+    				NBR_STRONG_GENES);
 
     		// make sure we have something
     		if (strongGenes.size() == 0) {
-    			// TODO LOG.error none found, exceptionRpt, bail
+    			throw new OWSException("No 'strong genes' found at "
+    						+ "coordinates, hence no images to return.", 
+    					ControllerException.NO_APPLICABLE_CODE);
     		}
 
     		if (LOG.isDebugEnabled()) {
@@ -120,8 +126,8 @@ public class Get2DImagesByPOI implements Processlet {
     		// 2. get image series'es for strong genes and desired plane
     		List<ImageSeries> imageSerieses = new ArrayList<ImageSeries>();
     		for (String geneSymbol : strongGenes) {
-    			ImageSeries imageSeries = retrieveImagesSeriesForGene(geneSymbol, 
-    					desiredPlane);
+    			ImageSeries imageSeries = retrieveImagesSeriesForGene(
+    					geneSymbol, desiredPlane);
     			if (imageSeries != null) {
     				imageSerieses.add(imageSeries);
     			}
@@ -129,7 +135,10 @@ public class Get2DImagesByPOI implements Processlet {
 
     		// make sure we have something
     		if (imageSerieses.size() == 0) {
-    			// TODO LOG.error none found, exceptionRpt, bail
+    			throw new OWSException("No image series found for 'strong "
+    					+ "genes' and desired plane, hence no images to "
+    					+ "return.", 
+					ControllerException.NO_APPLICABLE_CODE);
     		}
 
     		if (LOG.isDebugEnabled()) {
@@ -191,8 +200,9 @@ public class Get2DImagesByPOI implements Processlet {
     		// stream result.
     		// get ComplexOutput object from ProcessletOutput...
     		ComplexOutput complexOutput = (ComplexOutput) out.getParameter(
-    		"Get2DImagesByPOIOutput");
-    		LOG.debug("Setting complex output (requested=" + complexOutput.isRequested() + ")");
+    				"Get2DImagesByPOIOutput");
+    		LOG.debug("Setting complex output (requested=" 
+    				+ complexOutput.isRequested() + ")");
 
     		// ImagesResponseDocument 'is a' org.apache.xmlbeans.XmlObject
     		//	'is a' org.apache.xmlbeans.XmlTokenSource
@@ -211,19 +221,27 @@ public class Get2DImagesByPOI implements Processlet {
     		XMLStreamReader reader = document.newXMLStreamReader();
     		XMLStreamWriter writer = complexOutput.getXMLStreamWriter();
     		XMLAdapter.writeElement(writer, reader);
+    		
+    		// transform any exceptions into ProcessletException wrapping
+    		// OWSException
         } catch (MissingParameterException e) {
             LOG.error(e.getMessage(), e);
         	throw new ProcessletException(new OWSException(e));
         } catch (InvalidParameterValueException e) {
             LOG.error(e.getMessage(), e);
         	throw new ProcessletException(new OWSException(e));
+        } catch (InvalidDataInputValueException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
+        } catch (OWSException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
         } catch (Throwable e) {
-        	String message = "Unexpected exception occured";
+        	String message = "Unexpected exception occurred: " + e.getMessage();
         	LOG.error(message, e);
-        	OWSException owsException = new OWSException(message, e, 
-        			ControllerException.NO_APPLICABLE_CODE);
-        	throw new ProcessletException(owsException);
-        } 
+        	throw new ProcessletException(new OWSException(message, e, 
+        			ControllerException.NO_APPLICABLE_CODE));
+        }
     }
 
     @Override
@@ -233,7 +251,7 @@ public class Get2DImagesByPOI implements Processlet {
     @Override
     public void init() {
     }
-
+    
 	private List<String> retrieveStrongGenesAtPOI(double x, double y, 
 			double z, int nbrStrongGenes) throws IOException, 
 					XMLStreamException {
@@ -461,7 +479,6 @@ public class Get2DImagesByPOI implements Processlet {
 						image.downloadImagePath });
 	}
 	
-
 	/**
 	 * Example: http://www.brain-map.org/aba/api/gene/C1ql2.xml
 	 * 
@@ -473,7 +490,7 @@ public class Get2DImagesByPOI implements Processlet {
 			"http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=%s,%s,%s", 
 			x, y, z);
 	}
-
+	
 	/**
 	 * Example: http://www.brain-map.org/aba/api/gene/C1ql2.xml
 	 * 
@@ -485,7 +502,7 @@ public class Get2DImagesByPOI implements Processlet {
 				"http://www.brain-map.org/aba/api/gene/%s.xml", 
 				geneSymbol);
 	}
-
+	
 	/**
 	 * Example: http://www.brain-map.org/aba/api/atlas/map/71587929.map
 	 * 
@@ -564,7 +581,7 @@ public class Get2DImagesByPOI implements Processlet {
 		public String thumbnailurl;
 		//public String expressthumbnailurl;
 		public String downloadImagePath;
-		public String downloadExpressionPath;
+		//public String downloadExpressionPath;
 		
 		// from (xPath) /IMAGE_PROPERTIES/*
 		//public int width;
@@ -602,155 +619,30 @@ public class Get2DImagesByPOI implements Processlet {
 	}
 	
 	private class ResponseValues {
-		private String clientUri;
 		private String clientSrsName;
-		private double clientX;
-		private double clientY;
-		private double clientZ;
-		private String clientFilter;
 		private List<Image> images = new ArrayList<Image>();
 	}
 	
-	public String asXml() {
-		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
-		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
-		opt.setSaveNamespacesFirst();
-		opt.setSaveAggressiveNamespaces();
-		opt.setUseDefaultNamespace();
-
-		ImagesResponseDocument document = completeResponse();
-
-//		ArrayList errorList = new ArrayList();
-//		opt.setErrorListener(errorList);
-//		boolean isValid = document.validate(opt);
-//
-//		// If the XML isn't valid, loop through the listener's contents,
-//		// printing contained messages.
-//		if (!isValid) {
-//			for (int i = 0; i < errorList.size(); i++) {
-//				XmlError error = (XmlError) errorList.get(i);
-//
-//				System.out.println("\n");
-//				System.out.println("Message: " + error.getMessage() + "\n");
-//				System.out.println("Location of invalid XML: "
-//						+ error.getCursorLocation().xmlText() + "\n");
-//			}
-//		}
-		return document.xmlText(opt);
-	}
-
-	public ImagesResponseDocument completeResponse() {
-
-		ImagesResponseDocument document = ImagesResponseDocument.Factory
-				.newInstance();
-
-		ImagesResponseType imagesRes = document.addNewImagesResponse();
-		// QueryInfo and criteria should be done as a utility
-		// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
-		QueryInfoType query = imagesRes.addNewQueryInfo();
-		Utilities.addMethodNameToQueryInfo(query, "Get2DImagesByPOI", 
-				responseValues.clientUri);
-
-		Criteria criterias = query.addNewCriteria();
-
-		// InputPOIType poiCriteria = (InputPOIType)
-		// criterias.addNewInput().changeType(InputPOIType.type);
-		// poiCriteria.setName("POI");
-		// PointType pnt = poiCriteria.addNewPOI().addNewPoint();
-		// pnt.setId("id-onGeomRequiredByGML");
-		// pnt.setSrsName("Mouse_ABAvoxel_1.0");
-		// pnt.addNewPos();
-		// pnt.getPos().setStringValue("1 1 1");
-		
-		InputStringType srsNameCriteria = (InputStringType) 
-				criterias.addNewInput().changeType(InputStringType.type);
-		srsNameCriteria.setName("srsName");
-		srsNameCriteria.setValue(responseValues.clientSrsName);
-
-		InputStringType xCriteria = (InputStringType)
-				criterias.addNewInput().changeType(InputStringType.type);
-		xCriteria.setName("x");
-		xCriteria.setValue(String.valueOf(responseValues.clientX));
-
-		InputStringType yCriteria = (InputStringType)
-				criterias.addNewInput().changeType(InputStringType.type);
-		yCriteria.setName("y");
-		yCriteria.setValue(String.valueOf(responseValues.clientY));
-
-		InputStringType zCriteria = (InputStringType)
-				criterias.addNewInput().changeType(InputStringType.type);
-		zCriteria.setName("z");
-		zCriteria.setValue(String.valueOf(responseValues.clientZ));
-		
-		InputStringType filterCodeCriteria = (InputStringType)
-				criterias.addNewInput().changeType(InputStringType.type);
-		filterCodeCriteria.setName("filter");
-		filterCodeCriteria.setValue(responseValues.clientFilter);
-		
-//		InputStringType toleranceCodeCriteria = (InputStringType) criterias
-//				.addNewInput().changeType(InputStringType.type);
-//		toleranceCodeCriteria.setName("Tolerance");
-//		toleranceCodeCriteria.setValue("1.0");
-
-		Image2Dcollection images = imagesRes.addNewImage2Dcollection();
-		
+	private ImagesResponseDocument completeResponse() {
+		ImagesResponseDocument document = 
+				ImagesResponseDocument.Factory.newInstance();
+		ImagesResponseType eImagesResponse = document.addNewImagesResponse();
+		Image2Dcollection eImage2DCollection = 
+				eImagesResponse.addNewImage2Dcollection();
 		for (Image im : responseValues.images) {
-		
-		Image2DType image1 = images.addNewImage2D();
-		ImageSource i1source = image1.addNewImageSource();
-		i1source.setStringValue(im.imageURI);
-		i1source.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());
-		i1source.setName(im.imagedisplayname);
-//		i1source.setRelavance((float) 0.6);
-		i1source.setSrsName(responseValues.clientSrsName);
-		i1source.setThumbnail(im.thumbnailurl);
-//		i1source.setMetadata("URL");
-//		i1source.setType(IncfImageServicesEnum.URL.toString());
-//
-//		ImagePosition i1position = image1.addNewImagePosition();
-//		IncfSrsType planeequation = i1position.addNewImagePlaneEquation();
-//		planeequation.setSrsName("SRS");
-//		planeequation.setStringValue("1 2 3 4");
-//		IncfSrsType placement = i1position.addNewImagePlanePlacement();
-//		placement.setSrsName("SRS");
-//		placement.setStringValue("1 2 3 4 5 6.0");
-//		Corners corners = i1position.addNewCorners();
-//
-//		Corner corner1 = corners.addNewCorner();
-//		corner1.setPosition(PositionEnum.TOPLEFT);
-//		corner1.addNewPoint().addNewPos().setStringValue("1 1 1");
-//		corner1.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
-//		corner1.getPoint().setId("image1TopLeft");
-//
-//		Corner corner2 = corners.addNewCorner();
-//		corner2.setPosition(PositionEnum.BOTTOMLEFT);
-//		corner2.addNewPoint().addNewPos().setStringValue("1 1 1");
-//		corner2.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
-//		corner2.getPoint().setId("image1BOTTOMLEFT");
-//
-//		Corner corner3 = corners.addNewCorner();
-//		corner3.setPosition(PositionEnum.TOPRIGHT);
-//		corner3.addNewPoint().addNewPos().setStringValue("1 1 1");
-//		corner3.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
-//		corner3.getPoint().setId("image1TOPRIGHT");
-//
-//		Corner corner4 = corners.addNewCorner();
-//		corner4.setPosition(PositionEnum.BOTTOMRIGHT);
-//		corner4.addNewPoint().addNewPos().setStringValue("1 1 1");
-//		corner4.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
-//		corner4.getPoint().setId("image1BOTTOMRIGHT");
-		
-		} // for
-
+			Image2DType eImage2D = eImage2DCollection.addNewImage2D();
+			ImageSource eImageSource = eImage2D.addNewImageSource();
+			eImageSource.setStringValue(im.imageURI);
+			eImageSource.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());
+			eImageSource.setName(im.imagedisplayname);
+			eImageSource.setSrsName(responseValues.clientSrsName);
+			eImageSource.setThumbnail(im.thumbnailurl);
+		}
 		return document;
 	}
 	
 	public static int round200(double a) {
 		return ((int) ((a / 200) + 0.5)) * 200;
-	}
-	
-	public static void main(String[] args) {
-		System.out.println("5350 --> " + round200(5350));
 	}
 	
 }
