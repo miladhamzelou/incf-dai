@@ -2,19 +2,9 @@ package org.incf.aba.atlas.process;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Random;
 
-import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.XMLStreamWriter;
-
-import net.opengis.gml.x32.PointType;
-
-import org.apache.xmlbeans.XmlError;
-import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
 import org.deegree.commons.utils.kvp.MissingParameterException;
-import org.deegree.commons.xml.XMLAdapter;
 import org.deegree.services.controller.exception.ControllerException;
 import org.deegree.services.controller.ows.OWSException;
 import org.deegree.services.wps.Processlet;
@@ -27,10 +17,6 @@ import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.aba.atlas.util.ABAConfigurator;
 import org.incf.aba.atlas.util.ABAServiceVO;
 import org.incf.aba.atlas.util.ABAUtil;
-import org.incf.atlas.waxml.generated.POIType;
-import org.incf.atlas.waxml.generated.TransformationResponseDocument;
-import org.incf.atlas.waxml.generated.TransformationResponseType;
-import org.incf.atlas.waxml.utilities.Utilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

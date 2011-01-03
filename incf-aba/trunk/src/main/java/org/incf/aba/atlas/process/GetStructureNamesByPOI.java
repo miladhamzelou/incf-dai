@@ -1,23 +1,11 @@
 package org.incf.aba.atlas.process;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
 import java.util.Random;
 import java.util.StringTokenizer;
 
-import javax.vecmath.Point3d;
-import javax.xml.stream.XMLInputFactory;
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
@@ -38,20 +26,11 @@ import org.incf.aba.atlas.util.ABAConfigurator;
 import org.incf.aba.atlas.util.ABAServiceVO;
 import org.incf.aba.atlas.util.ABAUtil;
 import org.incf.aba.atlas.util.XMLUtilities;
-import org.incf.atlas.waxml.generated.Image2DType;
-import org.incf.atlas.waxml.generated.Image2DType.ImageSource;
-import org.incf.atlas.waxml.generated.ImagesResponseDocument;
-import org.incf.atlas.waxml.generated.ImagesResponseType;
-import org.incf.atlas.waxml.generated.ImagesResponseType.Image2Dcollection;
 import org.incf.atlas.waxml.generated.IncfNameType;
-import org.incf.atlas.waxml.generated.IncfRemoteFormatEnum;
-import org.incf.atlas.waxml.generated.InputStringType;
-import org.incf.atlas.waxml.generated.QueryInfoType;
 import org.incf.atlas.waxml.generated.StructureTermType;
+import org.incf.atlas.waxml.generated.StructureTermType.Code;
 import org.incf.atlas.waxml.generated.StructureTermsResponseDocument;
 import org.incf.atlas.waxml.generated.StructureTermsResponseType;
-import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
-import org.incf.atlas.waxml.generated.StructureTermType.Code;
 import org.incf.atlas.waxml.generated.StructureTermsResponseType.StructureTerms;
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.slf4j.Logger;

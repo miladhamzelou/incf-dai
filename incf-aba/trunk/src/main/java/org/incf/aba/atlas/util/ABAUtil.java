@@ -6,11 +6,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
-import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
@@ -18,25 +16,11 @@ import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.xml.XMLAdapter;
 import org.deegree.services.wps.output.ComplexOutput;
-
-/*import org.incf.atlas.generated.transformationchain.CoordinateTransformationChain;
-import org.incf.atlas.generated.transformationchain.CoordinateTransformationChainResponse;
-import org.incf.atlas.generated.transformationchain.ObjectFactory;
-import org.incf.atlas.generated.transformationchain.QueryInfo;
-import org.incf.atlas.generated.transformationchain.CoordinateTransformationChain.CoordinateTransformation;
-import org.incf.atlas.generated.transformationchain.QueryInfo.QueryURL;
-*/
-import org.incf.atlas.waxml.generated.CoordinateChainTransformType;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseDocument;
-import org.incf.atlas.waxml.generated.CoordinateTransformationInfoType;
-import org.incf.atlas.waxml.generated.InputStringType;
-import org.incf.atlas.waxml.generated.InputType;
-import org.incf.atlas.waxml.generated.ListTransformationsResponseDocument;
-import org.incf.atlas.waxml.generated.QueryInfoType;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseType.CoordinateTransformationChain;
+import org.incf.atlas.waxml.generated.CoordinateTransformationInfoType;
+import org.incf.atlas.waxml.generated.ListTransformationsResponseDocument;
 import org.incf.atlas.waxml.generated.ListTransformationsResponseType.TransformationList;
-import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
-import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
 import org.incf.atlas.waxml.utilities.Utilities;
 
 public class ABAUtil {

@@ -1,7 +1,5 @@
 package org.incf.aba.atlas.process;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -10,7 +8,6 @@ import java.util.Random;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
-import net.opengis.gml.x32.PointType;
 import net.opengis.gml.x32.UnitOfMeasureType;
 
 import org.apache.xmlbeans.XmlError;
@@ -25,7 +22,6 @@ import org.deegree.services.wps.ProcessletException;
 import org.deegree.services.wps.ProcessletExecutionInfo;
 import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
-import org.deegree.services.wps.input.LiteralInput;
 import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.aba.atlas.util.ABAConfigurator;
 import org.incf.aba.atlas.util.ABAServiceDAOImpl;
@@ -34,27 +30,22 @@ import org.incf.aba.atlas.util.ABAUtil;
 import org.incf.atlas.waxml.generated.AuthorType;
 import org.incf.atlas.waxml.generated.DescribeSRSResponseDocument;
 import org.incf.atlas.waxml.generated.DescribeSRSResponseType;
+import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Slices;
 import org.incf.atlas.waxml.generated.IncfCodeType;
 import org.incf.atlas.waxml.generated.IncfUriSliceSource;
 import org.incf.atlas.waxml.generated.Incfdescription;
-import org.incf.atlas.waxml.generated.ListSRSResponseDocument;
-import org.incf.atlas.waxml.generated.ListSRSResponseType;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.Orientations;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSList;
 import org.incf.atlas.waxml.generated.NeurodimensionType;
 import org.incf.atlas.waxml.generated.NeurodimensionsType;
 import org.incf.atlas.waxml.generated.OrientationType;
-import org.incf.atlas.waxml.generated.POIType;
+import org.incf.atlas.waxml.generated.OrientationType.Author;
 import org.incf.atlas.waxml.generated.QueryInfoType;
 import org.incf.atlas.waxml.generated.SRSType;
-import org.incf.atlas.waxml.generated.SliceType;
-import org.incf.atlas.waxml.generated.TransformationResponseDocument;
-import org.incf.atlas.waxml.generated.TransformationResponseType;
-import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Slices;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.Orientations;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSList;
-import org.incf.atlas.waxml.generated.OrientationType.Author;
 import org.incf.atlas.waxml.generated.SRSType.Area;
 import org.incf.atlas.waxml.generated.SRSType.DerivedFrom;
 import org.incf.atlas.waxml.generated.SRSType.Name;
+import org.incf.atlas.waxml.generated.SliceType;
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -217,7 +208,7 @@ public class DescribeSRSs implements Processlet {
 		//origin.setCodeSpace("URN");
 		origin.setStringValue(vo.getOrigin());
 
-	    //<Area structureName=”whole brain” structureURN=”…”/>
+	    //<Area structureName=whole brain structureURN=/>
 		Area area = srs.addNewArea();
 		area.setStructureName(vo.getRegionOfValidity());
 		//area.setStructureURN("URN");
