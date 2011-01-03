@@ -83,7 +83,7 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain
 
-    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=transformationCode=Mouse_ABAvoxel_1.0_To_Mouse_WHS_1.0_v1.0
+    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_WHS_1.0;filter=cerebellum
 
  * Execute : GetStructureNamesByPOI
 
@@ -91,7 +91,7 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
  * Execute : !ListTransformations
 
-    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=transformationCode=Mouse_ABAvoxel_1.0_To_Mouse_WHS_1.0_v1.0
+    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_WHS_1.0;filter=cerebellum
 
     http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
 
