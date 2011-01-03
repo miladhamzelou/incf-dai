@@ -209,7 +209,7 @@ public class TransformPOI implements Processlet {
 		query.addNewQueryUrl();
 		query.getQueryUrl().setName("TransformPOI");
 		query.getQueryUrl().setStringValue(uri.toString());
-		query.setTimeCreated(Calendar.getInstance());
+      		query.setTimeCreated(Calendar.getInstance());
 
 		InputStringType targetsrsCriteria = (InputStringType) criterias
 		.addNewInput().changeType(InputStringType.type);

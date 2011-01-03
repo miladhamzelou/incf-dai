@@ -65,10 +65,18 @@ public class ListTransformations implements Processlet {
 		try { 
 
     		System.out.println(" Inside ListTransformations");
-    		String transformationCode = "";
+    		System.out.println(" Inside GetTransformation");
+    		//System.out.println(" Inside GetTransformationChain... " + in.getParameters().size());
+    		String inputSrsName = "";
+    		String outputSrsName = "";
+    		String filter = "";
+    		// collect input values
+    		//String transformationCode = ((LiteralInput) in.getParameter("transformationCode")).getValue();
     		if (in != null){
         		System.out.println(" Inside parameter value... ");
-    			transformationCode = ((LiteralInput) in.getParameter("transformationCode")).getValue();
+    			inputSrsName = ((LiteralInput) in.getParameter("inputSrsName")).getValue();
+    			outputSrsName = ((LiteralInput) in.getParameter("outputSrsName")).getValue();
+    			filter = ((LiteralInput) in.getParameter("filter")).getValue();
     		}
 /*    		if (transformationCode == null) {
     			throw new MissingParameterException(
@@ -77,15 +85,23 @@ public class ListTransformations implements Processlet {
 */
 			//transformationCode = ((LiteralInput) in.getParameter("transformationCode")).getValue();
     		System.out.println("Before the check condition");
-			if ( transformationCode.equals("") || transformationCode == null ) { 
+			if ( inputSrsName.equals("") || inputSrsName == null ) { 
 	        	System.out.println("Inside Empty DataInputString.");
-		        vo.setTransformationCode("all_To_all_v1.0");
+	        	vo.setFromSRSCodeOne("all");
+		        vo.setFromSRSCode("all");
+		        vo.setToSRSCodeOne("all");
+		        vo.setToSRSCode("all");
+		        vo.setFilter("");
 	        } else {
-		        vo.setTransformationCode(transformationCode);
+	        	vo.setFromSRSCodeOne(inputSrsName);
+		        vo.setFromSRSCode(inputSrsName);
+		        vo.setToSRSCodeOne(outputSrsName);
+		        vo.setToSRSCode(outputSrsName);
+		        vo.setFilter(filter);
 	        }
     		System.out.println("After the check condition");
 
-			String[] transformationNameArray;
+/*			String[] transformationNameArray;
 			String delimiter = "_To_";
 			transformationNameArray = vo.getTransformationCode().split(delimiter);
 			String fromSRSCode = transformationNameArray[0];
@@ -98,7 +114,7 @@ public class ListTransformations implements Processlet {
 	        vo.setFromSRSCode(fromSRSCode);
 	        vo.setToSRSCodeOne(toSRSCode);
 	        vo.setToSRSCode(toSRSCode);
-
+*/
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         java.util.Date date = new java.util.Date();
         String currentTime = dateFormat.format(date);
@@ -110,7 +126,7 @@ public class ListTransformations implements Processlet {
         hostName = config.getValue("incf.deploy.host.name");
         portNumber = config.getValue("incf.aba.port.number");
     	String delimitor = config.getValue("incf.deploy.port.delimitor");
-    	portNumber = delimitor + portNumber;
+    	//portNumber = delimitor + portNumber;
         //End - FIXME
         
         //vo.setUrlString(uri.toString());
