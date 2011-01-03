@@ -96,7 +96,7 @@
 
 	<property>
         <name>ucsd.aba.service.path</name>
-        <value>/atlas-aba?</value>
+        <value>/aba/atlas?</value>
     </property>
 
 	<property>
@@ -106,12 +106,12 @@
 
 	<property>
         <name>ucsd.whs.service.path</name>
-        <value>/atlas-whs?</value>
+        <value>/whs/atlas?</value>
     </property>
 
 	<property>
         <name>ucsd.ucsd.service.path</name>
-        <value>/atlas-ucsd?</value>
+        <value>/ucsd/atlas?</value>
     </property>
 
 	<!-- End INCF-UCSDServer properties --> 
