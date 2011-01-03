@@ -16,6 +16,8 @@ import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.xml.XMLAdapter;
 import org.deegree.services.wps.output.ComplexOutput;
+
+import org.incf.atlas.waxml.generated.CoordinateChainTransformType;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseDocument;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseType.CoordinateTransformationChain;
 import org.incf.atlas.waxml.generated.CoordinateTransformationInfoType;
@@ -102,10 +104,14 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo, co, srsCodeList );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs10) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
+			} /*else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs10) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				vo1 = new ABAServiceVO();
 				vo1.setFromSRSCode(whs10);
+				vo1.setToSRSCode(whs09);
+				srsCodeList.add(vo1);
+				vo1 = new ABAServiceVO();
+				vo1.setFromSRSCode(whs09);
 				vo1.setToSRSCode(agea);
 				srsCodeList.add(vo1);
 
@@ -119,6 +125,10 @@ public class ABAUtil {
 
 				vo1 = new ABAServiceVO();
 				vo1.setFromSRSCode(agea);
+				vo1.setToSRSCode(whs09);
+				srsCodeList.add(vo1);
+				vo1 = new ABAServiceVO();
+				vo1.setFromSRSCode(whs09);
 				vo1.setToSRSCode(whs10);
 				srsCodeList.add(vo1);
 
@@ -128,7 +138,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo, co, srsCodeList );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
+			} */else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
 
 				vo1 = new ABAServiceVO();
 				vo1.setFromSRSCode(abaReference);
@@ -409,7 +419,7 @@ public class ABAUtil {
 				}
 
             //via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(whs10) ) {
+			} /*else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(whs10) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo1 = new ABAServiceVO();
@@ -455,7 +465,7 @@ public class ABAUtil {
 				}
 
             //via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
+			} */else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo1 = new ABAServiceVO();
@@ -538,7 +548,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo, co, srsCodeList );
 				}
 				
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs10) ) {
+			} /*else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs10) ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo1 = new ABAServiceVO();
@@ -591,7 +601,7 @@ public class ABAUtil {
 					responseString = util.getTransformationChain( vo, co, srsCodeList );
 				}
 				
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("all") && vo.getToSRSCodeOne().equalsIgnoreCase("all") ) {
+			} */else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("all") && vo.getToSRSCodeOne().equalsIgnoreCase("all") ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				
@@ -608,10 +618,10 @@ public class ABAUtil {
 				vo1.setToSRSCode(whs09);
 				srsCodeList.add(vo1);
 				vo1 = new ABAServiceVO();
-				vo1.setFromSRSCode(whs09);
+/*				vo1.setFromSRSCode(whs09);
 				vo1.setToSRSCode(whs10);
 				srsCodeList.add(vo1);
-
+*/
 				vo1 = new ABAServiceVO();
 				vo1.setFromSRSCode(abaVoxel);
 				vo1.setToSRSCode(abaReference);
@@ -625,10 +635,10 @@ public class ABAUtil {
 				vo1.setToSRSCode(agea);
 				srsCodeList.add(vo1);
 				vo1 = new ABAServiceVO();
-				vo1.setFromSRSCode(whs10);
+/*				vo1.setFromSRSCode(whs10);
 				vo1.setToSRSCode(whs09);
 				srsCodeList.add(vo1);
-
+*/
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo, co, srsCodeList );
 				} else {
@@ -2303,7 +2313,7 @@ public class ABAUtil {
 		//By Steve Lamont
 		else if (fromSpace.trim().equalsIgnoreCase(agea) && toSpace.trim().equalsIgnoreCase(whs09)) {
 
-			System.out.println("Inside mouse_agea_1.0 2 mouse_whs_1.0...");
+			System.out.println("Inside mouse_agea_1.0 2 mouse_whs_0.9...");
 
 			String transformationHostName = config.getValue("incf.transformationservice.host.name");
 			String transformationPortNumber = config.getValue("incf.transformationservice.port.number");
