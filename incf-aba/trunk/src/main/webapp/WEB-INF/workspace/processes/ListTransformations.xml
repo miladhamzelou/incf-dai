@@ -16,20 +16,39 @@
   
   <InputParameters>
     <LiteralInput>
-      <Identifier>transformationCode</Identifier>
-      <Title>Transformation Code</Title>
-      <Abstract>Transformation code</Abstract>
+      <Identifier>inputSrsName</Identifier>
+      <Title>Atlas SRS Name</Title>
+      <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
       <AllowedValues>
-        <Value>Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0</Value>
-        <Value>Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_v1.0</Value>
-        <Value>Mouse_WHS_0.9_To_Mouse_AGEA_1.0_v1.0</Value>
-        <Value>Mouse_AGEA_1.0_To_Mouse_WHS_0.9_v1.0</Value>
-        <Value>Mouse_WHS_0.9_To_Mouse_WHS_1.0_v1.0</Value>
-        <Value>Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0</Value>
-        <Value>Mouse_ABAreference_1.0_To_Mouse_ABAvoxel_1.0_v1.0</Value>
-        <Value>Mouse_ABAvoxel_1.0_To_Mouse_ABAreference_1.0_v1.0</Value>
-        <Value>Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0</Value>
-        <Value>Mouse_WHS_0.9_To_Mouse_Paxinos_1.0_v1.0</Value>
+        <Value>Mouse_ABAreference_1.0</Value>
+        <Value>Mouse_ABAvoxel_1.0</Value>
+        <Value>Mouse_AGEA_1.0</Value>
+        <Value>Mouse_EMAP-T26_1.0</Value>
+        <Value>Mouse_Paxinos_1.0</Value>
+        <Value>Mouse_WHS_0.9</Value>
+        <Value>Mouse_WHS_1.0</Value>
+      </AllowedValues>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>outputSrsName</Identifier>
+      <Title>Atlas SRS Name</Title>
+      <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
+      <AllowedValues>
+        <Value>Mouse_ABAreference_1.0</Value>
+        <Value>Mouse_ABAvoxel_1.0</Value>
+        <Value>Mouse_AGEA_1.0</Value>
+        <Value>Mouse_EMAP-T26_1.0</Value>
+        <Value>Mouse_Paxinos_1.0</Value>
+        <Value>Mouse_WHS_0.9</Value>
+        <Value>Mouse_WHS_1.0</Value>
+      </AllowedValues>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>filter</Identifier>
+      <Title>Filter</Title>
+      <Abstract></Abstract>
+      <AllowedValues>
+        <Value>structurename</Value>
       </AllowedValues>
     </LiteralInput>
   </InputParameters>
