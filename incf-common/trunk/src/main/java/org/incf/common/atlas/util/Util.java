@@ -21,8 +21,16 @@ public class Util {
 			value = literalInput.getValue();
 			dValue = Double.parseDouble(value);
 		} catch (NumberFormatException e) {
-			throw new InvalidDataInputValueException(dataInputKey, value, 
-					"double", e);
+//			throw new InvalidDataInputValueException(
+//					String.format("The value of data input %s is invalid. "
+//							+ "Value: %s, Expected type: %s.", dataInputKey, 
+//							value, expectedType)
+//					dataInputKey, value, 
+//					"double", e);
+			throw new InvalidDataInputValueException(
+					String.format("The value of data input %s is invalid. "
+							+ "Value: %s, Expected type: %s.", dataInputKey, 
+							value, "double"), e);
 		}
 		return dValue;
     }
