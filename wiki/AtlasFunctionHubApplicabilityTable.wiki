@@ -77,19 +77,19 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
   </tr>
   <tr>
     <th align="left">GetObjectsByPOI</th>
-    <td align="center"></td>
-    <td align="center"></td>
-    <td align="center"></td>
-    <td align="center"></td>
-    <td align="center"></td>
+    <td align="center">x</td>
+    <td align="center">x</td>
+    <td align="center">x</td>
+    <td align="center">x</td>
+    <td align="center">x</td>
   </tr>
   <tr>
     <th align="left">GetPropertiesByPOI</th>
-    <td align="center"></td>
-    <td align="center"></td>
-    <td align="center"></td>
-    <td align="center"></td>
-    <td align="center"></td>
+    <td align="center">x</td>
+    <td align="center">x</td>
+    <td align="center">x</td>
+    <td align="center">x</td>
+    <td align="center">x</td>
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetStructureNamesByPOI GetStructureNamesByPOI]</th>
