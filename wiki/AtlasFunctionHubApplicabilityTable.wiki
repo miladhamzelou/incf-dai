@@ -93,7 +93,7 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetProcessesByIdentifier GetProcessesByIdentifier]`**`</th>
-    <td align="center">*X*</td>
+    <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
@@ -117,7 +117,7 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListHubs ListHubs]`**`</th>
-    <td align="center">*X*</td>
+    <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
@@ -125,7 +125,7 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListProcesses ListProcesses]`**`</th>
-    <td align="center">*X*</td>
+    <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
