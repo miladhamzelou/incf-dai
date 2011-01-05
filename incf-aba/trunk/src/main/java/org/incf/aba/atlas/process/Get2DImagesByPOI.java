@@ -47,11 +47,6 @@ public class Get2DImagesByPOI implements Processlet {
     private static final Logger LOG = LoggerFactory.getLogger(
             Get2DImagesByPOI.class);
     
-//    private static final String PROCESS_DEFINITION_DIR = 
-//    		"aba/WEB-INF/workspace/processes/";
-//    private static final String PROCESS_DEFINITION_FILE = 
-//    		PROCESS_DEFINITION_DIR + "Get2DImagesByPOI.xml";
-
 	// used for ABA Get Image URI query string
 	private static final String HI_RES = "-1";	// highest resolution available
 	private static final String THUMB = "0";	// thumbnail
