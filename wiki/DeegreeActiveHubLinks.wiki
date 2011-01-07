@@ -104,8 +104,7 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
  * Execute : DescribeSRS
 
-    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRSs
-
+    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRSs&DataInputs=srsName=Mouse_ABAvoxel_1.0
 
 ===EMAP Hub===
 
