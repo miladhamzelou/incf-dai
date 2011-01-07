@@ -81,7 +81,7 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
  * Execute : !GetTransformationChain
 
-    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_WHS_1.0;filter=cerebellum
+    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_WHS_0.9;filter=cerebellum
 
  * Execute : GetStructureNamesByPOI
 
