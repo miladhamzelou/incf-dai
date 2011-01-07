@@ -55,6 +55,10 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
 
+ * Execute : !GetTransformationChain
+
+    http://132.239.131.188:8080/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAreference_1.0;outputSrsName=Mouse_WHS_1.0;filter=cerebellum
+
  * Execute : Addition (a test process)
 
     http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Addition&DataInputs=a=1;b=2
@@ -78,10 +82,6 @@ Currently the project is using four servers to develop and demonstrate the hubs 
  * Execute : TransformPOI
 
     http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0;x=1;y=112;z=162
-
- * Execute : !GetTransformationChain
-
-    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_WHS_0.9;filter=cerebellum
 
  * Execute : GetStructureNamesByPOI
 
