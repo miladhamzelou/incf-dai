@@ -41,6 +41,11 @@ public class ABAUtil {
 
 		System.out.println("Start - getCoordinateTransformationChain Method...");
 		String responseString = "";
+		System.out.println("Inside Method InputSrsName..." + vo.getFromSRSCodeOne());
+		System.out.println("Inside Method OutputSrsName..." + vo.getToSRSCodeOne());
+
+		System.out.println("Inside Method InputSrsName..." + abaVoxel);
+		System.out.println("Inside Method OutputSrsName..." + agea);
 
 		try { 
 
@@ -53,7 +58,7 @@ public class ABAUtil {
 
 			//mouse_abavoxel_1.0 to mouse_agea_1.0
 			if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
-
+				System.out.println("Inside Match..." );
 				vo1 = new ABAServiceVO();
 				vo1.setFromSRSCode(abaVoxel);
 				vo1.setToSRSCode(agea);
@@ -604,7 +609,7 @@ public class ABAUtil {
 			} */else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("all") && vo.getToSRSCodeOne().equalsIgnoreCase("all") ) {
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
-				
+
 				vo1 = new ABAServiceVO();
 				vo1.setFromSRSCode(abaReference);
 				vo1.setToSRSCode(abaVoxel);
@@ -618,10 +623,6 @@ public class ABAUtil {
 				vo1.setToSRSCode(whs09);
 				srsCodeList.add(vo1);
 				vo1 = new ABAServiceVO();
-/*				vo1.setFromSRSCode(whs09);
-				vo1.setToSRSCode(whs10);
-				srsCodeList.add(vo1);
-*/
 				vo1 = new ABAServiceVO();
 				vo1.setFromSRSCode(abaVoxel);
 				vo1.setToSRSCode(abaReference);
@@ -635,10 +636,7 @@ public class ABAUtil {
 				vo1.setToSRSCode(agea);
 				srsCodeList.add(vo1);
 				vo1 = new ABAServiceVO();
-/*				vo1.setFromSRSCode(whs10);
-				vo1.setToSRSCode(whs09);
-				srsCodeList.add(vo1);
-*/
+
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo, co, srsCodeList );
 				} else {
