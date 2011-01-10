@@ -10,13 +10,13 @@ Cases:
 ==Case 1==
 
 ProcessDefinition (Deegree .../processes/Xxx.xml)
-`
+{{{
     <LiteralInput>
       <Identifier>srsName</Identifier>
       <Title>Atlas SRS Name</Title>
       <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
     </LiteralInput>
-`
+}}}
 
 WPS DescribeProcess response
 <Input minOccurs="1" maxOccurs="1">
