@@ -34,4 +34,27 @@ public class AllowedValuesValidator {
 		return false;
 	}
 
+	    public boolean validateNEW(String dataInputKey, String dataInputValue) 
+	            throws IOException {
+
+	        // if dataInputValue is null, assume it was optional and return true
+	        // (i.e. valid value); this should be safe because if it was not 
+	        // optional, Deegree should have already thrown MissingValueException;
+	        // also see: Util.getStringInputValue()
+	        if (dataInputValue == null) {
+	            return true;
+	        }
+
+	        // if dataInputValue is not null, proceed with further validation
+	        // against allowed values
+	        String xPathExpression = FIRST + dataInputKey + LAST;
+	        List<String> allowedValues = evaluator.evaluateXPath(xPathExpression);
+	        for (String allowedValue : allowedValues) {
+	            if (dataInputValue.equals(allowedValue)) {
+	                return true;
+	            }
+	        }
+	        return false;
+	    }
+
 }
