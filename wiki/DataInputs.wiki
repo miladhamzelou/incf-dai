@@ -1,11 +1,11 @@
 =Data Inputs=
 
 Cases:
-1 - Required input, any value is ok (e.g. Get2DImagesByPOI srsName is resolved through call to Central)
-2 - Required input, one of several allowed values (e.g. filter=maptype:coronal or filter=maptype:sagittal)
-3 - Optional input, any value, with a default value (e.g. srsName defaults to Mouse_AGEA_1.0 if no value provided)
-4 - Optional input, one of several allowed values, with a default value (e.g. filter=maptype:coronal, filter=maptype:sagittal, defaults to maptype:coronal if not specified)
-5? - Optional input, any value, no default (I don't think this case makes any sense to me)
+# Required input, any value is ok (e.g. Get2DImagesByPOI srsName is resolved through call to Central)
+# Required input, one of several allowed values (e.g. filter=maptype:coronal or filter=maptype:sagittal)
+# Optional input, any value, with a default value (e.g. srsName defaults to Mouse_AGEA_1.0 if no value provided)
+# Optional input, one of several allowed values, with a default value (e.g. filter=maptype:coronal, filter=maptype:sagittal, defaults to maptype:coronal if not specified)
+# ? Optional input, any value, no default (I don't think this case makes any sense to me)
 
 ==Case 1==
 
