@@ -1,5 +1,7 @@
 package org.incf.aba.atlas.process;
 
+import java.io.File;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,6 +35,9 @@ import org.incf.atlas.waxml.generated.StructureTermsResponseDocument;
 import org.incf.atlas.waxml.generated.StructureTermsResponseType;
 import org.incf.atlas.waxml.generated.StructureTermsResponseType.StructureTerms;
 import org.incf.atlas.waxml.utilities.Utilities;
+import org.incf.common.atlas.exception.InvalidDataInputValueException;
+import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -66,31 +71,35 @@ public class GetStructureNamesByPOI implements Processlet {
 
     		System.out.println(" Inside GetStructureNamesByPOI... ");
     		// collect input values
-    		String srsName = ((LiteralInput) in.getParameter("srsName")).getValue();
-    		String x = ((LiteralInput) in.getParameter("x")).getValue();
-    		String y = ((LiteralInput) in.getParameter("y")).getValue();
-    		String z = ((LiteralInput) in.getParameter("z")).getValue();
-    		String vocabulary = ((LiteralInput) in.getParameter("vocabulary")).getValue();
-    		String filter = ((LiteralInput) in.getParameter("filter")).getValue();
+    		String srsName = Util.getStringInputValue(in, "srsName");
+    		String x = String.valueOf(Util.getDoubleInputValue(in, "x"));
+    		String y = String.valueOf(Util.getDoubleInputValue(in, "y"));
+    		String z = String.valueOf(Util.getDoubleInputValue(in, "z"));
+    		String filter = Util.getStringInputValue(in, "filter");
+    		String vocabulary = Util.getStringInputValue(in, "vocabulary");
 
-    		if (srsName == null) {
-    			throw new MissingParameterException(
-    					"srsName is a required parameter", "srsName");
+    		URL processDefinitionUrl = this.getClass().getResource(
+    				"/" + this.getClass().getSimpleName() + ".xml");
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
+
+    		if (!validator.validate("srsName", srsName)) {
+    			throw new InvalidDataInputValueException("The srsName value '" 
+    					+ srsName + "' is not amoung the allowed values "
+    					+ "specified in the AllowedValues element of the "
+    					+ "ProcessDescription.", "srsName");
     		}
-
-    		if (x == null) {
-    			throw new MissingParameterException(
-    					"x is a required parameter", "x");
+    		if (!validator.validate("filter", filter)) {
+    			throw new InvalidDataInputValueException("The filter value '" 
+    					+ filter + "' is not amoung the allowed values "
+    					+ "specified in the AllowedValues element of the "
+    					+ "ProcessDescription.", "filter");
     		}
-
-    		if (y == null) {
-    			throw new MissingParameterException(
-    					"y is a required parameter", "y");
-    		}
-
-    		if (z == null) {
-    			throw new MissingParameterException(
-    					"z is a required parameter", "z");
+    		if (!validator.validate("vocabulary", vocabulary)) {
+    			throw new InvalidDataInputValueException("The vocabulary value '" 
+    					+ vocabulary + "' is not amoung the allowed values "
+    					+ "specified in the AllowedValues element of the "
+    					+ "ProcessDescription.", "vocabulary");
     		}
 
     		ABAServiceVO vo = new ABAServiceVO();
@@ -151,7 +160,7 @@ public class GetStructureNamesByPOI implements Processlet {
     	        	//Start - exception handling
     	        	if (transformedCoordinatesString.startsWith("Error:")) {
     	        		System.out.println("********************ERROR*********************");
-    	    			throw new MissingParameterException(
+    	    			throw new OWSException( 
     	    					"Transformed Coordinates Error: ", transformedCoordinatesString);
     	        	}
     	        	//End - exception handling
@@ -178,20 +187,20 @@ public class GetStructureNamesByPOI implements Processlet {
     			//Start - Exception Handling
     			if ( structureName == null || structureName.equals("") ) {
 	        		System.out.println("********************ERROR*********************");
-	    			throw new MissingParameterException(
-	    					"No Structures Found... ", "");
+	    			throw new OWSException(
+	    					"No Structures Found... ", ControllerException.NO_APPLICABLE_CODE);
     			} else if ( structureName.endsWith("found") ) {//No structures found
 	        		System.out.println("********************ERROR*********************");
-	    			throw new MissingParameterException(
-	    					"No Structures Found... ", "");
+	    			throw new OWSException(
+	    					"No Structures Found... ", ControllerException.NO_APPLICABLE_CODE);
     			} else if ( structureName.endsWith("range") ) {
 	        		System.out.println("********************ERROR*********************");
-	    			throw new MissingParameterException(
-	    					"Coordinates - Out of Range", "");
+	    			throw new OWSException(
+	    					"Coordinates - Out of Range", ControllerException.NO_APPLICABLE_CODE);
     			} else if ( structureName.endsWith("issue") ) {
 	        		System.out.println("********************ERROR*********************");
-	    			throw new MissingParameterException(
-	    					"Please contact the administrator to resolve this issue", ""); 
+	    			throw new OWSException(
+	    					"Please contact the administrator to resolve this issue", ControllerException.NO_APPLICABLE_CODE); 
     			}
 
     			//End
@@ -205,22 +214,22 @@ public class GetStructureNamesByPOI implements Processlet {
     			}
     			//Start - Exception Handling
     			if ( structureName == null || structureName.equals("") ) {
-	    			throw new MissingParameterException(
-	    					"No Structures Found...", "");
+	    			throw new OWSException(
+	    					"No Structures Found...", ControllerException.NO_APPLICABLE_CODE);
     			} else if ( structureName.endsWith("found") ) { //No structure found
-	    			throw new MissingParameterException(
-	    					"No Structures Found...", "");
+	    			throw new OWSException(
+	    					"No Structures Found...", ControllerException.NO_APPLICABLE_CODE);
     			} else if ( structureName.endsWith("range") ) { //Out of range
-	    			throw new MissingParameterException(
-	    					"Coordinates - Out of Range", "");
+	    			throw new OWSException(
+	    					"Coordinates - Out of Range", ControllerException.NO_APPLICABLE_CODE);
     			} else if ( structureName.endsWith("issue") ) {
-	    			throw new MissingParameterException(
-	    					"Please contact the administrator to resolve this issue", ""); 
+	    			throw new OWSException(
+	    					"Please contact the administrator to resolve this issue", ControllerException.NO_APPLICABLE_CODE); 
     			}
     			//End
     		} else {
-    			throw new MissingParameterException(
-    					"Filter type - " + vo.getFilter() + " is not supported", "");
+    			throw new OWSException(
+    					"Filter type - " + vo.getFilter() + " is not supported", ControllerException.NO_APPLICABLE_CODE);
     		}
     		//End
 
@@ -324,13 +333,19 @@ public class GetStructureNamesByPOI implements Processlet {
         } catch (InvalidParameterValueException e) {
             LOG.error(e.getMessage(), e);
         	throw new ProcessletException(new OWSException(e));
+        } catch (InvalidDataInputValueException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
+        } catch (OWSException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
         } catch (Throwable e) {
-        	String message = "Unexpected exception occured";
+        	String message = "Unexpected exception occurred: " + e.getMessage();
         	LOG.error(message, e);
-        	OWSException owsException = new OWSException(message, e, 
-        			ControllerException.NO_APPLICABLE_CODE);
-        	throw new ProcessletException(owsException);
-        } 
+        	throw new ProcessletException(new OWSException(message, e, 
+        			ControllerException.NO_APPLICABLE_CODE));
+        }
+
     }
 
     @Override

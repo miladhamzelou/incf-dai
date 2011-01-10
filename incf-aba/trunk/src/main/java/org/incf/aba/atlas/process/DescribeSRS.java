@@ -1,5 +1,7 @@
 package org.incf.aba.atlas.process;
 
+import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
@@ -47,13 +49,16 @@ import org.incf.atlas.waxml.generated.SRSType.DerivedFrom;
 import org.incf.atlas.waxml.generated.SRSType.Name;
 import org.incf.atlas.waxml.generated.SliceType;
 import org.incf.atlas.waxml.utilities.Utilities;
+import org.incf.common.atlas.exception.InvalidDataInputValueException;
+import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class DescribeSRSs implements Processlet {
+public class DescribeSRS implements Processlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(
-            DescribeSRSs.class);
+            DescribeSRS.class);
 
 	ABAConfigurator config = ABAConfigurator.INSTANCE;
 
@@ -87,18 +92,32 @@ public class DescribeSRSs implements Processlet {
     @Override
     public void process(ProcessletInputs in, ProcessletOutputs out, 
             ProcessletExecutionInfo info) throws ProcessletException {
-    	
-		ABAServiceVO vo = new ABAServiceVO();
 
 		try { 
 
-        	XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+			ABAServiceVO vo = new ABAServiceVO();
+
+    		String srsName = Util.getStringInputValue(in, "srsName");
+
+    		URL processDefinitionUrl = this.getClass().getResource(
+    				"/" + this.getClass().getSimpleName() + ".xml");
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
+
+    		if (!validator.validate("srsName", srsName)) {
+    			throw new InvalidDataInputValueException("The srsName value '" 
+    					+ srsName + "' is not among the allowed values "
+    					+ "specified in the AllowedValues element of the "
+    					+ "ProcessDescription.", "srsName");
+    		}
+
+    		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
         	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
         	opt.setSaveNamespacesFirst();
         	opt.setSaveAggressiveNamespaces();
         	opt.setUseDefaultNamespace();
 
-        	DescribeSRSResponseDocument document = completeResponse();
+        	DescribeSRSResponseDocument document = completeResponse(srsName);
 
         	ArrayList errorList = new ArrayList();
         	 opt.setErrorListener(errorList);
@@ -247,7 +266,7 @@ public class DescribeSRSs implements Processlet {
 		return;
 	}
 
-	public DescribeSRSResponseDocument completeResponse() {
+	public DescribeSRSResponseDocument completeResponse(String srsName) {
 
 		DescribeSRSResponseDocument document =	DescribeSRSResponseDocument.Factory.newInstance(); 
 		
@@ -259,9 +278,9 @@ public class DescribeSRSs implements Processlet {
     	//Start - Get data from the database
 		ArrayList list = new ArrayList();
 		ABAServiceDAOImpl impl = new ABAServiceDAOImpl();
-		list = impl.getSRSsData();
+		list = impl.getDescribeSRSData(srsName);
 		//End
-		
+
 		addSRS(srsList, list, list.size());
 
 		ArrayList list2 = impl.getOrientationData();
@@ -282,7 +301,13 @@ public class DescribeSRSs implements Processlet {
 		}
 
 		//Start - Get Slice data
-		vo.setSpaceCode("ABA_ref");// FIXME - Remove the hardcoded value
+		if (srsName.equals(abaReference)) {
+			vo.setSpaceCode("ABA_ref");// FIXME - Remove the hardcoded value
+		} else if (srsName.equals(paxinos)) {
+			vo.setSpaceCode("M_Pax");// FIXME - Remove the hardcoded value
+		} else {
+			vo.setSpaceCode("");
+		}
 		ABAServiceDAOImpl daoImpl = new ABAServiceDAOImpl();
 		ArrayList sliceDataList = daoImpl.getSliceData(vo);
 		//Start - End Slice data
@@ -308,16 +333,25 @@ public class DescribeSRSs implements Processlet {
 			if ( vo.getValueDirection().equalsIgnoreCase("front") ) { 
 				slice.setOrientation(SliceType.Orientation.CORONAL);
 
+				if ( vo.getPlusX().equalsIgnoreCase("constant") ) { 
+					slice.setXOrientation(vo.getPlusZ());
+				} 
+				slice.setYOrientation(vo.getPlusY()); 
+
 				//(Derived from the coordinate system from Ilya - specific to ABA_REF space only)
-				if ( vo.getPlusX().equalsIgnoreCase("left") ) { 
+/*				if ( vo.getPlusX().equalsIgnoreCase("left") ) { 
 					slice.setXOrientation("right");
 				} 
 				if ( vo.getPlusY().equalsIgnoreCase("down") ) {
 					slice.setYOrientation("ventral"); 
 				}
-				
+*/
 			} else if ( vo.getValueDirection().equalsIgnoreCase("right") ) {
 				slice.setOrientation(SliceType.Orientation.SAGITTAL);
+				if ( vo.getPlusX().equalsIgnoreCase("constant") ) { 
+					slice.setXOrientation(vo.getPlusZ());
+				} 
+				slice.setYOrientation(vo.getPlusY()); 
 			} else {
 				slice.setOrientation(SliceType.Orientation.HORIZONTAL);
 			}

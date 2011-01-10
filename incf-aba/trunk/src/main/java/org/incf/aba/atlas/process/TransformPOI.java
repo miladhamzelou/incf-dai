@@ -1,5 +1,7 @@
 package org.incf.aba.atlas.process;
 
+import java.io.File;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,6 +33,10 @@ import org.incf.atlas.waxml.generated.POIType;
 import org.incf.atlas.waxml.generated.TransformationResponseDocument;
 import org.incf.atlas.waxml.generated.TransformationResponseType;
 import org.incf.atlas.waxml.utilities.Utilities;
+import org.incf.common.atlas.exception.InvalidDataInputValueException;
+import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.Util;
+import org.incf.common.atlas.util.CommonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -81,30 +87,21 @@ public class TransformPOI implements Processlet {
 		    // parse dataInputs string
     		System.out.println(" Inside TransformPOI... ");
     		// collect input values
-    		String transformationCode = ((LiteralInput) in.getParameter("transformationCode")).getValue();
-    		String x = ((LiteralInput) in.getParameter("x")).getValue();
-    		String y = ((LiteralInput) in.getParameter("y")).getValue();
-    		String z = ((LiteralInput) in.getParameter("z")).getValue();
-    		String filter = ((LiteralInput) in.getParameter("filter")).getValue();
+    		String transformationCode = Util.getStringInputValue(in, "transformationCode");
+    		String x = String.valueOf(Util.getDoubleInputValue(in, "x"));
+    		String y = String.valueOf(Util.getDoubleInputValue(in, "y"));
+    		String z = String.valueOf(Util.getDoubleInputValue(in, "z"));
 
-    		if (transformationCode == null) {
-    			throw new MissingParameterException(
-    					"transformationCode is a required parameter", "transformationCode");
-    		}
+    		URL processDefinitionUrl = this.getClass().getResource(
+    				"/" + this.getClass().getSimpleName() + ".xml");
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
 
-    		if (x == null) {
-    			throw new MissingParameterException(
-    					"x is a required parameter", "x");
-    		}
-
-    		if (y == null) {
-    			throw new MissingParameterException(
-    					"y is a required parameter", "y");
-    		}
-
-    		if (z == null) {
-    			throw new MissingParameterException(
-    					"z is a required parameter", "z");
+    		if (!validator.validate("transformationCode", transformationCode)) {
+    			throw new InvalidDataInputValueException("The transformationCode value '" 
+    					+ transformationCode + "' is not among the allowed values "
+    					+ "specified in the AllowedValues element of the "
+    					+ "ProcessDescription.", "transformationCode");
     		}
 
 	        vo.setTransformationCode(transformationCode);
@@ -122,11 +119,11 @@ public class TransformPOI implements Processlet {
 	        vo.setToSRSCodeOne(toSRSCode);
 	        vo.setToSRSCode(toSRSCode);
 
-	        vo.setFilter(filter);
+	        //vo.setFilter(filter);
 
 	        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
 	        System.out.println("To SRS Code: " + vo.getToSRSCodeOne());
-	        System.out.println("Filter: " + vo.getFilter());
+	        //System.out.println("Filter: " + vo.getFilter());
 
 	        // validate data inputs
 /*	        validateSrsName(vo.getFromSRSCodeOne());
@@ -155,8 +152,8 @@ public class TransformPOI implements Processlet {
 		String completeCoordinatesString = util.spaceTransformation(vo);
 
 		if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
-			throw new MissingParameterException(
-					"No Such Transformation is available under ABA Hub.", "");
+			throw new OWSException(
+					"No Such Transformation is available under ABA Hub.", ControllerException.NO_APPLICABLE_CODE);
 		}
 
 		vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
@@ -164,11 +161,20 @@ public class TransformPOI implements Processlet {
 
 		//Start - Exception Handling
 		if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
-			throw new MissingParameterException(
-					"Coordinates - Out of Range.", "");
+			throw new OWSException(
+					"Coordinates - Out of Range.", ControllerException.NO_APPLICABLE_CODE);
+		} 
+		
+		//Checking out of bound exception
+		CommonUtil commonUtil = new CommonUtil();
+		String outOfBoundCheck = commonUtil.outOfBoundException(Double.parseDouble(vo.getTransformedCoordinateX()), Double.parseDouble(vo.getTransformedCoordinateY()), Double.parseDouble(vo.getTransformedCoordinateZ()), vo.getToSRSCodeOne());
+		
+		if (outOfBoundCheck.equalsIgnoreCase("Coordinates - Out of Range")) {
+			throw new OWSException(
+					"Coordinates - Out of Range.", ControllerException.NO_APPLICABLE_CODE);
 		}
 		//End
-		
+
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         java.util.Date date = new java.util.Date();
         String currentTime = dateFormat.format(date);
@@ -275,13 +281,18 @@ public class TransformPOI implements Processlet {
         } catch (InvalidParameterValueException e) {
             LOG.error(e.getMessage(), e);
         	throw new ProcessletException(new OWSException(e));
+        } catch (InvalidDataInputValueException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
+        } catch (OWSException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
         } catch (Throwable e) {
-        	String message = "Unexpected exception occured";
+        	String message = "Unexpected exception occurred: " + e.getMessage();
         	LOG.error(message, e);
-        	OWSException owsException = new OWSException(message, e, 
-        			ControllerException.NO_APPLICABLE_CODE);
-        	throw new ProcessletException(owsException);
-        } 
+        	throw new ProcessletException(new OWSException(message, e, 
+        			ControllerException.NO_APPLICABLE_CODE));
+        }
 
     }
 

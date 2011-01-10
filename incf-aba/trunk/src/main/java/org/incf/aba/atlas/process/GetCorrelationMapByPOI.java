@@ -1,5 +1,7 @@
 package org.incf.aba.atlas.process;
 
+import java.io.File;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -29,6 +31,9 @@ import org.incf.aba.atlas.util.XMLUtilities;
 import org.incf.atlas.waxml.generated.CorrelatioMapType;
 import org.incf.atlas.waxml.generated.CorrelationMapResponseDocument;
 import org.incf.atlas.waxml.utilities.Utilities;
+import org.incf.common.atlas.exception.InvalidDataInputValueException;
+import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,41 +63,34 @@ public class GetCorrelationMapByPOI implements Processlet {
     public void process(ProcessletInputs in, ProcessletOutputs out, 
             ProcessletExecutionInfo info) throws ProcessletException {
     	
-		ABAServiceVO vo = new ABAServiceVO();
-
 		try {
 
-    		System.out.println(" Inside GetCorrelationMapByPOI... ");
+			System.out.println(" Inside GetCorrelationMapByPOI... ");
+
+			ABAServiceVO vo = new ABAServiceVO();
+
     		// collect input values
-    		String srsName = ((LiteralInput) in.getParameter("srsName")).getValue();
-    		String x = ((LiteralInput) in.getParameter("x")).getValue();
-    		String y = ((LiteralInput) in.getParameter("y")).getValue();
-    		String z = ((LiteralInput) in.getParameter("z")).getValue();
-    		String filter = ((LiteralInput) in.getParameter("filter")).getValue();
+    		String srsName = Util.getStringInputValue(in, "srsName");
+    		String x = String.valueOf(Util.getDoubleInputValue(in, "x"));
+    		String y = String.valueOf(Util.getDoubleInputValue(in, "y"));
+    		String z = String.valueOf(Util.getDoubleInputValue(in, "z"));
+    		String filter = Util.getStringInputValue(in, "filter");
 
-    		if (srsName == null) {
-    			throw new MissingParameterException(
-    					"srsName is a required parameter", "srsName");
+    		URL processDefinitionUrl = this.getClass().getResource(
+    				"/" + this.getClass().getSimpleName() + ".xml");
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
+    		if (!validator.validate("srsName", srsName)) {
+    			throw new InvalidDataInputValueException("The srsName value '" 
+    					+ srsName + "' is not amoung the allowed values "
+    					+ "specified in the AllowedValues element of the "
+    					+ "ProcessDescription.", "srsName");
     		}
-
-    		if (x == null) {
-    			throw new MissingParameterException(
-    					"x is a required parameter", "x");
-    		}
-
-    		if (y == null) {
-    			throw new MissingParameterException(
-    					"y is a required parameter", "y");
-    		}
-
-    		if (z == null) {
-    			throw new MissingParameterException(
-    					"z is a required parameter", "z");
-    		}
-
-    		if (filter == null) {
-    			throw new MissingParameterException(
-    					"filter is a required parameter", "filter");
+    		if (!validator.validate("filter", filter)) {
+    			throw new InvalidDataInputValueException("The filter value '" 
+    					+ filter + "' is not amoung the allowed values "
+    					+ "specified in the AllowedValues element of the "
+    					+ "ProcessDescription.", "filter");
     		}
     		
     		// make sure we have something in dataInputs
@@ -150,8 +148,9 @@ public class GetCorrelationMapByPOI implements Processlet {
 
             	//Start - exception handling
             	if (transformedCoordinatesString.startsWith("Error:")) {
-        			throw new MissingParameterException(
-        					"Error: ", transformedCoordinatesString);
+        			throw new OWSException(
+        					"Error: ", transformedCoordinatesString, 
+        					ControllerException.NO_APPLICABLE_CODE);
             	}
             	//End - exception handling
             	String[] tempArray = util.getTabDelimNumbers(transformedCoordinatesString);
@@ -163,8 +162,9 @@ public class GetCorrelationMapByPOI implements Processlet {
 
     		//Start - Exception Handling
     		if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
-    			throw new MissingParameterException(
-    					"Coordinates - Out of Range.", "Coordinates - Out of Range.");
+    			throw new OWSException(
+    					"Coordinates - Out of Range.", "Coordinates - Out of Range.",
+    					ControllerException.NO_APPLICABLE_CODE); 
     		}
     		//End
 
@@ -282,13 +282,18 @@ public class GetCorrelationMapByPOI implements Processlet {
         } catch (InvalidParameterValueException e) {
             LOG.error(e.getMessage(), e);
         	throw new ProcessletException(new OWSException(e));
+        } catch (InvalidDataInputValueException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
+        } catch (OWSException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
         } catch (Throwable e) {
-        	String message = "Unexpected exception occured";
+        	String message = "Unexpected exception occurred: " + e.getMessage();
         	LOG.error(message, e);
-        	OWSException owsException = new OWSException(message, e, 
-        			ControllerException.NO_APPLICABLE_CODE);
-        	throw new ProcessletException(owsException);
-        } 
+        	throw new ProcessletException(new OWSException(message, e, 
+        			ControllerException.NO_APPLICABLE_CODE));
+        }
     }
 
     @Override

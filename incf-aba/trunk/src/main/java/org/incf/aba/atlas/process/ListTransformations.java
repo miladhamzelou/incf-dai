@@ -1,7 +1,10 @@
 package org.incf.aba.atlas.process;
 
+import java.io.File;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
 import org.deegree.commons.utils.kvp.MissingParameterException;
@@ -17,6 +20,9 @@ import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.aba.atlas.util.ABAConfigurator;
 import org.incf.aba.atlas.util.ABAServiceVO;
 import org.incf.aba.atlas.util.ABAUtil;
+import org.incf.common.atlas.exception.InvalidDataInputValueException;
+import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,7 +52,6 @@ public class ListTransformations implements Processlet {
 	String paxinos2whs09 = config.getValue("code.paxinos2whs09.v1");
 	String whs092paxinos = config.getValue("code.whs092paxinos.v1");
 	
-	
 	//private String dataInputString;
 	//private DataInputs dataInputs;
 	String hostName = "";
@@ -60,45 +65,180 @@ public class ListTransformations implements Processlet {
     public void process(ProcessletInputs in, ProcessletOutputs out, 
             ProcessletExecutionInfo info) throws ProcessletException {
     	
-		ABAServiceVO vo = new ABAServiceVO();
-
 		try { 
 
     		System.out.println(" Inside ListTransformations");
-    		System.out.println(" Inside GetTransformation");
-    		//System.out.println(" Inside GetTransformationChain... " + in.getParameters().size());
+
+    		ABAServiceVO vo = new ABAServiceVO();
+
+    		URL processDefinitionUrl = this.getClass().getResource(
+    				"/" + this.getClass().getSimpleName() + ".xml");
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
+
+    		System.out.println(" Inside ListTransformations");
     		String inputSrsName = "";
     		String outputSrsName = "";
     		String filter = "";
     		// collect input values
     		//String transformationCode = ((LiteralInput) in.getParameter("transformationCode")).getValue();
+
     		if (in != null){
         		System.out.println(" Inside parameter value... ");
-    			inputSrsName = ((LiteralInput) in.getParameter("inputSrsName")).getValue();
-    			outputSrsName = ((LiteralInput) in.getParameter("outputSrsName")).getValue();
-    			filter = ((LiteralInput) in.getParameter("filter")).getValue();
+        		inputSrsName = Util.getStringInputValue(in, "inputSrsName");
+        		outputSrsName = Util.getStringInputValue(in, "outputSrsName");
+        		filter = Util.getStringInputValue(in, "filter");
     		}
-/*    		if (transformationCode == null) {
-    			throw new MissingParameterException(
-    					"transformationCode is a required parameter", "transformationCode");
-    		}
-*/
-			//transformationCode = ((LiteralInput) in.getParameter("transformationCode")).getValue();
+
+            //Start - FIXME - Uncomment below two lines and comment the other three lines 
+        	//String hostName = uri.getHost();
+        	//String portNumber = delimitor + uri.getPort();
+            hostName = config.getValue("incf.deploy.host.name");
+            portNumber = config.getValue("incf.aba.port.number");
+        	String delimitor = config.getValue("incf.deploy.port.delimitor");
+        	//portNumber = delimitor + portNumber;
+            //End - FIXME
+            
+            //vo.setUrlString(uri.toString());
+            vo.setIncfDeployHostname(hostName);
+            vo.setIncfDeployPortNumber(portNumber);
+
+    		ABAUtil util = new ABAUtil(); 
+    		vo.setFlag("ListTransformations");
+
+    		ABAServiceVO vo1;
+    		ArrayList srsCodeList = new ArrayList();
+    		String responseString = "";
+
+    		ComplexOutput complexOutput = (ComplexOutput) out.getParameter( 
+ 			"ListTransformationsOutput");
+
+    		System.out.println(" inputSrsName = " + inputSrsName);
+    		System.out.println(" outputSrsName = " + outputSrsName);
     		System.out.println("Before the check condition");
-			if ( inputSrsName.equals("") || inputSrsName == null ) { 
+
+    		if ( inputSrsName.equals("") || inputSrsName == null && 
+				 outputSrsName.equals("") || outputSrsName == null ) { 
 	        	System.out.println("Inside Empty DataInputString.");
 	        	vo.setFromSRSCodeOne("all");
 		        vo.setFromSRSCode("all");
 		        vo.setToSRSCodeOne("all");
 		        vo.setToSRSCode("all");
 		        vo.setFilter("");
-	        } else {
+	    		responseString = util.getCoordinateTransformationChain(vo, complexOutput);
+
+	        } else if ( !inputSrsName.equals("") || inputSrsName != null && 
+					    !outputSrsName.equals("") || outputSrsName != null ) {
+	        	System.out.println("Inside Empty Nothing.");
 	        	vo.setFromSRSCodeOne(inputSrsName);
 		        vo.setFromSRSCode(inputSrsName);
 		        vo.setToSRSCodeOne(outputSrsName);
 		        vo.setToSRSCode(outputSrsName);
 		        vo.setFilter(filter);
-	        }
+	    		responseString = util.getCoordinateTransformationChain(vo, complexOutput);
+	        } else if ( !inputSrsName.equals("") || inputSrsName != null ) { 
+	        	System.out.println("Inside inputSRSName not empty.");
+				if (inputSrsName.equals(abaReference)) {
+		        	vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(abaVoxel);
+					srsCodeList.add(vo1);
+/*					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaVoxel);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
+*/			        vo.setFilter("");
+	            } else if (inputSrsName.equals(abaVoxel)) {
+/*		        	vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(abaVoxel);
+					srsCodeList.add(vo1);
+*/					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaVoxel);
+					vo1.setToSRSCode(agea);
+					srsCodeList.add(vo1);
+					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaVoxel);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
+/*					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(agea);
+					vo1.setToSRSCode(abaVoxel);
+					srsCodeList.add(vo1);
+*/			        vo.setFilter("");
+	            } else if (inputSrsName.equals(agea)) {
+/*					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaVoxel);
+					vo1.setToSRSCode(agea);
+					srsCodeList.add(vo1);
+*/					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(agea);
+					vo1.setToSRSCode(whs09);
+					srsCodeList.add(vo1);
+					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(agea);
+					vo1.setToSRSCode(abaVoxel);
+					srsCodeList.add(vo1);
+/*					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(whs09);
+					vo1.setToSRSCode(agea);
+					srsCodeList.add(vo1);
+*/			        vo.setFilter("");
+	            }
+	    		responseString = util.getTransformationChain(vo, complexOutput, srsCodeList);
+	        } else if ( !outputSrsName.equals("") || outputSrsName != null ) { 
+	        	System.out.println("Inside outputSRSName not empty.");
+				if (outputSrsName.equals(abaReference)) {
+		        	vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(abaVoxel);
+					srsCodeList.add(vo1);
+/*					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaVoxel);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
+*/			        vo.setFilter("");
+	            } else if (outputSrsName.equals(abaVoxel)) {
+/*		        	vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(abaVoxel);
+					srsCodeList.add(vo1);
+*/					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaVoxel);
+					vo1.setToSRSCode(agea);
+					srsCodeList.add(vo1);
+					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaVoxel);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
+/*					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(agea);
+					vo1.setToSRSCode(abaVoxel);
+					srsCodeList.add(vo1);
+*/			        vo.setFilter("");
+	            } else if (outputSrsName.equals(agea)) {
+/*					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaVoxel);
+					vo1.setToSRSCode(agea);
+					srsCodeList.add(vo1);
+*/					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(agea);
+					vo1.setToSRSCode(whs09);
+					srsCodeList.add(vo1);
+					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(agea);
+					vo1.setToSRSCode(abaVoxel);
+					srsCodeList.add(vo1);
+/*					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(whs09);
+					vo1.setToSRSCode(agea);
+					srsCodeList.add(vo1);
+*/			        vo.setFilter("");
+	            }
+	    		responseString = util.getTransformationChain(vo, complexOutput, srsCodeList);
+	        } 
+
+			System.out.println(" Response String = " + responseString);
     		System.out.println("After the check condition");
 
 /*			String[] transformationNameArray;
@@ -120,30 +260,10 @@ public class ListTransformations implements Processlet {
         String currentTime = dateFormat.format(date);
         vo.setCurrentTime(currentTime);
 
-        //Start - FIXME - Uncomment below two lines and comment the other three lines 
-    	//String hostName = uri.getHost();
-    	//String portNumber = delimitor + uri.getPort();
-        hostName = config.getValue("incf.deploy.host.name");
-        portNumber = config.getValue("incf.aba.port.number");
-    	String delimitor = config.getValue("incf.deploy.port.delimitor");
-    	//portNumber = delimitor + portNumber;
-        //End - FIXME
-        
-        //vo.setUrlString(uri.toString());
-        vo.setIncfDeployHostname(hostName);
-        vo.setIncfDeployPortNumber(portNumber);
-
-		ComplexOutput complexOutput = (ComplexOutput) out.getParameter( 
-	 			"ListTransformationsOutput");
-
-		ABAUtil util = new ABAUtil(); 
-		vo.setFlag("ListTransformations");
-		String responseString = util.getCoordinateTransformationChain(vo, complexOutput);
-
 		if ( responseString.startsWith("Error:")) {
 			responseString = responseString.replaceAll("Error: ", "");
-			throw new MissingParameterException(
-					responseString, responseString);
+			throw new OWSException(
+					responseString, ControllerException.NO_APPLICABLE_CODE);
 		}
 
     	} catch (MissingParameterException e) {
@@ -152,13 +272,18 @@ public class ListTransformations implements Processlet {
         } catch (InvalidParameterValueException e) {
             LOG.error(e.getMessage(), e);
         	throw new ProcessletException(new OWSException(e));
+        } catch (InvalidDataInputValueException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
+        } catch (OWSException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
         } catch (Throwable e) {
-        	String message = "Unexpected exception occured";
+        	String message = "Unexpected exception occurred: " + e.getMessage();
         	LOG.error(message, e);
-        	OWSException owsException = new OWSException(message, e, 
-        			ControllerException.NO_APPLICABLE_CODE);
-        	throw new ProcessletException(owsException);
-        } 
+        	throw new ProcessletException(new OWSException(message, e, 
+        			ControllerException.NO_APPLICABLE_CODE));
+        }
 
     }
 

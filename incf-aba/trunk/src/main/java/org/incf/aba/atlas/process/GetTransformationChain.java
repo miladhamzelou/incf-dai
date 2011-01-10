@@ -1,5 +1,7 @@
 package org.incf.aba.atlas.process;
 
+import java.io.File;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -17,6 +19,9 @@ import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.aba.atlas.util.ABAConfigurator;
 import org.incf.aba.atlas.util.ABAServiceVO;
 import org.incf.aba.atlas.util.ABAUtil;
+import org.incf.common.atlas.exception.InvalidDataInputValueException;
+import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -60,12 +65,17 @@ public class GetTransformationChain implements Processlet {
     public void process(ProcessletInputs in, ProcessletOutputs out, 
             ProcessletExecutionInfo info) throws ProcessletException {
     	
-		ABAServiceVO vo = new ABAServiceVO();
-
 		try { 
 
     		System.out.println(" Inside GetTransformation");
-    		//System.out.println(" Inside GetTransformationChain... " + in.getParameters().size());
+
+    		ABAServiceVO vo = new ABAServiceVO();
+
+    		URL processDefinitionUrl = this.getClass().getResource(
+    				"/" + this.getClass().getSimpleName() + ".xml");
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
+
     		String inputSrsName = "";
     		String outputSrsName = "";
     		String filter = "";
@@ -73,9 +83,9 @@ public class GetTransformationChain implements Processlet {
     		//String transformationCode = ((LiteralInput) in.getParameter("transformationCode")).getValue();
     		if (in != null){
         		System.out.println(" Inside parameter value... ");
-    			inputSrsName = ((LiteralInput) in.getParameter("inputSrsName")).getValue();
-    			outputSrsName = ((LiteralInput) in.getParameter("outputSrsName")).getValue();
-    			filter = ((LiteralInput) in.getParameter("filter")).getValue();
+        		inputSrsName = Util.getStringInputValue(in, "inputSrsName");
+        		outputSrsName = Util.getStringInputValue(in, "outputSrsName");
+        		filter = Util.getStringInputValue(in, "filter");
     		}
 /*    		if (transformationCode == null) {
     			throw new MissingParameterException(
@@ -135,8 +145,8 @@ public class GetTransformationChain implements Processlet {
 
 		if ( responseString.startsWith("Error:")) {
 			responseString = responseString.replaceAll("Error: ", "");
-			throw new MissingParameterException(
-					responseString, responseString);
+			throw new OWSException(
+					responseString, ControllerException.NO_APPLICABLE_CODE);
 		}
 
     	} catch (MissingParameterException e) {
@@ -145,13 +155,18 @@ public class GetTransformationChain implements Processlet {
         } catch (InvalidParameterValueException e) {
             LOG.error(e.getMessage(), e);
         	throw new ProcessletException(new OWSException(e));
+        } catch (InvalidDataInputValueException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
+        } catch (OWSException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
         } catch (Throwable e) {
-        	String message = "Unexpected exception occured";
+        	String message = "Unexpected exception occurred: " + e.getMessage();
         	LOG.error(message, e);
-        	OWSException owsException = new OWSException(message, e, 
-        			ControllerException.NO_APPLICABLE_CODE);
-        	throw new ProcessletException(owsException);
-        } 
+        	throw new ProcessletException(new OWSException(message, e, 
+        			ControllerException.NO_APPLICABLE_CODE));
+        }
 
     }
 
