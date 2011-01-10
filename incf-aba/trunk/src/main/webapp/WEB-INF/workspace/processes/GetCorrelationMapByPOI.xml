@@ -13,7 +13,7 @@
   <Abstract>
     Get Correlation Map by POI (point of interest) specified in the request.
   </Abstract>
-  
+
   <InputParameters>
     <LiteralInput>
       <Identifier>srsName</Identifier>

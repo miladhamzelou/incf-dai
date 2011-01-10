@@ -51,7 +51,15 @@
       <Identifier>vocabulary</Identifier>
       <Title>Vocabulary</Title>
       <Abstract>Vocabulary SRS Code</Abstract>
-      <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
+      <AllowedValues>
+        <Value>Mouse_ABAreference_1.0</Value>
+        <Value>Mouse_ABAvoxel_1.0</Value>
+        <Value>Mouse_AGEA_1.0</Value>
+        <Value>Mouse_EMAP-T26_1.0</Value>
+        <Value>Mouse_Paxinos_1.0</Value>
+        <Value>Mouse_WHS_0.9</Value>
+        <Value>Mouse_WHS_1.0</Value>
+      </AllowedValues>
     </LiteralInput>
     <LiteralInput>
       <Identifier>filter</Identifier>
