@@ -1,5 +1,9 @@
 =Data Inputs=
 
+The combinations of required v. optional, allowed values v. any value, and default value Data Inputs are described in the cases below.
+
+In each case, the specification in the Deegree !ProcessDefinition, the response from WPS !DescribeProcess, and the INCF Atlas implementation is shown with examples.
+
 Cases:
  # Required input, any value is ok (e.g. Get2DImagesByPOI srsName is resolved through call to Central)
  # Required input, one of several allowed values (e.g. filter=maptype:coronal or filter=maptype:sagittal)
