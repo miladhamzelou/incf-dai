@@ -7,7 +7,7 @@ Cases:
  # Optional input, one of several allowed values, with a default value (e.g. filter=maptype:coronal, filter=maptype:sagittal, defaults to maptype:coronal if not specified)
  # ? Optional input, any value, no default (I don't think this case makes any sense to me)
 
-==Case 1==
+==Case 1 -- Required Input, Any Value is Accepted==
 
 !ProcessDefinition (Deegree .../processes/Xxx.xml):
 {{{
@@ -30,7 +30,7 @@ WPS DescribeProcess response:
 </Input>
 }}}
 
-==Case 2==
+==Case 2 -- Required Input, One of Several Allowed Values==
 
 !ProcessDefinition (Deegree .../processes/Xxx.xml):
 {{{
@@ -56,6 +56,30 @@ WPS DescribeProcess response:
       <ows:Value>maptype:coronal</ows:Value>
       <ows:Value>maptype:sagittal</ows:Value>
     </ows:AllowedValues>
+  </LiteralData>
+</Input>
+}}}
+
+
+==Case 3 -- Optional Input, Any Value is Accepted, With a Default Value==
+
+!ProcessDefinition (Deegree .../processes/Xxx.xml):
+{{{
+<LiteralInput>
+  <Identifier>srsName</Identifier>
+  <Title>Atlas SRS Name</Title>
+  <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
+</LiteralInput>
+}}}
+
+WPS DescribeProcess response:
+{{{
+<Input minOccurs="1" maxOccurs="1">
+  <ows:Identifier>srsName</ows:Identifier>
+  <ows:Title>Atlas SRS Name</ows:Title>
+  <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
+  <LiteralData>
+    <ows:AnyValue/>
   </LiteralData>
 </Input>
 }}}
