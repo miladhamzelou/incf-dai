@@ -9,7 +9,7 @@ Cases:
 
 ==Case 1==
 
-!ProcessDefinition (Deegree .../processes/Xxx.xml)
+!ProcessDefinition (Deegree .../processes/Xxx.xml):
 {{{
 <LiteralInput>
   <Identifier>srsName</Identifier>
@@ -18,7 +18,7 @@ Cases:
 </LiteralInput>
 }}}
 
-WPS DescribeProcess response
+WPS DescribeProcess response:
 {{{
 <Input minOccurs="1" maxOccurs="1">
   <ows:Identifier>srsName</ows:Identifier>
@@ -26,6 +26,36 @@ WPS DescribeProcess response
   <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
   <LiteralData>
     <ows:AnyValue/>
+  </LiteralData>
+</Input>
+}}}
+
+==Case 2==
+
+!ProcessDefinition (Deegree .../processes/Xxx.xml):
+{{{
+<LiteralInput>
+  <Identifier>filter</Identifier>
+  <Title>Filter</Title>
+  <Abstract></Abstract>
+  <AllowedValues>
+    <Value>maptype:coronal</Value>
+    <Value>maptype:sagittal</Value>
+  </AllowedValues>
+</LiteralInput>
+}}}
+
+WPS DescribeProcess response:
+{{{
+<Input minOccurs="1" maxOccurs="1">
+  <ows:Identifier>filter</ows:Identifier>
+  <ows:Title>Filter</ows:Title>
+  <ows:Abstract/>
+  <LiteralData>
+    <ows:AllowedValues>
+      <ows:Value>maptype:coronal</ows:Value>
+      <ows:Value>maptype:sagittal</ows:Value>
+    </ows:AllowedValues>
   </LiteralData>
 </Input>
 }}}
