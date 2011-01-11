@@ -19,11 +19,13 @@ ProcessDefinition (Deegree .../processes/Xxx.xml)
 }}}
 
 WPS DescribeProcess response
+{{{
 <Input minOccurs="1" maxOccurs="1">
-<ows:Identifier>srsName</ows:Identifier>
-<ows:Title>Atlas SRS Name</ows:Title>
-<ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
-<LiteralData>
-<ows:AnyValue/>
-</LiteralData>
+  <ows:Identifier>srsName</ows:Identifier>
+  <ows:Title>Atlas SRS Name</ows:Title>
+  <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
+  <LiteralData>
+    <ows:AnyValue/>
+  </LiteralData>
+}}}
 </Input>
