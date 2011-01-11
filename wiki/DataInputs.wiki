@@ -74,7 +74,7 @@ WPS !DescribeProcess response:
 
 WPS !DescribeProcess response:
 {{{
-<Input minOccurs="1" maxOccurs="1">
+<Input minOccurs="0" maxOccurs="1">
   <ows:Identifier>srsName</ows:Identifier>
   <ows:Title>Atlas SRS Name</ows:Title>
   <ows:Abstract>The Atlas SRS (Spatial Reference System) name.</ows:Abstract>
