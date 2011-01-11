@@ -18,7 +18,7 @@ Cases:
 </LiteralInput>
 }}}
 
-WPS DescribeProcess response:
+WPS !DescribeProcess response:
 {{{
 <Input minOccurs="1" maxOccurs="1">
   <ows:Identifier>srsName</ows:Identifier>
@@ -45,7 +45,7 @@ WPS DescribeProcess response:
 </LiteralInput>
 }}}
 
-WPS DescribeProcess response:
+WPS !DescribeProcess response:
 {{{
 <Input minOccurs="1" maxOccurs="1">
   <ows:Identifier>filter</ows:Identifier>
@@ -72,7 +72,7 @@ WPS DescribeProcess response:
 </LiteralInput>
 }}}
 
-WPS DescribeProcess response:
+WPS !DescribeProcess response:
 {{{
 <Input minOccurs="1" maxOccurs="1">
   <ows:Identifier>srsName</ows:Identifier>
