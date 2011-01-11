@@ -30,6 +30,11 @@ WPS !DescribeProcess response:
 </Input>
 }}}
 
+The INCF Atlas implementation will accept:
+ * http://....&DataInputs=...srsName=Mouse_AGEA_1.0;...
+ * http://....&DataInputs=...srsName=abcde;...
+ * http://....&DataInputs=...srsName=;...
+
 ==Case 2 -- Required Input, One of Several Allowed Values==
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
@@ -60,7 +65,12 @@ WPS !DescribeProcess response:
 </Input>
 }}}
 
+The INCF Atlas implementation will accept:
+ * http://....&DataInputs=...filter=maptype:coronal;...
+ * http://....&DataInputs=...filter=maptype:sagittal;...
+
 ==Case 3 -- Optional Input, Any Value is Accepted, With a Default Value==
+ * If the data input is omitted, the default value is used
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
@@ -85,8 +95,15 @@ WPS !DescribeProcess response:
 </Input>
 }}}
 
+The INCF Atlas implementation will accept:
+ * http://....&DataInputs=...srsName=Mouse_AGEA_1.0;...
+ * http://....&DataInputs=...srsName=abcde;... (i.e. any value)
+ * http://....&DataInputs=...srsName=;... (including empty string)
+ * http://....&DataInputs=......
+   * Data input srsName omitted, defaults to Mouse_AGEA_1.0
 
 ==Case 4 -- Optional Input, One of Several Allowed Values, With a Default Value==
+ * If the data input is omitted, the default value is used
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
@@ -117,3 +134,10 @@ WPS !DescribeProcess response:
   </LiteralData>
 </Input>
 }}}
+
+
+The INCF Atlas implementation will accept:
+ * http://....&DataInputs=...filter=maptype:coronal;...
+ * http://....&DataInputs=...filter=maptype:sagittal;...
+ * http://....&DataInputs=......
+   * Data input filter omitted, defaults to maptype:coronal
