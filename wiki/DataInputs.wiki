@@ -9,7 +9,7 @@ Cases:
 
 ==Case 1 -- Required Input, Any Value is Accepted==
 
-!ProcessDefinition (Deegree .../processes/Xxx.xml):
+!ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
 <LiteralInput>
   <Identifier>srsName</Identifier>
@@ -32,7 +32,7 @@ WPS !DescribeProcess response:
 
 ==Case 2 -- Required Input, One of Several Allowed Values==
 
-!ProcessDefinition (Deegree .../processes/Xxx.xml):
+!ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
 <LiteralInput>
   <Identifier>filter</Identifier>
@@ -62,7 +62,7 @@ WPS !DescribeProcess response:
 
 ==Case 3 -- Optional Input, Any Value is Accepted, With a Default Value==
 
-!ProcessDefinition (Deegree .../processes/Xxx.xml):
+!ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
 <LiteralInput>
   <Identifier>srsName</Identifier>
@@ -88,7 +88,7 @@ WPS !DescribeProcess response:
 
 ==Case 4 -- Optional Input, One of Several Allowed Values, With a Default Value==
 
-!ProcessDefinition (Deegree .../processes/Xxx.xml):
+!ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
 <LiteralInput>
   <Identifier>filter</Identifier>
