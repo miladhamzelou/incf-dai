@@ -4,7 +4,7 @@ The combinations of required v. optional, allowed values v. any value, and defau
 
 In each case, the specification in the Deegree !ProcessDefinition, the response from WPS !DescribeProcess, and the INCF Atlas implementation is shown with examples.
 
-==Case 1 -- Required Input, Any Value is Accepted==
+==Case 1: Required Input, Any Non-Null Value is Accepted==
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
@@ -33,7 +33,7 @@ The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...srsName=;...
    * If key=; (empty string), the value of will be received as null
 
-==Case 2 -- Required Input, One of Several Allowed Values==
+==Case 2: Required Input, Any of Several Allowed Values is Accepted==
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
@@ -67,7 +67,7 @@ The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...filter=maptype:coronal;...
  * ...://....&!DataInputs=...filter=maptype:sagittal;...
 
-==Case 3 -- Optional Input, Any Value is Accepted, With a Default Value==
+==Case 3: Optional Input, Any Value is Accepted, With a Default Value==
  * If the data input is omitted, the default value is used
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
@@ -102,7 +102,7 @@ The INCF Atlas implementation will accept:
    * If key=; (empty string), the value of will be received as null
 
 
-==Case 4 -- Optional Input, One of Several Allowed Values, With a Default Value==
+==Case 4: Optional Input, Any of Several Allowed Values, With a Default Value==
  * If the data input is omitted, the default value is used
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
