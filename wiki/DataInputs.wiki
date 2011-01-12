@@ -68,7 +68,7 @@ The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...filter=maptype:sagittal;...
 
 ==Case 3: Optional Input, Any Value is Accepted, With a Default Value==
- * If the data input is omitted, the default value is used
+ * If the data input value is empty, the default value is used
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
@@ -97,7 +97,6 @@ The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...srsName=Mouse_AGEA_1.0;...
  * ...://....&!DataInputs=...srsName=abcde;... (i.e. any value)
  * ...://....&!DataInputs=...srsName=;... (including empty string)
- * ...://....&!DataInputs=......
    * Data input srsName omitted, defaults to Mouse_AGEA_1.0
    * If key=; (empty string), the value of will be received as null
 
@@ -139,5 +138,4 @@ WPS !DescribeProcess response:
 The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...filter=maptype:coronal;...
  * ...://....&!DataInputs=...filter=maptype:sagittal;...
- * ...://....&!DataInputs=......
    * Data input filter omitted, defaults to maptype:coronal
