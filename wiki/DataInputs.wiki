@@ -31,6 +31,7 @@ The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...srsName=Mouse_AGEA_1.0;...
  * ...://....&!DataInputs=...srsName=abcde;...
  * ...://....&!DataInputs=...srsName=;...
+   * If key=; (empty string), the value of will be received as null
 
 ==Case 2 -- Required Input, One of Several Allowed Values==
 
@@ -98,6 +99,8 @@ The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...srsName=;... (including empty string)
  * ...://....&!DataInputs=......
    * Data input srsName omitted, defaults to Mouse_AGEA_1.0
+   * If key=; (empty string), the value of will be received as null
+
 
 ==Case 4 -- Optional Input, One of Several Allowed Values, With a Default Value==
  * If the data input is omitted, the default value is used
