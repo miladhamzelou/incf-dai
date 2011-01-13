@@ -67,22 +67,59 @@ public class Get2DImagesByPOI implements Processlet {
     		double z = Util.getDoubleInputValue(in, "z");
     		String filter = Util.getStringInputValue(in, "filter");
     		
+    		LOG.debug("srsName: {}, filter: {}", srsName, filter);
+    		
     		// validate against allowed values in process definition file
     		URL processDefinitionUrl = this.getClass().getResource(
     				"/" + this.getClass().getSimpleName() + ".xml");
+    		
+    		
+    		// old
+//    		AllowedValuesValidator validator = new AllowedValuesValidator(
+//    				new File(processDefinitionUrl.toURI()));
+//    		if (!validator.validate("srsName", srsName)) {
+//    			throw new InvalidDataInputValueException("The srsName value '" 
+//    					+ srsName + "' is not amoung the allowed values "
+//    					+ "specified in the AllowedValues element of the "
+//    					+ "ProcessDescription.", "srsName");
+//    		}
+//    		if (!validator.validate("filter", filter)) {
+//    			throw new InvalidDataInputValueException("The filter value '" 
+//    					+ filter + "' is not amoung the allowed values "
+//    					+ "specified in the AllowedValues element of the "
+//    					+ "ProcessDescription.", "filter");
+//    		}
+    		
+    		
+    		// new
     		AllowedValuesValidator validator = new AllowedValuesValidator(
     				new File(processDefinitionUrl.toURI()));
-    		if (!validator.validate("srsName", srsName)) {
-    			throw new InvalidDataInputValueException("The srsName value '" 
-    					+ srsName + "' is not amoung the allowed values "
-    					+ "specified in the AllowedValues element of the "
-    					+ "ProcessDescription.", "srsName");
+    		AllowedValuesValidator.ValidationResult vr = null;
+    		
+    		// validate srsName
+    		vr = validator.validateNEW("srsName", srsName);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				
+    				// if input not valid and there's default, use it
+    				srsName = vr.getDefaultValue();
+    			} else {
+    				
+    				// if input not valid and there's no default, exception
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"srsName");
+    			}
     		}
-    		if (!validator.validate("filter", filter)) {
-    			throw new InvalidDataInputValueException("The filter value '" 
-    					+ filter + "' is not amoung the allowed values "
-    					+ "specified in the AllowedValues element of the "
-    					+ "ProcessDescription.", "filter");
+    		
+    		// validate filter (same as above)
+    		vr = validator.validateNEW("filter", filter);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				filter = vr.getDefaultValue();
+    			} else {
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"filter");
+    			}
     		}
 
     		LOG.debug(String.format(
@@ -92,7 +129,20 @@ public class Get2DImagesByPOI implements Processlet {
     		responseValues = new ResponseValues();
     		responseValues.clientSrsName = srsName;
 
-    		// TODO convert srs to agea, if not agea
+    		// transform non-AGEA coordinates to AGEA
+    		if (!srsName.equals("Mouse_AGEA_1.0")) {
+    			
+        		// TODO convert srs to agea, if not agea
+        		// Asif -- this the place to transform non-AGEA srs coordinates
+        		// to AGEA
+    			
+    			// call out to central/atlas to transform to AGEA
+    			
+    			srsName = "Mouse_AGEA_1.0";
+    			//x = transformed x
+    			//y = transformed y
+    			//z = transformed z
+    		}
 
     		String srsFromClient = srsName;
     		Point3d poiFromClient = new Point3d(x, y, z);
