@@ -32,9 +32,9 @@ The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...srsName=abcde;...
    * Any non-empty value
 
-The INCF Atlas implementation will accept:
+The INCF Atlas implementation will not accept:
  * ...://....&!DataInputs=...srsName=;...
-   * If key=; (empty string), the value of will be received as null
+   * An empty string is not allowed in this case
  * ...://....&!DataInputs=......
    * The specified data input cannot be omitted
 
@@ -72,6 +72,14 @@ The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...filter=maptype:coronal;...
  * ...://....&!DataInputs=...filter=maptype:sagittal;...
 
+The INCF Atlas implementation will not accept:
+ * ...://....&!DataInputs=...srsName=abcde;...
+   * The value must be in the list of allowed values
+ * ...://....&!DataInputs=...srsName=;...
+   * An empty string is not allowed in this case
+ * ...://....&!DataInputs=......
+   * The specified data input cannot be omitted
+
 ==Case 3: Optional Input, Any Value is Accepted, With a Default Value==
  * If the data input value is empty, the default value is used
 
@@ -100,11 +108,14 @@ WPS !DescribeProcess response:
 
 The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...srsName=Mouse_AGEA_1.0;...
- * ...://....&!DataInputs=...srsName=abcde;... (i.e. any value)
- * ...://....&!DataInputs=...srsName=;... (including empty string)
-   * Data input srsName omitted, defaults to Mouse_AGEA_1.0
-   * If key=; (empty string), the value of will be received as null
+ * ...://....&!DataInputs=...srsName=abcde;...
+   * Any value
+ * ...://....&!DataInputs=...srsName=;...
+   * An empty value; the default value (Mouse_AGEA_1.0) will be used
 
+The INCF Atlas implementation will not accept:
+ * ...://....&!DataInputs=......
+   * The specified data input cannot be omitted
 
 ==Case 4: Optional Input, Any of Several Allowed Values, With a Default Value==
  * If the data input is omitted, the default value is used
@@ -143,4 +154,11 @@ WPS !DescribeProcess response:
 The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...filter=maptype:coronal;...
  * ...://....&!DataInputs=...filter=maptype:sagittal;...
-   * Data input filter omitted, defaults to maptype:coronal
+ * ...://....&!DataInputs=...filter=;...
+   * An empty value; the default value (maptype:coronal) will be used
+
+The INCF Atlas implementation will not accept:
+ * ...://....&!DataInputs=...filter=abcde;...
+   * The value must be in the list of allowed values or be the same as the default value
+ * ...://....&!DataInputs=......
+   * The specified data input cannot be omitted
