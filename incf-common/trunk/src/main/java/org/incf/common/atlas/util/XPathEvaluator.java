@@ -19,6 +19,7 @@ import org.xml.sax.SAXException;
 public class XPathEvaluator {
 
 	private Document doc;
+	private XPath xPath;
 
 	/**
 	 * Converts an XML file to a DOM tree.
@@ -38,10 +39,16 @@ public class XPathEvaluator {
 	 */
 	public XPathEvaluator(File xmlFile) throws IOException {
 		try {
+			
+			// convert file to dom
 			DocumentBuilderFactory domFactory = 
 					DocumentBuilderFactory.newInstance();
 			domFactory.setNamespaceAware(true);
 			doc = domFactory.newDocumentBuilder().parse(xmlFile);
+			
+			// get xPath for this dom
+			xPath = XPathFactory.newInstance().newXPath();
+			xPath.setNamespaceContext(new XPathNamespaceResolver(doc, true));
 		} catch (SAXException e) {
 			throw new IOException("Error in document parsing: "
 					+ e.getMessage());
@@ -60,8 +67,8 @@ public class XPathEvaluator {
 	 */
 	public List<String> evaluateXPath(String xPathExpression) 
 			throws IOException {
-		XPath xPath = XPathFactory.newInstance().newXPath();
-		xPath.setNamespaceContext(new XPathNamespaceResolver(doc, true));
+//		XPath xPath = XPathFactory.newInstance().newXPath();
+//		xPath.setNamespaceContext(new XPathNamespaceResolver(doc, true));
 		List<String> values = new ArrayList<String>();
 		try {
 			NodeList nodeList = (NodeList) xPath.evaluate(
@@ -74,6 +81,21 @@ public class XPathEvaluator {
 			throw new IOException("Error evaluating XPath: " + e.getMessage());
 		}
 		return values;
+	}
+	
+	public boolean isNodePresent(String xPathExpression) 
+			throws IOException {
+		try {
+			NodeList nodeList = (NodeList) xPath.evaluate(
+					xPathExpression, doc,
+					XPathConstants.NODESET);
+			if (nodeList.getLength() > 0) {
+				return true;
+			}
+		} catch (XPathExpressionException e) {
+			throw new IOException("Error evaluating XPath: " + e.getMessage());
+		}
+		return false;
 	}
 	
 }

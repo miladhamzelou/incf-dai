@@ -15,14 +15,66 @@
   </Abstract>
   
   <InputParameters>
+  
+    <!-- Case 1: Required Input, Any Non-Null Value is Accepted 
+         no <DefaultValue> and no <AllowedValues> elements -->
     <LiteralInput>
-      <Identifier>srsName</Identifier>
+      <Identifier>srsName1</Identifier>
+      <Title>Atlas SRS Name</Title>
+      <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
+    </LiteralInput>
+    
+    <!-- Case 2: Required Input, Any of Several Allowed Values is Accepted 
+         <AllowedValues> element, but no <DefaultValue> element --> 
+    <LiteralInput>
+      <Identifier>srsName2</Identifier>
       <Title>Atlas SRS Name</Title>
       <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
       <AllowedValues>
+        <Value>Mouse_ABAreference_1.0</Value>
+        <Value>Mouse_ABAvoxel_1.0</Value>
         <Value>Mouse_AGEA_1.0</Value>
+        <Value>Mouse_EMAP-T26_1.0</Value>
+        <Value>Mouse_Paxinos_1.0</Value>
+        <Value>Mouse_WHS_0.9</Value>
+        <Value>Mouse_WHS_1.0</Value>
       </AllowedValues>
     </LiteralInput>
+    
+    <!-- Case 3: Optional Input, Any Value is Accepted, With a Default Value 
+         If the data input value is empty, the default value is used
+         <DefaultValue> element, but not <AllowedValues> element-->
+    <LiteralInput>
+      <Identifier>srsName3</Identifier>
+      <Title>Atlas SRS Name</Title>
+      <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
+      <DefaultValue>Mouse_AGEA_1.0</DefaultValue>
+    </LiteralInput>
+    
+    <!-- Case 4: Optional Input, Any Value is Accepted, With a Default Value 
+         If the data input value is empty, the default value is used
+         <DefaultValue> element, but not <AllowedValues> element -->
+    <LiteralInput>
+      <Identifier>srsName3</Identifier>
+      <Title>Atlas SRS Name</Title>
+      <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
+      <DefaultValue>Mouse_AGEA_1.0</DefaultValue>
+    </LiteralInput>
+    
+    <!-- Case 4: Optional Input, Any of Several Allowed Values, With a Default Value
+         If the data input is omitted, the default value is used 
+         both <DafaultValue> and <AllowedValues> elements -->
+    <LiteralInput>
+      <Identifier>filter4</Identifier>
+      <Title>Filter</Title>
+      <Abstract></Abstract>
+      <DefaultValue>maptype:coronal</DefaultValue>
+      <AllowedValues>
+        <Value>maptype:coronal</Value>
+        <Value>maptype:sagittal</Value>
+      </AllowedValues>
+    </LiteralInput>
+    
     <LiteralInput>
       <Identifier>x</Identifier>
       <Title>X-Coordinate Value</Title>
@@ -41,6 +93,8 @@
       <Abstract>Value in the Z dimension as defined in the SRS.</Abstract>
       <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
     </LiteralInput>
+    
+    <!--  -->
     <LiteralInput>
       <Identifier>filter</Identifier>
       <Title>Filter</Title>
@@ -50,6 +104,18 @@
         <Value>maptype:sagittal</Value>
       </AllowedValues>
     </LiteralInput>
+    
+    <!--  -->
+    <LiteralInput>
+      <Identifier>filter</Identifier>
+      <Title>Filter</Title>
+      <Abstract></Abstract>
+      <AllowedValues>
+        <Value>maptype:coronal</Value>
+        <Value>maptype:sagittal</Value>
+      </AllowedValues>
+    </LiteralInput>
+    
   </InputParameters>
   
   <OutputParameters>
