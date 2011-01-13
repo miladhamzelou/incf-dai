@@ -30,8 +30,13 @@ WPS !DescribeProcess response:
 The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...srsName=Mouse_AGEA_1.0;...
  * ...://....&!DataInputs=...srsName=abcde;...
+   * Any non-empty value
+
+The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...srsName=;...
    * If key=; (empty string), the value of will be received as null
+ * ...://....&!DataInputs=......
+   * The specified data input cannot be omitted
 
 ==Case 2: Required Input, Any of Several Allowed Values is Accepted==
 
