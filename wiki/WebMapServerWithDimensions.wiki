@@ -96,4 +96,9 @@ TBD
 === GetMap Request ===
 TBD
 
-=== GetFeatureInfo Request
+=== GetFeatureInfo Request ===
+
+=== references ===
+
+
+http://mapserver.org/ogc/wms_time.html 
