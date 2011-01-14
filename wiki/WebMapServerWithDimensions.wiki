@@ -8,11 +8,11 @@ Add your content here.
 
 = Requirements =
 
-Add your content here.  Format your content with:
   * Treat Slices as dimensions
   * Return Imagery
   * Return “Features of Interest”
-
+  * small. no subsets required
+  * fixed width and hight (p. 30)
 Optional:
   * Treat axes/orientations as dimensions
 Out of Scope:
@@ -22,6 +22,11 @@ Supported Features:
   * Min/Max scale
   * Report supported CRS
 
+Questions:
+  * Opaque layers, or transparent
+  * transparent background by default?
+  * keywords at the service or the layer level?
+  * scale?
 == Implementation Discussion
 
 ==== Dimensions ====
@@ -66,4 +71,29 @@ Dimensions are discussed in OGC 06-042, section Annex C, (page 51).
       * The default CRS
       * The default style shall be empty (none)
     *GetFeatureInfo
+
+=== GetCapabiltiies ===
+The layer in a capabilties request
+(needs keywords)  
+{{{
+<Layer queryable="0" opaque="0" cascaded="0">
+    <Name>mouse brain</Name>
+    <Title>mouse brain</Title>
+    <SRS>INCF: Mouse_ABAreference_1.0</SRS>
+    <LatLonBoundingBox minx="-256" miny="-256" maxx="256" maxy="256" />
+    <BoundingBox SRS=" Mouse_ABAreference_1.0"
+                minx="-256" miny="-256" maxx="256" maxy="256" />
+    <Dimension name=" default_axis" units="UCOM" unitSymbol=”nm” />
+    <Extent name=" default_axis" default="0" nearestValue="0">-512/512</Extent>
+</Layer>
+}}}
 	
+
+==== Sample GetCapabilties Response ====
+
+TBD
+
+=== GetMap Request ===
+TBD
+
+=== GetFeatureInfo Request
