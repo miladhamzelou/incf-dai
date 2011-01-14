@@ -1,0 +1,36 @@
+#labels WMS
+# WMS Profile for Slice Imagery
+
+= Purpose:=
+
+Add your content here.
+
+
+= Requirements =
+
+Add your content here.  Format your content with:
+  * Treat Slices as dimensions
+  * Return Imagery
+  * Return “Features of Interest”
+
+Optional:
+  * Treat axes/orientations as dimensions
+Out of Scope:
+  * Coordinate transformation of imagery?
+    * Can report supported CRS for a layer
+Supported Features:
+  * Min/Max scale
+  * Report supported CRS
+
+== Implementation Discussion
+
+Dimensions are discussed in OGC 06-042, section Annex C, (page 51).
+{{{
+<Dimension 
+  name="dimension_name" 
+  units=unit_name 
+  unitSymbol="symbol"
+  default="default_value" 
+  multipleValues="0|1" nearestValue="0|1"
+  current="0|1">extent</Dimension>
+}}}
