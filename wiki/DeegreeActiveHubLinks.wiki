@@ -93,6 +93,10 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
 
+    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=All;filter=cerebellum
+
+    http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=All;outputSrsName=Mouse_ABAvoxel_1.0;filter=cerebellum
+
  * Execute : GetCorrelationMapByPOI
 
     http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal
