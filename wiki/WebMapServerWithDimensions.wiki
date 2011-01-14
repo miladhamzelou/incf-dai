@@ -24,6 +24,8 @@ Supported Features:
 
 == Implementation Discussion
 
+==== Dimensions ====
+The slices should be represented as dimensions.
 Dimensions are discussed in OGC 06-042, section Annex C, (page 51).
 {{{
 <Dimension 
@@ -34,3 +36,34 @@ Dimensions are discussed in OGC 06-042, section Annex C, (page 51).
   multipleValues="0|1" nearestValue="0|1"
   current="0|1">extent</Dimension>
 }}}
+
+==== Constraints ====
+
+  * Functionality:
+    * The server shall support WMS version 1.3 with dimensions as specified below
+    * The server shall support GetFeatureInfo (Section 7.4, p. 38)
+      * This should be a proxy to GetFeatruesAtPOI
+  * Capabilities:
+    * Style: No default style 
+  * Layer information:
+    * Dimension shall be named: “default_axis” 
+    * This unit shall be from UCOM, 
+      *If dimensionless or unspecified, the units attribute shall be specified empty (units="") 
+    * The unitSymbol shall be eg “nm” “mm” 
+      * If dimensionless or unspecified, the unitSymbol attribute shall be not specified
+
+    * A default value shall be specified
+    * Extent
+      * Extent shall have a name attribute of “default_axis”
+      * default attribute shall be specified
+      * The extent range separated by a “/” e.g. -100/100 
+      * nearestValue shall be 0 if exact values are required, or 1 if an approximate value nearest to the value is to be selected.
+	
+  * Requests
+    * Dimension names shall be interpreted case-insensitively and should contain no whitespace.	
+      * The key for KVP shall be “default_axis”
+    * GetMap
+      * The default CRS
+      * The default style shall be empty (none)
+    *GetFeatureInfo
+	
