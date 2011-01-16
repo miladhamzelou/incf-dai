@@ -96,7 +96,7 @@
 
 	<property>
         <name>ucsd.aba.service.path</name>
-        <value>/atlas-aba?</value>
+        <value>/aba/atlas?</value>
     </property>
 
 	<property>
@@ -106,12 +106,12 @@
 
 	<property>
         <name>ucsd.whs.service.path</name>
-        <value>/atlas-whs?</value>
+        <value>/whs/atlas?</value>
     </property>
 
 	<property>
         <name>ucsd.ucsd.service.path</name>
-        <value>/atlas-ucsd?</value>
+        <value>/ucsd/atlas?</value>
     </property>
 
 	<!-- End INCF-UCSDServer properties --> 
@@ -125,9 +125,9 @@
 
 	<property>
         <name>incf.deploy.host.name</name>
-        <!--  <value></value>-->
-        <!-- <value>132.239.131.188</value> -->
         <value>incf-dev-local.crbs.ucsd.edu</value>
+        <!-- <value>132.239.131.188</value> -->
+        <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
     </property>
 
 	<property>
@@ -138,7 +138,7 @@
 
 	<property>
         <name>incf.aba.port.number</name>
-        <value></value>
+        <value>8080</value>
     </property>
 
 	<property>
@@ -242,6 +242,57 @@
         <name>srsname.emap.10</name>
         <value>Mouse_EMAP-T26_1.0</value>
     </property>
+
+	<property>
+        <name>code.abavoxel2agea.v1</name>
+        <value>Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.agea2abavoxel.v1</name>
+        <value>Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.whs092agea.v1</name>
+        <value>Mouse_WHS_0.9_To_Mouse_AGEA_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.agea2whs09.v1</name>
+        <value>Mouse_AGEA_1.0_To_Mouse_WHS_0.9_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.whs092whs10.v1</name>
+        <value>Mouse_WHS_0.9_To_Mouse_WHS_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.whs102whs09.v1</name>
+        <value>Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.abareference2abavoxel.v1</name>
+        <value>Mouse_ABAreference_1.0_To_Mouse_ABAvoxel_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.abavoxel2abareference.v1</name>
+        <value>Mouse_ABAvoxel_1.0_To_Mouse_ABAreference_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.paxinos2whs09.v1</name>
+        <value>Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.whs092paxinos.v1</name>
+        <value>Mouse_WHS_0.9_To_Mouse_Paxinos_1.0_v1.0</value>
+    </property>
+
 	<!-- End SRSNames properties --> 
 	
 </aba-config-properties>
