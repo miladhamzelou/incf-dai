@@ -38,9 +38,7 @@ public class ABATransform
      * position.
      */
 
-    static public int[] convertReferenceToVoxel( double u, double v, double w )
-
-    {
+    static public double[] convertReferenceToVoxel( double u, double v, double w ) {
 
         double[] xyz1 = { u, v, w, 1 };
         double[] xyz2 = { 0, 0, 0, 0 };
@@ -49,10 +47,10 @@ public class ABATransform
 	    for ( int i = 0; i < 4; i++ )
 		xyz2[j] += xyz1[i] * ABAr_to_ABAv[j][i];
 
-	return new int[] {
-	    ( int ) Math.round( xyz2[0]/25 ),
-	    ( int ) Math.round( xyz2[1]/25 ),
-	    ( int ) Math.round( xyz2[2]/25 ),
+	return new double[] {
+	    ( double ) Math.round( xyz2[0]/25 ),
+	    ( double ) Math.round( xyz2[1]/25 ),
+	    ( double ) Math.round( xyz2[2]/25 ),
 	};
 
     }
@@ -66,10 +64,8 @@ public class ABATransform
      * the planar coordinates (u and v) and the image ID.
      */
 
-    static public double[] convertVoxelToReference( int u, int v, int w )
-	throws ArrayIndexOutOfBoundsException 
-
-    {
+    static public double[] convertVoxelToReference( double u, double v, double w )
+		throws ArrayIndexOutOfBoundsException {
 
 	double[] xyz1 = { u*25, v*25, w*25, 1 };
 

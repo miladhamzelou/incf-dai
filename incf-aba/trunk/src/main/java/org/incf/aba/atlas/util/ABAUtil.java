@@ -1136,7 +1136,7 @@ public class ABAUtil {
 			 		    		 vo.getToSRSCode().equalsIgnoreCase(whs10) ) {
 
 			 		  		implementingHub1 = "WHS";
-			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + whsServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + whsServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 			 		  		vo.setTransformationOneURL(transformationURL1);
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
@@ -1151,7 +1151,7 @@ public class ABAUtil {
 			 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(paxinos) ||
 			 		    	 vo.getToSRSCode().equalsIgnoreCase(paxinos) ) {
 			 		  		implementingHub1 = "UCSD";
-			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 			 		  		vo.setTransformationOneURL(transformationURL1);
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
@@ -1167,7 +1167,7 @@ public class ABAUtil {
 
 			 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(whs09) ) {
 			 		  		implementingHub1 = "ABA";
-			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 			 		  		vo.setTransformationOneURL(transformationURL1);
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
@@ -1181,7 +1181,7 @@ public class ABAUtil {
 			 				ex.setStringValue(vo.getTransformationOneURL());
 			 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(agea) ) {
 			 		  		implementingHub1 = "ABA";
-			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 			 		  		vo.setTransformationOneURL(transformationURL1);
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
@@ -1195,7 +1195,7 @@ public class ABAUtil {
 			 				ex.setStringValue(vo.getTransformationOneURL());
 			 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(abaReference) ) {
 			 		  		implementingHub1 = "ABA";
-			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 			 		  		vo.setTransformationOneURL(transformationURL1);
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
@@ -1209,7 +1209,7 @@ public class ABAUtil {
 			 				ex.setStringValue(vo.getTransformationOneURL());
 			 		  	} else if ( vo.getFromSRSCode().equalsIgnoreCase(abaVoxel) ) {
 			 		  		implementingHub1 = "ABA";
-			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 			 		  		vo.setTransformationOneURL(transformationURL1);
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
@@ -1939,7 +1939,7 @@ public class ABAUtil {
 		 		    		 vo.getToSRSCode().equalsIgnoreCase(whs10) ) {
 
 		 		  		implementingHub1 = "WHS";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + whsServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + whsServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
@@ -1955,7 +1955,7 @@ public class ABAUtil {
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(paxinos) ||
 		 		    	 vo.getToSRSCode().equalsIgnoreCase(paxinos) ) {
 		 		  		implementingHub1 = "UCSD";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
@@ -1971,7 +1971,7 @@ public class ABAUtil {
 
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(whs09) ) {
 		 		  		implementingHub1 = "ABA";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
@@ -1985,7 +1985,7 @@ public class ABAUtil {
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(agea) ) {
 		 		  		implementingHub1 = "ABA";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
@@ -1999,7 +1999,7 @@ public class ABAUtil {
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(abaReference) ) {
 		 		  		implementingHub1 = "ABA";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
@@ -2013,7 +2013,7 @@ public class ABAUtil {
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		  	} else if ( vo.getFromSRSCode().equalsIgnoreCase(abaVoxel) ) {
 		 		  		implementingHub1 = "ABA";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=;filter=";
+		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
@@ -2344,7 +2344,7 @@ public class ABAUtil {
 
 			System.out.println("Inside ABAREF 2 ABAVOX...");
 
-			int[] abar2abav = ABATransform.convertReferenceToVoxel(Double.parseDouble(originalCoordinateX), 
+			double[] abar2abav = ABATransform.convertReferenceToVoxel(Double.parseDouble(originalCoordinateX), 
 					Double.parseDouble(originalCoordinateY), Double.parseDouble(originalCoordinateZ));
 
 			transformedCoordinateString = originalCoordinateX + " " + originalCoordinateY + " "+ originalCoordinateZ + " " + abar2abav[0] + " " + abar2abav[1]  + " " + abar2abav[2];
@@ -2358,8 +2358,8 @@ public class ABAUtil {
 
 			System.out.println("Inside ABAVOX 2 ABAREF...");
 
-			double[] abav2abar = ABATransform.convertVoxelToReference(Integer.parseInt(originalCoordinateX), 
-					Integer.parseInt(originalCoordinateY), Integer.parseInt(originalCoordinateZ)); 
+			double[] abav2abar = ABATransform.convertVoxelToReference(Double.parseDouble(originalCoordinateX), 
+					Double.parseDouble(originalCoordinateY), Double.parseDouble(originalCoordinateZ)); 
 
 			transformedCoordinateString = originalCoordinateX + " " + originalCoordinateY + " "+ originalCoordinateZ + " " + abav2abar[0] + " " + abav2abar[1]  + " " + abav2abar[2];
 

@@ -171,7 +171,7 @@ public final class XMLUtilities {
 				System.out.println("1" + resultURLReturnString);
 
 				if (resultURLReturnString.equalsIgnoreCase("transformation-error") ) {
-					resultURLReturnElementValue = "Error: Please check the coordinates in the chain url - " + resultURL;
+					resultURLReturnElementValue = "Error: Please check the coordinates in the chain url - " + resultURL; 
 					return resultURLReturnElementValue;
 				} else {
 					resultURLReturnXMLElement = util.getDocumentElementFromString(resultURLReturnString);
