@@ -80,7 +80,7 @@ public class GetStructureNamesByPOI implements Processlet {
 
     		URL processDefinitionUrl = this.getClass().getResource(
     				"/" + this.getClass().getSimpleName() + ".xml");
-    		AllowedValuesValidator validator = new AllowedValuesValidator(
+/*    		AllowedValuesValidator validator = new AllowedValuesValidator(
     				new File(processDefinitionUrl.toURI()));
 
     		if (!validator.validate("srsName", srsName)) {
@@ -101,7 +101,49 @@ public class GetStructureNamesByPOI implements Processlet {
     					+ "specified in the AllowedValues element of the "
     					+ "ProcessDescription.", "vocabulary");
     		}
+*/
+    		
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
+    		AllowedValuesValidator.ValidationResult vr = null; 
+    		
+    		// validate srsName
+    		vr = validator.validateNEW("srsName", srsName);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				
+    				// if input not valid and there's default, use it
+    				srsName = vr.getDefaultValue();
+    			} else {
+    				
+    				// if input not valid and there's no default, exception
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"srsName");
+    			}
+    		}
+    		
+    		// validate filter (same as above)
+    		vr = validator.validateNEW("filter", filter);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				filter = vr.getDefaultValue();
+    			} else {
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"filter");
+    			}
+    		}
 
+    		// validate filter (same as above)
+    		vr = validator.validateNEW("vocabulary", vocabulary);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				vocabulary = vr.getDefaultValue();
+    			} else {
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"vocabulary");
+    			}
+    		}
+    		
     		ABAServiceVO vo = new ABAServiceVO();
 
     	        vo.setFromSRSCodeOne(srsName);

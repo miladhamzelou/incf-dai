@@ -94,7 +94,7 @@ public class TransformPOI implements Processlet {
 
     		URL processDefinitionUrl = this.getClass().getResource(
     				"/" + this.getClass().getSimpleName() + ".xml");
-    		AllowedValuesValidator validator = new AllowedValuesValidator(
+/*    		AllowedValuesValidator validator = new AllowedValuesValidator(
     				new File(processDefinitionUrl.toURI()));
 
     		if (!validator.validate("transformationCode", transformationCode)) {
@@ -103,7 +103,27 @@ public class TransformPOI implements Processlet {
     					+ "specified in the AllowedValues element of the "
     					+ "ProcessDescription.", "transformationCode");
     		}
-
+*/
+    		// new
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
+    		AllowedValuesValidator.ValidationResult vr = null; 
+    		
+    		// validate srsName
+    		vr = validator.validateNEW("transformationCode", transformationCode);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				
+    				// if input not valid and there's default, use it
+    				transformationCode = vr.getDefaultValue();
+    			} else {
+    				
+    				// if input not valid and there's no default, exception
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"transformationCode");
+    			}
+    		}
+    		
 	        vo.setTransformationCode(transformationCode);
 			String[] transformationNameArray;
 			String delimiter = "_To_";

@@ -101,6 +101,8 @@ public class DescribeSRS implements Processlet {
 
     		URL processDefinitionUrl = this.getClass().getResource(
     				"/" + this.getClass().getSimpleName() + ".xml");
+
+/*    		
     		AllowedValuesValidator validator = new AllowedValuesValidator(
     				new File(processDefinitionUrl.toURI()));
 
@@ -110,7 +112,27 @@ public class DescribeSRS implements Processlet {
     					+ "specified in the AllowedValues element of the "
     					+ "ProcessDescription.", "srsName");
     		}
-
+*/
+    		
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
+    		AllowedValuesValidator.ValidationResult vr = null; 
+    		
+    		// validate srsName
+    		vr = validator.validateNEW("srsName", srsName);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				
+    				// if input not valid and there's default, use it
+    				srsName = vr.getDefaultValue();
+    			} else {
+    				
+    				// if input not valid and there's no default, exception
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"srsName");
+    			}
+    		}
+    		
     		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
         	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
         	opt.setSaveNamespacesFirst();

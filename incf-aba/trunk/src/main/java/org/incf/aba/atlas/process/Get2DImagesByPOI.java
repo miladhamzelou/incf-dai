@@ -16,6 +16,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
+import org.apache.log4j.spi.Configurator;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
 import org.deegree.commons.utils.kvp.MissingParameterException;
@@ -28,6 +29,10 @@ import org.deegree.services.wps.ProcessletExecutionInfo;
 import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
 import org.deegree.services.wps.output.ComplexOutput;
+import org.incf.aba.atlas.util.ABAConfigurator;
+import org.incf.aba.atlas.util.ABAServiceVO;
+import org.incf.aba.atlas.util.ABAUtil;
+import org.incf.aba.atlas.util.XMLUtilities;
 import org.incf.atlas.waxml.generated.Image2DType;
 import org.incf.atlas.waxml.generated.Image2DType.ImageSource;
 import org.incf.atlas.waxml.generated.ImagesResponseDocument;
@@ -73,7 +78,6 @@ public class Get2DImagesByPOI implements Processlet {
     		URL processDefinitionUrl = this.getClass().getResource(
     				"/" + this.getClass().getSimpleName() + ".xml");
     		
-    		
     		// old
 //    		AllowedValuesValidator validator = new AllowedValuesValidator(
 //    				new File(processDefinitionUrl.toURI()));
@@ -94,7 +98,7 @@ public class Get2DImagesByPOI implements Processlet {
     		// new
     		AllowedValuesValidator validator = new AllowedValuesValidator(
     				new File(processDefinitionUrl.toURI()));
-    		AllowedValuesValidator.ValidationResult vr = null;
+    		AllowedValuesValidator.ValidationResult vr = null; 
     		
     		// validate srsName
     		vr = validator.validateNEW("srsName", srsName);
@@ -131,18 +135,19 @@ public class Get2DImagesByPOI implements Processlet {
 
     		// transform non-AGEA coordinates to AGEA
     		if (!srsName.equals("Mouse_AGEA_1.0")) {
+
+    			ABAServiceVO vo = getTransformPOI(srsName, x, y, z);
     			
-        		// TODO convert srs to agea, if not agea
-        		// Asif -- this the place to transform non-AGEA srs coordinates
-        		// to AGEA
+	    		if (vo.getTransformationXMLResponseString().startsWith("Error:")) {
+					throw new OWSException( 
+							"Transformation Coordinates Error: ", vo.getTransformationXMLResponseString());
+		    	}
+
+    			x = Double.parseDouble(vo.getTransformedCoordinateX());
+    			y = Double.parseDouble(vo.getTransformedCoordinateY());
+    			z = Double.parseDouble(vo.getTransformedCoordinateZ());
     			
-    			// call out to central/atlas to transform to AGEA
-    			
-    			srsName = "Mouse_AGEA_1.0";
-    			//x = transformed x
-    			//y = transformed y
-    			//z = transformed z
-    		}
+		    }
 
     		String srsFromClient = srsName;
     		Point3d poiFromClient = new Point3d(x, y, z);
@@ -690,6 +695,66 @@ public class Get2DImagesByPOI implements Processlet {
 	
 	public static int round200(double a) {
 		return ((int) ((a / 200) + 0.5)) * 200;
+	}
+
+	public ABAServiceVO getTransformPOI(String fromSrsName, double x, double y, double z) 
+		throws OWSException{
+
+		ABAConfigurator config = ABAConfigurator.INSTANCE;
+
+		String tempX = "";
+		String tempY = "";
+		String tempZ = "";
+		String toSrsName = "Mouse_AGEA_1.0";
+		String hostName = "";
+		String portNumber = "";
+		String transformedCoordinatesString = "";
+		ABAServiceVO vo = new ABAServiceVO();
+		
+    	//Call getTransformationChain method here...
+    	//ABAVoxel
+        System.out.println("1.1:" );
+
+        tempX = ";x="+String.valueOf(x);
+        tempY = ";y="+String.valueOf(y);
+        tempZ = ";z="+String.valueOf(z);
+
+    	String delimitor = config.getValue("incf.deploy.port.delimitor");
+        
+        hostName = config.getValue("incf.deploy.host.name");
+        portNumber = config.getValue("incf.aba.port.number");
+    	portNumber = delimitor + portNumber;
+
+        String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+fromSrsName+";outputSrsName="+toSrsName+";filter=Cerebellum";
+    	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
+        System.out.println("1.4: " + transformationChainURL);
+
+        try { 
+        	
+	    	XMLUtilities xmlUtilities = new XMLUtilities();
+	    	transformedCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, tempX, tempY, tempZ);
+	
+	        System.out.println("2:" );
+	    	//Start - exception handling
+/*	    	if (transformedCoordinatesString.startsWith("Error:")) {
+	    		System.out.println("********************ERROR*********************");
+				throw new OWSException( 
+						"Transformed Coordinates Error: ", transformedCoordinatesString);
+	    	}
+*/	    	//End - exception handling
+	    	ABAUtil util = new ABAUtil();
+	    	String[] tempArray = util.getTabDelimNumbers(transformedCoordinatesString);
+	    	vo.setTransformedCoordinateX(tempArray[0]);
+	    	vo.setTransformedCoordinateY(tempArray[1]);
+	    	vo.setTransformedCoordinateZ(tempArray[2]);
+	    	vo.setTransformationXMLResponseString(transformedCoordinatesString);
+
+        } catch (Exception e) {
+        	e.printStackTrace();
+        }
+
+    	return vo;
+
 	}
 	
 }

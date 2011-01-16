@@ -73,9 +73,9 @@ public class ListTransformations implements Processlet {
 
     		URL processDefinitionUrl = this.getClass().getResource(
     				"/" + this.getClass().getSimpleName() + ".xml");
-    		AllowedValuesValidator validator = new AllowedValuesValidator(
+/*    		AllowedValuesValidator validator = new AllowedValuesValidator(
     				new File(processDefinitionUrl.toURI()));
-
+*/
     		System.out.println(" Inside ListTransformations");
     		String inputSrsName = "";
     		String outputSrsName = "";
@@ -90,6 +90,38 @@ public class ListTransformations implements Processlet {
         		filter = Util.getStringInputValue(in, "filter");
     		}
 
+    		// new
+/*    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
+    		AllowedValuesValidator.ValidationResult vr = null; 
+    		
+    		// validate srsName
+    		vr = validator.validateNEW("inputSrsName", inputSrsName);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				
+    				// if input not valid and there's default, use it
+    				inputSrsName = vr.getDefaultValue();
+    			} else {
+    				
+    				// if input not valid and there's no default, exception
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"inputSrsName");
+    			}
+    		}
+    		
+    		// validate filter (same as above)
+    		vr = validator.validateNEW("outputSrsName", outputSrsName);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				outputSrsName = vr.getDefaultValue();
+    			} else {
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"outputSrsName");
+    			}
+    		}
+*/
+    		
             //Start - FIXME - Uncomment below two lines and comment the other three lines 
         	//String hostName = uri.getHost();
         	//String portNumber = delimitor + uri.getPort();
@@ -98,7 +130,7 @@ public class ListTransformations implements Processlet {
         	String delimitor = config.getValue("incf.deploy.port.delimitor");
         	//portNumber = delimitor + portNumber;
             //End - FIXME
-            
+
             //vo.setUrlString(uri.toString());
             vo.setIncfDeployHostname(hostName);
             vo.setIncfDeployPortNumber(portNumber);
@@ -127,16 +159,8 @@ public class ListTransformations implements Processlet {
 		        vo.setFilter("");
 	    		responseString = util.getCoordinateTransformationChain(vo, complexOutput);
 
-	        } else if ( !inputSrsName.equals("") || inputSrsName != null && 
-					    !outputSrsName.equals("") || outputSrsName != null ) {
-	        	System.out.println("Inside Empty Nothing.");
-	        	vo.setFromSRSCodeOne(inputSrsName);
-		        vo.setFromSRSCode(inputSrsName);
-		        vo.setToSRSCodeOne(outputSrsName);
-		        vo.setToSRSCode(outputSrsName);
-		        vo.setFilter(filter);
-	    		responseString = util.getCoordinateTransformationChain(vo, complexOutput);
-	        } else if ( !inputSrsName.equals("") || inputSrsName != null ) { 
+	        } else if ( (!inputSrsName.equals("") || inputSrsName != null) && 
+	        		       outputSrsName.equalsIgnoreCase("all")) { 
 	        	System.out.println("Inside inputSRSName not empty.");
 				if (inputSrsName.equals(abaReference)) {
 		        	vo1 = new ABAServiceVO();
@@ -186,24 +210,25 @@ public class ListTransformations implements Processlet {
 */			        vo.setFilter("");
 	            }
 	    		responseString = util.getTransformationChain(vo, complexOutput, srsCodeList);
-	        } else if ( !outputSrsName.equals("") || outputSrsName != null ) { 
+	        } else if ( (!outputSrsName.equals("") || outputSrsName != null) && 
+     		       	     inputSrsName.equalsIgnoreCase("all")) { 
 	        	System.out.println("Inside outputSRSName not empty.");
 				if (outputSrsName.equals(abaReference)) {
-		        	vo1 = new ABAServiceVO();
-					vo1.setFromSRSCode(abaReference);
-					vo1.setToSRSCode(abaVoxel);
-					srsCodeList.add(vo1);
-/*					vo1 = new ABAServiceVO();
-					vo1.setFromSRSCode(abaVoxel);
-					vo1.setToSRSCode(abaReference);
-					srsCodeList.add(vo1);
-*/			        vo.setFilter("");
-	            } else if (outputSrsName.equals(abaVoxel)) {
 /*		        	vo1 = new ABAServiceVO();
 					vo1.setFromSRSCode(abaReference);
 					vo1.setToSRSCode(abaVoxel);
 					srsCodeList.add(vo1);
 */					vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaVoxel);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
+			        vo.setFilter("");
+	            } else if (outputSrsName.equals(abaVoxel)) {
+		        	vo1 = new ABAServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(abaVoxel);
+					srsCodeList.add(vo1);
+/*					vo1 = new ABAServiceVO();
 					vo1.setFromSRSCode(abaVoxel);
 					vo1.setToSRSCode(agea);
 					srsCodeList.add(vo1);
@@ -211,17 +236,17 @@ public class ListTransformations implements Processlet {
 					vo1.setFromSRSCode(abaVoxel);
 					vo1.setToSRSCode(abaReference);
 					srsCodeList.add(vo1);
-/*					vo1 = new ABAServiceVO();
+*/					vo1 = new ABAServiceVO();
 					vo1.setFromSRSCode(agea);
 					vo1.setToSRSCode(abaVoxel);
 					srsCodeList.add(vo1);
-*/			        vo.setFilter("");
+					vo.setFilter("");
 	            } else if (outputSrsName.equals(agea)) {
-/*					vo1 = new ABAServiceVO();
+					vo1 = new ABAServiceVO();
 					vo1.setFromSRSCode(abaVoxel);
 					vo1.setToSRSCode(agea);
 					srsCodeList.add(vo1);
-*/					vo1 = new ABAServiceVO();
+/*					vo1 = new ABAServiceVO();
 					vo1.setFromSRSCode(agea);
 					vo1.setToSRSCode(whs09);
 					srsCodeList.add(vo1);
@@ -229,14 +254,26 @@ public class ListTransformations implements Processlet {
 					vo1.setFromSRSCode(agea);
 					vo1.setToSRSCode(abaVoxel);
 					srsCodeList.add(vo1);
-/*					vo1 = new ABAServiceVO();
+*/					vo1 = new ABAServiceVO();
 					vo1.setFromSRSCode(whs09);
 					vo1.setToSRSCode(agea);
 					srsCodeList.add(vo1);
-*/			        vo.setFilter("");
-	            }
+			        vo.setFilter("");
+	            } 
 	    		responseString = util.getTransformationChain(vo, complexOutput, srsCodeList);
-	        } 
+	        } else if ( !inputSrsName.equals("") || inputSrsName != null && 
+					    !outputSrsName.equals("") || outputSrsName != null ) {
+	        	System.out.println("Both Legitimate values.");
+	        	vo.setFromSRSCodeOne(inputSrsName);
+		        vo.setFromSRSCode(inputSrsName);
+		        vo.setToSRSCodeOne(outputSrsName);
+		        vo.setToSRSCode(outputSrsName);
+		        vo.setFilter(filter);
+	    		responseString = util.getCoordinateTransformationChain(vo, complexOutput);
+	        } else {
+            	System.out.println("Nothing matched..");
+            	responseString = "Error: No such transformation chain is supported under this hub.";
+            }
 
 			System.out.println(" Response String = " + responseString);
     		System.out.println("After the check condition");

@@ -78,7 +78,7 @@ public class GetCorrelationMapByPOI implements Processlet {
 
     		URL processDefinitionUrl = this.getClass().getResource(
     				"/" + this.getClass().getSimpleName() + ".xml");
-    		AllowedValuesValidator validator = new AllowedValuesValidator(
+/*    		AllowedValuesValidator validator = new AllowedValuesValidator(
     				new File(processDefinitionUrl.toURI()));
     		if (!validator.validate("srsName", srsName)) {
     			throw new InvalidDataInputValueException("The srsName value '" 
@@ -92,9 +92,39 @@ public class GetCorrelationMapByPOI implements Processlet {
     					+ "specified in the AllowedValues element of the "
     					+ "ProcessDescription.", "filter");
     		}
-    		
+*/    		
     		// make sure we have something in dataInputs
 
+    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    				new File(processDefinitionUrl.toURI()));
+    		AllowedValuesValidator.ValidationResult vr = null; 
+    		
+    		// validate srsName
+    		vr = validator.validateNEW("srsName", srsName);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				
+    				// if input not valid and there's default, use it
+    				srsName = vr.getDefaultValue();
+    			} else {
+    				
+    				// if input not valid and there's no default, exception
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"srsName");
+    			}
+    		}
+    		
+    		// validate filter (same as above)
+    		vr = validator.validateNEW("filter", filter);
+    		if (!vr.isValid()) {
+    			if (vr.getDefaultValue() != null) {
+    				filter = vr.getDefaultValue();
+    			} else {
+        			throw new InvalidDataInputValueException(vr.getMessage(), 
+        					"filter");
+    			}
+    		}
+    		
     	        vo.setFromSRSCodeOne(srsName);
     	        vo.setFromSRSCode(srsName);
     	        vo.setToSRSCodeOne(agea);
