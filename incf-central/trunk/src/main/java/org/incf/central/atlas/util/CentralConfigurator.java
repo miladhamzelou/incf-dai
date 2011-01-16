@@ -52,7 +52,7 @@ public class CentralConfigurator {
 		InputStream path = null;
 
 		path = getClass().getResourceAsStream( 
-		"/dev-central-config-properties.xml");
+		"/stage-central-config-properties.xml");
 
 		System.out.println("Config Path is - " + path);
 		return path;

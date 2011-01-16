@@ -47,12 +47,9 @@
       <Identifier>filter</Identifier>
       <Title>Filter</Title>
       <Abstract></Abstract>
-      <AllowedValues>
-        <Value>structurename</Value>
-      </AllowedValues>
     </LiteralInput>
   </InputParameters>
-  
+
   <OutputParameters>
     <ComplexOutput>
       <Identifier>GetTransformationChainOutput</Identifier>
