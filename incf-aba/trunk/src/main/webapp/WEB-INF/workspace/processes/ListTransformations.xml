@@ -11,7 +11,7 @@
   <JavaClass>org.incf.aba.atlas.process.ListTransformations</JavaClass>
   <Title>List Transformations</Title>
   <Abstract>
-    Lists the transformation chain between the two SRS (Spatial Reference System) names specified in the request.
+    Lists the transformations between the two SRS (Spatial Reference System) names specified in the request.
   </Abstract>
   
   <InputParameters>
@@ -57,7 +57,7 @@
     <ComplexOutput>
       <Identifier>ListTransformationsOutput</Identifier>
       <Title>List Transformations Output</Title>
-      <Abstract>This request lists the transformation chain between the two SRS (Spatial Reference System) names specified in the request</Abstract>
+      <Abstract>This request lists the transformations between the two SRS (Spatial Reference System) names specified in the request</Abstract>
       <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
           schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/CoordinateChainTransformationResponses.xsd"/>
     </ComplexOutput>
