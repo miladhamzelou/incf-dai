@@ -123,7 +123,7 @@ exampleFiducial(f.addNewFiducial(), 1);
 		slice.setOrientation(SliceType.Orientation.HORIZONTAL);
 		slice.setXOrientation("positive dorsal");
 		slice.setYOrientation("positive coronal"); 
-				slice.setConstant(1);
+				slice.setConstant(1.0);
 				slice.setCode("Reference Number for Slice");
 				
 	}
