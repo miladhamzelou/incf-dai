@@ -118,7 +118,7 @@ exampleFiducial(f.addNewFiducial(), 1);
 			return document;
 		}
 	
-	public static void exampleSlice(SliceType slice, int identifier){
+	public static void exampleSlice(SliceType slice, double identifier){
 		slice.newCursor().insertComment("orientation {coronal|sagittal|horizontal}");
 		slice.setOrientation(SliceType.Orientation.HORIZONTAL);
 		slice.setXOrientation("positive dorsal");
