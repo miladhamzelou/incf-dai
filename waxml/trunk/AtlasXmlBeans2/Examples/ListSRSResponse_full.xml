@@ -7,9 +7,9 @@
     <SRS>
       <Name srsCode="INCF:0101" srsBase="ABAreference" srsVersion="1.0" species="mouse" urn="ReferenceUrl">Mouse_ABAreference_1.0</Name>
       <Description>some description here</Description>
-      <Author authorCode="123" dateSubmitted="2010-11-18-08:00"/>
-      <DateCreated>2010-11-18-08:00</DateCreated>
-      <DateUpdated>2010-11-18-08:00</DateUpdated>
+      <Author authorCode="123" dateSubmitted="2011-01-19-08:00"/>
+      <DateCreated>2011-01-19-08:00</DateCreated>
+      <DateUpdated>2011-01-19-08:00</DateUpdated>
       <Origin codeSpace="URN">bregma</Origin>
       <Area structureName="whole brain" structureURN="URN"/>
       <Units uom="nm"/>
@@ -28,27 +28,27 @@
   <Orientations>
     <Orientation code="Left" gml:id="Left" name="Left">
       <Description>text</Description>
-      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2011-01-19-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
     <Orientation code="Right" gml:id="Right" name="Right">
       <Description>text</Description>
-      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2011-01-19-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
     <Orientation code="Ventral" gml:id="Ventral" name="Ventral">
       <Description>text</Description>
-      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2011-01-19-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
     <Orientation code="Dorsal" gml:id="Dorsal" name="Dorsal">
       <Description>text</Description>
-      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2011-01-19-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
     <Orientation code="Posterior" gml:id="Posterior" name="Posterior">
       <Description>text</Description>
-      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2011-01-19-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
     <Orientation code="Anterior" gml:id="Anterior" name="Anterior">
       <Description>text</Description>
-      <Author dateSubmitted="2010-11-18-08:00" authorCode="AuthorCode">Author Name</Author>
+      <Author dateSubmitted="2011-01-19-08:00" authorCode="AuthorCode">Author Name</Author>
     </Orientation>
   </Orientations>
 </ListSRSResponse>
