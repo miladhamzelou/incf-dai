@@ -1220,9 +1220,10 @@ public class CentralUtil {
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
 
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+		 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
+		 				ex.setOrder(Integer.parseInt(orderNumber));
 		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
@@ -1235,10 +1236,11 @@ public class CentralUtil {
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
 
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+		 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 
 		 		    	ex.setCode(code);
 		 				ex.setHub(implementingHub1);
+		 				ex.setOrder(Integer.parseInt(orderNumber));
 		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
@@ -1251,9 +1253,10 @@ public class CentralUtil {
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
 
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+		 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
+		 				ex.setOrder(Integer.parseInt(orderNumber));
 		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
@@ -1265,9 +1268,10 @@ public class CentralUtil {
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
 
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+		 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
+		 				ex.setOrder(Integer.parseInt(orderNumber));
 		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
@@ -1279,9 +1283,10 @@ public class CentralUtil {
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
 
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+		 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
+		 				ex.setOrder(Integer.parseInt(orderNumber));
 		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
@@ -1293,9 +1298,10 @@ public class CentralUtil {
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
 		 		    	
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+		 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
+		 				ex.setOrder(Integer.parseInt(orderNumber));
 		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
