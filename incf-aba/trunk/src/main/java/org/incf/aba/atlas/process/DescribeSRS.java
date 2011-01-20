@@ -117,7 +117,7 @@ public class DescribeSRS implements Processlet {
     		AllowedValuesValidator validator = new AllowedValuesValidator(
     				new File(processDefinitionUrl.toURI()));
     		AllowedValuesValidator.ValidationResult vr = null; 
-    		
+
     		// validate srsName
     		vr = validator.validateNEW("srsName", srsName);
     		if (!vr.isValid()) {
@@ -368,12 +368,14 @@ public class DescribeSRS implements Processlet {
 					slice.setYOrientation("ventral"); 
 				}
 */
-			} else if ( vo.getValueDirection().equalsIgnoreCase("right") ) {
+			} else if ( vo.getValueDirection().equalsIgnoreCase("right") ) { 
 				slice.setOrientation(SliceType.Orientation.SAGITTAL);
 				if ( vo.getPlusX().equalsIgnoreCase("constant") ) { 
 					slice.setXOrientation(vo.getPlusZ());
-				} 
-				slice.setYOrientation(vo.getPlusY()); 
+				} else {
+					slice.setXOrientation(vo.getPlusX());
+				}
+				slice.setYOrientation(vo.getPlusY());
 			} else {
 				slice.setOrientation(SliceType.Orientation.HORIZONTAL);
 			}
@@ -381,8 +383,9 @@ public class DescribeSRS implements Processlet {
 			System.out.println("Value is - " + vo.getSlideValue());
 			System.out.println("Again Value is - " + Float.parseFloat(vo.getSlideValue()));
 
-			//FIXME - Ask Dave to change the 
-			slice.setConstant(Math.round(Float.parseFloat(vo.getSlideValue())));
+			//FIXME - Ask Dave to change the
+			//slice.setConstant(Math.round(Float.parseFloat(vo.getSlideValue())));
+			slice.setConstant(Double.parseDouble(vo.getSlideValue()));
 			slice.setCode(vo.getSliceID());
 
 	}
@@ -394,5 +397,5 @@ public class DescribeSRS implements Processlet {
     @Override
     public void init() {
     }
-	
+
 }

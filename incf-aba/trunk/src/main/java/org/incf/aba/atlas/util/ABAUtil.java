@@ -23,6 +23,7 @@ import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseType.
 import org.incf.atlas.waxml.generated.CoordinateTransformationInfoType;
 import org.incf.atlas.waxml.generated.ListTransformationsResponseDocument;
 import org.incf.atlas.waxml.generated.ListTransformationsResponseType.TransformationList;
+import org.incf.atlas.waxml.generated.impl.CoordinateTransformationInfoTypeImpl;
 import org.incf.atlas.waxml.utilities.Utilities;
 
 public class ABAUtil {
@@ -637,14 +638,19 @@ public class ABAUtil {
 				srsCodeList.add(vo1);
 				vo1 = new ABAServiceVO();
 
-				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
+				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) {
 					responseString = util.listTransformations( vo, co, srsCodeList );
 				} else {
 					responseString = util.getTransformationChain( vo, co, srsCodeList );
 				}
 
 			} else {
-				responseString = "Error: No such transformation chain is supported under this hub."; 
+				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
+					responseString = "Error: No such transformation is supported under this hub.";
+				} else {
+					responseString = "Error: No such transformation chain is supported under this hub.";
+				}
+				 
 			}
 
 			//End
@@ -1141,25 +1147,29 @@ public class ABAUtil {
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
 
-			 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+			 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
+			 		    	//CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 			 				ex.setCode(code);
 			 				ex.setHub(implementingHub1);
+
+			 				//ex.setOrder(Integer.parseInt(orderNumber));
 			 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 			 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 			 				//ex.setAccuracy(Integer.parseInt(accuracy));
 			 				ex.setStringValue(vo.getTransformationOneURL());
 			 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(paxinos) ||
-			 		    	 vo.getToSRSCode().equalsIgnoreCase(paxinos) ) {
+			 		    	vo.getToSRSCode().equalsIgnoreCase(paxinos) ) {
 			 		  		implementingHub1 = "UCSD";
 			 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 			 		  		vo.setTransformationOneURL(transformationURL1);
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
 
-			 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+			 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 
 			 		    	ex.setCode(code);
 			 				ex.setHub(implementingHub1);
+			 				//ex.setOrder(Integer.parseInt(orderNumber));
 			 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 			 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 			 				//ex.setAccuracy(Integer.parseInt(accuracy));
@@ -1172,9 +1182,10 @@ public class ABAUtil {
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
 
-			 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+			 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 			 				ex.setCode(code);
 			 				ex.setHub(implementingHub1);
+			 				//ex.setOrder(Integer.parseInt(orderNumber));
 			 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 			 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 			 				//ex.setAccuracy(Integer.parseInt(accuracy));
@@ -1186,9 +1197,10 @@ public class ABAUtil {
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
 
-			 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+			 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 			 				ex.setCode(code);
 			 				ex.setHub(implementingHub1);
+			 				//ex.setOrder(Integer.parseInt(orderNumber));
 			 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 			 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 			 				//ex.setAccuracy(Integer.parseInt(accuracy));
@@ -1200,9 +1212,10 @@ public class ABAUtil {
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
 
-			 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+			 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 			 				ex.setCode(code);
 			 				ex.setHub(implementingHub1);
+			 				//ex.setOrder(Integer.parseInt(orderNumber));
 			 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 			 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 			 				//ex.setAccuracy(Integer.parseInt(accuracy));
@@ -1214,9 +1227,10 @@ public class ABAUtil {
 			 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 			 		    	orderNumber = String.valueOf(i);
 			 		    	
-			 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+			 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
 			 				ex.setCode(code);
 			 				ex.setHub(implementingHub1);
+			 				//ex.setOrder(Integer.parseInt(orderNumber));
 			 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 			 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 			 				//ex.setAccuracy(Integer.parseInt(accuracy));
