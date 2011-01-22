@@ -194,7 +194,7 @@
 	<!-- End INCF-AGEA properties --> 
 
 	<!-- Start WEBSERVICE properties --> 
- 
+
 	<property>
         <name>ucsd.webservice.host.name</name>
         <value>smartatlas.crbs.ucsd.edu</value>

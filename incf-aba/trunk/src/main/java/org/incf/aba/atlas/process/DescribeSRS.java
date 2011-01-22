@@ -357,7 +357,9 @@ public class DescribeSRS implements Processlet {
 
 				if ( vo.getPlusX().equalsIgnoreCase("constant") ) { 
 					slice.setXOrientation(vo.getPlusZ());
-				} 
+				} else {
+					slice.setXOrientation(vo.getPlusX());
+				}
 				slice.setYOrientation(vo.getPlusY()); 
 
 				//(Derived from the coordinate system from Ilya - specific to ABA_REF space only)
