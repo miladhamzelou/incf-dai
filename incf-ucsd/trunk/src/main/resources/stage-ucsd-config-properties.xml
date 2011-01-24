@@ -1,0 +1,298 @@
+<!-- Created by amemon on June 16, 2009, 16:17 -->
+<aba-config-properties>
+ 
+	<!-- begin database properties for servlet -->
+	<property>
+        <name>server.database.driverClassName</name>
+        <value>oracle.jdbc.driver.OracleDriver</value>
+    </property>
+	<property>
+        <name>server.database.atlasdburl</name>
+		<value>jdbc:oracle:thin:@//oracle-rac1.crbs.ucsd.edu:1523/ccdbpri1</value>
+    </property>
+    <property>
+        <name>server.database.atlasdbuser</name>
+        <value>atlas</value>
+    </property>
+    <property> 
+        <name>server.database.atlasdbpassword</name>
+        <value>beer</value>
+    </property>
+	<!-- end database properties for servlet -->
+
+	<!-- begin postgres database properties -->
+	<property>
+        <name>postgres.server.database.driverClassName</name>
+        <value>org.postgresql.Driver</value>
+    </property>
+	<property>
+        <name>postgres.server.database.atlasdburl</name>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-aba-db</value>
+        <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
+    </property>
+    <property>
+        <name>postgres.server.database.atlasdbuser</name>
+        <value>atlas-aba-db</value>
+ 		<!--<value>atlas</value>-->
+    </property>
+    <property>
+        <name>postgres.server.database.atlasdbpassword</name>
+        <value>aba4321</value>
+        <!--<value>beer</value>-->
+    </property>
+	<!-- end postgres database properties -->
+
+	<!-- begin logger properties-->
+	<!--FIXME-->
+    <property>
+        <name>atlas.linuxlogger.filepath</name>	
+    	<value>/opt/gridsphere/projects/smartflow/src/net/birn/smartatlas/config/webservices-log4jproperties.txt</value>
+    </property>
+	<!-- end logger properties -->
+
+	<!-- begin Map Server server properties --> 
+	<property>
+        <name>server.tfwworkspace.location</name>
+        <value>C:\\MapServerData\\workspace\\images\\</value> 
+    </property>
+	<property>
+        <name>server.imageworkspace.location</name>
+        <value>C:\\MapServerData\\workspace\\images\\</value>
+    </property>
+	<property>
+        <name>mapserver.host.portno</name>
+        <value>5300</value>
+    </property>
+	<property>
+        <name>mapserver.host.username</name>
+        <value>admin</value>
+    </property>
+	<property>
+        <name>MapServerserver.host.password</name>
+        <value>atlas786</value>
+    </property>
+
+	<!-- end server properties -->
+
+
+	<!-- End AIMS properties --> 
+
+	<!-- Start INCF-UCSDServcer properties --> 
+
+	<property>
+        <name>ucsd.host.name</name>
+        <value></value>
+        <!-- <value>132.239.131.188</value> -->
+        <!--<value>incf-dev-local.crbs.ucsd.edu</value>-->
+        <!--<value>incf.crbs.ucsd.edu</value>-->
+    </property>
+
+	<property>
+        <name>ucsd.port.number</name>
+        <value>
+        <!-- :8080 -->
+        </value>
+    </property>
+
+	<property>
+        <name>ucsd.aba.service.path</name>
+        <value>/aba/atlas?</value>
+    </property>
+
+	<property>
+        <name>ucsd.emage.service.path</name>
+        <value>/incf-services/service/EmageServiceController?</value>
+    </property>
+
+	<property>
+        <name>ucsd.whs.service.path</name>
+        <value>/whs/atlas?</value>
+    </property>
+
+	<property>
+        <name>ucsd.ucsd.service.path</name>
+        <value>/ucsd/atlas?</value>
+    </property>
+
+	<!-- End INCF-UCSDServer properties --> 
+
+	<!-- Start INCF-ABA properties --> 
+
+	<property>
+        <name>incf.aba.host.name</name>
+        <value>mouse.brain-map.org</value>
+    </property>
+
+	<property>
+        <name>incf.deploy.host.name</name>
+        <value>incf-dev-local.crbs.ucsd.edu</value>
+        <!-- <value>132.239.131.188</value> -->
+        <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
+    </property>
+
+	<property>
+        <name>incf.deploy.port.delimitor</name>
+        <value>:</value>
+        <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
+    </property>
+
+	<property>
+        <name>incf.aba.port.number</name>
+        <value>8080</value>
+    </property>
+
+	<property>
+        <name>incf.aba.service.path</name>
+        <value>/agea/</value>
+    </property>
+
+	<property>
+        <name>incf.transformationservice.host.name</name>
+        <!--<value>incf-dev-mapserver.crbs.ucsd.edu</value>-->
+        <value>transform.wholebraincatalog.org</value>
+    </property>
+
+	<property>
+        <name>incf.transformationservice.port.number</name>
+        <value></value>
+    </property>
+
+	<property>
+        <name>incf.transformationservice.atlas.path</name>
+        <value>/cgi-bin/atlas_lookup.cgi?</value>
+    </property>
+
+	<property>
+        <name>incf.transformationservice.abavoxelstructure.path</name>
+        <value>/cgi-bin/structure_lookup.cgi?</value>
+    </property>
+
+	<property>
+        <name>incf.transformationservice.whsstructure.path</name>
+        <value>/cgi-bin/canon_lookup.cgi?</value>
+    </property>
+
+	<!-- End INCF-ABA properties --> 
+
+	<!-- Start INCF-EMAGE properties --> 
+ 
+	<property>
+        <name>incf.emage.host.name</name>
+        <value>www.emouseatlas.org</value>
+    </property>
+
+	<property>
+        <name>incf.emage.port.number</name>
+        <value></value>
+    </property>
+
+	<property>
+        <name>incf.emage.service.path</name>
+        <value>/emagewebapp/pages/emage_general_query_result.jsf</value>
+    </property>
+
+	<!-- End INCF-AGEA properties --> 
+
+	<!-- Start WEBSERVICE properties --> 
+ 
+	<property>
+        <name>ucsd.webservice.host.name</name>
+        <value>smartatlas.crbs.ucsd.edu</value>
+    </property>
+
+	<property>
+        <name>ucsd.webservice.port.number</name>
+        <value>:8080</value>
+    </property>
+
+	<!-- End WEBSERVICE properties --> 
+	
+	<!-- Start SRSNames properties --> 
+ 	<property>
+        <name>srsname.abareference.10</name>
+        <value>Mouse_ABAreference_1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.abavoxel.10</name>
+        <value>Mouse_ABAvoxel_1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.agea.10</name>
+        <value>Mouse_AGEA_1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.whs.09</name>
+        <value>Mouse_WHS_0.9</value>
+    </property>
+
+	<property>
+        <name>srsname.whs.10</name>
+        <value>Mouse_WHS_1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.paxinos.10</name>
+        <value>Mouse_Paxinos_1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.emap.10</name>
+        <value>Mouse_EMAP-T26_1.0</value>
+    </property>
+
+	<property>
+        <name>code.abavoxel2agea.v1</name>
+        <value>Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.agea2abavoxel.v1</name>
+        <value>Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.whs092agea.v1</name>
+        <value>Mouse_WHS_0.9_To_Mouse_AGEA_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.agea2whs09.v1</name>
+        <value>Mouse_AGEA_1.0_To_Mouse_WHS_0.9_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.whs092whs10.v1</name>
+        <value>Mouse_WHS_0.9_To_Mouse_WHS_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.whs102whs09.v1</name>
+        <value>Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.abareference2abavoxel.v1</name>
+        <value>Mouse_ABAreference_1.0_To_Mouse_ABAvoxel_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.abavoxel2abareference.v1</name>
+        <value>Mouse_ABAvoxel_1.0_To_Mouse_ABAreference_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.paxinos2whs09.v1</name>
+        <value>Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0</value>
+    </property>
+
+	<property>
+        <name>code.whs092paxinos.v1</name>
+        <value>Mouse_WHS_0.9_To_Mouse_Paxinos_1.0_v1.0</value>
+    </property>
+
+	<!-- End SRSNames properties --> 
+	
+</aba-config-properties>
