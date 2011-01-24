@@ -11,14 +11,14 @@
   <JavaClass>org.incf.aba.atlas.process.ListSRSs</JavaClass>
   <Title>List SRSs</Title>
   <Abstract>
-    Lists the SRS (Spatial Reference System) names and their descriptions.
+	Lists the SRS (Spatial Reference System) names and their brief descriptions.
   </Abstract>
   
   <OutputParameters>
     <ComplexOutput>
       <Identifier>ListSRSsOutput</Identifier>
       <Title>List SRSs Output</Title>
-      <Abstract>This request lists the SRSs (Spatial Reference System) names and their descriptions in the request.</Abstract>
+      <Abstract>Lists the SRS (Spatial Reference System) names and their brief descriptions.</Abstract>
       <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
           schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ListSrsResponse.xsd"/>
     </ComplexOutput>

@@ -11,7 +11,7 @@
   <JavaClass>org.incf.aba.atlas.process.GetStructureNamesByPOI</JavaClass>
   <Title>Get Structure Names by POI</Title>
   <Abstract>
-    Get Structure Names at a POI (point of interest) specified in the request.
+    The response from this request contains a list of anatomic structure codes and their descriptions.
   </Abstract>
   
   <InputParameters>
@@ -64,7 +64,7 @@
     <ComplexOutput>
       <Identifier>GetStructureNamesByPOIOutput</Identifier>
       <Title>GetStructureNamesByPOI Output</Title>
-      <Abstract>The response from this request contains the structure code and its description.</Abstract>
+      <Abstract>The response from this request contains a list of anatomic structure codes and their descriptions.</Abstract>
       <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
           schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/StructureTermsResponse.xsd"/>
     </ComplexOutput>

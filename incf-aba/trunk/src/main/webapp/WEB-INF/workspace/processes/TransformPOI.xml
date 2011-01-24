@@ -11,7 +11,7 @@
   <JavaClass>org.incf.aba.atlas.process.TransformPOI</JavaClass>
   <Title>Transform POI</Title>
   <Abstract>
-    Transform POI (point of interest) specified in the request.
+    Transform POI (point of interest) coordinates using specified transformation.
   </Abstract>
   
   <InputParameters>
@@ -56,7 +56,7 @@
     <ComplexOutput>
       <Identifier>TransformPOIOutput</Identifier>
       <Title>TransformPOI Output</Title>
-      <Abstract>The response from this request contains the coordinate transformation between two SRS (Spatial Reference System) names.</Abstract>
+      <Abstract>Transform POI (point of interest) coordinates using specified transformation.</Abstract>
       <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
           schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/TransformationResponse.xsd"/>
     </ComplexOutput>

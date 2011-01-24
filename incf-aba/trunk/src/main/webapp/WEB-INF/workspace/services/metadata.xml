@@ -16,7 +16,7 @@
   </ServiceIdentification>
 
   <ServiceProvider>
-    <ProviderName>UCSD (University of California, San Diego)</ProviderName>
+    <ProviderName>INCF Digital Atlasing Infrastructure Task Force</ProviderName>
     <ProviderSite>http://ucsd.edu</ProviderSite>
     <ServiceContact>
       <IndividualName>Ilya Zaslavsky</IndividualName>
@@ -31,7 +31,7 @@
         <Country>USA</Country>
       </Address>
       <OnlineResource>http://ucsd.edu</OnlineResource>
-      <ContactInstructions>Don't hesitate to call</ContactInstructions>
+      <ContactInstructions>Call or e-mail</ContactInstructions>
       <Role>PointOfContact</Role>
     </ServiceContact>
   </ServiceProvider>

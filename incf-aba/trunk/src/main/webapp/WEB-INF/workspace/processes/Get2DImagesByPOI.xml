@@ -11,7 +11,7 @@
   <JavaClass>org.incf.aba.atlas.process.Get2DImagesByPOI</JavaClass>
   <Title>Get 2D Images by POI</Title>
   <Abstract>
-    Get 2D images at a POI (point of interest) specified in the request.
+	Lists registered 2D images found in the vicinity of the specified POI (point of interest)
   </Abstract>
 
   <InputParameters>
@@ -55,7 +55,7 @@
     <ComplexOutput>
       <Identifier>Get2DImagesByPOIOutput</Identifier>
       <Title>Get2DImagesByPOI Output</Title>
-      <Abstract>The response from this request contains URIs to images at the specified POI (point of interest).</Abstract>
+      <Abstract>Lists registered 2D images found in the vicinity of the specified POI (point of interest)</Abstract>
       <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
           schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ImagesResponse.xsd"/>
     </ComplexOutput>

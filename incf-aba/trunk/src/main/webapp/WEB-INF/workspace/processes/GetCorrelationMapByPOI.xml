@@ -11,7 +11,7 @@
   <JavaClass>org.incf.aba.atlas.process.GetCorrelationMapByPOI</JavaClass>
   <Title>Get Correlation Map by POI</Title>
   <Abstract>
-    Get Correlation Map by POI (point of interest) specified in the request.
+	Returns a Correlation Map: average gene expression correlation between the seed voxel supplied as POI and other voxels in the 3D brain.
   </Abstract>
 
   <InputParameters>
@@ -54,7 +54,7 @@
     <ComplexOutput>
       <Identifier>GetCorrelationMapByPOIOutput</Identifier>
       <Title>GetCorrelationMapByPOI Output</Title>
-      <Abstract>The response from this request contains the correlation map.</Abstract>
+      <Abstract>Returns a Correlation Map: average gene expression correlation between the seed voxel supplied as POI and other voxels in the 3D brain.</Abstract>
       <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
           schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/CorrelationMapResponse.xsd"/>
     </ComplexOutput>
