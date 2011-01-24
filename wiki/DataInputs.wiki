@@ -85,7 +85,7 @@ The INCF Atlas implementation will not accept:
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
-<LiteralInput>
+<LiteralInput minOccurs="0">
   <Identifier>srsName</Identifier>
   <Title>Atlas SRS Name</Title>
   <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
@@ -122,7 +122,7 @@ The INCF Atlas implementation will not accept:
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
 {{{
-<LiteralInput>
+<LiteralInput minOccurs="0">
   <Identifier>filter</Identifier>
   <Title>Filter</Title>
   <Abstract></Abstract>
