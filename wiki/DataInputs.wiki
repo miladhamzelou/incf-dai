@@ -107,13 +107,6 @@ WPS !DescribeProcess response:
 }}}
 
 The INCF Atlas implementation will accept:
- * ...://....&!DataInputs=...srsName=Mouse_AGEA_1.0;...
- * ...://....&!DataInputs=...srsName=abcde;...
-   * Any value
- * ...://....&!DataInputs=...srsName=;...
-   * An empty value; the default value (Mouse_AGEA_1.0) will be used
- * ...://....&!DataInputs=......
-   * The data input is omitted; the default value (Mouse_AGEA_1.0) will be used
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -177,6 +170,29 @@ The INCF Atlas implementation will accept:
  * ...://....&!DataInputs=...filter=maptype:sagittal;...
  * ...://....&!DataInputs=...filter=;...
    * An empty value; the default value (maptype:coronal) will be used
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <td>GET !DataInput</td>
+    <td>Value used in Atlas</td>
+  </tr>
+  <tr>
+    <td>filter=Mouse_AGEA_1.0;</td>
+    <td>Mouse_AGEA_1.0</td>
+  </tr>
+  <tr>
+    <td>filter=abcde;</td>
+    <td>abcde</td>
+  </tr>
+  <tr>
+    <td>filter=; (empty value)</td>
+    <td>maptype:coronal (by default)</td>
+  </tr>
+  <tr>
+    <td>(DataInput ommitted)</td>
+    <td>maptype:coronal (by default)</td>
+  </tr>
+</table>
 
 The INCF Atlas implementation will not accept:
  * ...://....&!DataInputs=...filter=abcde;...
