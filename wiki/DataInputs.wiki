@@ -4,18 +4,6 @@ The combinations of required v. optional, allowed values v. any value, and defau
 
 In each case, the specification in the Deegree !ProcessDefinition, the response from WPS !DescribeProcess, and the INCF Atlas implementation is shown with examples.
 
-<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
-  <tr>
-    <td>GET !DataInput</td>
-  </tr>
-  <tr>
-    <td>srsName=Mouse_AGEA_1.0;</td>
-  </tr>
-  <tr>
-    <td>srsName=abcde;</td>
-  </tr>
-</table>
-
 ==Case 1: Required Input, Any Non-Null Value is Accepted==
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
@@ -126,6 +114,29 @@ The INCF Atlas implementation will accept:
    * An empty value; the default value (Mouse_AGEA_1.0) will be used
  * ...://....&!DataInputs=......
    * The data input is omitted; the default value (Mouse_AGEA_1.0) will be used
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <td>GET !DataInput</td>
+    <td>Value used in Atlas</td>
+  </tr>
+  <tr>
+    <td>srsName=Mouse_AGEA_1.0;</td>
+    <td>Mouse_AGEA_1.0</td>
+  </tr>
+  <tr>
+    <td>srsName=abcde;</td>
+    <td>abcde</td>
+  </tr>
+  <tr>
+    <td>srsName=; (empty value)</td>
+    <td>Mouse_AGEA_1.0 (by default)</td>
+  </tr>
+  <tr>
+    <td>(DataInput ommitted)</td>
+    <td>Mouse_AGEA_1.0 (by default)</td>
+  </tr>
+</table>
 
 ==Case 4: Optional Input, Any of Several Allowed Values, With a Default Value==
  * If the data input is omitted, the default value is used
