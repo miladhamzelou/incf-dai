@@ -81,17 +81,33 @@ WPS !DescribeProcess response:
 </Input>
 }}}
 
-The INCF Atlas implementation will accept:
- * ...://....&!DataInputs=...filter=maptype:coronal;...
- * ...://....&!DataInputs=...filter=maptype:sagittal;...
-
-The INCF Atlas implementation will not accept:
- * ...://....&!DataInputs=...srsName=abcde;...
-   * The value must be in the list of allowed values
- * ...://....&!DataInputs=...srsName=;...
-   * An empty string is not allowed in this case
- * ...://....&!DataInputs=......
-   * The specified data input cannot be omitted
+The INCF Atlas implementation:
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th>GET !DataInput</th>
+    <th>Value used in Atlas</th>
+  </tr>
+  <tr>
+    <td>filter=maptype:coronal;</td>
+    <td>maptype:coronal</td>
+  </tr>
+  <tr>
+    <td>filter=maptype:sagittal;</td>
+    <td>maptype:sagittal</td>
+  </tr>
+  <tr>
+    <td>filter=abcde;</td>
+    <td>EXCEPTION: Value not allowed</td>
+  </tr>
+  <tr>
+    <td>filter=; (empty value)</td>
+    <td>EXCEPTION: Value not allowed</td>
+  </tr>
+  <tr>
+    <td>(!DataInput ommitted)</td>
+    <td>EXCEPTION: Required data input</td>
+  </tr>
+</table>
 
 ==Case 3: Optional Input, Any Value is Accepted, With a Default Value==
  * If the data input value is empty, the default value is used
