@@ -4,6 +4,18 @@ The combinations of required v. optional, allowed values v. any value, and defau
 
 In each case, the specification in the Deegree !ProcessDefinition, the response from WPS !DescribeProcess, and the INCF Atlas implementation is shown with examples.
 
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <td>GET<br/>DataInput</td>
+  </tr>
+  <tr>
+    <td>srsName=Mouse_AGEA_1.0;</td>
+  </tr>
+  <tr>
+    <td>srsName=abcde;</td>
+  </tr>
+</table>
+
 ==Case 1: Required Input, Any Non-Null Value is Accepted==
 
 !ProcessDefinition File (Deegree .../processes/Xxx.xml):
