@@ -27,16 +27,29 @@ WPS !DescribeProcess response:
 </Input>
 }}}
 
-The INCF Atlas implementation will accept:
- * ...://....&!DataInputs=...srsName=Mouse_AGEA_1.0;...
- * ...://....&!DataInputs=...srsName=abcde;...
-   * Any non-empty value
-
-The INCF Atlas implementation will not accept:
- * ...://....&!DataInputs=...srsName=;...
-   * An empty string is not allowed in this case
- * ...://....&!DataInputs=......
-   * The specified data input cannot be omitted
+The INCF Atlas implementation:
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th>GET !DataInput</th>
+    <th>Value used in Atlas</th>
+  </tr>
+  <tr>
+    <td>srsName=Mouse_AGEA_1.0;</td>
+    <td>Mouse_AGEA_1.0</td>
+  </tr>
+  <tr>
+    <td>srsName=abcde;</td>
+    <td>abcde</td>
+  </tr>
+  <tr>
+    <td>srsName=; (empty value)</td>
+    <td>EXCEPTION: Some value required</td>
+  </tr>
+  <tr>
+    <td>(!DataInput ommitted)</td>
+    <td>EXCEPTION: Required data input</td>
+  </tr>
+</table>
 
 ==Case 2: Required Input, Any of Several Allowed Values is Accepted==
 
@@ -106,8 +119,7 @@ WPS !DescribeProcess response:
 </Input>
 }}}
 
-The INCF Atlas implementation will accept:
-
+The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
@@ -165,12 +177,7 @@ WPS !DescribeProcess response:
 }}}
 
 
-The INCF Atlas implementation will accept:
- * ...://....&!DataInputs=...filter=maptype:coronal;...
- * ...://....&!DataInputs=...filter=maptype:sagittal;...
- * ...://....&!DataInputs=...filter=;...
-   * An empty value; the default value (maptype:coronal) will be used
-
+The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
@@ -197,9 +204,3 @@ The INCF Atlas implementation will accept:
     <td>maptype:coronal (by default)</td>
   </tr>
 </table>
-
-The INCF Atlas implementation will not accept:
- * ...://....&!DataInputs=...filter=abcde;...
-   * The value must be in the list of allowed values or be the same as the default value
- * ...://....&!DataInputs=......
-   * The specified data input cannot be omitted
