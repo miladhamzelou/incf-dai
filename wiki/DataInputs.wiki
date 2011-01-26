@@ -110,8 +110,8 @@ The INCF Atlas implementation will accept:
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <td>GET !DataInput</td>
-    <td>Value used in Atlas</td>
+    <th>GET !DataInput</th>
+    <th>Value used in Atlas</th>
   </tr>
   <tr>
     <td>srsName=Mouse_AGEA_1.0;</td>
@@ -173,8 +173,8 @@ The INCF Atlas implementation will accept:
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <td>GET !DataInput</td>
-    <td>Value used in Atlas</td>
+    <th>GET !DataInput</th>
+    <th>Value used in Atlas</th>
   </tr>
   <tr>
     <td>filter=maptype:coronal;</td>
@@ -186,7 +186,7 @@ The INCF Atlas implementation will accept:
   </tr>
   <tr>
     <td>filter=abcde;</td>
-    <td>abcde</td>
+    <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>filter=; (empty value)</td>
