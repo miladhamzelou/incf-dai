@@ -11,7 +11,7 @@
   <JavaClass>org.incf.ucsd.atlas.process.DescribeSRS</JavaClass>
   <Title>Describe SRS</Title>
   <Abstract>
-    Describes the SRS (Spatial Reference System) name and its description.
+    Provides the SRS (Spatial Reference System) name and its detailed description.
   </Abstract>
 
   <InputParameters>
@@ -30,7 +30,7 @@
     <ComplexOutput>
       <Identifier>DescribeSRSsOutput</Identifier>
       <Title>Describe SRSs Output</Title>
-      <Abstract>This request describes the SRS (Spatial Reference System) names and their descriptions in the request.</Abstract>
+      <Abstract>    Provides the SRS (Spatial Reference System) name and its detailed description.</Abstract>
       <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
           schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/DescribeSrsResponse.xsd"/>
     </ComplexOutput>
