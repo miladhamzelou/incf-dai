@@ -6,7 +6,7 @@ In each case, the specification in the Deegree !ProcessDefinition, the response 
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <td>GET<br/>DataInput</td>
+    <td>GET !DataInput</td>
   </tr>
   <tr>
     <td>srsName=Mouse_AGEA_1.0;</td>
@@ -124,10 +124,8 @@ The INCF Atlas implementation will accept:
    * Any value
  * ...://....&!DataInputs=...srsName=;...
    * An empty value; the default value (Mouse_AGEA_1.0) will be used
-
-The INCF Atlas implementation will not accept:
  * ...://....&!DataInputs=......
-   * The specified data input cannot be omitted
+   * The data input is omitted; the default value (Mouse_AGEA_1.0) will be used
 
 ==Case 4: Optional Input, Any of Several Allowed Values, With a Default Value==
  * If the data input is omitted, the default value is used
