@@ -43,7 +43,7 @@ The INCF Atlas implementation:
   </tr>
   <tr>
     <td>srsName=; (empty value)</td>
-    <td>EXCEPTION: Some value required</td>
+    <td>EXCEPTION: A value is required</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
