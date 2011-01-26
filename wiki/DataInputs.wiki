@@ -126,7 +126,7 @@ The INCF Atlas implementation will accept:
     <td>Mouse_AGEA_1.0 (by default)</td>
   </tr>
   <tr>
-    <td>(DataInput ommitted)</td>
+    <td>(!DataInput ommitted)</td>
     <td>Mouse_AGEA_1.0 (by default)</td>
   </tr>
 </table>
@@ -177,8 +177,12 @@ The INCF Atlas implementation will accept:
     <td>Value used in Atlas</td>
   </tr>
   <tr>
-    <td>filter=Mouse_AGEA_1.0;</td>
-    <td>Mouse_AGEA_1.0</td>
+    <td>filter=maptype:coronal;</td>
+    <td>maptype:coronal</td>
+  </tr>
+  <tr>
+    <td>filter=maptype:sagittal;</td>
+    <td>maptype:sagittal</td>
   </tr>
   <tr>
     <td>filter=abcde;</td>
@@ -189,7 +193,7 @@ The INCF Atlas implementation will accept:
     <td>maptype:coronal (by default)</td>
   </tr>
   <tr>
-    <td>(DataInput ommitted)</td>
+    <td>(!DataInput ommitted)</td>
     <td>maptype:coronal (by default)</td>
   </tr>
 </table>
