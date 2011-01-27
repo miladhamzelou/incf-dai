@@ -31,22 +31,27 @@ The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
+    <th>Received value</th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
     <td>srsName=Mouse_AGEA_1.0;</td>
     <td>Mouse_AGEA_1.0</td>
+    <td>Mouse_AGEA_1.0</td>
   </tr>
   <tr>
     <td>srsName=abcde;</td>
     <td>abcde</td>
+    <td>abcde</td>
   </tr>
   <tr>
     <td>srsName=; (empty value)</td>
+    <td></td>
     <td>EXCEPTION: A value is required</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
+    <td></td>
     <td>EXCEPTION: Required data input</td>
   </tr>
 </table>
