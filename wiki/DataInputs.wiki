@@ -32,26 +32,31 @@ The INCF Atlas implementation:
   <tr>
     <th>GET !DataInput</th>
     <th>Received value</th>
+    <th>Program action</th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
     <td>srsName=Mouse_AGEA_1.0;</td>
     <td>Mouse_AGEA_1.0</td>
+    <td>Accept value</td>
     <td>Mouse_AGEA_1.0</td>
   </tr>
   <tr>
     <td>srsName=abcde;</td>
     <td>abcde</td>
+    <td>Accept value</td>
     <td>abcde</td>
   </tr>
   <tr>
     <td>srsName=; (empty value)</td>
     <td>null</td>
+    <td>Throw exception</td>
     <td>EXCEPTION: A value is required</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
-    <td>none (Deegree exception)</td>
+    <td>none</td>
+    <td>none (handled by Deegree)</td>
     <td>EXCEPTION: Required data input</td>
   </tr>
 </table>
@@ -91,31 +96,37 @@ The INCF Atlas implementation:
   <tr>
     <th>GET !DataInput</th>
     <th>Received value</th>
+    <th>Program action</th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
     <td>filter=maptype:coronal;</td>
     <td>maptype:coronal</td>
+    <td>validate value</td>
     <td>maptype:coronal</td>
   </tr>
   <tr>
     <td>filter=maptype:sagittal;</td>
     <td>maptype:sagittal</td>
+    <td>validate value</td>
     <td>maptype:sagittal</td>
   </tr>
   <tr>
     <td>filter=abcde;</td>
     <td>abcde</td>
+    <td>validate, throw exception</td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>filter=; (empty value)</td>
     <td>null</td>
+    <td>validate, throw exception</td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
-    <td>none (Deegree exception)</td>
+    <td>none</td>
+    <td>none (handled by Deegree)</td>
     <td>EXCEPTION: Required data input</td>
   </tr>
 </table>
@@ -151,26 +162,31 @@ The INCF Atlas implementation:
   <tr>
     <th>GET !DataInput</th>
     <th>Received value</th>
+    <th>Program action</th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
     <td>srsName=Mouse_AGEA_1.0;</td>
     <td>Mouse_AGEA_1.0</td>
+    <td>Accept value</td>
     <td>Mouse_AGEA_1.0</td>
   </tr>
   <tr>
     <td>srsName=abcde;</td>
     <td>abcde</td>
+    <td>Accept value</td>
     <td>abcde</td>
   </tr>
   <tr>
     <td>srsName=; (empty value)</td>
     <td>null</td>
+    <td>Assign default value</td>
     <td>Mouse_AGEA_1.0 (by default)</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
     <td>none</td>
+    <td>Assign default value</td>
     <td>Mouse_AGEA_1.0 (by default)</td>
   </tr>
 </table>
@@ -214,31 +230,37 @@ The INCF Atlas implementation:
   <tr>
     <th>GET !DataInput</th>
     <th>Received value</th>
+    <th>Program action</th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
     <td>filter=maptype:coronal;</td>
     <td>maptype:coronal</td>
+    <td>validate value</td>
     <td>maptype:coronal</td>
   </tr>
   <tr>
     <td>filter=maptype:sagittal;</td>
     <td>maptype:sagittal</td>
+    <td>validate value</td>
     <td>maptype:sagittal</td>
   </tr>
   <tr>
     <td>filter=abcde;</td>
     <td>abcde</td>
+    <td>validate, throw exception</td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>filter=; (empty value)</td>
     <td>null</td>
+    <td>Assign default value</td>
     <td>maptype:coronal (by default)</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
     <td>none</td>
+    <td>Assign default value</td>
     <td>maptype:coronal (by default)</td>
   </tr>
 </table>
