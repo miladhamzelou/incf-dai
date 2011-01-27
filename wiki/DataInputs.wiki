@@ -90,26 +90,32 @@ The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
+    <th>Received value</th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
     <td>filter=maptype:coronal;</td>
     <td>maptype:coronal</td>
+    <td>maptype:coronal</td>
   </tr>
   <tr>
     <td>filter=maptype:sagittal;</td>
     <td>maptype:sagittal</td>
+    <td>maptype:sagittal</td>
   </tr>
   <tr>
     <td>filter=abcde;</td>
+    <td></td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>filter=; (empty value)</td>
+    <td></td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
+    <td></td>
     <td>EXCEPTION: Required data input</td>
   </tr>
 </table>
@@ -144,22 +150,27 @@ The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
+    <th>Received value</th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
     <td>srsName=Mouse_AGEA_1.0;</td>
     <td>Mouse_AGEA_1.0</td>
+    <td>Mouse_AGEA_1.0</td>
   </tr>
   <tr>
     <td>srsName=abcde;</td>
     <td>abcde</td>
+    <td>abcde</td>
   </tr>
   <tr>
     <td>srsName=; (empty value)</td>
+    <td></td>
     <td>Mouse_AGEA_1.0 (by default)</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
+    <td></td>
     <td>Mouse_AGEA_1.0 (by default)</td>
   </tr>
 </table>
@@ -202,26 +213,32 @@ The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
+    <th>Received value</th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
     <td>filter=maptype:coronal;</td>
     <td>maptype:coronal</td>
+    <td>maptype:coronal</td>
   </tr>
   <tr>
     <td>filter=maptype:sagittal;</td>
     <td>maptype:sagittal</td>
+    <td>maptype:sagittal</td>
   </tr>
   <tr>
     <td>filter=abcde;</td>
+    <td></td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>filter=; (empty value)</td>
+    <td></td>
     <td>maptype:coronal (by default)</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
+    <td></td>
     <td>maptype:coronal (by default)</td>
   </tr>
 </table>
