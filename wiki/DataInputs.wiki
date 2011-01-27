@@ -102,31 +102,31 @@ The INCF Atlas implementation:
   <tr>
     <td>filter=maptype:coronal;</td>
     <td>maptype:coronal</td>
-    <td>validate value</td>
+    <td>Validate value</td>
     <td>maptype:coronal</td>
   </tr>
   <tr>
     <td>filter=maptype:sagittal;</td>
     <td>maptype:sagittal</td>
-    <td>validate value</td>
+    <td>Validate value</td>
     <td>maptype:sagittal</td>
   </tr>
   <tr>
     <td>filter=abcde;</td>
     <td>abcde</td>
-    <td>validate, throw exception</td>
+    <td>Validate, throw exception</td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>filter=; (empty value)</td>
     <td>null</td>
-    <td>validate, throw exception</td>
+    <td>Validate, throw exception</td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
     <td>none</td>
-    <td>none (handled by Deegree)</td>
+    <td>None (handled by Deegree)</td>
     <td>EXCEPTION: Required data input</td>
   </tr>
 </table>
@@ -236,19 +236,19 @@ The INCF Atlas implementation:
   <tr>
     <td>filter=maptype:coronal;</td>
     <td>maptype:coronal</td>
-    <td>validate value</td>
+    <td>Validate value</td>
     <td>maptype:coronal</td>
   </tr>
   <tr>
     <td>filter=maptype:sagittal;</td>
     <td>maptype:sagittal</td>
-    <td>validate value</td>
+    <td>Validate value</td>
     <td>maptype:sagittal</td>
   </tr>
   <tr>
     <td>filter=abcde;</td>
     <td>abcde</td>
-    <td>validate, throw exception</td>
+    <td>Validate, throw exception</td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
