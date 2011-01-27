@@ -51,7 +51,7 @@ The INCF Atlas implementation:
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
-    <td>none: Deegree exception</td>
+    <td>none (Deegree exception)</td>
     <td>EXCEPTION: Required data input</td>
   </tr>
 </table>
@@ -105,17 +105,17 @@ The INCF Atlas implementation:
   </tr>
   <tr>
     <td>filter=abcde;</td>
-    <td></td>
+    <td>abcde</td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>filter=; (empty value)</td>
-    <td></td>
+    <td>null</td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
-    <td></td>
+    <td>none (Deegree exception)</td>
     <td>EXCEPTION: Required data input</td>
   </tr>
 </table>
