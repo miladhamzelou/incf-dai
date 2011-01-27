@@ -165,12 +165,12 @@ The INCF Atlas implementation:
   </tr>
   <tr>
     <td>srsName=; (empty value)</td>
-    <td></td>
+    <td>null</td>
     <td>Mouse_AGEA_1.0 (by default)</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
-    <td></td>
+    <td>none</td>
     <td>Mouse_AGEA_1.0 (by default)</td>
   </tr>
 </table>
@@ -228,17 +228,17 @@ The INCF Atlas implementation:
   </tr>
   <tr>
     <td>filter=abcde;</td>
-    <td></td>
+    <td>abcde</td>
     <td>EXCEPTION: Value not allowed</td>
   </tr>
   <tr>
     <td>filter=; (empty value)</td>
-    <td></td>
+    <td>null</td>
     <td>maptype:coronal (by default)</td>
   </tr>
   <tr>
     <td>(!DataInput ommitted)</td>
-    <td></td>
+    <td>none</td>
     <td>maptype:coronal (by default)</td>
   </tr>
 </table>
