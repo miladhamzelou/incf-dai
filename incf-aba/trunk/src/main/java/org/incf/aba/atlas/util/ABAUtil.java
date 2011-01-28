@@ -1,14 +1,20 @@
 package org.incf.aba.atlas.util;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.StringTokenizer;
 
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
@@ -17,6 +23,7 @@ import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.xml.XMLAdapter;
 import org.deegree.services.wps.output.ComplexOutput;
 
+import org.incf.aba.atlas.process.Get2DImagesByPOI;
 import org.incf.atlas.waxml.generated.CoordinateChainTransformType;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseDocument;
 import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseType.CoordinateTransformationChain;
@@ -25,9 +32,13 @@ import org.incf.atlas.waxml.generated.ListTransformationsResponseDocument;
 import org.incf.atlas.waxml.generated.ListTransformationsResponseType.TransformationList;
 import org.incf.atlas.waxml.generated.impl.CoordinateTransformationInfoTypeImpl;
 import org.incf.atlas.waxml.utilities.Utilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ABAUtil {
 
+    private static final Logger LOG = LoggerFactory.getLogger(ABAUtil.class);
+    
 	ABAConfigurator config = ABAConfigurator.INSTANCE;
 
 	String abaReference = config.getValue("srsname.abareference.10");
@@ -4171,6 +4182,96 @@ public class ABAUtil {
 	return transformedCoordinateString;
 
 	}
+	
+	/**
+	 * Returns a list of gene symbols from Allen Brain Atlas that express at
+	 * the given location. The number returned is determined by the last 
+	 * argument. The list is in order of the strength of expression.
+	 *  
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param nbrStrongGenes
+	 * @return
+	 * @throws IOException
+	 * @throws XMLStreamException
+	 */
+	public static List<String> retrieveStrongGenesAtPOI(double x, double y, 
+			double z, int nbrStrongGenes) throws IOException, 
+					XMLStreamException {
+        List<String> strongGenes = new ArrayList<String>();
+	    	
+        // round coords to nearest xx00, where xx is even
+        URL u = new URL(ABAUtil.assembleGeneFinderURI(
+        		String.valueOf(ABAUtil.round200(x)), 
+        		String.valueOf(ABAUtil.round200(y)), 
+        		String.valueOf(ABAUtil.round200(z))));
 
+        LOG.debug("Gene finder URI: {}", u.toString());
+
+        InputStream in = u.openStream();
+        XMLInputFactory factory = XMLInputFactory.newInstance();
+        XMLStreamReader parser = factory.createXMLStreamReader(in);
+
+        boolean inGeneSymbol = false;
+        String geneSymbol = null;
+        int i = 0;
+        for (int event = parser.next();  
+        event != XMLStreamConstants.END_DOCUMENT;
+        event = parser.next()) {
+        	if (event == XMLStreamConstants.START_ELEMENT) {
+        		if (parser.getLocalName().equals("genesymbol")) {
+        			inGeneSymbol = true;
+        		}
+        	} else if (event == XMLStreamConstants.CHARACTERS) {
+        		if (inGeneSymbol) {
+        			geneSymbol = parser.getText();
+        			strongGenes.add(geneSymbol);
+        			i++;
+        			if (i >= nbrStrongGenes) {
+        				break;
+        			}
+        			inGeneSymbol = false;
+        		}
+        	}
+        }
+        try {
+        	parser.close();
+        } catch (XMLStreamException e) {
+        	LOG.warn(e.getMessage(), e);		// log but go on
+        }
+
+        // debug
+        for (String gene : strongGenes) {
+        	LOG.debug("gene: {}", gene);
+        }
+	    return strongGenes;
+	}
+	
+	/**
+	 * Rounds a number to the nearest 200 to match Allen Brain Atlas's use of
+	 * 200x200micron voxels.
+	 * 
+	 * @param a
+	 * @return
+	 */
+	public static int round200(double a) {
+		return ((int) ((a / 200) + 0.5)) * 200;
+	}
+
+	/**
+	 * Returns a URI that will access the Allen Brain Atlas's gene finder
+	 * using given coordinates.
+	 * 
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return
+	 */
+	public static String assembleGeneFinderURI(String x, String y, String z) {
+		return String.format(
+			"http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=%s,%s,%s", 
+			x, y, z);
+	}
 	
 }
