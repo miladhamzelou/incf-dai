@@ -4263,6 +4263,8 @@ public class ABAUtil {
 	 * Returns a URI that will access the Allen Brain Atlas's gene finder
 	 * using given coordinates.
 	 * 
+	 * Example: http://www.brain-map.org/agea/GeneFinder.xml?seedPoint=6600,4000,5600
+	 * 
 	 * @param x
 	 * @param y
 	 * @param z
@@ -4272,6 +4274,21 @@ public class ABAUtil {
 		return String.format(
 			"http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=%s,%s,%s", 
 			x, y, z);
+	}
+	
+	/**
+	 * Returns a URI that will access the Allen Brain Atlas for information
+	 * about the given gene.
+	 * 
+	 * Example: http://www.brain-map.org/aba/api/gene/C1ql2.xml
+	 * 
+	 * @param geneSymbol
+	 * @return
+	 */
+	public static String assembleGeneURI(String geneSymbol) {
+		return String.format(
+				"http://www.brain-map.org/aba/api/gene/%s.xml", 
+				geneSymbol);
 	}
 	
 }

@@ -16,7 +16,6 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
-import org.apache.log4j.spi.Configurator;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
 import org.deegree.commons.utils.kvp.MissingParameterException;
@@ -42,6 +41,7 @@ import org.incf.atlas.waxml.generated.IncfRemoteFormatEnum;
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.incf.common.atlas.exception.InvalidDataInputValueException;
 import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.DataInputHandler;
 import org.incf.common.atlas.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,67 +65,21 @@ public class Get2DImagesByPOI implements Processlet {
             ProcessletExecutionInfo info) throws ProcessletException {
     	try {
 
-    		// collect input values
-    		String srsName = Util.getStringInputValue(in, "srsName");
-    		double x = Util.getDoubleInputValue(in, "x");
-    		double y = Util.getDoubleInputValue(in, "y");
-    		double z = Util.getDoubleInputValue(in, "z");
-    		String filter = Util.getStringInputValue(in, "filter");
-    		
-    		LOG.debug("srsName: {}, filter: {}", srsName, filter);
-    		
     		// validate against allowed values in process definition file
     		URL processDefinitionUrl = this.getClass().getResource(
     				"/" + this.getClass().getSimpleName() + ".xml");
     		
-    		// old
-//    		AllowedValuesValidator validator = new AllowedValuesValidator(
-//    				new File(processDefinitionUrl.toURI()));
-//    		if (!validator.validate("srsName", srsName)) {
-//    			throw new InvalidDataInputValueException("The srsName value '" 
-//    					+ srsName + "' is not amoung the allowed values "
-//    					+ "specified in the AllowedValues element of the "
-//    					+ "ProcessDescription.", "srsName");
-//    		}
-//    		if (!validator.validate("filter", filter)) {
-//    			throw new InvalidDataInputValueException("The filter value '" 
-//    					+ filter + "' is not amoung the allowed values "
-//    					+ "specified in the AllowedValues element of the "
-//    					+ "ProcessDescription.", "filter");
-//    		}
-    		
-    		
-    		// new
-    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    		// get validated data inputs or default values
+    		DataInputHandler dataInputHandler = new DataInputHandler(
     				new File(processDefinitionUrl.toURI()));
-    		AllowedValuesValidator.ValidationResult vr = null; 
+    		String srsName = dataInputHandler.getValidatedStringValue(in, 
+    				"srsName");
+    		String filter = dataInputHandler.getValidatedStringValue(in, 
+					"filter");
+    		double x = DataInputHandler.getDoubleInputValue(in, "x");
+    		double y = DataInputHandler.getDoubleInputValue(in, "y");
+    		double z = DataInputHandler.getDoubleInputValue(in, "z");
     		
-    		// validate srsName
-    		vr = validator.validateNEW("srsName", srsName);
-    		if (!vr.isValid()) {
-    			if (vr.getDefaultValue() != null) {
-    				
-    				// if input not valid and there's default, use it
-    				srsName = vr.getDefaultValue();
-    			} else {
-    				
-    				// if input not valid and there's no default, exception
-        			throw new InvalidDataInputValueException(vr.getMessage(), 
-        					"srsName");
-    			}
-    		}
-    		
-    		// validate filter (same as above)
-    		vr = validator.validateNEW("filter", filter);
-    		if (!vr.isValid()) {
-    			if (vr.getDefaultValue() != null) {
-    				filter = vr.getDefaultValue();
-    			} else {
-        			throw new InvalidDataInputValueException(vr.getMessage(), 
-        					"filter");
-    			}
-    		}
-
     		LOG.debug(String.format(
     				"DataInputs: srsName: %s, poi: (%f, %f, %f), filter: %s",
     				srsName, x, y, z, filter));
@@ -157,7 +111,7 @@ public class Get2DImagesByPOI implements Processlet {
     				? ImageSeriesPlane.CORONAL : ImageSeriesPlane.SAGITTAL;
 
     		// 1. get strong gene(s) at POI
-    		List<String> strongGenes = retrieveStrongGenesAtPOI(x, y, z,
+    		List<String> strongGenes = ABAUtil.retrieveStrongGenesAtPOI(x, y, z,
     				NBR_STRONG_GENES);
 
     		// make sure we have something
@@ -304,63 +258,11 @@ public class Get2DImagesByPOI implements Processlet {
     public void init() {
     }
     
-	private List<String> retrieveStrongGenesAtPOI(double x, double y, 
-			double z, int nbrStrongGenes) throws IOException, 
-					XMLStreamException {
-        List<String> strongGenes = new ArrayList<String>();
-	    	
-        // round coords to nearest xx00, where xx is even
-        URL u = new URL(assembleGeneFinderURI(
-        		String.valueOf(round200(x)), 
-        		String.valueOf(round200(y)), 
-        		String.valueOf(round200(z))));
-
-        LOG.debug("Gene finder URI: {}", u.toString());
-
-        InputStream in = u.openStream();
-        XMLInputFactory factory = XMLInputFactory.newInstance();
-        XMLStreamReader parser = factory.createXMLStreamReader(in);
-
-        boolean inGeneSymbol = false;
-        String geneSymbol = null;
-        int i = 0;
-        for (int event = parser.next();  
-        event != XMLStreamConstants.END_DOCUMENT;
-        event = parser.next()) {
-        	if (event == XMLStreamConstants.START_ELEMENT) {
-        		if (parser.getLocalName().equals("genesymbol")) {
-        			inGeneSymbol = true;
-        		}
-        	} else if (event == XMLStreamConstants.CHARACTERS) {
-        		if (inGeneSymbol) {
-        			geneSymbol = parser.getText();
-        			strongGenes.add(geneSymbol);
-        			i++;
-        			if (i >= nbrStrongGenes) {
-        				break;
-        			}
-        			inGeneSymbol = false;
-        		}
-        	}
-        }
-        try {
-        	parser.close();
-        } catch (XMLStreamException e) {
-        	LOG.warn(e.getMessage(), e);		// log but go on
-        }
-
-        // debug
-        for (String gene : strongGenes) {
-        	LOG.debug("gene: {}", gene);
-        }
-	    return strongGenes;
-	}
-	
 	private ImageSeries retrieveImagesSeriesForGene(String geneSymbol,
 			ImageSeriesPlane desiredPlane) throws IOException, 
 					XMLStreamException {
 		ImageSeries imageSeries = null;
-		URL u = new URL(assembleGeneURI(geneSymbol));
+		URL u = new URL(ABAUtil.assembleGeneURI(geneSymbol));
 
 		LOG.debug("Gene info URI: {}", u.toString());
 
@@ -532,30 +434,6 @@ public class Get2DImagesByPOI implements Processlet {
 	}
 	
 	/**
-	 * Example: http://www.brain-map.org/aba/api/gene/C1ql2.xml
-	 * 
-	 * @param geneSymbol
-	 * @return
-	 */
-	private String assembleGeneFinderURI(String x, String y, String z) {
-		return String.format(
-			"http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=%s,%s,%s", 
-			x, y, z);
-	}
-	
-	/**
-	 * Example: http://www.brain-map.org/aba/api/gene/C1ql2.xml
-	 * 
-	 * @param geneSymbol
-	 * @return
-	 */
-	private String assembleGeneURI(String geneSymbol) {
-		return String.format(
-				"http://www.brain-map.org/aba/api/gene/%s.xml", 
-				geneSymbol);
-	}
-	
-	/**
 	 * Example: http://www.brain-map.org/aba/api/atlas/map/71587929.map
 	 * 
 	 * @param imageSeriesId
@@ -693,10 +571,6 @@ public class Get2DImagesByPOI implements Processlet {
 		return document;
 	}
 	
-	public static int round200(double a) {
-		return ((int) ((a / 200) + 0.5)) * 200;
-	}
-
 	public ABAServiceVO getTransformPOI(String fromSrsName, double x, double y, double z) 
 		throws OWSException{
 
