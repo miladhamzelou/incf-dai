@@ -1,0 +1,9 @@
+Deegree
+
+3.0-SANPSHOT repository
+http://svn.wald.intevation.org/svn/deegree/
+http://svn.wald.intevation.org/svn/deegree/deegree3/branches/3.0/deegree-core
+http://svn.wald.intevation.org/svn/deegree/deegree3/branches/3.0/deegree-services
+
+Modified
+org.deegree.services.wps.capabilities.CapabilitiesXMLWriter.java

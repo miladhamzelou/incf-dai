@@ -35,10 +35,15 @@
   </build>
 
   <dependencies>
+<!--    <dependency>-->
+<!--      <groupId>org.deegree</groupId>-->
+<!--      <artifactId>deegree-services</artifactId>-->
+<!--      <version>3.0.0</version>-->
+<!--    </dependency>-->
     <dependency>
-      <groupId>org.deegree</groupId>
+      <groupId>edu.ucsd.drlittle</groupId>
       <artifactId>deegree-services</artifactId>
-      <version>3.0.0</version>
+      <version>3.0.50-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>AtlasXmlBeans</groupId>
