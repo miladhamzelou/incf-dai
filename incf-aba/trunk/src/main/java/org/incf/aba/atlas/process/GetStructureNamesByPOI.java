@@ -22,7 +22,6 @@ import org.deegree.services.wps.ProcessletException;
 import org.deegree.services.wps.ProcessletExecutionInfo;
 import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
-import org.deegree.services.wps.input.LiteralInput;
 import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.aba.atlas.util.ABAConfigurator;
 import org.incf.aba.atlas.util.ABAServiceVO;
@@ -37,6 +36,7 @@ import org.incf.atlas.waxml.generated.StructureTermsResponseType.StructureTerms;
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.incf.common.atlas.exception.InvalidDataInputValueException;
 import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.DataInputHandler;
 import org.incf.common.atlas.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,15 +71,31 @@ public class GetStructureNamesByPOI implements Processlet {
 
     		System.out.println(" Inside GetStructureNamesByPOI... ");
     		// collect input values
+    		
+    		/* asif's old code, 9:36pm 1/31/11
     		String srsName = Util.getStringInputValue(in, "srsName");
     		String x = String.valueOf(Util.getDoubleInputValue(in, "x"));
     		String y = String.valueOf(Util.getDoubleInputValue(in, "y"));
     		String z = String.valueOf(Util.getDoubleInputValue(in, "z"));
     		String filter = Util.getStringInputValue(in, "filter");
     		String vocabulary = Util.getStringInputValue(in, "vocabulary");
-
+    		*/
+    		
+    		// dave's replacement code, 9:37p 1/31/11
     		URL processDefinitionUrl = this.getClass().getResource(
     				"/" + this.getClass().getSimpleName() + ".xml");
+    		DataInputHandler dataInputHandler = new DataInputHandler(
+    				new File(processDefinitionUrl.toURI()));
+    		String srsName = dataInputHandler.getValidatedStringValue(in, "srsName");
+    		String x = String.valueOf(DataInputHandler.getDoubleInputValue(in, "x"));
+    		String y = String.valueOf(DataInputHandler.getDoubleInputValue(in, "y"));
+    		String z = String.valueOf(DataInputHandler.getDoubleInputValue(in, "z"));
+    		String filter = dataInputHandler.getValidatedStringValue(in, "filter");
+    		String vocabulary = dataInputHandler.getValidatedStringValue(in, "vocabulary");
+    		// end of dave's replacement code
+
+//    		URL processDefinitionUrl = this.getClass().getResource(
+//    				"/" + this.getClass().getSimpleName() + ".xml");
 /*    		AllowedValuesValidator validator = new AllowedValuesValidator(
     				new File(processDefinitionUrl.toURI()));
 
