@@ -52,14 +52,6 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
     <td align="center"></td>
   </tr>
   <tr>
-    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Get2DImagesByURI Get2DImagesByURI]</th>
-    <td align="center"></td>
-    <td align="center"></td>
-    <td align="center"></td>
-    <td align="center">x</td>
-    <td align="center"></td>
-  </tr>
-  <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCorrelationMapByPOI GetCorrelationMapByPOI]</th>
     <td align="center"></td>
     <td align="center">*X*</td>
@@ -101,7 +93,7 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetTransformationChain GetTransformationChain]`**`</th>
-    <td align="center">*X*</td>
+    <td align="center">*O*`***`</td>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
@@ -109,7 +101,7 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListSRSs ListSRSs]</th>
-    <td align="center">*X*</td>
+    <td align="center">*O*`***`</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
@@ -117,7 +109,7 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListTransformations ListTransformations]</th>
-    <td align="center">*X*</td>
+    <td align="center">*O*`***`</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
