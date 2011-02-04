@@ -11,7 +11,11 @@ Version 0.6. Now formatted as a specification (please edit with track changes an
 
 Version 0.7 - edited up to 7.4 so far...
 
- https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B6iM3IMv4N2qMWFlYjc2YjYtYjU3Zi00NTZlLWE2N2ItMjA2ODM1ZTkwOTk1&hl=en&authkey=CND5470J
+ http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_07_iz1_accepted_to_7.4.doc
+
+ and
+
+ http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_07_iz1_trackchanges.doc
 
 
 A Powerpoint presentation describing available spatial reference systems:
