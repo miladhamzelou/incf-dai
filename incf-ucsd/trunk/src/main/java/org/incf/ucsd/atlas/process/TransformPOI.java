@@ -32,6 +32,7 @@ import org.incf.atlas.waxml.generated.TransformationResponseType;
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.incf.common.atlas.exception.InvalidDataInputValueException;
 import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.DataInputHandler;
 import org.incf.common.atlas.util.Util;
 import org.incf.common.atlas.util.CommonUtil;
 import org.incf.ucsd.atlas.util.UCSDConfigurator;
@@ -86,43 +87,15 @@ public class TransformPOI implements Processlet {
 
 		    // parse dataInputs string
     		System.out.println(" Inside TransformPOI... ");
-    		// collect input values
-    		String transformationCode = Util.getStringInputValue(in, "transformationCode");
-    		String x = String.valueOf(Util.getDoubleInputValue(in, "x"));
-    		String y = String.valueOf(Util.getDoubleInputValue(in, "y"));
-    		String z = String.valueOf(Util.getDoubleInputValue(in, "z"));
-
+    		
     		URL processDefinitionUrl = this.getClass().getResource(
     				"/" + this.getClass().getSimpleName() + ".xml");
-/*    		AllowedValuesValidator validator = new AllowedValuesValidator(
+    		DataInputHandler dataInputHandler = new DataInputHandler(
     				new File(processDefinitionUrl.toURI()));
-
-    		if (!validator.validate("transformationCode", transformationCode)) {
-    			throw new InvalidDataInputValueException("The transformationCode value '" 
-    					+ transformationCode + "' is not among the allowed values "
-    					+ "specified in the AllowedValues element of the "
-    					+ "ProcessDescription.", "transformationCode");
-    		}
-*/
-    		// new
-    		AllowedValuesValidator validator = new AllowedValuesValidator(
-    				new File(processDefinitionUrl.toURI()));
-    		AllowedValuesValidator.ValidationResult vr = null; 
-    		
-    		// validate srsName
-    		vr = validator.validateNEW("transformationCode", transformationCode);
-    		if (!vr.isValid()) {
-    			if (vr.getDefaultValue() != null) {
-    				
-    				// if input not valid and there's default, use it
-    				transformationCode = vr.getDefaultValue();
-    			} else {
-    				
-    				// if input not valid and there's no default, exception
-        			throw new InvalidDataInputValueException(vr.getMessage(), 
-        					"transformationCode");
-    			}
-    		}
+    		String transformationCode = dataInputHandler.getValidatedStringValue(in, "transformationCode");
+    		String x = String.valueOf(DataInputHandler.getDoubleInputValue(in, "x"));
+    		String y = String.valueOf(DataInputHandler.getDoubleInputValue(in, "y"));
+    		String z = String.valueOf(DataInputHandler.getDoubleInputValue(in, "z"));
     		
 	        vo.setTransformationCode(transformationCode);
 			String[] transformationNameArray;
@@ -139,16 +112,8 @@ public class TransformPOI implements Processlet {
 	        vo.setToSRSCodeOne(toSRSCode);
 	        vo.setToSRSCode(toSRSCode);
 
-	        //vo.setFilter(filter);
-
 	        System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
 	        System.out.println("To SRS Code: " + vo.getToSRSCodeOne());
-	        //System.out.println("Filter: " + vo.getFilter());
-
-	        // validate data inputs
-/*	        validateSrsName(vo.getFromSRSCodeOne());
-	        validateSrsName(vo.getToSRSCodeOne());
-*/	        
 
 	        vo.setOriginalCoordinateX(String.valueOf(x));
 	        vo.setOriginalCoordinateY(String.valueOf(y));
@@ -157,15 +122,6 @@ public class TransformPOI implements Processlet {
 	        System.out.println("X: "+vo.getOriginalCoordinateX());
 	        System.out.println("Y: "+vo.getOriginalCoordinateY());
 	        System.out.println("Z: "+vo.getOriginalCoordinateZ());
-
-	        // if any validation exceptions, no reason to continue
-/*	        if (exceptionHandler != null) {
-	            return getExceptionRepresentation();
-	        }
-*/
-		// text return for debugging
-		//Set<String> dataInputKeys = dataInputs.getKeys();
-		System.out.println("-2");
 
 		//Start - Call the main method here
 		UCSDUtil util = new UCSDUtil();

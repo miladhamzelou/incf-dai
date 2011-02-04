@@ -19,6 +19,7 @@ import org.deegree.services.wps.input.LiteralInput;
 import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.common.atlas.exception.InvalidDataInputValueException;
 import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.DataInputHandler;
 import org.incf.common.atlas.util.Util;
 import org.incf.ucsd.atlas.util.UCSDConfigurator;
 import org.incf.ucsd.atlas.util.UCSDServiceVO;
@@ -28,8 +29,8 @@ import org.slf4j.LoggerFactory;
 
 public class ListTransformations implements Processlet {
 
-    private static final Logger LOG = LoggerFactory.getLogger(
-            ListTransformations.class);
+	private static final Logger LOG = LoggerFactory
+			.getLogger(ListTransformations.class);
 
 	UCSDConfigurator config = UCSDConfigurator.INSTANCE;
 
@@ -47,194 +48,199 @@ public class ListTransformations implements Processlet {
 	String agea2whs09 = config.getValue("code.agea2whs09.v1");
 	String whs092whs10 = config.getValue("code.whs092whs10.v1");
 	String whs102whs09 = config.getValue("code.whs102whs09.v1");
-	String abareference2abavoxel = config.getValue("code.abareference2abavoxel.v1");
-	String abavoxel2abareference = config.getValue("code.abavoxel2abareference.v1");
+	String abareference2abavoxel = config
+			.getValue("code.abareference2abavoxel.v1");
+	String abavoxel2abareference = config
+			.getValue("code.abavoxel2abareference.v1");
 	String paxinos2whs09 = config.getValue("code.paxinos2whs09.v1");
 	String whs092paxinos = config.getValue("code.whs092paxinos.v1");
-	
-	//private String dataInputString;
-	//private DataInputs dataInputs;
+
+	// private String dataInputString;
+	// private DataInputs dataInputs;
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
 	String responseString = "";
 	int randomGMLID1 = 0;
 	int randomGMLID2 = 0;
-	
-    @Override
-    public void process(ProcessletInputs in, ProcessletOutputs out, 
-            ProcessletExecutionInfo info) throws ProcessletException {
-    	
-		try { 
 
-    		System.out.println(" Inside ListTransformations");
+	@Override
+	public void process(ProcessletInputs in, ProcessletOutputs out,
+			ProcessletExecutionInfo info) throws ProcessletException {
 
-    		UCSDServiceVO vo = new UCSDServiceVO();
+		try {
 
-    		URL processDefinitionUrl = this.getClass().getResource(
-    				"/" + this.getClass().getSimpleName() + ".xml");
-/*    		AllowedValuesValidator validator = new AllowedValuesValidator(
-    				new File(processDefinitionUrl.toURI()));
-*/
-    		System.out.println(" Inside ListTransformations");
-    		String inputSrsName = "";
-    		String outputSrsName = "";
-    		String filter = "";
-    		// collect input values
-    		//String transformationCode = ((LiteralInput) in.getParameter("transformationCode")).getValue();
+			System.out.println(" Inside ListTransformations");
 
-    		if (in != null){
-        		System.out.println(" Inside parameter value... ");
-        		inputSrsName = Util.getStringInputValue(in, "inputSrsName");
-        		outputSrsName = Util.getStringInputValue(in, "outputSrsName");
-        		filter = Util.getStringInputValue(in, "filter");
-    		}
+			UCSDServiceVO vo = new UCSDServiceVO();
 
-    		// new
-/*    		AllowedValuesValidator validator = new AllowedValuesValidator(
-    				new File(processDefinitionUrl.toURI()));
-    		AllowedValuesValidator.ValidationResult vr = null; 
-    		
-    		// validate srsName
-    		vr = validator.validateNEW("inputSrsName", inputSrsName);
-    		if (!vr.isValid()) {
-    			if (vr.getDefaultValue() != null) {
-    				
-    				// if input not valid and there's default, use it
-    				inputSrsName = vr.getDefaultValue();
-    			} else {
-    				
-    				// if input not valid and there's no default, exception
-        			throw new InvalidDataInputValueException(vr.getMessage(), 
-        					"inputSrsName");
-    			}
-    		}
-    		
-    		// validate filter (same as above)
-    		vr = validator.validateNEW("outputSrsName", outputSrsName);
-    		if (!vr.isValid()) {
-    			if (vr.getDefaultValue() != null) {
-    				outputSrsName = vr.getDefaultValue();
-    			} else {
-        			throw new InvalidDataInputValueException(vr.getMessage(), 
-        					"outputSrsName");
-    			}
-    		}
-*/
-    		
-            //Start - FIXME - Uncomment below two lines and comment the other three lines 
-        	//String hostName = uri.getHost();
-        	//String portNumber = delimitor + uri.getPort();
-            hostName = config.getValue("incf.deploy.host.name");
-            portNumber = config.getValue("incf.aba.port.number");
-        	String delimitor = config.getValue("incf.deploy.port.delimitor");
-        	//portNumber = delimitor + portNumber;
-            //End - FIXME
+			System.out.println(" Inside ListTransformations");
+			String inputSrsName = "";
+			String outputSrsName = "";
+			String filter = "";
+			// collect input values
+			// String transformationCode = ((LiteralInput)
+			// in.getParameter("transformationCode")).getValue();
 
-            //vo.setUrlString(uri.toString());
-            vo.setIncfDeployHostname(hostName);
-            vo.setIncfDeployPortNumber(portNumber);
+			if (in != null) {
+				System.out.println(" Inside parameter value... ");
+				URL processDefinitionUrl = this.getClass().getResource(
+						"/" + this.getClass().getSimpleName() + ".xml");
+				DataInputHandler dataInputHandler = new DataInputHandler(
+						new File(processDefinitionUrl.toURI()));
+				inputSrsName = dataInputHandler.getValidatedStringValue(in,
+						"inputSrsName");
+				outputSrsName = dataInputHandler.getValidatedStringValue(in,
+						"outputSrsName");
+				filter = dataInputHandler.getValidatedStringValue(in, "filter");
+				/*
+				 * inputSrsName = Util.getStringInputValue(in, "inputSrsName");
+				 * outputSrsName = Util.getStringInputValue(in,
+				 * "outputSrsName"); filter = Util.getStringInputValue(in,
+				 * "filter");
+				 */}
 
-    		UCSDUtil util = new UCSDUtil(); 
-    		vo.setFlag("ListTransformations");
+			// Start - FIXME - Uncomment below two lines and comment the other
+			// three lines
+			// String hostName = uri.getHost();
+			// String portNumber = delimitor + uri.getPort();
+			hostName = config.getValue("incf.deploy.host.name");
+			portNumber = config.getValue("incf.aba.port.number");
+			String delimitor = config.getValue("incf.deploy.port.delimitor");
+			// portNumber = delimitor + portNumber;
+			// End - FIXME
 
-    		UCSDServiceVO vo1;
-    		ArrayList srsCodeList = new ArrayList();
-    		String responseString = "";
+			// vo.setUrlString(uri.toString());
+			vo.setIncfDeployHostname(hostName);
+			vo.setIncfDeployPortNumber(portNumber);
 
-    		ComplexOutput complexOutput = (ComplexOutput) out.getParameter( 
- 			"ListTransformationsOutput");
+			UCSDUtil util = new UCSDUtil();
+			vo.setFlag("ListTransformations");
 
-    		System.out.println(" inputSrsName = " + inputSrsName);
-    		System.out.println(" outputSrsName = " + outputSrsName);
-    		System.out.println("Before the check condition");
+			UCSDServiceVO vo1;
+			ArrayList srsCodeList = new ArrayList();
+			String responseString = "";
 
-    		if ( inputSrsName.equals("") || inputSrsName == null && 
-				 outputSrsName.equals("") || outputSrsName == null ) { 
-	        	System.out.println("Inside Empty DataInputString.");
-	        	vo.setFromSRSCodeOne("all");
-		        vo.setFromSRSCode("all");
-		        vo.setToSRSCodeOne("all");
-		        vo.setToSRSCode("all");
-		        vo.setFilter("");
-	    		responseString = util.getCoordinateTransformationChain(vo, complexOutput);
+			ComplexOutput complexOutput = (ComplexOutput) out
+					.getParameter("ListTransformationsOutput");
 
-	        } else if (inputSrsName.equals(paxinos) && 
-	        		       outputSrsName.equalsIgnoreCase("all")) { 
-	        	System.out.println("Inside inputSRSName not empty.");
+			System.out.println(" inputSrsName = " + inputSrsName);
+			System.out.println(" outputSrsName = " + outputSrsName);
+			System.out.println("Before the check condition");
+
+			if (inputSrsName.equals("") || inputSrsName == null
+					&& outputSrsName.equals("") || outputSrsName == null) {
+				System.out.println("Inside Empty DataInputString.");
+				vo.setFromSRSCodeOne("all");
+				vo.setFromSRSCode("all");
+				vo.setToSRSCodeOne("all");
+				vo.setToSRSCode("all");
+				vo.setFilter("");
+				responseString = util.getCoordinateTransformationChain(vo,
+						complexOutput);
+
+			} else if (inputSrsName.equalsIgnoreCase("all")
+					&& outputSrsName.equalsIgnoreCase("all")) {
+				System.out.println("Inside All Both.");
+				vo.setFromSRSCodeOne("all");
+				vo.setFromSRSCode("all");
+				vo.setToSRSCodeOne("all");
+				vo.setToSRSCode("all");
+				vo.setFilter("");
+				responseString = util.getCoordinateTransformationChain(vo,
+						complexOutput);
+
+			} else if (!inputSrsName.equals("")
+					&& outputSrsName.equalsIgnoreCase("all")) {
+				System.out.println("Inside inputSRSName not empty.");
 				if (inputSrsName.equals(paxinos)) {
-		        	vo1 = new UCSDServiceVO();
+					vo1 = new UCSDServiceVO();
 					vo1.setFromSRSCode(paxinos);
 					vo1.setToSRSCode(whs09);
 					srsCodeList.add(vo1);
 					vo.setFilter("");
-	            } 
-	    		responseString = util.getTransformationChain(vo, complexOutput, srsCodeList);
-	        } else if (outputSrsName.equals(paxinos) && 
-     		       	     inputSrsName.equalsIgnoreCase("all")) { 
-	        	System.out.println("Inside outputSRSName not empty.");
+				} else if (inputSrsName.equals(whs09)) {
+					vo1 = new UCSDServiceVO();
+					vo1.setFromSRSCode(whs09);
+					vo1.setToSRSCode(paxinos);
+					srsCodeList.add(vo1);
+					vo.setFilter("");
+				}
+
+				responseString = util.getTransformationChain(vo, complexOutput,
+						srsCodeList);
+			} else if (!outputSrsName.equals("")
+					&& inputSrsName.equalsIgnoreCase("all")) {
+				System.out.println("Inside outputSRSName not empty.");
 				if (outputSrsName.equals(paxinos)) {
 					vo1 = new UCSDServiceVO();
 					vo1.setFromSRSCode(whs09);
 					vo1.setToSRSCode(paxinos);
 					srsCodeList.add(vo1);
-			        vo.setFilter("");
-	            } 
-	        } else if ( !inputSrsName.equals("") || inputSrsName != null && 
-					    !outputSrsName.equals("") || outputSrsName != null ) {
-	        	System.out.println("Both Legitimate values.");
-	        	vo.setFromSRSCodeOne(inputSrsName);
-		        vo.setFromSRSCode(inputSrsName);
-		        vo.setToSRSCodeOne(outputSrsName);
-		        vo.setToSRSCode(outputSrsName);
-		        vo.setFilter(filter);
-	    		responseString = util.getCoordinateTransformationChain(vo, complexOutput);
-	        } else {
-            	System.out.println("Nothing matched..");
-            	responseString = "Error: No such transformation chain is supported under this hub.";
-            }
+					vo.setFilter("");
+				} else if (outputSrsName.equals(whs09)) {
+					vo1 = new UCSDServiceVO();
+					vo1.setFromSRSCode(paxinos);
+					vo1.setToSRSCode(whs09);
+					srsCodeList.add(vo1);
+					vo.setFilter("");
+				}
+			} else if (!inputSrsName.equals("") || inputSrsName != null
+					&& !outputSrsName.equals("") || outputSrsName != null) {
+				System.out.println("Both Legitimate values.");
+				vo.setFromSRSCodeOne(inputSrsName);
+				vo.setFromSRSCode(inputSrsName);
+				vo.setToSRSCodeOne(outputSrsName);
+				vo.setToSRSCode(outputSrsName);
+				vo.setFilter(filter);
+				responseString = util.getCoordinateTransformationChain(vo,
+						complexOutput);
+			} else {
+				System.out.println("Nothing matched..");
+				responseString = "Error: No such transformation chain is supported under this hub.";
+			}
 
 			System.out.println(" Response String = " + responseString);
-    		System.out.println("After the check condition");
+			System.out.println("After the check condition");
 
-    	DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        java.util.Date date = new java.util.Date();
-        String currentTime = dateFormat.format(date);
-        vo.setCurrentTime(currentTime);
+			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+			java.util.Date date = new java.util.Date();
+			String currentTime = dateFormat.format(date);
+			vo.setCurrentTime(currentTime);
 
-		if ( responseString.startsWith("Error:")) {
-			responseString = responseString.replaceAll("Error: ", "");
-			throw new OWSException(
-					responseString, ControllerException.NO_APPLICABLE_CODE);
+			if (responseString.startsWith("Error:")) {
+				responseString = responseString.replaceAll("Error: ", "");
+				throw new OWSException(responseString,
+						ControllerException.NO_APPLICABLE_CODE);
+			}
+
+		} catch (MissingParameterException e) {
+			LOG.error(e.getMessage(), e);
+			throw new ProcessletException(new OWSException(e));
+		} catch (InvalidParameterValueException e) {
+			LOG.error(e.getMessage(), e);
+			throw new ProcessletException(new OWSException(e));
+		} catch (InvalidDataInputValueException e) {
+			LOG.error(e.getMessage(), e);
+			throw new ProcessletException(e); // is already OWSException
+		} catch (OWSException e) {
+			LOG.error(e.getMessage(), e);
+			throw new ProcessletException(e); // is already OWSException
+		} catch (Throwable e) {
+			String message = "Unexpected exception occurred: " + e.getMessage();
+			LOG.error(message, e);
+			throw new ProcessletException(new OWSException(message, e,
+					ControllerException.NO_APPLICABLE_CODE));
 		}
-	    
-    	} catch (MissingParameterException e) {
-            LOG.error(e.getMessage(), e);
-        	throw new ProcessletException(new OWSException(e));
-        } catch (InvalidParameterValueException e) {
-            LOG.error(e.getMessage(), e);
-        	throw new ProcessletException(new OWSException(e));
-        } catch (InvalidDataInputValueException e) {
-            LOG.error(e.getMessage(), e);
-        	throw new ProcessletException(e);	// is already OWSException
-        } catch (OWSException e) {
-            LOG.error(e.getMessage(), e);
-        	throw new ProcessletException(e);	// is already OWSException
-        } catch (Throwable e) {
-        	String message = "Unexpected exception occurred: " + e.getMessage();
-        	LOG.error(message, e);
-        	throw new ProcessletException(new OWSException(message, e, 
-        			ControllerException.NO_APPLICABLE_CODE));
-        }
 
-    }
+	}
 
-    @Override
-    public void destroy() {
-    }
+	@Override
+	public void destroy() {
+	}
 
-    @Override
-    public void init() {
-    }
-	
+	@Override
+	public void init() {
+	}
+
 }
