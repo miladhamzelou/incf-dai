@@ -9,11 +9,18 @@ Version 0.6. Now formatted as a specification (please edit with track changes an
 
  http://geo.sdsc.edu/ilya/presentations/INCF_Atlas_Services_and_WaxML_version_06pic_2.doc
 
+Version 0.7 - edited up to 7.4 so far...
+
+ https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B6iM3IMv4N2qMWFlYjc2YjYtYjU3Zi00NTZlLWE2N2ItMjA2ODM1ZTkwOTk1&hl=en&authkey=CND5470J
 
 
 A Powerpoint presentation describing available spatial reference systems:
 
  https://docs.google.com/leaf?id=0B6iM3IMv4N2qODdkMWE4ZTctMGZkZS00NGE1LTg3ZTgtYzk0NzUwYmRlMTdm&hl=en&authkey=CLaq67oL
+
+Updated Powerpoint:
+
+ https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B6iM3IMv4N2qZDc4MGFlN2UtZjE4Ni00NjQwLTliNjgtZWEyYmJlZDM4YjBi&hl=en&authkey=CKXXy_sL
 
 The Waxholm Markup Language (WaxML) Schema is at:
 
