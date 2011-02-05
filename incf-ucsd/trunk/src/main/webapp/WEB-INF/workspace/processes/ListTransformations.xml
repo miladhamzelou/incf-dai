@@ -19,12 +19,11 @@
       <Identifier>inputSrsName</Identifier>
       <Title>Atlas SRS Name</Title>
       <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
+      <DefaultValue>ALL</DefaultValue>
       <AllowedValues>
-        <Value>Mouse_ABAreference_1.0</Value>
-        <Value>Mouse_ABAvoxel_1.0</Value>
-        <Value>Mouse_AGEA_1.0</Value>
+        <Value>Mouse_Paxinos_1.0</Value>
         <Value>Mouse_WHS_0.9</Value>
-        <Value>All</Value>
+        <Value>ALL</Value>
       </AllowedValues>
     </LiteralInput>
 
@@ -32,12 +31,11 @@
       <Identifier>outputSrsName</Identifier>
       <Title>Atlas SRS Name</Title>
       <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
+      <DefaultValue>ALL</DefaultValue>
       <AllowedValues>
-        <Value>Mouse_ABAreference_1.0</Value>
-        <Value>Mouse_ABAvoxel_1.0</Value>
-        <Value>Mouse_AGEA_1.0</Value>
+        <Value>Mouse_Paxinos_1.0</Value>
         <Value>Mouse_WHS_0.9</Value>
-        <Value>All</Value>
+        <Value>ALL</Value>
       </AllowedValues>
     </LiteralInput>
 
@@ -45,7 +43,12 @@
       <Identifier>filter</Identifier>
       <Title>Filter</Title>
       <Abstract></Abstract>
+      <DefaultValue>NONE</DefaultValue>
+      <AllowedValues>
+        <Value>NONE</Value>
+      </AllowedValues>
     </LiteralInput>
+    
   </InputParameters>
   
   <OutputParameters>
@@ -54,7 +57,7 @@
       <Title>List Transformations Output</Title>
       <Abstract>Lists coordinate transformations supported by the service.</Abstract>
       <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
-          schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/CoordinateChainTransformationResponses.xsd"/>
+          schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ListTransformationResponse.xsd"/>
     </ComplexOutput>
   </OutputParameters>
   

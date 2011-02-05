@@ -60,7 +60,7 @@
     <ComplexOutput>
       <Identifier>Get2DImagesByPOIOutput</Identifier>
       <Title>Get2DImagesByPOI Output</Title>
-      <Abstract>	Lists registered 2D images found in the vicinity of the specified POI (point of interest).</Abstract>
+      <Abstract>Lists registered 2D images found in the vicinity of the specified POI (point of interest).</Abstract>
       <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
           schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ImagesResponse.xsd"/>
     </ComplexOutput>

@@ -21,7 +21,6 @@
       <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
       <AllowedValues>
         <Value>Mouse_Paxinos_1.0</Value>
-        <Value>Mouse_WHS_0.9</Value>
       </AllowedValues>
     </LiteralInput>
   </InputParameters>

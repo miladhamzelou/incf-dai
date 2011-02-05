@@ -58,11 +58,12 @@
       <Identifier>filter</Identifier>
       <Title>Filter</Title>
       <Abstract></Abstract>
+      <DefaultValue>NONE</DefaultValue>
       <AllowedValues>
-        <Value>maptype:coronal</Value>
-        <Value>maptype:sagittal</Value>
+        <Value>NONE</Value>
       </AllowedValues>
     </LiteralInput>
+
   </InputParameters>
   
   <OutputParameters>
