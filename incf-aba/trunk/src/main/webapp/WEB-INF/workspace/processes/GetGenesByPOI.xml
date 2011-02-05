@@ -48,7 +48,7 @@
       </AllowedValues>
     </LiteralInput>
   </InputParameters>
-  
+
   <OutputParameters>
     <ComplexOutput>
       <Identifier>GetGenesByPOIOutput</Identifier>

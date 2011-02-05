@@ -42,6 +42,7 @@
       <Identifier>filter</Identifier>
       <Title>Filter</Title>
       <Abstract></Abstract>
+      <DefaultValue>maptype:coronal</DefaultValue>
       <AllowedValues>
         <Value>maptype:coronal</Value>
         <Value>maptype:horizontal</Value>
