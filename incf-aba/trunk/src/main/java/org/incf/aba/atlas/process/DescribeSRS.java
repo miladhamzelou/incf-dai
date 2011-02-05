@@ -51,14 +51,15 @@ import org.incf.atlas.waxml.generated.SliceType;
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.incf.common.atlas.exception.InvalidDataInputValueException;
 import org.incf.common.atlas.util.AllowedValuesValidator;
+import org.incf.common.atlas.util.DataInputHandler;
 import org.incf.common.atlas.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class DescribeSRS implements Processlet {
 
-    private static final Logger LOG = LoggerFactory.getLogger(
-            DescribeSRS.class);
+	private static final Logger LOG = LoggerFactory
+			.getLogger(DescribeSRS.class);
 
 	ABAConfigurator config = ABAConfigurator.INSTANCE;
 
@@ -76,11 +77,13 @@ public class DescribeSRS implements Processlet {
 	String agea2whs09 = config.getValue("code.agea2whs09.v1");
 	String whs092whs10 = config.getValue("code.whs092whs10.v1");
 	String whs102whs09 = config.getValue("code.whs102whs09.v1");
-	String abareference2abavoxel = config.getValue("code.abareference2abavoxel.v1");
-	String abavoxel2abareference = config.getValue("code.abavoxel2abareference.v1");
+	String abareference2abavoxel = config
+			.getValue("code.abareference2abavoxel.v1");
+	String abavoxel2abareference = config
+			.getValue("code.abavoxel2abareference.v1");
 	String paxinos2whs09 = config.getValue("code.paxinos2whs09.v1");
 	String whs092paxinos = config.getValue("code.whs092paxinos.v1");
-	
+
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
@@ -88,116 +91,89 @@ public class DescribeSRS implements Processlet {
 	int randomGMLID = 0;
 	int randomGMLID1 = 0;
 	int randomGMLID2 = 0;
-	
-    @Override
-    public void process(ProcessletInputs in, ProcessletOutputs out, 
-            ProcessletExecutionInfo info) throws ProcessletException {
 
-		try { 
+	@Override
+	public void process(ProcessletInputs in, ProcessletOutputs out,
+			ProcessletExecutionInfo info) throws ProcessletException {
+
+		try {
 
 			ABAServiceVO vo = new ABAServiceVO();
 
-    		String srsName = Util.getStringInputValue(in, "srsName");
+			URL processDefinitionUrl = this.getClass().getResource(
+					"/" + this.getClass().getSimpleName() + ".xml");
+			DataInputHandler dataInputHandler = new DataInputHandler(new File(
+					processDefinitionUrl.toURI()));
 
-    		URL processDefinitionUrl = this.getClass().getResource(
-    				"/" + this.getClass().getSimpleName() + ".xml");
+			String srsName = dataInputHandler.getValidatedStringValue(in,
+					"srsName");
 
-/*    		
-    		AllowedValuesValidator validator = new AllowedValuesValidator(
-    				new File(processDefinitionUrl.toURI()));
+			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+			opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+			opt.setSaveNamespacesFirst();
+			opt.setSaveAggressiveNamespaces();
+			opt.setUseDefaultNamespace();
 
-    		if (!validator.validate("srsName", srsName)) {
-    			throw new InvalidDataInputValueException("The srsName value '" 
-    					+ srsName + "' is not among the allowed values "
-    					+ "specified in the AllowedValues element of the "
-    					+ "ProcessDescription.", "srsName");
-    		}
-*/
-    		
-    		AllowedValuesValidator validator = new AllowedValuesValidator(
-    				new File(processDefinitionUrl.toURI()));
-    		AllowedValuesValidator.ValidationResult vr = null; 
+			DescribeSRSResponseDocument document = completeResponse(srsName);
 
-    		// validate srsName
-    		vr = validator.validateNEW("srsName", srsName);
-    		if (!vr.isValid()) {
-    			if (vr.getDefaultValue() != null) {
-    				
-    				// if input not valid and there's default, use it
-    				srsName = vr.getDefaultValue();
-    			} else {
-    				
-    				// if input not valid and there's no default, exception
-        			throw new InvalidDataInputValueException(vr.getMessage(), 
-        					"srsName");
-    			}
-    		}
-    		
-    		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
-        	opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
-        	opt.setSaveNamespacesFirst();
-        	opt.setSaveAggressiveNamespaces();
-        	opt.setUseDefaultNamespace();
+			ArrayList errorList = new ArrayList();
+			opt.setErrorListener(errorList);
+			boolean isValid = document.validate(opt);
 
-        	DescribeSRSResponseDocument document = completeResponse(srsName);
+			// If the XML isn't valid, loop through the listener's contents,
+			// printing contained messages.
+			if (!isValid) {
+				for (int i = 0; i < errorList.size(); i++) {
+					XmlError error = (XmlError) errorList.get(i);
 
-        	ArrayList errorList = new ArrayList();
-        	 opt.setErrorListener(errorList);
-        	 boolean isValid = document.validate(opt);
+					System.out.println("\n");
+					System.out.println("Message: " + error.getMessage() + "\n");
+					System.out.println("Location of invalid XML: "
+							+ error.getCursorLocation().xmlText() + "\n");
+				}
+			}
 
-        	 // If the XML isn't valid, loop through the listener's contents,
-        	 // printing contained messages.
-        	 if (!isValid)
-        	 {
-        	      for (int i = 0; i < errorList.size(); i++)
-        	      {
-        	          XmlError error = (XmlError)errorList.get(i);
-        	          
-        	          System.out.println("\n");
-        	          System.out.println("Message: " + error.getMessage() + "\n");
-        	          System.out.println("Location of invalid XML: " + 
-        	              error.getCursorLocation().xmlText() + "\n");
-        	      }
-        	 }
-        	 
-     		ComplexOutput complexOutput = (ComplexOutput) out.getParameter( 
- 			"DescribeSRSsOutput");
+			ComplexOutput complexOutput = (ComplexOutput) out
+					.getParameter("DescribeSRSsOutput");
 
-    		// get reader on document; reader --> writer
-    		XMLStreamReader reader = document.newXMLStreamReader();
-    		XMLStreamWriter writer = complexOutput.getXMLStreamWriter();
-    		XMLAdapter.writeElement(writer, reader);
-	        
-    	} catch (MissingParameterException e) {
-            LOG.error(e.getMessage(), e);
-        	throw new ProcessletException(new OWSException(e));
-        } catch (InvalidParameterValueException e) {
-            LOG.error(e.getMessage(), e);
-        	throw new ProcessletException(new OWSException(e));
-        } catch (Throwable e) {
-        	String message = "Unexpected exception occured";
-        	LOG.error(message, e);
-        	OWSException owsException = new OWSException(message, e, 
-        			ControllerException.NO_APPLICABLE_CODE);
-        	throw new ProcessletException(owsException);
-        } 
+			// get reader on document; reader --> writer
+			XMLStreamReader reader = document.newXMLStreamReader();
+			XMLStreamWriter writer = complexOutput.getXMLStreamWriter();
+			XMLAdapter.writeElement(writer, reader);
 
-    }
+		} catch (MissingParameterException e) {
+			LOG.error(e.getMessage(), e);
+			throw new ProcessletException(new OWSException(e));
+		} catch (InvalidParameterValueException e) {
+			LOG.error(e.getMessage(), e);
+			throw new ProcessletException(new OWSException(e));
+		} catch (Throwable e) {
+			String message = "Unexpected exception occured";
+			LOG.error(message, e);
+			OWSException owsException = new OWSException(message, e,
+					ControllerException.NO_APPLICABLE_CODE);
+			throw new ProcessletException(owsException);
+		}
 
-	public static void createNueroDimentions(NeurodimensionType dimension, String name, float maxValue, String xRef){
+	}
+
+	public static void createNueroDimentions(NeurodimensionType dimension,
+			String name, float maxValue, String xRef) {
 		dimension.setStringValue(name);
 		dimension.setMaxValue(maxValue);
-		//dimension.setHref(xRef);
-	}
-	public static void QueryInfoSrs(QueryInfoType queryInfo, String callUrl)
-	{
-		queryInfo.addNewQueryUrl().setStringValue(callUrl);
-		
-		return ;
+		// dimension.setHref(xRef);
 	}
 
-	public static OrientationType orientation(OrientationType orient, String code, String name, String gmlID, String authorCode, String authorName, String orientationDescription) { 
-		
+	public static void QueryInfoSrs(QueryInfoType queryInfo, String callUrl) {
+		queryInfo.addNewQueryUrl().setStringValue(callUrl);
+
+		return;
+	}
+
+	public static OrientationType orientation(OrientationType orient,
+			String code, String name, String gmlID, String authorCode,
+			String authorName, String orientationDescription) {
+
 		orient.setCode(code);
 		orient.setId(gmlID); // this is what is linked, to
 		orient.setName(name);
@@ -205,124 +181,144 @@ public class DescribeSRS implements Processlet {
 		author.setDateSubmitted(Calendar.getInstance());
 		author.setAuthorCode(authorCode);
 		author.setStringValue(authorName);
-		
+
 		Incfdescription desc = orient.addNewDescription();
 		desc.setStringValue(orientationDescription);
-		
+
 		return orient;
-		
+
 	}
 
-	//First SRS
-	public static void addSRS(SRSList srsList, ArrayList list, int size){
+	// First SRS
+	public static void addSRS(SRSList srsList, ArrayList list, int size) {
 
 		ABAServiceVO vo = null;
-		
-		try { 
 
-	    Iterator iterator = list.iterator();
-	    SRSType srs = null;
-		
-	    while (iterator.hasNext()) {
+		try {
 
-	    System.out.println("**************************Count is********************* " + list.size());
-		srs =  srsList.addNewSRS();
+			Iterator iterator = list.iterator();
+			SRSType srs = null;
 
-		vo = (ABAServiceVO)iterator.next();
-		
-		Name name = srs.addNewName();
-		name.setStringValue(vo.getSrsName());
-		name.setSrsCode(vo.getSrsCode());
-		name.setSrsBase(vo.getSrsDescription());
-		name.setSrsVersion(vo.getSrsVersion());
-		name.setSpecies(vo.getSpecies());
-		//name.setUrn("ReferenceUrl");//Uncomment this once i find the value
+			while (iterator.hasNext()) {
 
-		Incfdescription srsdescription = srs.addNewDescription();
-		srsdescription.setStringValue(vo.getSrsDescription());
+				System.out
+						.println("**************************Count is********************* "
+								+ list.size());
+				srs = srsList.addNewSRS();
 
-		AuthorType author = 	srs.addNewAuthor();
-		author.setAuthorCode(vo.getSrsAuthorCode());
-		author.setDateSubmitted(Calendar.getInstance());
-		
-		IncfCodeType origin = 	srs.addNewOrigin();
-		//origin.setCodeSpace("URN");
-		origin.setStringValue(vo.getOrigin());
+				vo = (ABAServiceVO) iterator.next();
 
-	    //<Area structureName=whole brain structureURN=/>
-		Area area = srs.addNewArea();
-		area.setStructureName(vo.getRegionOfValidity());
-		//area.setStructureURN("URN");
-	
-		UnitOfMeasureType unit = srs.addNewUnits();
-		unit.setUom(vo.getUnitsAbbreviation());
-	
-		NeurodimensionsType dimensions = srs.addNewNeurodimensions();
-		NeurodimensionType minusX = dimensions.addNewMinusX();
-		createNueroDimentions(minusX, vo.getNeuroMinusXCode(), Float.parseFloat(vo.getDimensionMinX()), "#"+vo.getNeuroMinusXCode());
-		NeurodimensionType minusY = dimensions.addNewMinusY();
-		createNueroDimentions(minusY, vo.getNeuroMinusYCode(), Float.parseFloat(vo.getDimensionMinY()), "#"+vo.getNeuroMinusYCode());
-		NeurodimensionType minusZ = dimensions.addNewMinusZ();
-		createNueroDimentions(minusZ, vo.getNeuroMinusZCode(), Float.parseFloat(vo.getDimensionMinZ()), "#"+vo.getNeuroMinusZCode());
-		NeurodimensionType plusX =dimensions.addNewPlusX();
-		createNueroDimentions(plusX, vo.getNeuroPlusXCode(), Float.parseFloat(vo.getDimensionMaxX()), "#"+vo.getNeuroPlusXCode());
-		NeurodimensionType plusY =dimensions.addNewPlusY();
-		createNueroDimentions(plusY, vo.getNeuroPlusYCode(), Float.parseFloat(vo.getDimensionMaxY()), "#"+vo.getNeuroPlusYCode());
-		NeurodimensionType plusZ =dimensions.addNewPlusZ();
-		createNueroDimentions(plusZ, vo.getNeuroPlusZCode(), Float.parseFloat(vo.getDimensionMaxZ()), "#"+vo.getNeuroPlusZCode());
-	
-		IncfUriSliceSource cite = srs.addNewSource();
-		cite.setStringValue(vo.getSourceURI());
-		cite.setFormat(vo.getSourceFileFormat());//Could be null
-	    DerivedFrom derived = srs.addNewDerivedFrom();
-	    derived.setSrsName(vo.getDerivedFromSRSCode());
-	    //derived.setMethod("MethodName");
-	    srs.setDateCreated(Calendar.getInstance());
-		srs.setDateUpdated(Calendar.getInstance());
+				Name name = srs.addNewName();
+				name.setStringValue(vo.getSrsName());
+				name.setSrsCode(vo.getSrsCode());
+				name.setSrsBase(vo.getSrsDescription());
+				name.setSrsVersion(vo.getSrsVersion());
+				name.setSpecies(vo.getSpecies());
+				// name.setUrn("ReferenceUrl");//Uncomment this once i find the
+				// value
 
+				Incfdescription srsdescription = srs.addNewDescription();
+				srsdescription.setStringValue(vo.getSrsDescription());
+
+				AuthorType author = srs.addNewAuthor();
+				author.setAuthorCode(vo.getSrsAuthorCode());
+				author.setDateSubmitted(Calendar.getInstance());
+
+				IncfCodeType origin = srs.addNewOrigin();
+				// origin.setCodeSpace("URN");
+				origin.setStringValue(vo.getOrigin());
+
+				// <Area structureName=whole brain structureURN=/>
+				Area area = srs.addNewArea();
+				area.setStructureName(vo.getRegionOfValidity());
+				// area.setStructureURN("URN");
+
+				UnitOfMeasureType unit = srs.addNewUnits();
+				unit.setUom(vo.getUnitsAbbreviation());
+
+				NeurodimensionsType dimensions = srs.addNewNeurodimensions();
+				NeurodimensionType minusX = dimensions.addNewMinusX();
+				createNueroDimentions(minusX, vo.getNeuroMinusXCode(), Float
+						.parseFloat(vo.getDimensionMinX()), "#"
+						+ vo.getNeuroMinusXCode());
+				NeurodimensionType minusY = dimensions.addNewMinusY();
+				createNueroDimentions(minusY, vo.getNeuroMinusYCode(), Float
+						.parseFloat(vo.getDimensionMinY()), "#"
+						+ vo.getNeuroMinusYCode());
+				NeurodimensionType minusZ = dimensions.addNewMinusZ();
+				createNueroDimentions(minusZ, vo.getNeuroMinusZCode(), Float
+						.parseFloat(vo.getDimensionMinZ()), "#"
+						+ vo.getNeuroMinusZCode());
+				NeurodimensionType plusX = dimensions.addNewPlusX();
+				createNueroDimentions(plusX, vo.getNeuroPlusXCode(), Float
+						.parseFloat(vo.getDimensionMaxX()), "#"
+						+ vo.getNeuroPlusXCode());
+				NeurodimensionType plusY = dimensions.addNewPlusY();
+				createNueroDimentions(plusY, vo.getNeuroPlusYCode(), Float
+						.parseFloat(vo.getDimensionMaxY()), "#"
+						+ vo.getNeuroPlusYCode());
+				NeurodimensionType plusZ = dimensions.addNewPlusZ();
+				createNueroDimentions(plusZ, vo.getNeuroPlusZCode(), Float
+						.parseFloat(vo.getDimensionMaxZ()), "#"
+						+ vo.getNeuroPlusZCode());
+
+				IncfUriSliceSource cite = srs.addNewSource();
+				cite.setStringValue(vo.getSourceURI());
+				cite.setFormat(vo.getSourceFileFormat());// Could be null
+				DerivedFrom derived = srs.addNewDerivedFrom();
+				derived.setSrsName(vo.getDerivedFromSRSCode());
+				// derived.setMethod("MethodName");
+				srs.setDateCreated(Calendar.getInstance());
+				srs.setDateUpdated(Calendar.getInstance());
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
 		return;
 	}
 
 	public DescribeSRSResponseDocument completeResponse(String srsName) {
 
-		DescribeSRSResponseDocument document =	DescribeSRSResponseDocument.Factory.newInstance(); 
-		
-		DescribeSRSResponseType rootDoc =	document.addNewDescribeSRSResponse();
-		//rootDoc.newCursor().insertComment("Test Comment");
-/*		QueryInfoSrs(rootDoc.addNewQueryInfo(), uri.toString());
-*/		SRSList srsList = rootDoc.addNewSRSList();
+		DescribeSRSResponseDocument document = DescribeSRSResponseDocument.Factory
+				.newInstance();
 
-    	//Start - Get data from the database
+		DescribeSRSResponseType rootDoc = document.addNewDescribeSRSResponse();
+		// rootDoc.newCursor().insertComment("Test Comment");
+		/*
+		 * QueryInfoSrs(rootDoc.addNewQueryInfo(), uri.toString());
+		 */SRSList srsList = rootDoc.addNewSRSList();
+
+		// Start - Get data from the database
 		ArrayList list = new ArrayList();
 		ABAServiceDAOImpl impl = new ABAServiceDAOImpl();
 		list = impl.getDescribeSRSData(srsName);
-		//End
+		// End
 
 		addSRS(srsList, list, list.size());
 
 		ArrayList list2 = impl.getOrientationData();
 		Orientations o = null;
-		
+
 		Iterator iterator2 = list2.iterator();
 		ABAServiceVO vo = null;
 
-	    Random randomGenerator = new Random();
-		while ( iterator2.hasNext()) {
-		    for (int idx = 1; idx <= 10; ++idx){
-			      randomGMLID = randomGenerator.nextInt(100);
-			    }
-			vo = (ABAServiceVO) iterator2.next(); 
+		Random randomGenerator = new Random();
+		while (iterator2.hasNext()) {
+			for (int idx = 1; idx <= 10; ++idx) {
+				randomGMLID = randomGenerator.nextInt(100);
+			}
+			vo = (ABAServiceVO) iterator2.next();
 			o = rootDoc.addNewOrientations();
 			OrientationType orientaiton1 = o.addNewOrientation();
-			orientation(orientaiton1,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription());
+			orientation(orientaiton1, vo.getOrientationName(), vo
+					.getOrientationName(), String.valueOf(randomGMLID), vo
+					.getOrientationAuthor(), vo.getOrientationAuthor(), vo
+					.getOrientationDescription());
 		}
 
-		//Start - Get Slice data
+		// Start - Get Slice data
 		if (srsName.equals(abaReference)) {
 			vo.setSpaceCode("ABA_ref");// FIXME - Remove the hardcoded value
 		} else if (srsName.equals(paxinos)) {
@@ -332,72 +328,75 @@ public class DescribeSRS implements Processlet {
 		}
 		ABAServiceDAOImpl daoImpl = new ABAServiceDAOImpl();
 		ArrayList sliceDataList = daoImpl.getSliceData(vo);
-		//Start - End Slice data
-		
+		// Start - End Slice data
+
 		Slices s = rootDoc.addNewSlices();
 		Iterator iterator = sliceDataList.iterator();
-		
+
 		ABAUtil util = new ABAUtil();
-		
-		while (iterator.hasNext()) { 
+
+		while (iterator.hasNext()) {
 			vo = (ABAServiceVO) iterator.next();
-			sliceElements(	s.addNewSlice(), 1, vo);
+			sliceElements(s.addNewSlice(), 1, vo);
 		}
-		
-/*		Fiducials f = rootDoc.addNewFiducials();
-		exampleFiducial(f.addNewFiducial(), 1);
-*/
+
+		/*
+		 * Fiducials f = rootDoc.addNewFiducials();
+		 * exampleFiducial(f.addNewFiducial(), 1);
+		 */
 		return document;
 	}
 
-	public static void sliceElements(SliceType slice, int identifier, ABAServiceVO vo){
+	public static void sliceElements(SliceType slice, int identifier,
+			ABAServiceVO vo) {
 
-			if ( vo.getValueDirection().equalsIgnoreCase("front") ) { 
-				slice.setOrientation(SliceType.Orientation.CORONAL);
+		if (vo.getValueDirection().equalsIgnoreCase("front")) {
+			slice.setOrientation(SliceType.Orientation.CORONAL);
 
-				if ( vo.getPlusX().equalsIgnoreCase("constant") ) { 
-					slice.setXOrientation(vo.getPlusZ());
-				} else {
-					slice.setXOrientation(vo.getPlusX());
-				}
-				slice.setYOrientation(vo.getPlusY()); 
-
-				//(Derived from the coordinate system from Ilya - specific to ABA_REF space only)
-/*				if ( vo.getPlusX().equalsIgnoreCase("left") ) { 
-					slice.setXOrientation("right");
-				} 
-				if ( vo.getPlusY().equalsIgnoreCase("down") ) {
-					slice.setYOrientation("ventral"); 
-				}
-*/
-			} else if ( vo.getValueDirection().equalsIgnoreCase("right") ) { 
-				slice.setOrientation(SliceType.Orientation.SAGITTAL);
-				if ( vo.getPlusX().equalsIgnoreCase("constant") ) { 
-					slice.setXOrientation(vo.getPlusZ());
-				} else {
-					slice.setXOrientation(vo.getPlusX());
-				}
-				slice.setYOrientation(vo.getPlusY());
+			if (vo.getPlusX().equalsIgnoreCase("constant")) {
+				slice.setXOrientation(vo.getPlusZ());
 			} else {
-				slice.setOrientation(SliceType.Orientation.HORIZONTAL);
+				slice.setXOrientation(vo.getPlusX());
 			}
+			slice.setYOrientation(vo.getPlusY());
 
-			System.out.println("Value is - " + vo.getSlideValue());
-			System.out.println("Again Value is - " + Float.parseFloat(vo.getSlideValue()));
+			// (Derived from the coordinate system from Ilya - specific to
+			// ABA_REF space only)
+			/*
+			 * if ( vo.getPlusX().equalsIgnoreCase("left") ) {
+			 * slice.setXOrientation("right"); } if (
+			 * vo.getPlusY().equalsIgnoreCase("down") ) {
+			 * slice.setYOrientation("ventral"); }
+			 */
+		} else if (vo.getValueDirection().equalsIgnoreCase("right")) {
+			slice.setOrientation(SliceType.Orientation.SAGITTAL);
+			if (vo.getPlusX().equalsIgnoreCase("constant")) {
+				slice.setXOrientation(vo.getPlusZ());
+			} else {
+				slice.setXOrientation(vo.getPlusX());
+			}
+			slice.setYOrientation(vo.getPlusY());
+		} else {
+			slice.setOrientation(SliceType.Orientation.HORIZONTAL);
+		}
 
-			//FIXME - Ask Dave to change the
-			//slice.setConstant(Math.round(Float.parseFloat(vo.getSlideValue())));
-			slice.setConstant(Double.parseDouble(vo.getSlideValue()));
-			slice.setCode(vo.getSliceID());
+		System.out.println("Value is - " + vo.getSlideValue());
+		System.out.println("Again Value is - "
+				+ Float.parseFloat(vo.getSlideValue()));
+
+		// FIXME - Ask Dave to change the
+		// slice.setConstant(Math.round(Float.parseFloat(vo.getSlideValue())));
+		slice.setConstant(Double.parseDouble(vo.getSlideValue()));
+		slice.setCode(vo.getSliceID());
 
 	}
 
 	@Override
-    public void destroy() {
-    }
+	public void destroy() {
+	}
 
-    @Override
-    public void init() {
-    }
+	@Override
+	public void init() {
+	}
 
 }

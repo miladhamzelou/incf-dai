@@ -60,7 +60,7 @@ public class GetGenesByPOI implements Processlet {
     		double x = dataInputHandler.getDoubleInputValue(in, "x");
     		double y = dataInputHandler.getDoubleInputValue(in, "y");
     		double z = dataInputHandler.getDoubleInputValue(in, "z");
-    		
+
     		LOG.debug(String.format(
     				"DataInputs: srsName: %s, poi: (%f, %f, %f), filter: %s",
     				srsName, x, y, z, filter));
