@@ -1,0 +1,17 @@
+This is a demo prepared for Vadim.
+
+It "wraps" 2 web services in OGC WPS
+
+Test:
+
+http://localhost:8080/wps-demo?service=WPS&request=GetCapabilities
+http://localhost:8080/wps-demo?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+http://localhost:8080/wps-demo?service=WPS&version=1.0.0&request=Execute&identifier=WbcGetContent&dataInputs=id=wbc7359387362308035140.tmp&rawDataOutput=content
+http://localhost:8080/wps-demo?service=WPS&version=1.0.0&request=Execute&identifier=RunSPARQLQuery&dataInputs=query=prefix+nifstd:+%3Chttp://ontology.neuinfo.org%3E%0D%0Aprefix+nm:+%3Chttp://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Molecule.owl%23%3E%0D%0Aprefix+be:+%3Chttp://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Neuron-BrainRegion-Bridge.owl%23%3E%0D%0Aprefix+nb:+%3Chttp://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Neuron-NT-Bridge.owl%23%3E%0D%0Aprefix+w3:+%3Chttp://www.w3.org/2002/07/owl%23%3E%0D%0Aprefix+rdfs:+%3Chttp://www.w3.org/2000/01/rdf-schema%23%3E%0D%0Aprefix+xsd:+%3Chttp://www.w3.org/2001/XMLSchema%23%3E%0D%0A%0D%0Aselect++%3Fe,%3Fl+where+{%0D%0A%3Fe+rdfs:label+%3Fl.+%0D%0A%3Fe+rdfs:subClassOf+%3Fhn.%0D%0A%3Fhn+rdfs:label+%22Cerebellum+neuron%22^^xsd:string.%0D%0A%3Fe+rdfs:subClassOf+%3Fo.%0D%0A%3Fo+w3:onProperty+nb:has_neurotransmitter.%0D%0A%3Fo+w3:someValuesFrom+%3Fgaba.%0D%0A%3Fgaba+rdfs:label+%22GABA%22^^xsd:string%0D%0A}&rawDataOutput=result
+ 
+http://drlittle.ucsd.edu:8080/wps-demo?service=WPS&request=GetCapabilities
+http://drlittle.ucsd.edu:8080/wps-demo?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+http://drlittle.ucsd.edu:8080/wps-demo?service=WPS&version=1.0.0&request=Execute&identifier=Addition&dataInputs=a=7;b=11
+http://drlittle.ucsd.edu:8080/wps-demo?service=WPS&version=1.0.0&request=Execute&identifier=WbcGetContent&dataInputs=id=wbc7359387362308035140.tmp
+http://drlittle.ucsd.edu:8080/wps-demo?service=WPS&version=1.0.0&request=Execute&identifier=WbcGetContent&dataInputs=id=wbc7359387362308035140.tmp&rawDataOutput=content
+http://drlittle.ucsd.edu:8080/wps-demo?service=WPS&version=1.0.0&request=Execute&identifier=RunSPARQLQuery&dataInputs=query=prefix+nifstd:+%3Chttp://ontology.neuinfo.org%3E%0D%0Aprefix+nm:+%3Chttp://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Molecule.owl%23%3E%0D%0Aprefix+be:+%3Chttp://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Neuron-BrainRegion-Bridge.owl%23%3E%0D%0Aprefix+nb:+%3Chttp://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Neuron-NT-Bridge.owl%23%3E%0D%0Aprefix+w3:+%3Chttp://www.w3.org/2002/07/owl%23%3E%0D%0Aprefix+rdfs:+%3Chttp://www.w3.org/2000/01/rdf-schema%23%3E%0D%0Aprefix+xsd:+%3Chttp://www.w3.org/2001/XMLSchema%23%3E%0D%0A%0D%0Aselect++%3Fe,%3Fl+where+{%0D%0A%3Fe+rdfs:label+%3Fl.+%0D%0A%3Fe+rdfs:subClassOf+%3Fhn.%0D%0A%3Fhn+rdfs:label+%22Cerebellum+neuron%22^^xsd:string.%0D%0A%3Fe+rdfs:subClassOf+%3Fo.%0D%0A%3Fo+w3:onProperty+nb:has_neurotransmitter.%0D%0A%3Fo+w3:someValuesFrom+%3Fgaba.%0D%0A%3Fgaba+rdfs:label+%22GABA%22^^xsd:string%0D%0A}&rawDataOutput=result

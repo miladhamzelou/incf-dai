@@ -8,11 +8,12 @@
   <!-- General service information for all services. Used in the 
        GetCapabilities responses. -->
   <ServiceIdentification>
-    <Title>ABA Atlas Services</Title>
-    <Abstract>
-      ABA Atlas Services provide access to data available from the 
-      Allen Brain Atlas resource.
-    </Abstract>
+    <Title>Title 1</Title>
+    <Title>Title 2</Title>
+    <Title>Title 3</Title>
+    <Abstract>Abstract 1</Abstract>
+    <Abstract>Abstract 2</Abstract>
+    <Abstract>Abstract 3</Abstract>
   </ServiceIdentification>
 
   <ServiceProvider>
