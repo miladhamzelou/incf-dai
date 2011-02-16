@@ -386,7 +386,8 @@ public class DescribeSRS implements Processlet {
 
 		// FIXME - Ask Dave to change the
 		// slice.setConstant(Math.round(Float.parseFloat(vo.getSlideValue())));
-		slice.setConstant(Double.parseDouble(vo.getSlideValue()));
+//		slice.setConstant(Double.parseDouble(vo.getSlideValue()));
+		slice.setConstant(Integer.parseInt(vo.getSlideValue()));
 		slice.setCode(vo.getSliceID());
 
 	}
