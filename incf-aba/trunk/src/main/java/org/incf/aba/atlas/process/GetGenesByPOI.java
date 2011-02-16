@@ -12,9 +12,10 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.XMLStreamWriter;
 
-import org.deegree.commons.utils.kvp.InvalidParameterValueException;
-import org.deegree.commons.utils.kvp.MissingParameterException;
+import org.apache.xmlbeans.XmlOptions;
+import org.deegree.commons.xml.XMLAdapter;
 import org.deegree.services.controller.exception.ControllerException;
 import org.deegree.services.controller.ows.OWSException;
 import org.deegree.services.wps.Processlet;
@@ -22,7 +23,7 @@ import org.deegree.services.wps.ProcessletException;
 import org.deegree.services.wps.ProcessletExecutionInfo;
 import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
-import org.incf.aba.atlas.util.ABAServiceVO;
+import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.aba.atlas.util.ABAUtil;
 import org.incf.atlas.waxml.generated.AccessionIdType;
 import org.incf.atlas.waxml.generated.GeneByPoiType;
@@ -31,6 +32,9 @@ import org.incf.atlas.waxml.generated.GeneSymbolType;
 import org.incf.atlas.waxml.generated.GeneType;
 import org.incf.atlas.waxml.generated.GenesResponseDocument;
 import org.incf.atlas.waxml.generated.GenesResponseType;
+import org.incf.atlas.waxml.generated.ImagesResponseDocument;
+import org.incf.atlas.waxml.generated.IncfNameType;
+import org.incf.atlas.waxml.utilities.Utilities;
 import org.incf.common.atlas.util.DataInputHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -129,23 +133,41 @@ public class GetGenesByPOI implements Processlet {
     			}
     			LOG.debug("Strong genes: {}", buf.toString());
     		}
-
-    		// 2. 
-    		document = GenesResponseDocument.Factory.newInstance();
-    		GenesResponseType eGenesResponse = document.addNewGenesResponse();
-    		GeneByPoiType eGenesByPOI = eGenesResponse.addNewGenesByPOI();
     		
-    		for (String gene : strongGenes) {
-    			GeneType eGene = eGenesByPOI.addNewGene();
-    			GeneSymbolType eSymbol = eGene.addNewSymbol();
-    			AccessionIdType eMarkerAccessionId = eGene.addNewMarkerAccessionId();
-    			eGene.addNewName();
-    			eGene.addNewOrganism();
+    		// 2.
+    		List<ABAGene> abaGenes = new ArrayList<ABAGene>();
+    		for (String geneSymbol : strongGenes) {
+    			abaGenes.add(retrieveGeneData(geneSymbol));
     		}
-    		
-    		
 
-    		// transform any exceptions into ProcessletException
+    		// ComplexOutput objects can become very huge; it is essential to 
+    		// stream result.
+    		// get ComplexOutput object from ProcessletOutput...
+    		ComplexOutput complexOutput = (ComplexOutput) out.getParameter(
+    				"GetGenesByPOIOutput");
+    		LOG.debug("Setting complex output (requested=" 
+    				+ complexOutput.isRequested() + ")");
+
+    		// GenesResponseDocument 'is a' org.apache.xmlbeans.XmlObject
+    		//	'is a' org.apache.xmlbeans.XmlTokenSource
+    		GenesResponseDocument document = completeResponse(abaGenes);
+
+    		if (LOG.isDebugEnabled()) {
+    			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+    			opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+    			opt.setSaveNamespacesFirst();
+    			opt.setSaveAggressiveNamespaces();
+    			opt.setUseDefaultNamespace();
+    			LOG.debug("Xml:\n{}", document.xmlText(opt));
+    		}
+
+    		// get reader on document; reader --> writer
+    		XMLStreamReader reader = document.newXMLStreamReader();
+    		XMLStreamWriter writer = complexOutput.getXMLStreamWriter();
+    		XMLAdapter.writeElement(writer, reader);
+    		
+    		// transform any exceptions into ProcessletException wrapping
+    		// OWSException
         } catch (OWSException e) {
             LOG.error(e.getMessage(), e);
         	throw new ProcessletException(e);	// is already OWSException
@@ -178,32 +200,21 @@ public class GetGenesByPOI implements Processlet {
 	 * @throws IOException
 	 * @throws XMLStreamException
 	 */
-	public static List<ABAGene> retrieveStrongGenesAtPOI(double x, double y, 
-			double z, int nbrStrongGenes) throws IOException, 
-					XMLStreamException {
-        List<ABAGene> strongGenes = new ArrayList<ABAGene>();
-	    	
-        // round coords to nearest xx00, where xx is even
-        URL u = new URL(ABAUtil.assembleGeneFinderURI(
-        		String.valueOf(ABAUtil.round200(x)), 
-        		String.valueOf(ABAUtil.round200(y)), 
-        		String.valueOf(ABAUtil.round200(z))));
+	public ABAGene retrieveGeneData(String geneSymbol) 
+			throws IOException, XMLStreamException {
 
-        LOG.debug("Gene finder URI: {}", u.toString());
+        URL u = new URL(ABAUtil.assembleGeneURI(geneSymbol));
+
+        LOG.debug("Gene URI: {}", u.toString());
 
         InputStream in = u.openStream();
         XMLInputFactory factory = XMLInputFactory.newInstance();
         XMLStreamReader parser = factory.createXMLStreamReader(in);
 
-        boolean inChromosome = false;
-        boolean inEntrezgeneid = false;
-        boolean inGeneid = false;
         boolean inGenename = false;
         boolean inGenesymbol = false;
-        boolean inGensatid = false;
         boolean inMgimarkeraccessionid = false;
         boolean inOrganism = false;
-        boolean inProjectname = false;
         ABAGene abaGene = new ABAGene();
         int i = 0;
         for (int event = parser.next();  
@@ -213,53 +224,28 @@ public class GetGenesByPOI implements Processlet {
         		if (parser.getLocalName().equals("image-series")) {
         			break;			// we don't need info past this point
         		}
-        		if (parser.getLocalName().equals("chromosome")) {
-        			inChromosome = true;
-        		} else if (parser.getLocalName().equals("entrezgeneid")) {
-        			inEntrezgeneid = true;
-        		} else if (parser.getLocalName().equals("geneid")) {
-        			inGeneid = true;
-        		} else if (parser.getLocalName().equals("genename")) {
+        		if (parser.getLocalName().equals("genename")) {
         			inGenename = true;
         		} else if (parser.getLocalName().equals("genesymbol")) {
         			inGenesymbol = true;
-        		} else if (parser.getLocalName().equals("gensatid")) {
-        			inGensatid = true;
         		} else if (parser.getLocalName().equals("mgimarkeraccessionid")) {
         			inMgimarkeraccessionid = true;
         		} else if (parser.getLocalName().equals("organism")) {
         			inOrganism = true;
-        		} else if (parser.getLocalName().equals("projectname")) {
-        			inProjectname = true;
         		} 
         	} else if (event == XMLStreamConstants.CHARACTERS) {
-        		if (inChromosome) {
-        			abaGene.chromosome = parser.getText();
-        			inChromosome = false;
-        		} else if (inEntrezgeneid) {
-        			abaGene.entrezgeneid = parser.getText();
-        			inEntrezgeneid = false;
-        		} else if (inGeneid) {
-        			abaGene.geneid = parser.getText();
-        			inGeneid = false;
-        		} else if (inGenename) {
+        		if (inGenename) {
         			abaGene.genename = parser.getText();
         			inGenename = false;
         		} else if (inGenesymbol) {
         			abaGene.genesymbol = parser.getText();
         			inGenesymbol = false;
-        		} else if (inGensatid) {
-        			abaGene.gensatid = parser.getText();
-        			inGensatid = false;
         		} else if (inMgimarkeraccessionid) {
         			abaGene.mgimarkeraccessionid = parser.getText();
         			inMgimarkeraccessionid = false;
         		} else if (inOrganism) {
         			abaGene.organism = parser.getText();
         			inOrganism = false;
-        		} else if (inProjectname) {
-        			abaGene.projectname = parser.getText();
-        			inProjectname = false;
         		}
         		
 //           		if (inGeneSymbol) {
@@ -272,7 +258,10 @@ public class GetGenesByPOI implements Processlet {
 //        			inGeneSymbol = false;
 //        		}
         	}
-        }
+        } // for next parse event
+
+        abaGene.calculateMGIParts();
+        
         try {
         	parser.close();
         } catch (XMLStreamException e) {
@@ -280,10 +269,9 @@ public class GetGenesByPOI implements Processlet {
         }
 
         // debug
-        for (ABAGene gene : strongGenes) {
-        	LOG.debug("gene: {}", gene);
-        }
-	    return strongGenes;
+//        	LOG.debug("abaGene: {}", gene);
+
+	    return abaGene;
 	}
 	
     /*
@@ -340,24 +328,37 @@ public class GetGenesByPOI implements Processlet {
       GeneSymbolType
       IncfCodeType
      */
-	private GenesResponseDocument completeResponse() {
+	private GenesResponseDocument completeResponse(List<ABAGene> abaGenes) {
+		String codeSpace = "uri:incf.org";
+		String gmlIdPrefix = "G";
+		
 		GenesResponseDocument document = 
 				GenesResponseDocument.Factory.newInstance();
 		GenesResponseType eGenesResponse = document.addNewGenesResponse();
 		GeneByPoiType eGenesByPOI = eGenesResponse.addNewGenesByPOI();
-//		for (Gene gene : genes) {
+		int i = 1;
+		for (ABAGene abaGene : abaGenes) {
 			GeneType eGene = eGenesByPOI.addNewGene();
-			GeneSymbolType eSymbol = eGene.addNewSymbol();
+			GeneSymbolType eGeneSymbol = eGene.addNewSymbol();
+			eGeneSymbol.setCodeSpace(codeSpace);
+			eGeneSymbol.setId(gmlIdPrefix + String.valueOf(i));
+			eGeneSymbol.setStringValue(abaGene.genesymbol);
+			IncfNameType eGeneName = eGene.addNewName();
 			AccessionIdType eMarkerAccessionId = eGene.addNewMarkerAccessionId();
-			eGene.addNewName();
-			eGene.addNewOrganism();
-//		}
+			eMarkerAccessionId.addNewSeparator().setStringValue(abaGene.mgiSeparator);
+			eMarkerAccessionId.addNewPrefix().setStringValue(abaGene.mgiPrefix);
+			eMarkerAccessionId.addNewIdentifier().setStringValue(abaGene.mgiIdentifier);
+			eMarkerAccessionId.setFullIdentifier(abaGene.mgimarkeraccessionid);
+			eGeneName.setStringValue(abaGene.genename);
+			eGene.addNewOrganism().setStringValue(abaGene.organism);
+			i++;
+		}
 //		for (ExpressionLevel expressionLevel : expressionLevels) {
-			GeneExpressionLevelType eExpressionLevel = eGenesByPOI.addNewExpressionLevel();
-			eExpressionLevel.addNewGeneSymbol();
-			eExpressionLevel.addNewStage();
-			eExpressionLevel.addNewLevel();
-			eExpressionLevel.addNewResourceUri();
+//			GeneExpressionLevelType eExpressionLevel = eGenesByPOI.addNewExpressionLevel();
+//			eExpressionLevel.addNewGeneSymbol();
+//			eExpressionLevel.addNewStage();
+//			eExpressionLevel.addNewLevel();
+//			eExpressionLevel.addNewResourceUri();
 //		}
 		
 //		Image2Dcollection eImage2DCollection = 
@@ -375,15 +376,25 @@ public class GetGenesByPOI implements Processlet {
 	}
 	
 	public static class ABAGene {
-		public String chromosome;
-		public String entrezgeneid;
-		public String geneid;
+		
+		// furnished values
 		public String genename;
 		public String genesymbol;
-		public String gensatid;
 		public String mgimarkeraccessionid;
 		public String organism;
-		public String projectname;
+		
+		// derived from mgimarkeraccessionid
+		public String mgiPrefix;
+		public String mgiSeparator;
+		public String mgiIdentifier;
+		
+		public void calculateMGIParts() {
+			mgiSeparator = ":";
+			String[] mgiSegments = mgimarkeraccessionid.split(mgiSeparator);
+			mgiPrefix = mgiSegments[0];
+			mgiIdentifier = mgiSegments[1];
+		}
+		
 	}
 	
 }
