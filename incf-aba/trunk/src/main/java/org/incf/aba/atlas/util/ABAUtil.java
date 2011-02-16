@@ -4217,8 +4217,8 @@ public class ABAUtil {
         String geneSymbol = null;
         int i = 0;
         for (int event = parser.next();  
-        event != XMLStreamConstants.END_DOCUMENT;
-        event = parser.next()) {
+        		event != XMLStreamConstants.END_DOCUMENT;
+        		event = parser.next()) {
         	if (event == XMLStreamConstants.START_ELEMENT) {
         		if (parser.getLocalName().equals("genesymbol")) {
         			inGeneSymbol = true;

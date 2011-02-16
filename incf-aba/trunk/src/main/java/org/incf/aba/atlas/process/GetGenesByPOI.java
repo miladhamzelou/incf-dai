@@ -1,10 +1,17 @@
 package org.incf.aba.atlas.process;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.vecmath.Point3d;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
 
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
 import org.deegree.commons.utils.kvp.MissingParameterException;
@@ -37,9 +44,11 @@ public class GetGenesByPOI implements Processlet {
 	private static final String HI_RES = "-1";	// highest resolution available
 	private static final String THUMB = "0";	// thumbnail
 	private static final String MIME = "2";		// jpeg/image
-	private static final int NBR_STRONG_GENES = 1;	// strong genes to get
+	private static final int NBR_STRONG_GENES = 3;	// strong genes to get
 	
 //	private ResponseValues responseValues;
+	
+	private GenesResponseDocument document;
 	
     @Override
     public void process(ProcessletInputs in, ProcessletOutputs out, 
@@ -57,10 +66,10 @@ public class GetGenesByPOI implements Processlet {
     				"srsName");
     		String filter = dataInputHandler.getValidatedStringValue(in, 
 					"filter");
-    		double x = dataInputHandler.getDoubleInputValue(in, "x");
-    		double y = dataInputHandler.getDoubleInputValue(in, "y");
-    		double z = dataInputHandler.getDoubleInputValue(in, "z");
-
+    		double x = DataInputHandler.getDoubleInputValue(in, "x");
+    		double y = DataInputHandler.getDoubleInputValue(in, "y");
+    		double z = DataInputHandler.getDoubleInputValue(in, "z");
+    		
     		LOG.debug(String.format(
     				"DataInputs: srsName: %s, poi: (%f, %f, %f), filter: %s",
     				srsName, x, y, z, filter));
@@ -83,6 +92,24 @@ public class GetGenesByPOI implements Processlet {
 
     		String srsFromClient = srsName;
     		Point3d poiFromClient = new Point3d(x, y, z);
+    		
+    		// TODO
+    		/*
+    		 * 1. Get genes at poi:
+    		 *    http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=6600,4000,5600
+    		 *    http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=[x],[y],[z]
+    		 *    --> genesymbol/<Symbol>, imageseriesid, energy?, rank?
+    		 * 2. With genesymbol from 1, get gene info
+    		 *    http://www.brain-map.org/aba/api/gene/Plxnb1.xml
+    		 *    http://www.brain-map.org/aba/api/gene/[genesymbol].xml
+    		 *    --> chromosome, entrezgenid, geneid, genename, genesymbol, 
+    		 *    	gensatid, mgiaccessionid/<MarkeraccessionId>, organism,
+    		 *      projectname
+    		 * 3. With imageseriesid from 1, get expression info
+    		 * 	  http://www.brain-map.org/aba/api/expression/imageseries/1561.xml
+    		 * 	  http://www.brain-map.org/aba/api/expression/imageseries/[imageseries].xml
+    		 *    --> <stage>?, <level>
+    		 */
 
     		// 1. get strong gene(s) at POI
     		List<String> strongGenes = ABAUtil.retrieveStrongGenesAtPOI(x, y, z,
@@ -103,7 +130,18 @@ public class GetGenesByPOI implements Processlet {
     			LOG.debug("Strong genes: {}", buf.toString());
     		}
 
-
+    		// 2. 
+    		document = GenesResponseDocument.Factory.newInstance();
+    		GenesResponseType eGenesResponse = document.addNewGenesResponse();
+    		GeneByPoiType eGenesByPOI = eGenesResponse.addNewGenesByPOI();
+    		
+    		for (String gene : strongGenes) {
+    			GeneType eGene = eGenesByPOI.addNewGene();
+    			GeneSymbolType eSymbol = eGene.addNewSymbol();
+    			AccessionIdType eMarkerAccessionId = eGene.addNewMarkerAccessionId();
+    			eGene.addNewName();
+    			eGene.addNewOrganism();
+    		}
     		
     		
 
@@ -127,6 +165,127 @@ public class GetGenesByPOI implements Processlet {
     public void init() {
     }
         		
+	/**
+	 * Returns a list of genes from Allen Brain Atlas that express at
+	 * the given location. The number returned is determined by the last 
+	 * argument. The list is in order of the strength of expression.
+	 *  
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param nbrStrongGenes
+	 * @return
+	 * @throws IOException
+	 * @throws XMLStreamException
+	 */
+	public static List<ABAGene> retrieveStrongGenesAtPOI(double x, double y, 
+			double z, int nbrStrongGenes) throws IOException, 
+					XMLStreamException {
+        List<ABAGene> strongGenes = new ArrayList<ABAGene>();
+	    	
+        // round coords to nearest xx00, where xx is even
+        URL u = new URL(ABAUtil.assembleGeneFinderURI(
+        		String.valueOf(ABAUtil.round200(x)), 
+        		String.valueOf(ABAUtil.round200(y)), 
+        		String.valueOf(ABAUtil.round200(z))));
+
+        LOG.debug("Gene finder URI: {}", u.toString());
+
+        InputStream in = u.openStream();
+        XMLInputFactory factory = XMLInputFactory.newInstance();
+        XMLStreamReader parser = factory.createXMLStreamReader(in);
+
+        boolean inChromosome = false;
+        boolean inEntrezgeneid = false;
+        boolean inGeneid = false;
+        boolean inGenename = false;
+        boolean inGenesymbol = false;
+        boolean inGensatid = false;
+        boolean inMgimarkeraccessionid = false;
+        boolean inOrganism = false;
+        boolean inProjectname = false;
+        ABAGene abaGene = new ABAGene();
+        int i = 0;
+        for (int event = parser.next();  
+        		event != XMLStreamConstants.END_DOCUMENT;
+        		event = parser.next()) {
+        	if (event == XMLStreamConstants.START_ELEMENT) {
+        		if (parser.getLocalName().equals("image-series")) {
+        			break;			// we don't need info past this point
+        		}
+        		if (parser.getLocalName().equals("chromosome")) {
+        			inChromosome = true;
+        		} else if (parser.getLocalName().equals("entrezgeneid")) {
+        			inEntrezgeneid = true;
+        		} else if (parser.getLocalName().equals("geneid")) {
+        			inGeneid = true;
+        		} else if (parser.getLocalName().equals("genename")) {
+        			inGenename = true;
+        		} else if (parser.getLocalName().equals("genesymbol")) {
+        			inGenesymbol = true;
+        		} else if (parser.getLocalName().equals("gensatid")) {
+        			inGensatid = true;
+        		} else if (parser.getLocalName().equals("mgimarkeraccessionid")) {
+        			inMgimarkeraccessionid = true;
+        		} else if (parser.getLocalName().equals("organism")) {
+        			inOrganism = true;
+        		} else if (parser.getLocalName().equals("projectname")) {
+        			inProjectname = true;
+        		} 
+        	} else if (event == XMLStreamConstants.CHARACTERS) {
+        		if (inChromosome) {
+        			abaGene.chromosome = parser.getText();
+        			inChromosome = false;
+        		} else if (inEntrezgeneid) {
+        			abaGene.entrezgeneid = parser.getText();
+        			inEntrezgeneid = false;
+        		} else if (inGeneid) {
+        			abaGene.geneid = parser.getText();
+        			inGeneid = false;
+        		} else if (inGenename) {
+        			abaGene.genename = parser.getText();
+        			inGenename = false;
+        		} else if (inGenesymbol) {
+        			abaGene.genesymbol = parser.getText();
+        			inGenesymbol = false;
+        		} else if (inGensatid) {
+        			abaGene.gensatid = parser.getText();
+        			inGensatid = false;
+        		} else if (inMgimarkeraccessionid) {
+        			abaGene.mgimarkeraccessionid = parser.getText();
+        			inMgimarkeraccessionid = false;
+        		} else if (inOrganism) {
+        			abaGene.organism = parser.getText();
+        			inOrganism = false;
+        		} else if (inProjectname) {
+        			abaGene.projectname = parser.getText();
+        			inProjectname = false;
+        		}
+        		
+//           		if (inGeneSymbol) {
+//        			geneSymbol = parser.getText();
+//        			strongGenes.add(geneSymbol);
+//        			i++;
+//        			if (i >= nbrStrongGenes) {
+//        				break;
+//        			}
+//        			inGeneSymbol = false;
+//        		}
+        	}
+        }
+        try {
+        	parser.close();
+        } catch (XMLStreamException e) {
+        	LOG.warn(e.getMessage(), e);		// log but go on
+        }
+
+        // debug
+        for (ABAGene gene : strongGenes) {
+        	LOG.debug("gene: {}", gene);
+        }
+	    return strongGenes;
+	}
+	
     /*
   <GenesByPOI>
     <Gene>
@@ -213,6 +372,18 @@ public class GetGenesByPOI implements Processlet {
 //			eImageSource.setThumbnail(im.thumbnailurl);
 //		}
 		return document;
+	}
+	
+	public static class ABAGene {
+		public String chromosome;
+		public String entrezgeneid;
+		public String geneid;
+		public String genename;
+		public String genesymbol;
+		public String gensatid;
+		public String mgimarkeraccessionid;
+		public String organism;
+		public String projectname;
 	}
 	
 }
