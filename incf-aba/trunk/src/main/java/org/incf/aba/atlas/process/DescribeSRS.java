@@ -382,12 +382,9 @@ public class DescribeSRS implements Processlet {
 
 		System.out.println("Value is - " + vo.getSlideValue());
 		System.out.println("Again Value is - "
-				+ Float.parseFloat(vo.getSlideValue()));
+				+ Double.parseDouble(vo.getSlideValue()));
 
-		// FIXME - Ask Dave to change the
-		// slice.setConstant(Math.round(Float.parseFloat(vo.getSlideValue())));
-//		slice.setConstant(Double.parseDouble(vo.getSlideValue()));
-		slice.setConstant(Integer.parseInt(vo.getSlideValue()));
+		slice.setConstant(Double.parseDouble(vo.getSlideValue()));
 		slice.setCode(vo.getSliceID());
 
 	}
