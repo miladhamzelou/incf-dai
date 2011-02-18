@@ -9,13 +9,10 @@ Version 0.6. Now formatted as a specification (please edit with track changes an
 
  http://geo.sdsc.edu/ilya/presentations/INCF_Atlas_Services_and_WaxML_version_06pic_2.doc
 
-Version 0.7 - edited up to 7.4 so far...
+Version 0.7 - updated to DEEGREE-based services
 
- http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_07_iz1_accepted_to_7.4.doc
+  http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_07_iz3.doc
 
- and
-
- http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_07_iz1_trackchanges.doc
 
 
 A Powerpoint presentation describing available spatial reference systems:
