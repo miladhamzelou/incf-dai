@@ -89,18 +89,15 @@ public class Get2DImagesByPOI implements Processlet {
 
     		// transform non-AGEA coordinates to AGEA
     		if (!srsName.equals("Mouse_AGEA_1.0")) {
-
     			ABAServiceVO vo = getTransformPOI(srsName, x, y, z);
-    			
-	    		if (vo.getTransformationXMLResponseString().startsWith("Error:")) {
-					throw new OWSException( 
-							"Transformation Coordinates Error: ", vo.getTransformationXMLResponseString());
+	    		if (vo.getTransformationXMLResponseString().startsWith(
+	    		        "Error:")) {
+					throw new OWSException("Transformation Coordinates Error: ", 
+					        vo.getTransformationXMLResponseString());
 		    	}
-
     			x = Double.parseDouble(vo.getTransformedCoordinateX());
     			y = Double.parseDouble(vo.getTransformedCoordinateY());
     			z = Double.parseDouble(vo.getTransformedCoordinateZ());
-    			
 		    }
 
     		String srsFromClient = srsName;
@@ -111,8 +108,8 @@ public class Get2DImagesByPOI implements Processlet {
     				? ImageSeriesPlane.CORONAL : ImageSeriesPlane.SAGITTAL;
 
     		// 1. get strong gene(s) at POI
-    		List<String> strongGenes = ABAUtil.retrieveStrongGenesAtPOI(x, y, z,
-    				NBR_STRONG_GENES);
+    		List<String> strongGenes = ABAUtil.retrieveStrongGenesAtAGEAPOI(
+    		        x, y, z, NBR_STRONG_GENES);
 
     		// make sure we have something
     		if (strongGenes.size() == 0) {
@@ -571,8 +568,8 @@ public class Get2DImagesByPOI implements Processlet {
 		return document;
 	}
 	
-	public ABAServiceVO getTransformPOI(String fromSrsName, double x, double y, double z) 
-		throws OWSException{
+	public ABAServiceVO getTransformPOI(String fromSrsName, 
+	        double x, double y, double z) throws OWSException{
 
 		ABAConfigurator config = ABAConfigurator.INSTANCE;
 

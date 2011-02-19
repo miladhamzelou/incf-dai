@@ -24,15 +24,16 @@ import org.deegree.services.wps.ProcessletExecutionInfo;
 import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
 import org.deegree.services.wps.output.ComplexOutput;
+import org.incf.aba.atlas.util.ABAConfigurator;
+import org.incf.aba.atlas.util.ABAServiceVO;
 import org.incf.aba.atlas.util.ABAUtil;
+import org.incf.aba.atlas.util.XMLUtilities;
 import org.incf.atlas.waxml.generated.AccessionIdType;
 import org.incf.atlas.waxml.generated.GeneByPoiType;
-import org.incf.atlas.waxml.generated.GeneExpressionLevelType;
 import org.incf.atlas.waxml.generated.GeneSymbolType;
 import org.incf.atlas.waxml.generated.GeneType;
 import org.incf.atlas.waxml.generated.GenesResponseDocument;
 import org.incf.atlas.waxml.generated.GenesResponseType;
-import org.incf.atlas.waxml.generated.ImagesResponseDocument;
 import org.incf.atlas.waxml.generated.IncfNameType;
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.incf.common.atlas.util.DataInputHandler;
@@ -44,15 +45,7 @@ public class GetGenesByPOI implements Processlet {
     private static final Logger LOG = LoggerFactory.getLogger(
             Get2DImagesByPOI.class);
     
-	// used for ABA Get Image URI query string
-	private static final String HI_RES = "-1";	// highest resolution available
-	private static final String THUMB = "0";	// thumbnail
-	private static final String MIME = "2";		// jpeg/image
-	private static final int NBR_STRONG_GENES = 3;	// strong genes to get
-	
-//	private ResponseValues responseValues;
-	
-	private GenesResponseDocument document;
+	private static final int NBR_STRONG_GENES = 10;	// strong genes to get
 	
     @Override
     public void process(ProcessletInputs in, ProcessletOutputs out, 
@@ -80,18 +73,15 @@ public class GetGenesByPOI implements Processlet {
     		
     		// transform non-AGEA coordinates to AGEA
     		if (!srsName.equals("Mouse_AGEA_1.0")) {
-
-//    			ABAServiceVO vo = getTransformPOI(srsName, x, y, z);
-//    			
-//	    		if (vo.getTransformationXMLResponseString().startsWith("Error:")) {
-//					throw new OWSException( 
-//							"Transformation Coordinates Error: ", vo.getTransformationXMLResponseString());
-//		    	}
-//
-//    			x = Double.parseDouble(vo.getTransformedCoordinateX());
-//    			y = Double.parseDouble(vo.getTransformedCoordinateY());
-//    			z = Double.parseDouble(vo.getTransformedCoordinateZ());
-    			
+                ABAServiceVO vo = getTransformPOI(srsName, x, y, z);
+                if (vo.getTransformationXMLResponseString().startsWith(
+                        "Error:")) {
+                    throw new OWSException("Transformation Coordinates Error: ", 
+                            vo.getTransformationXMLResponseString());
+                }
+                x = Double.parseDouble(vo.getTransformedCoordinateX());
+                y = Double.parseDouble(vo.getTransformedCoordinateY());
+                z = Double.parseDouble(vo.getTransformedCoordinateZ());
 		    }
 
     		String srsFromClient = srsName;
@@ -116,7 +106,7 @@ public class GetGenesByPOI implements Processlet {
     		 */
 
     		// 1. get strong gene(s) at POI
-    		List<String> strongGenes = ABAUtil.retrieveStrongGenesAtPOI(x, y, z,
+    		List<String> strongGenes = ABAUtil.retrieveStrongGenesAtAGEAPOI(x, y, z,
     				NBR_STRONG_GENES);
 
     		// make sure we have something
@@ -397,4 +387,64 @@ public class GetGenesByPOI implements Processlet {
 		
 	}
 	
+    public ABAServiceVO getTransformPOI(String fromSrsName, 
+            double x, double y, double z) throws OWSException{
+
+        ABAConfigurator config = ABAConfigurator.INSTANCE;
+
+        String tempX = "";
+        String tempY = "";
+        String tempZ = "";
+        String toSrsName = "Mouse_AGEA_1.0";
+        String hostName = "";
+        String portNumber = "";
+        String transformedCoordinatesString = "";
+        ABAServiceVO vo = new ABAServiceVO();
+        
+        //Call getTransformationChain method here...
+        //ABAVoxel
+        System.out.println("1.1:" );
+
+        tempX = ";x="+String.valueOf(x);
+        tempY = ";y="+String.valueOf(y);
+        tempZ = ";z="+String.valueOf(z);
+
+        String delimitor = config.getValue("incf.deploy.port.delimitor");
+        
+        hostName = config.getValue("incf.deploy.host.name");
+        portNumber = config.getValue("incf.aba.port.number");
+        portNumber = delimitor + portNumber;
+
+        String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+fromSrsName+";outputSrsName="+toSrsName+";filter=Cerebellum";
+        String transformationChainURL = "http://"+hostName+portNumber+servicePath;
+        System.out.println("1.4: " + transformationChainURL);
+
+        try { 
+            
+            XMLUtilities xmlUtilities = new XMLUtilities();
+            transformedCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, tempX, tempY, tempZ);
+    
+            System.out.println("2:" );
+            //Start - exception handling
+/*          if (transformedCoordinatesString.startsWith("Error:")) {
+                System.out.println("********************ERROR*********************");
+                throw new OWSException( 
+                        "Transformed Coordinates Error: ", transformedCoordinatesString);
+            }
+*/          //End - exception handling
+            ABAUtil util = new ABAUtil();
+            String[] tempArray = util.getTabDelimNumbers(transformedCoordinatesString);
+            vo.setTransformedCoordinateX(tempArray[0]);
+            vo.setTransformedCoordinateY(tempArray[1]);
+            vo.setTransformedCoordinateZ(tempArray[2]);
+            vo.setTransformationXMLResponseString(transformedCoordinatesString);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return vo;
+
+    }
+    
 }

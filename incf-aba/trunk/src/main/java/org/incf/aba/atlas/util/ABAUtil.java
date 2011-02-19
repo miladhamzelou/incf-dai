@@ -4196,7 +4196,7 @@ public class ABAUtil {
 	 * @throws IOException
 	 * @throws XMLStreamException
 	 */
-	public static List<String> retrieveStrongGenesAtPOI(double x, double y, 
+	public static List<String> retrieveStrongGenesAtAGEAPOI(double x, double y, 
 			double z, int nbrStrongGenes) throws IOException, 
 					XMLStreamException {
         List<String> strongGenes = new ArrayList<String>();
@@ -4213,14 +4213,18 @@ public class ABAUtil {
         XMLInputFactory factory = XMLInputFactory.newInstance();
         XMLStreamReader parser = factory.createXMLStreamReader(in);
 
+        boolean inEnergy = false;
         boolean inGeneSymbol = false;
+        String energy = null;
         String geneSymbol = null;
         int i = 0;
         for (int event = parser.next();  
         		event != XMLStreamConstants.END_DOCUMENT;
         		event = parser.next()) {
         	if (event == XMLStreamConstants.START_ELEMENT) {
-        		if (parser.getLocalName().equals("genesymbol")) {
+        	    if (parser.getLocalName().equals("energy")) {
+        	        inEnergy = true;
+        	    } else if (parser.getLocalName().equals("genesymbol")) {
         			inGeneSymbol = true;
         		}
         	} else if (event == XMLStreamConstants.CHARACTERS) {
