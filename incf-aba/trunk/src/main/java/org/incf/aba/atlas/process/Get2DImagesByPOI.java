@@ -29,6 +29,7 @@ import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
 import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.aba.atlas.util.ABAConfigurator;
+import org.incf.aba.atlas.util.ABAGene;
 import org.incf.aba.atlas.util.ABAServiceVO;
 import org.incf.aba.atlas.util.ABAUtil;
 import org.incf.aba.atlas.util.XMLUtilities;
@@ -40,9 +41,7 @@ import org.incf.atlas.waxml.generated.ImagesResponseType.Image2Dcollection;
 import org.incf.atlas.waxml.generated.IncfRemoteFormatEnum;
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.incf.common.atlas.exception.InvalidDataInputValueException;
-import org.incf.common.atlas.util.AllowedValuesValidator;
 import org.incf.common.atlas.util.DataInputHandler;
-import org.incf.common.atlas.util.Util;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -108,8 +107,8 @@ public class Get2DImagesByPOI implements Processlet {
     				? ImageSeriesPlane.CORONAL : ImageSeriesPlane.SAGITTAL;
 
     		// 1. get strong gene(s) at POI
-    		List<String> strongGenes = ABAUtil.retrieveStrongGenesAtAGEAPOI(
-    		        x, y, z, NBR_STRONG_GENES);
+    		List<ABAGene> strongGenes = ABAUtil.retrieveStrongGenesAtAGEAPOI(
+    				x, y, z, NBR_STRONG_GENES);
 
     		// make sure we have something
     		if (strongGenes.size() == 0) {
@@ -120,17 +119,17 @@ public class Get2DImagesByPOI implements Processlet {
 
     		if (LOG.isDebugEnabled()) {
     			StringBuilder buf = new StringBuilder();
-    			for (String gene : strongGenes) {
-    				buf.append(gene).append(", ");
+    			for (ABAGene gene : strongGenes) {
+    				buf.append(gene.getGenesymbol()).append(", ");
     			}
     			LOG.debug("Strong genes: {}", buf.toString());
     		}
 
     		// 2. get image series'es for strong genes and desired plane
     		List<ImageSeries> imageSerieses = new ArrayList<ImageSeries>();
-    		for (String geneSymbol : strongGenes) {
+    		for (ABAGene gene : strongGenes) {
     			ImageSeries imageSeries = retrieveImagesSeriesForGene(
-    					geneSymbol, desiredPlane);
+    					gene.getGenesymbol(), desiredPlane);
     			if (imageSeries != null) {
     				imageSerieses.add(imageSeries);
     			}
@@ -199,14 +198,6 @@ public class Get2DImagesByPOI implements Processlet {
     			responseValues.images.add(image);
     		} // for
 
-    		// ComplexOutput objects can become very huge; it is essential to 
-    		// stream result.
-    		// get ComplexOutput object from ProcessletOutput...
-    		ComplexOutput complexOutput = (ComplexOutput) out.getParameter(
-    				"Get2DImagesByPOIOutput");
-    		LOG.debug("Setting complex output (requested=" 
-    				+ complexOutput.isRequested() + ")");
-
     		// ImagesResponseDocument 'is a' org.apache.xmlbeans.XmlObject
     		//	'is a' org.apache.xmlbeans.XmlTokenSource
     		ImagesResponseDocument document = completeResponse();
@@ -220,8 +211,18 @@ public class Get2DImagesByPOI implements Processlet {
     			LOG.debug("Xml:\n{}", document.xmlText(opt));
     		}
 
-    		// get reader on document; reader --> writer
+    		// 4. Send it
+    		// get reader on document
     		XMLStreamReader reader = document.newXMLStreamReader();
+    		
+    		// get ComplexOutput object from ProcessletOutput...
+    		ComplexOutput complexOutput = (ComplexOutput) out.getParameter(
+    				"Get2DImagesByPOIOutput");
+
+    		LOG.debug("Setting complex output (requested=" 
+    				+ complexOutput.isRequested() + ")");
+    		
+    		// ComplexOutput objects can be huge so stream it 
     		XMLStreamWriter writer = complexOutput.getXMLStreamWriter();
     		XMLAdapter.writeElement(writer, reader);
     		

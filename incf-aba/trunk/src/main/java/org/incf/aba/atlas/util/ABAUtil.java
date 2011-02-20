@@ -4196,10 +4196,10 @@ public class ABAUtil {
 	 * @throws IOException
 	 * @throws XMLStreamException
 	 */
-	public static List<String> retrieveStrongGenesAtAGEAPOI(double x, double y, 
+	public static List<ABAGene> retrieveStrongGenesAtAGEAPOI(double x, double y, 
 			double z, int nbrStrongGenes) throws IOException, 
 					XMLStreamException {
-        List<String> strongGenes = new ArrayList<String>();
+        List<ABAGene> abaGenes = new ArrayList<ABAGene>();
 	    	
         // round coords to nearest xx00, where xx is even
         URL u = new URL(ABAUtil.assembleGeneFinderURI(
@@ -4213,14 +4213,14 @@ public class ABAUtil {
         XMLInputFactory factory = XMLInputFactory.newInstance();
         XMLStreamReader parser = factory.createXMLStreamReader(in);
 
+        // loop through genes found at poi
         boolean inEnergy = false;
         boolean inGeneSymbol = false;
-        String energy = null;
-        String geneSymbol = null;
-        int i = 0;
-        for (int event = parser.next();  
-        		event != XMLStreamConstants.END_DOCUMENT;
-        		event = parser.next()) {
+        int event = parser.next(); 
+        int i = 1;
+        ABAGene abaGene = null;
+        while (i <= nbrStrongGenes 
+        		&& event != XMLStreamConstants.END_DOCUMENT) {
         	if (event == XMLStreamConstants.START_ELEMENT) {
         	    if (parser.getLocalName().equals("energy")) {
         	        inEnergy = true;
@@ -4228,17 +4228,20 @@ public class ABAUtil {
         			inGeneSymbol = true;
         		}
         	} else if (event == XMLStreamConstants.CHARACTERS) {
-        		if (inGeneSymbol) {
-        			geneSymbol = parser.getText();
-        			strongGenes.add(geneSymbol);
-        			i++;
-        			if (i >= nbrStrongGenes) {
-        				break;
-        			}
+        		if (inEnergy) {
+                	abaGene = new ABAGene();
+                	abaGene.setId("G" + String.valueOf(i));
+        			abaGene.setEnergy(parser.getText());
+        			inEnergy = false;
+        		} else if (inGeneSymbol) {
+        			abaGene.setGenesymbol(parser.getText());
         			inGeneSymbol = false;
+        			abaGenes.add(abaGene);
+        			i++;
         		}
         	}
-        }
+        	event = parser.next();
+        } // while
         try {
         	parser.close();
         } catch (XMLStreamException e) {
@@ -4246,10 +4249,10 @@ public class ABAUtil {
         }
 
         // debug
-        for (String gene : strongGenes) {
-        	LOG.debug("gene: {}", gene);
+        for (ABAGene gene: abaGenes) {
+        	LOG.debug("abaGene symbol: {}", gene.getGenesymbol());
         }
-	    return strongGenes;
+	    return abaGenes;
 	}
 	
 	/**
