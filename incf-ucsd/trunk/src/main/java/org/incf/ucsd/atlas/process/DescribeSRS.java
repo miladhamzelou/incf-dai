@@ -2,14 +2,18 @@ package org.incf.ucsd.atlas.process;
 
 import java.io.File;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Iterator;
 import java.util.Random;
 
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
+import net.opengis.gml.x32.PointType;
 import net.opengis.gml.x32.UnitOfMeasureType;
 
 import org.apache.xmlbeans.XmlError;
@@ -28,6 +32,8 @@ import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.atlas.waxml.generated.AuthorType;
 import org.incf.atlas.waxml.generated.DescribeSRSResponseDocument;
 import org.incf.atlas.waxml.generated.DescribeSRSResponseType;
+import org.incf.atlas.waxml.generated.FiducialType;
+import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Fiducials;
 import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Slices;
 import org.incf.atlas.waxml.generated.IncfCodeType;
 import org.incf.atlas.waxml.generated.IncfUriSliceSource;
@@ -178,6 +184,12 @@ public class DescribeSRS implements Processlet {
 		orient.setId(gmlID); // this is what is linked, to
 		orient.setName(name);
 		Author author = orient.addNewAuthor();
+	    
+		Calendar calendar = new GregorianCalendar(2000, // year
+	            10, // month
+	            1); // day of month
+	        java.sql.Date date = new java.sql.Date(calendar.getTimeInMillis());
+	        
 		author.setDateSubmitted(Calendar.getInstance());
 		author.setAuthorCode(authorCode);
 		author.setStringValue(authorName);
@@ -268,8 +280,8 @@ public class DescribeSRS implements Processlet {
 				DerivedFrom derived = srs.addNewDerivedFrom();
 				derived.setSrsName(vo.getDerivedFromSRSCode());
 				// derived.setMethod("MethodName");
-				srs.setDateCreated(Calendar.getInstance());
-				srs.setDateUpdated(Calendar.getInstance());
+				//srs.setDateCreated(Calendar.getInstance());
+				//srs.setDateUpdated(Calendar.getInstance());
 
 			}
 
@@ -304,13 +316,13 @@ public class DescribeSRS implements Processlet {
 		Iterator iterator2 = list2.iterator();
 		UCSDServiceVO vo = null;
 
+		o = rootDoc.addNewOrientations();
 		Random randomGenerator = new Random();
 		while (iterator2.hasNext()) {
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID = randomGenerator.nextInt(100);
 			}
 			vo = (UCSDServiceVO) iterator2.next();
-			o = rootDoc.addNewOrientations();
 			OrientationType orientaiton1 = o.addNewOrientation();
 			orientation(orientaiton1, vo.getOrientationName(), vo
 					.getOrientationName(), String.valueOf(randomGMLID), vo
@@ -340,6 +352,27 @@ public class DescribeSRS implements Processlet {
 			sliceElements(s.addNewSlice(), 1, vo);
 		}
 
+		//Start - GetFiducials Data
+		if (srsName.equals(whs09)) {
+			vo.setSpaceCode(whs09);// FIXME - Remove the hardcoded value
+		} else if (srsName.equals(paxinos)) {
+			vo.setSpaceCode(paxinos);// FIXME - Remove the hardcoded value
+		} else {
+			vo.setSpaceCode("");
+		}
+		ArrayList fiducialsDataList = daoImpl.getFiducialsData(vo);
+		
+		Fiducials f = rootDoc.addNewFiducials();
+		iterator = fiducialsDataList.iterator();
+		int fiducialCount = 0;
+		while (iterator.hasNext()) {
+			fiducialCount++;
+			vo = (UCSDServiceVO) iterator.next();
+			FiducialType fiducialType = f.addNewFiducial();
+			fiducialElements(fiducialType, fiducialCount, vo);
+		}
+		//End
+
 		/*
 		 * Fiducials f = rootDoc.addNewFiducials();
 		 * exampleFiducial(f.addNewFiducial(), 1);
@@ -347,6 +380,38 @@ public class DescribeSRS implements Processlet {
 		return document;
 	}
 
+	
+	public static void fiducialElements(FiducialType fiducialType, int identifier, UCSDServiceVO vo){
+		
+		try {
+
+			fiducialType.setCode(vo.getFiducialCode());
+			fiducialType.setFiducialType(vo.getFiducialType());
+			fiducialType.setName(vo.getFiducialName());
+			fiducialType.addNewDescription().setStringValue(vo.getDescription());
+	
+			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+			Date date = sdf.parse(vo.getDateSubmitted());
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(date);
+	
+			AuthorType author=	fiducialType.addNewAuthor();
+			author.setAuthorCode(vo.getAuthorCode());
+			author.setDateSubmitted(cal.getInstance());
+
+			fiducialType.setCertaintyLevel(vo.getCertaintyLevel());
+			fiducialType.setDerivedFrom(vo.getDerivedFrom());
+			
+			PointType pnt =	fiducialType.addNewPoint();
+			pnt.addNewPos().setStringValue(vo.getPos());
+			pnt.setSrsName(vo.getSrsName());
+			pnt.setId(String.valueOf(identifier));
+
+		} catch (Exception e ) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void sliceElements(SliceType slice, int identifier,
 			UCSDServiceVO vo) {
 

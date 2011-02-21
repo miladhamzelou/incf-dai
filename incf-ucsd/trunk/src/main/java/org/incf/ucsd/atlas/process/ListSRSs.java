@@ -234,8 +234,8 @@ public class ListSRSs implements Processlet {
 	    DerivedFrom derived = srs.addNewDerivedFrom();
 	    derived.setSrsName(vo.getDerivedFromSRSCode());
 	    //derived.setMethod("MethodName");
-	    srs.setDateCreated(Calendar.getInstance());
-		srs.setDateUpdated(Calendar.getInstance());
+	    //srs.setDateCreated(Calendar.getInstance());
+		//srs.setDateUpdated(Calendar.getInstance());
 
 		}
 
@@ -267,13 +267,14 @@ public class ListSRSs implements Processlet {
 		Iterator iterator2 = list2.iterator();
 		UCSDServiceVO vo = null;
 
-	    Random randomGenerator = new Random();
+		o = rootDoc.addNewOrientations();
+
+		Random randomGenerator = new Random();
 		while ( iterator2.hasNext()) {
 		    for (int idx = 1; idx <= 10; ++idx){
 			      randomGMLID = randomGenerator.nextInt(100);
 			    }
 			vo = (UCSDServiceVO) iterator2.next(); 
-			o = rootDoc.addNewOrientations();
 			OrientationType orientaiton1 = o.addNewOrientation();
 			orientation(orientaiton1,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription());
 		}

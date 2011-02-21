@@ -153,10 +153,10 @@ public class Get2DImagesByPOI implements Processlet {
 				portNumber = delimitor + portNumber;
 				// End - FIXME
 
-				String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
+				String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
 						+ vo.getFromSRSCode()
 						+ ";outputSrsName="
-						+ vo.getToSRSCode() + ";filter=Cerebellum";
+						+ vo.getToSRSCode() + ";filter=NONE";
 				String transformationChainURL = "http://" + hostName
 						+ portNumber + servicePath;
 				paxinosCoordinatesString = xmlUtilities
@@ -192,10 +192,10 @@ public class Get2DImagesByPOI implements Processlet {
 
 				// Construct GetTransformationChain URL
 				// http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-				servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
+				servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
 						+ vo.getFromSRSCode()
 						+ ";outputSrsName="
-						+ vo.getToSRSCode() + ";filter=Cerebellum";
+						+ vo.getToSRSCode() + ";filter=NONE";
 				transformationChainURL = "http://" + hostName + portNumber
 						+ servicePath;
 				abareferenceCoordinatesString = xmlUtilities
@@ -304,6 +304,7 @@ public class Get2DImagesByPOI implements Processlet {
 			 * toleranceCodeCriteria.setName("Tolerance");
 			 * toleranceCodeCriteria.setValue(vo.getTolerance());
 			 */
+			Image2Dcollection images = imagesRes.addNewImage2Dcollection();
 			String servicePath = "/cgi-bin/mapserv?map=crbsatlas/mapfiles/";
 			String imageServerHostname = config
 					.getValue("incf.imageserver.host.name");
@@ -320,7 +321,6 @@ public class Get2DImagesByPOI implements Processlet {
 						+ vo.getImageBaseName()
 						+ "&FORMAT=png24&VERSION=1.1.1&REQUEST=GetMap"
 						+ "&SRS=EPSG:4326&WIDTH=256&HEIGHT=256&BBOX=";
-				Image2Dcollection images = imagesRes.addNewImage2Dcollection();
 				Image2DType image1 = images.addNewImage2D();
 				ImageSource i1source = image1.addNewImageSource();
 				i1source.setStringValue(wmsURL);
@@ -336,32 +336,21 @@ public class Get2DImagesByPOI implements Processlet {
 				System.out.println("srsName - " + srsName);
 
 				ImagePosition i1position = image1.addNewImagePosition();
-				System.out.println("1");
 				IncfSrsType planeequation = i1position
 						.addNewImagePlaneEquation();
-				System.out.println("2");
 				planeequation.setSrsName(srsName);
-				System.out.println("3");
 				planeequation.setStringValue(vo.getCoefficientA() + " "
 						+ vo.getCoefficientB() + " " + vo.getCoefficientC()
 						+ " " + vo.getCoefficientD());
-				System.out.println("4");
 				IncfSrsType placement = i1position.addNewImagePlanePlacement();
-				System.out.println("5");
 				placement.setSrsName(srsName);
-				System.out.println("6");
 				placement.setStringValue(vo.getTfw1() + " " + vo.getTfw2()
 						+ " " + vo.getTfw3() + " " + vo.getTfw4() + " "
 						+ vo.getTfw5() + " " + vo.getTfw6());
-				System.out.println("7");
 				Corners corners = i1position.addNewCorners();
-				System.out.println("8");
 
 				Corner corner1 = corners.addNewCorner();
-				System.out.println("9");
 				corner1.setPosition(PositionEnum.TOPLEFT);
-
-				System.out.println("10");
 				// corner1.addNewPoint().addNewPos().setSrsName(srsName);
 				/*
 				 * System.out.println("10.1");
