@@ -268,8 +268,8 @@ public class DescribeSRS implements Processlet {
 				DerivedFrom derived = srs.addNewDerivedFrom();
 				derived.setSrsName(vo.getDerivedFromSRSCode());
 				// derived.setMethod("MethodName");
-				srs.setDateCreated(Calendar.getInstance());
-				srs.setDateUpdated(Calendar.getInstance());
+				//srs.setDateCreated(Calendar.getInstance());
+				//srs.setDateUpdated(Calendar.getInstance());
 
 			}
 
@@ -304,13 +304,13 @@ public class DescribeSRS implements Processlet {
 		Iterator iterator2 = list2.iterator();
 		ABAServiceVO vo = null;
 
+		o = rootDoc.addNewOrientations();
 		Random randomGenerator = new Random();
 		while (iterator2.hasNext()) {
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID = randomGenerator.nextInt(100);
 			}
 			vo = (ABAServiceVO) iterator2.next();
-			o = rootDoc.addNewOrientations();
 			OrientationType orientaiton1 = o.addNewOrientation();
 			orientation(orientaiton1, vo.getOrientationName(), vo
 					.getOrientationName(), String.valueOf(randomGMLID), vo
@@ -382,8 +382,9 @@ public class DescribeSRS implements Processlet {
 
 		System.out.println("Value is - " + vo.getSlideValue());
 		System.out.println("Again Value is - "
-				+ Double.parseDouble(vo.getSlideValue()));
+				+ Float.parseFloat(vo.getSlideValue()));
 
+		// slice.setConstant(Math.round(Float.parseFloat(vo.getSlideValue())));
 		slice.setConstant(Double.parseDouble(vo.getSlideValue()));
 		slice.setCode(vo.getSliceID());
 
