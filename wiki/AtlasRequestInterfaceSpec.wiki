@@ -75,7 +75,7 @@ lineage
 ====Format====
 !DataInputs={key-1}={value-1};{key-2}={value-2};...;{key-n}={value-n}
 
-====Data Input Keys====
+====Typical Data Input Keys====
 
 Data inputs vary for each process and to some extent at each hub, so this section shows some common Atlas data inputs but it is not complete. See [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess] for the particular hub and process to see what data input keys are appropriate and what values are acceptable.
 
@@ -201,10 +201,6 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL</td>
-  </tr>
-  <tr>
     <th align="left">Examples</th>
     <td>
  * Central: http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
@@ -247,7 +243,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -284,7 +280,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -325,7 +321,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td>http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal</td>
   </tr>
 </table>
@@ -362,7 +358,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -398,7 +394,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -434,7 +430,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -474,7 +470,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -514,7 +510,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -550,7 +546,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -591,7 +587,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -629,7 +625,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -665,7 +661,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -701,7 +697,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -737,7 +733,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -774,7 +770,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -817,7 +813,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
@@ -856,7 +852,7 @@ Atlas Functions
     <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
   </tr>
   <tr>
-    <th align="left">Example</th>
+    <th align="left">Examples</th>
     <td></td>
   </tr>
 </table>
