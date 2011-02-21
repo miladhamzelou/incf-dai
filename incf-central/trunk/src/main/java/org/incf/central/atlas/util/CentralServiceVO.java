@@ -28,6 +28,7 @@ public class CentralServiceVO {
 
 	private String structureName = "";
 	private String structureDescription = "";
+	private String imagePlaneEquation = "";
 
 	private String incfDeployHostname = "";
 	private String wms = "";
@@ -1108,6 +1109,14 @@ public class CentralServiceVO {
 
 	public void setToSRSCodeTwelve(String toSRSCodeTwelve) {
 		this.toSRSCodeTwelve = toSRSCodeTwelve;
+	}
+
+	public String getImagePlaneEquation() {
+		return imagePlaneEquation;
+	}
+
+	public void setImagePlaneEquation(String imagePlaneEquation) {
+		this.imagePlaneEquation = imagePlaneEquation;
 	}
 
 }
