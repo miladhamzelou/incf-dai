@@ -110,6 +110,11 @@
     </property>
 
 	<property>
+        <name>ucsd.emap.service.path</name>
+        <value>/emap/atlas?</value>
+    </property>
+
+	<property>
         <name>ucsd.ucsd.service.path</name>
         <value>/ucsd/atlas?</value>
     </property>
