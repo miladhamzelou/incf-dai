@@ -48,8 +48,11 @@ request
  * Values: { !GetCapabilities | !DescribeProcess | Execute }
 
 Identifier
- * Only applicable if request=Execute
- * Value: the process name to be executed
+ * Required except when request=!GetCapabilities
+ * If request=DescribeProcess
+   * Value: { the process identifier to be described | ALL }
+ * If request=Execute
+   * Value: the process identifier to be executed
 
 !DataInputs
  * See [AtlasRequestInterfaceSpec#DataInputs Data Inputs]
@@ -63,9 +66,10 @@ lineage
 ===Data Inputs===
 
  * Applicable when request=Execute
+ * Run request=[AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess] to see the data inputs applicable to each process for each hub
  * The data inputs is a sub-query string of key=value pairs
  * The key=value pairs are semicolon-delimited (;)
- * The data inputs vary by process
+ * The data inputs vary by process and hub
  * Some processes will not have any data inputs
 
 ====Format====
