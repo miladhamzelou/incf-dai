@@ -115,7 +115,8 @@ Atlas Functions
  * [AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]
  * [AtlasRequestInterfaceSpec#GetCorrlationMap GetCorrelationMap]
  * [AtlasRequestInterfaceSpec#GetGenesByPOI GetGenesByPOI]
- * [AtlasRequestInterfaceSpec#GetProcessesByIdentifier GetProcessesByIdentifier]
+ * [AtlasRequestInterfaceSpec#GetObjectsByPOI GetOjbectsByPOI]
+ * [AtlasRequestInterfaceSpec#GetPropertiesByPOI GetPropertiesByPOI]
  * [AtlasRequestInterfaceSpec#GetStructureNamesByPOI GetStructureNamesByPOI]
  * [AtlasRequestInterfaceSpec#GetTransformationChain GetTransformationChain]
  * [AtlasRequestInterfaceSpec#ListHubs ListHubs]
@@ -403,15 +404,15 @@ Atlas Functions
   </tr>
 </table>
 
-===!GetProcessesByIdentifier===
+===!GetObjectsByPOI===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th colspan="2">!GetProcessesByIdentifier</th>
+    <th colspan="2">!GetObjectsByPOI</th>
   </tr>
   <tr>
     <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=GetProcessesByIdentifier&DataInputs=processIdentifier=[processIdentifier</td>
+    <td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=GetObjectsByPOI&DataInputs=[to be determined]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -419,11 +420,47 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>Central only</td>
+    <td></td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#Process_Identifier processIdentifier]</td>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Normal Return</th>
+    <td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd WPS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Error Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Examples</th>
+    <td></td>
+  </tr>
+</table>
+
+===!GetPropertiesByPOI===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th colspan="2">!GetPropertiesByPOI</th>
+  </tr>
+  <tr>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=GetPropertiesByPOI&DataInputs=[to be determined]</td>
+  </tr>
+  <tr>
+    <th align="left">Description</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Applicability</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
+    <td></td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
