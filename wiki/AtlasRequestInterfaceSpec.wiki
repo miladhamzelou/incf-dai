@@ -185,15 +185,11 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
-Central: http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities
-
-ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&request=GetCapabilities
-
-EMAP: http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&request=GetCapabilities
-
-UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&request=GetCapabilities
-
-WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&request=GetCapabilities
+ * Central: http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities
+ * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&request=GetCapabilities
+ * EMAP: http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&request=GetCapabilities
+ * UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&request=GetCapabilities
+ * WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&request=GetCapabilities
 </td>
   </tr>
 </table>
