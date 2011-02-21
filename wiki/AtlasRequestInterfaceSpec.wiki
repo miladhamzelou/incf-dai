@@ -404,11 +404,11 @@ Atlas Functions
   </tr>
 </table>
 
-===!GetObjectsByPOI===
+===GetObjectsByPOI===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th colspan="2">!GetObjectsByPOI</th>
+    <th colspan="2">GetObjectsByPOI</th>
   </tr>
   <tr>
     <th align="left">GET Request</th>
@@ -440,11 +440,11 @@ Atlas Functions
   </tr>
 </table>
 
-===!GetPropertiesByPOI===
+===GetPropertiesByPOI===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th colspan="2">!GetPropertiesByPOI</th>
+    <th colspan="2">GetPropertiesByPOI</th>
   </tr>
   <tr>
     <th align="left">GET Request</th>
