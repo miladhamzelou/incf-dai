@@ -53,9 +53,6 @@
       <Title>Filter</Title>
       <Abstract></Abstract>
       <DefaultValue>NONE</DefaultValue>
-      <AllowedValues>
-        <Value>NONE</Value>
-      </AllowedValues>
     </LiteralInput>
   </InputParameters>
 

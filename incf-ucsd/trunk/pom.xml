@@ -6,7 +6,7 @@
   <packaging>war</packaging>
   <version>3.0.0</version>
   <name>UCSD Hub</name>
-  <url>http://maven.apache.org</url>  
+  <url>http://maven.apache.org</url>
   
   <repositories>
     <repository>
