@@ -20,6 +20,17 @@
   
   <build>
     <finalName>emap</finalName>
+
+
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+      </resource>
+      <resource>
+        <directory>src/main/webapp/WEB-INF/workspace/processes</directory>
+      </resource>
+    </resources>
+    
     <plugins>
 
       <plugin>
@@ -35,6 +46,11 @@
   </build>
 
   <dependencies>
+    <dependency>
+      <groupId>org.incf</groupId>
+      <artifactId>common</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
     <dependency>
       <groupId>org.deegree</groupId>
       <artifactId>deegree-services</artifactId>
@@ -68,6 +84,122 @@
       <artifactId>slf4j-log4j12</artifactId>
       <version>1.5.8</version>
     </dependency>
+    <dependency>
+      <groupId>org.jdom</groupId>
+      <artifactId>jdom</artifactId>
+      <version>1.1</version>
+    </dependency>
+	<dependency>
+	    <groupId>jaxen</groupId>
+	    <artifactId>jaxen</artifactId>
+	    <version>1.1.1</version>
+	    <scope>runtime</scope>
+	</dependency>
+    <dependency>
+      <groupId>net.sf.saxon</groupId>
+      <artifactId>saxon-he</artifactId>
+      <version>9.2.1.1</version>
+    </dependency>
+    <dependency>
+      <groupId>java3d</groupId>
+      <artifactId>vecmath</artifactId>
+      <version>1.3.1</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-configuration</groupId>
+      <artifactId>commons-configuration</artifactId>
+      <version>1.6</version>
+    </dependency>
+    <dependency>
+      <groupId>com.sun.xml.bind</groupId>
+      <artifactId>jaxb-impl</artifactId>
+      <version>2.1</version>
+      <classifier>EA1</classifier>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.axis</groupId>
+        <artifactId>axis</artifactId>
+      <version>1.4</version>
+	</dependency>
+    <dependency>
+      <groupId>axis</groupId>
+      <artifactId>axis-jaxrpc</artifactId>
+      <version>1.2-RC2</version>
+    </dependency>
+    <dependency>
+      <groupId>axis</groupId>
+      <artifactId>axis-wsdl4j</artifactId>
+      <version>1.2-RC2</version>
+    </dependency>
+    <dependency>
+      <groupId>axis</groupId>
+      <artifactId>axis-saaj</artifactId>
+      <version>1.2-RC2</version>
+    </dependency>
+
+      <dependency>
+  		<groupId>org.mapserver</groupId>
+  		<artifactId>gt-api</artifactId>
+  		<version>2.5.5</version>
+  	</dependency>
+  <dependency>
+  		<groupId>org.mapserver</groupId>
+  		<artifactId>gt-commons-lang</artifactId>
+  		<version>2.1</version>
+  </dependency>
+  <dependency>
+        <groupId>commons-discovery</groupId>
+        <artifactId>commons-discovery</artifactId>
+        <version>0.4</version>
+  </dependency>
+  	
+  <dependency>
+  		<groupId>org.mapserver</groupId>
+  		<artifactId>gt-geoapi</artifactId>
+  		<version>2.2.0</version>
+  	</dependency>
+  <dependency>
+  		<groupId>org.mapserver</groupId>
+  		<artifactId>gt-jts</artifactId>
+  		<version>1.9</version>
+  	</dependency>
+  <dependency>
+  		<groupId>org.mapserver</groupId>
+  		<artifactId>gt-main</artifactId>
+  		<version>2.5.5</version>
+  	</dependency>
+  <dependency>
+  		<groupId>org.mapserver</groupId>
+  		<artifactId>gt-metadata</artifactId>
+  		<version>2.5.5</version>
+  	</dependency>
+  <dependency>
+  		<groupId>org.mapserver</groupId>
+  		<artifactId>gt-referencing</artifactId>
+  		<version>2.5.5</version>
+  	</dependency>
+  <dependency>
+  		<groupId>org.mapserver</groupId>
+  		<artifactId>gt-wms</artifactId>
+  		<version>2.5.5</version>
+  	</dependency>
+  <dependency>
+  		<groupId>org.mapserver</groupId>
+  		<artifactId>gt-xml</artifactId>
+  		<version>2.5.5</version>
+  	</dependency>
+  <dependency>
+  	<groupId>xalan</groupId>
+  	<artifactId>xalan</artifactId>
+  	<version>2.7.1</version>
+  </dependency>
+
   </dependencies>
 
 </project>
