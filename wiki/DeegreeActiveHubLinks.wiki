@@ -162,24 +162,31 @@ Currently the project is using four servers to develop and demonstrate the hubs 
     http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
 
  * !Execute : Get2DImagesByPOI 
+
     http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3 
 
- * !Execute : TransformPOI
-    http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;x=1;y=4.3;z=1.78 
+ * !Execute : TransformPOI 
+
+    http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;x=1;y=4.3;z=1.78  
 
  * !Execute : Retrieve2DImage
+
     http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Retrieve2DImage&DataInputs=sourceType=WMS;sourceURL=http%3A%2F%2Fimage.wholebraincatalog.org%2Fcgi-bin%2Fmapserv%3Fmap%3Dcrbsatlas%2Fmapfiles%2Fgensat_3363_modified_sm_transformed-ms.map%26LAYERS%3Dgensat_penk1_09%26FORMAT%3Dpng24%26VERSION%3D1.1.1%26REQUEST%3DGetMap;srsName=Mouse_ABAreference_1.0;xmin=-1.9298;xmax=8.73376;ymin=-9.92461;ymax=1.14128;filter=NONE 
 
  * !Execute : DescribeSRS
+
     http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Mouse_Paxinos_1.0 
 
  * !Execute : GetStructureNamesByPOI
+
     http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=-4;y=-2.3;z=2;vocabulary=Mouse_Paxinos_1.0;filter=NONE  
 
  * !Execute : ListTransformations
+
     http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_WHS_0.9;filter=NONE 
 
  * !Execute : ListSRSs
+
     http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs 
 
 
@@ -195,7 +202,24 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
 
+ * !TransformPOI
 
- * Execute : Addition (a test process)
+    http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0;x=1.5;y=1;z=0.6
 
-    http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Addition&DataInputs=a=1;b=2
+ * !DescribeSRS
+
+    http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Mouse_WHS_0.9
+
+ * !GetSTructureNamesByPOI
+
+    http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=
+
+ * !ListSRS
+
+    http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+
+ * !ListTransformations
+
+    http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
+
+    http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_WHS_0.9;outputSrsName=ALL;filter=
