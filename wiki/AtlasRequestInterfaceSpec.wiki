@@ -49,7 +49,7 @@ request
 
 Identifier
  * Required except when request=!GetCapabilities
- * If request=DescribeProcess
+ * If request=!DescribeProcess
    * Value: { the process identifier to be described | ALL }
  * If request=Execute
    * Value: the process identifier to be executed
