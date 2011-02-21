@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessDefinition 
+    configVersion="3.0.0" 
+    processVersion="1.0.0" 
+    storeSupported="true" 
+    statusSupported="false" 
+    xmlns="http://www.deegree.org/processes/java" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.deegree.org/processes/java http://schemas.deegree.org/processes/java/3.0.0/java.xsd"> 
+  <Identifier>ListTransformations</Identifier>
+  <JavaClass>org.incf.whs.atlas.process.ListTransformations</JavaClass>
+  <Title>List Transformations</Title>
+  <Abstract>
+    Lists coordinate transformations supported by the service.
+  </Abstract>
+  
+  <InputParameters>
+    <LiteralInput>
+      <Identifier>inputSrsName</Identifier>
+      <Title>Atlas SRS Name</Title>
+      <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
+      <DefaultValue>ALL</DefaultValue>
+      <AllowedValues>
+        <Value>Mouse_WHS_1.0</Value>
+        <Value>Mouse_WHS_0.9</Value>
+        <Value>ALL</Value>
+      </AllowedValues>
+    </LiteralInput>
+
+    <LiteralInput>
+      <Identifier>outputSrsName</Identifier>
+      <Title>Atlas SRS Name</Title>
+      <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
+      <DefaultValue>ALL</DefaultValue>
+      <AllowedValues>
+        <Value>Mouse_WHS_1.0</Value>
+        <Value>Mouse_WHS_0.9</Value>
+        <Value>ALL</Value>
+      </AllowedValues>
+    </LiteralInput>
+
+    <LiteralInput>
+      <Identifier>filter</Identifier>
+      <Title>Filter</Title>
+      <Abstract></Abstract>
+      <DefaultValue>NONE</DefaultValue>
+      <AllowedValues>
+        <Value>NONE</Value>
+      </AllowedValues>
+    </LiteralInput>
+    
+  </InputParameters>
+  
+  <OutputParameters>
+    <ComplexOutput>
+      <Identifier>ListTransformationsOutput</Identifier>
+      <Title>List Transformations Output</Title>
+      <Abstract>Lists coordinate transformations supported by the service.</Abstract>
+      <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
+          schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ListTransformationResponse.xsd"/>
+    </ComplexOutput>
+  </OutputParameters>
+  
+</ProcessDefinition>
