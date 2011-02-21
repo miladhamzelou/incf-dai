@@ -155,6 +155,16 @@ public class UCSDServiceVO {
 	private String coefficientD = "";
 	private String sliceConstant = "";
 
+	private String fiducialCode = "";
+	private String fiducialName = "";
+	private String fiducialType = "";
+	private String derivedFrom = "";
+	private String authorCode = "";
+	private String certaintyLevel = "";
+	private String description = "";
+	private String dateSubmitted = "";
+	private String dateUpdated = "";
+	private String pos = "";
 	
 	//Public Methods
 
@@ -1121,6 +1131,86 @@ public class UCSDServiceVO {
 
 	public void setStructureDescription(String structureDescription) {
 		this.structureDescription = structureDescription;
+	}
+
+	public String getFiducialCode() {
+		return fiducialCode;
+	}
+
+	public void setFiducialCode(String fiducialCode) {
+		this.fiducialCode = fiducialCode;
+	}
+
+	public String getFiducialName() {
+		return fiducialName;
+	}
+
+	public void setFiducialName(String fiducialName) {
+		this.fiducialName = fiducialName;
+	}
+
+	public String getFiducialType() {
+		return fiducialType;
+	}
+
+	public void setFiducialType(String fiducialType) {
+		this.fiducialType = fiducialType;
+	}
+
+	public String getDerivedFrom() {
+		return derivedFrom;
+	}
+
+	public void setDerivedFrom(String derivedFrom) {
+		this.derivedFrom = derivedFrom;
+	}
+
+	public String getAuthorCode() {
+		return authorCode;
+	}
+
+	public void setAuthorCode(String authorCode) {
+		this.authorCode = authorCode;
+	}
+
+	public String getCertaintyLevel() {
+		return certaintyLevel;
+	}
+
+	public void setCertaintyLevel(String certaintyLevel) {
+		this.certaintyLevel = certaintyLevel;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getDateSubmitted() {
+		return dateSubmitted;
+	}
+
+	public void setDateSubmitted(String dateSubmitted) {
+		this.dateSubmitted = dateSubmitted;
+	}
+
+	public String getPos() {
+		return pos;
+	}
+
+	public String getDateUpdated() {
+		return dateUpdated;
+	}
+
+	public void setDateUpdated(String dateUpdated) {
+		this.dateUpdated = dateUpdated;
+	}
+
+	public void setPos(String pos) {
+		this.pos = pos;
 	}
 
 }

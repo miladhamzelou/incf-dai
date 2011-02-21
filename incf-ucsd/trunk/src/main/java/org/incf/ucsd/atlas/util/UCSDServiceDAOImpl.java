@@ -228,6 +228,52 @@ public class UCSDServiceDAOImpl {
 		return list;
 	}
 
+
+	public ArrayList getFiducialsData( UCSDServiceVO vo ) {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+
+		try {
+
+		//Used for postgres connection
+		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Statement stmt = conn.createStatement();
+		StringBuffer query = new StringBuffer();
+		query.append( " select * from fiducial where srs_name = '"+vo.getSpaceCode()+"' " );
+
+		System.out.println("getSliceData - Query is - " + query.toString() );
+
+		ResultSet rs = stmt.executeQuery(query.toString()); 
+		//ABAServiceVO vo = null;
+
+		while ( rs.next() ) {
+
+			vo = new UCSDServiceVO();
+
+			vo.setFiducialCode(rs.getString("fiducial_code"));
+			vo.setFiducialName(rs.getString("fiducial_name"));
+			vo.setFiducialType(rs.getString("fiducial_type"));
+			vo.setDerivedFrom(rs.getString("derived_from"));
+			vo.setAuthorCode(rs.getString("author_code"));
+			vo.setCertaintyLevel(rs.getString("certainty_level"));
+			vo.setSrsName(rs.getString("srs_name"));
+			vo.setDescription(rs.getString("description"));
+			vo.setDateSubmitted(rs.getString("date_submitted"));
+			vo.setDateUpdated(rs.getString("date_updated"));
+			vo.setPos(rs.getString("pos"));
+
+			list.add(vo);
+
+		}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	
 	public String[] getCoordinateRangeForSRS( String srsName ) { 
 
 		BaseDAO dao = new BaseDAO();
