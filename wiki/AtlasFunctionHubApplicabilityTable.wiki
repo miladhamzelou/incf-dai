@@ -14,7 +14,7 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]`*`</th>
     <td align="center">*X*</td>
-    <td align="center">*[http://incf-dev-local.crbs.ucsd.edu/atlas-aba?service=WPS&request=GetCapabilities X]*</td>
+    <td align="center">*[http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&request=GetCapabilities X]*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
