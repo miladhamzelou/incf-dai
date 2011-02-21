@@ -56,10 +56,6 @@
       <Title>Filter</Title>
       <Abstract></Abstract>
       <DefaultValue>structureset:anatomic</DefaultValue>
-      <AllowedValues>
-        <Value>structureset:anatomic</Value>
-        <Value>structureset:fine</Value>
-      </AllowedValues>
     </LiteralInput>
   </InputParameters>
   
