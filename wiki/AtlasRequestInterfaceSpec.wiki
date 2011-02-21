@@ -77,6 +77,8 @@ lineage
 
 ====Data Input Keys====
 
+Data inputs vary for each process and to some extent at each hub, so this section shows some common Atlas data inputs but it is not complete. See [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess] for the particular hub and process to see what data input keys are appropriate and what values are acceptable.
+
 =====SRS Names=====
  * Keys: srsName, inputSrsName, outputSrsName
  * Values:
