@@ -59,9 +59,26 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAreference_1.0;outputSrsName=Mouse_WHS_1.0;filter=cerebellum
 
- * Execute : Addition (a test process)
+ * Execute : !GetCorrelationMapByPOI
 
-    http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Addition&DataInputs=a=1;b=2
+    http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal
+
+ * Execute : !Get2DImagesByPOI 
+    
+    http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3
+
+ * Execute : !GetStructureNamesByPOI
+    
+    http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=structureset:anatomic
+
+ * Execute : !ListSRS
+    
+    http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+
+ * Execute : !ListTransformations
+
+    http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
+
 
 ===ABA Hub===
 
@@ -123,9 +140,13 @@ Currently the project is using four servers to develop and demonstrate the hubs 
 
     http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
 
- * Execute : Addition (a test process)
+ * !TransformPOI
 
-    http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Addition&DataInputs=a=1;b=2
+    http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_WHS_1.0_To_Mouse_EMAP-T26_1.0_v1.0;x=12;y=-29;z=-73
+
+ * !ListTransformations
+
+    http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations 
 
 
 ===UCSD Hub===
