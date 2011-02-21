@@ -81,9 +81,9 @@ public class TransformPOI implements Processlet {
 	public void process(ProcessletInputs in, ProcessletOutputs out,
 			ProcessletExecutionInfo info) throws ProcessletException {
 
-		ABAServiceVO vo = new ABAServiceVO();
-
 		try {
+
+			ABAServiceVO vo = new ABAServiceVO();
 
 			// parse dataInputs string
 			System.out.println(" Inside TransformPOI... ");

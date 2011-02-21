@@ -200,7 +200,7 @@ public class ListTransformations implements Processlet {
 					srsCodeList.add(vo1);
 					vo.setFilter("");
 				}
-				responseString = util.getTransformationChain(vo, complexOutput,
+				responseString = util.listTransformations(vo, complexOutput,
 						srsCodeList);
 			} else if ((!outputSrsName.equals("") || outputSrsName != null)
 					&& inputSrsName.equalsIgnoreCase("all")) {
@@ -252,7 +252,7 @@ public class ListTransformations implements Processlet {
 					srsCodeList.add(vo1);
 					vo.setFilter("");
 				}
-				responseString = util.getTransformationChain(vo, complexOutput,
+				responseString = util.listTransformations(vo, complexOutput,
 						srsCodeList);
 			} else if (!inputSrsName.equals("") || inputSrsName != null
 					&& !outputSrsName.equals("") || outputSrsName != null) {
