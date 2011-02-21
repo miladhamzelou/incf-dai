@@ -81,59 +81,29 @@ Data inputs vary for each process and to some extent at each hub, so this sectio
 
 =====SRS Names=====
  * Keys: srsName, inputSrsName, outputSrsName
- * Values:
+ * Example values:
    * Mouse_ABAreference_1.0
    * Mouse_ABAvoxel_1.0
    * Mouse_AGEA_1.0
    * Mouse_EMAP-T26_1.0
-   * !Mouse_Paxinos_1.0
+   * Mouse_Paxinos_1.0
    * Mouse_WHS_0.9
    * Mouse_WHS_1.0
 
 =====Coordinates=====
  * Keys: x, y, z, xmin, xmax, ymin, ymax
- * Value: double
+ * Example value: double
 
 =====Filter=====
  * Key: filter
- * Values:
+ * Example values:
    * maptype:coronal
    * maptype:horizontal
    * maptype:sagittal
    * structureset:anatomic
    * structureset:fine
 
-=====Process Identifier=====
- * Key: processId
- * Values: Valid process identifier
-
-=====Source Type=====
- * Key: sourceType
- * Values:
-   * wms-png
-   * wms-jpeg
-
-=====Source URL=====
- * Key: sourceURL
- * Value: a valid URL
-
-=====Tolerance=====
- * Key: tolerance
- * Value: 
-
-=====Transformation Code=====
- * Key: transformationCode
- * Value: 
-
-=====URI=====
- * Key: URI
- * Value: a valid URI
-
-=====Vocabulary=====
- * Key: vocabulary
- * Values: TODO same as srs
-
-==Atlas Functions==
+==Atlas Requests/Processes==
 
 Standard WPS Requests
  * [AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
@@ -196,7 +166,7 @@ Atlas Functions
  * EMAP: http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&request=GetCapabilities
  * UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&request=GetCapabilities
  * WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&request=GetCapabilities
-</td>
+    </td>
   </tr>
 </table>
 
@@ -233,6 +203,16 @@ Atlas Functions
   <tr>
     <th align="left">Example</th>
     <td>http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL</td>
+  </tr>
+  <tr>
+    <th align="left">Examples</th>
+    <td>
+ * Central: http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+ * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+ * EMAP: http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+ * UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+ * WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+    </td>
   </tr>
 </table>
 
