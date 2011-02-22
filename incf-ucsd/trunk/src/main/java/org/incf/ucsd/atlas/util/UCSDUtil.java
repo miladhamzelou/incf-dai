@@ -1643,7 +1643,7 @@ public class UCSDUtil {
 
 			Paxinos2WHS paxinos2whs = new Paxinos2WHS();
 			//client.getTransformation( 0.00, 4.29, -1.94 );
-			transformedCoordinateString = paxinos2whs.getTransformation( Double.parseDouble(originalCoordinateX),  
+			transformedCoordinateString = paxinos2whs.getTransformation( Double.parseDouble(originalCoordinateX),
 			Double.parseDouble(originalCoordinateY), Double.parseDouble(originalCoordinateZ) );
 
 			System.out.println("Paxinos to WHS - TransformedCoordinateString - "+transformedCoordinateString);
@@ -1654,8 +1654,8 @@ public class UCSDUtil {
 			System.out.println("Inside WHS 2 PAXINOS...");
 
 			WHS2Paxinos whs2paxinos = new WHS2Paxinos();
-			transformedCoordinateString = whs2paxinos.getTransformation( Long.parseLong(originalCoordinateX), 
-					Long.parseLong(originalCoordinateY), Long.parseLong(originalCoordinateZ) );
+			transformedCoordinateString = whs2paxinos.getTransformation( Long.parseLong(originalCoordinateX.replace(".0", "")), 
+					Long.parseLong(originalCoordinateY.replace(".0", "")), Long.parseLong(originalCoordinateZ.replace(".0", "")) );
 
 			System.out.println("WHS to PAXINOS - TransformedCoordinateString - "+transformedCoordinateString);
 
