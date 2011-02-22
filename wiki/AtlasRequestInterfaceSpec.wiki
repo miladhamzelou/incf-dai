@@ -241,7 +241,6 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
- * Central: 
  * ABA: 
  * EMAP: 
  * UCSD: 
@@ -284,7 +283,6 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
- * Central: 
  * ABA: 
  * EMAP: 
  * UCSD: 
@@ -333,9 +331,7 @@ Atlas Functions
     <td>
  * Central: 
  * ABA: 
- * EMAP: 
  * UCSD: 
- * WHS: 
     </td>
   </tr>
 </table>
@@ -379,9 +375,6 @@ Atlas Functions
     <td>
  * Central: 
  * ABA: 
- * EMAP: 
- * UCSD: 
- * WHS: 
     </td>
   </tr>
 </table>
@@ -426,8 +419,6 @@ Atlas Functions
  * Central: 
  * ABA: 
  * EMAP: 
- * UCSD: 
- * WHS: 
     </td>
   </tr>
 </table>
@@ -556,7 +547,6 @@ Atlas Functions
     <td>
  * Central: 
  * ABA: 
- * EMAP: 
  * UCSD: 
  * WHS: 
     </td>
@@ -599,10 +589,6 @@ Atlas Functions
     <th align="left">Examples</th>
     <td>
  * Central: 
- * ABA: 
- * EMAP: 
- * UCSD: 
- * WHS: 
     </td>
   </tr>
 </table>
@@ -732,11 +718,8 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
- * Central: 
  * ABA: 
- * EMAP: 
  * UCSD: 
- * WHS: 
     </td>
   </tr>
 </table>
@@ -777,7 +760,6 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
- * Central: 
  * ABA: 
  * EMAP: 
  * UCSD: 
