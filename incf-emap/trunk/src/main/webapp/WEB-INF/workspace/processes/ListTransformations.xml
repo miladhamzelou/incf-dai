@@ -15,7 +15,7 @@
   </Abstract>
   
   <InputParameters>
-    <LiteralInput>
+    <LiteralInput minOccurs="0">
       <Identifier>inputSrsName</Identifier>
       <Title>Atlas SRS Name</Title>
       <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
@@ -27,7 +27,7 @@
       </AllowedValues>
     </LiteralInput>
 
-    <LiteralInput>
+    <LiteralInput minOccurs="0">
       <Identifier>outputSrsName</Identifier>
       <Title>Atlas SRS Name</Title>
       <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
@@ -39,7 +39,7 @@
       </AllowedValues>
     </LiteralInput>
 
-    <LiteralInput>
+    <LiteralInput minOccurs="0">
       <Identifier>filter</Identifier>
       <Title>Filter</Title>
       <Abstract></Abstract>
