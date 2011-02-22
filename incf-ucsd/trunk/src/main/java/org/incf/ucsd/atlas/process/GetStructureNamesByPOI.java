@@ -144,7 +144,8 @@ public class GetStructureNamesByPOI implements Processlet {
 				portNumber = delimitor + portNumber;
 				// End - FIXME
 
-				String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
+				//central/atlas
+				String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
 						+ vo.getFromSRSCode()
 						+ ";outputSrsName="
 						+ vo.getToSRSCode() + ";filter=NONE";

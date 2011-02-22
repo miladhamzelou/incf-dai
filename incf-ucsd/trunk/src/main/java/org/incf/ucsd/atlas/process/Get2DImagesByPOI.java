@@ -153,7 +153,8 @@ public class Get2DImagesByPOI implements Processlet {
 				portNumber = delimitor + portNumber;
 				// End - FIXME
 
-				String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
+				//central/atlas?
+				String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
 						+ vo.getFromSRSCode()
 						+ ";outputSrsName="
 						+ vo.getToSRSCode() + ";filter=NONE";
@@ -192,7 +193,8 @@ public class Get2DImagesByPOI implements Processlet {
 
 				// Construct GetTransformationChain URL
 				// http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
-				servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
+				//central/atlas
+				servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
 						+ vo.getFromSRSCode()
 						+ ";outputSrsName="
 						+ vo.getToSRSCode() + ";filter=NONE";
@@ -259,13 +261,13 @@ public class Get2DImagesByPOI implements Processlet {
 			System.out.println("Random GML ID2: - " + randomGMLID2);
 			// vo.setUrlString(uri.toString());
 
-			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+/*			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 			opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
 			opt.setSaveNamespacesFirst();
 			opt.setSaveAggressiveNamespaces();
 			opt.setUseDefaultNamespace();
 
-			ImagesResponseDocument document = ImagesResponseDocument.Factory
+*/			ImagesResponseDocument document = ImagesResponseDocument.Factory
 					.newInstance();
 
 			ImagesResponseType imagesRes = document.addNewImagesResponse();
@@ -438,12 +440,12 @@ public class Get2DImagesByPOI implements Processlet {
 			}
 
 			ArrayList errorList = new ArrayList();
-			opt.setErrorListener(errorList);
-			boolean isValid = document.validate(opt);
+			//opt.setErrorListener(errorList);
+			//boolean isValid = document.validate(opt);
 
 			// If the XML isn't valid, loop through the listener's contents,
 			// printing contained messages.
-			if (!isValid) {
+/*			if (!isValid) {
 				for (int i = 0; i < errorList.size(); i++) {
 					XmlError error = (XmlError) errorList.get(i);
 
@@ -453,7 +455,7 @@ public class Get2DImagesByPOI implements Processlet {
 							+ error.getCursorLocation().xmlText() + "\n");
 				}
 			}
-
+*/
 			ComplexOutput complexOutput = (ComplexOutput) out
 					.getParameter("Get2DImagesByPOIOutput");
 
