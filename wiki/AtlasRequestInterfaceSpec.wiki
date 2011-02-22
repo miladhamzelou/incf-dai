@@ -669,7 +669,7 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
- * Central: 
+ * Central: http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
  * ABA: 
  * EMAP: 
  * UCSD: 
