@@ -626,11 +626,11 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
- * Central: 
- * ABA: 
- * EMAP: 
- * UCSD: 
- * WHS: 
+ * Central: http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+ * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+ * EMAP: (Planned, but not yet implemented)
+ * UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+ * WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
     </td>
   </tr>
 </table>
