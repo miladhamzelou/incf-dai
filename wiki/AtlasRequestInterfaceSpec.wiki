@@ -240,7 +240,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -277,7 +283,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -318,7 +330,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td>http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal</td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -358,7 +376,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -398,7 +422,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -434,7 +464,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -470,7 +506,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -511,7 +553,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -549,7 +597,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -585,7 +639,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -622,7 +682,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -665,7 +731,13 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
 
@@ -704,6 +776,12 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Examples</th>
-    <td></td>
+    <td>
+ * Central: 
+ * ABA: 
+ * EMAP: 
+ * UCSD: 
+ * WHS: 
+    </td>
   </tr>
 </table>
