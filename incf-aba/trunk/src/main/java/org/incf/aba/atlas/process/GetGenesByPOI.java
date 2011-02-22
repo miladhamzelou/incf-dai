@@ -345,7 +345,7 @@ public class GetGenesByPOI implements Processlet {
         portNumber = config.getValue("incf.aba.port.number");
         portNumber = delimitor + portNumber;
 
-        String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+fromSrsName+";outputSrsName="+toSrsName+";filter=Cerebellum";
+        String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+fromSrsName+";outputSrsName="+toSrsName+";filter=NONE";
         String transformationChainURL = "http://"+hostName+portNumber+servicePath;
         System.out.println("1.4: " + transformationChainURL);
 
