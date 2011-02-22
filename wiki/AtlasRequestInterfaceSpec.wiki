@@ -417,7 +417,7 @@ Atlas Functions
     <th align="left">Examples</th>
     <td>
  * Central: 
- * ABA: 
+ * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE
  * EMAP: 
     </td>
   </tr>
