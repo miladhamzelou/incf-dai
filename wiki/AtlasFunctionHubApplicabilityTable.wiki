@@ -103,7 +103,7 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#ListSRSs ListSRSs]</th>
     <td align="center">*O*`***`</td>
     <td align="center">*X*</td>
-    <td align="center">*X*</td>
+    <td align="center">*O*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
   </tr>
