@@ -1,0 +1,66 @@
+<assembly>
+  <id></id>
+  <formats>
+    <format>tar.gz</format>
+  </formats>
+  
+  <fileSets>
+
+    <!-- put selected script files in bin -->
+    <fileSet>
+      <directory>src/main/bin</directory>
+      <outputDirectory>bin</outputDirectory>
+      <fileMode>0755</fileMode>
+    </fileSet>
+
+    <!-- put selected runtime configurable files in conf -->
+    <fileSet>
+      <directory>src/main/resources</directory>
+      <filtered>true</filtered>
+      <outputDirectory>conf</outputDirectory>
+      <includes>
+        <include>config.xml</include>
+        <include>log4j.properties</include>
+      </includes>
+    </fileSet>
+
+    <!-- create an empty logs directory -->
+    <fileSet>
+      <directory>src/main/resources</directory>
+      <outputDirectory>logs</outputDirectory>
+      <includes>
+        <include></include>
+      </includes>
+    </fileSet>
+
+  </fileSets>
+
+  <dependencySets>
+    <dependencySet>
+      <outputDirectory>lib</outputDirectory>
+      <unpack>false</unpack>
+<!--      <unpackOptions>-->
+<!--        <excludes>-->
+<!--          <exclude>favicon.ico</exclude>-->
+<!--           <exclude>hibernate.properties</exclude> -->
+<!--          <exclude>hibernate*.properties</exclude>-->
+<!--          <exclude>log4j.properties</exclude>-->
+<!--          <exclude>wbcserver.properties</exclude>-->
+<!--          <exclude>wholeWBCState.xml</exclude>-->
+<!--          <exclude>*.xsd</exclude>  excludes schema files -->
+<!--          <exclude>data/</exclude>  excludes data files -->
+<!--        </excludes>-->
+<!--      </unpackOptions>-->
+      <!-- <scope>runtime</scope> -->
+    </dependencySet>
+  </dependencySets>
+  
+  <files>
+    <!-- put wbc-server jar in lib -->
+    <file>
+      <source>target/incf-monitor-${project.version}.jar</source>
+      <outputDirectory>lib</outputDirectory>
+    </file>
+  </files>
+
+</assembly>
