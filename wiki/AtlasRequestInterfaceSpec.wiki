@@ -311,6 +311,10 @@ Atlas Functions
   <tr>
     <th align="left">Data Inputs</th>
     <td>[AtlasRequestInterfaceSpec#SRS_Names srsName], [AtlasRequestInterfaceSpec#Coordinates x], [AtlasRequestInterfaceSpec#Coordinates y], [AtlasRequestInterfaceSpec#Coordinates z], and see [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess] for additional hub-specific data inputs
+ * [http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=Get2DIMagesByPOI Central DescribeProcess] 
+ * [http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=Get2DIMagesByPOI ABA DescribeProcess] 
+ * [http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=Get2DIMagesByPOI UCSD DescribeProcess] 
+    </td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
