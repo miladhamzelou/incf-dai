@@ -310,7 +310,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName], [AtlasRequestInterfaceSpec#Coordinates x], [AtlasRequestInterfaceSpec#Coordinates y], [AtlasRequestInterfaceSpec#Coordinates z], and see !DescribeProcess for additional hub-specific data inputs
+    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName], [AtlasRequestInterfaceSpec#Coordinates x], [AtlasRequestInterfaceSpec#Coordinates y], [AtlasRequestInterfaceSpec#Coordinates z], and see [AtlasRequestInterfaceSpec#Describe_Process !DescribeProcess] for additional hub-specific data inputs
   </tr>
   <tr>
     <th align="left">Normal Return</th>
