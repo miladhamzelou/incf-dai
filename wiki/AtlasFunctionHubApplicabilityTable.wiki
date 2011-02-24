@@ -1,6 +1,10 @@
 =Atlas Function-Hub Applicability Table=
 
-This matrix indicates which INCF Atlas processes are applicable to the various hubs.
+This table indicates which INCF Atlas processes are applicable to the various hubs.
+
+ * An *X* is an implemented process and is a link to an example.
+ * An *O* is a planned process but is not yet implemented.
+ * A blank cell means the process is not applicable to the hub.
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -132,9 +136,6 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
     <td align="center">*X*</td>
   </tr>
 </table>
-
- * *X* - Priority implementations
- * *O* - Planned implementations
 
  * <sup>1</sup>  The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to central and all hubs.
  * <sup>2</sup>  Union operation across hubs.
