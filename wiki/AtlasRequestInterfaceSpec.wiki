@@ -283,10 +283,10 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
- * ABA: 
+ * ABA: (Planned, but not yet implemented)
  * EMAP: (Planned, but not yet implemented)
- * UCSD: 
- * WHS: 
+ * UCSD: (Planned, but not yet implemented)
+ * WHS: (Planned, but not yet implemented)
     </td>
   </tr>
 </table>
