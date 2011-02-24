@@ -44,8 +44,8 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
     <td align="center">*O*</td>
   </tr>
   <tr>
-    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]</th>
-    <td align="center">*X*`***`</td>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]`**`</th>
+    <td align="center">*X*</td>
     <td align="center">*X*</td>
     <td align="center"></td>
     <td align="center">*X*</td>
@@ -136,6 +136,6 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
  * *X* - Priority implementations
  * *O* - Planned implementations
 
- * `*` The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to central and all hubs.<
+ * `*` The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to central and all hubs.
  * `**` Central only processes
  * `***` Union operations
