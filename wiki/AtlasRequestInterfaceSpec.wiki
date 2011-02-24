@@ -241,10 +241,10 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
- * ABA: 
+ * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Mouse_ABAreference_1.0
  * EMAP: (Planned, but not yet implemented)
- * UCSD: 
- * WHS: 
+ * UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Mouse_Paxinos_1.0
+ * WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Mouse_WHS_0.9
     </td>
   </tr>
 </table>
