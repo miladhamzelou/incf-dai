@@ -457,10 +457,10 @@ Atlas Functions
     <th align="left">Examples</th>
     <td>
  * Central: (Planned, but not yet implemented)
- * ABA    : (Planned, but not yet implemented)
- * EMAP   : (Planned, but not yet implemented)
- * UCSD   : (Planned, but not yet implemented)
- * WHS    : (Planned, but not yet implemented)
+ * ABA: (Planned, but not yet implemented)
+ * EMAP: (Planned, but not yet implemented)
+ * UCSD: (Planned, but not yet implemented)
+ * WHS: (Planned, but not yet implemented)
     </td>
   </tr>
 </table>
@@ -499,10 +499,10 @@ Atlas Functions
     <th align="left">Examples</th>
     <td>
  * Central: (Planned, but not yet implemented)
- * ABA    : (Planned, but not yet implemented)
- * EMAP   : (Planned, but not yet implemented)
- * UCSD   : (Planned, but not yet implemented)
- * WHS    : (Planned, but not yet implemented)
+ * ABA: (Planned, but not yet implemented)
+ * EMAP: (Planned, but not yet implemented)
+ * UCSD: (Planned, but not yet implemented)
+ * WHS: (Planned, but not yet implemented)
     </td>
   </tr>
 </table>
@@ -546,9 +546,9 @@ Atlas Functions
     <th align="left">Examples</th>
     <td>
  * Central: 
- * ABA    : 
- * UCSD   : 
- * WHS    : 
+ * ABA: 
+ * UCSD: 
+ * WHS: 
     </td>
   </tr>
 </table>
@@ -627,10 +627,10 @@ Atlas Functions
     <th align="left">Examples</th>
     <td>
  * Central: http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
- * ABA    : http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
- * EMAP   : (Planned, but not yet implemented)
- * UCSD   : http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
- * WHS    : http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+ * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+ * EMAP: (Planned, but not yet implemented)
+ * UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+ * WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
     </td>
   </tr>
 </table>
@@ -670,10 +670,10 @@ Atlas Functions
     <th align="left">Examples</th>
     <td>
  * Central: http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
- * ABA    : http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
- * EMAP   : http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
- * UCSD   : http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
- * WHS    : http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
+ * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
+ * EMAP: http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
+ * UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
+ * WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
     </td>
   </tr>
 </table>
@@ -718,7 +718,7 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
- * ABA : 
+ * ABA: 
  * UCSD: 
     </td>
   </tr>
@@ -760,10 +760,10 @@ Atlas Functions
   <tr>
     <th align="left">Examples</th>
     <td>
- * ABA : http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0;x=1;y=112;z=162
+ * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0;x=1;y=112;z=162
  * EMAP: http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_WHS_1.0_To_Mouse_EMAP-T26_1.0_v1.0;x=12;y=-29;z=-73
  * UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;x=1;y=4.3;z=1.78
- * WHS : http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0;x=1.5;y=1;z=0.6
+ * WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0;x=1.5;y=1;z=0.6
     </td>
   </tr>
 </table>
