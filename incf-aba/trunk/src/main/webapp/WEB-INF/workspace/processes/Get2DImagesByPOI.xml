@@ -48,12 +48,6 @@
         <Value>maptype:sagittal</Value>
       </AllowedValues>
     </LiteralInput>
-    <LiteralInput>
-      <Identifier>tolerance</Identifier>
-      <Title>Tolerance Value</Title>
-      <Abstract>Tolerance Value</Abstract>
-      <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
-    </LiteralInput>
     
   </InputParameters>
   
