@@ -306,7 +306,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td align="left"> 
+    <td>xxx
  * Central
  * ABA
  * UCSD
