@@ -39,9 +39,9 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#DescribeTransformation DescribeTransformation]</th>
     <td align="center"></td>
     <td align="center">*O*</td>
-    <td align="center">*X*</td>
-    <td align="center">*X*</td>
-    <td align="center">*X*</td>
+    <td align="center">*O*</td>
+    <td align="center">*O*</td>
+    <td align="center">*O*</td>
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]</th>
