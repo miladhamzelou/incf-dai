@@ -134,9 +134,8 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
 </table>
 
  * *X* - Priority implementations
- * x - Planned implementations
+ * *O* - Planned implementations
 
-`*` The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to central and all hubs.<br/>
-`**` Central only processes
-<br/>
-`***` Union operations
+ * `*` The WPS *!GetCapabilities* and *!DescribeProcess* requests are applicable to central and all hubs.<
+ * `**` Central only processes
+ * `***` Union operations
