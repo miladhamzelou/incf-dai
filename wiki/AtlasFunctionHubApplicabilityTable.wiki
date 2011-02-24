@@ -31,7 +31,7 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#DescribeSRS DescribeSRS]</th>
     <td align="center"></td>
     <td align="center">*X*</td>
-    <td align="center">*X*</td>
+    <td align="center">*O*</td>
     <td align="center">*X*</td>
     <td align="center">*X*</td>
   </tr>
@@ -62,8 +62,8 @@ This matrix indicates which INCF Atlas processes are applicable to the various h
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetGenesByPOI GetGenesByPOI]</th>
     <td align="center">*O*`***`</td>
-    <td align="center">*O*</td>
     <td align="center">*X*</td>
+    <td align="center">*O*</td>
     <td align="center"></td>
     <td align="center"></td>
   </tr>
