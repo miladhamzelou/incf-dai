@@ -109,7 +109,7 @@ Standard WPS Requests
  * [AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
  * [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]
 
-Atlas Functions
+Atlas Processes
  * [AtlasRequestInterfaceSpec#DescribeSRS DescribeSRS]
  * [AtlasRequestInterfaceSpec#DescribeTransformation DescribeTransformation]
  * [AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]
@@ -306,12 +306,7 @@ Atlas Functions
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>xxx
- * Central
- * ABA
- * UCSD
-See [AtlasFunctionHubApplicabilityTable Applicability Table].
-    </td>
+    <td>Central, ABA, and UCSD. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -355,7 +350,7 @@ See [AtlasFunctionHubApplicabilityTable Applicability Table].
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
+    <td>Central and ABA. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -398,7 +393,7 @@ See [AtlasFunctionHubApplicabilityTable Applicability Table].
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
+    <td>Central, ABA, and EMAP. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -526,7 +521,7 @@ See [AtlasFunctionHubApplicabilityTable Applicability Table].
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
+    <td>Central, ABA, UCSD, and WHS. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -572,7 +567,7 @@ See [AtlasFunctionHubApplicabilityTable Applicability Table].
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>Central only</td>
+    <td>Central only. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -697,7 +692,7 @@ See [AtlasFunctionHubApplicabilityTable Applicability Table].
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
+    <td>ABA and UCSD. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
@@ -743,7 +738,7 @@ See [AtlasFunctionHubApplicabilityTable Applicability Table].
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>See [AtlasFunctionHubApplicabilityTable Applicability Table]</td>
+    <td>All hubs, but not Central. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
