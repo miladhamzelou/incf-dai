@@ -1,16 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:wax="http://www.incf.org/WaxML/" 
-xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink"  
-elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-        <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 9.0.8.3018 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
     <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
-<xs:include schemaLocation="common/WaxML_Base.xsd"  />
-   <xs:element name="GenesResponse" type="wax:GenesResponseType" />
+    <xs:include schemaLocation="common/WaxML_Base.xsd" />
+    <xs:element name="GenesResponse" type="wax:GenesResponseType" />
     <xs:complexType name="GenesResponseType">
         <xs:complexContent>
             <xs:extension base="wax:BaseResponseType">
                 <xs:sequence>
-                    <xs:element name="GenesByPOI" type="wax:GeneByPoiType" minOccurs="0" maxOccurs="1" />
+                    <xs:element name="GenesByPOI" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:complexContent>
+                                <xs:extension base="wax:GeneByPoiType">
+                                    <xs:attribute name="hubCode" type="xs:string" />
+                                </xs:extension>
+                            </xs:complexContent>
+                        </xs:complexType>
+                    </xs:element>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>
@@ -102,5 +109,4 @@ The codeSpace attribute can optionally be used to add information to indentify t
             </xs:extension>
         </xs:complexContent>
     </xs:complexType>
-    
 </xs:schema>
