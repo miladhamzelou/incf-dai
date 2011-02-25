@@ -30,6 +30,13 @@
 			<url>http://download.java.net/maven/2</url>
 		</pluginRepository>
 	</pluginRepositories>
+
+  <scm>
+    <connection>scm:svn:http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2</connection>
+    <developerConnection>scm:svn:https://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2</developerConnection>
+    <url>http://code.google.com/p/incf-dai/source/checkout</url>
+  </scm>
+  
 	<build>
 		<finalName>atlas-waxml</finalName>
 		<plugins>
