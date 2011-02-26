@@ -9,5 +9,6 @@
 	<OpenFile Uri=".\common\ListHubServices.xsd"/>
 	<OpenFile Uri=".\ListProcessesResponse.xsd"/>
 	<OpenFile Uri=".\GetProcessByIdentifier.xsd"/>
-	<OpenFile Uri=".\ListHubsResponse.xsd"/>
+	<OpenFile Uri=".\CorrelationMapResponse.xsd"/>
+	<OpenFile Uri=".\ListSrsResponse.xsd"/>
 </XmlStudioProjectOptions>

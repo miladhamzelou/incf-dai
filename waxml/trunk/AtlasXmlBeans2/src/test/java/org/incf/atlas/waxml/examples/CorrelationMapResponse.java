@@ -13,6 +13,7 @@ import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.*;
+import org.incf.atlas.waxml.generated.CorrelatioMapType.CorrelationCollection;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
@@ -107,7 +108,12 @@ public class CorrelationMapResponse   {
 		filterCodeCriteria.setName("filter");
 		filterCodeCriteria.setValue("maptype:coronal");
 
-		imagesRes.setCorrelationUrl("URL");
+		CorrelationCollection coll1 = imagesRes.addNewCorrelationCollection();
+		coll1.setCorrelationUrl("URL");
+		coll1.setHubCode("HubA");
+		
+		
+		
 		return document;
 	}
 

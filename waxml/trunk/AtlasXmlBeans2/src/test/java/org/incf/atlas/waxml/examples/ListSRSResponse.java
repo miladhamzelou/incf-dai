@@ -10,12 +10,12 @@ import javax.xml.namespace.QName;
 import net.opengis.gml.x32.PointType;
 import net.opengis.gml.x32.UnitOfMeasureType;
 
+import org.apache.xmlbeans.XmlCalendar;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.*;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.Orientations;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSList;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection;
 import org.incf.atlas.waxml.generated.SRSType.*;
 import org.incf.atlas.waxml.generated.OrientationType.Author;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
@@ -77,11 +77,15 @@ public ListSRSResponseDocument completeResponse() {
 	ListSRSResponseType rootDoc =	document.addNewListSRSResponse();
 	rootDoc.newCursor().insertComment("Test Comment");
 	QueryInfoSrs(rootDoc.addNewQueryInfo(), "URL");
-	SRSList srsList = rootDoc.addNewSRSList();
+	
+	SRSCollection coll1 = rootDoc.addNewSRSCollection();
+	coll1.setHubCode("HUBA");
+	
+	org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.SRSList srsList = coll1.addNewSRSList();
 	SRSType srs1 =  srsList.addNewSRS();
 	SrsExample1(srs1);
 	
-	Orientations o = rootDoc.addNewOrientations();
+	org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.Orientations o = coll1.addNewOrientations();
 	OrientationType orientaiton1 = o.addNewOrientation();
 	//orientation(orientaiton1,code,name);
 	orientation(orientaiton1,"Left","Left");
@@ -116,7 +120,7 @@ public static void SrsExample1(SRSType srs){
      //   <Author datesubmitted=”DD/MM/YYY” authorCode=”123”>authorname</Author>
 AuthorType author = 	srs.addNewAuthor();
  author.setAuthorCode("123");
- author.setDateSubmitted(Calendar.getInstance());
+ author.setDateSubmitted(new XmlCalendar("2011-07-04"));
 	
      //   <Origin URN… codespace>bregma</Origin>
 IncfCodeType origin = 	srs.addNewOrigin();
@@ -191,7 +195,7 @@ public static OrientationType orientation(OrientationType orient, String code, S
 	orient.setId(code); // this is what is linked, to
 	orient.setName(name);
 	Author author = orient.addNewAuthor();
-	author.setDateSubmitted(Calendar.getInstance());
+	author.setDateSubmitted(new XmlCalendar("2004-07-04"));
 	author.setAuthorCode("AuthorCode");
 	author.setStringValue("Author Name");
 	

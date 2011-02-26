@@ -4,7 +4,6 @@
 	<Project Name="WaxMlSchema">
 		<File Uri=".\StructureTermsResponse.xsd"/>
 		<File Uri=".\GenesResponse.xsd"/>
-		<File Uri=".\CorelationMapResponse.xsd"/>
 		<File Uri=".\ImagesResponse.xsd"/>
 		<File Uri=".\TransformationResponse.xsd"/>
 		<File Uri=".\Retrieve2DImageResponse.xsd"/>
@@ -17,6 +16,7 @@
 		<File Uri=".\GetProcessByIdentifier.xsd"/>
 		<File Uri=".\ListHubsResponse.xsd"/>
 		<File Uri=".\ListProcessesResponse.xsd"/>
+		<File Uri=".\CorrelationMapResponse.xsd"/>
 		<SubGroup Name="Documents">
 			<File Uri=".\SampleDocuments\TransformResponse.xml"/>
 			<File Uri=".\SampleDocuments\CoordinateTransformInfo.xml"/>

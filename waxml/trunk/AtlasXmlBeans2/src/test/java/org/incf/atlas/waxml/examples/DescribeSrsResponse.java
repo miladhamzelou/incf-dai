@@ -17,12 +17,19 @@ import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.apache.xmlbeans.impl.values.XmlObjectBase;
 
+import org.apache.xmlbeans.GDuration;
+import org.apache.xmlbeans.XmlDate;
+import org.apache.xmlbeans.XmlCalendar;
+
 import org.incf.atlas.waxml.generated.*;
 import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Fiducials;
 import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Slices;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.Orientations;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.SRSList;
 import org.incf.atlas.waxml.generated.ListSRSResponseType.*;
 import org.incf.atlas.waxml.generated.QueryInfoType.*;
 import org.incf.atlas.waxml.generated.SRSType.*;
+import org.incf.atlas.waxml.generated.impl.ListSRSResponseTypeImpl.SRSCollectionImpl.SRSListImpl;
 import org.isotc211.x2005.gmd.CIResponsiblePartyType;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Ignore;
@@ -90,12 +97,14 @@ public class DescribeSrsResponse   {
 			rootDoc.getQueryInfo().getQueryUrl().setName("DescribeSRS");
 			Utilities.addInputStringCriteria(rootDoc.getQueryInfo().addNewCriteria(),
 					"srsName", "Mouse_ABAreference_1.0");	
-			
-		SRSList srsList = rootDoc.addNewSRSList();
+			SRSCollection coll1 = rootDoc.addNewSRSCollection();
+			coll1.setHubCode("HUBA");
+
+		SRSList srsList = coll1.addNewSRSList();
 			SRSType srs1 =  srsList.addNewSRS();
 			ListSRSResponse.SrsExample1(srs1);
 			
-			Orientations o = rootDoc.addNewOrientations();
+			Orientations o = coll1.addNewOrientations();
 			OrientationType orientaiton1 = o.addNewOrientation();
 			//orientation(orientaiton1,code,name);
 			ListSRSResponse.orientation(orientaiton1,"Left","Left");
@@ -138,7 +147,8 @@ exampleFiducial(f.addNewFiducial(), 1);
 		
 	AuthorType author=	fiducial.addNewAuthor();
 	author.setAuthorCode("aCode");
-	author.setDateSubmitted(Calendar.getInstance());
+	//author.setDateSubmitted(Calendar.getInstance());
+	author.setDateSubmitted(new XmlCalendar("2004-07-04"));
 	author.setStringValue("Author Name");
 	
 	Incfdescription desc = 	fiducial.addNewDescription();
