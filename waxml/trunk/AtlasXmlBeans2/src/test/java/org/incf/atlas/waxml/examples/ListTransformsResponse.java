@@ -116,6 +116,7 @@ co.getListTransformationsResponse().newCursor().insertComment("Generated " + Cal
 	
 	 
 	TransformationList ct= co.getListTransformationsResponse().addNewTransformationList();
+	ct.setHubCode("HUBA");
 	
 	CoordinateTransformationInfoType ex1 = ct.addNewCoordinateTransformation();
 	

@@ -117,6 +117,8 @@ zCriteria.setValue("162");
 
 	
 	StructureTerms terms = rootDoc.addNewStructureTerms();
+	terms.setHubCode("HubA");
+	
 	StructureTermType term1 = terms.addNewStructureTerm();
 	Code t1code =  term1.addNewCode(); 
 	t1code.setCodeSpace("Mouse_ABAvoxel_1.0");

@@ -121,6 +121,8 @@ Utilities.addInputStringCriteria(criterias, "srsName", "Mouse_ABAvoxel_1.0");
 		toleranceCodeCriteria.setValue("1.0");
 
 		Image2Dcollection images = imagesRes.addNewImage2Dcollection();
+		images.setHubCode("HuBA");
+		
 		Image2DType image1 = images.addNewImage2D();
 		String formatComment = "format ~ mime type " +
 				"{WMS/jpg|" +

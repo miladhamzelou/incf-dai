@@ -98,6 +98,8 @@ public class ImagesByUriResponse  {
 
 
 		Image2Dcollection images = imagesRes.addNewImage2Dcollection();
+		images.setHubCode("HubA");
+		
 		Image2DType image1 = images.addNewImage2D();
 		String formatComment = "format ~ mime type " +
 		"{WMS/jpg|" +
