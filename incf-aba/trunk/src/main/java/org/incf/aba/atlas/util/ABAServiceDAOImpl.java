@@ -18,7 +18,7 @@ public class ABAServiceDAOImpl {
 	private ABAConfigurator configurator = ABAConfigurator.INSTANCE;
 
 	public ArrayList getSRSsData() {
-		
+
 		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
 		String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";

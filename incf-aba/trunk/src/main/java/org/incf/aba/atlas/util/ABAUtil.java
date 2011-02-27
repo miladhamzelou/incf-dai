@@ -1323,7 +1323,7 @@ public class ABAUtil {
 		Utilities.addInputStringCriteria(criterias, "filter", vo.getFilter());
 */		 
 		TransformationList ct = co.getListTransformationsResponse().addNewTransformationList();
-		
+		ct.setHubCode("ABA");
 /*		ObjectFactory of = new ObjectFactory();
 		QueryInfo queryInfo = of.createQueryInfo();
 		

@@ -1,5 +1,6 @@
 package org.incf.aba.atlas.process;
 
+import org.incf.atlas.waxml.generated.CorrelatioMapType.CorrelationCollection;
 import java.io.File;
 import java.net.URL;
 import java.text.DateFormat;
@@ -133,7 +134,7 @@ public class GetCorrelationMapByPOI implements Processlet {
 				portNumber = delimitor + portNumber;
 				// End - FIXME
 
-				String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
+				String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
 						+ vo.getFromSRSCode()
 						+ ";outputSrsName="
 						+ vo.getToSRSCode() + ";filter=NONE";
@@ -253,7 +254,10 @@ public class GetCorrelationMapByPOI implements Processlet {
 			 * filterCodeCriteria.setName("filter");
 			 * filterCodeCriteria.setValue("maptype:coronal");
 			 */
-			imagesRes.setCorrelationUrl(responseString.toString());
+
+			CorrelationCollection coll1 = imagesRes.addNewCorrelationCollection();
+			coll1.setHubCode("ABA");
+			coll1.setCorrelationUrl(responseString.toString());
 
 			ArrayList errorList = new ArrayList();
 			opt.setErrorListener(errorList);

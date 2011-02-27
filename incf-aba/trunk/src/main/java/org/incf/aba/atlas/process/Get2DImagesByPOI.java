@@ -50,15 +50,15 @@ public class Get2DImagesByPOI implements Processlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(
             Get2DImagesByPOI.class);
-    
+
 	// used for ABA Get Image URI query string
 	private static final String HI_RES = "-1";	// highest resolution available
 	private static final String THUMB = "0";	// thumbnail
 	private static final String MIME = "2";		// jpeg/image
 	private static final int NBR_STRONG_GENES = 1;	// strong genes to get
-	
+
 	private ResponseValues responseValues;
-	
+
     @Override
     public void process(ProcessletInputs in, ProcessletOutputs out, 
             ProcessletExecutionInfo info) throws ProcessletException {
@@ -557,6 +557,8 @@ public class Get2DImagesByPOI implements Processlet {
 		ImagesResponseType eImagesResponse = document.addNewImagesResponse();
 		Image2Dcollection eImage2DCollection = 
 				eImagesResponse.addNewImage2Dcollection();
+		eImage2DCollection.setHubCode("ABA");
+		
 		for (Image im : responseValues.images) {
 			Image2DType eImage2D = eImage2DCollection.addNewImage2D();
 			ImageSource eImageSource = eImage2D.addNewImageSource();
@@ -597,7 +599,7 @@ public class Get2DImagesByPOI implements Processlet {
         portNumber = config.getValue("incf.aba.port.number");
     	portNumber = delimitor + portNumber;
 
-        String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+fromSrsName+";outputSrsName="+toSrsName+";filter=NONE";
+        String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+fromSrsName+";outputSrsName="+toSrsName+";filter=NONE";
     	String transformationChainURL = "http://"+hostName+portNumber+servicePath;
         System.out.println("1.4: " + transformationChainURL);
 

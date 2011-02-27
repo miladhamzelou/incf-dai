@@ -1,7 +1,6 @@
 package org.incf.aba.atlas.process;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -10,6 +9,7 @@ import javax.xml.stream.XMLStreamWriter;
 
 import net.opengis.gml.x32.UnitOfMeasureType;
 
+import org.apache.xmlbeans.XmlCalendar;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
@@ -32,11 +32,12 @@ import org.incf.atlas.waxml.generated.IncfUriSliceSource;
 import org.incf.atlas.waxml.generated.Incfdescription;
 import org.incf.atlas.waxml.generated.ListSRSResponseDocument;
 import org.incf.atlas.waxml.generated.ListSRSResponseType;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.Orientations;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSList;
 import org.incf.atlas.waxml.generated.NeurodimensionType;
 import org.incf.atlas.waxml.generated.NeurodimensionsType;
 import org.incf.atlas.waxml.generated.OrientationType;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.Orientations;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.SRSList;
 import org.incf.atlas.waxml.generated.OrientationType.Author;
 import org.incf.atlas.waxml.generated.QueryInfoType;
 import org.incf.atlas.waxml.generated.SRSType;
@@ -154,13 +155,16 @@ public class ListSRSs implements Processlet {
 
 	public static OrientationType orientation(OrientationType orient,
 			String code, String name, String gmlID, String authorCode,
-			String authorName, String orientationDescription) {
+			String authorName, String orientationDescription, String dateSubmitted) {
 
 		orient.setCode(code);
 		orient.setId(gmlID); // this is what is linked, to
 		orient.setName(name);
 		Author author = orient.addNewAuthor();
-		author.setDateSubmitted(Calendar.getInstance());
+
+		author.setDateSubmitted(new XmlCalendar(dateSubmitted));
+
+		//author.setDateSubmitted(Calendar.getInstance());
 		author.setAuthorCode(authorCode);
 		author.setStringValue(authorName);
 
@@ -193,7 +197,13 @@ public class ListSRSs implements Processlet {
 				Name name = srs.addNewName();
 				name.setStringValue(vo.getSrsName());
 				name.setSrsCode(vo.getSrsCode());
-				name.setSrsBase(vo.getSrsDescription());
+
+				if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") ) {  
+					name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_0.9", ""));
+				} else {
+					name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", ""));
+				}
+
 				name.setSrsVersion(vo.getSrsVersion());
 				name.setSpecies(vo.getSpecies());
 				// name.setUrn("ReferenceUrl");//Uncomment this once i find the
@@ -204,7 +214,7 @@ public class ListSRSs implements Processlet {
 
 				AuthorType author = srs.addNewAuthor();
 				author.setAuthorCode(vo.getSrsAuthorCode());
-				author.setDateSubmitted(Calendar.getInstance());
+				author.setDateSubmitted(new XmlCalendar(vo.getSrsDateSubmitted()));
 
 				IncfCodeType origin = srs.addNewOrigin();
 				// origin.setCodeSpace("URN");
@@ -267,9 +277,16 @@ public class ListSRSs implements Processlet {
 				.newInstance();
 
 		ListSRSResponseType rootDoc = document.addNewListSRSResponse();
-		/*
-		 * QueryInfoSrs(rootDoc.addNewQueryInfo(), uri.toString());
-		 */SRSList srsList = rootDoc.addNewSRSList();
+
+		//Start - Changes
+		//SRSList srsList = rootDoc.addNewSRSList();
+
+		SRSCollection coll1 = rootDoc.addNewSRSCollection();
+		coll1.setHubCode("ABA");
+
+		org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.SRSList srsList = coll1.addNewSRSList();
+		//SRSType srs1 =  srsList.addNewSRS();
+		//SrsExample1(srs1);
 
 		// Start - Get data from the database
 		ArrayList list = new ArrayList();
@@ -280,12 +297,14 @@ public class ListSRSs implements Processlet {
 		addSRS(srsList, list, list.size());
 
 		ArrayList list2 = impl.getOrientationData();
-		Orientations o = null;
+		
+		org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.Orientations o = coll1.addNewOrientations();
 
 		Iterator iterator2 = list2.iterator();
 		ABAServiceVO vo = null;
 
-		o = rootDoc.addNewOrientations();
+		OrientationType orientaiton1 = o.addNewOrientation();
+		//o = rootDoc.addNewOrientations();
 
 		Random randomGenerator = new Random();
 		
@@ -294,11 +313,11 @@ public class ListSRSs implements Processlet {
 				randomGMLID = randomGenerator.nextInt(100);
 			}
 			vo = (ABAServiceVO) iterator2.next();
-			OrientationType orientaiton1 = o.addNewOrientation();
+			orientaiton1 = o.addNewOrientation();
 			orientation(orientaiton1, vo.getOrientationName(), vo
 					.getOrientationName(), String.valueOf(randomGMLID), vo
 					.getOrientationAuthor(), vo.getOrientationAuthor(), vo
-					.getOrientationDescription());
+					.getOrientationDescription(), vo.getSrsDateSubmitted());
 		}
 		return document;
 	}

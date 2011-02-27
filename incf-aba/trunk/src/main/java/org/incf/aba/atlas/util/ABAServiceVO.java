@@ -25,6 +25,13 @@ public class ABAServiceVO {
 		// TODO Auto-generated constructor stub
 	}
 
+	private String geneName = "";
+	private String geneSymbol = "";
+	private String geneOrganism = "";
+	private String genePrefix = "";
+	private String geneIdentifier = "";
+	private String geneFullIdentier = "";
+
 	private String incfDeployHostname = "";
 	private String wms = "";
 	private String flag = "";
@@ -1046,6 +1053,54 @@ public class ABAServiceVO {
 
 	public void setToSRSCodeTen(String toSRSCodeTen) {
 		this.toSRSCodeTen = toSRSCodeTen;
+	}
+
+	public String getGeneName() {
+		return geneName;
+	}
+
+	public void setGeneName(String geneName) {
+		this.geneName = geneName;
+	}
+
+	public String getGeneSymbol() {
+		return geneSymbol;
+	}
+
+	public void setGeneSymbol(String geneSymbol) {
+		this.geneSymbol = geneSymbol;
+	}
+
+	public String getGeneOrganism() {
+		return geneOrganism;
+	}
+
+	public void setGeneOrganism(String geneOrganism) {
+		this.geneOrganism = geneOrganism;
+	}
+
+	public String getGenePrefix() {
+		return genePrefix;
+	}
+
+	public void setGenePrefix(String genePrefix) {
+		this.genePrefix = genePrefix;
+	}
+
+	public String getGeneIdentifier() {
+		return geneIdentifier;
+	}
+
+	public void setGeneIdentifier(String geneIdentifier) {
+		this.geneIdentifier = geneIdentifier;
+	}
+
+	public String getGeneFullIdentier() {
+		return geneFullIdentier;
+	}
+
+	public void setGeneFullIdentier(String geneFullIdentier) {
+		this.geneFullIdentier = geneFullIdentier;
 	}
 
 }

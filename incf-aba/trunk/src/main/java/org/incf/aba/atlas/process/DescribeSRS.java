@@ -12,6 +12,10 @@ import javax.xml.stream.XMLStreamWriter;
 
 import net.opengis.gml.x32.UnitOfMeasureType;
 
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.Orientations;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.SRSList;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection;
+
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
@@ -36,8 +40,6 @@ import org.incf.atlas.waxml.generated.DescribeSRSResponseType.Slices;
 import org.incf.atlas.waxml.generated.IncfCodeType;
 import org.incf.atlas.waxml.generated.IncfUriSliceSource;
 import org.incf.atlas.waxml.generated.Incfdescription;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.Orientations;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSList;
 import org.incf.atlas.waxml.generated.NeurodimensionType;
 import org.incf.atlas.waxml.generated.NeurodimensionsType;
 import org.incf.atlas.waxml.generated.OrientationType;
@@ -211,7 +213,13 @@ public class DescribeSRS implements Processlet {
 				Name name = srs.addNewName();
 				name.setStringValue(vo.getSrsName());
 				name.setSrsCode(vo.getSrsCode());
-				name.setSrsBase(vo.getSrsDescription());
+				
+				if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") ) {  
+					name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_0.9", ""));
+				} else { 
+					name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", ""));
+				}
+
 				name.setSrsVersion(vo.getSrsVersion());
 				name.setSpecies(vo.getSpecies());
 				// name.setUrn("ReferenceUrl");//Uncomment this once i find the
@@ -288,7 +296,12 @@ public class DescribeSRS implements Processlet {
 		// rootDoc.newCursor().insertComment("Test Comment");
 		/*
 		 * QueryInfoSrs(rootDoc.addNewQueryInfo(), uri.toString());
-		 */SRSList srsList = rootDoc.addNewSRSList();
+		 *///SRSList srsList = rootDoc.addNewSRSList();
+
+		SRSCollection coll1 = rootDoc.addNewSRSCollection();
+		coll1.setHubCode("ABA");
+
+		SRSList srsList = coll1.addNewSRSList();
 
 		// Start - Get data from the database
 		ArrayList list = new ArrayList();
@@ -299,20 +312,22 @@ public class DescribeSRS implements Processlet {
 		addSRS(srsList, list, list.size());
 
 		ArrayList list2 = impl.getOrientationData();
-		Orientations o = null;
+		//Orientations o = null;
+		Orientations o = coll1.addNewOrientations();
+		OrientationType orientation = o.addNewOrientation();
 
 		Iterator iterator2 = list2.iterator();
 		ABAServiceVO vo = null;
 
-		o = rootDoc.addNewOrientations();
+		//o = rootDoc.addNewOrientations();
 		Random randomGenerator = new Random();
 		while (iterator2.hasNext()) {
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID = randomGenerator.nextInt(100);
 			}
 			vo = (ABAServiceVO) iterator2.next();
-			OrientationType orientaiton1 = o.addNewOrientation();
-			orientation(orientaiton1, vo.getOrientationName(), vo
+			orientation = o.addNewOrientation();
+			orientation(orientation, vo.getOrientationName(), vo
 					.getOrientationName(), String.valueOf(randomGMLID), vo
 					.getOrientationAuthor(), vo.getOrientationAuthor(), vo
 					.getOrientationDescription());
