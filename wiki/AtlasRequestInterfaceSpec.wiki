@@ -388,6 +388,13 @@ Atlas Processes
     <td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z]</td>
   </tr>
   <tr>
+    <th align="left">GET Request</th>
+    <td>
+http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE
+    </td>
+  </tr>
+
+  <tr>
     <th align="left">Description</th>
     <td></td>
   </tr>
