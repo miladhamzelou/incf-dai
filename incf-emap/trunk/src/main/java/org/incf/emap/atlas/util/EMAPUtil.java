@@ -909,7 +909,7 @@ public class EMAPUtil {
 		Utilities.addInputStringCriteria(criterias, "filter", vo.getFilter());
 */
 		TransformationList ct = co.getListTransformationsResponse().addNewTransformationList();
-		
+		ct.setHubCode("EMAP");
 /*		ObjectFactory of = new ObjectFactory();
 		QueryInfo queryInfo = of.createQueryInfo();
 		
