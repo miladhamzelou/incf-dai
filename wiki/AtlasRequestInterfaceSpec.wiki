@@ -387,12 +387,6 @@ Atlas Processes
     <th align="left">GET Request</th>
     <td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z]</td>
   </tr>
-  <tr>
-    <th align="left">GET Request</th>
-    <td>
-http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE
-    </td>
-  </tr>
 
   <tr>
     <th align="left">Description</th>
@@ -421,7 +415,7 @@ http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&requ
   <tr>
     <th align="left">Examples</th>
     <td>
- * Central: 
+ * Central: http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE
  * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE
  * EMAP: (Planned, but not yet implemented)
     </td>
