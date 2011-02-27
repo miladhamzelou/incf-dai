@@ -949,6 +949,7 @@ public class WHSUtil {
 
 		//Query Info
 		co.getListTransformationsResponse().addNewQueryInfo();
+		
 		QueryInfoType qi = co.getListTransformationsResponse().getQueryInfo();
 		QueryUrl url = QueryUrl.Factory.newInstance();
 		url.setName("ListTransformations");
@@ -974,6 +975,7 @@ public class WHSUtil {
 
 		 
 		TransformationList ct = co.getListTransformationsResponse().addNewTransformationList();
+		ct.setHubCode("WHS");
 		
 		try { 
 

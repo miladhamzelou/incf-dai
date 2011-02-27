@@ -129,7 +129,6 @@ public class GetStructureNamesByPOI implements Processlet {
 				vo.setToSRSCodeOne(whs09);
 
 				// Construct GetTransformationChain URL
-				// http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 
 				// Start - FIXME - Uncomment below two lines and comment the
 				// other three lines
@@ -143,7 +142,7 @@ public class GetStructureNamesByPOI implements Processlet {
 				// End - FIXME
 
 				//central/atlas
-				String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
+				String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
 						+ vo.getFromSRSCode()
 						+ ";outputSrsName="
 						+ vo.getToSRSCode() + ";filter=NONE";
@@ -273,6 +272,8 @@ public class GetStructureNamesByPOI implements Processlet {
 			 * query.setTimeCreated(Calendar.getInstance());
 			 */StructureTerms terms = rootDoc.addNewStructureTerms();
 			StructureTermType term1 = terms.addNewStructureTerm();
+			terms.setHubCode("WHS");
+
 			Code t1code = term1.addNewCode();
 			t1code.setCodeSpace(vo.getFromSRSCode());
 			t1code.setIsDefault(true);

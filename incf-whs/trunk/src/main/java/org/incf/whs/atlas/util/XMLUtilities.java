@@ -162,7 +162,7 @@ public final class XMLUtilities {
 				String whs = whs09;
 				String emap = emap;
 */
-				resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z).replace(";filter=", filter);
+				resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z);
 
 				//resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z).replace(";filter=", filter).replace(abaReference, abareference).replace("mouse_abavoxel_1.0", abavoxel).replace("mouse_agea_1.0", agea).replace("mouse_whs_1.0", whs).replace("mouse_paxinos_1.0", paxinos).replace("mouse_emap-t26_1.0", emap);
 
@@ -175,7 +175,7 @@ public final class XMLUtilities {
 					return resultURLReturnElementValue;
 				} else {
 					resultURLReturnXMLElement = util.getDocumentElementFromString(resultURLReturnString);
-					resultURLReturnElementValue = util.getStringValueForXMLTag(resultURLReturnXMLElement, "gml:pos");
+					resultURLReturnElementValue = util.getStringValueForXMLTag(resultURLReturnXMLElement, "pos");
 					StringTokenizer tokens = new StringTokenizer(resultURLReturnElementValue, " ");
 					while ( tokens.hasMoreTokens() ) {
 						x = ";x=" + tokens.nextToken();
