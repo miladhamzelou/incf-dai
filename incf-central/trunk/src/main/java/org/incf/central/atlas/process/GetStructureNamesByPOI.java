@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
@@ -132,11 +133,12 @@ public class GetStructureNamesByPOI implements Processlet {
 					+ "/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName="
 					+ vo.getFromSRSCode() + ";x=" + vo.getOriginalCoordinateX()
 					+ ";y=" + vo.getOriginalCoordinateY() + ";z="
-					+ vo.getOriginalCoordinateZ() + ";vocabulary="
-					+ vo.getVocabulary() + ";filter=" + vo.getFilter();
+					+ vo.getOriginalCoordinateZ() + ";vocabulary="+ ";filter=" + vo.getFilter();
 			System.out.println("ABA URL" + abaURL);
+
+			CentralServiceVO cvo = null;
 			completeStructureList = readXML.getStructureData(abaURL,
-					completeStructureList);
+					completeStructureList, "ABA", cvo);
 
 			// 2b - Call the method from UCSD Hub
 			String ucsdURL = "http://"
@@ -145,13 +147,12 @@ public class GetStructureNamesByPOI implements Processlet {
 					+ "/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName="
 					+ vo.getFromSRSCode() + ";x=" + vo.getOriginalCoordinateX()
 					+ ";y=" + vo.getOriginalCoordinateY() + ";z="
-					+ vo.getOriginalCoordinateZ() + ";vocabulary="
-					+ vo.getVocabulary() + ";filter=" + vo.getFilter();
+					+ vo.getOriginalCoordinateZ() + ";vocabulary="+ ";filter=NONE";
 
 			System.out.println("UCSD URL" + ucsdURL);
-
+			cvo = null;
 			completeStructureList = readXML.getStructureData(ucsdURL,
-					completeStructureList);
+					completeStructureList, "UCSD", cvo);
 
 			// 2c - Call the method from WHS Hub
 			String whsURL = "http://"
@@ -160,13 +161,13 @@ public class GetStructureNamesByPOI implements Processlet {
 					+ "/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName="
 					+ vo.getFromSRSCode() + ";x=" + vo.getOriginalCoordinateX()
 					+ ";y=" + vo.getOriginalCoordinateY() + ";z="
-					+ vo.getOriginalCoordinateZ() + ";vocabulary="
-					+ vo.getVocabulary() + ";filter=" + vo.getFilter();
+					+ vo.getOriginalCoordinateZ() + ";vocabulary=NONE" + ";filter=NONE";
 
 			System.out.println("WHS URL" + whsURL);
 
+			cvo = null;
 			completeStructureList = readXML.getStructureData(whsURL,
-					completeStructureList);
+					completeStructureList, "WHS", cvo);
 
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			java.util.Date date = new java.util.Date();
@@ -238,23 +239,38 @@ public class GetStructureNamesByPOI implements Processlet {
 			 * query.setTimeCreated(Calendar.getInstance());
 			 */
 			Iterator iterator = completeStructureList.iterator();
-			KeyValueBean keyValue = null;
+			CentralServiceVO vo1 = null;
 			while (iterator.hasNext()) {
 
-				keyValue = (KeyValueBean) iterator.next();
+				vo1 = (CentralServiceVO) iterator.next();
+				
+				String structureDescription = "";
+				String codeSpace = "";
+				System.out.println("::::KEYVALUE:::::"+vo1.getSrsName());
+				System.out.println("::::Code:::::"+vo1.getStructureCode());
+				StringTokenizer tokens = new StringTokenizer(vo1.getSrsName(), "::");
+
+				while (tokens.hasMoreTokens()) {
+					structureDescription = tokens.nextToken();
+					codeSpace = tokens.nextToken();
+				}
+				
 				StructureTerms terms = rootDoc.addNewStructureTerms();
 				StructureTermType term1 = terms.addNewStructureTerm();
-
+				terms.setHubCode(vo1.getFlag());
+				
 				Code t1code = term1.addNewCode();
-				t1code.setCodeSpace(vo.getFromSRSCode());
+				
+				t1code.setCodeSpace(codeSpace);
+				
 				t1code.setIsDefault(true);
 				// t1code.setStructureID("");
-				t1code.setStringValue(keyValue.getKey());
+				t1code.setStringValue(vo1.getStructureCode());
 
 				// term1.setUri("");
 				IncfNameType t1name = term1.addNewName();
 				// t1name.setStringValue("");
-				term1.addNewDescription().setStringValue(keyValue.getValue());
+				term1.addNewDescription().setStringValue(structureDescription);
 			}
 
 			ArrayList errorList = new ArrayList();

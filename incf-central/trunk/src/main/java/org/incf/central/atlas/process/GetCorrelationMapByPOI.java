@@ -33,6 +33,7 @@ import org.incf.atlas.waxml.generated.IncfNameType;
 import org.incf.atlas.waxml.generated.StructureTermType;
 import org.incf.atlas.waxml.generated.StructureTermsResponseDocument;
 import org.incf.atlas.waxml.generated.StructureTermsResponseType;
+import org.incf.atlas.waxml.generated.CorrelatioMapType.CorrelationCollection;
 import org.incf.atlas.waxml.generated.StructureTermType.Code;
 import org.incf.atlas.waxml.generated.StructureTermsResponseType.StructureTerms;
 import org.incf.atlas.waxml.utilities.Utilities;
@@ -243,7 +244,10 @@ public class GetCorrelationMapByPOI implements Processlet {
 			 * filterCodeCriteria.setName("filter");
 			 * filterCodeCriteria.setValue("maptype:coronal");
 			 */
-			imagesRes.setCorrelationUrl(keyValue.getValue());
+			//imagesRes.setCorrelationUrl(keyValue.getValue());
+			CorrelationCollection coll1 = imagesRes.addNewCorrelationCollection();
+			coll1.setHubCode("ABA");
+			coll1.setCorrelationUrl(keyValue.getValue());
 
 			ArrayList errorList = new ArrayList();
 			opt.setErrorListener(errorList);

@@ -191,7 +191,7 @@ public final class XMLUtilities {
 					return resultURLReturnElementValue;
 				} else {
 					resultURLReturnXMLElement = util.getDocumentElementFromString(resultURLReturnString);
-					resultURLReturnElementValue = util.getStringValueForXMLTag(resultURLReturnXMLElement, "gml:pos");
+					resultURLReturnElementValue = util.getStringValueForXMLTag(resultURLReturnXMLElement, "pos");
 					StringTokenizer tokens = new StringTokenizer(resultURLReturnElementValue, " ");
 					while ( tokens.hasMoreTokens() ) {
 						x = ";x=" + tokens.nextToken();

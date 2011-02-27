@@ -1,6 +1,8 @@
 package org.incf.central.atlas.util;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -12,6 +14,9 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import javax.xml.namespace.QName;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
@@ -3210,5 +3215,117 @@ public class CentralUtil {
 
 	}
 
+	/**
+	 * Returns a list of gene symbols from Allen Brain Atlas that express at
+	 * the given location. The number returned is determined by the last 
+	 * argument. The list is in order of the strength of expression.
+	 *  
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @param nbrStrongGenes
+	 * @return
+	 * @throws IOException
+	 * @throws XMLStreamException
+	 */
+	public static List<ABAGene> retrieveStrongGenesAtAGEAPOI(double x, double y, 
+			double z, int nbrStrongGenes) throws IOException, 
+					XMLStreamException {
+        List<ABAGene> abaGenes = new ArrayList<ABAGene>();
+	    	
+        // round coords to nearest xx00, where xx is even
+        URL u = new URL(CentralUtil.assembleGeneFinderURI(
+        		String.valueOf(CentralUtil.round200(x)), 
+        		String.valueOf(CentralUtil.round200(y)), 
+        		String.valueOf(CentralUtil.round200(z))));
+
+        InputStream in = u.openStream();
+        XMLInputFactory factory = XMLInputFactory.newInstance();
+        XMLStreamReader parser = factory.createXMLStreamReader(in);
+
+        // loop through genes found at poi
+        boolean inEnergy = false;
+        boolean inGeneSymbol = false;
+        int event = parser.next(); 
+        int i = 1;
+        ABAGene abaGene = null;
+        while (i <= nbrStrongGenes 
+        		&& event != XMLStreamConstants.END_DOCUMENT) {
+        	if (event == XMLStreamConstants.START_ELEMENT) {
+        	    if (parser.getLocalName().equals("energy")) {
+        	        inEnergy = true;
+        	    } else if (parser.getLocalName().equals("genesymbol")) {
+        			inGeneSymbol = true;
+        		}
+        	} else if (event == XMLStreamConstants.CHARACTERS) {
+        		if (inEnergy) {
+                	abaGene = new ABAGene();
+                	abaGene.setId("G" + String.valueOf(i));
+        			abaGene.setEnergy(parser.getText());
+        			inEnergy = false;
+        		} else if (inGeneSymbol) {
+        			abaGene.setGenesymbol(parser.getText());
+        			inGeneSymbol = false;
+        			abaGenes.add(abaGene);
+        			i++;
+        		}
+        	}
+        	event = parser.next();
+        } // while
+        try {
+        	parser.close();
+        } catch (XMLStreamException e) {
+        	e.printStackTrace();
+        }
+
+        // debug
+        for (ABAGene gene: abaGenes) {
+        	System.out.println("abaGene symbol: {}"+gene.getGenesymbol());
+        }
+	    return abaGenes;
+	}
 	
+	/**
+	 * Rounds a number to the nearest 200 to match Allen Brain Atlas's use of
+	 * 200x200micron voxels.
+	 * 
+	 * @param a
+	 * @return
+	 */
+	public static int round200(double a) {
+		return ((int) ((a / 200) + 0.5)) * 200;
+	}
+
+	/**
+	 * Returns a URI that will access the Allen Brain Atlas's gene finder
+	 * using given coordinates.
+	 * 
+	 * Example: http://www.brain-map.org/agea/GeneFinder.xml?seedPoint=6600,4000,5600
+	 * 
+	 * @param x
+	 * @param y
+	 * @param z
+	 * @return
+	 */
+	public static String assembleGeneFinderURI(String x, String y, String z) {
+		return String.format(
+			"http://mouse.brain-map.org/agea/GeneFinder.xml?seedPoint=%s,%s,%s", 
+			x, y, z);
+	}
+	
+	/**
+	 * Returns a URI that will access the Allen Brain Atlas for information
+	 * about the given gene.
+	 * 
+	 * Example: http://www.brain-map.org/aba/api/gene/C1ql2.xml
+	 * 
+	 * @param geneSymbol
+	 * @return
+	 */
+	public static String assembleGeneURI(String geneSymbol) {
+		return String.format(
+				"http://www.brain-map.org/aba/api/gene/%s.xml", 
+				geneSymbol);
+	}
+
 }

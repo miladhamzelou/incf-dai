@@ -201,17 +201,81 @@ public class Get2DImagesByPOI implements Processlet {
 	        // 2a - Call the method from ABA Hub
 		    System.out.println("Before calling the url - SRS Code: - " + vo.getFromSRSCode());
 
-			Image2Dcollection images = imagesRes.addNewImage2Dcollection();
+			//images.setHubCode("");
 	        String ucsdURL = "http://"+hostName+portNumber+"/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName="+vo.getFromSRSCode()+";x="+vo.getOriginalCoordinateX()+";y="+vo.getOriginalCoordinateY()+";z="+vo.getOriginalCoordinateZ()+";filter="+vo.getFilter()+";tolerance="+vo.getTolerance();
 		    System.out.println("UCSD url - " + ucsdURL);
-	        complete2DImageList = readXML.get2DImageDataList(ucsdURL, complete2DImageList);
+	        complete2DImageList = readXML.get2DImageDataList(ucsdURL);
 
-	        String abaURL = "http://"+hostName+portNumber+"/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName="+vo.getFromSRSCode()+";x="+vo.getOriginalCoordinateX()+";y="+vo.getOriginalCoordinateY()+";z="+vo.getOriginalCoordinateZ()+";filter="+vo.getFilter();
-		    System.out.println("ABA url - " + ucsdURL);
-	        complete2DImageList = readXML.get2DImageDataList(abaURL, complete2DImageList);
+	        Iterator iterator1 = complete2DImageList.iterator();
+			Image2Dcollection images = imagesRes.addNewImage2Dcollection();
+			images.setHubCode("UCSD");
+
+			CentralServiceVO vo1 = new CentralServiceVO();
+			while (iterator1.hasNext()) {
+				count++;
+		        System.out.println("Inside While Loop - " + count);
+				vo1 = (CentralServiceVO)iterator1.next();
+
+				wmsURL = vo1.getWms();
+				Image2DType image1 = images.addNewImage2D();
+				ImageSource i1source = image1.addNewImageSource();
+				i1source.setStringValue(wmsURL);
+				i1source.setFormat(IncfRemoteFormatEnum.IMAGE_PNG.toString());
+				i1source.setSrsName(srsName);
+				i1source.setType("WMS");
+
+				ImagePosition i1position = image1.addNewImagePosition();
+				IncfSrsType planeequation = i1position
+						.addNewImagePlaneEquation();
+				planeequation.setSrsName(srsName);
+				planeequation.setStringValue(vo1.getImagePlaneEquation());
+				IncfSrsType placement = i1position.addNewImagePlanePlacement();
+				placement.setSrsName(srsName);
+				placement.setStringValue(vo1.getTfwValues());
+				Corners corners = i1position.addNewCorners();
+
+				Corner corner1 = corners.addNewCorner();
+				corner1.setPosition(PositionEnum.TOPLEFT);
+
+				System.out.println("1st corner - filter - " + filter);
+				corner1.addNewPoint().addNewPos().setStringValue(vo1.getTopLeft());
+				corner1.getPoint().setId("image" + count + "topleft");
+				corner1.getPoint().getPos().setSrsName(srsName);
+
+				Corner corner2 = corners.addNewCorner();
+				corner2.setPosition(PositionEnum.BOTTOMLEFT);
+
+				System.out.println("2nd corner - filter - " + filter);
+				corner2.addNewPoint().addNewPos().setStringValue(vo1.getBottomLeft());
+				corner2.getPoint().getPos().setSrsName(srsName);
+				corner2.getPoint().setId("image" + count + "bottomleft");
+
+				Corner corner3 = corners.addNewCorner();
+				corner3.setPosition(PositionEnum.TOPRIGHT);
+ 
+				System.out.println("3rd corner - filter - " + filter);
+				corner3.addNewPoint().addNewPos().setStringValue(vo1.getTopRight());
+				corner3.getPoint().getPos().setSrsName(srsName);
+				corner3.getPoint().setId("image" + count + "topright");
+
+				Corner corner4 = corners.addNewCorner();
+				corner4.setPosition(PositionEnum.BOTTOMRIGHT);
+
+				System.out.println("4th corner - filter - " + filter);
+				corner4.addNewPoint().addNewPos().setStringValue(vo1.getBottomRight());
+				corner4.getPoint().getPos().setSrsName(srsName);
+				corner4.getPoint().setId("image" + count + "bottomright");
+			}
+
+			complete2DImageList = new ArrayList();
+	        String abaURL = "http://"+hostName+portNumber+"/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName="+vo.getFromSRSCode()+";x="+vo.getOriginalCoordinateX()+";y="+vo.getOriginalCoordinateY()+";z="+vo.getOriginalCoordinateZ()+";filter="+vo.getFilter();
+		    System.out.println("ABA URL- " + abaURL);
+	        complete2DImageList = readXML.get2DImageDataList(abaURL);
 
 	        System.out.println("List size in central is - " + complete2DImageList.size());
 	        Iterator iterator = complete2DImageList.iterator();
+			images = imagesRes.addNewImage2Dcollection();
+			images.setHubCode("ABA");
 
 			while (iterator.hasNext()) {
 				count++;
@@ -222,9 +286,9 @@ public class Get2DImagesByPOI implements Processlet {
 				Image2DType image1 = images.addNewImage2D();
 				ImageSource i1source = image1.addNewImageSource();
 				i1source.setStringValue(wmsURL);
-				i1source.setFormat(IncfRemoteFormatEnum.IMAGE_PNG.toString());
+				i1source.setFormat(IncfRemoteFormatEnum.IMAGE_JPEG.toString());
 				i1source.setSrsName(srsName);
-				i1source.setType("WMS");
+				i1source.setType("HTTP");
 
 				ImagePosition i1position = image1.addNewImagePosition();
 				IncfSrsType planeequation = i1position
@@ -254,7 +318,7 @@ public class Get2DImagesByPOI implements Processlet {
 
 				Corner corner3 = corners.addNewCorner();
 				corner3.setPosition(PositionEnum.TOPRIGHT);
-
+ 
 				System.out.println("3rd corner - filter - " + filter);
 				corner3.addNewPoint().addNewPos().setStringValue(vo.getTopRight());
 				corner3.getPoint().getPos().setSrsName(srsName);

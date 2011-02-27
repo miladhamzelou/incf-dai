@@ -26,9 +26,22 @@ public class CentralServiceVO {
 		// TODO Auto-generated constructor stub
 	}
 
+	private String structureCode = "";
 	private String structureName = "";
 	private String structureDescription = "";
 	private String imagePlaneEquation = "";
+	private String codeSpaceForStructure = "";
+
+	private String geneName = "";
+	private String geneSymbol = "";
+	private String geneOrganism = "";
+	private String genePrefix = "";
+	private String geneIdentifier = "";
+	private String geneFullIdentifier = "";
+
+	private String expressionLevelGeneSymbol = "";
+	private String expressionLevelValue = "";
+	private String expressionLevelCodeSpace = "";
 
 	private String incfDeployHostname = "";
 	private String wms = "";
@@ -1115,8 +1128,96 @@ public class CentralServiceVO {
 		return imagePlaneEquation;
 	}
 
+	public String getCodeSpaceForStructure() {
+		return codeSpaceForStructure;
+	}
+
+	public void setCodeSpaceForStructure(String codeSpaceForStructure) {
+		this.codeSpaceForStructure = codeSpaceForStructure;
+	}
+
 	public void setImagePlaneEquation(String imagePlaneEquation) {
 		this.imagePlaneEquation = imagePlaneEquation;
+	}
+
+	public String getGeneName() {
+		return geneName;
+	}
+
+	public void setGeneName(String geneName) {
+		this.geneName = geneName;
+	}
+
+	public String getGeneSymbol() {
+		return geneSymbol;
+	}
+
+	public void setGeneSymbol(String geneSymbol) {
+		this.geneSymbol = geneSymbol;
+	}
+
+	public String getGeneOrganism() {
+		return geneOrganism;
+	}
+
+	public void setGeneOrganism(String geneOrganism) {
+		this.geneOrganism = geneOrganism;
+	}
+
+	public String getGenePrefix() {
+		return genePrefix;
+	}
+
+	public void setGenePrefix(String genePrefix) {
+		this.genePrefix = genePrefix;
+	}
+
+	public String getGeneIdentifier() {
+		return geneIdentifier;
+	}
+
+	public void setGeneIdentifier(String geneIdentifier) {
+		this.geneIdentifier = geneIdentifier;
+	}
+
+	public String getGeneFullIdentifier() {
+		return geneFullIdentifier;
+	}
+
+	public String getExpressionLevelGeneSymbol() {
+		return expressionLevelGeneSymbol;
+	}
+
+	public void setExpressionLevelGeneSymbol(String expressionLevelGeneSymbol) {
+		this.expressionLevelGeneSymbol = expressionLevelGeneSymbol;
+	}
+
+	public String getExpressionLevelValue() {
+		return expressionLevelValue;
+	}
+
+	public void setExpressionLevelValue(String expressionLevelValue) {
+		this.expressionLevelValue = expressionLevelValue;
+	}
+
+	public String getStructureCode() {
+		return structureCode;
+	}
+
+	public void setStructureCode(String structureCode) {
+		this.structureCode = structureCode;
+	}
+
+	public String getExpressionLevelCodeSpace() {
+		return expressionLevelCodeSpace;
+	}
+
+	public void setExpressionLevelCodeSpace(String expressionLevelCodeSpace) {
+		this.expressionLevelCodeSpace = expressionLevelCodeSpace;
+	}
+
+	public void setGeneFullIdentifier(String geneFullIdentier) {
+		this.geneFullIdentifier = geneFullIdentier;
 	}
 
 }

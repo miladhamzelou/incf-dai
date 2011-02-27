@@ -10,6 +10,7 @@ import javax.xml.stream.XMLStreamWriter;
 
 import net.opengis.gml.x32.UnitOfMeasureType;
 
+import org.apache.xmlbeans.XmlCalendar;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
@@ -29,8 +30,9 @@ import org.incf.atlas.waxml.generated.IncfUriSliceSource;
 import org.incf.atlas.waxml.generated.Incfdescription;
 import org.incf.atlas.waxml.generated.ListSRSResponseDocument;
 import org.incf.atlas.waxml.generated.ListSRSResponseType;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.Orientations;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSList;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.Orientations;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.SRSList;
 import org.incf.atlas.waxml.generated.NeurodimensionType;
 import org.incf.atlas.waxml.generated.NeurodimensionsType;
 import org.incf.atlas.waxml.generated.OrientationType;
@@ -172,7 +174,7 @@ public class ListSRSs implements Processlet {
 	}
 
 	// First SRS
-	public static void addSRS(SRSList srsList, ArrayList list, int size) {
+	public static void addSRS(ListSRSResponseType rootDoc, ArrayList list, int size) {
 
 		CentralServiceVO vo = null;
 
@@ -180,20 +182,50 @@ public class ListSRSs implements Processlet {
 
 			Iterator iterator = list.iterator();
 			SRSType srs = null;
-
+			SRSCollection coll1 = null;
+			SRSList srsList = null;
+			
 			while (iterator.hasNext()) {
+
+				vo = (CentralServiceVO) iterator.next();
 
 				System.out
 						.println("**************************Count is********************* "
 								+ list.size());
+				String tempSrsName = vo.getSrsName(); 
+				System.out.println("VO SRSName:" + vo.getSrsName());
+				System.out.println("temp SRSName:" + tempSrsName);
+				if (vo.getSrsName().equals(tempSrsName)) {
+					coll1 = rootDoc.addNewSRSCollection();
+					System.out.println("Different SRS Name for ListSRS");
+					if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") ) {  
+						coll1.setHubCode(vo.getSrsName().replace("Mouse_", "").replaceAll("_0.9", ""));
+					} else { 
+						coll1.setHubCode(vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", ""));
+						if (coll1.getHubCode().equalsIgnoreCase("Paxinos")){
+							coll1.setHubCode("UCSD");
+						} else if (coll1.getHubCode().equalsIgnoreCase("ABAvoxel")){
+							coll1.setHubCode("ABA");
+						} else if (coll1.getHubCode().equalsIgnoreCase("AGEA")){
+							coll1.setHubCode("ABA");
+						} else if (coll1.getHubCode().equalsIgnoreCase("ABAreference")){
+							coll1.setHubCode("ABA");
+						}
+					}
+				}
+				srsList = coll1.addNewSRSList();
 				srs = srsList.addNewSRS();
-
-				vo = (CentralServiceVO) iterator.next();
 
 				Name name = srs.addNewName();
 				name.setStringValue(vo.getSrsName());
 				name.setSrsCode(vo.getSrsCode());
-				name.setSrsBase(vo.getSrsDescription());
+				
+				if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") ) {  
+					name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_0.9", ""));
+				} else { 
+					name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", ""));
+				}
+				
 				name.setSrsVersion(vo.getSrsVersion());
 				name.setSpecies(vo.getSpecies());
 				// name.setUrn("ReferenceUrl");//Uncomment this once i find the
@@ -204,7 +236,7 @@ public class ListSRSs implements Processlet {
 
 				AuthorType author = srs.addNewAuthor();
 				author.setAuthorCode(vo.getSrsAuthorCode());
-				author.setDateSubmitted(Calendar.getInstance());
+				author.setDateSubmitted(new XmlCalendar(vo.getSrsDateSubmitted()));
 
 				IncfCodeType origin = srs.addNewOrigin();
 				// origin.setCodeSpace("URN");
@@ -255,6 +287,33 @@ public class ListSRSs implements Processlet {
 
 			}
 
+			CentralServiceDAOImpl impl = new CentralServiceDAOImpl();
+			ArrayList list2 = impl.getOrientationData();
+			Orientations o = coll1.addNewOrientations();
+			OrientationType orientation = o.addNewOrientation();
+			//Orientations o = null;
+
+			Iterator iterator2 = list2.iterator();
+			CentralServiceVO vo1 = null;
+
+			orientation = o.addNewOrientation();
+
+			Random randomGenerator = new Random();
+			
+			int randomGMLID = randomGenerator.nextInt(100);
+
+			while (iterator2.hasNext()) {
+				for (int idx = 1; idx <= 10; ++idx) {
+					randomGMLID = randomGenerator.nextInt(100);
+				}
+				vo = (CentralServiceVO) iterator2.next();
+				orientation = o.addNewOrientation();
+				orientation(orientation, vo.getOrientationName(), vo
+						.getOrientationName(), String.valueOf(randomGMLID), vo
+						.getOrientationAuthor(), vo.getOrientationAuthor(), vo
+						.getOrientationDescription());
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -269,7 +328,7 @@ public class ListSRSs implements Processlet {
 		ListSRSResponseType rootDoc = document.addNewListSRSResponse();
 		/*
 		 * QueryInfoSrs(rootDoc.addNewQueryInfo(), uri.toString());
-		 */SRSList srsList = rootDoc.addNewSRSList();
+		 *///SRSList srsList = rootDoc.addNewSRSList();
 
 		// Start - Get data from the database
 		ArrayList list = new ArrayList();
@@ -277,29 +336,8 @@ public class ListSRSs implements Processlet {
 		list = impl.getSRSsData();
 		//End
 
-		addSRS(srsList, list, list.size());
+		addSRS(rootDoc, list, list.size());
 
-		ArrayList list2 = impl.getOrientationData();
-		Orientations o = null;
-
-		Iterator iterator2 = list2.iterator();
-		CentralServiceVO vo = null;
-
-		o = rootDoc.addNewOrientations();
-
-		Random randomGenerator = new Random();
-		
-		while (iterator2.hasNext()) {
-			for (int idx = 1; idx <= 10; ++idx) {
-				randomGMLID = randomGenerator.nextInt(100);
-			}
-			vo = (CentralServiceVO) iterator2.next();
-			OrientationType orientaiton1 = o.addNewOrientation();
-			orientation(orientaiton1, vo.getOrientationName(), vo
-					.getOrientationName(), String.valueOf(randomGMLID), vo
-					.getOrientationAuthor(), vo.getOrientationAuthor(), vo
-					.getOrientationDescription());
-		}
 		return document;
 	}
 

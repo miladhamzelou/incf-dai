@@ -55,19 +55,44 @@ public class ReadXML {
 			//String xmlString = "http://incf-dev-local.crbs.ucsd.edu/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:Sagittal;tolerance=3";
 			//String xmlString = "http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3";
 			//xmlString = "http://132.239.131.188:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsname=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:Sagittal;tolerance=3";
-			String xmlString = "http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal";
+			//String xmlString = "http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal";
+			//String xmlString = "http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE";
+			String xmlString = "http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=structureset:anatomic";
 			ArrayList list = new ArrayList();
-			//list = readXML.getImageData(xmlString);
-			list = readXML.get2DImageDataList(xmlString, list);
-			System.out.println("*****************List = "+list.size());
+			CentralServiceVO cvo = null;
+			list = readXML.getStructureData(xmlString, list, "ABA", cvo);
+
+			xmlString = "http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=NONE";
+			cvo = null;
+			list = readXML.getStructureData(xmlString, list, "UCSD", cvo);
 			
+			xmlString = "http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=NONE";
+			cvo = null;
+			list = readXML.getStructureData(xmlString, list, "WHS", cvo);
+			//list = readXML.get2DImageDataList(xmlString);
+			//list = readXML.getGenesDataList(xmlString, list);
+			System.out.println("*****************List = "+list.size());
+			CentralServiceVO vo1 = null;
 			Iterator iterator = list.iterator();
-			CentralServiceVO vo = null;
 			while (iterator.hasNext()) {
-				vo = (CentralServiceVO)iterator.next();
+				vo1 = (CentralServiceVO)iterator.next();
+				System.out.println(vo1.getStructureCode());
+				System.out.println(vo1.getSrsName());
+			}			
+			
+			
+			CentralServiceVO vo = null;
+			int z = 0;
+			while (iterator.hasNext()) {
 				
-				System.out.println("*****************URL = "+vo.getWms());
-				System.out.println("*****************TFW Values = "+vo.getTfwValues());
+				vo = (CentralServiceVO)iterator.next();
+				if (vo.getFlag().equals("GENE") ){
+					System.out.println("Inside Gene Symbol" + z++ +" Gene: "+ vo.getGeneSymbol());
+				} else if (vo.getFlag().equals("EXPRESSIONLEVEL") ){
+					System.out.println("Inside EXPRESSION " + z++ +" GenExpressionLevel: "+ vo.getExpressionLevelGeneSymbol());
+				}
+				//System.out.println("*****************URL = "+vo.getWms());
+				//System.out.println("*****************TFW Values = "+vo.getTfwValues());
 			}
 
 
@@ -101,7 +126,9 @@ public class ReadXML {
 	}
 
 	
-	public ArrayList get2DImageDataList(String urlString, ArrayList list) {
+	public ArrayList get2DImageDataList(String urlString) {
+
+		ArrayList list = new ArrayList();
 
 		try {
 
@@ -111,7 +138,7 @@ public class ReadXML {
 			String xmlString = readXML.convertFromURLToString(urlString); 
 			
 			System.out.println("XMLString is - " + xmlString);
-			list = readXML.getImageData(xmlString);
+			list = readXML.getImageData(xmlString, list);
 			System.out.println("List Size is - " + list.size());
 			
 			Iterator iterator = list.iterator();
@@ -131,28 +158,70 @@ public class ReadXML {
 	}
 
 
-	public ArrayList getStructureData(String urlString, ArrayList list) {
+	public ArrayList getGenesDataList(String urlString, ArrayList list) {
 
-		KeyValueBean keyValue = new KeyValueBean();
+		try {
+
+			ReadXML readXML = new ReadXML();
+			
+			System.out.println("************************URLString is******************* - " + urlString);
+			String xmlString = readXML.convertFromURLToString(urlString); 
+			
+			System.out.println("XMLString is - " + xmlString);
+			//list = readXML.getImageData(xmlString);
+			list = readXML.getGenesData(xmlString);
+			//System.out.println("List Size is - " + list.size());
+
+			Iterator iterator = list.iterator();
+/*			CentralServiceVO vo = null;
+			while (iterator.hasNext()) {
+				vo = (CentralServiceVO)iterator.next();
+				//System.out.println("URL = "+vo.getWms());
+				//System.out.println("TFW Values = "+vo.getTfwValues());
+			}
+*/
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+
+	}
+
+	
+	public ArrayList getStructureData(String urlString, ArrayList list, String hubName, CentralServiceVO cvo) {
+
+		cvo = new CentralServiceVO();
 		Element xmlElement = null;
 		
 		try {
 
-			System.out.println("1");
+			//System.out.println("1");
 			ReadXML readXML = new ReadXML();
-			System.out.println("2");
+			//System.out.println("2");
 			
 			String xmlString = readXML.convertFromURLToString(urlString); 
-			System.out.println("3");
+			//System.out.println("3");
 
 			xmlElement = readXML.getDocumentElementFromString(xmlString);
-			System.out.println("9");
-			keyValue.setKey(readXML.getStringValueForXMLTag(xmlElement, "Code"));
-			System.out.println("10");
-			keyValue.setValue(readXML.getStringValueForXMLTag(xmlElement, "Description")); 
-			System.out.println("11");
+			//System.out.println("9");
+			cvo.setStructureCode(readXML.getStringValueForXMLTag(xmlElement, "Code"));
+			//System.out.println("10");
+			cvo.setStructureDescription(readXML.getStringValueForXMLTag(xmlElement, "Description")); 
+			//System.out.println("11");
+
+			if (hubName.equalsIgnoreCase("aba")) {
+				cvo.setSrsName(cvo.getStructureDescription()+"::Mouse_ABAreference_1.0");
+				cvo.setFlag("ABA");
+			} else if (hubName.equalsIgnoreCase("ucsd")) {
+				cvo.setSrsName(cvo.getStructureDescription()+"::Mouse_Paxinos_1.0");
+				cvo.setFlag("UCSD");
+			} else if (hubName.equalsIgnoreCase("whs")) {
+				cvo.setSrsName(cvo.getStructureDescription()+"::Mouse_WHS_0.9");
+				cvo.setFlag("WHS");
+			}
 			
-			list.add(keyValue);
+			list.add(cvo);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -312,10 +381,10 @@ public class ReadXML {
 	}
 
 	
-    public ArrayList getImageData(String data) {
+    public ArrayList getImageData(String data, ArrayList list) {
 
     	SAXBuilder builder = new SAXBuilder();
-    	ArrayList list = new ArrayList();
+    	//ArrayList list = new ArrayList();
     	CentralServiceVO vo = null;
     	
     	try {
@@ -426,6 +495,12 @@ public class ReadXML {
 			    	                    	org.jdom.Element pos = (org.jdom.Element) posList.get(m);
 			    	                    	vo.setBottomRight(pos.getText());
 			    	                    	//System.out.println("::Bottom Right::: "+vo.getBottomRight());
+					                    	if (!vo.getBottomRight().equals("")) {
+					                    		vo.setFlag("UCSD");
+					                    	} else {
+					                    		vo.setFlag("ABA");
+					                    	}
+
 			    	                    }
 		    	                    }
 //}				                        
@@ -460,10 +535,93 @@ public class ReadXML {
 
     }
 
-/*	  public org.jdom.Element convertToDOM(org.w3c.dom.Element domElement)
-	     throws Exception {
-	     JDOMOutputter outputter = new DOMOutputter();
-	     return outputter.output(jdomElement);
-	}
-*/
+    
+    public ArrayList getGenesData(String data) {
+
+    	SAXBuilder builder = new SAXBuilder();
+    	ArrayList list = new ArrayList();
+    	CentralServiceVO vo = null;
+    	
+    	try {
+
+    		org.jdom.Document document = builder.build(new ByteArrayInputStream(data.getBytes()));
+
+    		Iterator responseList = document.getRootElement().getChildren()
+            .listIterator();
+
+    		org.jdom.Element root = document.getRootElement();
+    		
+    		Namespace ns = Namespace.getNamespace("http://www.opengis.net/wps/1.0.0");
+
+        	org.jdom.Element genesResponseElements = root.getChild("ProcessOutputs", ns).getChild("Output", ns).getChild("Data", ns).getChild("ComplexData", ns).getChild("GenesResponse").getChild("GenesByPOI");
+
+                if (genesResponseElements.getName().equalsIgnoreCase("GenesByPOI")) {
+
+                    Iterator genesByPOIIterator = genesResponseElements.getChildren().listIterator();
+
+                    int z = 0;
+                    while (genesByPOIIterator.hasNext()) { 
+                    	
+                    	z++;
+                    	
+                    	System.out.println("********COUNT*********" +z);
+                    	
+                    	vo = new CentralServiceVO();
+                    	//System.out.println("GENE-COUNT: " + z);
+
+                        org.jdom.Element geneElement = (org.jdom.Element) genesByPOIIterator.next();
+                        System.out.println("***GENE NAME***"+geneElement);
+                        if (geneElement.getName().equalsIgnoreCase("Gene")) {
+                            System.out.println("***Inside Gene Element***");
+                        
+                            vo.setFlag("GENE");
+                            vo.setGeneName(geneElement.getChild("Name").getText());
+	                        vo.setGeneSymbol(geneElement.getChild("Symbol").getText());
+	                        vo.setGeneOrganism(geneElement.getChild("Organism").getText());
+	                        
+	                        
+	                        System.out.println("Symbol: " + vo.getGeneSymbol());
+	                        System.out.println("Name: " + vo.getGeneName());
+	                        System.out.println("Organism: " + vo.getGeneOrganism());
+
+	                        //for (int i = 0; i < geneElement.getChildren().size(); i++ ) {
+		                        vo.setGenePrefix(geneElement.getChild("MarkerAccessionId").getChild("Prefix").getText());
+		                        vo.setGeneIdentifier(geneElement.getChild("MarkerAccessionId").getChild("Identifier").getText());
+		                        vo.setGeneFullIdentifier(geneElement.getChild("MarkerAccessionId").getChild("FullIdentifier").getText());
+
+	                        	System.out.println("***Prefix***" + vo.getGenePrefix());
+	                        	System.out.println("***Identifier***" + vo.getGeneIdentifier());
+	                        	System.out.println("***FullIdentifier***" + vo.getGeneFullIdentifier());
+	                        //}
+
+                        } else if (geneElement.getName().equalsIgnoreCase("ExpressionLevel")) {
+                            System.out.println("***Inside ExpressionLevel Element***");
+                        
+                            vo.setFlag("EXPRESSIONLEVEL");
+                            vo.setExpressionLevelGeneSymbol(geneElement.getChild("GeneSymbol").getText());
+	                        vo.setExpressionLevelCodeSpace(geneElement.getChild("Level").getAttributeValue("codeSpace"));
+	                        vo.setExpressionLevelValue(geneElement.getChild("Level").getText());
+	                        
+	                        System.out.println("ExpressionLevelGeneSymbol: " + vo.getExpressionLevelGeneSymbol());
+	                        System.out.println("ExpressionLevelCodeSpace: " + vo.getExpressionLevelCodeSpace());
+	                        System.out.println("ExpressionLevelValue: " + vo.getExpressionLevelValue());
+
+                        }
+
+                        list.add(vo);
+                    }
+                   System.out.println("*** LIST IS: *** " +list.size());
+                }
+
+    	} catch (JDOMException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+
+    }
+
+
 }

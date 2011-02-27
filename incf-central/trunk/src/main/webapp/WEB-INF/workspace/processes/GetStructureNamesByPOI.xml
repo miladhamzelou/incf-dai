@@ -43,10 +43,6 @@
       <Title>Vocabulary</Title>
       <Abstract>Vocabulary SRS Code</Abstract>
       <DefaultValue>NONE</DefaultValue>
-      <AllowedValues>
-        <Value>Mouse_Paxinos_1.0</Value>
-        <Value>NONE</Value>
-      </AllowedValues>
     </LiteralInput>
     <LiteralInput>
       <Identifier>filter</Identifier>
