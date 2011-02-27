@@ -141,7 +141,7 @@ public final class XMLUtilities {
 
 		System.out.println("transformationChainURL String - " + transformationChainURL);
 
-		try { 
+		try {
 
 			resultStringFromURL = util.convertFromURLToString(transformationChainURL);
 			Element xmlElement = util.getDocumentElementFromString(resultStringFromURL);
@@ -162,11 +162,12 @@ public final class XMLUtilities {
 				String whs = whs09;
 				String emap = emap;
 */
-				resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z).replace(";filter=", filter);
+				System.out.println("Before - TransformPOI URL under GetTransformationChain: " + i + ": " + resultURL);
+				resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z);
+				System.out.println("After - TransformPOI URL under GetTransformationChain: " + i + ": " + resultURL);
 
 				//resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z).replace(";filter=", filter).replace(abaReference, abareference).replace("mouse_abavoxel_1.0", abavoxel).replace("mouse_agea_1.0", agea).replace("mouse_whs_1.0", whs).replace("mouse_paxinos_1.0", paxinos).replace("mouse_emap-t26_1.0", emap);
 
-				System.out.println("Element Value - " + i + ": " + resultURL);
 				resultURLReturnString = util.convertFromURLToString(resultURL);
 				System.out.println("1" + resultURLReturnString);
 
@@ -175,7 +176,7 @@ public final class XMLUtilities {
 					return resultURLReturnElementValue;
 				} else {
 					resultURLReturnXMLElement = util.getDocumentElementFromString(resultURLReturnString);
-					resultURLReturnElementValue = util.getStringValueForXMLTag(resultURLReturnXMLElement, "gml:pos");
+					resultURLReturnElementValue = util.getStringValueForXMLTag(resultURLReturnXMLElement, "pos");
 					StringTokenizer tokens = new StringTokenizer(resultURLReturnElementValue, " ");
 					while ( tokens.hasMoreTokens() ) {
 						x = ";x=" + tokens.nextToken();
@@ -184,7 +185,7 @@ public final class XMLUtilities {
 					}
 					responseString = x + " " + y + " " + z;
 				}
-		
+
 			}
 
 			responseString = responseString.replace(";x=", "").replace(";y=", "").replace(";z=", "");
@@ -196,13 +197,13 @@ public final class XMLUtilities {
 		}
 
 		return responseString;
-		
+
 	}
 
  	public String convertFromURLToString(String stringURL) {
- 		
+
  		String responseString = "";
- 		
+
 		try {
 			URL url = new URL(stringURL);
 			URLConnection urlCon = url.openConnection();

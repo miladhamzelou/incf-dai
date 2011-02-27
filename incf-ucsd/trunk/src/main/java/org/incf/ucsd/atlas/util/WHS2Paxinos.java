@@ -17,7 +17,7 @@ public class WHS2Paxinos {
 	public String getTransformation (long x_, long y_, long z_) { 
 
 		//flipped x in the powerpoint defined by Ilya
-		x_ = x_ * -1;
+		//x_ = x_ * -1;
 		String w = "";
 
 		try {
@@ -86,7 +86,7 @@ public class WHS2Paxinos {
 			q_x = Math.floor(q_x*100)/100;
 			q_y = Math.floor(q_y*100)/100;
 
-			w = String.valueOf(x) + " "+ String.valueOf(y) + " " + String.valueOf(z) +" " + String.valueOf(q_x) + " " + String.valueOf(q_y) + " " + String.valueOf(slidePos[slide_num-1]);
+			w = String.valueOf(x) + " "+ String.valueOf(y) + " " + String.valueOf(z) +" " + String.valueOf(q_x*-1) + " " + String.valueOf(q_y) + " " + String.valueOf(slidePos[slide_num-1]);
 
 		} catch (Exception e) {
 

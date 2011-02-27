@@ -1309,7 +1309,7 @@ public class UCSDUtil {
 		Utilities.addInputStringCriteria(criterias, "filter", vo.getFilter());
 */		 
 		TransformationList ct = co.getListTransformationsResponse().addNewTransformationList();
-		
+		ct.setHubCode("UCSD");
 /*		ObjectFactory of = new ObjectFactory();
 		QueryInfo queryInfo = of.createQueryInfo();
 		
@@ -1651,8 +1651,11 @@ public class UCSDUtil {
 		//Alex
 		} else if ( fromSpace.trim().equalsIgnoreCase(whs09) && toSpace.trim().equalsIgnoreCase(paxinos) ) { 
 
-			System.out.println("Inside WHS 2 PAXINOS...");
-
+			System.out.println("Hello - Inside WHS 2 PAXINOS...");
+			System.out.println("Coordinate X: " + originalCoordinateX); 
+			System.out.println("Coordinate Y: " + originalCoordinateY); 
+			System.out.println("Coordinate Z: " + originalCoordinateZ); 
+			
 			WHS2Paxinos whs2paxinos = new WHS2Paxinos();
 			transformedCoordinateString = whs2paxinos.getTransformation( Long.parseLong(originalCoordinateX.replace(".0", "")), 
 					Long.parseLong(originalCoordinateY.replace(".0", "")), Long.parseLong(originalCoordinateZ.replace(".0", "")) );

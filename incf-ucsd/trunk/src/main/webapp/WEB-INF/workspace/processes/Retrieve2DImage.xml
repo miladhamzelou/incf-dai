@@ -54,7 +54,7 @@
       <Abstract>Value in the Y dimension as defined in the SRS.</Abstract>
       <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
     </LiteralInput>
-    <LiteralInput minOccurs="0">
+    <LiteralInput minOccurs="0" maxOccurs="1">
       <Identifier>filter</Identifier>
       <Title>Filter</Title>
       <Abstract></Abstract>

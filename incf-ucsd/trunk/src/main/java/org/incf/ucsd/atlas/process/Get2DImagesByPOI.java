@@ -141,7 +141,6 @@ public class Get2DImagesByPOI implements Processlet {
 				vo.setToSRSCode(paxinos);
 
 				// Construct GetTransformationChain URL
-				// http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 				// Start - FIXME - Uncomment below two lines and comment the
 				// other three lines
 				// String hostName = uri.getHost();
@@ -154,7 +153,7 @@ public class Get2DImagesByPOI implements Processlet {
 				// End - FIXME
 
 				//central/atlas?
-				String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
+				String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
 						+ vo.getFromSRSCode()
 						+ ";outputSrsName="
 						+ vo.getToSRSCode() + ";filter=NONE";
@@ -192,9 +191,8 @@ public class Get2DImagesByPOI implements Processlet {
 				vo.setToSRSCode(abaReference);
 
 				// Construct GetTransformationChain URL
-				// http://132.239.131.188:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
 				//central/atlas
-				servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
+				servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
 						+ vo.getFromSRSCode()
 						+ ";outputSrsName="
 						+ vo.getToSRSCode() + ";filter=NONE";
@@ -307,6 +305,8 @@ public class Get2DImagesByPOI implements Processlet {
 			 * toleranceCodeCriteria.setValue(vo.getTolerance());
 			 */
 			Image2Dcollection images = imagesRes.addNewImage2Dcollection();
+			images.setHubCode("UCSD");
+			
 			String servicePath = "/cgi-bin/mapserv?map=crbsatlas/mapfiles/";
 			String imageServerHostname = config
 					.getValue("incf.imageserver.host.name");

@@ -38,7 +38,7 @@
       <Abstract>Value in the Z dimension as defined in the SRS.</Abstract>
       <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
     </LiteralInput>
-    <LiteralInput minOccurs="0">
+    <LiteralInput minOccurs="0" maxOccurs="1">
       <Identifier>vocabulary</Identifier>
       <Title>Vocabulary</Title>
       <Abstract>Vocabulary SRS Code</Abstract>
@@ -47,8 +47,8 @@
         <Value>Mouse_Paxinos_1.0</Value>
         <Value>NONE</Value>
       </AllowedValues>
-    </LiteralInput minOccurs="0">
-    <LiteralInput>
+    </LiteralInput>
+    <LiteralInput minOccurs="0" maxOccurs="1">
       <Identifier>filter</Identifier>
       <Title>Filter</Title>
       <Abstract></Abstract>

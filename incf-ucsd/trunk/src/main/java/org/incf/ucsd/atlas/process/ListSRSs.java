@@ -29,8 +29,9 @@ import org.incf.atlas.waxml.generated.IncfUriSliceSource;
 import org.incf.atlas.waxml.generated.Incfdescription;
 import org.incf.atlas.waxml.generated.ListSRSResponseDocument;
 import org.incf.atlas.waxml.generated.ListSRSResponseType;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.Orientations;
-import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSList;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.Orientations;
+import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.SRSList;
 import org.incf.atlas.waxml.generated.NeurodimensionType;
 import org.incf.atlas.waxml.generated.NeurodimensionsType;
 import org.incf.atlas.waxml.generated.OrientationType;
@@ -190,7 +191,13 @@ public class ListSRSs implements Processlet {
 		Name name = srs.addNewName();
 		name.setStringValue(vo.getSrsName());
 		name.setSrsCode(vo.getSrsCode());
-		name.setSrsBase(vo.getSrsDescription());
+		
+		if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") ) {  
+			name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_0.9", ""));
+		} else { 
+			name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", ""));
+		}
+		
 		name.setSrsVersion(vo.getSrsVersion());
 		name.setSpecies(vo.getSpecies());
 		//name.setUrn("ReferenceUrl");//Uncomment this once i find the value
@@ -251,7 +258,12 @@ public class ListSRSs implements Processlet {
 		
 		ListSRSResponseType rootDoc =	document.addNewListSRSResponse();
 /*		QueryInfoSrs(rootDoc.addNewQueryInfo(), uri.toString());
-*/		SRSList srsList = rootDoc.addNewSRSList();
+*/		//SRSList srsList = rootDoc.addNewSRSList();
+
+		SRSCollection coll1 = rootDoc.addNewSRSCollection();
+		coll1.setHubCode("UCSD");
+
+		SRSList srsList = coll1.addNewSRSList();
 
     	//Start - Get data from the database
 		ArrayList list = new ArrayList();
@@ -262,12 +274,14 @@ public class ListSRSs implements Processlet {
 		addSRS(srsList, list, list.size());
 
 		ArrayList list2 = impl.getOrientationData();
-		Orientations o = null;
+		Orientations o = coll1.addNewOrientations();
+		OrientationType orientation = o.addNewOrientation();
+		//Orientations o = null;
 		
 		Iterator iterator2 = list2.iterator();
 		UCSDServiceVO vo = null;
 
-		o = rootDoc.addNewOrientations();
+		//orientation = rootDoc.addNewOrientations();
 
 		Random randomGenerator = new Random();
 		while ( iterator2.hasNext()) {
@@ -275,8 +289,8 @@ public class ListSRSs implements Processlet {
 			      randomGMLID = randomGenerator.nextInt(100);
 			    }
 			vo = (UCSDServiceVO) iterator2.next(); 
-			OrientationType orientaiton1 = o.addNewOrientation();
-			orientation(orientaiton1,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription());
+			orientation = o.addNewOrientation();
+			orientation(orientation,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription());
 		}
 		return document;
 	}

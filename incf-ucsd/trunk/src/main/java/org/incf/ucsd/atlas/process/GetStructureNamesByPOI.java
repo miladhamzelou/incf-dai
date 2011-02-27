@@ -145,7 +145,7 @@ public class GetStructureNamesByPOI implements Processlet {
 				// End - FIXME
 
 				//central/atlas
-				String servicePath = "/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
+				String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="
 						+ vo.getFromSRSCode()
 						+ ";outputSrsName="
 						+ vo.getToSRSCode() + ";filter=NONE";
@@ -295,6 +295,8 @@ public class GetStructureNamesByPOI implements Processlet {
 			 */StructureTerms terms = rootDoc.addNewStructureTerms();
 			StructureTermType term1 = terms.addNewStructureTerm();
 			Code t1code = term1.addNewCode();
+			terms.setHubCode("UCSD");
+
 			t1code.setCodeSpace(vo.getFromSRSCode());
 			t1code.setIsDefault(true);
 			// t1code.setStructureID("");
