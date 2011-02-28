@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deegreeServicesMetadata 
+    configVersion="3.0.0" 
+    xmlns="http://www.deegree.org/services/metadata"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.deegree.org/services/metadata http://schemas.deegree.org/services/metadata/3.0.0/metadata.xsd">
+
+  <!-- General service information for all services. Used in the 
+       GetCapabilities responses. -->
+  <ServiceIdentification>
+    <Title>ABA Atlas Services</Title>
+    <Abstract>
+      ABA Atlas Services provide access to data available from the 
+      Allen Brain Atlas resource.
+    </Abstract>
+  </ServiceIdentification>
+
+  <ServiceProvider>
+    <ProviderName>INCF Digital Atlasing Infrastructure Task Force</ProviderName>
+    <ProviderSite>http://ucsd.edu</ProviderSite>
+    <ServiceContact>
+      <IndividualName>Ilya Zaslavsky</IndividualName>
+      <PositionName>Project Manager</PositionName>
+      <Phone>858 534-8342</Phone>
+      <ElectronicMailAddress>izaslavsky@ucsd.edu</ElectronicMailAddress>
+      <Address>
+        <DeliveryPoint>9500 Gilman Drive #0505</DeliveryPoint>
+        <City>La Jolla</City>
+        <AdministrativeArea>CA</AdministrativeArea>
+        <PostalCode>92093-0505</PostalCode>
+        <Country>USA</Country>
+      </Address>
+      <OnlineResource>http://ucsd.edu</OnlineResource>
+      <ContactInstructions>Call or e-mail</ContactInstructions>
+      <Role>PointOfContact</Role>
+    </ServiceContact>
+  </ServiceProvider>
+
+</deegreeServicesMetadata>
