@@ -1,0 +1,48 @@
+<!--Generated Fri Feb 25 17:20:43 PST 2011-->
+<ImagesResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
+  <QueryInfo>
+    <QueryUrl name="Get2DImagesByURI  ">URL</QueryUrl>
+    <Criteria>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="URI">
+        <Value>uri:incf:pons-repository.org:structurenames:Hippocampus</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="filter">
+        <Value>maptype:coronal</Value>
+      </Input>
+    </Criteria>
+  </QueryInfo>
+  <Image2Dcollection hubCode="HubA">
+    <!--format ~ mime type {WMS/jpg|WMS/gif|WMS/png|zoomify|image/jpeg|image/png|image/gif|text/html|url} found in incfRemoteFormatEnum-->
+    <!--optional thumbnail-->
+    <!--type is type of service {wms-jpg|wms-png|wms-gif|zoomify|url} from type incfImageServicesEnum-->
+    <Image2D>
+      <ImageSource format="image/jpeg" relavance="0.6" srsName="srscode" thumbnail="http://example.com/image.jpg" metadata="URL" type="url">URL</ImageSource>
+      <ImagePosition>
+        <ImagePlaneEquation srsName="SRS">1 2 3 4</ImagePlaneEquation>
+        <ImagePlanePlacement srsName="SRS">1 2 3 4 5 6.0</ImagePlanePlacement>
+        <Corners>
+          <Corner position="topleft">
+            <gml:Point gml:id="image1TopLeft">
+              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
+            </gml:Point>
+          </Corner>
+          <Corner position="bottomleft">
+            <gml:Point gml:id="image1BOTTOMLEFT">
+              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
+            </gml:Point>
+          </Corner>
+          <Corner position="topright">
+            <gml:Point gml:id="image1TOPRIGHT">
+              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
+            </gml:Point>
+          </Corner>
+          <Corner position="bottomright">
+            <gml:Point gml:id="image1BOTTOMRIGHT">
+              <gml:pos srsName="Mouse_ABAvoxel_1.0">1 1 1</gml:pos>
+            </gml:Point>
+          </Corner>
+        </Corners>
+      </ImagePosition>
+    </Image2D>
+  </Image2Dcollection>
+</ImagesResponse>

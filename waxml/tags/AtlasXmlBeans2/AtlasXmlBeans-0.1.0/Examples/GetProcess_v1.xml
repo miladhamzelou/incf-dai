@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com) -->
+<wax:GetProcessesResponse xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:ns0="http://www.opengis.net/ows/2.0" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns="http://www.w3.org/1999/xhtml" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:wps="http://www.opengis.net/wps/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.incf.org/WaxML/ C:\dev_java\AtlasWorkspace\AtlasXmlBeans2\src\main\xsd\WaxMlSchema\GetProcessByIdentifier.xsd">
+    <wax:QueryInfo>
+        <wax:TimeCreated>1982-06-01T16:17:25.29</wax:TimeCreated>
+        <wax:QueryUrl name="string">http://www.liquid-technologies.com</wax:QueryUrl>
+        <wax:Criteria>
+            <wax:Input xsi:type="wax:InputStringType">
+                <wax:Value>string</wax:Value>
+            </wax:Input>
+            <wax:Input xsi:type="wax:InputStringType">
+                <wax:Value>string</wax:Value>
+            </wax:Input>
+        </wax:Criteria>
+    </wax:QueryInfo>
+    <wax:HubServices>
+        <wax:Hubservice type="hub" codeSpace="string" updateFrequencyDays="5808">
+            <ns0:ServiceIdentification>
+                <ns0:ServiceType codeSpace="http://www.liquid-technologies.com">string</ns0:ServiceType>
+                <ns0:ServiceTypeVersion>string</ns0:ServiceTypeVersion>
+                <ns0:ServiceTypeVersion>string</ns0:ServiceTypeVersion>
+                <ns0:Profile>http://www.liquid-technologies.com</ns0:Profile>
+                <ns0:Profile>http://www.liquid-technologies.com</ns0:Profile>
+                <ns0:Profile>http://www.liquid-technologies.com</ns0:Profile>
+                <ns0:Fees>string</ns0:Fees>
+            </ns0:ServiceIdentification>
+            <wps:ProcessOfferings>
+                <wps:Process wps:processVersion="string">
+                    <ows:Identifier>string</ows:Identifier>
+                    <ows:Title xml:lang="en-GB">string</ows:Title>
+                </wps:Process>
+            </wps:ProcessOfferings>
+            <wps:ProcessOfferings>
+                <wps:Process wps:processVersion="string">
+                    <ows:Identifier>string</ows:Identifier>
+                    <ows:Title>string</ows:Title>
+                </wps:Process>
+            </wps:ProcessOfferings>
+            <wps:ProcessOfferings>
+                <wps:Process wps:processVersion="string">
+                    <ows:Identifier>string</ows:Identifier>
+                    <ows:Title xml:lang="en-GB">string</ows:Title>
+                </wps:Process>
+                <wps:Process wps:processVersion="string">
+                    <ows:Identifier>string</ows:Identifier>
+                    <ows:Title xml:lang="en-GB">string</ows:Title>
+                </wps:Process>
+            </wps:ProcessOfferings>
+        </wax:Hubservice>
+    </wax:HubServices>
+</wax:GetProcessesResponse>

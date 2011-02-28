@@ -1,0 +1,39 @@
+<!--Generated Fri Feb 25 17:20:43 PST 2011-->
+<ImagesResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <QueryInfo>
+    <QueryUrl name="Get2DImagesByPOI">URL</QueryUrl>
+    <Criteria>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="srsName">
+        <Value>Mouse_ABAvoxel_1.0</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="x">
+        <Value>263</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="y">
+        <Value>159</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="y">
+        <Value>227</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="filter">
+        <Value>maptype:coronal</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="Tolerance">
+        <Value>1.0</Value>
+      </Input>
+    </Criteria>
+  </QueryInfo>
+  <Image2Dcollection hubCode="HuBA">
+    <!--format ~ mime type {WMS/jpg|WMS/gif|WMS/png|zoomify|image/jpeg|image/png|image/gif|text/html|url} found in incfRemoteFormatEnum-->
+    <!--optional thumbnail-->
+    <!--type is type of service {wms-jpg|wms-png|wms-gif|zoomify|url} from type incfImageServicesEnum-->
+    <Image2D>
+      <ImageSource format="image/jpeg" relavance="0.6" srsName="srscode" thumbnail="http://example.com/image.jpg" metadata="URL" type="url">URL</ImageSource>
+      <ImagePosition>
+        <ImagePlaneEquation srsName="SRS">1 2 3 4</ImagePlaneEquation>
+        <ImagePlanePlacement srsName="SRS">1 2 3 4 5 6.0</ImagePlanePlacement>
+        <ImageBoundingBox minX="-11.0001" minY="1.0" minZ="1.0" maxX="2.0" maxY="2.0" maxZ="20999.09"/>
+      </ImagePosition>
+    </Image2D>
+  </Image2Dcollection>
+</ImagesResponse>

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:include schemaLocation="WaxML_Base.xsd" />
+    <xs:complexType name="SRSType">
+        <xs:sequence>
+            <xs:element name="Name">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:normalizedString">
+                            <xs:attribute name="srsCode" type="xs:token" />
+                            <xs:attribute name="srsBase" type="xs:normalizedString" />
+                            <xs:attribute name="srsVersion" type="xs:normalizedString" />
+                            <xs:attribute name="species" type="xs:normalizedString" />
+                            <xs:attribute name="urn" type="xs:normalizedString" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Description" type="wax:Incfdescription" />
+            <xs:element xmlns:q1="http://www.isotc211.org/2005/gmd" name="Author" type="wax:AuthorType" minOccurs="0" maxOccurs="1" />
+            <xs:element name="DateCreated" type="xs:date" minOccurs="0" maxOccurs="1" />
+            <xs:element name="DateUpdated" type="xs:date" minOccurs="0" maxOccurs="1" />
+            <xs:element name="Origin" type="wax:incfCodeType" />
+            <xs:element name="Area" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:attribute name="structureName" type="xs:string" />
+                    <xs:attribute name="structureURN" type="xs:anyURI" />
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Units" type="gml:UnitOfMeasureType" />
+            <xs:element name="Neurodimensions" type="wax:NeurodimensionsType" />
+            <xs:element name="Source" type="wax:IncfUriSliceSource" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>A pointer to a resource that  describes the SRS.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="DerivedFrom" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:string">
+                            <xs:attribute name="method" type="xs:normalizedString" />
+                            <xs:attribute name="srsName" type="xs:normalizedString" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="SliceType">
+        <xs:complexContent>
+            <xs:extension base="xs:anyType">
+                <xs:attribute name="code" type="xs:string" />
+                <xs:attribute name="orientation">
+                    <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                            <xs:enumeration value="coronal" />
+                            <xs:enumeration value="sagittal" />
+                            <xs:enumeration value="horizontal" />
+                        </xs:restriction>
+                    </xs:simpleType>
+                </xs:attribute>
+                <xs:attribute name="constant" type="xs:double">
+                    <xs:annotation>
+                        <xs:documentation>Example
+Distance to bregma for coronal
+Distance to midline for saggital (latteral)</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+                <xs:attribute name="xOrientation" type="xs:string" />
+                <xs:attribute name="yOrientation" type="xs:string" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="NeurodimensionsType">
+        <xs:sequence>
+            <xs:element name="MinusX" type="wax:NeurodimensionType" />
+            <xs:element name="PlusX" type="wax:NeurodimensionType" />
+            <xs:element name="MinusY" type="wax:NeurodimensionType" />
+            <xs:element name="PlusY" type="wax:NeurodimensionType" />
+            <xs:element name="MinusZ" type="wax:NeurodimensionType" />
+            <xs:element name="PlusZ" type="wax:NeurodimensionType" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="NeurodimensionType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xlink:href" />
+                <xs:attribute name="maxValue" type="xs:float" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="OrientationType">
+        <xs:sequence>
+            <xs:element name="Description" type="wax:Incfdescription" />
+            <xs:element name="Author">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="wax:AuthorType" />
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="code" type="xs:string" />
+        <xs:attribute name="name" type="xs:string" />
+        <xs:attribute ref="gml:id" />
+    </xs:complexType>
+    <xs:complexType name="AuthorType">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute name="dateSubmitted" type="xs:date" />
+                <xs:attribute name="authorCode" type="xs:string" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="FiducialType">
+        <xs:sequence>
+            <xs:element name="Description" type="wax:Incfdescription" />
+            <xs:element name="Author" type="wax:AuthorType" />
+            <xs:element name="Certainty_level" type="xs:string" />
+            <xs:element name="DerivedFrom" type="xs:string" />
+            <xs:element ref="gml:Point" />
+        </xs:sequence>
+        <xs:attribute name="code" type="xs:string" />
+        <xs:attribute name="name" type="xs:string" />
+        <xs:attribute name="fiducialType" type="xs:string" />
+    </xs:complexType>
+</xs:schema>

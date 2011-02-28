@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" version="0.8" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:complexType name="BaseResponseType">
+        <xs:sequence>
+            <xs:element name="QueryInfo" type="wax:QueryInfoType" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="QueryInfoType">
+        <xs:sequence>
+            <xs:element name="TimeCreated" type="xs:dateTime" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation> Time that this process was run, and this document was created</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="QueryUrl" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>                      The URL that was used to make this document.
+Optional</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                    <xs:simpleContent>
+                        <xs:extension base="xs:anyURI">
+                            <xs:attribute name="name" type="xs:Name" />
+                        </xs:extension>
+                    </xs:simpleContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Criteria" minOccurs="0" maxOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="Input" type="wax:InputType" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Name of the Input parameter, and it's value. This can be any element, eg a gml point</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <!--  <xs:element name="Input" type="wax:InputType" /> -->
+    <xs:complexType name="InputType" abstract="true">
+        <xs:attribute name="name" type="xs:Name" />
+    </xs:complexType>
+    <xs:complexType name="InputStringType">
+        <xs:complexContent>
+            <xs:extension base="wax:InputType">
+                <xs:sequence>
+                    <xs:element name="Value" type="xs:string" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="InputAnyType">
+        <xs:complexContent>
+            <xs:extension base="wax:InputType">
+                <xs:sequence>
+                    <xs:any />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="POI" type="wax:POIType" />
+    <xs:complexType name="POIType">
+        <xs:choice>
+            <xs:element ref="gml:Point" />
+        </xs:choice>
+    </xs:complexType>
+    <xs:element name="BoundedBy" type="gml:BoundingShapeType" />
+    <xs:element name="Name" type="wax:IncfNameType" />
+    <xs:complexType name="IncfNameType">
+        <xs:simpleContent>
+            <xs:extension base="xs:normalizedString" />
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:element name="Description" type="gml:StringOrRefType" />
+    <xs:complexType name="IncfUriRemoteFormat">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+                <xs:attribute ref="xlink:title" />
+                <xs:attribute name="format" type="wax:IncfRemoteFormats" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="IncfUriSliceSource">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+                <xs:attribute ref="xlink:title" />
+                <xs:attribute name="format" type="wax:incfSourceFormats" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="IncfResourceType">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI" />
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="Incfdescription">
+        <xs:simpleContent>
+            <xs:extension base="xs:string">
+                <xs:attribute ref="xlink:href" />
+                <xs:attribute ref="gml:id" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="incfCodeType">
+        <xs:complexContent>
+            <xs:extension base="gml:CodeType">
+                <xs:attribute name="isDefault" type="xs:boolean" />
+                <xs:attribute ref="gml:id" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="incf_DocumentCitation">
+        <xs:sequence>
+            <xs:element name="Description" type="xs:string" />
+            <xs:element name="Abstract" type="xs:string" />
+        </xs:sequence>
+        <xs:attribute name="uri" type="xs:anyURI" />
+        <xs:attribute name="format" type="wax:IncfRemoteFormats" />
+    </xs:complexType>
+    <xs:complexType name="incfSrsType">
+        <xs:simpleContent>
+            <xs:extension base="gml:doubleList">
+                <xs:attribute name="srsName" type="xs:token" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:simpleType name="geometryFomatCodeList">
+        <xs:union memberTypes="wax:geomFormatEnum xs:string" />
+    </xs:simpleType>
+    <xs:simpleType name="geomFormatEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="shape" />
+            <xs:enumeration value="SimpleFeaturesText" />
+            <xs:enumeration value="gml-sf" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="PositionEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="topleft" />
+            <xs:enumeration value="bottomleft" />
+            <xs:enumeration value="topright" />
+            <xs:enumeration value="bottomright" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IncfRemoteFormatEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="WMS/jpg" />
+            <xs:enumeration value="WMS/gif" />
+            <xs:enumeration value="WMS/png" />
+            <xs:enumeration value="zoomify" />
+            <xs:enumeration value="image/jpeg" />
+            <xs:enumeration value="image/png" />
+            <xs:enumeration value="image/gif" />
+            <xs:enumeration value="text/html" />
+            <xs:enumeration value="url" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="IncfRemoteFormats">
+        <xs:union memberTypes="wax:IncfRemoteFormatEnum xs:string" />
+    </xs:simpleType>
+    <xs:simpleType name="incfImageServicesEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="wms-jpg" />
+            <xs:enumeration value="wms-png" />
+            <xs:enumeration value="wms-gif" />
+            <xs:enumeration value="zoomify" />
+            <xs:enumeration value="url" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="incfImageServices">
+        <xs:union memberTypes="wax:incfImageServicesEnum xs:string" />
+    </xs:simpleType>
+    <xs:simpleType name="incfSourceFormatsEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Nifti_1.0" />
+            <xs:enumeration value="Analyze_7.5" />
+            <xs:enumeration value="other" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="incfSourceFormats">
+        <xs:union memberTypes="wax:incfSourceFormatsEnum xs:string" />
+    </xs:simpleType>
+    <xs:complexType name="UnitsOfMeasureType">
+        <xs:attribute name="unitsName" type="xs:string" />
+        <xs:attribute name="unitsAbbreviation" type="xs:Name" />
+    </xs:complexType>
+</xs:schema>

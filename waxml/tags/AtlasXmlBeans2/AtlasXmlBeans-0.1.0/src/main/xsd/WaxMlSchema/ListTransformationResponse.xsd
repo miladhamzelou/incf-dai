@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 9.0.8.3018 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:wax="http://www.incf.org/WaxML/" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:include schemaLocation="common/WaxML_Base.xsd" />
+    <xs:include schemaLocation="common/CoordinateTransformationCommon.xsd" />
+    <xs:element name="ListTransformationsResponse" type="wax:ListTransformationsResponseType" />
+    <xs:complexType name="ListTransformationsResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="TransformationList" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="CoordinateTransformation" type="wax:CoordinateTransformationInfoType" minOccurs="0" maxOccurs="unbounded" />
+                            </xs:sequence>
+                            <xs:attribute name="hubCode" type="xs:string" />
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

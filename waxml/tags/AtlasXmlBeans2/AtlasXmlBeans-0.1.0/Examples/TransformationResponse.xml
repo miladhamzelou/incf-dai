@@ -1,0 +1,31 @@
+<!--Generated Fri Feb 25 17:20:43 PST 2011-->
+<TransformationResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
+  <QueryInfo>
+    <QueryUrl name="TransformPOI">URL</QueryUrl>
+    <Criteria>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="transformationCode">
+        <Value>Mouse_ABAvoxel_1.0_To_Mouse_ABAreference_1.0_v1.0</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="x">
+        <Value>280</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="y">
+        <Value>112</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="y">
+        <Value>162</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="filter">
+        <Value>cerebellum</Value>
+      </Input>
+    </Criteria>
+  </QueryInfo>
+  <POI>
+    <!--id on Point Required By GML
+ Scoped to the document only-->
+    <gml:Point gml:id="AnyIndentifier" srsName="Mouse_AGEA_1.0">
+      <!--X Y Z-->
+      <gml:pos>2 2 2</gml:pos>
+    </gml:Point>
+  </POI>
+</TransformationResponse>

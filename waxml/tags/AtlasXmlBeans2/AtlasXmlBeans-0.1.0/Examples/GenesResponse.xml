@@ -1,0 +1,67 @@
+<!--Generated Fri Feb 25 17:20:43 PST 2011-->
+<GenesResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlin="http://www.w3.org/1999/xlink">
+  <QueryInfo>
+    <QueryUrl name="GetGenesByPOI">URL</QueryUrl>
+    <Criteria>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="srsCode">
+        <Value>Mouse_ABAVoxel_1.0</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="filter">
+        <Value>AFilter</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="x">
+        <Value>263</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="y">
+        <Value>159</Value>
+      </Input>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="y">
+        <Value>227</Value>
+      </Input>
+    </Criteria>
+  </QueryInfo>
+  <GenesByPOI>
+    <Gene>
+      <!--Codespace required. Ideally it will be a base identifier the org responsible for the naming-->
+      <!--gml:id is required, and is used to reference this item in the document-->
+      <Symbol codeSpace="uri:incf.org" gml:id="AAAAAB">Bmp4</Symbol>
+      <MarkerAccessionId separator=":">
+        <Prefix>string</Prefix>
+        <Identifier>string</Identifier>
+        <FullIdentifier>string:string</FullIdentifier>
+      </MarkerAccessionId>
+      <Name>bone morphogenetic protein 4</Name>
+      <Organism>mouse</Organism>
+    </Gene>
+    <Gene>
+      <Symbol gml:id="AAAAD" codeSpace="http://www.incf.org/HUBS/ABA">Sox1</Symbol>
+      <MarkerAccessionId separator=":">
+        <Prefix>MGI</Prefix>
+        <Identifier>98357</Identifier>
+        <FullIdentifier>MGI:98357</FullIdentifier>
+      </MarkerAccessionId>
+      <Name>SRY-box containing gene 1</Name>
+      <Organism codeSpace="http://www.incf.org/organisms" isDefault="true">mouse</Organism>
+    </Gene>
+    <ExpressionLevel>
+      <!--href references Bmp4 by gml:id-->
+      <!--references Bmp4 by name.-->
+      <GeneSymbol xlin:href="#AAAAB"/>
+      <Stage>TS11</Stage>
+      <Level>strong</Level>
+      <ResourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:86</ResourceUri>
+    </ExpressionLevel>
+    <ExpressionLevel>
+      <GeneSymbol>Bmp4</GeneSymbol>
+      <Stage>10.5dpc</Stage>
+      <Level>detected</Level>
+      <ResourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:131</ResourceUri>
+    </ExpressionLevel>
+    <ExpressionLevel>
+      <GeneSymbol xlin:href="#AAAAD"/>
+      <Stage codeSpace="http://www.incf.org/gene/expression/stage">E10.5</Stage>
+      <Level codeSpace="http://www.incf.org/gene/expression/level">not detected</Level>
+      <ResourceUri>http://www.emouseatlas.org/emagewebapp/pages/emage_entry_page.jsf?id=EMAGE:3066</ResourceUri>
+    </ExpressionLevel>
+  </GenesByPOI>
+</GenesResponse>

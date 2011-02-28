@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:include schemaLocation="WaxML_Base.xsd" />
+    <xs:complexType name="CoordinateTransformationInfoType">
+        <xs:simpleContent>
+            <xs:extension base="xs:anyURI">
+                <xs:attribute name="code" type="xs:string" use="required" />
+                <xs:attribute name="hub" type="xs:Name" use="required" />
+                <xs:attribute name="inputSrsName" type="xs:QName" use="required" />
+                <xs:attribute name="outputSrsName" type="xs:QName" use="required" />
+                <xs:attribute name="accuracy" type="xs:float" use="optional" />
+                <xs:attribute name="filter" type="xs:string" use="optional" />
+                <xs:attribute name="version" type="xs:string" />
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+    <xs:complexType name="CoordinateChainTransformType">
+        <xs:complexContent>
+            <xs:extension base="wax:CoordinateTransformationInfoType">
+                <xs:attribute name="order" type="xs:int" use="required" />
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

@@ -1,0 +1,76 @@
+<!--Generated Fri Feb 25 17:20:43 PST 2011-->
+<DescribeSRSResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlin="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml/3.2">
+  <QueryInfo>
+    <QueryUrl name="DescribeSRS">URL</QueryUrl>
+    <Criteria>
+      <Input xmlns:wax="http://www.incf.org/WaxML/" xsi:type="wax:InputStringType" name="srsName">
+        <Value>Mouse_ABAreference_1.0</Value>
+      </Input>
+    </Criteria>
+  </QueryInfo>
+  <SRSCollection hubCode="HUBA">
+    <SRSList>
+      <SRS>
+        <Name srsCode="INCF:0101" srsBase="ABAreference" srsVersion="1.0" species="mouse" urn="ReferenceUrl">Mouse_ABAreference_1.0</Name>
+        <Description>some description here</Description>
+        <Author authorCode="123" dateSubmitted="2011-07-04"/>
+        <DateCreated>2011-02-25-08:00</DateCreated>
+        <DateUpdated>2011-02-25-08:00</DateUpdated>
+        <Origin codeSpace="URN">bregma</Origin>
+        <Area structureName="whole brain" structureURN="URN"/>
+        <Units uom="nm"/>
+        <Neurodimensions>
+          <MinusX maxValue="7.0" xlin:href="#left">Left</MinusX>
+          <PlusX maxValue="10.0" xlin:href="#Dorsal">Dorsal</PlusX>
+          <MinusY maxValue="7.0" xlin:href="#Right">Right</MinusY>
+          <PlusY maxValue="2.0" xlin:href="#Posterior">Posterior</PlusY>
+          <MinusZ maxValue="0.0" xlin:href="#Ventral">Ventral</MinusZ>
+          <PlusZ maxValue="9.0" xlin:href="#Anterior">Anterior</PlusZ>
+        </Neurodimensions>
+        <Source format="Nifti_1.0">UriREferece</Source>
+        <DerivedFrom srsName="Mouse_ABAvoxel_1.0" method="MethodName"/>
+      </SRS>
+    </SRSList>
+    <Orientations>
+      <Orientation code="Left" gml:id="Left" name="Left">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+      <Orientation code="Right" gml:id="Right" name="Right">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+      <Orientation code="Ventral" gml:id="Ventral" name="Ventral">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+      <Orientation code="Dorsal" gml:id="Dorsal" name="Dorsal">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+      <Orientation code="Posterior" gml:id="Posterior" name="Posterior">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+      <Orientation code="Anterior" gml:id="Anterior" name="Anterior">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+    </Orientations>
+  </SRSCollection>
+  <Slices>
+    <!--orientation {coronal|sagittal|horizontal}-->
+    <Slice orientation="horizontal" xOrientation="positive dorsal" yOrientation="positive coronal" constant="1.0" code="Reference Number for Slice"/>
+  </Slices>
+  <Fiducials>
+    <Fiducial code="Reference Number for fiducial" name="Fiducial Name 1" fiducialType="anatomic">
+      <Description>Deescription</Description>
+      <Author authorCode="aCode" dateSubmitted="2004-07-04">Author Name</Author>
+      <Certainty_level>optional value</Certainty_level>
+      <DerivedFrom>optional value</DerivedFrom>
+      <gml:Point srsName="Mouse_ABAReference_1.0" gml:id="a35">
+        <gml:pos>0 0 0</gml:pos>
+      </gml:Point>
+    </Fiducial>
+  </Fiducials>
+</DescribeSRSResponse>

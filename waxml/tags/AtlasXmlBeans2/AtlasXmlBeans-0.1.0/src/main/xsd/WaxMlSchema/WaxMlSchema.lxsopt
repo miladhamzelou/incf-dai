@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--Created by Liquid XML Data Binding Libraries (www.liquid-technologies.com) for Liquid Technologies Limited-->
+<XmlStudioProjectOptions xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" Version="9.0.8.3018">
+	<OpenFile Uri=".\common\SrsCommon.xsd"/>
+	<OpenFile Uri=".\DescribeSrsResponse.xsd"/>
+	<OpenFile Uri=".\Retrieve2DImageResponse.xsd"/>
+	<OpenFile Uri=".\CoordinateChainTransformationResponses.xsd"/>
+	<OpenFile Uri=".\Retrieve2DimagesResponse.xsd"/>
+	<OpenFile Uri=".\common\ListHubServices.xsd"/>
+	<OpenFile Uri=".\ListProcessesResponse.xsd"/>
+	<OpenFile Uri=".\GetProcessByIdentifier.xsd"/>
+	<OpenFile Uri=".\CorrelationMapResponse.xsd"/>
+	<OpenFile Uri=".\ListSrsResponse.xsd"/>
+</XmlStudioProjectOptions>

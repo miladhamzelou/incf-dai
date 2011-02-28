@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 9.0.8.3018 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:include schemaLocation="common/WaxML_Base.xsd" />
+    <xs:element name="GenesResponse" type="wax:GenesResponseType" />
+    <xs:complexType name="GenesResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="GenesByPOI" minOccurs="0" maxOccurs="unbounded">
+                        <xs:complexType>
+                            <xs:complexContent>
+                                <xs:extension base="wax:GeneByPoiType">
+                                    <xs:attribute name="hubCode" type="xs:string" />
+                                </xs:extension>
+                            </xs:complexContent>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="GeneByPoiType">
+        <xs:sequence>
+            <xs:element name="Gene" type="wax:GeneType" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="ExpressionLevel" type="wax:GeneExpressionLevelType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GeneType">
+        <xs:sequence>
+            <xs:element name="Symbol" type="wax:GeneSymbolType" />
+            <xs:element name="MarkerAccessionId" type="wax:AccessionIdType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element ref="wax:Name" minOccurs="1" maxOccurs="unbounded" />
+            <xs:element name="Organism" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>The name of the organism. Use the codespace attribute for any external reference.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="AccessionIdType">
+        <xs:sequence>
+            <xs:element name="Prefix" type="wax:IncfNameType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The pefix, eg MGI for MGI:12345</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Identifier" type="wax:incfCodeType" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>The identifier, eg 12345 for MGI:2345
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="FullIdentifier" type="xs:anyURI" minOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>MGI:12345</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="separator" />
+    </xs:complexType>
+    <xs:complexType name="GeneExpressionLevelType">
+        <xs:annotation>
+            <xs:documentation>This is an xlink to another GeneSymbolType element. Eg to link to a gene/symbol[@gml:id=ABc123], a geneExpressionLevel  with this attribute would include this attribute 
+@xlink:href='ABc123'
+</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="GeneSymbol" type="wax:GeneSymbolType">
+                <xs:annotation>
+                    <xs:documentation>Contains the code for the geneSymbol. This symbol MUST be found in the gene elements in the genesByPOI list.
+
+The codeSpace attribute can optionally be used to add information to indentify the source.
+xlink can be used to link a gene. Eg to link to a gene/symbol[@gml:id=ABc123], a geneExpressionLevel  with this attribute would include this attribute 
+@xlink:href='ABc123'
+</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Stage" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Contains "NEED REFERNCE"
+The codeSpace attribute can optionally be used to add information to indentify the source.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="Level" type="wax:incfCodeType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>contain whatever the resource has - a number or natural language description such as `strong'. The codeSpace attribute can optionally be used to add information to indentify the source.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="ResourceUri" type="wax:IncfResourceType" minOccurs="1" maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>Contains an URL to a relevant page at the resource</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="GeneSymbolType">
+        <xs:complexContent>
+            <xs:extension base="wax:incfCodeType">
+                <xs:attribute ref="xlink:href">
+                    <xs:annotation>
+                        <xs:documentation>This is an xlink to another GeneSymbolType element. Eg to link to a gene/symbol[@gml:id=ABc123], a geneExpressionLevel  with this attribute would include this attribute 
+@xlink:href='ABc123'
+</xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+</xs:schema>

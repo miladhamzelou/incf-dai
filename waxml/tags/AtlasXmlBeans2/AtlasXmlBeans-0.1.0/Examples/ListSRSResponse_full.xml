@@ -1,0 +1,56 @@
+<!--Test Comment-->
+<ListSRSResponse xmlns="http://www.incf.org/WaxML/" xmlns:xlin="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml/3.2">
+  <QueryInfo>
+    <QueryUrl>URL</QueryUrl>
+  </QueryInfo>
+  <SRSCollection hubCode="HUBA">
+    <SRSList>
+      <SRS>
+        <Name srsCode="INCF:0101" srsBase="ABAreference" srsVersion="1.0" species="mouse" urn="ReferenceUrl">Mouse_ABAreference_1.0</Name>
+        <Description>some description here</Description>
+        <Author authorCode="123" dateSubmitted="2011-07-04"/>
+        <DateCreated>2011-02-25-08:00</DateCreated>
+        <DateUpdated>2011-02-25-08:00</DateUpdated>
+        <Origin codeSpace="URN">bregma</Origin>
+        <Area structureName="whole brain" structureURN="URN"/>
+        <Units uom="nm"/>
+        <Neurodimensions>
+          <MinusX maxValue="7.0" xlin:href="#left">Left</MinusX>
+          <PlusX maxValue="10.0" xlin:href="#Dorsal">Dorsal</PlusX>
+          <MinusY maxValue="7.0" xlin:href="#Right">Right</MinusY>
+          <PlusY maxValue="2.0" xlin:href="#Posterior">Posterior</PlusY>
+          <MinusZ maxValue="0.0" xlin:href="#Ventral">Ventral</MinusZ>
+          <PlusZ maxValue="9.0" xlin:href="#Anterior">Anterior</PlusZ>
+        </Neurodimensions>
+        <Source format="Nifti_1.0">UriREferece</Source>
+        <DerivedFrom srsName="Mouse_ABAvoxel_1.0" method="MethodName"/>
+      </SRS>
+    </SRSList>
+    <Orientations>
+      <Orientation code="Left" gml:id="Left" name="Left">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+      <Orientation code="Right" gml:id="Right" name="Right">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+      <Orientation code="Ventral" gml:id="Ventral" name="Ventral">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+      <Orientation code="Dorsal" gml:id="Dorsal" name="Dorsal">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+      <Orientation code="Posterior" gml:id="Posterior" name="Posterior">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+      <Orientation code="Anterior" gml:id="Anterior" name="Anterior">
+        <Description>text</Description>
+        <Author dateSubmitted="2004-07-04" authorCode="AuthorCode">Author Name</Author>
+      </Orientation>
+    </Orientations>
+  </SRSCollection>
+</ListSRSResponse>

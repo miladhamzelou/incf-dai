@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com) -->
+<wax:ListProcessesResponse xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:ows="http://www.opengis.net/ows/2.0" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns="http://www.w3.org/1999/xhtml" xmlns:owsA="http://www.opengis.net/ows/1.1" xmlns:wps="http://www.opengis.net/wps/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <wax:QueryInfo>
+        <wax:TimeCreated>2019-10-25T15:49:42.30</wax:TimeCreated>
+        <wax:QueryUrl name="string">http://www.liquid-technologies.com</wax:QueryUrl>
+        <wax:Criteria />
+    </wax:QueryInfo>
+    <wax:HubServices>
+        <wax:Hubservice type="atlas" codeSpace="string" updateFrequencyDays="5760">
+            <ows:ServiceIdentification>
+                <ows:ServiceType>string</ows:ServiceType>
+                <ows:ServiceTypeVersion>string</ows:ServiceTypeVersion>
+            </ows:ServiceIdentification>
+            <wps:ProcessOfferings>
+                <wps:Process wps:processVersion="string">
+                    <owsA:Identifier>string</owsA:Identifier>
+                    <owsA:Title xml:lang="en-GB">string</owsA:Title>
+                </wps:Process>
+            </wps:ProcessOfferings>
+            <wps:ProcessOfferings>
+                <wps:Process wps:processVersion="string">
+                    <owsA:Identifier codeSpace="http://www.liquid-technologies.com">string</owsA:Identifier>
+                    <owsA:Title>string</owsA:Title>
+                </wps:Process>
+            </wps:ProcessOfferings>
+            <wps:ProcessOfferings>
+                <wps:Process wps:processVersion="string">
+                    <owsA:Identifier>string</owsA:Identifier>
+                    <owsA:Title>string</owsA:Title>
+                </wps:Process>
+            </wps:ProcessOfferings>
+        </wax:Hubservice>
+        <wax:Hubservice type="string" codeSpace="string" updateFrequencyDays="-3625">
+            <ows:ServiceIdentification>
+                <ows:ServiceType>string</ows:ServiceType>
+                <ows:ServiceTypeVersion>string</ows:ServiceTypeVersion>
+            </ows:ServiceIdentification>
+            <wps:ProcessOfferings>
+                <wps:Process wps:processVersion="string">
+                    <owsA:Identifier codeSpace="http://www.liquid-technologies.com">string</owsA:Identifier>
+                    <owsA:Title xml:lang="en-GB">string</owsA:Title>
+                </wps:Process>
+            </wps:ProcessOfferings>
+            <wps:ProcessOfferings>
+                <wps:Process wps:processVersion="string">
+                    <owsA:Identifier codeSpace="http://www.liquid-technologies.com">string</owsA:Identifier>
+                    <owsA:Title xml:lang="en-GB">string</owsA:Title>
+                </wps:Process>
+            </wps:ProcessOfferings>
+            <wps:ProcessOfferings>
+                <wps:Process wps:processVersion="string">
+                    <owsA:Identifier codeSpace="http://www.liquid-technologies.com">string</owsA:Identifier>
+                    <owsA:Title>string</owsA:Title>
+                </wps:Process>
+            </wps:ProcessOfferings>
+            <wps:ProcessOfferings>
+                <wps:Process wps:processVersion="string">
+                    <owsA:Identifier codeSpace="http://www.liquid-technologies.com">string</owsA:Identifier>
+                    <owsA:Title xml:lang="en-GB">string</owsA:Title>
+                </wps:Process>
+            </wps:ProcessOfferings>
+        </wax:Hubservice>
+    </wax:HubServices>
+</wax:ListProcessesResponse>
