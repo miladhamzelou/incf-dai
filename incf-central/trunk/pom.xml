@@ -1,10 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.incf</groupId>
   <artifactId>central</artifactId>
   <packaging>war</packaging>
-  <version>3.0.0</version>
+  <version>0.1.0</version>
   <name>Central Hub</name>
   <url>http://maven.apache.org</url>  
   
@@ -19,9 +18,9 @@
   </repositories>
   
   <scm>
-    <connection>scm:svn:http://incf-dai.googlecode.com/svn/incf-central/trunk</connection>
-    <developerConnection>scm:svn:https://incf-dai.googlecode.com/svn/incf-central/trunk</developerConnection>
-    <url>http://code.google.com/p/incf-dai/source/checkout</url>
+    <connection>scm:svn:http://incf-dai.googlecode.com/svn/incf-central/tags/central-0.1.0</connection>
+    <developerConnection>scm:svn:https://incf-dai.googlecode.com/svn/incf-central/tags/central-0.1.0</developerConnection>
+    <url>scm:svn:https://incf-dai.googlecode.com/svn/incf-central/tags/central-0.1.0</url>
   </scm>
   
   <build>
@@ -80,7 +79,7 @@
     <dependency>
       <groupId>org.incf</groupId>
       <artifactId>common</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
+      <version>0.1.0</version>
     </dependency>
     <dependency>
       <groupId>org.jdom</groupId>
@@ -200,4 +199,37 @@
 
   </dependencies>
 
+  <distributionManagement>
+        <!-- defines where the generated documentation should go
+        <site>
+            <id>google.download</id>
+            <name>wholebrain googlecode scm</name>
+            <url>scm:svn:https://wholebrain.googlecode.com/svn/site/wbc
+            </url>
+        </site> -->
+    <repository>
+      <id>google.code</id>
+      <name>Google code</name>
+      <url>https://incf-dai.googlecode.com/incf-central</url>
+    </repository>
+    <snapshotRepository>
+      <id>snapshots</id>
+      <name>Internal Snapshots</name>
+      <url>http://openccdb.org:8081/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
+  
+  <profiles>
+    <profile>
+      <id>release</id>
+      <distributionManagement>
+        <repository>
+          <id>releases</id>
+          <name>Internal Releases</name>
+          <url>http://openccdb.org:8081/nexus/content/repositories/releases</url>
+        </repository>
+      </distributionManagement>
+    </profile>
+  </profiles>
+  
 </project>
