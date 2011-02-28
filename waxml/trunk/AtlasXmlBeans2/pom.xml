@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>AtlasXmlBeans2</groupId>
-  <artifactId>AtlasXmlBeans2</artifactId>
-  <version>0.1.0</version>
+  <groupId>AtlasXmlBeans</groupId>
+  <artifactId>AtlasXmlBeans</artifactId>
+  <version>0.0.3-SNAPSHOT</version>
   <name>XmlBeansWaxMl</name>
   <description>XmlBeans compiled from the WaxML amd GML schemas</description>
   
@@ -34,9 +34,9 @@
   </pluginRepositories>
 
   <scm>
-    <connection>scm:svn:http://incf-dai.googlecode.com/svn/waxml/tags/AtlasXmlBeans2/AtlasXmlBeans2-0.1.0</connection>
-    <developerConnection>scm:svn:https://incf-dai.googlecode.com/svn/waxml/tags/AtlasXmlBeans2/AtlasXmlBeans2-0.1.0</developerConnection>
-    <url>scm:svn:https://incf-dai.googlecode.com/svn/waxml/tags/AtlasXmlBeans2/AtlasXmlBeans2-0.1.0</url>
+    <connection>scm:svn:http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2</connection>
+    <developerConnection>scm:svn:https://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2</developerConnection>
+    <url>http://code.google.com/p/incf-dai/source/checkout</url>
   </scm>
   
   <build>
