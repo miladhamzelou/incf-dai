@@ -1,14 +1,5 @@
 #labels Featured
 INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview
-Version 0.5, July 2010. 
-Digital Atlasing Infrastructure Task Force
-I. Zaslavsky, editor
- https://docs.google.com/View?id=dd9x97wk_2drhhj6fp
-
-Version 0.6. Now formatted as a specification (please edit with track changes and email back):
-
- http://geo.sdsc.edu/ilya/presentations/INCF_Atlas_Services_and_WaxML_version_06pic_2.doc
-
 Version 0.7 - updated to DEEGREE-based services
 
   http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_07_iz3.doc
