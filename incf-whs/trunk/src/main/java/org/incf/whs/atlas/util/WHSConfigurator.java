@@ -56,7 +56,7 @@ public class WHSConfigurator {
 		System.out.println("2");
 
 		path = getClass().getResourceAsStream(
-		"/dev-whs-config-properties.xml");
+		"/stage-whs-config-properties.xml");
 		System.out.println("3");
 
 		System.out.println("WHS Config Path is - " + path);
