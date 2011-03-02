@@ -15,13 +15,6 @@ Version 0.7 - updated to DEEGREE-based services
 
 
 
-A Powerpoint presentation describing available spatial reference systems:
-
- https://docs.google.com/leaf?id=0B6iM3IMv4N2qODdkMWE4ZTctMGZkZS00NGE1LTg3ZTgtYzk0NzUwYmRlMTdm&hl=en&authkey=CLaq67oL
-
-Updated Powerpoint:
-
- https://docs.google.com/viewer?a=v&pid=explorer&chrome=true&srcid=0B6iM3IMv4N2qZDc4MGFlN2UtZjE4Ni00NjQwLTliNjgtZWEyYmJlZDM4YjBi&hl=en&authkey=CKXXy_sL
 
 The Waxholm Markup Language (WaxML) Schema is at:
 
