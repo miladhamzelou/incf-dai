@@ -3,141 +3,323 @@
   <!-- Report goes to console if debug is true. -->
   <debug>true</debug>
 
-  <!-- List hosts (with ports) to be tested: xxx.xxx.xxx or xxx.xxx.xxx:port  
+  <!-- List servers (with ports) to be tested: xxx.xxx.xxx or xxx.xxx.xxx:port  
         incf-dev-local.crbs.ucsd.edu (defaults to port 80)
         xxx.xxx.xxx:8080  -->
-  <hosts>
-    <host>incf-dev-local.crbs.ucsd.edu</host>
-  </hosts>
+  <servers>
+    <server>incf-dev-local.crbs.ucsd.edu</server>
+    <server>incf-dev.crbs.ucsd.edu</server>
+  </servers>
   
-  <!-- List tests to be executed. @HOST@ is a substitution placeholder. -->
+  <!-- List tests to be executed. @SERVER@ is a substitution placeholder. -->
   <tests>
   
-    <test>
-      <uri>http://@HOST@/central/atlas?service=WPS&amp;request=GetCapabilities</uri>
+    <!--  ABA -->
+    <test hp="aba:GetCapabilities">
+      <uri>http://@SERVER@/aba/atlas?service=WPS&amp;request=GetCapabilities</uri>
       <responsePattern>wps:Capabilities</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</uri>
+    <test hp="aba:DescribeProcess">
+      <uri>http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</uri>
       <responsePattern>wps:ProcessDescriptions</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</uri>
+    <test hp="aba:DescribeSRS">
+      <uri>http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=Mouse_ABAreference_1.0</uri>
+      <responsePattern>DescribeSRSResponse</responsePattern>
+    </test>
+    <test hp="aba:DescribeTransformation">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="aba:Get2DImagesByPOI">
+      <uri>http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=Get2DImagesByPOI&amp;DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal</uri>
+      <responsePattern>ImagesResponse</responsePattern>
+    </test>
+    <test hp="aba:GetCorrelationMapByPOI">
+      <uri> http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=GetCorrelationMapByPOI&amp;DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal</uri>
+      <responsePattern>CorrelationMapResponse</responsePattern>
+    </test>
+    <test hp="aba:GetGenesByPOI">
+      <uri> http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=GetGenesByPOI&amp;DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE</uri>
+      <responsePattern>GenesResponse</responsePattern>
+    </test>
+    <test hp="aba:GetObjectsByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="aba:GetPropertiesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="aba:GetStructureNamesByPOI">
+      <uri>http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=GetStructureNamesByPOI&amp;DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:fine</uri>
+      <responsePattern>StructureTermsResponse</responsePattern>
+    </test>
+    <test hp="aba:GetTransformationChain">
+      <uri>Not applicable</uri>
+      <responsePattern>CoordinateTransformationChainResponse</responsePattern>
+    </test>
+    <test hp="aba:ListSRSs">
+      <uri>http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</uri>
       <responsePattern>ListSRSResponse</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</uri>
+    <test hp="aba:ListTransformations">
+      <uri>http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</uri>
       <responsePattern>ListTransformationsResponse</responsePattern>
     </test>
+    <test hp="aba:Retrieve2DImage">
+      <uri>Not applicable</uri>
+      <responsePattern>Retrieve2DImageResponse</responsePattern>
+    </test>
+    <test hp="aba:TransformPOI">
+      <uri> http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=TransformPOI&amp;DataInputs=transformationCode=Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0;x=1;y=112;z=162</uri>
+      <responsePattern>TransformationResponse</responsePattern>
+    </test>
 
-    <test>
-      <uri>http://@HOST@/aba/atlas?service=WPS&amp;request=GetCapabilities</uri>
+    <!-- EMAP -->
+    <test hp="emap:GetCapabilities">
+      <uri>http://@SERVER@/emap/atlas?service=WPS&amp;request=GetCapabilities</uri>
       <responsePattern>wps:Capabilities</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</uri>
+    <test hp="emap:DescribeProcess">
+      <uri>http://@SERVER@/emap/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</uri>
       <responsePattern>wps:ProcessDescriptions</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</uri>
+    <test hp="emap:DescribeSRS">
+      <uri>Planned</uri>
+      <responsePattern>DescribeSRSResponse</responsePattern>
+    </test>
+    <test hp="emap:DescribeTransformation">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="emap:Get2DImagesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern>ImagesResponse</responsePattern>
+    </test>
+    <test hp="emap:GetCorrelationMapByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern>CorrelationMapResponse</responsePattern>
+    </test>
+    <test hp="emap:GetGenesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern>GenesResponse</responsePattern>
+    </test>
+    <test hp="emap:GetObjectsByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="emap:GetPropertiesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="emap:GetStructureNamesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern>StructureTermsResponse</responsePattern>
+    </test>
+    <test hp="emap:GetTransformationChain">
+      <uri>Not applicable</uri>
+      <responsePattern>CoordinateTransformationChainResponse</responsePattern>
+    </test>
+    <test hp="emap:ListTransformations">
+      <uri>http://@SERVER@/emap/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</uri>
+      <responsePattern>ListTransformationsResponse</responsePattern>
+    </test>
+    <test hp="emap:Retrieve2DImage">
+      <uri>Not applicable</uri>
+      <responsePattern>Retrieve2DImageResponse</responsePattern>
+    </test>
+    <test hp="emap:TransformPOI">
+      <uri>http://@SERVER@/emap/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=TransformPOI&amp;DataInputs=transformationCode=Mouse_WHS_1.0_To_Mouse_EMAP-T26_1.0_v1.0;x=12;y=-29;z=-73</uri>
+      <responsePattern>TransformationResponse</responsePattern>
+    </test>
+
+    <!-- UCSD -->
+    <test hp="ucsd:GetCapabilities">
+      <uri>http://@SERVER@/ucsd/atlas?service=WPS&amp;request=GetCapabilities</uri>
+      <responsePattern>wps:Capabilities</responsePattern>
+    </test>
+    <test hp="ucsd:DescribeProcess">
+      <uri>http://@SERVER@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</uri>
+      <responsePattern>wps:ProcessDescriptions</responsePattern>
+    </test>
+    <test hp="ucsd:DescribeSRS">
+      <uri>http://@SERVER@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=Mouse_Paxinos_1.0</uri>
+      <responsePattern>DescribeSRSResponse</responsePattern>
+    </test>
+    <test hp="ucsd:DescribeTransformation">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="ucsd:Get2DImagesByPOI">
+      <uri>http://@SERVER@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=Get2DImagesByPOI&amp;DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3</uri>
+      <responsePattern>ImagesResponse</responsePattern>
+    </test>
+    <test hp="ucsd:GetCorrelationMapByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern>CorrelationMapResponse</responsePattern>
+    </test>
+    <test hp="ucsd:GetGenesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern>GenesResponse</responsePattern>
+    </test>
+    <test hp="ucsd:GetObjectsByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="ucsd:GetPropertiesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="ucsd:GetStructureNamesByPOI">
+      <uri>http://@SERVER@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=GetStructureNamesByPOI&amp;DataInputs=srsName=Mouse_Paxinos_1.0;x=-4;y=-2.3;z=2;vocabulary=Mouse_Paxinos_1.0;filter=NONE</uri>
+      <responsePattern>StructureTermsResponse</responsePattern>
+    </test>
+    <test hp="ucsd:GetTransformationChain">
+      <uri>Not applicable</uri>
+      <responsePattern>CoordinateTransformationChainResponse</responsePattern>
+    </test>
+    <test hp="ucsd:ListSRSs">
+      <uri>http://@SERVER@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</uri>
       <responsePattern>ListSRSResponse</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</uri>
+    <test hp="ucsd:ListTransformations">
+      <uri>http://@SERVER@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</uri>
       <responsePattern>ListTransformationsResponse</responsePattern>
     </test>
-
-    <test>
-      <uri>http://@HOST@/emap/atlas?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>wps:Capabilities</responsePattern>
+    <test hp="ucsd:Retrieve2DImage">
+      <uri>http://@SERVER@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=Retrieve2DImage&amp;DataInputs=sourceType=WMS;sourceURL=http%3A%2F%2Fimage.wholebraincatalog.org%2Fcgi-bin%2Fmapserv%3Fmap%3Dcrbsatlas%2Fmapfiles%2Fgensat_3363_modified_sm_transformed-ms.map%26LAYERS%3Dgensat_penk1_09%26FORMAT%3Dpng24%26VERSION%3D1.1.1%26REQUEST%3DGetMap;srsName=Mouse_ABAreference_1.0;xmin=-1.9298;xmax=8.73376;ymin=-9.92461;ymax=1.14128;filter=NONE</uri>
+      <responsePattern>Retrieve2DImageResponse</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/emap/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</uri>
-      <responsePattern>wps:ProcessDescriptions</responsePattern>
-    </test>
-    <test>
-      <uri>http://@HOST@/emap/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</uri>
-      <responsePattern>ListTransformationsResponse</responsePattern>
+    <test hp="ucsd:TransformPOI">
+      <uri> http://@SERVER@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=TransformPOI&amp;DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;x=1;y=4.3;z=1.78</uri>
+      <responsePattern>TransformationResponse</responsePattern>
     </test>
 
-    <test>
-      <uri>http://@HOST@/ucsd/atlas?service=WPS&amp;request=GetCapabilities</uri>
+    <!-- WHS -->
+    <test hp="whs:GetCapabilities">
+      <uri>http://@SERVER@/whs/atlas?service=WPS&amp;request=GetCapabilities</uri>
       <responsePattern>wps:Capabilities</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</uri>
+    <test hp="whs:DescribeProcess">
+      <uri>http://@SERVER@/whs/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</uri>
       <responsePattern>wps:ProcessDescriptions</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</uri>
+    <test hp="whs:DsecribeSRS">
+      <uri>http://@SERVER@/whs/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=Mouse_WHS_0.9</uri>
+      <responsePattern>DescribeSRSResponse</responsePattern>
+    </test>
+    <test hp="whs:DescribeTransformation">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="whs:Get2DImagesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern>ImagesResponse</responsePattern>
+    </test>
+    <test hp="whs:GetCorrelationMapByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern>CorrelationMapResponse</responsePattern>
+    </test>
+    <test hp="whs:GetGenesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern>GenesResponse</responsePattern>
+    </test>
+    <test hp="whs:GetObjectsByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="whs:GetPropertiesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="whs:GetStructureNamesByPOI">
+      <uri> http://@SERVER@/whs/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=GetStructureNamesByPOI&amp;DataInputs=srsName=Mouse_paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=</uri>
+      <responsePattern>StructureTermsResponse</responsePattern>
+    </test>
+    <test hp="whs:GetTransformationChain">
+      <uri>Not applicable</uri>
+      <responsePattern>CoordinateTransformationChainResponse</responsePattern>
+    </test>
+    <test hp="whs:ListSRSs">
+      <uri>http://@SERVER@/whs/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</uri>
       <responsePattern>ListSRSResponse</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</uri>
+    <test hp="whs:ListTransformations">
+      <uri>http://@SERVER@/whs/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</uri>
       <responsePattern>ListTransformationsResponse</responsePattern>
     </test>
+    <test hp="whs:Retrieve2DImage">
+      <uri>Not applicable</uri>
+      <responsePattern>Retrieve2DImageResponse</responsePattern>
+    </test>
+    <test hp="whs:TransformPOI">
+      <uri> http://@SERVER@/whs/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=TransformPOI&amp;DataInputs=transformationCode=Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0;x=1.5;y=1;z=0.6</uri>
+      <responsePattern>TransformationResponse</responsePattern>
+    </test>
 
-    <test>
-      <uri>http://@HOST@/whs/atlas?service=WPS&amp;request=GetCapabilities</uri>
+    <!-- Central -->
+    <test hp="central:GetCapabilities">
+      <uri>http://@SERVER@/central/atlas?service=WPS&amp;request=GetCapabilities</uri>
       <responsePattern>wps:Capabilities</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/whs/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</uri>
+    <test hp="central:DescribeProcess">
+      <uri>http://@SERVER@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</uri>
       <responsePattern>wps:ProcessDescriptions</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/whs/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</uri>
+    <test hp="central:DsecribeSRS">
+      <uri>Not applicable</uri>
+      <responsePattern>DescribeSRSResponse</responsePattern>
+    </test>
+    <test hp="central:DescribeTransformation">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="central:Get2DImagesByPOI">
+      <uri> http://@SERVER@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=Get2DImagesByPOI&amp;DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3</uri>
+      <responsePattern>ImagesResponse</responsePattern>
+    </test>
+    <test hp="central:GetCorrelationMapByPOI">
+      <uri> http://@SERVER@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=GetCorrelationMapByPOI&amp;DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal</uri>
+      <responsePattern>CorrelationMapResponse</responsePattern>
+    </test>
+    <test hp="central:GetGenesByPOI">
+      <uri> http://@SERVER@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=GetGenesByPOI&amp;DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE</uri>
+      <responsePattern>GenesResponse</responsePattern>
+    </test>
+    <test hp="central:GetObjectsByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="central:GetPropertiesByPOI">
+      <uri>Not applicable</uri>
+      <responsePattern></responsePattern>
+    </test>
+    <test hp="central:GetStructureNamesByPOI">
+      <uri>http://@SERVER@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=GetStructureNamesByPOI&amp;DataInputs=srsName=Mouse_Paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=structureset:anatomic</uri>
+      <responsePattern>StructureTermsResponse</responsePattern>
+    </test>
+    <test hp="central:GetTransformationChain">
+      <uri>http://@SERVER@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=GetTransformationChain&amp;DataInputs=inputSrsName=Mouse_ABAreference_1.0;outputSrsName=Mouse_WHS_1.0;filter=cerebellum</uri>
+      <responsePattern>CoordinateTransformationChainResponse</responsePattern>
+    </test>
+    <test hp="central:ListSRSs">
+      <uri>http://@SERVER@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</uri>
       <responsePattern>ListSRSResponse</responsePattern>
     </test>
-    <test>
-      <uri>http://@HOST@/whs/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</uri>
+    <test hp="central:ListTransformations">
+      <uri>http://@SERVER@/central/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</uri>
       <responsePattern>ListTransformationsResponse</responsePattern>
     </test>
-
-
-<!-- 
-    <test>
-      <uri>http://incf-dev.crbs.ucsd.edu:8080/atlas-central?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>GetCapabilities</responsePattern>
+    <test hp="central:Retrieve2DImage">
+      <uri>Not applicable</uri>
+      <responsePattern>Retrieve2DImageResponse</responsePattern>
     </test>
-    <test>
-      <uri>http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>GetCapabilities</responsePattern>
-    </test>
-    <test>
-      <uri>http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>GetCapabilities</responsePattern>
-    </test>
-    <test>
-      <uri>http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>GetCapabilities</responsePattern>
-    </test>
-    <test>
-      <uri>http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>GetCapabilities</responsePattern>
+    <test hp="central:TransformPOI">
+      <uri>Not applicable</uri>
+      <responsePattern>TransformationResponse</responsePattern>
     </test>
 
-    <test>
-      <uri>http://incf.crbs.ucsd.edu:8080/atlas-central?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>GetCapabilities</responsePattern>
-    </test>
-    <test>
-      <uri>http://incf.crbs.ucsd.edu:8080/atlas-aba?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>GetCapabilities</responsePattern>
-    </test>
-    <test>
-      <uri>http://incf.crbs.ucsd.edu:8080/atlas-emap?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>GetCapabilities</responsePattern>
-    </test>
-    <test>
-      <uri>http://incf.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>GetCapabilities</responsePattern>
-    </test>
-    <test>
-      <uri>http://incf.crbs.ucsd.edu:8080/atlas-whs?service=WPS&amp;request=GetCapabilities</uri>
-      <responsePattern>GetCapabilities</responsePattern>
-    </test>
- -->
   </tests>
   
   <reporting>
