@@ -178,6 +178,12 @@
         <value>image.wholebraincatalog.org</value>
     </property>
 
+	<property>
+        <name>incf.slamont.staging.host</name>
+        <!--<value>incf-dev-mapserver.crbs.ucsd.edu</value>-->
+        <value>tirebiter.ucsd.edu</value>
+    </property>
+
 	<!-- End INCF-UCSD properties --> 
 
 	<!-- Start INCF-EMAGE properties --> 
@@ -248,6 +254,12 @@
         <name>srsname.emap.10</name>
         <value>Mouse_EMAP-T26_1.0</value>
     </property>
+    
+	<property>
+        <name>srsname.ucsdnewsrs.10</name>
+        <value>Mouse_BrainStem_1.0</value>
+    </property>
+    
 	<!-- End SRSNames properties --> 
 	
 </ucsd-config-properties>
