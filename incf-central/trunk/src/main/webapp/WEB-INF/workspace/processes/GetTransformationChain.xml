@@ -27,6 +27,7 @@
         <Value>Mouse_Paxinos_1.0</Value>
         <Value>Mouse_WHS_0.9</Value>
         <Value>Mouse_WHS_1.0</Value>
+        <Value>Mouse_BrainStem_1.0</Value>
       </AllowedValues>
     </LiteralInput>
     <LiteralInput>
@@ -41,6 +42,7 @@
         <Value>Mouse_Paxinos_1.0</Value>
         <Value>Mouse_WHS_0.9</Value>
         <Value>Mouse_WHS_1.0</Value>
+        <Value>Mouse_BrainStem_1.0</Value>
       </AllowedValues>
     </LiteralInput>
     <LiteralInput minOccurs="0">

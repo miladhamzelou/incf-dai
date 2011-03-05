@@ -129,6 +129,12 @@
     </property>
 
 	<property>
+        <name>incf.slamont.staging.host</name>
+        <!--<value>incf-dev-mapserver.crbs.ucsd.edu</value>-->
+        <value>tirebiter.ucsd.edu</value>
+    </property>
+
+	<property>
         <name>incf.deploy.host.name</name>
         <value>incf-dev-local.crbs.ucsd.edu</value>
         <!-- <value>132.239.131.188</value> -->
@@ -296,6 +302,11 @@
 	<property>
         <name>code.whs092paxinos.v1</name>
         <value>Mouse_WHS_0.9_To_Mouse_Paxinos_1.0_v1.0</value>
+    </property>
+
+	<property>
+        <name>srsname.ucsdnewsrs.10</name>
+        <value>Mouse_BrainStem_1.0</value>
     </property>
 
 	<!-- End SRSNames properties --> 

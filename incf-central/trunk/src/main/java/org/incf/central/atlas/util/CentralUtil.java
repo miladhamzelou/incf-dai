@@ -56,6 +56,7 @@ public class CentralUtil {
 	String whs10 = config.getValue("srsname.whs.10");
 	String emap = config.getValue("srsname.emap.10");
 	String paxinos = config.getValue("srsname.paxinos.10");
+	String ucsdSrsName = config.getValue("srsname.ucsdnewsrs.10");
 
 	public String getCoordinateTransformationChain(CentralServiceVO vo, ComplexOutput co) {
 
@@ -90,6 +91,32 @@ public class CentralUtil {
 				vo1 = new CentralServiceVO();
 				vo1.setFromSRSCode(whs10);
 				vo1.setToSRSCode(emap);
+				srsCodeList.add(vo1);
+
+				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
+					responseString = util.listTransformations( vo, co, srsCodeList );
+				} else {
+					responseString = util.getTransformationChain( vo, co, srsCodeList );
+				}
+
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
+				
+				vo1 = new CentralServiceVO();
+				vo1.setFromSRSCode(ucsdSrsName);
+				vo1.setToSRSCode(abaReference);
+				srsCodeList.add(vo1);
+
+				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
+					responseString = util.listTransformations( vo, co, srsCodeList );
+				} else {
+					responseString = util.getTransformationChain( vo, co, srsCodeList );
+				}
+
+			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName) ) {
+				
+				vo1 = new CentralServiceVO();
+				vo1.setFromSRSCode(abaReference);
+				vo1.setToSRSCode(ucsdSrsName);
 				srsCodeList.add(vo1);
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
@@ -184,7 +211,17 @@ public class CentralUtil {
 					responseString = util.getTransformationChain( vo, co, srsCodeList );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
+			} else if ( ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) || 
+		    		    ( vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) ) {
+
+				if (vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName)) {
+					
+					vo1 = new CentralServiceVO();
+					vo1.setFromSRSCode(ucsdSrsName);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
+
+				}
 
 				vo1 = new CentralServiceVO();
 				vo1.setFromSRSCode(abaReference);
@@ -197,12 +234,22 @@ public class CentralUtil {
 					responseString = util.getTransformationChain( vo, co, srsCodeList );
 				}
 
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
+			} else if ( ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) || 
+	           			( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName) ) ) { 
 
 				vo1 = new CentralServiceVO();
 				vo1.setFromSRSCode(abaVoxel);
 				vo1.setToSRSCode(abaReference);
 				srsCodeList.add(vo1);
+
+				if (vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName)) {
+					
+					vo1 = new CentralServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(ucsdSrsName);
+					srsCodeList.add(vo1);
+
+				}
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo, co, srsCodeList );
@@ -384,7 +431,17 @@ public class CentralUtil {
 				}
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0, then mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
+			} else if ( ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) || 
+		    		    ( vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) ) {
+
+				if (vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName)) {
+					
+					vo1 = new CentralServiceVO();
+					vo1.setFromSRSCode(ucsdSrsName);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
+
+				}
 
 				vo1 = new CentralServiceVO();
 				vo1.setFromSRSCode(abaReference);
@@ -410,7 +467,9 @@ public class CentralUtil {
 				}
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0, then mouse_abavoxel_1.0
-		    } else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
+		    } else if ( ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) || 
+		    			( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName) ) ) { 
+
 
 				vo1 = new CentralServiceVO();
 				vo1.setFromSRSCode(paxinos);
@@ -428,6 +487,15 @@ public class CentralUtil {
 				vo1.setFromSRSCode(abaVoxel);
 				vo1.setToSRSCode(abaReference);
 				srsCodeList.add(vo1);
+
+				if (vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName)) {
+					
+					vo1 = new CentralServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(ucsdSrsName);
+					srsCodeList.add(vo1);
+
+				}
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo, co, srsCodeList );
@@ -520,7 +588,17 @@ public class CentralUtil {
 				}
 
             //via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
+			} else if ( ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) || 
+		    		    ( vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) ) {
+
+				if (vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName)) {
+					
+					vo1 = new CentralServiceVO();
+					vo1.setFromSRSCode(ucsdSrsName);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
+
+				}
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo1 = new CentralServiceVO();
@@ -539,7 +617,8 @@ public class CentralUtil {
 				}
 
 			//via mouse_abavoxel_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
+			} else if ( ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) || 
+		    	        ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName) ) ) { 
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo1 = new CentralServiceVO();
@@ -550,6 +629,15 @@ public class CentralUtil {
 				vo1.setFromSRSCode(abaVoxel);
 				vo1.setToSRSCode(abaReference);
 				srsCodeList.add(vo1);
+				
+				if (vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName)) {
+					
+					vo1 = new CentralServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(ucsdSrsName);
+					srsCodeList.add(vo1);
+
+				}
 
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo, co, srsCodeList );
@@ -558,7 +646,17 @@ public class CentralUtil {
 				}
 
 	        //via mouse_abavoxel_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
+			} else if ( ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) || 
+		    		    ( vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) ) {
+
+				if (vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName)) {
+					
+					vo1 = new CentralServiceVO();
+					vo1.setFromSRSCode(ucsdSrsName);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
+
+				}
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo1 = new CentralServiceVO();
@@ -581,7 +679,8 @@ public class CentralUtil {
 				}
 
 			//via mouse_abavoxel_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
+			} else if ( ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) || 
+					    ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName) ) ) { 
 
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo1 = new CentralServiceVO();
@@ -597,14 +696,32 @@ public class CentralUtil {
 				vo1.setToSRSCode(abaReference);
 				srsCodeList.add(vo1);
 
+				if (vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName)) {
+					
+					vo1 = new CentralServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(ucsdSrsName);
+					srsCodeList.add(vo1);
+
+				}
+
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo, co, srsCodeList );
 				} else {
 					responseString = util.getTransformationChain( vo, co, srsCodeList );
 				}
 				
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs10) ) {
+			} else if ( ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs10) ) || 
+					    ( vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName) && vo.getToSRSCodeOne().equalsIgnoreCase(whs10) ) ) { 
+				
+				if (vo.getFromSRSCodeOne().equalsIgnoreCase(ucsdSrsName)) {
+					
+					vo1 = new CentralServiceVO();
+					vo1.setFromSRSCode(ucsdSrsName);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
 
+				}
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo1 = new CentralServiceVO();
 				vo1.setFromSRSCode(abaReference);
@@ -630,8 +747,9 @@ public class CentralUtil {
 				}
 
 			//via mouse_abavoxel_1.0, and then mouse_agea_1.0
-			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs10) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
-
+			} else if ( ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs10) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) || 
+					    ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs10) && vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName) ) ) { 
+				
 				//First convert from mouse_paxinos_1.0 to mouse_whs_1.0 
 				vo1 = new CentralServiceVO();
 				vo1.setFromSRSCode(whs10);
@@ -650,15 +768,28 @@ public class CentralUtil {
 				vo1.setToSRSCode(abaReference);
 				srsCodeList.add(vo1);
 
+				if (vo.getToSRSCodeOne().equalsIgnoreCase(ucsdSrsName)) {
+					
+					vo1 = new CentralServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(ucsdSrsName);
+					srsCodeList.add(vo1);
+
+				}
+
 				if (vo.getFlag().equalsIgnoreCase("ListTransformations")) { 
 					responseString = util.listTransformations( vo, co, srsCodeList );
 				} else {
 					responseString = util.getTransformationChain( vo, co, srsCodeList );
 				}
-				
+
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("all") && vo.getToSRSCodeOne().equalsIgnoreCase("all") ) {
 
 				System.out.println("Inside the list transformation loop for all transformations...");
+				vo1 = new CentralServiceVO();
+				vo1.setFromSRSCode(ucsdSrsName);
+				vo1.setToSRSCode(abaReference);
+				srsCodeList.add(vo1);
 				vo1 = new CentralServiceVO();
 				vo1.setFromSRSCode(abaReference);
 				vo1.setToSRSCode(abaVoxel);
@@ -682,6 +813,10 @@ public class CentralUtil {
 				vo1 = new CentralServiceVO();
 				vo1.setFromSRSCode(abaVoxel);
 				vo1.setToSRSCode(abaReference);
+				srsCodeList.add(vo1);
+				vo1 = new CentralServiceVO();
+				vo1.setFromSRSCode(abaReference);
+				vo1.setToSRSCode(ucsdSrsName);
 				srsCodeList.add(vo1);
 				vo1 = new CentralServiceVO();
 				vo1.setFromSRSCode(agea);
@@ -822,9 +957,15 @@ public class CentralUtil {
 	 			String emapServicePath = config.getValue("ucsd.emap.service.path");
 
 	 			String incfDeploymentHostName = vo.getIncfDeployHostname();
+	 			
+	 			//String incfDeploymentHostName = config.getValue("incf.deploy.host.name");
+
 	 			String incfportNumber = config.getValue("incf.deploy.port.delimitor")+vo.getIncfDeployPortNumber();
 
 	 			String incfTransformationMatrixURLPrefix = incfDeploymentHostName + incfportNumber;
+
+	 			String incfSteveHostName = config.getValue("incf.slamont.staging.host");
+	 			String incfSteveMatrixURLPrefix = incfSteveHostName + incfportNumber;
 
 	 			System.out.println("Inside All Transformations....");
 	 			Iterator iterator = srsCodeList.iterator();
@@ -886,6 +1027,23 @@ public class CentralUtil {
 		 		    	ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				ex.setOrder(Integer.parseInt(orderNumber));
+		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				//ex.setAccuracy(Integer.parseInt(accuracy));
+		 				ex.setStringValue(vo.getTransformationOneURL());
+
+		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(ucsdSrsName) ||
+		 		    	 vo.getToSRSCode().equalsIgnoreCase(ucsdSrsName) ) {
+		 		  		implementingHub1 = "UCSD";
+		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
+		 		  		vo.setTransformationOneURL(transformationURL1);
+		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
+		 		    	orderNumber = String.valueOf(i);
+
+		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+
+		 		    	ex.setCode(code);
+		 				ex.setHub(implementingHub1);
 		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
@@ -1075,6 +1233,9 @@ public class CentralUtil {
 
 	 			String incfTransformationMatrixURLPrefix = incfDeploymentHostName + incfportNumber;
 
+	 			String incfSteveHostName = config.getValue("incf.slamont.staging.host");
+	 			String incfSteveMatrixURLPrefix = incfSteveHostName + incfportNumber;
+
 	 			System.out.println("Inside All Transformations....");
 	 			Iterator iterator = srsCodeList.iterator();
 	 			vo = null;
@@ -1116,6 +1277,23 @@ public class CentralUtil {
 		 		    	ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				//ex.setOrder(Integer.parseInt(orderNumber));
+		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				//ex.setAccuracy(Integer.parseInt(accuracy));
+		 				ex.setStringValue(vo.getTransformationOneURL());
+
+		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(ucsdSrsName) ||
+		 		    	 vo.getToSRSCode().equalsIgnoreCase(ucsdSrsName) ) {
+		 		  		implementingHub1 = "UCSD";
+		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
+		 		  		vo.setTransformationOneURL(transformationURL1);
+		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
+		 		    	orderNumber = String.valueOf(i);
+
+		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
+
+		 		    	ex.setCode(code);
+		 				ex.setHub(implementingHub1);
 		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
 		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));

@@ -31,7 +31,7 @@ public class CentralServiceDAOImpl {
 		
 		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
-		String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.whs.09")+"','"+configurator.getValue("srsname.whs.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
+		String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.whs.09")+"','"+configurator.getValue("srsname.whs.10")+"','"+configurator.getValue("srsname.agea.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
 
 		try {
 
