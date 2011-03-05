@@ -39,6 +39,7 @@ public class GetTransformationChain implements Processlet {
 	String whs10 = config.getValue("srsname.whs.10");
 	String emap = config.getValue("srsname.emap.10");
 	String paxinos = config.getValue("srsname.paxinos.10");
+	String ucsdSrsName = config.getValue("srsname.ucsdnewsrs.10");
 
 	String abavoxel2agea = config.getValue("code.abavoxel2agea.v1");
 	String agea2abavoxel = config.getValue("code.agea2abavoxel.v1");

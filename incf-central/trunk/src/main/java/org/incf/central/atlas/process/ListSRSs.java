@@ -208,6 +208,8 @@ public class ListSRSs implements Processlet {
 							coll1.setHubCode("ABA");
 						} else if (coll1.getHubCode().equalsIgnoreCase("AGEA")){
 							coll1.setHubCode("ABA");
+						} else if (coll1.getHubCode().equalsIgnoreCase("BrainStem") ){
+							coll1.setHubCode("UCSD");
 						} else if (coll1.getHubCode().equalsIgnoreCase("ABAreference")){
 							coll1.setHubCode("ABA");
 						}
