@@ -18,11 +18,11 @@ public class UCSDServiceDAOImpl {
 	private UCSDConfigurator configurator = UCSDConfigurator.INSTANCE;
 
 	public ArrayList getSRSsData() {
-		
+
 		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
 		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
-		String srsName = "'"+configurator.getValue("srsname.paxinos.10")+"'";
+		String srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
 		try {
 
 		//Used for postgres connection
@@ -86,6 +86,7 @@ public class UCSDServiceDAOImpl {
 		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
 		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
+		srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
 
 		try {
 
@@ -93,7 +94,7 @@ public class UCSDServiceDAOImpl {
 		Connection conn = dao.getStandAloneConnectionForPostgres();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from srs where srs_name in ('" + srsName + "') " ); 
+		query.append( " select * from srs where srs_name in (" + srsName + ") " ); 
 
 		System.out.println("getSRSData - Query is - " + query.toString() );
 
@@ -273,12 +274,15 @@ public class UCSDServiceDAOImpl {
 		return list;
 	}
 
-	
+
 	public String[] getCoordinateRangeForSRS( String srsName ) { 
 
 		BaseDAO dao = new BaseDAO();
 		String[] coordinatesRange = new String[6];
-		
+		srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
+
+		System.out.println("SrsName: " + srsName);
+
 		try {
 
 		//Used for postgres connection
@@ -286,12 +290,12 @@ public class UCSDServiceDAOImpl {
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select dimension_min_x, dimension_max_x, dimension_min_y, dimension_max_y, dimension_min_z, dimension_max_z " )
-		.append(" from srs ") 
-		.append(" where srs_name = '"+srsName+"' "); 
+		.append(" from srs ")
+		.append(" where srs_name = '"+srsName+"' ");
 
 		System.out.println("Query is - " + query.toString() );
 
-		ResultSet rs = stmt.executeQuery(query.toString()); 
+		ResultSet rs = stmt.executeQuery(query.toString());
 
 		while ( rs.next() ) {
 

@@ -47,7 +47,6 @@ public class UCSDConfigurator {
 	private UCSDConfigurator() {
 	}
 	
-
 	private InputStream getInputFileURL() {
 
 		InputStream path = null;
