@@ -23,6 +23,8 @@
       <AllowedValues>
         <Value>Mouse_Paxinos_1.0</Value>
         <Value>Mouse_WHS_0.9</Value>
+        <Value>Mouse_BrainStem_1.0</Value>
+        <Value>Mouse_ABAreference_1.0</Value>
         <Value>ALL</Value>
       </AllowedValues>
     </LiteralInput>
@@ -35,6 +37,8 @@
       <AllowedValues>
         <Value>Mouse_Paxinos_1.0</Value>
         <Value>Mouse_WHS_0.9</Value>
+        <Value>Mouse_BrainStem_1.0</Value>
+        <Value>Mouse_ABAreference_1.0</Value>
         <Value>ALL</Value>
       </AllowedValues>
     </LiteralInput>
