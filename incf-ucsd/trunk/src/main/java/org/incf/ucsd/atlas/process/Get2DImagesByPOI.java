@@ -328,7 +328,7 @@ public class Get2DImagesByPOI implements Processlet {
 				i1source.setStringValue(wmsURL);
 				i1source.setFormat(IncfRemoteFormatEnum.IMAGE_PNG.toString());
 				// i1source.setRelavance((float) 0.6);
-				i1source.setSrsName(srsName);
+				i1source.setSrsName(vo.getFlag());
 				// i1source.setThumbnanil("http://example.com/image.jpg");
 				// i1source.setMetadata("URL");
 				i1source.setType("WMS");
@@ -340,12 +340,12 @@ public class Get2DImagesByPOI implements Processlet {
 				ImagePosition i1position = image1.addNewImagePosition();
 				IncfSrsType planeequation = i1position
 						.addNewImagePlaneEquation();
-				planeequation.setSrsName(srsName);
+				planeequation.setSrsName(vo.getFlag());
 				planeequation.setStringValue(vo.getCoefficientA() + " "
 						+ vo.getCoefficientB() + " " + vo.getCoefficientC()
 						+ " " + vo.getCoefficientD());
 				IncfSrsType placement = i1position.addNewImagePlanePlacement();
-				placement.setSrsName(srsName);
+				placement.setSrsName(vo.getFlag());
 				placement.setStringValue(vo.getTfw1() + " " + vo.getTfw2()
 						+ " " + vo.getTfw3() + " " + vo.getTfw4() + " "
 						+ vo.getTfw5() + " " + vo.getTfw6());
@@ -375,7 +375,7 @@ public class Get2DImagesByPOI implements Processlet {
 									+ vo.getSliceConstant());
 				}
 				corner1.getPoint().setId("image" + count + "topleft");
-				corner1.getPoint().getPos().setSrsName(srsName);
+				corner1.getPoint().getPos().setSrsName(vo.getFlag());
 
 				Corner corner2 = corners.addNewCorner();
 				corner2.setPosition(PositionEnum.BOTTOMLEFT);
@@ -394,7 +394,7 @@ public class Get2DImagesByPOI implements Processlet {
 							vo.getMinX() + " " + vo.getMinY() + " "
 									+ vo.getSliceConstant());
 				}
-				corner2.getPoint().getPos().setSrsName(srsName);
+				corner2.getPoint().getPos().setSrsName(vo.getFlag());
 				corner2.getPoint().setId("image" + count + "bottomleft");
 
 				Corner corner3 = corners.addNewCorner();
@@ -414,7 +414,7 @@ public class Get2DImagesByPOI implements Processlet {
 							vo.getMaxX() + " " + vo.getMaxY() + " "
 									+ vo.getSliceConstant());
 				}
-				corner3.getPoint().getPos().setSrsName(srsName);
+				corner3.getPoint().getPos().setSrsName(vo.getFlag());
 				corner3.getPoint().setId("image" + count + "topright");
 
 				Corner corner4 = corners.addNewCorner();
@@ -434,7 +434,7 @@ public class Get2DImagesByPOI implements Processlet {
 							vo.getMaxX() + " " + vo.getMinY() + " "
 									+ vo.getSliceConstant());
 				}
-				corner4.getPoint().getPos().setSrsName(srsName);
+				corner4.getPoint().getPos().setSrsName(vo.getFlag());
 				corner4.getPoint().setId("image" + count + "bottomright");
 
 			}
@@ -560,7 +560,7 @@ public class Get2DImagesByPOI implements Processlet {
 			System.out.println("Response String - " + responseString);
 			// Ends
 
-			list = parseXMLResponseStringForImageList(list, responseString
+			list = parseXMLResponseStringForImageList(toSpaceName, list, responseString
 					.toString());
 			Iterator iterator = list.iterator();
 			vo = new UCSDServiceVO();
@@ -665,7 +665,7 @@ public class Get2DImagesByPOI implements Processlet {
 			System.out.println("Response String - " + responseString);
 			// Ends
 
-			completeImageList = parseXMLResponseStringForImageList(
+			completeImageList = parseXMLResponseStringForImageList( toSpaceName, 
 					completeImageList, responseString.toString());
 
 			// It is a complete list containing paxinos as well as abaref images
@@ -729,7 +729,7 @@ public class Get2DImagesByPOI implements Processlet {
 
 	}
 
-	private ArrayList parseXMLResponseStringForImageList(ArrayList list,
+	private ArrayList parseXMLResponseStringForImageList(String referenceSpaceName, ArrayList list,
 			String xmlData) {
 
 		// Make the xml document from the xml string
@@ -774,6 +774,12 @@ public class Get2DImagesByPOI implements Processlet {
 				vo.setTfw4(responseElement.getChildText("tfw4"));
 				vo.setTfw5(responseElement.getChildText("tfw5"));
 				vo.setTfw6(responseElement.getChildText("tfw6"));
+
+				if (referenceSpaceName.equalsIgnoreCase("paxinos")) {
+					vo.setFlag(paxinos);
+				} else if (referenceSpaceName.equalsIgnoreCase("abareference")) {
+					vo.setFlag(abaReference);
+				}
 
 				if (responseElement.getChildText("coefficientA") == null) {
 					vo.setCoefficientA("0");

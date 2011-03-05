@@ -41,6 +41,7 @@ public class ListTransformations implements Processlet {
 	String whs10 = config.getValue("srsname.whs.10");
 	String emap = config.getValue("srsname.emap.10");
 	String paxinos = config.getValue("srsname.paxinos.10");
+	String ucsdSrsName = config.getValue("srsname.ucsdnewsrs.10");
 
 	String abavoxel2agea = config.getValue("code.abavoxel2agea.v1");
 	String agea2abavoxel = config.getValue("code.agea2abavoxel.v1");
@@ -165,6 +166,18 @@ public class ListTransformations implements Processlet {
 					vo1.setToSRSCode(paxinos);
 					srsCodeList.add(vo1);
 					vo.setFilter("");
+				} else if (inputSrsName.equals(ucsdSrsName)) {
+					vo1 = new UCSDServiceVO();
+					vo1.setFromSRSCode(ucsdSrsName);
+					vo1.setToSRSCode(abaReference);
+					srsCodeList.add(vo1);
+					vo.setFilter("");
+				} else if (inputSrsName.equals(abaReference)) {
+					vo1 = new UCSDServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(ucsdSrsName);
+					srsCodeList.add(vo1);
+					vo.setFilter("");
 				}
 
 				responseString = util.listTransformations(vo, complexOutput,
@@ -182,6 +195,18 @@ public class ListTransformations implements Processlet {
 					vo1 = new UCSDServiceVO();
 					vo1.setFromSRSCode(paxinos);
 					vo1.setToSRSCode(whs09);
+					srsCodeList.add(vo1);
+					vo.setFilter("");
+				} else if (outputSrsName.equals(ucsdSrsName)) {
+					vo1 = new UCSDServiceVO();
+					vo1.setFromSRSCode(abaReference);
+					vo1.setToSRSCode(ucsdSrsName);
+					srsCodeList.add(vo1);
+					vo.setFilter("");
+				} else if (outputSrsName.equals(abaReference)) {
+					vo1 = new UCSDServiceVO();
+					vo1.setFromSRSCode(ucsdSrsName);
+					vo1.setToSRSCode(abaReference);
 					srsCodeList.add(vo1);
 					vo.setFilter("");
 				}

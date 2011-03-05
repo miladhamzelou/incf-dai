@@ -67,7 +67,6 @@ public class TransformPOI implements Processlet {
 	String paxinos2whs09 = config.getValue("code.paxinos2whs09.v1");
 	String whs092paxinos = config.getValue("code.whs092paxinos.v1");
 	
-	
 	//private String dataInputString;
 	//private DataInputs dataInputs;
 	String hostName = "";
@@ -96,7 +95,7 @@ public class TransformPOI implements Processlet {
     		String x = String.valueOf(DataInputHandler.getDoubleInputValue(in, "x"));
     		String y = String.valueOf(DataInputHandler.getDoubleInputValue(in, "y"));
     		String z = String.valueOf(DataInputHandler.getDoubleInputValue(in, "z"));
-    		
+
 	        vo.setTransformationCode(transformationCode);
 			String[] transformationNameArray;
 			String delimiter = "_To_";
@@ -140,10 +139,12 @@ public class TransformPOI implements Processlet {
 			throw new OWSException(
 					"Coordinates - Out of Range.", ControllerException.NO_APPLICABLE_CODE);
 		} 
-		
+
+		String outOfBoundCheckSrsName = "'"+config.getValue("srsname.paxinos.10")+"','"+config.getValue("srsname.ucsdnewsrs.10")+"'";
+
 		//Checking out of bound exception
 		CommonUtil commonUtil = new CommonUtil();
-		String outOfBoundCheck = commonUtil.outOfBoundException(Double.parseDouble(vo.getTransformedCoordinateX()), Double.parseDouble(vo.getTransformedCoordinateY()), Double.parseDouble(vo.getTransformedCoordinateZ()), vo.getToSRSCodeOne());
+		String outOfBoundCheck = commonUtil.outOfBoundException(Double.parseDouble(vo.getTransformedCoordinateX()), Double.parseDouble(vo.getTransformedCoordinateY()), Double.parseDouble(vo.getTransformedCoordinateZ()), outOfBoundCheckSrsName );
 		
 		if (outOfBoundCheck.equalsIgnoreCase("Coordinates - Out of Range")) {
 			throw new OWSException(
