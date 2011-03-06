@@ -97,6 +97,12 @@
     </property>
 
 	<property>
+        <name>incf.slamont.staging.host</name>
+        <!--<value>incf-dev-mapserver.crbs.ucsd.edu</value>-->
+        <value>tirebiter.ucsd.edu</value>
+    </property>
+
+	<property>
         <name>ucsd.aba.service.path</name>
         <value>/aba/atlas?</value>
     </property>
