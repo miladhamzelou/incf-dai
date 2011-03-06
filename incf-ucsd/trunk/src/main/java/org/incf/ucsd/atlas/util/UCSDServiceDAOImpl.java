@@ -86,7 +86,7 @@ public class UCSDServiceDAOImpl {
 		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
 		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
-		srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
+		//srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
 
 		try {
 
@@ -94,7 +94,7 @@ public class UCSDServiceDAOImpl {
 		Connection conn = dao.getStandAloneConnectionForPostgres();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from srs where srs_name in (" + srsName + ") " ); 
+		query.append( " select * from srs where srs_name in ('" + srsName + "') " ); 
 
 		System.out.println("getSRSData - Query is - " + query.toString() );
 
