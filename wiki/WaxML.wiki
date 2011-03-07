@@ -1,0 +1,39 @@
+#summary Overview and description of the WaxML standard
+
+= Introduction =
+
+Waxholm Markup Language (WaxML) overview.  WaxML is an XML schema that provides standard constructions for atlas services.  The services are modeled after the Open Geospatial Consortium WPS interface specification.
+
+= Details =
+
+The Schemas for WaxML are currently located [http://j.mp/hFA16h online in the code repository]
+
+In the main directory, the following files are found:
+
+  * CoordinateChainTransformationResponses.xsd -- Responses for chaining together coordinate transformations
+  * CorrelationMapResponse.xsd -- Responses for correlation maps
+  * DescribeSrsResponse.xsd -- Response to the call to describe SRS
+  * GenesResponse.xsd -- Response format for gene expression
+  * GetProcessByIdentifier.xsd - Response format for getting information about an individual process
+  * ImagesResponse.xsd -- Response format for images
+  * ListHubsResponse.xsd -- Response format for listing a set of hubs
+  * ListProcessesResponse.xsd -- Response format for listing processes
+  * ListSrsResponse.xsd -- Response format for listing SRS
+  * ListTransformationResponse.xsd -- Response format for lists of transformations
+  * README.txt -- Brief note
+  * Retrieve2DImageResponse.xsd -- Response for retrieving 2D images
+  * Retrieve2DimagesResponse.xsd -- Response for retrieving lists of 2D images
+  * StructureTermsResponse.xsd -- Response for retrieving terms of structures
+  * TransformationResponse.xsd -- Response for single transformations
+  * WaxMlSchema.lxsopt -- Liguid XML modeling file
+  * WaxMlSchema.lxsproj -- Liquid XML project file
+  * binding4gml.xjb -- JAXB binding file for XJC
+  * newBaseResponseTemplate.xsd -- Base response template.
+
+Under the common/ directory, the following XSDs are found:
+
+  * CoordinateTransformationCommon.xsd -- coordinate transformation elements
+  * ListHubServices.xsd -- Listing of hub services
+  * SrsCommon.xsd -- common elements for SRS
+  * WaxML_Base.xsd -- Base elements for WaxML
+  * newBaseCommonTemplate.xsd -- Base elements for templates.
