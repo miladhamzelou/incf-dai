@@ -1,3 +1,4 @@
+#summary Status of currently working atlas hubs, with links to working services
 #labels Featured
 =Atlas Hubs=
 
