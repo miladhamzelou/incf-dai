@@ -5,7 +5,7 @@ The purpose of this page is to describe how string-valued data inputs in an INCF
  * used in the query string of a GET request
  * processed within an Atlas process implementation
 
-This page presents a combination of information some of which is designed for Atlas process developers (superscript 1) and some for Atlas users (superscript 2).
+This page presents a combination of information some of which is designed for Atlas process developers (superscript d) and some for Atlas users (superscript u).
 
 The combinations of required v. optional, allowed values v. any value, and default value Data Inputs are described in the cases below.
 
@@ -13,7 +13,7 @@ In each case, the specification in the Deegree !ProcessDefinition, the response 
 
 ==Case 1: Required Input, Any Non-Null Value is Accepted==
 
-!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>1</sup>:
+!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>d</sup>:
 {{{
 <LiteralInput>
   <Identifier>srsName</Identifier>
@@ -38,8 +38,8 @@ The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
-    <th>Received value<sup>1</sup></th>
-    <th>Program action<sup>1</sup></th>
+    <th>Received value<sup>d</sup></th>
+    <th>Program action<sup>d</sup></th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
