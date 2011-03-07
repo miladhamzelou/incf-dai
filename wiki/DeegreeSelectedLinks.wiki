@@ -1,3 +1,5 @@
+#summary Helpful links for navigating the Deegree website
+
 =Deegree: Selected Links=
 
 The Deegree website's navigation can be confusing. These links may help.
