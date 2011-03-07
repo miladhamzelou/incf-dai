@@ -5,7 +5,7 @@ The purpose of this page is to describe how string-valued data inputs in an INCF
  * used in the query string of a GET request
  * processed within an Atlas process implementation
 
-This page presents a combination of information some of which is designed for Atlas users and some for Atlas process developers.
+This page presents a combination of information some of which is designed for Atlas process developers (superscript 1) and some for Atlas users (superscript 2).
 
 The combinations of required v. optional, allowed values v. any value, and default value Data Inputs are described in the cases below.
 
@@ -38,8 +38,8 @@ The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
-    <th>Received value</th>
-    <th>Program action</th>
+    <th>Received value<sup>1</sup></th>
+    <th>Program action<sup>1</sup></th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
@@ -70,7 +70,7 @@ The INCF Atlas implementation:
 
 ==Case 2: Required Input, Any of Several Allowed Values is Accepted==
 
-!ProcessDefinition File (Deegree .../processes/Xxx.xml):
+!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>1</sup>:
 {{{
 <LiteralInput>
   <Identifier>filter</Identifier>
@@ -102,8 +102,8 @@ The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
-    <th>Received value</th>
-    <th>Program action</th>
+    <th>Received value<sup>1</sup></th>
+    <th>Program action<sup>1</sup></th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
@@ -141,7 +141,7 @@ The INCF Atlas implementation:
 ==Case 3: Optional Input, Any Value is Accepted, With a Default Value==
  * If the data input value is empty, the default value is used
 
-!ProcessDefinition File (Deegree .../processes/Xxx.xml):
+!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>1</sup>:
 {{{
 <LiteralInput minOccurs="0">
   <Identifier>srsName</Identifier>
@@ -168,8 +168,8 @@ The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
-    <th>Received value</th>
-    <th>Program action</th>
+    <th>Received value<sup>1</sup></th>
+    <th>Program action<sup>1</sup></th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
@@ -201,7 +201,7 @@ The INCF Atlas implementation:
 ==Case 4: Optional Input, Any of Several Allowed Values, With a Default Value==
  * If the data input is omitted, the default value is used
 
-!ProcessDefinition File (Deegree .../processes/Xxx.xml):
+!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>1</sup>:
 {{{
 <LiteralInput minOccurs="0">
   <Identifier>filter</Identifier>
@@ -236,8 +236,8 @@ The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <th>GET !DataInput</th>
-    <th>Received value</th>
-    <th>Program action</th>
+    <th>Received value<sup>1</sup></th>
+    <th>Program action<sup>1</sup></th>
     <th>Value used in Atlas</th>
   </tr>
   <tr>
