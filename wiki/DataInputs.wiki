@@ -22,7 +22,7 @@ In each case, the specification in the Deegree !ProcessDefinition, the response 
 </LiteralInput>
 }}}
 
-WPS !DescribeProcess response:
+WPS !DescribeProcess response<sup>u</sup>:
 {{{
 <Input minOccurs="1" maxOccurs="1">
   <ows:Identifier>srsName</ows:Identifier>
@@ -37,10 +37,10 @@ WPS !DescribeProcess response:
 The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th>GET !DataInput</th>
+    <th>GET !DataInput<sup>u</sup></th>
     <th>Received value<sup>d</sup></th>
     <th>Program action<sup>d</sup></th>
-    <th>Value used in Atlas</th>
+    <th>Value used in Atlas<sup>u</sup></th>
   </tr>
   <tr>
     <td>srsName=Mouse_AGEA_1.0;</td>
@@ -70,7 +70,7 @@ The INCF Atlas implementation:
 
 ==Case 2: Required Input, Any of Several Allowed Values is Accepted==
 
-!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>1</sup>:
+!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>d</sup>:
 {{{
 <LiteralInput>
   <Identifier>filter</Identifier>
@@ -83,7 +83,7 @@ The INCF Atlas implementation:
 </LiteralInput>
 }}}
 http
-WPS !DescribeProcess response:
+WPS !DescribeProcess response<sup>u</sup>:
 {{{
 <Input minOccurs="1" maxOccurs="1">
   <ows:Identifier>filter</ows:Identifier>
@@ -101,10 +101,10 @@ WPS !DescribeProcess response:
 The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th>GET !DataInput</th>
-    <th>Received value<sup>1</sup></th>
-    <th>Program action<sup>1</sup></th>
-    <th>Value used in Atlas</th>
+    <th>GET !DataInput<sup>u</sup></th>
+    <th>Received value<sup>d</sup></th>
+    <th>Program action<sup>d</sup></th>
+    <th>Value used in Atlas<sup>u</sup></th>
   </tr>
   <tr>
     <td>filter=maptype:coronal;</td>
@@ -141,7 +141,7 @@ The INCF Atlas implementation:
 ==Case 3: Optional Input, Any Value is Accepted, With a Default Value==
  * If the data input value is empty, the default value is used
 
-!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>1</sup>:
+!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>d</sup>:
 {{{
 <LiteralInput minOccurs="0">
   <Identifier>srsName</Identifier>
@@ -151,7 +151,7 @@ The INCF Atlas implementation:
 </LiteralInput>
 }}}
 
-WPS !DescribeProcess response:
+WPS !DescribeProcess response<sup>u</sup>:
 {{{
 <Input minOccurs="0" maxOccurs="1">
   <ows:Identifier>srsName</ows:Identifier>
@@ -167,10 +167,10 @@ WPS !DescribeProcess response:
 The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th>GET !DataInput</th>
-    <th>Received value<sup>1</sup></th>
-    <th>Program action<sup>1</sup></th>
-    <th>Value used in Atlas</th>
+    <th>GET !DataInput<sup>u</sup></th>
+    <th>Received value<sup>d</sup></th>
+    <th>Program action<sup>d</sup></th>
+    <th>Value used in Atlas<sup>u</sup></th>
   </tr>
   <tr>
     <td>srsName=Mouse_AGEA_1.0;</td>
@@ -201,7 +201,7 @@ The INCF Atlas implementation:
 ==Case 4: Optional Input, Any of Several Allowed Values, With a Default Value==
  * If the data input is omitted, the default value is used
 
-!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>1</sup>:
+!ProcessDefinition File (Deegree .../processes/Xxx.xml)<sup>d</sup>:
 {{{
 <LiteralInput minOccurs="0">
   <Identifier>filter</Identifier>
@@ -215,7 +215,7 @@ The INCF Atlas implementation:
 </LiteralInput>
 }}}
 
-WPS !DescribeProcess response:
+WPS !DescribeProcess response<sup>u</sup>:
 {{{
 <Input minOccurs="0" maxOccurs="1">
   <ows:Identifier>filter</ows:Identifier>
@@ -235,10 +235,10 @@ WPS !DescribeProcess response:
 The INCF Atlas implementation:
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <th>GET !DataInput</th>
-    <th>Received value<sup>1</sup></th>
-    <th>Program action<sup>1</sup></th>
-    <th>Value used in Atlas</th>
+    <th>GET !DataInput<sup>u</sup></th>
+    <th>Received value<sup>d</sup></th>
+    <th>Program action<sup>d</sup></th>
+    <th>Value used in Atlas<sup>u</sup></th>
   </tr>
   <tr>
     <td>filter=maptype:coronal;</td>
