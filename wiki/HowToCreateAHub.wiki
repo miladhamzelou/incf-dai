@@ -1,3 +1,4 @@
+#summary A roadmap for the process of creating your own hub
 #labels Featured
 =How To Create a Hub=
 
@@ -5,7 +6,7 @@
   # Have some data to offer. Remember that an INCF Atlas Hub is a _front end_ to your data that provides a common interface to your data.
   # Have the desire to follow INCF [http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec Atlas Interface Specification] which is based on the OGC WPS standard. This describes the client-server _contract_ in terms of requests from a client to the hub and responses from the hub to a client.
   # Determine what coordinate system you would like to use.
-  # Learn and use the WAxML schema, or SRS (spacial reference system), for XML responses to a client.
+  # Learn and use the [WaxML WaxML schema], or SRS (spacial reference system), for XML responses to a client.
   # Implement the requests GetCapabilities and DescribeProcess. These standard WPS request describes the Execute requests methods offered by the hub and allow a hub to be cataloged.
   # Examine the [http://code.google.com/p/incf-dai/wiki/AtlasFunctionHubApplicabilityTable  Atlas Function-Hub Applicability Table].
   # Select the functions you wish to offer at your hub. Beyond the standard GetCapabilities and DescribeProcee requests, it is expected this minimal set of functions would be offered by a hub: DescibeSRS, DescribeTransformations, GetStructureNamesByPOI, ListSRSs, ListTransformations, and TransformPOI.
