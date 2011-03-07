@@ -1,5 +1,5 @@
+#summary Thoughts on a way for a Web Map Server to handle slice stacks or voxel data
 #labels WMS
-# WMS Profile for Slice Imagery
 
 = Purpose:=
 
