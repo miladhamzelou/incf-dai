@@ -1,4 +1,6 @@
+#summary Overview of the Digital Atlasing Infrastructure task force work in this repository
 #labels Featured
+
 INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview
 Version 0.7 - updated to DEEGREE-based services
 
@@ -7,7 +9,7 @@ Version 0.7 - updated to DEEGREE-based services
 
 
 
-The Waxholm Markup Language (WaxML) Schema is at:
+The [WaxML Waxholm Markup Language (WaxML)] Schema is at:
 
  http://code.google.com/p/incf-dai/source/browse/#svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema
 
