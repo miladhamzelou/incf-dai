@@ -1,3 +1,4 @@
+#summary Specification for requests made against the API
 #labels Featured
 <wiki:toc max_depth="5" />
 =INCF Atlas Server Request Interface=
