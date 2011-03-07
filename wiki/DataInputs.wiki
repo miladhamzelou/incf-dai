@@ -1,7 +1,7 @@
 =Data Inputs=
 
 The purpose of this page is to describe how string-valued data inputs in an INCF Atlas hub HTTP GET request are to be
- * specified in DescribeProcess
+ * specified in !DescribeProcess
  * used in the query string of a GET request
  * processed within an Atlas process implementation
 
