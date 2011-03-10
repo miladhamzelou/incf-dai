@@ -1,17 +1,21 @@
 package org.incf.monitor;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.HierarchicalConfiguration;
@@ -25,19 +29,17 @@ public class Monitor {
 	
 	private Logger logger = LoggerFactory.getLogger(getClass());
 	
-	private static final String CONFIG_FILE = "/config.xml";
-	private static final int SERVER_LENGTH = "incf-dev-local".length();
-	private static final int PATH_LENGTH = "/central/atlas".length();
-	private static final int HUB_LENGTH = "central".length();
-	private static final int PROCESS_LENGTH = "GetTransformationChain".length();
+	protected static final String CONFIG_FILE = "/config.xml";
+	protected static final int SERVER_LENGTH = "incf-dev-local".length();
+	protected static final int HUB_LENGTH = "central".length();
+	protected static final int PROCESS_LENGTH = "GetTransformationChain".length();
 	
-	private DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-	private DateFormat tf = new SimpleDateFormat("HH:mm:ss");
+	protected static final DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	protected static final DateFormat tf = new SimpleDateFormat("HH:mm:ss");
 	
 	private XMLConfiguration config;
 	private String server;
 	private String currentHub;
-	private boolean anyFailure;
 	
 	// set up list for any failures
 	List<Failure> failures = new ArrayList<Failure>();
@@ -76,7 +78,6 @@ public class Monitor {
 				padRight("Process", PROCESS_LENGTH));
 		out.printf(horizLine);
 
-
 		// read config file that itemizes tests
 		List<String> serverList = config.getList("servers.server");
 		
@@ -96,11 +97,57 @@ public class Monitor {
 					test.hasNext(); ) {
 			    HierarchicalConfiguration node = test.next();
 			    String uri = node.getString("uri");
+				if (uri.equals("Not applicable") || uri.equals("Planned")) {
+					continue;
+				}
+			    String resolvedUri = uri.replace("@SERVER@", server);
 			    String responsePattern = node.getString("responsePattern");
 			    
-			    String resolvedUri = uri.replace("@SERVER@", server);
+				URL url = null;
+				try {
+					url = new URL(resolvedUri);
+				} catch (MalformedURLException e) {
+					throw new RuntimeException("Malformed URL", e);
+				}
+				
+				// run test
+			    TestResult testResult = runTest(url, responsePattern);
 			    
-			    runTest(resolvedUri, responsePattern);
+				// get process, data inputs, and other reporting info
+				String process = null;
+				String dataInputs = "";
+				Map<String, String> kvMap = buildQueryKVMap(url);
+				String request = kvMap.get("request");
+				if (request.equalsIgnoreCase("GetCapabilities")) {
+					process = "GetCapabilities";
+				} else if (request.equalsIgnoreCase("DescribeProcess")) {
+					process = "DescribeProcess";
+					dataInputs = kvMap.get("identifier");
+				} else if (request.equalsIgnoreCase("Execute")) {
+					process = kvMap.get("identifier");
+					dataInputs = kvMap.get("datainputs");
+				}
+				String path = url.getPath();
+				String hub = path.split("/")[1];
+				
+				// blank line for new hub
+				if (!hub.equals(currentHub)) {
+					out.println();
+					currentHub = hub;
+				}
+				
+				// report detail; add line for this test
+				out.print(String.format("%8.3f  %d  %s  %s %s %s %s%n",
+						testResult.elapsedTime, testResult.statusCode, 
+						(testResult.pass ? "pass" : "FAIL"),
+						padRight(server.split("\\.")[0], SERVER_LENGTH),
+						padRight(hub, HUB_LENGTH), 
+						padRight(process, PROCESS_LENGTH), dataInputs));
+				
+				// accrue any failure
+				if (!testResult.pass) {
+					failures.add(new Failure(server, path, process));
+				}
 			}
 		}
 		
@@ -121,7 +168,7 @@ public class Monitor {
 		out.printf("Finish: %s%n", tf.format(new Date()));
 		
 		// report if any failures
-		if (anyFailure) {
+		if (failures.size() > 0) {
 			if (config.getBoolean("reporting.sendemail")) {
 				List<String> tosList = config.getList("reporting.email.tos.to");
 				String[] tos = tosList.toArray(new String[0]);
@@ -144,94 +191,53 @@ public class Monitor {
 	}
 	
 	/**
-	 * Run a single test with its URI and expected response pattern.
+	 * Run a single test with its URL and expected response pattern.
 	 * 
-	 * @param uri
+	 * @param url
 	 * @param responsePattern
 	 */
-	private void runTest(String uri, String responsePattern) {
-		if (uri.equals("Not applicable") || uri.equals("Planned")) {
-			return;
-		}
-		
-		URL url = null;
-		String s = null;
+	public static TestResult runTest(URL url, String responsePattern) {
+		String response = "";				// avoid npe later
 		HttpURLConnection conn = null;
+		InputStream responseStream = null;
 		int statusCode = -1;
-		long startTime = 0;
+		Exception exception = null;
+		long startTime = System.currentTimeMillis();
 		
-		// execute test's uri
+		// execute test's url
 		try {
-			url = new URL(uri);
-			startTime = System.currentTimeMillis();
 			conn = (HttpURLConnection) url.openConnection();
 			statusCode = conn.getResponseCode();
-			InputStream is = (InputStream) conn.getContent();
-			s = readAsString(is);
+			responseStream = (InputStream) conn.getContent();
+			response = readAsString(responseStream);
 		} catch (Exception e) {
-			logger.error("Exception: ", e);
-		}
-		
-		if (conn != null) {
-			conn.disconnect();
+			exception = e;
+		} finally {
+			if (conn != null) {
+				conn.disconnect();
+			}
+			if (responseStream != null) {
+				try {
+					responseStream.close();
+				} catch (IOException ignore) {
+				}
+			}
 		}
 		
 		// scan response and determine pass/fail
-		String result = null;
+		boolean pass = false;
 		if (statusCode == HttpURLConnection.HTTP_OK 
-				&& s.contains(responsePattern)) {
-			result = "Pass";
-		} else {
-			result = "FAIL";
-			anyFailure = true;
+				&& response.contains(responsePattern)) {
+			pass = true;
 		}
 		
 		double elapsedTime = (double) (System.currentTimeMillis() - startTime) 
 				/ 1000;
-
-		// TODO extract Identifier value unless GC or DP
-		String process = null;
-		String dataInputs = "";
-		String query = url.getQuery();
-		String[] kvPairs = query.split("&");
-		if (kvPairs[1].contains("GetCapabilities")) {
-			process = "GetCapabilities";
-		} else if (kvPairs[2].contains("DescribeProcess")) {
-			process = "DescribeProcess";
-			int firstEqualsSymbol = kvPairs[3].indexOf('=');
-			dataInputs =  kvPairs[3].substring(firstEqualsSymbol + 1);
-		} else if (kvPairs[2].contains("Execute")) {
-			process = kvPairs[3].split("=")[1];
-			if (kvPairs.length > 4) {
-				int firstEqualsSymbol = kvPairs[4].indexOf('=');
-				dataInputs =  kvPairs[4].substring(firstEqualsSymbol + 1);
-			}
-		}
 		
-		//
-		String path = url.getPath();
-		String hub = path.split("/")[1];
-		
-		// blank line for new hub
-		if (!hub.equals(currentHub)) {
-			out.println();
-			currentHub = hub;
-		}
-		
-		// add line for this test to report
-		out.print(String.format("%8.3f  %d  %s  %s %s %s %s%n",
-				elapsedTime, statusCode, result, 
-				padRight(server.split("\\.")[0], SERVER_LENGTH),
-				padRight(hub, HUB_LENGTH), 
-				padRight(process, PROCESS_LENGTH), dataInputs));
-		
-		// accrue any failure
-		if (result.equals("FAIL")) {
-			failures.add(new Failure(server, path, process));
-		}
+		return new TestResult(statusCode, pass, elapsedTime, exception);
 	}
 	
-	private String padRight(String string, int width) {
+	protected static String padRight(String string, int width) {
 		int length = string.length();
 		if (length >= width) {
 			return string.substring(0, width);
@@ -271,6 +277,20 @@ public class Monitor {
     	return fileData.toString();
     }
     
+    public static class TestResult {
+    	protected int statusCode;
+    	protected boolean pass;
+    	protected double elapsedTime;
+    	protected Exception exception;
+    	protected TestResult(int statusCode, boolean pass, double elapsedTime,
+    			Exception exception) {
+    		this.statusCode = statusCode;
+    		this.pass = pass;
+    		this.elapsedTime = elapsedTime;
+    		this.exception = exception;
+    	}
+    }
+    
     private class Failure {
     	private String server;
     	private String path;
@@ -280,6 +300,20 @@ public class Monitor {
     		this.path = path;
     		this.process = process;
     	}
+    }
+    
+    protected static Map<String, String> buildQueryKVMap(URL url) {
+    	Map<String, String> kvMap = new HashMap<String, String>();
+		String query = url.getQuery();
+		String[] kvPairs = query.split("&");
+		for (int i = 0; i < kvPairs.length; i++) {
+			String kvPair = kvPairs[i];
+			int firstEqualsSymbol = kvPair.indexOf('=');
+			String key = kvPair.substring(0, firstEqualsSymbol).toLowerCase();
+			String value = kvPair.substring(firstEqualsSymbol + 1);
+			kvMap.put(key, value);
+		}
+    	return kvMap;
     }
 
 	public static void main(String[] args) {
