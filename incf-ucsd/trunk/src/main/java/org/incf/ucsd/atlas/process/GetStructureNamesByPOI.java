@@ -84,7 +84,7 @@ public class GetStructureNamesByPOI implements Processlet {
 
 		try {
 
-			System.out.println(" Inside GetStructureNamesByPOI... ");
+			LOG.debug(" Inside GetStructureNamesByPOI... ");
 			// collect input values
 			UCSDServiceVO vo = new UCSDServiceVO();
 

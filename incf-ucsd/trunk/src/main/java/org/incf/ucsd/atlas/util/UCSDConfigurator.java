@@ -16,6 +16,8 @@ import java.util.List;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * It reads the xml file containing generic name/value pairs and mantains these
@@ -42,6 +44,8 @@ public class UCSDConfigurator {
 	 * 
 	 */
 	private Hashtable propsH;
+	private static final Logger LOG = LoggerFactory
+	.getLogger(UCSDConfigurator.class);
 
 	/** Force all users to use the static reference */
 	private UCSDConfigurator() {
@@ -54,7 +58,7 @@ public class UCSDConfigurator {
 		path = getClass().getResourceAsStream(
 		"/stage-ucsd-config-properties.xml");
 
-		System.out.println("Config Path is - " + path);
+		LOG.debug("Config Path is - {}" , path);
 		return path;
 
 	}
@@ -116,7 +120,7 @@ public class UCSDConfigurator {
                 // add the property
                 propsH.put(name,value);
             }		
-			System.out.println("7");
+			LOG.debug("7");
 
 		} catch (Exception e) {
 			e.printStackTrace();

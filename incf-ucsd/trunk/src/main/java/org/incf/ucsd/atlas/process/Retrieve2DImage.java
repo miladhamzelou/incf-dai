@@ -80,7 +80,7 @@ public class Retrieve2DImage implements Processlet {
 
 		try {
 
-			System.out.println(" Inside Retrieve2DImage... ");
+			LOG.debug(" Inside Retrieve2DImage... ");
 			// collect input values
 			UCSDServiceVO vo = new UCSDServiceVO();
 
@@ -221,7 +221,7 @@ public class Retrieve2DImage implements Processlet {
 			vo.setFilter(filter);
 
 			String decodedURL = URLDecoder.decode(sourceURL, "UTF-8");
-			System.out.println("Decoded URL - " + decodedURL);
+			LOG.debug("Decoded URL - {}" , decodedURL);
 
 			String wmsURL = decodedURL
 					+ "&SRS=EPSG:4326&WIDTH=256&HEIGHT=256&BBOX="
@@ -230,7 +230,7 @@ public class Retrieve2DImage implements Processlet {
 
 			vo.setFromSRSCodeOne(srsName);
 			vo.setFromSRSCode(srsName);
-			System.out.println("SRSName - " + vo.getFromSRSCode());
+			LOG.debug("SRSName - {}" , vo.getFromSRSCode());
 
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			java.util.Date date = new java.util.Date();
@@ -246,8 +246,8 @@ public class Retrieve2DImage implements Processlet {
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID2 = randomGenerator2.nextInt(100);
 			}
-			System.out.println("Random GML ID1: - " + randomGMLID1);
-			System.out.println("Random GML ID2: - " + randomGMLID2);
+			LOG.debug("Random GML ID1: - {}" , randomGMLID1);
+			LOG.debug("Random GML ID2: - {}" , randomGMLID2);
 
 			// vo.setUrlString(uri.toString());
 
@@ -312,10 +312,10 @@ public class Retrieve2DImage implements Processlet {
 				for (int i = 0; i < errorList.size(); i++) {
 					XmlError error = (XmlError) errorList.get(i);
 
-					System.out.println("\n");
-					System.out.println("Message: " + error.getMessage() + "\n");
-					System.out.println("Location of invalid XML: "
-							+ error.getCursorLocation().xmlText() + "\n");
+					LOG.debug("\n");
+					LOG.debug("Message: {}" , error.getMessage() + "\n");
+					LOG.debug("Location of invalid XML: {}"
+							,error.getCursorLocation().xmlText() + "\n");
 				}
 			}
 

@@ -8,14 +8,20 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * @author Asif Memon
  *
  */
 public class UCSDServiceDAOImpl {
-	
+
 	private UCSDConfigurator configurator = UCSDConfigurator.INSTANCE;
+
+	private static final Logger LOG = LoggerFactory
+	.getLogger(UCSDServiceDAOImpl.class);
 
 	public ArrayList getSRSsData() {
 
@@ -31,7 +37,7 @@ public class UCSDServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from srs where srs_name in (" + srsName + ") " );
 
-		System.out.println("getSRSData - Query is - " + query.toString() );
+		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		UCSDServiceVO vo = null;
@@ -96,7 +102,7 @@ public class UCSDServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from srs where srs_name in ('" + srsName + "') " ); 
 
-		System.out.println("getSRSData - Query is - " + query.toString() );
+		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		UCSDServiceVO vo = null;
@@ -160,7 +166,7 @@ public class UCSDServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from orientation " );
 
-		System.out.println("getOrientation - Query is - " + query.toString() );
+		LOG.debug("getOrientation - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		UCSDServiceVO vo = null;
@@ -199,7 +205,7 @@ public class UCSDServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from slice where space_code = '"+vo.getSpaceCode()+"' " );
 
-		System.out.println("getSliceData - Query is - " + query.toString() );
+		LOG.debug("getSliceData - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		//ABAServiceVO vo = null;
@@ -243,7 +249,7 @@ public class UCSDServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from fiducial where srs_name = '"+vo.getSpaceCode()+"' " );
 
-		System.out.println("getSliceData - Query is - " + query.toString() );
+		LOG.debug("getSliceData - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		//ABAServiceVO vo = null;
@@ -281,7 +287,7 @@ public class UCSDServiceDAOImpl {
 		String[] coordinatesRange = new String[6];
 		srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
 
-		System.out.println("SrsName: " + srsName);
+		LOG.debug("SrsName: {}" , srsName);
 
 		try {
 
@@ -293,7 +299,7 @@ public class UCSDServiceDAOImpl {
 		.append(" from srs ")
 		.append(" where srs_name = '"+srsName+"' ");
 
-		System.out.println("Query is - " + query.toString() );
+		LOG.debug("Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString());
 

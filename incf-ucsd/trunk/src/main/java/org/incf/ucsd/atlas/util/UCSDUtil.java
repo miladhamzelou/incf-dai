@@ -25,10 +25,15 @@ import org.incf.atlas.waxml.generated.ListTransformationsResponseDocument;
 import org.incf.atlas.waxml.generated.ListTransformationsResponseType.TransformationList;
 import org.incf.atlas.waxml.generated.impl.CoordinateTransformationInfoTypeImpl;
 import org.incf.atlas.waxml.utilities.Utilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class UCSDUtil {
 
 	UCSDConfigurator config = UCSDConfigurator.INSTANCE;
+
+	private static final Logger LOG = LoggerFactory
+	.getLogger(UCSDUtil.class);
 
 	String abaReference = config.getValue("srsname.abareference.10");
 	String abaVoxel = config.getValue("srsname.abavoxel.10");
@@ -41,14 +46,14 @@ public class UCSDUtil {
 
 	public String getCoordinateTransformationChain(UCSDServiceVO vo, ComplexOutput co) {
 
-		System.out.println("Start - getCoordinateTransformationChain Method...");
+		LOG.debug("Start - getCoordinateTransformationChain Method...");
 		String responseString = "";
-		System.out.println("Inside Method InputSrsName..." + vo.getFromSRSCodeOne());
-		System.out.println("Inside Method OutputSrsName..." + vo.getToSRSCodeOne());
+		LOG.debug("Inside Method InputSrsName...{}" ,vo.getFromSRSCodeOne());
+		LOG.debug("Inside Method OutputSrsName...{}" , vo.getToSRSCodeOne());
 
 		try { 
 
-			System.out.println("Start - transformation matrix process...");
+			LOG.debug("Start - transformation matrix process...");
 
 			//2) Get the transformed coordinates from Steve's program
 			UCSDUtil util = new UCSDUtil();
@@ -57,7 +62,7 @@ public class UCSDUtil {
 
 			//mouse_abavoxel_1.0 to mouse_agea_1.0
 			/*if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
-				System.out.println("Inside Match..." );
+				LOG.debug("Inside Match..." );
 				vo1 = new UCSDServiceVO();
 				vo1.setFromSRSCode(abaVoxel);
 				vo1.setToSRSCode(agea);
@@ -689,7 +694,7 @@ public class UCSDUtil {
 
 			//End
 
-			System.out.println("Ends getSpaceTransformationChain Method...");
+			LOG.debug("Ends getSpaceTransformationChain Method...");
 
 		} catch ( Exception e ) {
 
@@ -699,7 +704,7 @@ public class UCSDUtil {
 
 		}
 
-		System.out.println("End - spaceTransformationForm Method...");
+		LOG.debug("End - spaceTransformationForm Method...");
 
 		//4) Return response back to the client in a text/xml format
 		return responseString;
@@ -1161,7 +1166,7 @@ public class UCSDUtil {
 */
 //	 		    if ( vo.getFromSRSCodeOne().equals("all") ) {
 
-		 		    System.out.println("Inside All Transformations....");
+		 		    LOG.debug("Inside All Transformations....");
 		 			Iterator iterator = srsCodeList.iterator();
 		 			vo = null;
 
@@ -1287,9 +1292,9 @@ public class UCSDUtil {
 	 			      {
 	 			          XmlError error = (XmlError)errorList.get(j);
 	 			          
-	 			          System.out.println("\n");
-	 			          System.out.println("Message: " + error.getMessage() + "\n");
-	 			          System.out.println("Location of invalid XML: " + 
+	 			          LOG.debug("\n");
+	 			          LOG.debug("Message: {}" , error.getMessage() + "\n");
+	 			          LOG.debug("Location of invalid XML: {}" , 
 	 			              error.getCursorLocation().xmlText() + "\n");
 	 			      }
 	 			 }
@@ -1375,7 +1380,7 @@ public class UCSDUtil {
 
 	 			String incfTransformationMatrixURLPrefix = incfDeploymentHostName + incfportNumber;
 
-	 		    System.out.println("Inside All Transformations....");
+	 		    LOG.debug("Inside All Transformations....");
 	 			Iterator iterator = srsCodeList.iterator();
 	 			vo = null;
 
@@ -1511,9 +1516,9 @@ public class UCSDUtil {
  			      {
  			          XmlError error = (XmlError)errorList.get(j);
  			          
- 			          System.out.println("\n");
- 			          System.out.println("Message: " + error.getMessage() + "\n");
- 			          System.out.println("Location of invalid XML: " + 
+ 			          LOG.debug("\n");
+ 			          LOG.debug("Message: {}" , error.getMessage() + "\n");
+ 			          LOG.debug("Location of invalid XML: {}" , 
  			              error.getCursorLocation().xmlText() + "\n");
  			      }
  			 }
@@ -1535,18 +1540,18 @@ public class UCSDUtil {
 	//FIXME - amemon - will eventually go to commons
 	public String spaceTransformation( UCSDServiceVO vo ) {
 
-		System.out.println("Start - spaceTransformation Method...");
+		LOG.debug("Start - spaceTransformation Method...");
 		
 		String xmlResponseString = "";
 
 		try { 
 
-			System.out.println("Start - transformation matrix process...");
+			LOG.debug("Start - transformation matrix process...");
 
-			System.out.println("****From SRSCode - " + vo.getFromSRSCodeOne());
-			System.out.println("****To SRSCode - " + vo.getToSRSCodeOne());
+			LOG.debug("****From SRSCode - {}" , vo.getFromSRSCodeOne());
+			LOG.debug("****To SRSCode - {}" , vo.getToSRSCodeOne());
 
-			System.out.println("Start - transformation matrix process...");
+			LOG.debug("Start - transformation matrix process...");
 
 			//2) Get the transformed coordinates from Steve's program
 			UCSDUtil util = new UCSDUtil();
@@ -1683,8 +1688,8 @@ public class UCSDUtil {
 
 			//End
 
-			System.out.println( "XML Response String - " + xmlResponseString ); 
-			System.out.println("Ends running transformation  matrix...");
+			LOG.debug( "XML Response String - {}" , xmlResponseString ); 
+			LOG.debug("Ends running transformation  matrix...");
 
 		} catch ( Exception e ) {
 
@@ -1694,7 +1699,7 @@ public class UCSDUtil {
 
 		}
 
-		System.out.println("End - spaceTransformationForm Method...");
+		LOG.debug("End - spaceTransformationForm Method...");
 
 		//4) Return response back to the cllient in a text/xml format
 		return xmlResponseString;
@@ -1708,43 +1713,43 @@ public class UCSDUtil {
 
 	String transformedCoordinateString = "";
 
-	System.out.println("DIRECT SPACE TRANSFORMATION...");
+	LOG.debug("DIRECT SPACE TRANSFORMATION...");
 
 	try {
 
-		System.out.println("X: "+originalCoordinateX);
-		System.out.println("Y: "+originalCoordinateY);
-		System.out.println("Z: "+originalCoordinateZ);
+		LOG.debug("X: {}",originalCoordinateX);
+		LOG.debug("Y: {}",originalCoordinateY);
+		LOG.debug("Z: {}",originalCoordinateZ);
 
 		if ( fromSpace.trim().equalsIgnoreCase(paxinos) && toSpace.trim().equalsIgnoreCase(whs09) ) { 
 
-			System.out.println("Inside PAXINOS 2 WHS...");
+			LOG.debug("Inside PAXINOS 2 WHS...");
 
 			Paxinos2WHS paxinos2whs = new Paxinos2WHS();
 			//client.getTransformation( 0.00, 4.29, -1.94 );
 			transformedCoordinateString = paxinos2whs.getTransformation( Double.parseDouble(originalCoordinateX),
 			Double.parseDouble(originalCoordinateY), Double.parseDouble(originalCoordinateZ) );
 
-			System.out.println("Paxinos to WHS - TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("Paxinos to WHS - TransformedCoordinateString - {}",transformedCoordinateString);
 
 		//Alex
 		} else if ( fromSpace.trim().equalsIgnoreCase(whs09) && toSpace.trim().equalsIgnoreCase(paxinos) ) { 
 
-			System.out.println("Hello - Inside WHS 2 PAXINOS...");
-			System.out.println("Coordinate X: " + originalCoordinateX); 
-			System.out.println("Coordinate Y: " + originalCoordinateY); 
-			System.out.println("Coordinate Z: " + originalCoordinateZ); 
+			LOG.debug("Hello - Inside WHS 2 PAXINOS...");
+			LOG.debug("Coordinate X: {}" , originalCoordinateX); 
+			LOG.debug("Coordinate Y: {}" , originalCoordinateY); 
+			LOG.debug("Coordinate Z: {}" , originalCoordinateZ); 
 			
 			WHS2Paxinos whs2paxinos = new WHS2Paxinos();
 			transformedCoordinateString = whs2paxinos.getTransformation( Long.parseLong(originalCoordinateX.replace(".0", "")), 
 					Long.parseLong(originalCoordinateY.replace(".0", "")), Long.parseLong(originalCoordinateZ.replace(".0", "")) );
 
-			System.out.println("WHS to PAXINOS - TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("WHS to PAXINOS - TransformedCoordinateString - {}",transformedCoordinateString);
 
 		//Steve
 		} else if ( fromSpace.trim().equalsIgnoreCase(ucsdSrsName) && toSpace.trim().equalsIgnoreCase(abaReference) ) { 
 
-			System.out.println("Inside ucsd_srs_1.0 2 mouse_abaReference_1.0...");
+			LOG.debug("Inside ucsd_srs_1.0 2 mouse_abaReference_1.0...");
 
 			String transformationHostName = config.getValue("incf.slamont.staging.host");
 			String transformationPortNumber = config.getValue("incf.transformationservice.port.number");
@@ -1752,8 +1757,8 @@ public class UCSDUtil {
 
 			//Start - Create and run URL, and read the string from the webpage
 			String transforMatrixURL = "http://" + transformationHostName + transformationPortNumber + transformationServicePath + "inputsrsname=ucsd_srs_1.0&outputsrsname=mouse_abareference_1.0&x=" + originalCoordinateX + "&y=" + originalCoordinateY + "&z=" + originalCoordinateZ;
-			System.out.println("Transformation matrix url is - " + transforMatrixURL); 
-			System.out.println("X in transformation matrix method is - " + originalCoordinateX);
+			LOG.debug("Transformation matrix url is - {}" , transforMatrixURL); 
+			LOG.debug("X in transformation matrix method is - {}" , originalCoordinateX);
 			URL url = new URL(transforMatrixURL);
 			URLConnection urlCon = url.openConnection();
 			urlCon.setUseCaches(false);
@@ -1761,15 +1766,15 @@ public class UCSDUtil {
 					.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				System.out.println("inputLine - "+inputLine);
+				LOG.debug("inputLine - {}",inputLine);
 				transformedCoordinateString = transformedCoordinateString + inputLine;
 			}
-			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("TransformedCoordinateString - {}",transformedCoordinateString);
 
 		//Steve
 		} else if ( fromSpace.trim().equalsIgnoreCase(abaReference) && toSpace.trim().equalsIgnoreCase(ucsdSrsName) ) { 
 
-			System.out.println("Inside mouse_abaReference_1.0 2 ucsd_srs_1.0...");
+			LOG.debug("Inside mouse_abaReference_1.0 2 ucsd_srs_1.0...");
 
 			String transformationHostName = config.getValue("incf.slamont.staging.host");
 			String transformationPortNumber = config.getValue("incf.transformationservice.port.number");
@@ -1777,8 +1782,8 @@ public class UCSDUtil {
 
 			//Start - Create and run URL, and read the string from the webpage
 			String transforMatrixURL = "http://" + transformationHostName + transformationPortNumber + transformationServicePath + "inputsrsname=mouse_abareference_1.0&outputsrsname=ucsd_srs_1.0&x=" + originalCoordinateX + "&y=" + originalCoordinateY + "&z=" + originalCoordinateZ;
-			System.out.println("Transformation matrix url is - " + transforMatrixURL); 
-			System.out.println("X in transformation matrix method is - " + originalCoordinateX);
+			LOG.debug("Transformation matrix url is - {}" , transforMatrixURL); 
+			LOG.debug("X in transformation matrix method is - {}" , originalCoordinateX);
 			URL url = new URL(transforMatrixURL);
 			URLConnection urlCon = url.openConnection();
 			urlCon.setUseCaches(false);
@@ -1786,42 +1791,42 @@ public class UCSDUtil {
 					.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				System.out.println("inputLine - "+inputLine);
+				LOG.debug("inputLine - {}",inputLine);
 				transformedCoordinateString = transformedCoordinateString + inputLine;
 			}
-			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("TransformedCoordinateString - {}",transformedCoordinateString);
 
 		} /*else if ( fromSpace.trim().equalsIgnoreCase(abaReference) && toSpace.trim().equalsIgnoreCase(whs09) ) { 
 
-			System.out.println("Inside ABAReference 2 WHS...");
+			LOG.debug("Inside ABAReference 2 WHS...");
 
 			Paxinos2WHS paxinos2whs = new Paxinos2WHS();
 			//client.getTransformation( 0.00, 4.29, -1.94 );
 			transformedCoordinateString = paxinos2whs.getTransformation( Double.parseDouble(originalCoordinateX),
 			Double.parseDouble(originalCoordinateY), Double.parseDouble(originalCoordinateZ) );
 
-			System.out.println("Paxinos to WHS - TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("Paxinos to WHS - TransformedCoordinateString - "+transformedCoordinateString);
 
 		//Alex
 		} else if ( fromSpace.trim().equalsIgnoreCase(whs09) && toSpace.trim().equalsIgnoreCase(abaReference) ) { 
 
-			System.out.println("Hello - Inside WHS 2 ABAReference...");
-			System.out.println("Coordinate X: " + originalCoordinateX); 
-			System.out.println("Coordinate Y: " + originalCoordinateY); 
-			System.out.println("Coordinate Z: " + originalCoordinateZ); 
+			LOG.debug("Hello - Inside WHS 2 ABAReference...");
+			LOG.debug("Coordinate X: " + originalCoordinateX); 
+			LOG.debug("Coordinate Y: " + originalCoordinateY); 
+			LOG.debug("Coordinate Z: " + originalCoordinateZ); 
 			
 			WHS2Paxinos whs2paxinos = new WHS2Paxinos();
 			transformedCoordinateString = whs2paxinos.getTransformation( Long.parseLong(originalCoordinateX.replace(".0", "")), 
 					Long.parseLong(originalCoordinateY.replace(".0", "")), Long.parseLong(originalCoordinateZ.replace(".0", "")) );
 
-			System.out.println("WHS to PAXINOS - TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("WHS to PAXINOS - TransformedCoordinateString - "+transformedCoordinateString);
 
 		} */else {
 		transformedCoordinateString = "No such transformation is available at this point under ABA hub.";
 		return transformedCoordinateString;
 	} 
 
-	System.out.println("Ends running transformation  matrix...");
+	LOG.debug("Ends running transformation  matrix...");
 
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -1836,20 +1841,20 @@ public class UCSDUtil {
 	//FIXME - amemon - will eventually go to commons
 	public String indirectSpaceTransformation( UCSDServiceVO vo ) {
 
-		System.out.println("Start - INDIRECT SPACE TRANSFORMATION METHOD...");
+		LOG.debug("Start - INDIRECT SPACE TRANSFORMATION METHOD...");
 
 		//1) Define and Get parameters from URL
 		//Define Properties
-		System.out.println(" Parameters... " );
+		LOG.debug(" Parameters... " );
 
 		String hostName = config.getValue("ucsd.host.name");
 		String servicePath = config.getValue("ucsd.ucsd.service.path");
 		String portNumber = config.getValue("ucsd.port.number");
 		String transformationMatrixURLPrefix = hostName + portNumber + servicePath;
 		
-		System.out.println(" X... " + vo.getOriginalCoordinateX() );
-		System.out.println(" Y... " + vo.getOriginalCoordinateY() );
-		System.out.println(" Z... " + vo.getOriginalCoordinateZ() );
+		LOG.debug(" X... {}" , vo.getOriginalCoordinateX() );
+		LOG.debug(" Y... {}" , vo.getOriginalCoordinateY() );
+		LOG.debug(" Z... {}" , vo.getOriginalCoordinateZ() );
 
 		StringBuffer responseString = new StringBuffer();
 
@@ -1872,7 +1877,7 @@ public class UCSDUtil {
 		
 		try { 
 
-			System.out.println("Start - transformation matrix process...");
+			LOG.debug("Start - transformation matrix process...");
 
 			UCSDUtil util = new UCSDUtil();
 
@@ -1906,7 +1911,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -1932,7 +1937,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -1943,7 +1948,7 @@ public class UCSDUtil {
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesTwo[0] + " " + arrayOfTransformedCoordinatesTwo[1]  + " " + arrayOfTransformedCoordinatesTwo[2];
 
-				System.out.println("mouse_paxinos_1.0 to mouse_agea_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_paxinos_1.0 to mouse_agea_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 				
 			//via mouse_whs_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
@@ -1975,7 +1980,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2001,7 +2006,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -2012,7 +2017,7 @@ public class UCSDUtil {
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesTwo[0] + " " + arrayOfTransformedCoordinatesTwo[1]  + " " + arrayOfTransformedCoordinatesTwo[2];
 
-				System.out.println("mouse_agea_1.0 to mouse_paxinos_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_agea_1.0 to mouse_paxinos_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
@@ -2046,7 +2051,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2072,7 +2077,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -2098,7 +2103,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesThree[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesThree[2]).append(" ");
 				vo.setTransformationThree(transformationThree.toString());
-				System.out.println("TransformationThree - " + vo.getTransformationThree());
+				LOG.debug("TransformationThree - {}" , vo.getTransformationThree());
 
 				//Setting the transformation URL
 				vo.setTransformationThreeURL("http://" + transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x="+arrayOfTransformedCoordinatesTwo[0]+"&amp;y="+arrayOfTransformedCoordinatesTwo[1]+"&amp;z="+arrayOfTransformedCoordinatesTwo[2]+"&amp;output=html");
@@ -2109,7 +2114,7 @@ public class UCSDUtil {
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesThree[0] + " " + arrayOfTransformedCoordinatesThree[1]  + " " + arrayOfTransformedCoordinatesThree[2];
 
-				System.out.println("mouse_paxinos_1.0 to mouse_abavoxel_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_paxinos_1.0 to mouse_abavoxel_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 			//via  mouse_whs_1.0, and then mouse_agea_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
@@ -2143,7 +2148,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2169,7 +2174,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesTwo[0]+"&amp;y="+arrayOfTransformedCoordinatesTwo[1]+"&amp;z="+arrayOfTransformedCoordinatesTwo[2]+"&amp;output=html");
@@ -2195,7 +2200,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesThree[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesThree[2]).append(" ");
 				vo.setTransformationThree(transformationThree.toString());
-				System.out.println("TransformationThree - " + vo.getTransformationThree());
+				LOG.debug("TransformationThree - {}" , vo.getTransformationThree());
 
 				//Setting the transformation URL
 				vo.setTransformationThreeURL("http://" + transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x="+arrayOfTransformedCoordinatesTwo[0]+"&amp;y="+arrayOfTransformedCoordinatesTwo[1]+"&amp;z="+arrayOfTransformedCoordinatesTwo[2]+"&amp;output=html");
@@ -2205,7 +2210,7 @@ public class UCSDUtil {
 
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesThree[0] + " " + arrayOfTransformedCoordinatesThree[1]  + " " + arrayOfTransformedCoordinatesThree[2];
-				System.out.println("mouse_abavoxel_1.0 TO mouse_paxinos_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_abavoxel_1.0 TO mouse_paxinos_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 				//via  mouse_whs_1.0, and then mouse_agea_1.0, then mouse_abavoxel_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(paxinos) ) {
@@ -2242,7 +2247,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2268,7 +2273,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -2294,7 +2299,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesThree[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesThree[2]).append(" ");
 				vo.setTransformationThree(transformationThree.toString());
-				System.out.println("TransformationThree - " + vo.getTransformationThree());
+				LOG.debug("TransformationThree - {}" , vo.getTransformationThree());
 
 				//Setting the transformation URL
 				vo.setTransformationThreeURL("http://" + transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x="+arrayOfTransformedCoordinatesTwo[0]+"&amp;y="+arrayOfTransformedCoordinatesTwo[1]+"&amp;z="+arrayOfTransformedCoordinatesTwo[2]+"&amp;output=html");
@@ -2320,7 +2325,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesFour[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesFour[2]).append(" ");
 				vo.setTransformationFour(transformationFour.toString());
-				System.out.println("TransformationFour - " + vo.getTransformationFour());
+				LOG.debug("TransformationFour - {}" , vo.getTransformationFour());
 
 				//Setting the transformation URL
 				vo.setTransformationFourURL("http://" + transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeFour() + "&amp;toSRSCode=" + vo.getToSRSCodeFour() + "&amp;x="+arrayOfTransformedCoordinatesThree[0]+"&amp;y="+arrayOfTransformedCoordinatesThree[1]+"&amp;z="+arrayOfTransformedCoordinatesThree[2]+"&amp;output=html");
@@ -2330,7 +2335,7 @@ public class UCSDUtil {
 
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesFour[0] + " " + arrayOfTransformedCoordinatesFour[1]  + " " + arrayOfTransformedCoordinatesFour[2];
-				System.out.println("mouse_abareference_1.0 TO mouse_paxinos_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_abareference_1.0 TO mouse_paxinos_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 				//via  mouse_whs_1.0, and then mouse_agea_1.0, then mouse_abavoxel_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(paxinos) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
@@ -2366,7 +2371,7 @@ public class UCSDUtil {
 									 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 									 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 					vo.setTransformationOne(transformationOne.toString());
-					System.out.println("TransformationOne - " + vo.getTransformationOne());
+					LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 					//Setting the transformation URL
 					vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2392,7 +2397,7 @@ public class UCSDUtil {
 									 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 									 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 					vo.setTransformationTwo(transformationTwo.toString());
-					System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+					LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 					//Setting the transformation URL
 					vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -2418,7 +2423,7 @@ public class UCSDUtil {
 									 .append(arrayOfTransformedCoordinatesThree[1]).append(" ")
 									 .append(arrayOfTransformedCoordinatesThree[2]).append(" ");
 					vo.setTransformationThree(transformationThree.toString());
-					System.out.println("TransformationThree - " + vo.getTransformationThree());
+					LOG.debug("TransformationThree - {}" , vo.getTransformationThree());
 
 					//Setting the transformation URL
 					vo.setTransformationThreeURL("http://" + transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x="+arrayOfTransformedCoordinatesTwo[0]+"&amp;y="+arrayOfTransformedCoordinatesTwo[1]+"&amp;z="+arrayOfTransformedCoordinatesTwo[2]+"&amp;output=html");
@@ -2444,7 +2449,7 @@ public class UCSDUtil {
 									 .append(arrayOfTransformedCoordinatesFour[1]).append(" ")
 									 .append(arrayOfTransformedCoordinatesFour[2]).append(" ");
 					vo.setTransformationFour(transformationFour.toString());
-					System.out.println("TransformationFour - " + vo.getTransformationFour());
+					LOG.debug("TransformationFour - {}" , vo.getTransformationFour());
 
 					//Setting the transformation URL
 					vo.setTransformationFourURL("http://" + transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeFour() + "&amp;toSRSCode=" + vo.getToSRSCodeFour() + "&amp;x="+arrayOfTransformedCoordinatesThree[0]+"&amp;y="+arrayOfTransformedCoordinatesThree[1]+"&amp;z="+arrayOfTransformedCoordinatesThree[2]+"&amp;output=html");
@@ -2454,7 +2459,7 @@ public class UCSDUtil {
 
 					//Return A transformation string
 					transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesFour[0] + " " + arrayOfTransformedCoordinatesFour[1]  + " " + arrayOfTransformedCoordinatesFour[2];
-					System.out.println("mouse_paxinos_1.0 TO mouse_abareference_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+					LOG.debug("mouse_paxinos_1.0 TO mouse_abareference_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 			//via mouse_agea_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaVoxel) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
@@ -2486,7 +2491,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2512,7 +2517,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -2522,7 +2527,7 @@ public class UCSDUtil {
 
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesTwo[0] + " " + arrayOfTransformedCoordinatesTwo[1]  + " " + arrayOfTransformedCoordinatesTwo[2];
-				System.out.println("mouse_abavoxel_1.0 TO mouse_whs_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_abavoxel_1.0 TO mouse_whs_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 			//via mouse_agea_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(abaVoxel) ) {
@@ -2554,7 +2559,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2580,7 +2585,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -2590,7 +2595,7 @@ public class UCSDUtil {
 
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesTwo[0] + " " + arrayOfTransformedCoordinatesTwo[1]  + " " + arrayOfTransformedCoordinatesTwo[2];
-				System.out.println("mouse_whs_1.0 TO mouse_abavoxel_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_whs_1.0 TO mouse_abavoxel_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
             //via mouse_abavoxel_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(agea) ) {
@@ -2622,7 +2627,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2648,7 +2653,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -2658,7 +2663,7 @@ public class UCSDUtil {
 
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesTwo[0] + " " + arrayOfTransformedCoordinatesTwo[1]  + " " + arrayOfTransformedCoordinatesTwo[2];
-				System.out.println("mouse_abareference_1.0 TO mouse_agea_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_abareference_1.0 TO mouse_agea_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 			//via mouse_abavoxel_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(agea) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
@@ -2690,7 +2695,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2716,7 +2721,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -2726,7 +2731,7 @@ public class UCSDUtil {
 
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesTwo[0] + " " + arrayOfTransformedCoordinatesTwo[1]  + " " + arrayOfTransformedCoordinatesTwo[2];
-				System.out.println("mouse_agea_1.0 TO mouse_abareference_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_agea_1.0 TO mouse_abareference_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 	        //via mouse_abavoxel_1.0, and then mouse_agea_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(abaReference) && vo.getToSRSCodeOne().equalsIgnoreCase(whs09) ) {
@@ -2760,7 +2765,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2786,7 +2791,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -2812,7 +2817,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesThree[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesThree[2]).append(" ");
 				vo.setTransformationThree(transformationThree.toString());
-				System.out.println("TransformationThree - " + vo.getTransformationThree());
+				LOG.debug("TransformationThree - {}" , vo.getTransformationThree());
 
 				//Setting the transformation URL
 				vo.setTransformationThreeURL("http://" + transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x="+arrayOfTransformedCoordinatesTwo[0]+"&amp;y="+arrayOfTransformedCoordinatesTwo[1]+"&amp;z="+arrayOfTransformedCoordinatesTwo[2]+"&amp;output=html");
@@ -2822,7 +2827,7 @@ public class UCSDUtil {
 
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesThree[0] + " " + arrayOfTransformedCoordinatesThree[1]  + " " + arrayOfTransformedCoordinatesThree[2];
-				System.out.println("mouse_abareference_1.0 TO mouse_whs_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_abareference_1.0 TO mouse_whs_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 			//via mouse_abavoxel_1.0, and then mouse_agea_1.0
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase(whs09) && vo.getToSRSCodeOne().equalsIgnoreCase(abaReference) ) {
@@ -2856,7 +2861,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2882,7 +2887,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -2908,7 +2913,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesThree[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesThree[2]).append(" ");
 				vo.setTransformationThree(transformationThree.toString());
-				System.out.println("TransformationThree - " + vo.getTransformationThree());
+				LOG.debug("TransformationThree - {}" , vo.getTransformationThree());
 
 				//Setting the transformation URL
 				vo.setTransformationThreeURL("http://" + transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x="+arrayOfTransformedCoordinatesTwo[0]+"&amp;y="+arrayOfTransformedCoordinatesTwo[1]+"&amp;z="+arrayOfTransformedCoordinatesTwo[2]+"&amp;output=html");
@@ -2918,7 +2923,7 @@ public class UCSDUtil {
 				
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesThree[0] + " " + arrayOfTransformedCoordinatesThree[1]  + " " + arrayOfTransformedCoordinatesThree[2];
-				System.out.println("mouse_whs_1.0 TO mouse_abareference_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_whs_1.0 TO mouse_abareference_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 			} else if ( vo.getFromSRSCodeOne().equalsIgnoreCase("all") && vo.getToSRSCodeOne().equalsIgnoreCase("all") ) {
 
@@ -2955,7 +2960,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesOne[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesOne[2]).append(" ");
 				vo.setTransformationOne(transformationOne.toString());
-				System.out.println("TransformationOne - " + vo.getTransformationOne());
+				LOG.debug("TransformationOne - {}" , vo.getTransformationOne());
 
 				//Setting the transformation URL
 				vo.setTransformationOneURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeOne() + "&amp;toSRSCode=" + vo.getToSRSCodeOne() + "&amp;x="+vo.getOriginalCoordinateX()+"&amp;y="+vo.getOriginalCoordinateY()+"&amp;z="+vo.getOriginalCoordinateZ()+"&amp;output=html");
@@ -2981,7 +2986,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesTwo[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesTwo[2]).append(" ");
 				vo.setTransformationTwo(transformationTwo.toString());
-				System.out.println("TransformationTwo - " + vo.getTransformationTwo());
+				LOG.debug("TransformationTwo - {}" , vo.getTransformationTwo());
 
 				//Setting the transformation URL
 				vo.setTransformationTwoURL("http://"+transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeTwo() + "&amp;toSRSCode=" + vo.getToSRSCodeTwo() + "&amp;x="+arrayOfTransformedCoordinatesOne[0]+"&amp;y="+arrayOfTransformedCoordinatesOne[1]+"&amp;z="+arrayOfTransformedCoordinatesOne[2]+"&amp;output=html");
@@ -3007,7 +3012,7 @@ public class UCSDUtil {
 								 .append(arrayOfTransformedCoordinatesThree[1]).append(" ")
 								 .append(arrayOfTransformedCoordinatesThree[2]).append(" ");
 				vo.setTransformationThree(transformationThree.toString());
-				System.out.println("TransformationThree - " + vo.getTransformationThree());
+				LOG.debug("TransformationThree - {}" , vo.getTransformationThree());
 
 				//Setting the transformation URL
 				vo.setTransformationThreeURL("http://" + transformationMatrixURLPrefix + "request=SpaceTransformation&amp;fromSRSCode=" + vo.getFromSRSCodeThree() + "&amp;toSRSCode=" + vo.getToSRSCodeThree() + "&amp;x="+arrayOfTransformedCoordinatesTwo[0]+"&amp;y="+arrayOfTransformedCoordinatesTwo[1]+"&amp;z="+arrayOfTransformedCoordinatesTwo[2]+"&amp;output=html");
@@ -3017,15 +3022,15 @@ public class UCSDUtil {
 
 				//Return A transformation string
 				transformedCoordinateString = vo.getOriginalCoordinateX() + " " + vo.getOriginalCoordinateY() + " "+ vo.getOriginalCoordinateZ() + " " + arrayOfTransformedCoordinatesThree[0] + " " + arrayOfTransformedCoordinatesThree[1]  + " " + arrayOfTransformedCoordinatesThree[2];
-				System.out.println("mouse_abareference_1.0 TO mouse_whs_1.0 - TransformedCoordinateString - "+transformedCoordinateString);
+				LOG.debug("mouse_abareference_1.0 TO mouse_whs_1.0 - TransformedCoordinateString - {}",transformedCoordinateString);
 
 			} else {
 				transformedCoordinateString = "No such transformation is available at this point. Sorry for the inconvinience";
 				return transformedCoordinateString;
 			} 
 
-			System.out.println( "Transformed Coordinate String - " + transformedCoordinateString ); 
-			System.out.println( "Ends running transformation  matrix..." );
+			LOG.debug( "Transformed Coordinate String - {}" , transformedCoordinateString ); 
+			LOG.debug( "Ends running transformation  matrix..." );
 
 		} catch ( Exception e ) {
 
@@ -3035,7 +3040,7 @@ public class UCSDUtil {
 
 		}
 
-		System.out.println("End - spaceTransformationForm Method...");
+		LOG.debug("End - spaceTransformationForm Method...");
 
 		//4) Return response back to the cllient in a text/xml format
 		return transformedCoordinateString;
@@ -3308,7 +3313,7 @@ public class UCSDUtil {
 
 		String[] coordinateString = new String[tokensSize]; 
 		String[] transformedCoordinates = new String[3]; //Returned coordinates are 3
-		System.out.println( " tokens - " +tokensSize);
+		LOG.debug( " tokens - {}" ,tokensSize);
 
 		int i = 0;
 		while ( tokens.hasMoreTokens() ) {
@@ -3319,23 +3324,22 @@ public class UCSDUtil {
 		
 		if (coordinateString.length > 3) { 
 			transformedCoordinates[0] = coordinateString[3];
-			System.out.println( " transformedCoordinates x - " + transformedCoordinates[0] );
+			LOG.debug( " transformedCoordinates x - {}" , transformedCoordinates[0] );
 			if (tokensSize >= 5 ) {
 			transformedCoordinates[1] = coordinateString[4];
-			System.out.println( " transformedCoordinates y - " + transformedCoordinates[1] );
+			LOG.debug( " transformedCoordinates y - {}" , transformedCoordinates[1] );
 			}
 			if (tokensSize >= 6 ) {
 			transformedCoordinates[2] = coordinateString[5];
-			System.out.println( " transformedCoordinates z - " + transformedCoordinates[2] );
+			LOG.debug( " transformedCoordinates z - {}" , transformedCoordinates[2] );
 			}
 		} else if (coordinateString.length == 3) {
 			transformedCoordinates[0] = coordinateString[0];
-			System.out.println( " transformedCoordinates x - " + transformedCoordinates[0] );
+			LOG.debug( " transformedCoordinates x - {}" , transformedCoordinates[0] );
 			transformedCoordinates[1] = coordinateString[1];
 			transformedCoordinates[2] = coordinateString[2];
 		}
-			
-			
+
 		return transformedCoordinates;
 
 	}
@@ -3347,7 +3351,7 @@ public class UCSDUtil {
 		StringTokenizer tokens = new StringTokenizer("Fine Structure Name: DG"); 
 		while ( tokens.hasMoreTokens() ) {
 			String structureName = tokens.nextToken();
-			System.out.println("Structure Name is - " + structureName);
+			LOG.debug("Structure Name is - {}" , structureName);
 		}
 		
 		//util.splitCoordinatesFromStringToVO(new ABAServiceVO(), "13 12 3 4 5 6");
@@ -3361,12 +3365,12 @@ public class UCSDUtil {
 
 		String[] coordinateString = new String[tokensSize]; 
 		String[] transformedCoordinates = new String[6]; //Returned coordinates are 3
-		System.out.println( " tokens - " +tokensSize);
+		LOG.debug( " tokens - {}" ,tokensSize);
 
 		int i = 0;
 		while ( tokens.hasMoreTokens() ) {
 			coordinateString[i] = tokens.nextToken(); 
-			System.out.println( " Token Name - " + coordinateString[i]);
+			LOG.debug( " Token Name - {}" , coordinateString[i]);
 			i++;
 		}
 
@@ -3385,13 +3389,13 @@ public class UCSDUtil {
 	// http://132.239.131.188:8080/incf-services/service/wbc?request=GetFineStructureNameByPOI&atlasSpaceName=ABA&x=263&y=159&z=227
 	public String getFineStructureNameByPOI( UCSDServiceVO vo ) {
 
-		System.out.println("Start - getFineStructureNameByPOI Method...");
+		LOG.debug("Start - getFineStructureNameByPOI Method...");
 
 		UCSDUtil util = new UCSDUtil();
 		
 		// http://mouse.brain-map.org/mouse_agea_1.0/all_coronal/slice_correlation_image?plane=coronal&index=7525&blend=0&width=217&height=152&loc=7525,4075,6300&lowerRange=0.5&upperRange=1
 		// 1) Define and Get parameters from URL
-		System.out.println(" Parameters... ");
+		LOG.debug(" Parameters... ");
 		String fromSpaceName = vo.getFromSRSCode();
 		String coordinateX = vo.getTransformedCoordinateX();
 		String coordinateY = vo.getTransformedCoordinateY();
@@ -3410,7 +3414,7 @@ public class UCSDUtil {
 
 		try {
 
-			System.out.println("Starts Transformation matrix process...");
+			LOG.debug("Starts Transformation matrix process...");
 
 			// 2) Get the transformed coordinates from Steve's program
 			// http://incf-dev-mapserver.crbs.ucsd.edu/cgi-bin/structure_lookup.cgi?atlas=aba&x=264&y=160&z=228
@@ -3440,10 +3444,10 @@ public class UCSDUtil {
 			}
 			// End - Changes
 
-			System.out.println("Response String - " + responseString);
+			LOG.debug("Response String - {}" , responseString);
 
 			// End
-			System.out.println("Ends running transformation  matrix...");
+			LOG.debug("Ends running transformation  matrix...");
 
 		} catch (Exception e) {
 
@@ -3454,7 +3458,7 @@ public class UCSDUtil {
 
 		}
 
-		System.out.println("End - getFineStructureNameByPOI Method...");
+		LOG.debug("End - getFineStructureNameByPOI Method...");
 
 		// 4) Return response back to the cllient in a text/xml format
 		return responseString;
@@ -3465,11 +3469,11 @@ public class UCSDUtil {
 	// http://132.239.131.188:8080/incf-services/service/wbc?request=GetFineStructureNameByPOI&atlasSpaceName=ABA&x=263&y=159&z=227
 	public String getAnatomicStructureNameByPOI( UCSDServiceVO vo ) {
 
-		System.out.println("Start - getAnatomicStructureNameByPOI Method...");
+		LOG.debug("Start - getAnatomicStructureNameByPOI Method...");
 
 		// http://mouse.brain-map.org/agea/all_coronal/slice_correlation_image?plane=coronal&index=7525&blend=0&width=217&height=152&loc=7525,4075,6300&lowerRange=0.5&upperRange=1
 		// 1) Define and Get parameters from URL
-		System.out.println(" Parameters... ");
+		LOG.debug(" Parameters... ");
 
 		String fromSpaceName = vo.getFromSRSCode();
 		String coordinateX = vo.getTransformedCoordinateX();
@@ -3489,7 +3493,7 @@ public class UCSDUtil {
 
 		try {
 
-			System.out.println("Starts Transformation matrix process...");
+			LOG.debug("Starts Transformation matrix process...");
 
 			// 2) Get the transformed coordinates from Steve's program
 			// http://incf-dev-mapserver.crbs.ucsd.edu/cgi-bin/structure_lookup.cgi?atlas=aba&x=264&y=160&z=228
@@ -3519,8 +3523,8 @@ public class UCSDUtil {
 					.concat(anatomicStructureName));
 			}
 			// End - Changes
-			System.out.println("Anatomic Structure - "
-					+ responseString.toString());
+			LOG.debug("Anatomic Structure - {}"
+					, responseString.toString());
 
 		} catch (Exception e) {
 
@@ -3532,7 +3536,7 @@ public class UCSDUtil {
 
 		}
 
-		System.out.println("End - getAnatomicStructureNameByPOI Method...");
+		LOG.debug("End - getAnatomicStructureNameByPOI Method...");
 
 		// 4) Return response back to the cllient in a text/xml format
 		return responseString.toString();
@@ -3556,8 +3560,8 @@ public class UCSDUtil {
 	
 			//Start - Create and run URL, and read the string from the webpage
 			String transforMatrixURL = "http://" + transformationHostName + transformationPortNumber + transformationServicePath + "atlas="+atlasSpaceName+"&x=" + originalCoordinateX + "&y=" + originalCoordinateY + "&z=" + originalCoordinateZ;
-			System.out.println("Transformation matrix url is - " + transforMatrixURL);
-			System.out.println("X in transformation matrix method is - " + originalCoordinateX);
+			LOG.debug("Transformation matrix url is - {}" , transforMatrixURL);
+			LOG.debug("X in transformation matrix method is - {}" , originalCoordinateX);
 			URL url = new URL(transforMatrixURL);
 			URLConnection urlCon = url.openConnection();
 			urlCon.setUseCaches(false);
@@ -3565,10 +3569,10 @@ public class UCSDUtil {
 					.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				System.out.println("inputLine - "+inputLine);
+				LOG.debug("inputLine - {}",inputLine);
 				transformedCoordinateString = transformedCoordinateString + inputLine;
 			}
-			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("TransformedCoordinateString - {}",transformedCoordinateString);
 
 		} /*else if ( atlasSpaceName.trim().equalsIgnoreCase(whs09) ) { 
 
@@ -3578,8 +3582,8 @@ public class UCSDUtil {
 
 			//Start - Create and run URL, and read the string from the webpage
 			String transforMatrixURL = "http://" + transformationHostName + transformationPortNumber + transformationServicePath + "&x=" + originalCoordinateX + "&y=" + originalCoordinateY + "&z=" + originalCoordinateZ;
-			System.out.println("Transformation matrix url is - " + transforMatrixURL);
-			System.out.println("X in transformation matrix method is - " + originalCoordinateX);
+			LOG.debug("Transformation matrix url is - " + transforMatrixURL);
+			LOG.debug("X in transformation matrix method is - " + originalCoordinateX);
 			URL url = new URL(transforMatrixURL);
 			URLConnection urlCon = url.openConnection();
 			urlCon.setUseCaches(false);
@@ -3587,10 +3591,10 @@ public class UCSDUtil {
 					.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				System.out.println("inputLine - "+inputLine);
+				LOG.debug("inputLine - "+inputLine);
 				transformedCoordinateString = transformedCoordinateString + inputLine;
 			}
-			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("TransformedCoordinateString - "+transformedCoordinateString);
 
 		}
 */		

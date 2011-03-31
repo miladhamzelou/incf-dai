@@ -110,7 +110,7 @@ public class Get2DImagesByPOI implements Processlet {
 			String tolerance = dataInputHandler.getValidatedStringValue(in,
 					"tolerance");
 
-			System.out.println("srsName Before ");
+			LOG.debug("srsName Before ");
 			// parse dataInputs string
 			vo.setFromSRSCodeOne(srsName);
 			vo.setFromSRSCode(srsName);
@@ -120,11 +120,11 @@ public class Get2DImagesByPOI implements Processlet {
 			vo.setFilter(filter.replace("maptype:", ""));
 			vo.setTolerance(tolerance);
 
-			System.out.println("Filter Before " + filter);
+			LOG.debug("Filter Before {}", filter);
 			filter = vo.getFilter();
-			System.out.println("Filter After " + filter);
+			LOG.debug("Filter After {}", filter);
 
-			System.out.println("Before getPaxinosImageList");
+			LOG.debug("Before getPaxinosImageList");
 
 			// Convert the coordinates ABAVOXEL into PAXINOS
 			if (vo.getFromSRSCode().equalsIgnoreCase(abaReference)
@@ -167,7 +167,7 @@ public class Get2DImagesByPOI implements Processlet {
 
 				// Start - exception handling
 				if (paxinosCoordinatesString.startsWith("Error:")) {
-					// System.out.println("********************ERROR*********************");
+					// LOG.debug("********************ERROR*********************");
 					System.out
 							.println("********************ERROR*********************");
 					throw new OWSException("Transformed Coordinates Error: ",
@@ -219,7 +219,7 @@ public class Get2DImagesByPOI implements Processlet {
 				vo.setTransformedCoordinateY(tempArray1[1]);
 				vo.setTransformedCoordinateZ(tempArray1[2]);
 
-				System.out.println("Before getABAReferenceImageList");
+				LOG.debug("Before getABAReferenceImageList");
 				completeImageList = getABAReferenceImageList(completeImageList,
 						vo.getFromSRSCode(), "abareference", vo
 								.getTransformedCoordinateX(), vo
@@ -253,10 +253,10 @@ public class Get2DImagesByPOI implements Processlet {
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID2 = randomGenerator2.nextInt(100);
 			}
-			System.out.println("Random GML ID1: - " + randomGMLID1);
-			System.out.println("Random GML ID2: - " + randomGMLID2);
+			LOG.debug("Random GML ID1: - {}", randomGMLID1);
+			LOG.debug("Random GML ID2: - {}", randomGMLID2);
 
-			System.out.println("Random GML ID2: - " + randomGMLID2);
+			LOG.debug("Random GML ID2: - {}", randomGMLID2);
 			// vo.setUrlString(uri.toString());
 
 /*			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
@@ -334,8 +334,8 @@ public class Get2DImagesByPOI implements Processlet {
 				i1source.setType("WMS");
 				// i1source.setType(IncfImageServicesEnum.URL.toString());
 
-				System.out.println("coefficientA - " + vo.getCoefficientA());
-				System.out.println("srsName - " + srsName);
+				LOG.debug("coefficientA - {}", vo.getCoefficientA());
+				LOG.debug("srsName - {}", srsName);
 
 				ImagePosition i1position = image1.addNewImagePosition();
 				IncfSrsType planeequation = i1position
@@ -355,16 +355,16 @@ public class Get2DImagesByPOI implements Processlet {
 				corner1.setPosition(PositionEnum.TOPLEFT);
 				// corner1.addNewPoint().addNewPos().setSrsName(srsName);
 				/*
-				 * System.out.println("10.1");
+				 * LOG.debug("10.1");
 				 * corner1.getPoint().getPos().setSrsName("Mouse");
-				 * System.out.println("11");
+				 * LOG.debug("11");
 				 * corner1.getPoint().getPos().setSrsName("Mouse_ABAvoxel");
-				 * System.out.println("12");
+				 * LOG.debug("12");
 				 * corner1.getPoint().getPos().setSrsName("Mouse_ABAvoxel_1.0");
-				 * System.out.println("13");
+				 * LOG.debug("13");
 				 */
 
-				System.out.println("1st corner - filter - " + filter);
+				LOG.debug("1st corner - filter - {}", filter);
 				if (filter.equalsIgnoreCase("coronal")) {
 					corner1.addNewPoint().addNewPos().setStringValue(
 							vo.getSliceConstant() + " " + vo.getMaxY() + " "
@@ -382,7 +382,7 @@ public class Get2DImagesByPOI implements Processlet {
 				// corner2.addNewPoint().addNewPos().setSrsName(srsName);
 				// corner2.getPoint().getPos().setSrsName(srsName);
 
-				System.out.println("2nd corner - filter - " + filter);
+				LOG.debug("2nd corner - filter - {}", filter);
 				// corner2.addNewPoint().addNewPos().setStringValue(
 				// vo.getMinX() + " " + vo.getMinY() );
 				if (filter.equalsIgnoreCase("coronal")) {
@@ -402,7 +402,7 @@ public class Get2DImagesByPOI implements Processlet {
 				// corner3.addNewPoint().addNewPos().setSrsName(srsName);
 				// corner3.getPoint().getPos().setSrsName(srsName);
 
-				System.out.println("3rd corner - filter - " + filter);
+				LOG.debug("3rd corner - filter - {}", filter);
 				// corner3.addNewPoint().addNewPos().setStringValue(
 				// vo.getMaxX() + " " + vo.getMaxY() );
 				if (filter.equalsIgnoreCase("coronal")) {
@@ -422,7 +422,7 @@ public class Get2DImagesByPOI implements Processlet {
 				// corner4.addNewPoint().addNewPos().setSrsName(srsName);
 				// corner4.getPoint().getPos().setSrsName(srsName);
 
-				System.out.println("4th corner - filter - " + filter);
+				LOG.debug("4th corner - filter - {}", filter);
 				// corner4.addNewPoint().addNewPos().setStringValue(
 				// vo.getMaxX() + " " + vo.getMinY() );
 				if (filter.equalsIgnoreCase("coronal")) {
@@ -449,9 +449,9 @@ public class Get2DImagesByPOI implements Processlet {
 				for (int i = 0; i < errorList.size(); i++) {
 					XmlError error = (XmlError) errorList.get(i);
 
-					System.out.println("\n");
-					System.out.println("Message: " + error.getMessage() + "\n");
-					System.out.println("Location of invalid XML: "
+					LOG.debug("\n");
+					LOG.debug("Message: " + error.getMessage() + "\n");
+					LOG.debug("Location of invalid XML: "
 							+ error.getCursorLocation().xmlText() + "\n");
 				}
 			}
@@ -501,8 +501,8 @@ public class Get2DImagesByPOI implements Processlet {
 		UCSDConfigurator config = UCSDConfigurator.INSTANCE;
 		String hostName = config.getValue("ucsd.webservice.host.name");
 		String port = config.getValue("ucsd.webservice.port.number");
-		System.out.println(" - hostName - " + hostName);
-		System.out.println(" - PortNumber - " + port);
+		LOG.debug(" - hostName - {}", hostName);
+		LOG.debug(" - PortNumber - {}", port);
 		StringBuffer responseString = new StringBuffer();
 		ArrayList list = new ArrayList();
 
@@ -537,8 +537,8 @@ public class Get2DImagesByPOI implements Processlet {
 
 			String polygonString = x1 + "," + y1 + "," + x2 + "," + y2 + ","
 					+ x3 + "," + y3 + "," + x4 + "," + y4 + "," + x1 + "," + y1;
-			System.out.println("PAXINOS - Made up polygon string - "
-					+ polygonString);
+			LOG.debug("PAXINOS - Made up polygon string - {}"
+					,polygonString);
 
 			String xmlQueryString = createXMLQueryStringForImageList(
 					polygonString, srscode, filterValue);
@@ -557,7 +557,7 @@ public class Get2DImagesByPOI implements Processlet {
 			responseString.append((String) call.invoke(new Object[] { sb
 					.toString() }));
 
-			System.out.println("Response String - " + responseString);
+			LOG.debug("Response String - {}", responseString);
 			// Ends
 
 			list = parseXMLResponseStringForImageList(toSpaceName, list, responseString
@@ -567,7 +567,7 @@ public class Get2DImagesByPOI implements Processlet {
 
 			while (iterator.hasNext()) {
 				vo = (UCSDServiceVO) iterator.next();
-				System.out.println("WMS - " + vo.getWms());
+				LOG.debug("WMS - {}", vo.getWms());
 			}
 
 		} catch (Exception e) {
@@ -588,8 +588,8 @@ public class Get2DImagesByPOI implements Processlet {
 
 		String hostName = config.getValue("ucsd.webservice.host.name");
 		String port = config.getValue("ucsd.webservice.port.number");
-		System.out.println(" - hostName - " + hostName);
-		System.out.println(" - PortNumber - " + port);
+		LOG.debug(" - hostName - {}", hostName);
+		LOG.debug(" - PortNumber - {}", port);
 		StringBuffer responseString = new StringBuffer();
 
 		try {
@@ -610,11 +610,11 @@ public class Get2DImagesByPOI implements Processlet {
 			 * coordinateY = incfUtil.getRoundCoordinateValue(tempArray1[1]);
 			 * coordinateZ = incfUtil.getRoundCoordinateValue(tempArray1[2]);
 			 * 
-			 * System.out.println("***Coordinate X for Polygon String - " +
+			 * LOG.debug("***Coordinate X for Polygon String - " +
 			 * coordinateX);
-			 * System.out.println("***Coordinate Y for Polygon String - " +
+			 * LOG.debug("***Coordinate Y for Polygon String - " +
 			 * coordinateY);
-			 * System.out.println("***Coordinate Z for Polygon String - " +
+			 * LOG.debug("***Coordinate Z for Polygon String - " +
 			 * coordinateZ);
 			 */
 			// FIXME
@@ -642,8 +642,8 @@ public class Get2DImagesByPOI implements Processlet {
 
 			String polygonString = x1 + "," + y1 + "," + x2 + "," + y2 + ","
 					+ x3 + "," + y3 + "," + x4 + "," + y4 + "," + x1 + "," + y1;
-			System.out.println("ABAREFERENCE - Made up polygon string - "
-					+ polygonString);
+			LOG.debug("ABAREFERENCE - Made up polygon string - {}"
+					,polygonString);
 
 			String xmlQueryString = createXMLQueryStringForImageList(
 					polygonString, srscode, filterValue);
@@ -662,7 +662,7 @@ public class Get2DImagesByPOI implements Processlet {
 			responseString.append((String) call.invoke(new Object[] { sb
 					.toString() }));
 
-			System.out.println("Response String - " + responseString);
+			LOG.debug("Response String - {}",responseString);
 			// Ends
 
 			completeImageList = parseXMLResponseStringForImageList( toSpaceName, 
@@ -673,11 +673,11 @@ public class Get2DImagesByPOI implements Processlet {
 			vo = new UCSDServiceVO();
 			while (iterator.hasNext()) {
 				vo = (UCSDServiceVO) iterator.next();
-				System.out.println("WMS - " + vo.getWms());
+				LOG.debug("WMS - {}",vo.getWms());
 				System.out
 						.println("Image Base Name - " + vo.getImageBaseName());
-				System.out.println("Image service Name - "
-						+ vo.getImageServiceName());
+				LOG.debug("Image service Name - {}"
+						,vo.getImageServiceName());
 			}
 
 		} catch (Exception e) {
@@ -723,8 +723,8 @@ public class Get2DImagesByPOI implements Processlet {
 
 		}
 
-		System.out.println(" Query String for getImageMetaDataForROI - "
-				+ xmlString.toString());
+		LOG.debug(" Query String for getImageMetaDataForROI - {}"
+				,xmlString.toString());
 		return xmlString.toString();
 
 	}
@@ -831,17 +831,17 @@ public class Get2DImagesByPOI implements Processlet {
 	public UCSDServiceVO getSimpleImageEnvelope(String host,
 			String serviceName, String imageServerName) {
 
-		System.out.println("Begin - getSimpleImageEnvelope");
+		LOG.debug("Begin - getSimpleImageEnvelope");
 
 		String returnString = new String("");
 		UCSDServiceVO dataModel = new UCSDServiceVO();
-		System.out.println("imageServerName - " + imageServerName);
+		LOG.debug("imageServerName - {}" ,imageServerName);
 
 		try {
 
 			if (imageServerName.trim().equalsIgnoreCase("MAPSERVER")) {
 
-				System.out.println("Inside MAPSERVER");
+				LOG.debug("Inside MAPSERVER");
 
 				try {
 
@@ -859,7 +859,7 @@ public class Get2DImagesByPOI implements Processlet {
 					// "/cgi-bin/mapserv.exe?map="+webDir+"/" + serviceName +
 					// ".map";
 
-					System.out.println("WMS URL String - " + imageURLString);
+					LOG.debug("WMS URL String - {}",imageURLString);
 
 					URL url = new URL(imageURLString);
 
@@ -885,10 +885,10 @@ public class Get2DImagesByPOI implements Processlet {
 					dataModel.setTopLeft(dataModel.getMinX() + ", "
 							+ dataModel.getMaxY());
 
-					System.out.println("minX is - " + dataModel.getMinX());
-					System.out.println("maxX is - " + dataModel.getMaxX());
-					System.out.println("minY is - " + dataModel.getMinY());
-					System.out.println("maxY is - " + dataModel.getMaxY());
+					LOG.debug("minX is - {}",dataModel.getMinX());
+					LOG.debug("maxX is - {}", dataModel.getMaxX());
+					LOG.debug("minY is - {}", dataModel.getMinY());
+					LOG.debug("maxY is - {}", dataModel.getMaxY());
 
 				} catch (ServiceException e) {
 
@@ -906,7 +906,7 @@ public class Get2DImagesByPOI implements Processlet {
 			e.printStackTrace();
 		}
 
-		System.out.println("End - getSimpleImageEnvelope");
+		LOG.debug("End - getSimpleImageEnvelope");
 
 		return dataModel;
 

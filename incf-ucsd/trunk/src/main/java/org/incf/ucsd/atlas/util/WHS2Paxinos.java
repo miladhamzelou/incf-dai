@@ -1,6 +1,12 @@
 package org.incf.ucsd.atlas.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class WHS2Paxinos {
+
+	private static final Logger LOG = LoggerFactory
+	.getLogger(WHS2Paxinos.class);
 
 	/**
 	 * @param args
@@ -94,7 +100,7 @@ public class WHS2Paxinos {
 
 		}
 
-		System.out.println("Transformed - " + w);
+		LOG.debug("Transformed - " + w);
 		return w;
 
 	}
