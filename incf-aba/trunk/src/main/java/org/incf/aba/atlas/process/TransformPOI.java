@@ -86,7 +86,7 @@ public class TransformPOI implements Processlet {
 			ABAServiceVO vo = new ABAServiceVO();
 
 			// parse dataInputs string
-			System.out.println(" Inside TransformPOI... ");
+			LOG.debug(" Inside TransformPOI... ");
 
 			URL processDefinitionUrl = this.getClass().getResource(
 					"/" + this.getClass().getSimpleName() + ".xml");
@@ -109,8 +109,8 @@ public class TransformPOI implements Processlet {
 			String fromSRSCode = transformationNameArray[0];
 			String toSRSCode = transformationNameArray[1].replace("_v1.0", "");
 
-			System.out.println(" Input SRS Name: " + fromSRSCode);
-			System.out.println(" Output SRS Name: " + toSRSCode);
+			LOG.debug(" Input SRS Name: {}" , fromSRSCode);
+			LOG.debug(" Output SRS Name: {}" , toSRSCode);
 
 			vo.setFromSRSCodeOne(fromSRSCode);
 			vo.setFromSRSCode(fromSRSCode);
@@ -119,21 +119,21 @@ public class TransformPOI implements Processlet {
 
 			// vo.setFilter(filter);
 
-			System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
-			System.out.println("To SRS Code: " + vo.getToSRSCodeOne());
-			// System.out.println("Filter: " + vo.getFilter());
+			LOG.debug("From SRS Code: {}" , vo.getFromSRSCodeOne());
+			LOG.debug("To SRS Code: {}" , vo.getToSRSCodeOne());
+			// LOG.debug("Filter: " + vo.getFilter());
 
 			vo.setOriginalCoordinateX(String.valueOf(x));
 			vo.setOriginalCoordinateY(String.valueOf(y));
 			vo.setOriginalCoordinateZ(String.valueOf(z));
 
-			System.out.println("X: " + vo.getOriginalCoordinateX());
-			System.out.println("Y: " + vo.getOriginalCoordinateY());
-			System.out.println("Z: " + vo.getOriginalCoordinateZ());
+			LOG.debug("X: {}" , vo.getOriginalCoordinateX());
+			LOG.debug("Y: {}" , vo.getOriginalCoordinateY());
+			LOG.debug("Z: {}" , vo.getOriginalCoordinateZ());
 
 			// text return for debugging
 			// Set<String> dataInputKeys = dataInputs.getKeys();
-			System.out.println("-2");
+			LOG.debug("-2");
 
 			// Start - Call the main method here
 			ABAUtil util = new ABAUtil();
@@ -183,8 +183,8 @@ public class TransformPOI implements Processlet {
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID2 = randomGenerator2.nextInt(100);
 			}
-			System.out.println("Random GML ID1: - " + randomGMLID1);
-			System.out.println("Random GML ID2: - " + randomGMLID2);
+			LOG.debug("Random GML ID1: - {}" , randomGMLID1);
+			LOG.debug("Random GML ID2: - {}" , randomGMLID2);
 
 			// vo.setUrlString(uri.toString());
 
@@ -267,10 +267,10 @@ public class TransformPOI implements Processlet {
 				for (int i = 0; i < errorList.size(); i++) {
 					XmlError error = (XmlError) errorList.get(i);
 
-					System.out.println("\n");
-					System.out.println("Message: " + error.getMessage() + "\n");
-					System.out.println("Location of invalid XML: "
-							+ error.getCursorLocation().xmlText() + "\n");
+					LOG.debug("\n");
+					LOG.debug("Message: {}" , error.getMessage() + "\n");
+					LOG.debug("Location of invalid XML: {}"
+							,error.getCursorLocation().xmlText() + "\n");
 				}
 			}
 

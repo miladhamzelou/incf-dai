@@ -16,6 +16,8 @@ import java.util.List;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * It reads the xml file containing generic name/value pairs and mantains these
@@ -37,6 +39,9 @@ public class ABAConfigurator {
 	/** Only public access to a single instance of this class */
 	public static final ABAConfigurator INSTANCE = new ABAConfigurator();
 
+	private static final Logger LOG = LoggerFactory
+	.getLogger(ABAConfigurator.class);
+
 	/**
 	 * holds the name/value propertg pairs
 	 * 
@@ -55,7 +60,7 @@ public class ABAConfigurator {
 		path = getClass().getResourceAsStream(
 		"/stage-aba-config-properties.xml");
 
-		System.out.println("Config Path is - " + path);
+		LOG.debug("Config Path is - {}" , path);
 		return path;
 
 	}
@@ -117,7 +122,7 @@ public class ABAConfigurator {
                 // add the property
                 propsH.put(name,value);
             }		
-			System.out.println("7");
+			LOG.debug("7");
 
 		} catch (Exception e) {
 			e.printStackTrace();

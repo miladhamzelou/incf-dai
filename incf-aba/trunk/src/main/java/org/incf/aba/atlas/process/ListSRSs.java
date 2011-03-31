@@ -109,10 +109,10 @@ public class ListSRSs implements Processlet {
 				for (int i = 0; i < errorList.size(); i++) {
 					XmlError error = (XmlError) errorList.get(i);
 
-					System.out.println("\n");
-					System.out.println("Message: " + error.getMessage() + "\n");
-					System.out.println("Location of invalid XML: "
-							+ error.getCursorLocation().xmlText() + "\n");
+					LOG.debug("\n");
+					LOG.debug("Message: {}" , error.getMessage() + "\n");
+					LOG.debug("Location of invalid XML: {}"
+							,error.getCursorLocation().xmlText() + "\n");
 				}
 			}
 

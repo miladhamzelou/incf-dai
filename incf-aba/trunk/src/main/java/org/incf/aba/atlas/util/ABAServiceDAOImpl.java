@@ -31,7 +31,7 @@ public class ABAServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from srs where srs_name in (" + srsName + ") " );
 
-		System.out.println("getSRSData - Query is - " + query.toString() );
+		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		ABAServiceVO vo = null;
@@ -95,7 +95,7 @@ public class ABAServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from srs where srs_name in ('" + srsName + "') " ); 
 
-		System.out.println("getSRSData - Query is - " + query.toString() );
+		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		ABAServiceVO vo = null;
@@ -159,7 +159,7 @@ public class ABAServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from orientation " );
 
-		System.out.println("getOrientation - Query is - " + query.toString() );
+		LOG.debug("getOrientation - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		ABAServiceVO vo = null;
@@ -198,7 +198,7 @@ public class ABAServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from slice where space_code = '"+vo.getSpaceCode()+"' " );
 
-		System.out.println("getSliceData - Query is - " + query.toString() );
+		LOG.debug("getSliceData - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		//ABAServiceVO vo = null;
@@ -243,7 +243,7 @@ public class ABAServiceDAOImpl {
 		.append(" from srs ") 
 		.append(" where srs_name = '"+srsName+"' "); 
 
-		System.out.println("Query is - " + query.toString() );
+		LOG.debug("Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 

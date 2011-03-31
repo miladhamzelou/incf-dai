@@ -333,7 +333,7 @@ public class GetGenesByPOI implements Processlet {
         
         //Call getTransformationChain method here...
         //ABAVoxel
-        System.out.println("1.1:" );
+        LOG.debug("1.1:" );
 
         tempX = ";x="+String.valueOf(x);
         tempY = ";y="+String.valueOf(y);
@@ -347,17 +347,17 @@ public class GetGenesByPOI implements Processlet {
 
         String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+fromSrsName+";outputSrsName="+toSrsName+";filter=NONE";
         String transformationChainURL = "http://"+hostName+portNumber+servicePath;
-        System.out.println("1.4: " + transformationChainURL);
+        LOG.debug("1.4: {}" , transformationChainURL);
 
         try { 
             
             XMLUtilities xmlUtilities = new XMLUtilities();
             transformedCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, tempX, tempY, tempZ);
     
-            System.out.println("2:" );
+            LOG.debug("2:" );
             //Start - exception handling
 /*          if (transformedCoordinatesString.startsWith("Error:")) {
-                System.out.println("********************ERROR*********************");
+                LOG.debug("********************ERROR*********************");
                 throw new OWSException( 
                         "Transformed Coordinates Error: ", transformedCoordinatesString);
             }

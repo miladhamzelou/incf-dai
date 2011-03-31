@@ -67,7 +67,7 @@ public class GetCorrelationMapByPOI implements Processlet {
 
 		try {
 
-			System.out.println(" Inside GetCorrelationMapByPOI... ");
+			LOG.debug(" Inside GetCorrelationMapByPOI... ");
 
 			ABAServiceVO vo = new ABAServiceVO();
 
@@ -92,8 +92,8 @@ public class GetCorrelationMapByPOI implements Processlet {
 			vo.setToSRSCode(agea);
 			vo.setFilter(filter);
 
-			System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
-			System.out.println("Filter: " + vo.getFilter());
+			LOG.debug("From SRS Code: {}" , vo.getFromSRSCodeOne());
+			LOG.debug("Filter: {}" , vo.getFilter());
 
 			// validate data inputs
 			vo.setOriginalCoordinateX(x);
@@ -210,8 +210,8 @@ public class GetCorrelationMapByPOI implements Processlet {
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID2 = randomGenerator2.nextInt(100);
 			}
-			System.out.println("Random GML ID1: - " + randomGMLID1);
-			System.out.println("Random GML ID2: - " + randomGMLID2);
+			LOG.debug("Random GML ID1: - {}" , randomGMLID1);
+			LOG.debug("Random GML ID2: - {}" , randomGMLID2);
 
 			// url = "http://" + hostName + portNumber + servicePath +
 			// "&DataInputs=" + dataInputsString;
@@ -269,10 +269,10 @@ public class GetCorrelationMapByPOI implements Processlet {
 				for (int i = 0; i < errorList.size(); i++) {
 					XmlError error = (XmlError) errorList.get(i);
 
-					System.out.println("\n");
-					System.out.println("Message: " + error.getMessage() + "\n");
-					System.out.println("Location of invalid XML: "
-							+ error.getCursorLocation().xmlText() + "\n");
+					LOG.debug("\n");
+					LOG.debug("Message: {}" , error.getMessage() + "\n");
+					LOG.debug("Location of invalid XML: {}"
+							, error.getCursorLocation().xmlText() + "\n");
 				}
 			}
 

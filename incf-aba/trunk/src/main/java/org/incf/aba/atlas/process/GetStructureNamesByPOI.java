@@ -70,7 +70,7 @@ public class GetStructureNamesByPOI implements Processlet {
 
 		try {
 
-			System.out.println(" Inside GetStructureNamesByPOI... ");
+			LOG.debug(" Inside GetStructureNamesByPOI... ");
 
 			URL processDefinitionUrl = this.getClass().getResource(
 					"/" + this.getClass().getSimpleName() + ".xml");
@@ -96,19 +96,19 @@ public class GetStructureNamesByPOI implements Processlet {
 			vo.setFilter(filter);
 			vo.setVocabulary(vocabulary);
 
-			System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
-			System.out.println("Filter: " + vo.getFilter());
+			LOG.debug("From SRS Code: {}" , vo.getFromSRSCodeOne());
+			LOG.debug("Filter: {}" , vo.getFilter());
 
 			vo.setOriginalCoordinateX(x);
 			vo.setOriginalCoordinateY(y);
 			vo.setOriginalCoordinateZ(z);
 
-			System.out.println("Coordinate X: " + vo.getOriginalCoordinateX());
+			LOG.debug("Coordinate X: {}" , vo.getOriginalCoordinateX());
 
 			// Start - Common code used for coordinate transformation
 			String transformedCoordinatesString = "";
 			// Convert the coordinates ABAVOXEL into PAXINOS
-			System.out.println("1:");
+			LOG.debug("1:");
 			if (vo.getFromSRSCode().equalsIgnoreCase(abaVoxel)) {
 				vo.setTransformedCoordinateX(vo.getOriginalCoordinateX());
 				vo.setTransformedCoordinateY(vo.getOriginalCoordinateY());
@@ -116,7 +116,7 @@ public class GetStructureNamesByPOI implements Processlet {
 			} else {
 				// Call getTransformationChain method here...
 				// ABAVoxel
-				System.out.println("1.1:");
+				LOG.debug("1.1:");
 
 				vo.setOriginalCoordinateX(";x=" + vo.getOriginalCoordinateX());
 				vo.setOriginalCoordinateY(";y=" + vo.getOriginalCoordinateY());
@@ -124,8 +124,8 @@ public class GetStructureNamesByPOI implements Processlet {
 				vo.setToSRSCode(abaVoxel);
 				vo.setToSRSCodeOne(abaVoxel);
 
-				System.out.println("1.2: " + vo.getOriginalCoordinateX());
-				System.out.println("1.3: " + vo.getOriginalCoordinateX());
+				LOG.debug("1.2: {}" , vo.getOriginalCoordinateX());
+				LOG.debug("1.3: {}" , vo.getOriginalCoordinateX());
 				String delimitor = config
 						.getValue("incf.deploy.port.delimitor");
 
@@ -144,7 +144,7 @@ public class GetStructureNamesByPOI implements Processlet {
 						+ vo.getToSRSCode() + ";filter=NONE";
 				String transformationChainURL = "http://" + hostName
 						+ portNumber + servicePath;
-				System.out.println("1.4: " + transformationChainURL);
+				LOG.debug("1.4: {}" , transformationChainURL);
 
 				XMLUtilities xmlUtilities = new XMLUtilities();
 				transformedCoordinatesString = xmlUtilities
@@ -153,7 +153,7 @@ public class GetStructureNamesByPOI implements Processlet {
 								.getOriginalCoordinateY(), vo
 								.getOriginalCoordinateZ());
 
-				System.out.println("2:");
+				LOG.debug("2:");
 				// Start - exception handling
 				if (transformedCoordinatesString.startsWith("Error:")) {
 					System.out
@@ -171,7 +171,7 @@ public class GetStructureNamesByPOI implements Processlet {
 			}
 			// End
 
-			System.out.println("3:");
+			LOG.debug("3:");
 			String structureName = "";
 			// Start - Call the main method here
 			ABAUtil util = new ABAUtil();
@@ -180,7 +180,7 @@ public class GetStructureNamesByPOI implements Processlet {
 				StringTokenizer tokens = new StringTokenizer(responseString);
 				while (tokens.hasMoreTokens()) {
 					structureName = tokens.nextToken();
-					System.out.println("Structure Name is - " + structureName);
+					LOG.debug("Structure Name is - {}" , structureName);
 				}
 
 				// Start - Exception Handling
@@ -215,7 +215,7 @@ public class GetStructureNamesByPOI implements Processlet {
 				StringTokenizer tokens = new StringTokenizer(responseString);
 				while (tokens.hasMoreTokens()) {
 					structureName = tokens.nextToken();
-					System.out.println("Structure Name is - " + structureName);
+					LOG.debug("Structure Name is - {}" , structureName);
 				}
 				// Start - Exception Handling
 				if (structureName == null || structureName.equals("")) {
@@ -241,7 +241,7 @@ public class GetStructureNamesByPOI implements Processlet {
 			}
 			// End
 
-			System.out.println("4:");
+			LOG.debug("4:");
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			java.util.Date date = new java.util.Date();
 			String currentTime = dateFormat.format(date);
@@ -282,7 +282,7 @@ public class GetStructureNamesByPOI implements Processlet {
 			 * 
 			 * Criteria criterias = query.addNewCriteria();
 			 * 
-			 * //Changes System.out.println("5:" );
+			 * //Changes LOG.debug("5:" );
 			 * 
 			 * InputStringType srsCriteria = (InputStringType)
 			 * criterias.addNewInput() .changeType(InputStringType.type);
@@ -344,7 +344,7 @@ public class GetStructureNamesByPOI implements Processlet {
 			ArrayList errorList = new ArrayList();
 			opt.setErrorListener(errorList);
 			boolean isValid = document.validate(opt);
-			System.out.println("6:");
+			LOG.debug("6:");
 
 			// get reader on document; reader --> writer
 			XMLStreamReader reader = document.newXMLStreamReader();
