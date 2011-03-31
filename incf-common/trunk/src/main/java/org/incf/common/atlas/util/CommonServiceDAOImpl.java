@@ -8,6 +8,9 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * @author Asif Memon
@@ -15,11 +18,13 @@ import java.util.ArrayList;
  */
 public class CommonServiceDAOImpl {
 
+	private static final Logger LOG = LoggerFactory.getLogger(CommonServiceDAOImpl.class);
+	
 	public String[] getCoordinateRangeForSRS( String srsName ) { 
 
 		BaseDAO dao = new BaseDAO();
 		String[] coordinatesRange = new String[6];
-		
+
 		try {
 
 		//Used for postgres connection
@@ -30,7 +35,7 @@ public class CommonServiceDAOImpl {
 		.append(" from srs ") 
 		.append(" where srs_name = '"+srsName+"' "); 
 
-		System.out.println("Query is - " + query.toString() );
+		LOG.debug("Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 

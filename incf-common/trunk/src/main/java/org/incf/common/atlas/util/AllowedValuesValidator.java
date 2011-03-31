@@ -262,10 +262,10 @@ Case 4: Optional Input, Any Value is Accepted, With a Default Value
 
 		
 		// debug
-		//System.out.println("\ndataInputKey      : " + dataInputKey);
-		//System.out.println("dataInputValue    : " + dataInputValue);
-		//System.out.println("defaultValue      : " + defaultValue);
-		//System.out.println("allowedValues size: " + allowedValues.size());
+		//LOG.debug("\ndataInputKey      : " + dataInputKey);
+		//LOG.debug("dataInputValue    : " + dataInputValue);
+		//LOG.debug("defaultValue      : " + defaultValue);
+		//LOG.debug("allowedValues size: " + allowedValues.size());
 
 		/*
 		Case 1: Required Input, Any Non-Null Value is Accepted 

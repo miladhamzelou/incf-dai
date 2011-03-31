@@ -11,6 +11,9 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * BaseDAO is an abstract class that provides connection methods
@@ -30,6 +33,9 @@ public class BaseDAO {
 
 
     DataSource dataSource = null;
+
+	private static final Logger LOG = LoggerFactory
+	.getLogger(BaseDAO.class);
 
 
 //---------------------------Protected Methods----------------------------------
@@ -79,7 +85,7 @@ public class BaseDAO {
     public Connection getStandAloneConnection()// please change public to protected
             throws Exception {
 
-    	System.out.println( "Start - getStandAloneConnection()");
+    	LOG.debug( "Start - getStandAloneConnection()");
         
     	Connection connection = null;
 
@@ -95,25 +101,25 @@ public class BaseDAO {
         String dbUser = "atlas-aba-db";
         String dbPassword = "aba4321";
 
-    	System.out.println( "driverClassName - "+driverClassName);
-    	System.out.println( "dbUrl - "+dbUrl);
-    	System.out.println( "dbUser - "+dbUser);
-    	System.out.println( "dbPassword - "+dbPassword);
+    	LOG.debug( "driverClassName - {}",driverClassName);
+    	LOG.debug( "dbUrl - {}",dbUrl);
+    	LOG.debug( "dbUser - {}",dbUser);
+    	LOG.debug( "dbPassword - {}",dbPassword);
 
         try {
         	Class.forName( driverClassName );
-        	System.out.println( "Start - getStandAloneConnection()");
+        	LOG.debug( "Start - getStandAloneConnection()");
             connection = 
             	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
-            System.out.println( "End - getStandAloneConnection()");
+            LOG.debug( "End - getStandAloneConnection()");
  
         } catch ( Exception e ) {
         	e.printStackTrace();
-        	System.out.println( "There is an error" + e.getClass() + e.getMessage());
+        	LOG.debug( "There is an error{}" , e.getClass() + e.getMessage());
             throw new Exception( e.getMessage() );
         }
 
-        System.out.println( "End - getStandAloneConnection()");
+        LOG.debug( "End - getStandAloneConnection()");
         return connection;
 
     }// end of getStandAloneConnection method
@@ -130,7 +136,7 @@ public class BaseDAO {
     public Connection getStandAloneConnectionForPostgres()// please change public to protected
             throws Exception {
 
-    	System.out.println( "Start - getStandAloneConnectionForPostgres()");
+    	LOG.debug( "Start - getStandAloneConnectionForPostgres()");
         
     	Connection connection = null;
 
@@ -146,24 +152,24 @@ public class BaseDAO {
         String dbUser = "atlas-aba-db";
         String dbPassword = "aba4321";
 
-        System.out.println( "driverClassName - "+driverClassName);
-        System.out.println( "dbUrl - "+dbUrl);
-        System.out.println( "dbUser - "+dbUser);
-        System.out.println( "dbPassword - "+dbPassword);
+        LOG.debug( "driverClassName - {}",driverClassName);
+        LOG.debug( "dbUrl - {}",dbUrl);
+        LOG.debug( "dbUser - {}",dbUser);
+        LOG.debug( "dbPassword - {}",dbPassword);
  
         try {
         	Class.forName( driverClassName );
-        	System.out.println( "Start - getStandAloneConnectionForPostgres()");
+        	LOG.debug( "Start - getStandAloneConnectionForPostgres()");
             connection = 
             	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
-            System.out.println( "End - getStandAloneConnectionForPostgres()");
+            LOG.debug( "End - getStandAloneConnectionForPostgres()");
  
         } catch ( Exception e ) {
-        	System.out.println( "There is an error" + e.getClass() + e.getMessage());
+        	LOG.debug( "There is an error {}" , e.getClass() + e.getMessage());
             throw new Exception( e.getMessage() );
         }
 
-        System.out.println( "End - getStandAloneConnectionForPostgres()");
+        LOG.debug( "End - getStandAloneConnectionForPostgres()");
         return connection;
 
     }// end of getStandAloneConnection method

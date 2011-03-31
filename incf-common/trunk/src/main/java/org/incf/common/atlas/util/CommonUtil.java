@@ -1,7 +1,12 @@
 package org.incf.common.atlas.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class CommonUtil {
 
+	private static final Logger LOG = LoggerFactory.getLogger(CommonServiceDAOImpl.class);
+	
 	public String outOfBoundException(double x, double y, double z, String srsName) {
 
 		String responseString = "";
@@ -25,7 +30,7 @@ public class CommonUtil {
 				responseString = "SUCCESS";
 			}
 
-			System.out.println("Response for Out of Bound Exception is - " + responseString);
+			LOG.debug("Response for Out of Bound Exception is - {}" , responseString);
 
 		} catch (Exception e) {
 			e.printStackTrace();
