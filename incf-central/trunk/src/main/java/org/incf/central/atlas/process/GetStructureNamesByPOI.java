@@ -74,7 +74,7 @@ public class GetStructureNamesByPOI implements Processlet {
 
 		try {
 
-			System.out.println(" Inside GetStructureNamesByPOI... ");
+			LOG.debug(" Inside GetStructureNamesByPOI... ");
 
 			URL processDefinitionUrl = this.getClass().getResource(
 					"/" + this.getClass().getSimpleName() + ".xml");
@@ -100,8 +100,8 @@ public class GetStructureNamesByPOI implements Processlet {
 			vo.setFilter(filter);
 			vo.setVocabulary(vocabulary);
 
-			System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
-			System.out.println("Filter: " + vo.getFilter());
+			LOG.debug("From SRS Code: {}" , vo.getFromSRSCodeOne());
+			LOG.debug("Filter: {}" , vo.getFilter());
 
 			vo.setOriginalCoordinateX(x);
 			vo.setOriginalCoordinateY(y);
@@ -117,7 +117,7 @@ public class GetStructureNamesByPOI implements Processlet {
 			portNumber = delimitor + portNumber;
 			// End - FIXME
 
-			System.out.println("Coordinate X: " + vo.getOriginalCoordinateX());
+			LOG.debug("Coordinate X: {}" , vo.getOriginalCoordinateX());
 
 			// Step 1 - Call GetProcessByIdentifier(identifier) - I am ignoring
 			// this method right now due to short of time
@@ -134,7 +134,7 @@ public class GetStructureNamesByPOI implements Processlet {
 					+ vo.getFromSRSCode() + ";x=" + vo.getOriginalCoordinateX()
 					+ ";y=" + vo.getOriginalCoordinateY() + ";z="
 					+ vo.getOriginalCoordinateZ() + ";vocabulary="+ ";filter=" + vo.getFilter();
-			System.out.println("ABA URL" + abaURL);
+			LOG.debug("ABA URL{}" , abaURL);
 
 			CentralServiceVO cvo = null;
 			completeStructureList = readXML.getStructureData(abaURL,
@@ -149,7 +149,7 @@ public class GetStructureNamesByPOI implements Processlet {
 					+ ";y=" + vo.getOriginalCoordinateY() + ";z="
 					+ vo.getOriginalCoordinateZ() + ";vocabulary="+ ";filter=NONE";
 
-			System.out.println("UCSD URL" + ucsdURL);
+			LOG.debug("UCSD URL{}" , ucsdURL);
 			cvo = null;
 			completeStructureList = readXML.getStructureData(ucsdURL,
 					completeStructureList, "UCSD", cvo);
@@ -163,7 +163,7 @@ public class GetStructureNamesByPOI implements Processlet {
 					+ ";y=" + vo.getOriginalCoordinateY() + ";z="
 					+ vo.getOriginalCoordinateZ() + ";vocabulary=NONE" + ";filter=NONE";
 
-			System.out.println("WHS URL" + whsURL);
+			LOG.debug("WHS URL{}" , whsURL);
 
 			cvo = null;
 			completeStructureList = readXML.getStructureData(whsURL,
@@ -246,8 +246,8 @@ public class GetStructureNamesByPOI implements Processlet {
 				
 				String structureDescription = "";
 				String codeSpace = "";
-				System.out.println("::::KEYVALUE:::::"+vo1.getSrsName());
-				System.out.println("::::Code:::::"+vo1.getStructureCode());
+				LOG.debug("::::KEYVALUE:::::{}",vo1.getSrsName());
+				LOG.debug("::::Code:::::{}",vo1.getStructureCode());
 				StringTokenizer tokens = new StringTokenizer(vo1.getSrsName(), "::");
 
 				while (tokens.hasMoreTokens()) {

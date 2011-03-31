@@ -107,7 +107,7 @@ public class Get2DImagesByPOI implements Processlet {
 			String tolerance = dataInputHandler.getValidatedStringValue(in,
 					"tolerance");
 
-			System.out.println("srsName Before ");
+			LOG.debug("srsName Before ");
 			// parse dataInputs string
 			vo.setFromSRSCodeOne(srsName);
 			vo.setFromSRSCode(srsName);
@@ -118,7 +118,7 @@ public class Get2DImagesByPOI implements Processlet {
 			vo.setFilter(filter);
 			vo.setTolerance(tolerance);
 
-			System.out.println("Filter Before " + filter);
+			LOG.debug("Filter Before {}" , filter);
 			filter = vo.getFilter();
 
 		    DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -135,9 +135,9 @@ public class Get2DImagesByPOI implements Processlet {
 		    for (int idx = 1; idx <= 10; ++idx){
 		      randomGMLID2 = randomGenerator2.nextInt(100);
 		    }
-		    System.out.println("Random GML ID1: - " + randomGMLID1);
-		    System.out.println("Random GML ID2: - " + randomGMLID2);
-		    System.out.println("SRS Code: - " + vo.getFromSRSCode());
+		    LOG.debug("Random GML ID1: - {}" , randomGMLID1);
+		    LOG.debug("Random GML ID2: - {}" , randomGMLID2);
+		    LOG.debug("SRS Code: - {}" , vo.getFromSRSCode());
 
 			// Start - FIXME - Uncomment below two lines and comment the
 			// other three lines
@@ -199,11 +199,11 @@ public class Get2DImagesByPOI implements Processlet {
 	        ReadXML readXML = new ReadXML();
 
 	        // 2a - Call the method from ABA Hub
-		    System.out.println("Before calling the url - SRS Code: - " + vo.getFromSRSCode());
+		    LOG.debug("Before calling the url - SRS Code: - {}" , vo.getFromSRSCode());
 
 			//images.setHubCode("");
 	        String ucsdURL = "http://"+hostName+portNumber+"/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName="+vo.getFromSRSCode()+";x="+vo.getOriginalCoordinateX()+";y="+vo.getOriginalCoordinateY()+";z="+vo.getOriginalCoordinateZ()+";filter="+vo.getFilter()+";tolerance="+vo.getTolerance();
-		    System.out.println("UCSD url - " + ucsdURL);
+		    LOG.debug("UCSD url - {}" , ucsdURL);
 	        complete2DImageList = readXML.get2DImageDataList(ucsdURL);
 
 	        Iterator iterator1 = complete2DImageList.iterator();
@@ -213,7 +213,7 @@ public class Get2DImagesByPOI implements Processlet {
 			CentralServiceVO vo1 = new CentralServiceVO();
 			while (iterator1.hasNext()) {
 				count++;
-		        System.out.println("Inside While Loop - " + count);
+		        LOG.debug("Inside While Loop - {}" , count);
 				vo1 = (CentralServiceVO)iterator1.next();
 
 				wmsURL = vo1.getWms();
@@ -237,7 +237,7 @@ public class Get2DImagesByPOI implements Processlet {
 				Corner corner1 = corners.addNewCorner();
 				corner1.setPosition(PositionEnum.TOPLEFT);
 
-				System.out.println("1st corner - filter - " + filter);
+				LOG.debug("1st corner - filter - {}" , filter);
 				corner1.addNewPoint().addNewPos().setStringValue(vo1.getTopLeft());
 				corner1.getPoint().setId("image" + count + "topleft");
 				corner1.getPoint().getPos().setSrsName(srsName);
@@ -245,7 +245,7 @@ public class Get2DImagesByPOI implements Processlet {
 				Corner corner2 = corners.addNewCorner();
 				corner2.setPosition(PositionEnum.BOTTOMLEFT);
 
-				System.out.println("2nd corner - filter - " + filter);
+				LOG.debug("2nd corner - filter - {}" , filter);
 				corner2.addNewPoint().addNewPos().setStringValue(vo1.getBottomLeft());
 				corner2.getPoint().getPos().setSrsName(srsName);
 				corner2.getPoint().setId("image" + count + "bottomleft");
@@ -253,7 +253,7 @@ public class Get2DImagesByPOI implements Processlet {
 				Corner corner3 = corners.addNewCorner();
 				corner3.setPosition(PositionEnum.TOPRIGHT);
  
-				System.out.println("3rd corner - filter - " + filter);
+				LOG.debug("3rd corner - filter - {}" , filter);
 				corner3.addNewPoint().addNewPos().setStringValue(vo1.getTopRight());
 				corner3.getPoint().getPos().setSrsName(srsName);
 				corner3.getPoint().setId("image" + count + "topright");
@@ -261,7 +261,7 @@ public class Get2DImagesByPOI implements Processlet {
 				Corner corner4 = corners.addNewCorner();
 				corner4.setPosition(PositionEnum.BOTTOMRIGHT);
 
-				System.out.println("4th corner - filter - " + filter);
+				LOG.debug("4th corner - filter - {}" , filter);
 				corner4.addNewPoint().addNewPos().setStringValue(vo1.getBottomRight());
 				corner4.getPoint().getPos().setSrsName(srsName);
 				corner4.getPoint().setId("image" + count + "bottomright");
@@ -269,17 +269,17 @@ public class Get2DImagesByPOI implements Processlet {
 
 			complete2DImageList = new ArrayList();
 	        String abaURL = "http://"+hostName+portNumber+"/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName="+vo.getFromSRSCode()+";x="+vo.getOriginalCoordinateX()+";y="+vo.getOriginalCoordinateY()+";z="+vo.getOriginalCoordinateZ()+";filter="+vo.getFilter();
-		    System.out.println("ABA URL- " + abaURL);
+		    LOG.debug("ABA URL- {}" , abaURL);
 	        complete2DImageList = readXML.get2DImageDataList(abaURL);
 
-	        System.out.println("List size in central is - " + complete2DImageList.size());
+	        LOG.debug("List size in central is - {}" , complete2DImageList.size());
 	        Iterator iterator = complete2DImageList.iterator();
 			images = imagesRes.addNewImage2Dcollection();
 			images.setHubCode("ABA");
 
 			while (iterator.hasNext()) {
 				count++;
-		        System.out.println("Inside While Loop - " + count);
+		        LOG.debug("Inside While Loop - {}" , count);
 				vo = (CentralServiceVO)iterator.next();
 
 				wmsURL = vo.getWms();
@@ -303,7 +303,7 @@ public class Get2DImagesByPOI implements Processlet {
 				Corner corner1 = corners.addNewCorner();
 				corner1.setPosition(PositionEnum.TOPLEFT);
 
-				System.out.println("1st corner - filter - " + filter);
+				LOG.debug("1st corner - filter - {}" , filter);
 				corner1.addNewPoint().addNewPos().setStringValue(vo.getTopLeft());
 				corner1.getPoint().setId("image" + count + "topleft");
 				corner1.getPoint().getPos().setSrsName(srsName);
@@ -311,7 +311,7 @@ public class Get2DImagesByPOI implements Processlet {
 				Corner corner2 = corners.addNewCorner();
 				corner2.setPosition(PositionEnum.BOTTOMLEFT);
 
-				System.out.println("2nd corner - filter - " + filter);
+				LOG.debug("2nd corner - filter - {}" , filter);
 				corner2.addNewPoint().addNewPos().setStringValue(vo.getBottomLeft());
 				corner2.getPoint().getPos().setSrsName(srsName);
 				corner2.getPoint().setId("image" + count + "bottomleft");
@@ -319,7 +319,7 @@ public class Get2DImagesByPOI implements Processlet {
 				Corner corner3 = corners.addNewCorner();
 				corner3.setPosition(PositionEnum.TOPRIGHT);
  
-				System.out.println("3rd corner - filter - " + filter);
+				LOG.debug("3rd corner - filter - {}" , filter);
 				corner3.addNewPoint().addNewPos().setStringValue(vo.getTopRight());
 				corner3.getPoint().getPos().setSrsName(srsName);
 				corner3.getPoint().setId("image" + count + "topright");
@@ -327,7 +327,7 @@ public class Get2DImagesByPOI implements Processlet {
 				Corner corner4 = corners.addNewCorner();
 				corner4.setPosition(PositionEnum.BOTTOMRIGHT);
 
-				System.out.println("4th corner - filter - " + filter);
+				LOG.debug("4th corner - filter - {}" , filter);
 				corner4.addNewPoint().addNewPos().setStringValue(vo.getBottomRight());
 				corner4.getPoint().getPos().setSrsName(srsName);
 				corner4.getPoint().setId("image" + count + "bottomright");

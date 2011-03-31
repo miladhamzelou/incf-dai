@@ -20,6 +20,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.jdom.JDOMException;
 import org.jdom.Namespace;
 import org.jdom.input.SAXBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
@@ -30,6 +32,9 @@ import org.w3c.dom.NodeList;
 
 public class ReadXML {
 
+	private static final Logger LOG = LoggerFactory
+	.getLogger(ReadXML.class);
+
 	public static void main ( String [] s ) {
 	
 		ReadXML readXML = new ReadXML();
@@ -38,7 +43,7 @@ public class ReadXML {
 
 			//Step 1 - read xml response string
 			//String xmlString = readXML.convertFromURLToString("http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:Sagittal;tolerance=3");
-			//System.out.println("XML String is - " + xmlString);
+			//LOG.debug("XML String is - " + xmlString);
 
 /*			
 			//Step 2 - Create a xml document from the string 
@@ -48,7 +53,7 @@ public class ReadXML {
 			String [] elementValues = readXML.getStringValuesForXMLTag(xmlElement, "ows:Identifier");
 
 			for (int i = 0; i < elementValues.length; i++) {
-				System.out.println("Element Value is - " + elementValues[i]);
+				LOG.debug("Element Value is - " + elementValues[i]);
 			}
 */
 
@@ -71,13 +76,13 @@ public class ReadXML {
 			list = readXML.getStructureData(xmlString, list, "WHS", cvo);
 			//list = readXML.get2DImageDataList(xmlString);
 			//list = readXML.getGenesDataList(xmlString, list);
-			System.out.println("*****************List = "+list.size());
+			LOG.debug("*****************List = {}",list.size());
 			CentralServiceVO vo1 = null;
 			Iterator iterator = list.iterator();
 			while (iterator.hasNext()) {
 				vo1 = (CentralServiceVO)iterator.next();
-				System.out.println(vo1.getStructureCode());
-				System.out.println(vo1.getSrsName());
+				LOG.debug(vo1.getStructureCode());
+				LOG.debug(vo1.getSrsName());
 			}			
 			
 			
@@ -87,12 +92,12 @@ public class ReadXML {
 				
 				vo = (CentralServiceVO)iterator.next();
 				if (vo.getFlag().equals("GENE") ){
-					System.out.println("Inside Gene Symbol" + z++ +" Gene: "+ vo.getGeneSymbol());
+					LOG.debug("Inside Gene Symbol{}" , z++ +" Gene: "+ vo.getGeneSymbol());
 				} else if (vo.getFlag().equals("EXPRESSIONLEVEL") ){
-					System.out.println("Inside EXPRESSION " + z++ +" GenExpressionLevel: "+ vo.getExpressionLevelGeneSymbol());
+					LOG.debug("Inside EXPRESSION {}" , z++ +" GenExpressionLevel: "+ vo.getExpressionLevelGeneSymbol());
 				}
-				//System.out.println("*****************URL = "+vo.getWms());
-				//System.out.println("*****************TFW Values = "+vo.getTfwValues());
+				//LOG.debug("*****************URL = "+vo.getWms());
+				//LOG.debug("*****************TFW Values = "+vo.getTfwValues());
 			}
 
 
@@ -115,8 +120,8 @@ public class ReadXML {
 			while (iterator.hasNext()) {
 				keyValue = (KeyValueBean)iterator.next();
 				
-				System.out.println("Name = "+keyValue.getKey());
-				System.out.println("Description = "+keyValue.getValue());
+				LOG.debug("Name = "+keyValue.getKey());
+				LOG.debug("Description = "+keyValue.getValue());
 			}
 */			
 		} catch (Exception e) {
@@ -134,19 +139,19 @@ public class ReadXML {
 
 			ReadXML readXML = new ReadXML();
 			
-			System.out.println("************************URLString is******************* - " + urlString);
+			LOG.debug("************************URLString is******************* - {}" , urlString);
 			String xmlString = readXML.convertFromURLToString(urlString); 
 			
-			System.out.println("XMLString is - " + xmlString);
+			LOG.debug("XMLString is - {}" , xmlString);
 			list = readXML.getImageData(xmlString, list);
-			System.out.println("List Size is - " + list.size());
+			LOG.debug("List Size is - {}" , list.size());
 			
 			Iterator iterator = list.iterator();
 /*			CentralServiceVO vo = null;
 			while (iterator.hasNext()) {
 				vo = (CentralServiceVO)iterator.next();
-				//System.out.println("URL = "+vo.getWms());
-				//System.out.println("TFW Values = "+vo.getTfwValues());
+				//LOG.debug("URL = "+vo.getWms());
+				//LOG.debug("TFW Values = "+vo.getTfwValues());
 			}
 */
 		} catch (Exception e) {
@@ -164,20 +169,20 @@ public class ReadXML {
 
 			ReadXML readXML = new ReadXML();
 			
-			System.out.println("************************URLString is******************* - " + urlString);
+			LOG.debug("************************URLString is******************* - {}" , urlString);
 			String xmlString = readXML.convertFromURLToString(urlString); 
 			
-			System.out.println("XMLString is - " + xmlString);
+			LOG.debug("XMLString is - {}" , xmlString);
 			//list = readXML.getImageData(xmlString);
 			list = readXML.getGenesData(xmlString);
-			//System.out.println("List Size is - " + list.size());
+			//LOG.debug("List Size is - " + list.size());
 
 			Iterator iterator = list.iterator();
 /*			CentralServiceVO vo = null;
 			while (iterator.hasNext()) {
 				vo = (CentralServiceVO)iterator.next();
-				//System.out.println("URL = "+vo.getWms());
-				//System.out.println("TFW Values = "+vo.getTfwValues());
+				//LOG.debug("URL = "+vo.getWms());
+				//LOG.debug("TFW Values = "+vo.getTfwValues());
 			}
 */
 		} catch (Exception e) {
@@ -196,19 +201,19 @@ public class ReadXML {
 		
 		try {
 
-			//System.out.println("1");
+			//LOG.debug("1");
 			ReadXML readXML = new ReadXML();
-			//System.out.println("2");
+			//LOG.debug("2");
 			
 			String xmlString = readXML.convertFromURLToString(urlString); 
-			//System.out.println("3");
+			//LOG.debug("3");
 
 			xmlElement = readXML.getDocumentElementFromString(xmlString);
-			//System.out.println("9");
+			//LOG.debug("9");
 			cvo.setStructureCode(readXML.getStringValueForXMLTag(xmlElement, "Code"));
-			//System.out.println("10");
+			//LOG.debug("10");
 			cvo.setStructureDescription(readXML.getStringValueForXMLTag(xmlElement, "Description")); 
-			//System.out.println("11");
+			//LOG.debug("11");
 
 			if (hubName.equalsIgnoreCase("aba")) {
 				cvo.setSrsName(cvo.getStructureDescription()+"::Mouse_ABAreference_1.0");
@@ -263,30 +268,30 @@ public class ReadXML {
  	public String convertFromURLToString(String stringURL) {
 
  		String responseString = "";
-		System.out.println("1" + stringURL);
+		LOG.debug("1{}", stringURL);
 		URL url = null;
 		URLConnection urlCon = null;
 		
  		try {
 			url = new URL(stringURL);
-			System.out.println("2");
+			LOG.debug("2");
 			urlCon = url.openConnection();
-			System.out.println("3");
+			LOG.debug("3");
 			urlCon.setUseCaches(false);
-			System.out.println("4");
+			LOG.debug("4");
 			BufferedReader in = new BufferedReader(new InputStreamReader(urlCon.getInputStream()));
-			System.out.println("5");
+			LOG.debug("5");
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				System.out.println("inputLine - "+inputLine);
+				LOG.debug("inputLine - {}",inputLine);
 				responseString = responseString + inputLine;
 			}
 			in.close();
 		} catch (MalformedURLException ex) {
-			System.out.println("^^^^ERROR1^^^^^");
+			LOG.debug("^^^^ERROR1^^^^^");
 			System.err.println(ex);
 	    } catch (IOException ex) {
-			System.out.println("^^^^ERROR2^^^^^");
+			LOG.debug("^^^^ERROR2^^^^^");
 			System.err.println(ex);
 			responseString = "transformation-error";
 			return responseString;
@@ -313,24 +318,24 @@ public class ReadXML {
 	public static Element getDocumentElementFromString(String arg)
 			throws ParserConfigurationException, SAXException, IOException {
 
-		System.out.println("1 - before: " +arg);
+		LOG.debug("1 - before: {}" ,arg);
 
 		String xml = arg.trim().replaceFirst("^([\\W]+)<","<");
 
 		DocumentBuilderFactory dbf;
-		System.out.println("2 - after: " + xml);
+		LOG.debug("2 - after: {}" , xml);
 		DocumentBuilder db;
-		System.out.println("3");
+		LOG.debug("3");
 		Document document;
-		System.out.println("4");
+		LOG.debug("4");
 		dbf = DocumentBuilderFactory.newInstance();
-		System.out.println("5");
+		LOG.debug("5");
 		db = dbf.newDocumentBuilder();
-		System.out.println("6");
+		LOG.debug("6");
 		document = db.parse(new InputSource(new StringReader(xml)));
-		System.out.println("7");
+		LOG.debug("7");
 		Element element = document.getDocumentElement();
-		System.out.println("8");
+		LOG.debug("8");
 		
 		db = null;
 		dbf = null;
@@ -397,7 +402,7 @@ public class ReadXML {
     		org.jdom.Element root = document.getRootElement();
     		//root.getChild("wps:ProcessOutputs").getChild("wps:Output").getChild("wps:Data").getChild("wps:ComplexData").getChild("ImagesResponse").getChild("Image2DCollection");
     		
-    		System.out.println("****Data****" + data);
+    		LOG.debug("****Data**** {}" , data);
     		
     		Namespace ns = Namespace.getNamespace("http://www.opengis.net/wps/1.0.0");
             //while (responseList.hasNext()) { 
@@ -412,7 +417,7 @@ public class ReadXML {
                     while (image2DIterator.hasNext()) { 
                     	z = z++;
                     	vo = new CentralServiceVO();
-                    	System.out.println("IMAGE-2DCOUNT: " + z);
+                    	LOG.debug("IMAGE-2DCOUNT: {}" , z);
                     	
                         org.jdom.Element image2DElement = (org.jdom.Element) image2DIterator.next();
 
@@ -422,16 +427,16 @@ public class ReadXML {
 	                    	org.jdom.Element column = (org.jdom.Element) columns.get(j);
 
 	                    	if ( column.getName().equalsIgnoreCase("imageposition")) {
-		                    	System.out.println("IMAGEPOSITION-COUNT: " + z);
-	                    		//System.out.println("IMAGEPOSITION: " + z);	
+		                    	LOG.debug("IMAGEPOSITION-COUNT: {}" , z);
+	                    		//LOG.debug("IMAGEPOSITION: " + z);	
 	                    		List imagePositionList = column.getChildren();
 
-		                        //System.out.println("ImagePosition List is - "+imagePositionList.size());
+		                        //LOG.debug("ImagePosition List is - "+imagePositionList.size());
 	    	                    for (int x = 0; x < imagePositionList.size(); x++) {
 
 	    	                    	org.jdom.Element imagePositionElements = (org.jdom.Element) imagePositionList.get(x);
 			                        if (imagePositionElements.getName().equalsIgnoreCase("ImagePlanePlacement") ) {
-			                        	//System.out.println("TFW in ImagePlanePlacement: " + imagePositionElements.getText()); 
+			                        	//LOG.debug("TFW in ImagePlanePlacement: " + imagePositionElements.getText()); 
 			                        	vo.setTfwValues(imagePositionElements.getText());
 			                        } 
 
@@ -440,61 +445,61 @@ public class ReadXML {
 				                        
 				                        //1st corner
 				                        org.jdom.Element corner = (org.jdom.Element) cornerList.get(0);
-		    	                    	//System.out.println("Corner::: "+corner.getAttributeValue("position"));
+		    	                    	//LOG.debug("Corner::: "+corner.getAttributeValue("position"));
 		    	                    	List pointsList = corner.getChildren();
 			    	                    for (int l = 0; l < pointsList.size(); l++) {
 			    	                    	org.jdom.Element point = (org.jdom.Element) pointsList.get(l);
-			    	                    	//System.out.println("position::: "+point.getChildren().size());
+			    	                    	//LOG.debug("position::: "+point.getChildren().size());
 			    	                    	List posList = point.getChildren();
 				    	                    for (int m = 0; m < posList.size(); m++) {
 				    	                    	org.jdom.Element pos = (org.jdom.Element) posList.get(m);
 				    	                    	vo.setTopLeft(pos.getText());
-				    	                    	//System.out.println("::Top Left::: "+vo.getTopLeft());
+				    	                    	//LOG.debug("::Top Left::: "+vo.getTopLeft());
 				    	                    }
 			    	                    }
 
 		                        	//2nd corner
 	    	                    	corner = (org.jdom.Element) cornerList.get(1);
-	    	                    	//System.out.println("Corner::: "+corner.getAttributeValue("position"));
+	    	                    	//LOG.debug("Corner::: "+corner.getAttributeValue("position"));
 	    	                    	pointsList = corner.getChildren();
 		    	                    for (int l = 0; l < pointsList.size(); l++) {
 		    	                    	org.jdom.Element point = (org.jdom.Element) pointsList.get(l);
-		    	                    	//System.out.println("position::: "+point.getChildren().size());
+		    	                    	//LOG.debug("position::: "+point.getChildren().size());
 		    	                    	List posList = point.getChildren();
 			    	                    for (int m = 0; m < posList.size(); m++) {
 			    	                    	org.jdom.Element pos = (org.jdom.Element) posList.get(m);
 			    	                    	vo.setBottomLeft(pos.getText());
-			    	                    	//System.out.println("::Bottom Left::: "+vo.getBottomLeft());
+			    	                    	//LOG.debug("::Bottom Left::: "+vo.getBottomLeft());
 			    	                    }
 		    	                    }
 	    	                    	
 		    	                    //3rd corner
 	    	                    	corner = (org.jdom.Element) cornerList.get(2);
-	    	                    	//System.out.println("Corner::: "+corner.getAttributeValue("position"));
+	    	                    	//LOG.debug("Corner::: "+corner.getAttributeValue("position"));
 	    	                    	pointsList = corner.getChildren();
 		    	                    for (int l = 0; l < pointsList.size(); l++) {
 		    	                    	org.jdom.Element point = (org.jdom.Element) pointsList.get(l);
-		    	                    	//System.out.println("position::: "+point.getChildren().size());
+		    	                    	//LOG.debug("position::: "+point.getChildren().size());
 		    	                    	List posList = point.getChildren();
 			    	                    for (int m = 0; m < posList.size(); m++) {
 			    	                    	org.jdom.Element pos = (org.jdom.Element) posList.get(m);
 			    	                    	vo.setTopRight(pos.getText());
-			    	                    	//System.out.println("::Top Right::: "+vo.getTopRight());
+			    	                    	//LOG.debug("::Top Right::: "+vo.getTopRight());
 			    	                    }
 		    	                    }
 
 		    	                    //4th corner
 	    	                    	corner = (org.jdom.Element) cornerList.get(3);
-	    	                    	//System.out.println("Corner::: "+corner.getAttributeValue("position"));
+	    	                    	//LOG.debug("Corner::: "+corner.getAttributeValue("position"));
 	    	                    	pointsList = corner.getChildren();
 		    	                    for (int l = 0; l < pointsList.size(); l++) {
 		    	                    	org.jdom.Element point = (org.jdom.Element) pointsList.get(l);
-		    	                    	//System.out.println("position::: "+point.getChildren().size());
+		    	                    	//LOG.debug("position::: "+point.getChildren().size());
 		    	                    	List posList = point.getChildren();
 			    	                    for (int m = 0; m < posList.size(); m++) {
 			    	                    	org.jdom.Element pos = (org.jdom.Element) posList.get(m);
 			    	                    	vo.setBottomRight(pos.getText());
-			    	                    	//System.out.println("::Bottom Right::: "+vo.getBottomRight());
+			    	                    	//LOG.debug("::Bottom Right::: "+vo.getBottomRight());
 					                    	if (!vo.getBottomRight().equals("")) {
 					                    		vo.setFlag("UCSD");
 					                    	} else {
@@ -512,16 +517,16 @@ public class ReadXML {
 	                    	}
 
                     } else if ( column.getName().equalsIgnoreCase("imagesource")) {
-	                    		System.out.println("IMAGESOURCE-COUNT- " + z + column.getText());
+	                    		LOG.debug("IMAGESOURCE-COUNT- " + z + column.getText());
 		                    	vo.setSrsName(column.getAttribute("srsName").getValue());
 		                        vo.setWms(column.getText());
-		                        //System.out.println("WMS - " + vo.getWms());
+		                        //LOG.debug("WMS - " + vo.getWms());
 	                }	                        
 
 	                    }
                     	list.add(vo);
                     }
-                    System.out.println("*** LIST IS: *** " +list.size());
+                    LOG.debug("*** LIST IS: *** {}" ,list.size());
                 }
             //}
 
@@ -564,15 +569,15 @@ public class ReadXML {
                     	
                     	z++;
                     	
-                    	System.out.println("********COUNT*********" +z);
+                    	LOG.debug("********COUNT********* {}" ,z);
                     	
                     	vo = new CentralServiceVO();
-                    	//System.out.println("GENE-COUNT: " + z);
+                    	//LOG.debug("GENE-COUNT: " + z);
 
                         org.jdom.Element geneElement = (org.jdom.Element) genesByPOIIterator.next();
-                        System.out.println("***GENE NAME***"+geneElement);
+                        LOG.debug("***GENE NAME***{}",geneElement);
                         if (geneElement.getName().equalsIgnoreCase("Gene")) {
-                            System.out.println("***Inside Gene Element***");
+                            LOG.debug("***Inside Gene Element***");
                         
                             vo.setFlag("GENE");
                             vo.setGeneName(geneElement.getChild("Name").getText());
@@ -580,37 +585,37 @@ public class ReadXML {
 	                        vo.setGeneOrganism(geneElement.getChild("Organism").getText());
 	                        
 	                        
-	                        System.out.println("Symbol: " + vo.getGeneSymbol());
-	                        System.out.println("Name: " + vo.getGeneName());
-	                        System.out.println("Organism: " + vo.getGeneOrganism());
+	                        LOG.debug("Symbol: {}" , vo.getGeneSymbol());
+	                        LOG.debug("Name: {}" , vo.getGeneName());
+	                        LOG.debug("Organism: {}" , vo.getGeneOrganism());
 
 	                        //for (int i = 0; i < geneElement.getChildren().size(); i++ ) {
 		                        vo.setGenePrefix(geneElement.getChild("MarkerAccessionId").getChild("Prefix").getText());
 		                        vo.setGeneIdentifier(geneElement.getChild("MarkerAccessionId").getChild("Identifier").getText());
 		                        vo.setGeneFullIdentifier(geneElement.getChild("MarkerAccessionId").getChild("FullIdentifier").getText());
 
-	                        	System.out.println("***Prefix***" + vo.getGenePrefix());
-	                        	System.out.println("***Identifier***" + vo.getGeneIdentifier());
-	                        	System.out.println("***FullIdentifier***" + vo.getGeneFullIdentifier());
+	                        	LOG.debug("***Prefix*** {}" , vo.getGenePrefix());
+	                        	LOG.debug("***Identifier*** {}" , vo.getGeneIdentifier());
+	                        	LOG.debug("***FullIdentifier*** {}" , vo.getGeneFullIdentifier());
 	                        //}
 
                         } else if (geneElement.getName().equalsIgnoreCase("ExpressionLevel")) {
-                            System.out.println("***Inside ExpressionLevel Element***");
+                            LOG.debug("***Inside ExpressionLevel Element***");
                         
                             vo.setFlag("EXPRESSIONLEVEL");
                             vo.setExpressionLevelGeneSymbol(geneElement.getChild("GeneSymbol").getText());
 	                        vo.setExpressionLevelCodeSpace(geneElement.getChild("Level").getAttributeValue("codeSpace"));
 	                        vo.setExpressionLevelValue(geneElement.getChild("Level").getText());
 	                        
-	                        System.out.println("ExpressionLevelGeneSymbol: " + vo.getExpressionLevelGeneSymbol());
-	                        System.out.println("ExpressionLevelCodeSpace: " + vo.getExpressionLevelCodeSpace());
-	                        System.out.println("ExpressionLevelValue: " + vo.getExpressionLevelValue());
+	                        LOG.debug("ExpressionLevelGeneSymbol: {}" , vo.getExpressionLevelGeneSymbol());
+	                        LOG.debug("ExpressionLevelCodeSpace: {}" , vo.getExpressionLevelCodeSpace());
+	                        LOG.debug("ExpressionLevelValue:{} " , vo.getExpressionLevelValue());
 
                         }
 
                         list.add(vo);
                     }
-                   System.out.println("*** LIST IS: *** " +list.size());
+                   LOG.debug("*** LIST IS: *** {}" ,list.size());
                 }
 
     	} catch (JDOMException e) {

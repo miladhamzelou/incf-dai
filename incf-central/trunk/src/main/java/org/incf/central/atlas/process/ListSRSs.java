@@ -110,10 +110,10 @@ public class ListSRSs implements Processlet {
 				for (int i = 0; i < errorList.size(); i++) {
 					XmlError error = (XmlError) errorList.get(i);
 
-					System.out.println("\n");
-					System.out.println("Message: " + error.getMessage() + "\n");
-					System.out.println("Location of invalid XML: "
-							+ error.getCursorLocation().xmlText() + "\n");
+					LOG.debug("\n");
+					LOG.debug("Message: {}" , error.getMessage() + "\n");
+					LOG.debug("Location of invalid XML: {}"
+							, error.getCursorLocation().xmlText() + "\n");
 				}
 			}
 
@@ -193,11 +193,11 @@ public class ListSRSs implements Processlet {
 						.println("**************************Count is********************* "
 								+ list.size());
 				String tempSrsName = vo.getSrsName(); 
-				System.out.println("VO SRSName:" + vo.getSrsName());
-				System.out.println("temp SRSName:" + tempSrsName);
+				LOG.debug("VO SRSName: {}" , vo.getSrsName());
+				LOG.debug("temp SRSName: {}" , tempSrsName);
 				if (vo.getSrsName().equals(tempSrsName)) {
 					coll1 = rootDoc.addNewSRSCollection();
-					System.out.println("Different SRS Name for ListSRS");
+					LOG.debug("Different SRS Name for ListSRS");
 					if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") ) {  
 						coll1.setHubCode(vo.getSrsName().replace("Mouse_", "").replaceAll("_0.9", ""));
 					} else { 

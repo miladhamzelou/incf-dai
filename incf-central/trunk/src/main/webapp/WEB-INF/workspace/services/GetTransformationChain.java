@@ -67,7 +67,7 @@ public class GetTransformationChain implements Processlet {
     	
 		try { 
 
-    		System.out.println(" Inside GetTransformation");
+    		LOG.debug(" Inside GetTransformation");
 
     		ABAServiceVO vo = new ABAServiceVO();
 
@@ -82,7 +82,7 @@ public class GetTransformationChain implements Processlet {
     		// collect input values
     		//String transformationCode = ((LiteralInput) in.getParameter("transformationCode")).getValue();
     		if (in != null){
-        		System.out.println(" Inside parameter value... ");
+        		LOG.debug(" Inside parameter value... ");
         		inputSrsName = Util.getStringInputValue(in, "inputSrsName");
         		outputSrsName = Util.getStringInputValue(in, "outputSrsName");
         		filter = Util.getStringInputValue(in, "filter");
@@ -93,9 +93,9 @@ public class GetTransformationChain implements Processlet {
     		}
 */
 			//transformationCode = ((LiteralInput) in.getParameter("transformationCode")).getValue();
-    		System.out.println("Before the check condition");
+    		LOG.debug("Before the check condition");
 			if ( inputSrsName.equals("") || inputSrsName == null ) { 
-	        	System.out.println("Inside Empty DataInputString.");
+	        	LOG.debug("Inside Empty DataInputString.");
 	        	vo.setFromSRSCodeOne("all");
 		        vo.setFromSRSCode("all");
 		        vo.setToSRSCodeOne("all");
@@ -108,7 +108,7 @@ public class GetTransformationChain implements Processlet {
 		        vo.setToSRSCode(outputSrsName);
 		        vo.setFilter(filter);
 	        }
-    		System.out.println("After the check condition");
+    		LOG.debug("After the check condition");
 
 /*			String[] transformationNameArray;
 			String delimiter = "_To_";
@@ -116,8 +116,8 @@ public class GetTransformationChain implements Processlet {
 			String fromSRSCode = transformationNameArray[0];
 			String toSRSCode = transformationNameArray[1].replace("_v1.0", "");
 
-			System.out.println(" Input SRS Name: " + fromSRSCode);
-			System.out.println(" Output SRS Name: " + toSRSCode);
+			LOG.debug(" Input SRS Name: " + fromSRSCode);
+			LOG.debug(" Output SRS Name: " + toSRSCode);
 */
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         java.util.Date date = new java.util.Date();

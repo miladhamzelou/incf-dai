@@ -41,6 +41,8 @@ import org.incf.atlas.waxml.generated.CoordinateTransformationChainResponseType.
 import org.incf.atlas.waxml.generated.ListTransformationsResponseType.TransformationList;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -49,6 +51,9 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 public final class XMLUtilities {
+
+	private static final Logger LOG = LoggerFactory
+	.getLogger(XMLUtilities.class);
 
 	/**
      * Print an XML string in "pretty" format to an output stream.
@@ -155,7 +160,7 @@ public final class XMLUtilities {
 		String emap = config.getValue("srsname.emap.10");
 		String paxinos = config.getValue("srsname.paxinos.10");
 
-		System.out.println("transformationChainURL String - " + transformationChainURL);
+		LOG.debug("transformationChainURL String - {}" , transformationChainURL);
 
 		try { 
 
@@ -182,9 +187,9 @@ public final class XMLUtilities {
 
 				//resultURL = elementValue[i].replace("&amp;", "&").replace(";x=", x).replace(";y=", y).replace(";z=", z).replace(";filter=", filter).replace(abaReference, abareference).replace("mouse_abavoxel_1.0", abavoxel).replace("mouse_agea_1.0", agea).replace("mouse_whs_1.0", whs).replace("mouse_paxinos_1.0", paxinos).replace("mouse_emap-t26_1.0", emap);
 
-				System.out.println("Element Value - " + i + ": " + resultURL);
+				LOG.debug("Element Value - {}" , i + ": {}" , resultURL);
 				resultURLReturnString = util.convertFromURLToString(resultURL);
-				System.out.println("1" + resultURLReturnString);
+				LOG.debug("1 {}" , resultURLReturnString);
 
 				if (resultURLReturnString.equalsIgnoreCase("transformation-error") ) {
 					resultURLReturnElementValue = "Error: Please check the coordinates in the chain url - " + resultURL;
@@ -205,7 +210,7 @@ public final class XMLUtilities {
 
 			responseString = responseString.replace(";x=", "").replace(";y=", "").replace(";z=", "");
 			//responseString = x + ", " + y + ", " + z;
-			System.out.println("after responseString - " + responseString);
+			LOG.debug("after responseString - {}" , responseString);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -226,14 +231,14 @@ public final class XMLUtilities {
 			BufferedReader in = new BufferedReader(new InputStreamReader(urlCon.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				System.out.println("inputLine - "+inputLine);
+				LOG.debug("inputLine - {}",inputLine);
 				responseString = responseString + inputLine;
 			}
 		} catch (MalformedURLException ex) {
-			System.out.println("^^^^ERROR1^^^^^");
+			LOG.debug("^^^^ERROR1^^^^^");
 			System.err.println(ex);
 	    } catch (IOException ex) {
-			System.out.println("^^^^ERROR2^^^^^");
+			LOG.debug("^^^^ERROR2^^^^^");
 			System.err.println(ex);
 			responseString = "transformation-error";
 			return responseString;

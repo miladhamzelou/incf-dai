@@ -9,6 +9,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import org.incf.common.atlas.util.BaseDAO;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -27,6 +29,9 @@ public class CentralServiceDAOImpl {
 	
 	private CentralConfigurator configurator = CentralConfigurator.INSTANCE;
 
+	private static final Logger LOG = LoggerFactory
+	.getLogger(CentralServiceDAOImpl.class);
+
 	public ArrayList getSRSsData() {
 		
 		ArrayList list = new ArrayList();
@@ -41,7 +46,7 @@ public class CentralServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from srs where srs_name in (" + srsName + ") " );
 
-		System.out.println("getSRSData - Query is - " + query.toString() );
+		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		CentralServiceVO vo = null;
@@ -105,7 +110,7 @@ public class CentralServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from srs where srs_name in ('" + srsName + "') " ); 
 
-		System.out.println("getSRSData - Query is - " + query.toString() );
+		LOG.debug("getSRSData - Query is - " + query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		ABAServiceVO vo = null;
@@ -169,7 +174,7 @@ public class CentralServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from orientation " );
 
-		System.out.println("getOrientation - Query is - " + query.toString() );
+		LOG.debug("getOrientation - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		CentralServiceVO vo = null;
@@ -211,7 +216,7 @@ public class CentralServiceDAOImpl {
 		.append(" from srs ") 
 		.append(" where srs_name = '"+srsName+"' "); 
 
-		System.out.println("Query is - " + query.toString() );
+		LOG.debug("Query is - " + query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 

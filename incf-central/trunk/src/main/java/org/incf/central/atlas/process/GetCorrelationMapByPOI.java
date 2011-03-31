@@ -77,7 +77,7 @@ public class GetCorrelationMapByPOI implements Processlet {
 
 		try {
 
-			System.out.println(" Inside GetCorrelationMapByPOI... ");
+			LOG.debug(" Inside GetCorrelationMapByPOI... ");
 
 			URL processDefinitionUrl = this.getClass().getResource(
 					"/" + this.getClass().getSimpleName() + ".xml");
@@ -103,8 +103,8 @@ public class GetCorrelationMapByPOI implements Processlet {
 			vo.setFilter(filter);
 			vo.setVocabulary(vocabulary);
 
-			System.out.println("From SRS Code: " + vo.getFromSRSCodeOne());
-			System.out.println("Filter: " + vo.getFilter());
+			LOG.debug("From SRS Code: {}" , vo.getFromSRSCodeOne());
+			LOG.debug("Filter: {}" , vo.getFilter());
 
 			vo.setOriginalCoordinateX(x);
 			vo.setOriginalCoordinateY(y);
@@ -120,7 +120,7 @@ public class GetCorrelationMapByPOI implements Processlet {
 			portNumber = delimitor + portNumber;
 			// End - FIXME
 
-			System.out.println("Coordinate X: " + vo.getOriginalCoordinateX());
+			LOG.debug("Coordinate X: {}" , vo.getOriginalCoordinateX());
 
 			// Step 1 - Call GetProcessByIdentifier(identifier) - I am ignoring
 			// this method right now due to short of time

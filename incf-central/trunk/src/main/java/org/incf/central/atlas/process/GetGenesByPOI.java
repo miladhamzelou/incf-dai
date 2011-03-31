@@ -118,7 +118,7 @@ public class GetGenesByPOI implements Processlet {
     		// GenesResponseDocument 'is a' org.apache.xmlbeans.XmlObject
     		//	'is a' org.apache.xmlbeans.XmlTokenSource
     		GenesResponseDocument document = completeResponse(strongGenes);
-    		System.out.println("GeneByPOI 1");
+    		LOG.debug("GeneByPOI 1");
     		
     		if (LOG.isDebugEnabled()) {
     			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
@@ -128,12 +128,12 @@ public class GetGenesByPOI implements Processlet {
     			opt.setUseDefaultNamespace();
     			LOG.debug("Xml:\n{}", document.xmlText(opt));
     		}
-    		System.out.println("GeneByPOI 2");
+    		LOG.debug("GeneByPOI 2");
 
     		// 4. Send it
     		// get reader on document
     		XMLStreamReader reader = document.newXMLStreamReader();
-    		System.out.println("GeneByPOI 3");
+    		LOG.debug("GeneByPOI 3");
     		
     		// get ComplexOutput object from ProcessletOutput...
     		ComplexOutput complexOutput = (ComplexOutput) out.getParameter(
@@ -285,7 +285,7 @@ public class GetGenesByPOI implements Processlet {
 	private GenesResponseDocument completeResponse(ArrayList abaGenes) {
 		//String codeSpace = "uri:incf.org";	// not needed for now
 		String expressionLevelCodeSpace = "ageaUrnTerms:energy:units";
-		System.out.println("GeneByPOI 5");
+		LOG.debug("GeneByPOI 5");
 
 		GenesResponseDocument document = 
 				GenesResponseDocument.Factory.newInstance();
@@ -294,7 +294,7 @@ public class GetGenesByPOI implements Processlet {
 		CentralServiceVO vo = null;
 		Iterator iterator = abaGenes.iterator();
 		while (iterator.hasNext()) {
-    		System.out.println("GeneByPOI 6");
+    		LOG.debug("GeneByPOI 6");
 			vo = (CentralServiceVO)iterator.next();
 
 			if (vo.getFlag().equalsIgnoreCase("gene")) {
@@ -347,7 +347,7 @@ public class GetGenesByPOI implements Processlet {
         
         //Call getTransformationChain method here...
         //ABAVoxel
-        System.out.println("1.1:" );
+        LOG.debug("1.1:" );
 
         tempX = ";x="+String.valueOf(x);
         tempY = ";y="+String.valueOf(y);
@@ -361,17 +361,17 @@ public class GetGenesByPOI implements Processlet {
 
         String servicePath = "/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName="+fromSrsName+";outputSrsName="+toSrsName+";filter=NONE";
         String transformationChainURL = "http://"+hostName+portNumber+servicePath;
-        System.out.println("1.4: " + transformationChainURL);
+        LOG.debug("1.4: {}" , transformationChainURL);
 
         try { 
             
             XMLUtilities xmlUtilities = new XMLUtilities();
             transformedCoordinatesString = xmlUtilities.coordinateTransformation(transformationChainURL, tempX, tempY, tempZ);
     
-            System.out.println("2:" );
+            LOG.debug("2:" );
             //Start - exception handling
 /*          if (transformedCoordinatesString.startsWith("Error:")) {
-                System.out.println("********************ERROR*********************");
+                LOG.debug("********************ERROR*********************");
                 throw new OWSException( 
                         "Transformed Coordinates Error: ", transformedCoordinatesString);
             }
