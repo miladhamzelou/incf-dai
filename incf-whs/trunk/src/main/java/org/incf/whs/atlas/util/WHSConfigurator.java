@@ -14,9 +14,12 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
+import org.incf.whs.atlas.process.ListTransformations;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * It reads the xml file containing generic name/value pairs and mantains these
@@ -37,9 +40,11 @@ public class WHSConfigurator {
 
 	/** Only public access to a single instance of this class */
 	public static final WHSConfigurator INSTANCE = new WHSConfigurator();
+	private static final Logger LOG = LoggerFactory
+	.getLogger(WHSConfigurator.class);
 
 	/**
-	 * holds the name/value propertg pairs
+	 * holds the name/value property pairs
 	 * 
 	 */
 	private Hashtable propsH;
@@ -51,16 +56,16 @@ public class WHSConfigurator {
 
 	private InputStream getInputFileURL() {
 
-		System.out.println("1");
+		LOG.debug("1");
 		InputStream path = null;
-		System.out.println("2");
+		LOG.debug("2");
 
 		path = getClass().getResourceAsStream(
 		"/stage-whs-config-properties.xml");
-		System.out.println("3");
+		LOG.debug("3");
 
-		System.out.println("WHS Config Path is - " + path);
-		System.out.println("4");
+		LOG.debug("WHS Config Path is - " + path);
+		LOG.debug("4");
 		return path;
 
 	}
@@ -96,17 +101,17 @@ public class WHSConfigurator {
 		try {
 
 			InputStream configPropertiesFileURL = getInputFileURL();
-			System.out.println("1.1");
+			LOG.debug("1.1");
 
             SAXBuilder parser = new SAXBuilder();
-			System.out.println("1.2");
+			LOG.debug("1.2");
             Document doc = parser.build(configPropertiesFileURL);
-			System.out.println("1.3");
+			LOG.debug("1.3");
             
             Element root = doc.getRootElement();
             List properties = root.getChildren();
             Iterator iterator = properties.iterator();
-			System.out.println("1.4");
+			LOG.debug("1.4");
 
             while (iterator.hasNext())  {
                 // work with each property node to retrieve the
@@ -115,8 +120,8 @@ public class WHSConfigurator {
             	Element property = (Element) iterator.next();
                 String name  = property.getChild("name").getTextTrim();
                 String value = property.getChild("value").getTextTrim();
-    			System.out.println("Name: " + name);
-    			System.out.println("Value: " + value);
+    			LOG.debug("Name: {}", name);
+    			LOG.debug("Value: {}", value);
 
                 // check that the name does not already exist in the
                 // hash table. If it does throw error and quit.
@@ -128,7 +133,7 @@ public class WHSConfigurator {
                 // add the property
                 propsH.put(name,value);
             }		
-			System.out.println("7");
+			LOG.debug("7");
 
 		} catch (Exception e) {
 			e.printStackTrace();

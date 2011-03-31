@@ -3,11 +3,15 @@
  */
 package org.incf.whs.atlas.util; 
 
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -17,6 +21,8 @@ import java.util.List;
 public class WHSServiceDAOImpl {
 	
 	private WHSConfigurator configurator = WHSConfigurator.INSTANCE;
+	private static final Logger LOG = LoggerFactory
+	.getLogger(WHSServiceDAOImpl.class);
 
 	public ArrayList getSRSsData() {
 		
@@ -32,7 +38,7 @@ public class WHSServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from srs where srs_name in (" + srsName + ") " );
 
-		System.out.println("getSRSData - Query is - " + query.toString() );
+		LOG.debug("getSRSData - Query is - {}", query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		WHSServiceVO vo = null;
@@ -95,7 +101,7 @@ public class WHSServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from orientation " );
 
-		System.out.println("getOrientation - Query is - " + query.toString() );
+		LOG.debug("getOrientation - Query is - {}",query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		WHSServiceVO vo = null;
@@ -135,7 +141,7 @@ public class WHSServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from srs where srs_name in ('" + srsName + "') " ); 
 
-		System.out.println("getSRSData - Query is - " + query.toString() );
+		LOG.debug("getSRSData - Query is - {}", query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		WHSServiceVO vo = null;
@@ -199,7 +205,7 @@ public class WHSServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from slice where space_code = '"+vo.getSpaceCode()+"' " );
 
-		System.out.println("getSliceData - Query is - " + query.toString() );
+		LOG.debug("getSliceData - Query is - {}", query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		//ABAServiceVO vo = null;
@@ -243,7 +249,7 @@ public class WHSServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from fiducial where srs_name = '"+vo.getSpaceCode()+"' " );
 
-		System.out.println("getSliceData - Query is - " + query.toString() );
+		LOG.debug("getSliceData - Query is - {}", query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 		//ABAServiceVO vo = null;

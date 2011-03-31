@@ -129,10 +129,9 @@ public class DescribeSRS implements Processlet {
 				for (int i = 0; i < errorList.size(); i++) {
 					XmlError error = (XmlError) errorList.get(i);
 
-					System.out.println("\n");
-					System.out.println("Message: " + error.getMessage() + "\n");
-					System.out.println("Location of invalid XML: "
-							+ error.getCursorLocation().xmlText() + "\n");
+					LOG.debug("\n");
+					LOG.debug("Message: {}", error.getMessage() + "\n");
+					LOG.debug("Location of invalid XML: {}", error.getCursorLocation().xmlText() + "\n");
 				}
 			}
 
@@ -414,9 +413,8 @@ public class DescribeSRS implements Processlet {
 			slice.setOrientation(SliceType.Orientation.HORIZONTAL);
 		}
 
-		System.out.println("Value is - " + vo.getSlideValue());
-		System.out.println("Again Value is - "
-				+ Float.parseFloat(vo.getSlideValue()));
+		LOG.debug("Value is - {}", vo.getSlideValue());
+		LOG.debug("Again Value is - {} ", Float.parseFloat(vo.getSlideValue()));
 
 		// FIXME - Ask Dave to change the
 		slice.setConstant(Double.parseDouble(vo.getSlideValue()));

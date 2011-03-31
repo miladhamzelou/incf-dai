@@ -82,7 +82,7 @@ public class GetStructureNamesByPOI implements Processlet {
 
 		try {
 
-			System.out.println(" Inside GetStructureNamesByPOI... ");
+			LOG.debug(" Inside GetStructureNamesByPOI... ");
 			// collect input values
 			WHSServiceVO vo = new WHSServiceVO();
 
@@ -178,7 +178,7 @@ public class GetStructureNamesByPOI implements Processlet {
 			
 			while ( tokens.hasMoreTokens() ) {
 				structureName = tokens.nextToken();
-				System.out.println("Structure Name is - " + structureName);
+				LOG.debug("Structure Name is - {}", structureName);
 			}
 
 			//Start - Exception Handling

@@ -31,11 +31,15 @@ import org.incf.atlas.waxml.generated.ListTransformationsResponseType.Transforma
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
 import org.incf.atlas.waxml.utilities.Utilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public class WHSUtil {
 
 	WHSConfigurator config = WHSConfigurator.INSTANCE;
+	private static final Logger LOG = LoggerFactory
+	.getLogger(WHSUtil.class);
 
 	String abaReference = config.getValue("srsname.abareference.10");
 	String abaVoxel = config.getValue("srsname.abavoxel.10");
@@ -48,18 +52,18 @@ public class WHSUtil {
 	//FIXME - amemon - will eventually go to commons
 	public String spaceTransformation( WHSServiceVO vo ) {
 
-		System.out.println("Start - spaceTransformation Method...");
+		LOG.debug("Start - spaceTransformation Method...");
 		
 		String xmlResponseString = "";
 
 		try { 
 
-			System.out.println("Start - transformation matrix process...");
+			LOG.debug("Start - transformation matrix process...");
 
-			System.out.println("****From SRSCode - " + vo.getFromSRSCodeOne());
-			System.out.println("****To SRSCode - " + vo.getToSRSCodeOne());
+			LOG.debug("****From SRSCode - {}", vo.getFromSRSCodeOne());
+			LOG.debug("****To SRSCode - {}", vo.getToSRSCodeOne());
 
-			System.out.println("Start - transformation matrix process...");
+			LOG.debug("Start - transformation matrix process...");
 
 			//2) Get the transformed coordinates from Steve's program
 			WHSUtil util = new WHSUtil();
@@ -81,8 +85,8 @@ public class WHSUtil {
 
 			//End
 
-			System.out.println( "XML Response String - " + xmlResponseString ); 
-			System.out.println("Ends running transformation  matrix...");
+			LOG.debug( "XML Response String - {}", xmlResponseString ); 
+			LOG.debug("Ends running transformation  matrix...");
 
 		} catch ( Exception e ) {
 
@@ -92,7 +96,7 @@ public class WHSUtil {
 
 		}
 
-		System.out.println("End - spaceTransformationForm Method...");
+		LOG.debug("End - spaceTransformationForm Method...");
 
 		//4) Return response back to the cllient in a text/xml format
 		return xmlResponseString;
@@ -106,7 +110,7 @@ public class WHSUtil {
 
 	String transformedCoordinateString = "";
 
-	System.out.println("DIRECT SPACE TRANSFORMATION...");
+	LOG.debug("DIRECT SPACE TRANSFORMATION...");
 
 /*	X10 = (1/46.512)*X09 - 5.3965
 	Y10 = (1/46.512)*Y09 - 11.997
@@ -123,26 +127,26 @@ public class WHSUtil {
 		//By Ilya
 		if (fromSpace.trim().equalsIgnoreCase(whs09) && toSpace.trim().equalsIgnoreCase(whs10)) {
 
-			System.out.println("Inside WHS09 2 WHS10");
+			LOG.debug("Inside WHS09 2 WHS10");
 			String X10 = String.valueOf((1/46.512)*Double.parseDouble(originalCoordinateX) - 5.3965);
 			String Y10 = String.valueOf((1/46.512)*Double.parseDouble(originalCoordinateY) - 11.997);
 			String Z10 = String.valueOf((1/46.512)*Double.parseDouble(originalCoordinateZ) - 5.5255);
 
 			transformedCoordinateString = originalCoordinateX + " " + originalCoordinateY + " " + originalCoordinateZ + " " + X10 + " " + Y10 + " " + Z10;
-			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("TransformedCoordinateString - {}",transformedCoordinateString);
 
 		}
 
 		//By Ilya
 		else if (fromSpace.trim().equalsIgnoreCase(whs10) && toSpace.trim().equalsIgnoreCase(whs09)) {
 
-			System.out.println("Inside WHS10 2 WHS09");
+			LOG.debug("Inside WHS10 2 WHS09");
 			String X09 = String.valueOf((Double.parseDouble(originalCoordinateX)+5.3965)*46.512);
 			String Y09 = String.valueOf((Double.parseDouble(originalCoordinateY)+11.997)*46.512);
 			String Z09 = String.valueOf((Double.parseDouble(originalCoordinateZ)+5.5255)*46.512);
 
 			transformedCoordinateString = originalCoordinateX + " " + originalCoordinateY + " " + originalCoordinateZ + " " + X09 + " " + Y09 + " " + Z09;
-			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("TransformedCoordinateString - {}",transformedCoordinateString);
 
 		} else {
 		
@@ -151,7 +155,7 @@ public class WHSUtil {
 	
 		} 
 
-	System.out.println("Ends running transformation  matrix...");
+	LOG.debug("Ends running transformation  matrix...");
 
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
@@ -171,7 +175,7 @@ public class WHSUtil {
 
 		String[] coordinateString = new String[tokensSize]; 
 		String[] transformedCoordinates = new String[3]; //Returned coordinates are 3
-		System.out.println( " tokens - " +tokensSize);
+		LOG.debug( " tokens - {}",tokensSize);
 
 		int i = 0;
 		while ( tokens.hasMoreTokens() ) {
@@ -182,18 +186,18 @@ public class WHSUtil {
 		
 		if (coordinateString.length > 3) { 
 			transformedCoordinates[0] = coordinateString[3];
-			System.out.println( " transformedCoordinates x - " + transformedCoordinates[0] );
+			LOG.debug( " transformedCoordinates x - {}", transformedCoordinates[0] );
 			if (tokensSize >= 5 ) {
 			transformedCoordinates[1] = coordinateString[4];
-			System.out.println( " transformedCoordinates y - " + transformedCoordinates[1] );
+			LOG.debug( " transformedCoordinates y - {}", transformedCoordinates[1] );
 			}
 			if (tokensSize >= 6 ) {
 			transformedCoordinates[2] = coordinateString[5];
-			System.out.println( " transformedCoordinates z - " + transformedCoordinates[2] );
+			LOG.debug( " transformedCoordinates z - {}", transformedCoordinates[2] );
 			}
 		} else if (coordinateString.length == 3) {
 			transformedCoordinates[0] = coordinateString[0];
-			System.out.println( " transformedCoordinates x - " + transformedCoordinates[0] );
+			LOG.debug( " transformedCoordinates x - {}", transformedCoordinates[0] );
 			transformedCoordinates[1] = coordinateString[1];
 			transformedCoordinates[2] = coordinateString[2];
 		}
@@ -210,7 +214,7 @@ public class WHSUtil {
 		StringTokenizer tokens = new StringTokenizer("Fine Structure Name: DG"); 
 		while ( tokens.hasMoreTokens() ) {
 			String structureName = tokens.nextToken();
-			System.out.println("Structure Name is - " + structureName);
+			LOG.debug("Structure Name is - {}", structureName);
 		}
 		
 		//util.splitCoordinatesFromStringToVO(new ABAServiceVO(), "13 12 3 4 5 6");
@@ -224,12 +228,12 @@ public class WHSUtil {
 
 		String[] coordinateString = new String[tokensSize]; 
 		String[] transformedCoordinates = new String[6]; //Returned coordinates are 3
-		System.out.println( " tokens - " +tokensSize);
+		LOG.debug( " tokens - {}",tokensSize);
 
 		int i = 0;
 		while ( tokens.hasMoreTokens() ) {
 			coordinateString[i] = tokens.nextToken(); 
-			System.out.println( " Token Name - " + coordinateString[i]);
+			LOG.debug( " Token Name - {}", coordinateString[i]);
 			i++;
 		}
 
@@ -261,8 +265,8 @@ public class WHSUtil {
 
 			//Start - Create and run URL, and read the string from the webpage
 			String transforMatrixURL = "http://" + transformationHostName + transformationPortNumber + transformationServicePath + "&x=" + originalCoordinateX + "&y=" + originalCoordinateY + "&z=" + originalCoordinateZ;
-			System.out.println("Transformation matrix url is - " + transforMatrixURL);
-			System.out.println("X in transformation matrix method is - " + originalCoordinateX);
+			LOG.debug("Transformation matrix url is - {}", transforMatrixURL);
+			LOG.debug("X in transformation matrix method is - {}", originalCoordinateX);
 			URL url = new URL(transforMatrixURL);
 			URLConnection urlCon = url.openConnection();
 			urlCon.setUseCaches(false);
@@ -270,10 +274,10 @@ public class WHSUtil {
 					.getInputStream()));
 			String inputLine;
 			while ((inputLine = in.readLine()) != null) {
-				System.out.println("inputLine - "+inputLine);
+				LOG.debug("inputLine - {}",inputLine);
 				transformedCoordinateString = transformedCoordinateString + inputLine;
 			}
-			System.out.println("TransformedCoordinateString - "+transformedCoordinateString);
+			LOG.debug("TransformedCoordinateString - {}",transformedCoordinateString);
 
 			// Start - Changes
 			if (transformedCoordinateString == null || transformedCoordinateString.equals("")) {
@@ -305,12 +309,12 @@ public class WHSUtil {
 	
 	public String getCoordinateTransformationChain(WHSServiceVO vo, ComplexOutput co) {
 
-		System.out.println("Start - getCoordinateTransformationChain Method...");
+		LOG.debug("Start - getCoordinateTransformationChain Method...");
 		String responseString = "";
 
 		try { 
 
-			System.out.println("Start - transformation matrix process...");
+			LOG.debug("Start - transformation matrix process...");
 
 			//2) Get the transformed coordinates from Steve's program
 			WHSUtil util = new WHSUtil();
@@ -726,7 +730,7 @@ public class WHSUtil {
 
 			//End
 
-			System.out.println("Ends getSpaceTransformationChain Method...");
+			LOG.debug("Ends getSpaceTransformationChain Method...");
 
 		} catch ( Exception e ) {
 
@@ -736,7 +740,7 @@ public class WHSUtil {
 
 		}
 
-		System.out.println("End - spaceTransformationForm Method...");
+		LOG.debug("End - spaceTransformationForm Method...");
 
 		//4) Return response back to the client in a text/xml format
 		return responseString;
@@ -805,7 +809,7 @@ public class WHSUtil {
 
 	 			String incfTransformationMatrixURLPrefix = incfDeploymentHostName + incfportNumber;
 
-	 		    System.out.println("Inside All Transformations....");
+	 		    LOG.debug("Inside All Transformations....");
 	 			Iterator iterator = srsCodeList.iterator();
 	 			vo = null;
 
@@ -993,7 +997,7 @@ public class WHSUtil {
 
  			String incfTransformationMatrixURLPrefix = incfDeploymentHostName + incfportNumber;
 
- 		    System.out.println("Inside All Transformations....");
+ 		    LOG.debug("Inside All Transformations....");
  			Iterator iterator = srsCodeList.iterator();
  			vo = null;
 

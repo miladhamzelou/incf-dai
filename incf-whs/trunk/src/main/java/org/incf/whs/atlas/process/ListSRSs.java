@@ -110,10 +110,8 @@ public class ListSRSs implements Processlet {
         	      {
         	          XmlError error = (XmlError)errorList.get(i);
         	          
-        	          System.out.println("\n");
-        	          System.out.println("Message: " + error.getMessage() + "\n");
-        	          System.out.println("Location of invalid XML: " + 
-        	              error.getCursorLocation().xmlText() + "\n");
+        	          LOG.debug("\n");
+        	          LOG.debug("Message: {}", error.getMessage() + "\n");
         	      }
         	 }
         	 
@@ -183,7 +181,7 @@ public class ListSRSs implements Processlet {
 		
 	    while (iterator.hasNext()) {
 
-	    System.out.println("**************************Count is********************* " + list.size());
+	    LOG.debug("**************************Count is********************* {}", list.size());
 		srs =  srsList.addNewSRS();
 
 		vo = (WHSServiceVO)iterator.next();
