@@ -93,7 +93,7 @@ public class TransformPOI implements Processlet {
 
 		try {
 
-			System.out.println(" Inside TransformPOI... ");
+			LOG.debug(" Inside TransformPOI... ");
 
 			EMAPServiceVO vo = new EMAPServiceVO();
 
@@ -122,8 +122,8 @@ public class TransformPOI implements Processlet {
 			String fromSRSCode = transformationNameArray[0];
 			String toSRSCode = transformationNameArray[1].replace("_v1.0", "");
 
-			System.out.println(" Input SRS Name: " + fromSRSCode);
-			System.out.println(" Output SRS Name: " + toSRSCode);
+			LOG.debug(" Input SRS Name: {}" , fromSRSCode);
+			LOG.debug(" Output SRS Name: {}" , toSRSCode);
 
 			vo.setFromSRSCodeOne(fromSRSCode);
 			vo.setFromSRSCode(fromSRSCode);
@@ -157,8 +157,8 @@ public class TransformPOI implements Processlet {
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID2 = randomGenerator2.nextInt(100);
 			}
-			System.out.println("Random GML ID1: - " + randomGMLID1);
-			System.out.println("Random GML ID2: - " + randomGMLID2);
+			LOG.debug("Random GML ID1: - {}" , randomGMLID1);
+			LOG.debug("Random GML ID2: - {}" , randomGMLID2);
 
 			// vo.setUrlString(uri.toString());
 
@@ -215,13 +215,13 @@ public class TransformPOI implements Processlet {
 			 * filterCodeCriteria.setName("filter");
 			 * filterCodeCriteria.setValue("cerebellum");
 			 */
-			System.out.println("----POS Value1---- " + vo.getValue());
+			LOG.debug("----POS Value1---- {}" , vo.getValue());
 			POIType poi = rootDoc.addNewPOI();
 			PointType poipnt = poi.addNewPoint();
 			poipnt.setId(String.valueOf(randomGMLID2));
 			poipnt.setSrsName(vo.getToSRSCode());
 			poipnt.addNewPos();
-			System.out.println("----POS Value2---- " + vo.getValue());
+			LOG.debug("----POS Value2---- {}" , vo.getValue());
 			poipnt.getPos().setStringValue(vo.getValue());
 
 			// If the XML isn't valid, loop through the listener's contents,

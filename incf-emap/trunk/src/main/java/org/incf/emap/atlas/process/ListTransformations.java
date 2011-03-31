@@ -70,7 +70,7 @@ public class ListTransformations implements Processlet {
 
 		try {
 
-			System.out.println(" Inside ListTransformations");
+			LOG.debug(" Inside ListTransformations");
 
 			EMAPServiceVO vo = new EMAPServiceVO();
 
@@ -82,7 +82,7 @@ public class ListTransformations implements Processlet {
 			// in.getParameter("transformationCode")).getValue();
 
 			if (in != null) {
-				System.out.println(" Inside parameter value... ");
+				LOG.debug(" Inside parameter value... ");
 				URL processDefinitionUrl = this.getClass().getResource(
 						"/" + this.getClass().getSimpleName() + ".xml");
 				DataInputHandler dataInputHandler = new DataInputHandler(
@@ -123,13 +123,13 @@ public class ListTransformations implements Processlet {
 			ComplexOutput complexOutput = (ComplexOutput) out
 					.getParameter("ListTransformationsOutput");
 
-			System.out.println(" inputSrsName = " + inputSrsName);
-			System.out.println(" outputSrsName = " + outputSrsName);
-			System.out.println("Before the check condition");
+			LOG.debug(" inputSrsName = {}" ,inputSrsName);
+			LOG.debug(" outputSrsName = {}" , outputSrsName);
+			LOG.debug("Before the check condition");
 
 			if (inputSrsName.equals("") || inputSrsName == null
 					&& outputSrsName.equals("") || outputSrsName == null) {
-				System.out.println("Inside Empty DataInputString.");
+				LOG.debug("Inside Empty DataInputString.");
 				vo.setFromSRSCodeOne("all");
 				vo.setFromSRSCode("all");
 				vo.setToSRSCodeOne("all");
@@ -140,7 +140,7 @@ public class ListTransformations implements Processlet {
 
 			} else if (inputSrsName.equalsIgnoreCase("all")
 					&& outputSrsName.equalsIgnoreCase("all")) {
-				System.out.println("Inside All Both.");
+				LOG.debug("Inside All Both.");
 				vo.setFromSRSCodeOne("all");
 				vo.setFromSRSCode("all");
 				vo.setToSRSCodeOne("all");
@@ -151,7 +151,7 @@ public class ListTransformations implements Processlet {
 
 			} else if (!inputSrsName.equals("")
 					&& outputSrsName.equalsIgnoreCase("all")) {
-				System.out.println("Inside inputSRSName not empty.");
+				LOG.debug("Inside inputSRSName not empty.");
 				if (inputSrsName.equals(whs10)) {
 					vo1 = new EMAPServiceVO();
 					vo1.setFromSRSCode(whs10);
@@ -170,7 +170,7 @@ public class ListTransformations implements Processlet {
 						srsCodeList);
 			} else if (!outputSrsName.equals("")
 					&& inputSrsName.equalsIgnoreCase("all")) {
-				System.out.println("Inside outputSRSName not empty.");
+				LOG.debug("Inside outputSRSName not empty.");
 				if (outputSrsName.equals(whs10)) {
 					vo1 = new EMAPServiceVO();
 					vo1.setFromSRSCode(emap);
@@ -188,7 +188,7 @@ public class ListTransformations implements Processlet {
 						srsCodeList);
 			} else if (!inputSrsName.equals("") || inputSrsName != null
 					&& !outputSrsName.equals("") || outputSrsName != null) {
-				System.out.println("Both Legitimate values.");
+				LOG.debug("Both Legitimate values.");
 				vo.setFromSRSCodeOne(inputSrsName);
 				vo.setFromSRSCode(inputSrsName);
 				vo.setToSRSCodeOne(outputSrsName);
@@ -197,12 +197,12 @@ public class ListTransformations implements Processlet {
 				responseString = util.getCoordinateTransformationChain(vo,
 						complexOutput);
 			} else {
-				System.out.println("Nothing matched..");
+				LOG.debug("Nothing matched..");
 				responseString = "Error: No such transformation chain is supported under this hub.";
 			}
 
-			System.out.println(" Response String = " + responseString);
-			System.out.println("After the check condition");
+			LOG.debug(" Response String = {}" , responseString);
+			LOG.debug("After the check condition");
 
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			java.util.Date date = new java.util.Date();
