@@ -115,7 +115,7 @@ public class Monitor {
 			    
 				// get process, data inputs, and other reporting info
 				String process = null;
-				String dataInputs = "";
+				String dataInputs = null;
 				Map<String, String> kvMap = buildQueryKVMap(url);
 				String request = kvMap.get("request");
 				if (request.equalsIgnoreCase("GetCapabilities")) {
@@ -126,6 +126,9 @@ public class Monitor {
 				} else if (request.equalsIgnoreCase("Execute")) {
 					process = kvMap.get("identifier");
 					dataInputs = kvMap.get("datainputs");
+				}
+				if (dataInputs == null) {
+					dataInputs = "";
 				}
 				String path = url.getPath();
 				String hub = path.split("/")[1];
