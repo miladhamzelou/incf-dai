@@ -107,6 +107,10 @@ This command is described in detail in page 11 of the PDF ANTS manual referenced
 
 ./ANTS 3  -m MI[brainweb1e1a10f20.nii,brainweb1e1a10f20.nii,1,32] -o Registered.txt
 
+= Example 4 =
+
+./ANTS 2 -m MI[BrainProtonDensitySlice.png,BrainProtonDensitySlice.png,1,32]  -o FinalOutcome
+
 = Documentation =
 
 The ANTS manual is available at
