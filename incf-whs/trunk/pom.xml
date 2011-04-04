@@ -3,7 +3,7 @@
   <groupId>org.incf</groupId>
   <artifactId>whs</artifactId>
   <packaging>war</packaging>
-  <version>0.1.2</version>
+  <version>0.1.3-SNAPSHOT</version>
   <name>WHS Hub</name>
   <url>http://maven.apache.org</url>  
 
@@ -18,9 +18,9 @@
   </repositories>
   
   <scm>
-    <connection>scm:svn:http://incf-dai.googlecode.com/svn/incf-whs/tags/whs-0.1.2</connection>
-    <developerConnection>scm:svn:https://incf-dai.googlecode.com/svn/incf-whs/tags/whs-0.1.2</developerConnection>
-    <url>scm:svn:https://incf-dai.googlecode.com/svn/incf-whs/tags/whs-0.1.2</url>
+    <connection>scm:svn:http://incf-dai.googlecode.com/svn/incf-whs/trunk</connection>
+    <developerConnection>scm:svn:https://incf-dai.googlecode.com/svn/incf-whs/trunk</developerConnection>
+    <url>http://code.google.com/p/incf-dai/source/checkout</url>
   </scm>
   
   <build>
