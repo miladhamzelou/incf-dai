@@ -76,3 +76,9 @@ In this particular case, we could register the following two images
 
  * yuko_A.nii.gz
  * canon_T1_r.nii.gz
+
+
+In order to perform this registration we can use the ANTS application, that is built on top of ITK.  The typical ANTS command will look like this:
+
+
+ANTS 3 -m MI[cannon_T1-r.nii.gz,yuko_A.nii.gz,1,32] -o TEST -i 0 --rigid-affine true
