@@ -8,6 +8,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import org.incf.aba.atlas.process.DescribeSRS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * @author Asif Memon
@@ -15,6 +19,9 @@ import java.util.ArrayList;
  */
 public class ABAServiceDAOImpl {
 	
+	private static final Logger LOG = 
+			LoggerFactory.getLogger(ABAServiceDAOImpl.class);
+
 	private ABAConfigurator configurator = ABAConfigurator.INSTANCE;
 
 	public ArrayList getSRSsData() {
