@@ -34,4 +34,16 @@ The values
  * 0.55
  * 1.50
 
-are the pixel size values in microns(? or millimeters) along X, Y and Z, repectively
+are the pixel size values in microns(? or millimeters) along X, Y and Z, respectively
+
+
+== Print Information Command ==
+
+This command prints out some basic information from the header of a Nifti file.
+
+=== Example ===
+
+
+PrintImageInformation  yuko_A.nii.gz
+
+and it will print out information such as
