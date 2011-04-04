@@ -97,7 +97,7 @@ In order to perform this registration we can use the ANTS application, that is b
 A more advanced exampel, below, will perform a deformable registration between two images and put the resampled image in an output file
 
 
-ANTS 3 -m PR[AtlasHead.nii,crAnatomical.nii,1,4] -r Gauss[0,3]
+  ANTS 3 -m PR[AtlasHead.nii,crAnatomical.nii,1,4] -r Gauss[0,3]
 -o ElasticTest.nii.gz -i 30x20x10 -t Elast[1.5]
 
 
