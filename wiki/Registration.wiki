@@ -27,3 +27,11 @@ This command will take as input a collection of 31 images with names
 and will compose with them a Nifti image, compressed containing a volumetric dataset, that will be saved in a file with name
 
  * yuko_A.nii.gz
+
+The values
+
+ * 0.55
+ * 0.55
+ * 1.50
+
+are the pixel size values in microns(? or millimeters) along X, Y and Z, repectively
