@@ -62,3 +62,12 @@ and it will print out information such as
 = Image Registration =
 
 Image registration is the process by which we compute the coordinate transformation between two input 3D volumetric images.
+
+
+A typical example, will be to register the 3D image acquired in a recent experiment, to one of the atlas images of the Waxholm space. For example
+
+
+ * canon_hist.nii.gz
+ * canon_T1_r.nii.gz
+ * canon_T2star_r.nii.gz
+ * canon_T2W_r.nii.gz
