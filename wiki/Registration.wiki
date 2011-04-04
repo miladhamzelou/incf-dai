@@ -101,6 +101,9 @@ ANTS 3 -m PR[AtlasHead.nii,crAnatomical.nii,1,4] -r Gauss[0,3]
 -o ElasticTest.nii.gz -i 30x20x10 -t Elast[1.5]
 
 
+This command is described in detail in page 11 of the PDF ANTS manual referenced at the end of this page.
+
+
 = Documentation =
 
 The ANTS manual is available at
