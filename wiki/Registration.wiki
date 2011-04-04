@@ -47,3 +47,14 @@ This command prints out some basic information from the header of a Nifti file.
 PrintImageInformation  yuko_A.nii.gz
 
 and it will print out information such as
+
+
+File = yuko_A.nii.gz
+Origin = [0.0, 0.0, 0.0]
+Spacing = [0.55, 0.55, 1.50]
+Size = [512, 1024, 31]
+Direction = 
+-1 0 0
+0 -1 0
+0 0 1
+
