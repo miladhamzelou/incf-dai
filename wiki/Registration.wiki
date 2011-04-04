@@ -82,3 +82,11 @@ In order to perform this registration we can use the ANTS application, that is b
 
 
 ANTS 3 -m MI[cannon_T1-r.nii.gz,yuko_A.nii.gz,1,32] -o TEST -i 0 --rigid-affine true
+
+
+ * ANTS is the executable file of the Advanced Normalization Tools
+ * 3 is the dimension of the images that we are registering
+ * MI indicates that we are using Mutual Information (comparison metric).
+ * cannon_T1-r.nii.gz   is the reference images
+ * yuko_A.nii.gz is the image to be registered to the reference.
+ * --rigid-affine  request to compute a Rigid registration followed by an Affine registration
