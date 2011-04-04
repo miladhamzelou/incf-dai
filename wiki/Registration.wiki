@@ -14,7 +14,7 @@ Image reconstruction is the process by which N 2D images are composed into a con
 
 == Example Command 1 ==
 
-   SimpleImageReconstruction  inputImage%03d.png      1   31  0.55   0.55   1.50          yuko_A.nii.gz
+   SimpleImageReconstruction  "inputImage%03d.png"   1   31  0.55   0.55   1.50          yuko_A.nii.gz
 
 This command will take as input a collection of 31 images with names
 
