@@ -2,12 +2,12 @@
 
 = Introduction =
 
-Add your content here.
+This page describes the use of ITK and ANTS commands in order to perform
+
+* Image Reconstruction
+* Image Registration
 
 
-= Details =
+= Image Reconstruction =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Image reconstruction is the process by which N 2D images are composed into a consisten 3D volumetric datase
