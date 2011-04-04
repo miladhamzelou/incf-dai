@@ -90,3 +90,23 @@ In order to perform this registration we can use the ANTS application, that is b
  * cannon_T1-r.nii.gz   is the reference images
  * yuko_A.nii.gz is the image to be registered to the reference.
  * --rigid-affine  request to compute a Rigid registration followed by an Affine registration
+
+
+=== Example 2 ===
+
+A more advanced exampel, below, will perform a deformable registration between two images and put the resampled image in an output file
+
+
+ANTS 3 -m PR[AtlasHead.nii,crAnatomical.nii,1,4] -r Gauss[0,3]
+-o ElasticTest.nii.gz -i 30x20x10 -t Elast[1.5]
+
+
+= Documentation =
+
+The ANTS manual is available at
+
+
+http://www.picsl.upenn.edu/ANTS/
+
+
+http://advants.svn.sourceforge.net/viewvc/advants/Documentation/ants.pdf?revision=790
