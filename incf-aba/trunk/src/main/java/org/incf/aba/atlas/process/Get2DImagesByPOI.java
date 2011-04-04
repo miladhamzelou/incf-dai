@@ -59,6 +59,28 @@ public class Get2DImagesByPOI implements Processlet {
 
 	private ResponseValues responseValues;
 
+	/*
+	1. We accept coordinates in AnyValue for srsName and x, y, and z values.
+	2. If you specify Mouse_AGEA_1.0 for srs, we proceed.
+	3. If you specify some other value for srs, we will attempt to convert the coordinates to AGEA, by calling out to central's TransformPOI. If central does not recognize the srs you specified or if it can't transform to AGEA --> exception.
+	4. We round the AGEA coordinates to the nearest 200 (e.g. 5101 --> 5200, 5099 --> 5000)
+	5. Now with AGEA "200" coordinates, we go to ABA's Gene Finder like
+	http://www.brain-map.org/agea/GeneFinder.xml?seedPoint=6600,4000,5600
+	6. From the return we take N strongest genes. Right now we use hard-coded N=1 but we can change this.
+	7. Then we get gene data from ABA like this
+	http://www.brain-map.org/aba/api/gene/C1ql2.xml
+	8. From this we get the ABA image series corresponding to the filter specified: maptype:coronal or sagittal. Usually there is only one image series for the gene/plane.
+	9. Now we get the ABA "map" for the image series (looping possibly for multiple image series's):
+	http://www.brain-map.org/aba/api/atlas/map/71587929.map
+	10. Without detailing the algorithm for now, we find the closest ABA "position" based on the AGEA coordinates.
+	11. We then get the image series:
+	http://www.brain-map.org/aba/api/imageseries/71587929.xml
+	12. Then we find the image that matches the "position" from step 10.
+	13. We then get an image and a thumbnail using ABA's
+	http://www.brain-map.org/aba/api/image?zoom=[zoom]&path=[filePath]&mime=[mime]
+	with a hard-coded zoom and mime and using the filePath from step 12. These are the data we return.
+		 */
+
     @Override
     public void process(ProcessletInputs in, ProcessletOutputs out, 
             ProcessletExecutionInfo info) throws ProcessletException {
