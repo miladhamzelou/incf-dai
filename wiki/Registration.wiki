@@ -93,9 +93,9 @@ In order to perform this registration we can use the ANTS application, that is b
  * yuko_A.nii.gz is the image to be registered to the reference.
  * --rigid-affine  request to compute a Rigid registration followed by an Affine registration
  * The arguments 30x20x0 mean that 
- ** The coarsest resolution level registration will run for up to 30 iteration, 
- ** The second coarsest resolution level registration will run for up to 20 iterations
- ** The highest resolution level will not be used for registration (it will run for zero iterations).
+ **   The coarsest resolution level registration will run for up to 30 iteration, 
+ **   The second coarsest resolution level registration will run for up to 20 iterations
+ **   The highest resolution level will not be used for registration (it will run for zero iterations).
 
 
 This will generate as output three files with names
