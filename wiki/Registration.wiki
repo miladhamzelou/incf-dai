@@ -57,3 +57,8 @@ and it will print out information such as
  -1 0 0
  0 -1 0
  0 0 1
+
+
+= Image Registration =
+
+Image registration is the process by which we compute the coordinate transformation between two input 3D volumetric images.
