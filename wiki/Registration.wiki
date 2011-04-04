@@ -111,6 +111,12 @@ This command is described in detail in page 11 of the PDF ANTS manual referenced
 
 ./ANTS 2 -m MI[BrainProtonDensitySlice.png,BrainProtonDensitySlice.png,1,32]  -o FinalOutcome
 
+This produces the following three files as output
+
+ * FinalOutcomeAffine.txt
+ * FinalOutcomeInverseWarp.nii.gz
+ * FinalOutcomeWarp.nii.gz
+
 = Documentation =
 
 The ANTS manual is available at
