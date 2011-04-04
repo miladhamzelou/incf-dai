@@ -101,8 +101,7 @@ This will generate as output three files with names
  * TESTWarp.nii.gz
 
 
-
-=== Example 2 ===
+== Example 2 ==
 
 A more advanced exampel, below, will perform a deformable registration between two images and put the resampled image in an output file
 
@@ -113,7 +112,7 @@ A more advanced exampel, below, will perform a deformable registration between t
 
 This command is described in detail in page 11 of the PDF ANTS manual referenced at the end of this page.
 
-= Example 3 =
+== Example 3 ==
 
 ./ANTS 3  -m MI[brainweb1e1a10f20.nii,brainweb1e1a10f20.nii,1,32] -o Registered.txt
 
