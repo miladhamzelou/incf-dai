@@ -83,7 +83,7 @@ In this particular case, we could register the following two images
 In order to perform this registration we can use the ANTS application, that is built on top of ITK.  The typical ANTS command will look like this:
 
 
-  ANTS 3 -m MI[cannon_T1-r.nii.gz,yuko_A.nii.gz,1,32] -o TEST -i 0 --rigid-affine true
+  ANTS 3 -m MI[cannon_T1-r.nii.gz,yuko_A.nii.gz,1,32] -o TEST -i 30x20x0 --rigid-affine true
 
 
  * ANTS is the executable file of the Advanced Normalization Tools
@@ -92,6 +92,10 @@ In order to perform this registration we can use the ANTS application, that is b
  * cannon_T1-r.nii.gz   is the reference images
  * yuko_A.nii.gz is the image to be registered to the reference.
  * --rigid-affine  request to compute a Rigid registration followed by an Affine registration
+ * The arguments 30x20x0 mean that 
+ ** The coarsest resolution level registration will run for up to 30 iteration, 
+ ** The second coarsest resolution level registration will run for up to 20 iterations
+ ** The highest resolution level will not be used for registration (it will run for zero iterations).
 
 
 This will generate as output three files with names
