@@ -11,3 +11,9 @@ This page describes the use of ITK and ANTS commands in order to perform
 = Image Reconstruction =
 
 Image reconstruction is the process by which N 2D images are composed into a consisten 3D volumetric datase
+
+== Example Command 1 ==
+
+   SimpleImageReconstruction
+     inputImage%03d.png      1   31  
+     0.55   0.55   1.50          yuko_A.nii.gz
