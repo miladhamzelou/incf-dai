@@ -72,6 +72,8 @@ A typical example, will be to register the 3D image acquired in a recent experim
  * canon_T2star_r.nii.gz
  * canon_T2W_r.nii.gz
 
+== Example 1 ==
+
 In this particular case, we could register the following two images
 
  * yuko_A.nii.gz
@@ -90,6 +92,14 @@ In order to perform this registration we can use the ANTS application, that is b
  * cannon_T1-r.nii.gz   is the reference images
  * yuko_A.nii.gz is the image to be registered to the reference.
  * --rigid-affine  request to compute a Rigid registration followed by an Affine registration
+
+
+This will generate as output three files with names
+
+ * TESTAffine.txt
+ * TESTInverseWarp.nii.gz
+ * TESTWarp.nii.gz
+
 
 
 === Example 2 ===
