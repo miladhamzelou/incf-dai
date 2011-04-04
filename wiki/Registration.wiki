@@ -71,3 +71,8 @@ A typical example, will be to register the 3D image acquired in a recent experim
  * canon_T1_r.nii.gz
  * canon_T2star_r.nii.gz
  * canon_T2W_r.nii.gz
+
+In this particular case, we could register the following two images
+
+ * yuko_A.nii.gz
+ * canon_T1_r.nii.gz
