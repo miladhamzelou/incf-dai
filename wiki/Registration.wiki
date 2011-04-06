@@ -5,7 +5,7 @@
 This page describes the use of ITK and ANTS commands in order to perform
 
 * Image Reconstruction
-* Image Registration
+* Image Registration 
 
 
 = Image Reconstruction =
