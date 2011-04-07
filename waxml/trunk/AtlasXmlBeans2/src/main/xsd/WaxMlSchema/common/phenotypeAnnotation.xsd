@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 9.0.11.3078 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.incf.org/WaxML/" version="1.0" id="annotation" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" id="gml" namespace="http://www.opengis.net/gml/3.2" />
+    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:complexType name="ann_GeometryType">
+        <xs:complexContent>
+            <xs:restriction xmlns:q1="http://www.opengis.net/gml/3.2" base="q1:AbstractGeometryType" />
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ann_PolygonType">
+        <xs:complexContent>
+            <xs:restriction base="gml:PolygonType">
+                <xs:sequence>
+                    <xs:element ref="gml:exterior" minOccurs="0" />
+                    <xs:element ref="gml:interior" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ann_SurfaceType">
+        <xs:complexContent>
+            <xs:extension xmlns:q3="http://www.opengis.net/gml/3.2" base="q3:PolygonType" />
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ann_MultiPolygonType">
+        <xs:complexContent>
+            <xs:extension xmlns:q4="http://www.opengis.net/gml/3.2" base="q4:MultiSurfaceType" />
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ann_PointType">
+        <xs:complexContent>
+            <xs:restriction base="gml:PointType">
+                <xs:sequence>
+                    <xs:choice>
+                        <xs:element ref="gml:pos" />
+                       
+                    </xs:choice>
+                </xs:sequence>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ann_PolylineType">
+        <xs:complexContent>
+            <xs:extension xmlns:q6="http://www.opengis.net/gml/3.2" base="q6:LineStringType" />
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="POLYGON_TYPE">
+        <xs:sequence>
+            <xs:element xmlns:q7="http://www.opengis.net/gml/3.2" name="POINT" type="q7:PointType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:string" />
+    </xs:complexType>
+    <xs:complexType name="POLYLINE_TYPE">
+        <xs:sequence>
+            <xs:element name="POINT" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:string" />
+    </xs:complexType>
+    <xs:complexType name="SINGLE_POINT_TYPE">
+        <xs:sequence>
+            <xs:element name="POINT" type="xs:string" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:string" />
+    </xs:complexType>
+    <xs:complexType name="SURFACE_TYPE">
+        <xs:sequence>
+            <xs:element name="POLYGON" type="wax:POLYLINE_TYPE" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="ID" />
+    </xs:complexType>
+    <xs:complexType name="GEOMETRY_TYPE">
+        <xs:sequence>
+            <xs:element name="POLYGON" type="wax:ann_PolygonType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="POLYLINE" type="wax:ann_PolylineType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="SinglePoint" type="wax:ann_PointType" minOccurs="0" maxOccurs="unbounded" />
+            <xs:element name="SURFACE" type="wax:ann_SurfaceType" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+        <xs:attribute name="user_name" type="xs:string" />
+        <xs:attribute name="modified_time" type="xs:long" />
+    </xs:complexType>
+    <xs:complexType name="ONTO_TERM_TYPE">
+        <xs:sequence>
+            <xs:element name="COMMENT" type="xs:string" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+        <xs:attribute ref="gml:id" />
+        <xs:attribute xmlns:q1="http://www.w3.org/1999/xlink" ref="q1:title" />
+        <xs:attribute xmlns:q2="http://www.w3.org/1999/xlink" ref="q2:href" />
+    </xs:complexType>
+    <xs:complexType name="SUBJECT_TYPE">
+        <xs:sequence>
+            <xs:element name="ONTO_TERM" type="wax:ONTO_TERM_TYPE" minOccurs="0" maxOccurs="1" />
+            <xs:element name="GEOMETRY" type="wax:GEOMETRY_TYPE" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="OBJECT_TYPE">
+        <xs:sequence>
+            <xs:element name="ONTO_TERM" type="wax:ONTO_TERM_TYPE" minOccurs="0" maxOccurs="1" />
+            <xs:element name="GEOMETRY" type="wax:GEOMETRY_TYPE" minOccurs="0" maxOccurs="1" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ONTO_PROPERTY_TYPE">
+        <xs:sequence>
+            <xs:element name="SUBJECT" type="wax:SUBJECT_TYPE" />
+            <xs:element name="OBJECT" type="wax:OBJECT_TYPE" />
+        </xs:sequence>
+        <xs:attribute ref="xlink:title" />
+        <xs:attribute ref="xlink:href" />
+        <xs:attribute name="user_name" type="xs:string" />
+        <xs:attribute name="modified_time" type="xs:long" />
+    </xs:complexType>
+    <xs:complexType name="RELATIONS_TYPE">
+        <xs:sequence>
+            <xs:element name="ONTO_PROPERTY" type="wax:ONTO_PROPERTY_TYPE" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="ANNOTATION" type="wax:AnnotationType" />
+    <xs:complexType name="AnnotationType">
+        <xs:sequence>
+            <xs:element name="MODIFIED_DATE" type="xs:date" />
+            <xs:element name="RESOURCE">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="wax:ResourceType" />
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GEOMETRIES">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="GEOMETRY" type="wax:GEOMETRY_TYPE" minOccurs="0" maxOccurs="unbounded" />
+                    </xs:sequence>
+                    <xs:attribute name="srsName" type="xs:string">
+                        <xs:annotation>
+                            <xs:documentation>Was coord_name</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GENERAL_ONTO_MODEL" type="wax:GENERAL_ONTO_MODEL" />
+            <xs:element name="ONTO_TERMS">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ONTO_TERM" type="wax:ONTO_TERM_TYPE" minOccurs="0" maxOccurs="unbounded" />
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="ResourceType">
+        <xs:attribute name="filepath" type="xs:string" use="required" />
+        <xs:attribute name="number_of_bytes" type="xs:long" />
+        <xs:attribute name="xsize" type="xs:long" />
+        <xs:attribute name="ysize" type="xs:long" />
+        <xs:attribute name="zsize" type="xs:long" />
+    </xs:complexType>
+    <xs:complexType name="GENERAL_ONTO_MODEL">
+        <xs:sequence>
+            <xs:element name="RELATIONS" type="wax:RELATIONS_TYPE" />
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

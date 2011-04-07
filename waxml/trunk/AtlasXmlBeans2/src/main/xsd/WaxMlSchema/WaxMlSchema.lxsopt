@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Created by Liquid XML Data Binding Libraries (www.liquid-technologies.com) for Liquid Technologies Limited-->
-<XmlStudioProjectOptions xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" Version="9.0.8.3018">
+<XmlStudioProjectOptions xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" Version="9.0.11.3078">
 	<OpenFile Uri=".\common\SrsCommon.xsd"/>
 	<OpenFile Uri=".\DescribeSrsResponse.xsd"/>
 	<OpenFile Uri=".\Retrieve2DImageResponse.xsd"/>
@@ -11,4 +11,9 @@
 	<OpenFile Uri=".\GetProcessByIdentifier.xsd"/>
 	<OpenFile Uri=".\CorrelationMapResponse.xsd"/>
 	<OpenFile Uri=".\ListSrsResponse.xsd"/>
+	<OpenFile Uri=".\newBaseResponseTemplate.xsd"/>
+	<OpenFile Uri=".\SetAnnotationResponse.xsd"/>
+	<OpenFile Uri=".\ListTransformationResponse.xsd"/>
+	<OpenFile Uri=".\TransformationResponse.xsd"/>
+	<OpenFile Uri=".\common\WaxML_Base.xsd"/>
 </XmlStudioProjectOptions>

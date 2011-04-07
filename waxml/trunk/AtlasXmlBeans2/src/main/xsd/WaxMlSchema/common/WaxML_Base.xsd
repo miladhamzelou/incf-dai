@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<!--Created with Liquid XML Studio Developer Edition (Education) 8.1.4.2482 (http://www.liquid-technologies.com)-->
+<!--Created with Liquid XML Studio Developer Edition (Education) 9.0.11.3078 (http://www.liquid-technologies.com)-->
 <xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gmd="http://www.isotc211.org/2005/gmd" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" version="0.8" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
     <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
@@ -67,6 +67,7 @@ Optional</xs:documentation>
     <xs:complexType name="POIType">
         <xs:choice>
             <xs:element ref="gml:Point" />
+            <xs:element ref="gml:posList" />
         </xs:choice>
     </xs:complexType>
     <xs:element name="BoundedBy" type="gml:BoundingShapeType" />

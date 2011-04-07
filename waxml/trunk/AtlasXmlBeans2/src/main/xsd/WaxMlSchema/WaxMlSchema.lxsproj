@@ -17,6 +17,7 @@
 		<File Uri=".\ListHubsResponse.xsd"/>
 		<File Uri=".\ListProcessesResponse.xsd"/>
 		<File Uri=".\CorrelationMapResponse.xsd"/>
+		<File Uri=".\SetAnnotationResponse.xsd"/>
 		<SubGroup Name="Documents">
 			<File Uri=".\SampleDocuments\TransformResponse.xml"/>
 			<File Uri=".\SampleDocuments\CoordinateTransformInfo.xml"/>
@@ -38,6 +39,7 @@
 			<File Uri=".\common\SrsCommon.xsd"/>
 			<File Uri=".\common\WaxML_Base.xsd"/>
 			<File Uri=".\common\ListHubServices.xsd"/>
+			<File Uri=".\common\phenotypeAnnotation.xsd"/>
 		</SubGroup>
 	</Project>
 </XmlStudioProject>
