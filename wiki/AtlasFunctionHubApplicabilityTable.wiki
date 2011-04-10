@@ -89,15 +89,15 @@ This table indicates which INCF Atlas processes are applicable to the various hu
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetStructureNamesByPOI GetStructureNamesByPOI]</th>
-    <td align="center">*[ X]*<sup>2</sup></td>
-    <td align="center">*[ X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=structureset:anatomic X]*<sup>2</sup></td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:fine X]*</td>
     <td align="center"></td>
-    <td align="center">*[ X]*</td>
-    <td align="center">*[ X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=-4;y=-2.3;z=2;vocabulary=Mouse_Paxinos_1.0;filter=NONE X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter= X]*</td>
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetTransformationChain GetTransformationChain]<sup>3</sup></th>
-    <td align="center">*[ X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAreference_1.0;outputSrsName=Mouse_WHS_1.0;filter=cerebellum X]*</td>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
