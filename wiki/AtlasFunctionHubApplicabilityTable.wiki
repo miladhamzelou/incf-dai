@@ -49,24 +49,24 @@ This table indicates which INCF Atlas processes are applicable to the various hu
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]</th>
-    <td align="center">*[ X]*<sup>2</sup></td>
-    <td align="center">*[ X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3 X]*<sup>2</sup></td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal X]*</td>
     <td align="center"></td>
-    <td align="center">*[ X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3 X]*</td>
     <td align="center"></td>
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCorrelationMapByPOI GetCorrelationMapByPOI]</th>
-    <td align="center">*[ X]*<sup>2</sup></td>
-    <td align="center">*[ X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal X]*<sup>2</sup></td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal X]*</td>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetGenesByPOI GetGenesByPOI]</th>
-    <td align="center">*[ X]*<sup>2</sup></td>
-    <td align="center">*[ X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE X]*<sup>2</sup></td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE X]*</td>
     <td align="center">*O*</td>
     <td align="center"></td>
     <td align="center"></td>
