@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>AtlasXmlBeans</groupId>
-  <artifactId>AtlasXmlBeans</artifactId>
+  <groupId>org.incf</groupId>
+  <artifactId>WaxML</artifactId>
   <version>0.1.1-SNAPSHOT</version>
   <name>XmlBeansWaxMl</name>
-  <description>XmlBeans compiled from the WaxML amd GML schemas</description>
+  <description>XmlBeans compiled from the WaxML amd GML schemas.  Also includes the WaxML schemas themselves along with examples.</description>
   
   <repositories>
 	<repository>
