@@ -267,7 +267,7 @@ public class Monitor {
 		email.send();	
 	}
 
-    private static String readAsString(InputStream in)
+    public static String readAsString(InputStream in)
     		throws java.io.IOException{
     	StringBuffer fileData = new StringBuffer(1000);
     	BufferedReader reader = new BufferedReader(new InputStreamReader(in));

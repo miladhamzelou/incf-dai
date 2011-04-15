@@ -3,6 +3,12 @@
   <!-- Report goes to console if debug is true. -->
   <debug>true</debug>
   
+  <singleTest>
+    <serverId>dev-local</serverId>
+<!--    <uri>http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=Mouse_ABAreference_1.0</uri>-->
+    <uri>http://@SERVER@/aba/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=XXX</uri>
+  </singleTest>
+  
   <repeatTest>
     <serverId>dev-local</serverId>
     <testId>aba:Get2DImagesByPOI</testId>
@@ -13,7 +19,7 @@
         incf-dev-local.crbs.ucsd.edu (defaults to port 80)
         xxx.xxx.xxx:8080  -->
   <servers>
-    <server id="dev-local">incf-dev-local.crbs.ucsd.edu</server>
+<!--    <server id="dev-local">incf-dev-local.crbs.ucsd.edu</server>-->
     <server id="dev">incf-dev.crbs.ucsd.edu</server>
   </servers>
   

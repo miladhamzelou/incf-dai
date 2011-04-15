@@ -90,6 +90,7 @@ public class RepeatTester {
 			return;
 		}
 		
+		// insert server host name into uri
 	    String resolvedUri = testUri.replace("@SERVER@", server);
 		URL url = null;
 		try {
