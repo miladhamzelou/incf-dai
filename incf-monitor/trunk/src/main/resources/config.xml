@@ -10,16 +10,16 @@
   </singleTest>
   
   <repeatTest>
-    <serverId>dev-local</serverId>
+    <serverId>dev</serverId>
     <testId>aba:Get2DImagesByPOI</testId>
-    <repititions>100</repititions>
+    <repititions>1</repititions>
   </repeatTest>
 
   <!-- List servers (with ports) to be tested: xxx.xxx.xxx or xxx.xxx.xxx:port  
         incf-dev-local.crbs.ucsd.edu (defaults to port 80)
         xxx.xxx.xxx:8080  -->
   <servers>
-<!--    <server id="dev-local">incf-dev-local.crbs.ucsd.edu</server>-->
+    <server id="dev-local">incf-dev-local.crbs.ucsd.edu</server>
     <server id="dev">incf-dev.crbs.ucsd.edu</server>
   </servers>
   

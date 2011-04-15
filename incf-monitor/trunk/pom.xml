@@ -6,7 +6,7 @@
   <name>INCF Monitor</name>
   
   <build>
-    <finalName>incfmonitor</finalName>
+<!--    <finalName>incfmonitor</finalName>-->
 
     <plugins>
     
@@ -23,7 +23,7 @@
         <!-- This goal will force Maven to build all included POMs up to the 
              package phase BEFORE the assembly is processed.  -->
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.2-beta-2</version>
+        <version>2.2.1</version>
         <configuration>
           <descriptors>
             <descriptor>src/main/assembly/tar-gz.xml</descriptor>

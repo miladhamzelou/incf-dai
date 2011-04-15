@@ -10,19 +10,19 @@
 # script constants
 #
 # java's location
-JAVA_HOME=/usr/local/java/jdk
+JAVA_HOME=/usr
 
 # jvm arguments
 VMARGS="-Xms2048M -Xmx2048M"
 
 # server home directory
-SERVER_HOME=/usr/local/incfmonitor
+SERVER_HOME=/usr/local/incf/incfmonitor
 
 # identify main() method's class
 MAINCLASS=org.incf.monitor.Monitor
 
 # destination for sysout/syserr prior to formal logging
-STARTUPLOG=logs/sys.log
+#STARTUPLOG=logs/sys.log
 
 #
 # execution sequence
@@ -38,14 +38,6 @@ for jarfile in $jarfiles ; do
 done                             
 
 # start monitor
-$JAVA_HOME/bin/java $VMARGS -cp $classpath $MAINCLASS > $STARTUPLOG 2>&1
+#$JAVA_HOME/bin/java $VMARGS -cp $classpath $MAINCLASS > $STARTUPLOG 2>&1
+$JAVA_HOME/bin/java $VMARGS -cp $classpath $MAINCLASS
 
-# save process id for future stopping server
-pid=$!
-echo "Started server pid: $pid" >> $STARTUPLOG
-if [ "$SERVER_PID" ]; then
-    echo $pid > $SERVER_PID
-    echo "Server pid saved to $SERVER_PID" >> $STARTUPLOG
-else
-    echo "Could not save pid: \$SERVER_PID not set" >> $STARTUPLOG
-fi

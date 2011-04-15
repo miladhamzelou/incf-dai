@@ -1,5 +1,5 @@
 <assembly>
-  <id></id>
+  <id>app</id>
   <formats>
     <format>tar.gz</format>
   </formats>
@@ -39,18 +39,6 @@
     <dependencySet>
       <outputDirectory>lib</outputDirectory>
       <unpack>false</unpack>
-<!--      <unpackOptions>-->
-<!--        <excludes>-->
-<!--          <exclude>favicon.ico</exclude>-->
-<!--           <exclude>hibernate.properties</exclude> -->
-<!--          <exclude>hibernate*.properties</exclude>-->
-<!--          <exclude>log4j.properties</exclude>-->
-<!--          <exclude>wbcserver.properties</exclude>-->
-<!--          <exclude>wholeWBCState.xml</exclude>-->
-<!--          <exclude>*.xsd</exclude>  excludes schema files -->
-<!--          <exclude>data/</exclude>  excludes data files -->
-<!--        </excludes>-->
-<!--      </unpackOptions>-->
       <!-- <scope>runtime</scope> -->
     </dependencySet>
   </dependencySets>

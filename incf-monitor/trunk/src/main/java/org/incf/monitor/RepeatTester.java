@@ -142,9 +142,12 @@ public class RepeatTester {
 				server.split("\\.")[0],
 				path.split("/")[1],
 				process);
-		out.printf("Repetitions: %d, Passes: %d, Failures: %d, First failure: %d%n",
-				repetitions, passes, failures, firstFailure);
-		out.printf("Finish: %s%n", Monitor.tf.format(new Date()));
+		out.printf("Repetitions: %d, Passes: %d, Failures: %d",
+				repetitions, passes, failures);
+		if (failures > 0) {
+			out.printf(", First failure: %d", firstFailure);
+		}
+		out.printf("%nFinish: %s%n", Monitor.tf.format(new Date()));
 	}
 	
 	public static void main(String[] args) {
