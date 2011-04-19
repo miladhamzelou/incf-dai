@@ -131,6 +131,17 @@ public class Main {
 		System.out.println("Error CorrelationMapResponse");
 		e.printStackTrace();
 	}
+	CorrelationMapResponse_Multipoint cmr2 = new CorrelationMapResponse_Multipoint();
+    String CorrelationResponse_Multipoint = cmr2.AsXml();
+     try {
+     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/CorrelationMapResponse_Multipoint.xml"));
+         out.write(CorrelationResponse_Multipoint);
+         out.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		System.out.println("Error CorrelationMapResponse");
+		e.printStackTrace();
+	}
 	
 	ListSRSResponse srs1 = new ListSRSResponse();
 	String SrsResponseFull = srs1.AsXml();
@@ -154,7 +165,19 @@ public class Main {
 				System.out.println("Error DescribeSrsResponse");
 				e.printStackTrace();
 			}
-		
+			
+			ListSRSResponse_Multi srs2 = new ListSRSResponse_Multi();
+			String SrsResponseFull_Multi = srs2.AsXml();
+			 try {
+			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/ListSRSResponse_multi.xml"));
+			         out.write(SrsResponseFull_Multi);
+			         out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Error ListSRSResponse");
+					e.printStackTrace();
+				}
+	
 	System.out.println("done");
        
 	}

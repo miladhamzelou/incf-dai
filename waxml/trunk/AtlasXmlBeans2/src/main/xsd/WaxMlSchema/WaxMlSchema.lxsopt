@@ -4,16 +4,16 @@
 	<OpenFile Uri=".\common\SrsCommon.xsd"/>
 	<OpenFile Uri=".\DescribeSrsResponse.xsd"/>
 	<OpenFile Uri=".\Retrieve2DImageResponse.xsd"/>
-	<OpenFile Uri=".\CoordinateChainTransformationResponses.xsd"/>
 	<OpenFile Uri=".\Retrieve2DimagesResponse.xsd"/>
 	<OpenFile Uri=".\common\ListHubServices.xsd"/>
 	<OpenFile Uri=".\ListProcessesResponse.xsd"/>
 	<OpenFile Uri=".\GetProcessByIdentifier.xsd"/>
 	<OpenFile Uri=".\CorrelationMapResponse.xsd"/>
 	<OpenFile Uri=".\ListSrsResponse.xsd"/>
-	<OpenFile Uri=".\newBaseResponseTemplate.xsd"/>
 	<OpenFile Uri=".\SetAnnotationResponse.xsd"/>
 	<OpenFile Uri=".\ListTransformationResponse.xsd"/>
 	<OpenFile Uri=".\TransformationResponse.xsd"/>
 	<OpenFile Uri=".\common\WaxML_Base.xsd"/>
+	<OpenFile Uri=".\GenesResponse.xsd"/>
+	<OpenFile Uri=".\ImagesResponse.xsd"/>
 </XmlStudioProjectOptions>
