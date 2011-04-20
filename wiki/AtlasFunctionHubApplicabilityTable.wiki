@@ -56,6 +56,14 @@ This table indicates which INCF Atlas processes are applicable to the various hu
     <td align="center"></td>
   </tr>
   <tr>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetAnnotaionsByPOI GetAnnotationsByPOI]</th>
+    <td align="center">*O*<sup>2</sup></td>
+    <td align="center">*O*</td>
+    <td align="center">*O*</td>
+    <td align="center">*O*</td>
+    <td align="center">*O*</td>
+  </tr>
+  <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCorrelationMapByPOI GetCorrelationMapByPOI]</th>
     <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal X]*<sup>2</sup></td>
     <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal X]*</td>
@@ -73,14 +81,6 @@ This table indicates which INCF Atlas processes are applicable to the various hu
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetObjectsByPOI GetObjectsByPOI]</th>
-    <td align="center">*O*<sup>2</sup></td>
-    <td align="center">*O*</td>
-    <td align="center">*O*</td>
-    <td align="center">*O*</td>
-    <td align="center">*O*</td>
-  </tr>
-  <tr>
-    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetAnnotaionsByPOI GetPropertiesByPOI]</th>
     <td align="center">*O*<sup>2</sup></td>
     <td align="center">*O*</td>
     <td align="center">*O*</td>
