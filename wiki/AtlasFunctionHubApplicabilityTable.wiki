@@ -129,7 +129,7 @@ This table indicates which INCF Atlas processes are applicable to the various hu
   </tr>
   <tr>
     <th align="left">!SetAnnotation</th>
-    <td align="center"><sup>2</sup></td>
+    <td align="center"></td>
     <td align="center">*O*</td>
     <td align="center">*O*</td>
     <td align="center">*O*</td>
