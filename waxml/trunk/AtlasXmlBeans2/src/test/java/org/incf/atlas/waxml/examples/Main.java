@@ -61,6 +61,18 @@ public class Main {
 		e.printStackTrace();
 	}
 	
+	TransformationResponse_pointarray tr2 = new TransformationResponse_pointarray();
+    String tranformationResponse2 = tr2.AsXml();
+     try {
+     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/TransformationResponse_pointarray.xml"));
+         out.write(tranformationResponse2);
+         out.close();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		System.out.println("Error TransformationResponse_pointarray");
+		e.printStackTrace();
+	}
+	
 	ListTransformsResponse lr = new ListTransformsResponse();
     String listTransformsResponse = lr.asXml();
      try {

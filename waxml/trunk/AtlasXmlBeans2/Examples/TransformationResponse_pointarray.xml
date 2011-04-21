@@ -23,9 +23,7 @@
   <POI>
     <!--id on Point Required By GML
  Scoped to the document only-->
-    <gml:Point gml:id="AnyIndentifier" srsName="Mouse_AGEA_1.0">
-      <!--X Y Z-->
-      <gml:pos>2 2 2</gml:pos>
-    </gml:Point>
+    <!--X1 Y2 Z2 X2 Y2 Z2-->
+    <gml:posList srsName="Mouse_AGEA_1.0" srsDimension="3" count="6">2.0 2.0 2.0 3.0 3.0 3.0</gml:posList>
   </POI>
 </TransformationResponse>

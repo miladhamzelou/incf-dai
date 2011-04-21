@@ -9,8 +9,8 @@
         <Name srsCode="INCF:0101" srsBase="ABAreference" srsVersion="1.0" species="mouse" urn="ReferenceUrl">Mouse_ABAreference_1.0</Name>
         <Description>some description here</Description>
         <Author authorCode="123" dateSubmitted="2011-07-04"/>
-        <DateCreated>2011-04-19-07:00</DateCreated>
-        <DateUpdated>2011-04-19-07:00</DateUpdated>
+        <DateCreated>2011-04-20-07:00</DateCreated>
+        <DateUpdated>2011-04-20-07:00</DateUpdated>
         <Origin codeSpace="URN">bregma</Origin>
         <Area structureName="whole brain" structureURN="URN"/>
         <Units uom="nm"/>
@@ -29,8 +29,8 @@
         <Name srsCode="INCF:0101" srsBase="ABAreference" srsVersion="1.0" species="mouse" urn="ReferenceUrl">Mouse_ABAreference_1.0</Name>
         <Description>some description here</Description>
         <Author authorCode="123" dateSubmitted="2011-07-04"/>
-        <DateCreated>2011-04-19-07:00</DateCreated>
-        <DateUpdated>2011-04-19-07:00</DateUpdated>
+        <DateCreated>2011-04-20-07:00</DateCreated>
+        <DateUpdated>2011-04-20-07:00</DateUpdated>
         <Origin codeSpace="URN">bregma</Origin>
         <Area structureName="whole brain" structureURN="URN"/>
         <Units uom="nm"/>
