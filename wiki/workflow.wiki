@@ -1,0 +1,28 @@
+#summary This are the main registration workflow steps.
+
+= Introduction =
+
+From segmentation to packaged image stacks to 3D image reconstruction, to reconstruction quality measures, then registering to a fixed image (e.g. WHS) - initialization, then a finer transform - to passing the transform file along with the initial image to a warping compute system, to generating lookups (forward and inverse), atlas services, quality measures (e.g. via simulations)
+
+
+= Details =
+
+* Segmentation: is a one-off step, so not covered here, however ITK may provide some scripts that make segmentation easier. 
+
+* Initial package, in single modality. This package includes a) collection of infdividual images, b) collection of thumbnails, c) metadata XML. The metadata XML may look like:
+
+<Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” >
+  <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" yOrientation="oblique" thumbnail="filename">image_name</>
+  </slices>
+</Slices>
+<orientations>
+this is as in DescribeSRS
+AA: ax+by+cz (where a,b,c = anterior-posterior;ventral-dorsal;left-right)
+</orientations>
+
+* Interpolator: processes the initial package, to generate a new package where slices are at equal spacing:
+
+<Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” spacing="0.12">
+  <Slice code="01" yOrientation="AA" xOrientation="BB" yOrientation="oblique" thumbnail="filename">image_name</>
+  </slices>
+</Slices>
