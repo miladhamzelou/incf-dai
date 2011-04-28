@@ -139,3 +139,7 @@ http://www.picsl.upenn.edu/ANTS/
 
 
 http://advants.svn.sourceforge.net/viewvc/advants/Documentation/ants.pdf?revision=790
+
+= Workflow, as discussed at the meeting =
+
+[workflow]
