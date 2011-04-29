@@ -32,7 +32,8 @@ There may be images of the same brain in other modalities packaged separately (s
   <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
 </Slices>
 
-(can we write out this as a transformation file?)
+//(can we write out this as a transformation file?)
+// need error estimates here. Perhaps combine with alignment? or preceeded with rough alignment?
 
 * 4. Alignment: takes the correctly spaced package, and shifts/affine transforms plates into alignment. The origin is also set at this step, either by the user, or automatically (?)
 
