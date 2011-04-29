@@ -7,7 +7,8 @@ From segmentation to packaged image stacks to 3D image reconstruction, to recons
 
 = Details =
 
-* 1. Segmentation: is a one-off step, so not covered here, however ITK may provide some scripts that make segmentation easier. The initial images to be packaged, are placed in iRODS.
+== 1. Segmentation: ==
+is a one-off step, so not covered here, however ITK may provide some scripts that make segmentation easier. The initial images to be packaged, are placed in iRODS.
 
 * 1a. Downsampling: if the images are large, downsampled versions are created in iRODS.This can be done automatically, prior to the second step. 
 
