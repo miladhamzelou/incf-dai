@@ -28,7 +28,7 @@ There may be images of the same brain in other modalities packaged separately (s
 
 * 3. Interpolator: processes the initial package, to generate a new package where slices are at equal spacing, and save it in iRODS. The interpolation can be done on downsampled files.
 
-<Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="no" spacing="0.12">
+<Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="no" spacingY="0.12" spa>
   <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
 </Slices>
 
