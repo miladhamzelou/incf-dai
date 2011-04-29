@@ -29,16 +29,36 @@ There may be images of the same brain in other modalities packaged separately (s
   <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
 </Slices>
 
+(can we write out this as a transformation file?)
+
 * 4. Alignment: takes the correctly spaced package, and shifts/affine transforms plates into alignment. The origin is also set at this step, either by the user, or automatically (?)
 
 <Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="yes" origin="  ">
   <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
 </Slices>
 
-* 5. 3Dreconstruction. This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. If the files are large (need to set threshold), the reconstructions is done for downsampled images. The information in the package file shall be sufficient to generate coordinate system description in nifti. The nifti is saved into iRODS.
+
+(can we write out this as a transformation file?)
+
+
+* 5. 3Dreconstruction. This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. If the files are large (need to set threshold), the reconstructions is done for downsampled images. The information in the package file shall be sufficient to generate coordinate system description in nifti (meta, mrc). The nifti is saved into iRODS.
 
 * 5a. Masking: in ITK-SNAP or elsewhere, user defined the area of interest for which quality measures need to eb computed.
 
 * 6. Quality measures of the 3D reconstruction. These are automatically generated. Based on them, user may return to steps 3-4-5. These measures may be saved into iRODS for provenance sake.
 
-* 7. Initial 
+* 7. Initial rough registration to a target 3D model of matching modality (fixed_image), to define initial affine transformation and produce a roughly registered image. This can be done over a downsampled version retrieved from iRODS; the result and the transformation are written into iRODS.
+
+* 8. Fine registration, based on landmarks, of the roughly aligned image (downsampled if needed) to the fixed target image  - producing a new image and a new transformation file.
+
+* 9. Submitting the original image stack and the collection of transformations, derived so far, to a compute cluster, where all transformations will be applied in sequence (e.g. Jetsam). The result will be a NIFTI file in original resolution.
+
+* 9a. Generate a corresponding mesh model, write to iRODS.
+
+* 10. Given the transformations and the new Nifti, generate a lookup table for both forward and inverse, to make TransformPOI to work. Write to iRODS. Do simulation experiments to assess transformation quality and uncertainty measures, write them to iRODS.
+
+* 11. Update coordinate system description and transformation description, to make DescribeSRS and DescribeTransformation to work. Update the services.
+
+* 2-3-4. An alternate route, for single 2D images or where alignment fails, would be to use Jibber to do landmark registration slice-by-slice. Then it goes to step 9 to do jetsam.
+
+The workflow is managed from a portal, which keeps track of workflow status, provenance, and references to all intermediate files.
