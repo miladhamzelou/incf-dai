@@ -61,13 +61,23 @@ After this step, user should do "2a. Validation" again.
   <Slice code="01" constant="1.1" yOrientation="Yprime" xOrientation="Xprime" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
 </Slices>
 
-//(can we write out this as a transformation file?)
-// need error estimates here. Perhaps combine with alignment? or preceeded with rough alignment?
+Write out transformation files per slice.
+//Do validation (2a) again, and also compute error estimates here. 
+// could be nice on the GUI, where it shows for each slice how good it is for 3D reconstruction (redder - yellow- greener)
+
 
 ==5. 3Dreconstruction== 
-This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. If the files are large (need to set threshold), the reconstructions is done for downsampled images. The information in the package file shall be sufficient to generate coordinate system description in nifti (meta, mrc). The nifti is saved into iRODS.
+This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. If the files are large (need to set threshold), the reconstructions is done for downsampled images. The information in the package file shall be sufficient to generate coordinate system description in nifti (meta, mrc). The nifti is saved into iRODS. 
 
-===5a. Masking=== in ITK-SNAP or elsewhere, user defined the area of interest for which quality measures need to eb computed.
+* there is existing ITK script for this.*
+
+Perhaps also deformable reconstruction tom an image with continuous set of boundaries (may be a separate operation in ANTS)
+
+===5a. Masking=== 
+
+in ITK-SNAP or elsewhere, user defined the area of interest for which quality measures need to be computed.
+
+Select WHS regions you are interested in, and paint a bounding box on your "moving" data.
 
 ==6. Validation of 3D==
 Quality measures of the 3D reconstruction. These are automatically generated. Based on them, user may return to steps 3-4-5. These measures may be saved into iRODS for provenance sake.
