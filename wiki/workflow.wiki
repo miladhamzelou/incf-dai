@@ -67,11 +67,14 @@ Write out transformation files per slice.
 
 
 ==5. 3Dreconstruction== 
-This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. If the files are large (need to set threshold), the reconstructions is done for downsampled images. The information in the package file shall be sufficient to generate coordinate system description in nifti (meta, mrc). The nifti is saved into iRODS. 
+This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. If the files are large (need to set threshold), the reconstructions is done for downsampled images. The information in the package file shall be sufficient to generate coordinate system description in nifti (meta, mrc). The nifti is saved into iRODS. This is a low-res volume (perhaps 100Mb)
 
-* there is existing ITK script for this.*
+* there is existing ITK script for this: SimpleImageReconstruction.sh for clean image stack, and another one that will use transformations*
 
-Perhaps also deformable reconstruction tom an image with continuous set of boundaries (may be a separate operation in ANTS)
+* as part of this step, we need estimates of the content of the NIFTI (resolution (e.g. average, max), dimensions, reference system)*
+
+
+Perhaps also deformable reconstruction to an image with continuous set of boundaries (may be a separate operation in ANTS)
 
 ===5a. Masking=== 
 
@@ -79,8 +82,10 @@ in ITK-SNAP or elsewhere, user defined the area of interest for which quality me
 
 Select WHS regions you are interested in, and paint a bounding box on your "moving" data.
 
+Will generate: list of ROIs, and also a paint object(?)
+
 ==6. Validation of 3D==
-Quality measures of the 3D reconstruction. These are automatically generated. Based on them, user may return to steps 3-4-5. These measures may be saved into iRODS for provenance sake.
+Quality measures of the 3D reconstruction. These are automatically generated. Based on them, user may return to steps 3-4-5. These measures may be saved into iRODS for provenance sake. The measures could apply to the entore reconstruction, or to the part painted in step 5a only.
 
 ==7. Rough registration==
 Initial rough registration to a target 3D model of matching modality (fixed_image), to define initial affine transformation and produce a roughly registered image. This can be done over a downsampled version retrieved from iRODS; the result and the transformation are written into iRODS.
