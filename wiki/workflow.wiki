@@ -14,7 +14,10 @@ From segmentation to packaged image stacks to 3D image reconstruction, to recons
 * 2. Initial package, in single modality. The slices are segmented but don't have consistent spacing or mutual alignment. This package includes a) collection of individual images, b) collection of downsampled images, c) metadata XML. The metadata XML may look like:
 
 <Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="no">
-  <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
+  <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" downsampled="filename" downsamplingRatioX="0.1" downsamplingRatioY="0.1">image_name</Slice>
+
+// what if they submit DICOM, or MRI
+
 </Slices>
 <orientations>
 //  this is as in DescribeSRS
