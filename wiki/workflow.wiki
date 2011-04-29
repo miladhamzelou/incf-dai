@@ -1,4 +1,4 @@
-#summary This are the main registration workflow steps.
+#summary Main steps in registration workflow based on ITK/ANTS and Jibber/Jetsam.
 
 = Introduction =
 
