@@ -38,7 +38,8 @@ User runs validation tests on the input data: a) whether spacing is consistent, 
 
 *need ITK or ANTS script for validation*
 
-
+If shape validation fails --> need alignment step
+If spacing validation fails --> may still need interpolation step if spacing is not identical
 
 
 ==3. Alignment==
@@ -51,6 +52,7 @@ processes the initial package, and shifts/affine transforms the plates into alig
 
 (can we write out this as a collection of transformation files for each slice?)
 
+After this step, user should do "2a. Validation" again.
 
 ==4. Interpolator==
  takes the correctly aligned package,  to generate a new package where slices are at equal spacing, and save it in iRODS. The interpolation can be done on downsampled files. The XML output for the "package":
