@@ -9,15 +9,14 @@ From segmentation to packaged image stacks to 3D image reconstruction, to recons
 
 * Segmentation: is a one-off step, so not covered here, however ITK may provide some scripts that make segmentation easier. 
 
-* Initial package, in single modality. This package includes a) collection of infdividual images, b) collection of thumbnails, c) metadata XML. The metadata XML may look like:
+* Initial package, in single modality. The slices are segmented but don't have consistent spacing or mutual alignment. This package includes a) collection of individual images, b) collection of downsampled images, c) metadata XML. The metadata XML may look like:
 
 <Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” >
-  <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" yOrientation="oblique" thumbnail="filename">image_name</>
-  </slices>
+  <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" thumbnail="filename">image_name</Slice>
 </Slices>
 <orientations>
-  this is as in DescribeSRS
-  AA: ax+by+cz (where a,b,c = anterior-posterior;ventral-dorsal;left-right)
+//  this is as in DescribeSRS
+//  AA: ax+by+cz (where a,b,c = anterior-posterior;ventral-dorsal;left-right)
 </orientations>
 
 * Interpolator: processes the initial package, to generate a new package where slices are at equal spacing:
