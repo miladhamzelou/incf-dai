@@ -80,30 +80,37 @@ Perhaps also deformable reconstruction to an image with continuous set of bounda
 
 in ITK-SNAP or elsewhere, user defined the area of interest for which quality measures need to be computed.
 
-Select WHS regions you are interested in, and paint a bounding box on your "moving" data.
+Select WHS regions you are interested in, and paint a bounding box on your "moving" data. 
 
-Will generate: list of ROIs, and also a paint object(?)
+Will generate: list of ROIs, and also a paint object(bounding box).
 
 ==6. Validation of 3D==
-Quality measures of the 3D reconstruction. These are automatically generated. Based on them, user may return to steps 3-4-5. These measures may be saved into iRODS for provenance sake. The measures could apply to the entore reconstruction, or to the part painted in step 5a only.
+User just looks at the volume to see that it worked Ok, and can proceed to registration to canonical coord system.
+
 
 ==7. Rough registration==
 Initial rough registration to a target 3D model of matching modality (fixed_image), to define initial affine transformation and produce a roughly registered image. This can be done over a downsampled version retrieved from iRODS; the result and the transformation are written into iRODS.
 
+*calling ANTS script directly*
+
+
 ==8. Fine registration==
-based on landmarks, of the roughly aligned image (downsampled if needed) to the fixed target image  - producing a new image and a new transformation file.
+based on landmarks, of the roughly aligned image (downsampled if needed) to the fixed target image  - producing a new image and a new transformation file. Alternately, may use some mutual information measure. The transformation after this step will include Affine+[spline|deformation..]
+
 
 ==9. Computation==
 Submitting the original image stack and the collection of transformations, derived so far, to a compute cluster, where all transformations will be applied in sequence (e.g. Jetsam). The result will be a NIFTI file in original resolution.
 
 ===9a. Mesh generation===
-Generate a corresponding mesh model, write to iRODS
+Generate a corresponding mesh model, write to iRODS (possibly, eventually)
 
 ==10. Lookup and TransformPOI==
 Given the transformations and the new Nifti, generate a lookup table for both forward and inverse, to make TransformPOI to work. Write to iRODS. Do simulation experiments to assess transformation quality and uncertainty measures, write them to iRODS.
 
 ==11. DAI service update==
 Update coordinate system description and transformation description, to make DescribeSRS and DescribeTransformation to work. Update the services.
+
+It would be useful to have validation, where for selected slices we resample the original data space into Waxholm, and overlap - eyeball, basically - but not have them as part of infrastructure.
 
 * 2-3-4. An alternate route, for single 2D images or where alignment fails, would be to use Jibber to do landmark registration slice-by-slice. Then it goes to step 9 to do jetsam.
 
