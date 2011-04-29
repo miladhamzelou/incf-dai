@@ -31,7 +31,7 @@ There may be images of the same brain in other modalities packaged separately (s
 
 This metadata XML may be generated from user interface where all slices in a folder are presented in a table, and for each one, user specifies whether the slice needs to be included in the computation, the "z" value, X and Y orientations, X and Y resolutions, etc. Alternately, this file can be generated manually.
 
-** need user interface for adding/editing these slice metadata
+** need user interface for adding/editing these slice metadata. This user interface should support submitting all data that we'll need eventually in NIFTI
 
 ===2a. Validation tests ===
 User runs validation tests on the input data: a) whether spacing is consistent, and there are jumps in spacing/outliers, and b) whether orientation/shape is more or less smooth. The results are presented for each slice in the same table, so that the user can tweak the properties of each slice.
