@@ -2,7 +2,10 @@
 
 = Introduction =
 
-From segmentation to packaged image stacks to 3D image reconstruction, to reconstruction quality measures, then registering to a fixed image (e.g. WHS) - initialization, then a finer transform - to passing the transform file along with the initial image to a warping compute system, to generating lookups (forward and inverse), atlas services, quality measures (e.g. via simulations)
+From segmentation to packaged image stacks to 3D image reconstruction, to reconstruction quality measures, then registering to a fixed image (e.g. WHS) - initialization, then a finer transform - to passing the transform file along with the initial image to a warping compute system, to generating lookups (forward and inverse), atlas services, quality measures (e.g. via simulations).
+
+The scripts implementing the workflow, are at:
+[[https://github.com/INCF][https://github.com/INCF]]
 
 
 = Details =
