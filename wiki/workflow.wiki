@@ -7,30 +7,38 @@ From segmentation to packaged image stacks to 3D image reconstruction, to recons
 
 = Details =
 
-* 1. Segmentation: is a one-off step, so not covered here, however ITK may provide some scripts that make segmentation easier. 
+* 1. Segmentation: is a one-off step, so not covered here, however ITK may provide some scripts that make segmentation easier. The initial images to be packaged, are placed in iRODS.
+
+* 1a. Downsampling: if the images are large, downsampled versions are created in iRODS.
 
 * 2. Initial package, in single modality. The slices are segmented but don't have consistent spacing or mutual alignment. This package includes a) collection of individual images, b) collection of downsampled images, c) metadata XML. The metadata XML may look like:
 
 <Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="no">
-  <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" thumbnail="filename">image_name</Slice>
+  <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
 </Slices>
 <orientations>
 //  this is as in DescribeSRS
 //  AA: ax+by+cz (where a,b,c = anterior-posterior;ventral-dorsal;left-right)
 </orientations>
 
-* 3. Interpolator: processes the initial package, to generate a new package where slices are at equal spacing:
+There may be images of the same brain in other modalities packaged separately (shall they be referenced explicitly from this package?)
 
-<Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” spacing="0.12" alignment="no">
-  <Slice code="01" yOrientation="AA" xOrientation="BB" yOrientation="oblique" thumbnail="filename">image_name</slice>
+* 3. Interpolator: processes the initial package, to generate a new package where slices are at equal spacing, and save it in iRODS. The interpolation can be done on downsampled files.
+
+<Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="no" spacing="0.12">
+  <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
 </Slices>
 
 * 4. Alignment: takes the correctly spaced package, and shifts/affine transforms plates into alignment. The origin is also set at this step, either by the user, or automatically (?)
 
-<Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” spacing="0.12" alignment="yes" origin="  ">
-  <Slice code="01" yOrientation="AA" xOrientation="BB" yOrientation="oblique" thumbnail="filename">image_name</slice>
+<Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="yes" origin="  ">
+  <Slice code="01" constant="1.1" yOrientation="AA" xOrientation="BB" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
 </Slices>
 
-* 5. 3Dreconstruction. This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. The information in the package file shall be sufficient to generate coordinate system description in nifti.
+* 5. 3Dreconstruction. This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. If the files are large (need to set threshold), the reconstructions is done for downsampled images. The information in the package file shall be sufficient to generate coordinate system description in nifti. The nifti is saved into iRODS.
 
-* 6. Quality measures of the 3D reconstruction. These are automatically generated. Based on them, user may return to steps 3-4-5.
+* 5a. Masking: in ITK-SNAP or elsewhere, user defined the area of interest for which quality measures need to eb computed.
+
+* 6. Quality measures of the 3D reconstruction. These are automatically generated. Based on them, user may return to steps 3-4-5. These measures may be saved into iRODS for provenance sake.
+
+* 7. Initial 
