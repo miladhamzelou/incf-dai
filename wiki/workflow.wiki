@@ -7,12 +7,14 @@ From segmentation to packaged image stacks to 3D image reconstruction, to recons
 
 = Details =
 
-== 1. Segmentation: ==
+== 1. Segmentation ==
 is a one-off step, so not covered here, however ITK may provide some scripts that make segmentation easier. The initial images to be packaged, are placed in iRODS.
 
-* 1a. Downsampling: if the images are large, downsampled versions are created in iRODS.This can be done automatically, prior to the second step. 
+=== 1a. Downsampling ===
+if the images are large, downsampled versions are created in iRODS.This can be done automatically, prior to the second step. 
 
-* 2. Initial package, in single modality. The slices are segmented but don't have consistent spacing or mutual alignment. This package includes a) collection of individual images, b) collection of downsampled images, c) metadata XML. The metadata XML may look like:
+==2. Initial package, in single modality==
+ The slices are segmented but don't have consistent spacing or mutual alignment. This package includes a) collection of individual images, b) collection of downsampled images, c) metadata XML. The metadata XML may look like:
 
 <Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="no">
   <Slice code="01" constant="1.1" yOrientation="Yprime" xOrientation="Xprime" slicetype="oblique" downsampled="filename" downsamplingRatioX="0.1" downsamplingRatioY="0.1">image_name</Slice>
@@ -31,11 +33,13 @@ This metadata XML may be generated from user interface where all slices in a fol
 
 ** need user interface for adding/editing these slice metadata
 
-2a. User runs validation tests on the input data: a) whether spacing is consistent, and there are jumps in spacing/outliers, and b) whether orientation/shape is more or less smooth. The results are presented for each slice in the same table, so that the user can tweak the properties of each slice.
+===2a. Validation tests ===
+User runs validation tests on the input data: a) whether spacing is consistent, and there are jumps in spacing/outliers, and b) whether orientation/shape is more or less smooth. The results are presented for each slice in the same table, so that the user can tweak the properties of each slice.
 
 ** need ITK or ANTS script for validation
 
-* 3. Alignment: processes the initial package, and shifts/affine transforms the plates into alignment. The origin is also set at this step, either by the user, or automatically (?). Generates an updated XML 'package' file such as:
+==3. Alignment==
+processes the initial package, and shifts/affine transforms the plates into alignment. The origin is also set at this step, either by the user, or automatically (?). Generates an updated XML 'package' file such as:
 
 <Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="yes" origin="  ">
   <Slice code="01" constant="1.1" yOrientation="Yprime" xOrientation="Xprime" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
@@ -45,7 +49,8 @@ This metadata XML may be generated from user interface where all slices in a fol
 (can we write out this as a transformation file?)
 
 
-* 4. Interpolator: takes the correctly aligned package,  to generate a new package where slices are at equal spacing, and save it in iRODS. The interpolation can be done on downsampled files. The XML output for the "package":
+==4. Interpolator==
+ takes the correctly aligned package,  to generate a new package where slices are at equal spacing, and save it in iRODS. The interpolation can be done on downsampled files. The XML output for the "package":
 
 <Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="yes" origin="  " spacingY="0.12" spa>
   <Slice code="01" constant="1.1" yOrientation="Yprime" xOrientation="Xprime" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1">image_name</Slice>
@@ -54,23 +59,31 @@ This metadata XML may be generated from user interface where all slices in a fol
 //(can we write out this as a transformation file?)
 // need error estimates here. Perhaps combine with alignment? or preceeded with rough alignment?
 
-* 5. 3Dreconstruction. This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. If the files are large (need to set threshold), the reconstructions is done for downsampled images. The information in the package file shall be sufficient to generate coordinate system description in nifti (meta, mrc). The nifti is saved into iRODS.
+==5. 3Dreconstruction== 
+This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. If the files are large (need to set threshold), the reconstructions is done for downsampled images. The information in the package file shall be sufficient to generate coordinate system description in nifti (meta, mrc). The nifti is saved into iRODS.
 
-* 5a. Masking: in ITK-SNAP or elsewhere, user defined the area of interest for which quality measures need to eb computed.
+===5a. Masking=== in ITK-SNAP or elsewhere, user defined the area of interest for which quality measures need to eb computed.
 
-* 6. Quality measures of the 3D reconstruction. These are automatically generated. Based on them, user may return to steps 3-4-5. These measures may be saved into iRODS for provenance sake.
+==6. Validation of 3D==
+Quality measures of the 3D reconstruction. These are automatically generated. Based on them, user may return to steps 3-4-5. These measures may be saved into iRODS for provenance sake.
 
-* 7. Initial rough registration to a target 3D model of matching modality (fixed_image), to define initial affine transformation and produce a roughly registered image. This can be done over a downsampled version retrieved from iRODS; the result and the transformation are written into iRODS.
+==7. Rough registration==
+Initial rough registration to a target 3D model of matching modality (fixed_image), to define initial affine transformation and produce a roughly registered image. This can be done over a downsampled version retrieved from iRODS; the result and the transformation are written into iRODS.
 
-* 8. Fine registration, based on landmarks, of the roughly aligned image (downsampled if needed) to the fixed target image  - producing a new image and a new transformation file.
+==8. Fine registration==
+based on landmarks, of the roughly aligned image (downsampled if needed) to the fixed target image  - producing a new image and a new transformation file.
 
-* 9. Submitting the original image stack and the collection of transformations, derived so far, to a compute cluster, where all transformations will be applied in sequence (e.g. Jetsam). The result will be a NIFTI file in original resolution.
+==9. Computation==
+Submitting the original image stack and the collection of transformations, derived so far, to a compute cluster, where all transformations will be applied in sequence (e.g. Jetsam). The result will be a NIFTI file in original resolution.
 
-* 9a. Generate a corresponding mesh model, write to iRODS.
+===9a. Mesh generation===
+Generate a corresponding mesh model, write to iRODS
 
-* 10. Given the transformations and the new Nifti, generate a lookup table for both forward and inverse, to make TransformPOI to work. Write to iRODS. Do simulation experiments to assess transformation quality and uncertainty measures, write them to iRODS.
+==10. Lookup and TransformPOI==
+Given the transformations and the new Nifti, generate a lookup table for both forward and inverse, to make TransformPOI to work. Write to iRODS. Do simulation experiments to assess transformation quality and uncertainty measures, write them to iRODS.
 
-* 11. Update coordinate system description and transformation description, to make DescribeSRS and DescribeTransformation to work. Update the services.
+==11. DAI service update==
+Update coordinate system description and transformation description, to make DescribeSRS and DescribeTransformation to work. Update the services.
 
 * 2-3-4. An alternate route, for single 2D images or where alignment fails, would be to use Jibber to do landmark registration slice-by-slice. Then it goes to step 9 to do jetsam.
 
