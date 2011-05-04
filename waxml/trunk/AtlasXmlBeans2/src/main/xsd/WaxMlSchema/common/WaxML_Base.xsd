@@ -67,7 +67,7 @@ Optional</xs:documentation>
     <xs:complexType name="POIType">
         <xs:choice>
             <xs:element ref="gml:Point" />
-            <xs:element ref="gml:posList" />
+            <xs:element ref="gml:MultiPoint" />
         </xs:choice>
     </xs:complexType>
     <xs:element name="BoundedBy" type="gml:BoundingShapeType" />

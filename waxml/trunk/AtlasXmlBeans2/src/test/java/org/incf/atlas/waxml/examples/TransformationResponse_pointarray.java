@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Vector;
 
 import net.opengis.gml.x32.DirectPositionListType;
+import net.opengis.gml.x32.MultiPointType;
 import net.opengis.gml.x32.PointType;
 
 import org.apache.xmlbeans.XmlDouble;
@@ -98,22 +99,19 @@ Utilities.addInputStringCriteria(criterias,"transformationCode", "Mouse_ABAvoxel
 		filterCodeCriteria.setValue("cerebellum");
 
 		POIType poi = rootDoc.addNewPOI();
-		DirectPositionListType poipnt = poi.addNewPosList();
+		MultiPointType poipnt = poi.addNewMultiPoint();
 		//poipnt.setId("AnyIndentifier");
 		poipnt.newCursor().insertComment("id on Point Required By GML\n Scoped to the document only");
 		poipnt.setSrsName("Mouse_AGEA_1.0");
-	List<XmlDouble> list =	new ArrayList<XmlDouble>();
-	list.add( XmlDouble.Factory.newValue(2.0));
-	list.add( XmlDouble.Factory.newValue(2.0));
-	list.add( XmlDouble.Factory.newValue(2.0));
-		
-	list.add( XmlDouble.Factory.newValue(3.0));
-	list.add( XmlDouble.Factory.newValue(3.0));
-	list.add( XmlDouble.Factory.newValue(3.0));
-	
-	poipnt.setListValue(list);
+		poipnt.setId("mp");
+	PointType p1=	poipnt.addNewPointMember().addNewPoint();
+	p1.addNewPos().setStringValue("2 2 2");
+	p1.setId("p1");
+	PointType p2=	poipnt.addNewPointMember().addNewPoint();
+	p2.addNewPos().setStringValue("3 3 3");
+	p2.setId("p2");
 	poipnt.setSrsDimension( BigInteger.valueOf(3));
-	poipnt.setCount( BigInteger.valueOf(list.size()));
+	
 //	ArrayList lbl = {"X", "Y", "Z" };
 //	poipnt.setAxisLabels( new Vector(lbl) );
 		poipnt.newCursor().insertComment("X1 Y2 Z2 X2 Y2 Z2");
