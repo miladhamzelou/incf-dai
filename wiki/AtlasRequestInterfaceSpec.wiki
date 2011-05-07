@@ -5,15 +5,6 @@
 
 ==Base URIs==
 
-{{{
-this is something
-}}}
-
-|| table || cell ||
-
-Dave's
-Dave&apos;s
-
 The Atlas base URIs identify the server location (URL) and the server application or context.
 
  * Format: http://[server]:[port]/[central-or-hub]/atlas
