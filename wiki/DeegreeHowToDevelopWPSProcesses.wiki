@@ -19,6 +19,7 @@ incf-<hub>
         org.incf.<hub>.atlas.util
     src/main/resources
         log4j.properties
+        (any other resource files)
     src/main/webapp/WEB-INF/
         workspace/
             processes/
