@@ -189,7 +189,19 @@ public class Main {
 					System.out.println("Error ListSRSResponse");
 					e.printStackTrace();
 				}
-	
+				
+				SetAnnotationResponse sar = new SetAnnotationResponse();
+			    String SetAnnotationResponse = sar.asXml();
+			     try {
+			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/SetAnnotationResponse1.xml"));
+			         out.write(SetAnnotationResponse);
+			         out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Error SetAnnotationResponse");
+					e.printStackTrace();
+				}
+				
 	System.out.println("done");
        
 	}

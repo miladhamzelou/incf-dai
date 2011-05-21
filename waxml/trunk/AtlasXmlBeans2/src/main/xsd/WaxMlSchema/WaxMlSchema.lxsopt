@@ -10,5 +10,6 @@
 	<OpenFile Uri=".\ListSrsResponse.xsd"/>
 	<OpenFile Uri=".\SetAnnotationResponse.xsd"/>
 	<OpenFile Uri=".\common\WaxML_Base.xsd"/>
-	<OpenFile Uri=".\GenesResponse.xsd"/>
+	<OpenFile Uri="..\..\..\..\original_annotation\wibdb_annotation.xml"/>
+	<OpenFile Uri=".\common\phenotypeAnnotation.xsd"/>
 </XmlStudioProjectOptions>
