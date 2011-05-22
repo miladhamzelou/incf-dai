@@ -97,7 +97,7 @@ public class BaseDAO {
         String dbPassword = props.getValue("server.database.atlasdbpassword");
 */
         String driverClassName = "org.postgresql.Driver"; 
-        String dbUrl = "jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-aba-db"; 
+        String dbUrl = "jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-aba-db";  
         String dbUser = "atlas-aba-db";
         String dbPassword = "aba4321";
 
