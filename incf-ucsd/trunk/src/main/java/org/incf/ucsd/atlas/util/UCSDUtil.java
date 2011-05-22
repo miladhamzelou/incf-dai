@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.StringTokenizer;
 
+import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
@@ -1404,8 +1405,8 @@ public class UCSDUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(ucsdSrsName) ||
@@ -1420,8 +1421,8 @@ public class UCSDUtil {
 
 		 		    	ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 
@@ -1437,8 +1438,8 @@ public class UCSDUtil {
 
 		 		    	ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 
@@ -1452,8 +1453,8 @@ public class UCSDUtil {
 		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(agea) ) {
@@ -1466,8 +1467,8 @@ public class UCSDUtil {
 		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(abaReference) ) {
@@ -1480,8 +1481,8 @@ public class UCSDUtil {
 		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		  	} else if ( vo.getFromSRSCode().equalsIgnoreCase(abaVoxel) ) {
@@ -1494,8 +1495,8 @@ public class UCSDUtil {
 		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		  	}
