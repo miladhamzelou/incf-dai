@@ -1021,8 +1021,8 @@ public class WHSUtil {
 	 				ex.setCode(code);
 	 				ex.setHub(implementingHub1);
 	 				
-	 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-	 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+	 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+	 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 	 				//ex.setAccuracy(Integer.parseInt(accuracy));
 	 				ex.setStringValue(vo.getTransformationOneURL());
 	 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(paxinos) ||
@@ -1037,8 +1037,8 @@ public class WHSUtil {
 
 	 		    	ex.setCode(code);
 	 				ex.setHub(implementingHub1);
-	 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-	 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+	 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+	 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 	 				//ex.setAccuracy(Integer.parseInt(accuracy));
 	 				ex.setStringValue(vo.getTransformationOneURL());
 
@@ -1052,8 +1052,8 @@ public class WHSUtil {
 	 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 	 				ex.setCode(code);
 	 				ex.setHub(implementingHub1);
-	 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-	 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+	 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+	 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 	 				//ex.setAccuracy(Integer.parseInt(accuracy));
 	 				ex.setStringValue(vo.getTransformationOneURL());
 	 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(agea) ) {
@@ -1066,8 +1066,8 @@ public class WHSUtil {
 	 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 	 				ex.setCode(code);
 	 				ex.setHub(implementingHub1);
-	 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-	 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+	 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+	 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 	 				//ex.setAccuracy(Integer.parseInt(accuracy));
 	 				ex.setStringValue(vo.getTransformationOneURL());
 	 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(abaReference) ) {
@@ -1080,8 +1080,8 @@ public class WHSUtil {
 	 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 	 				ex.setCode(code);
 	 				ex.setHub(implementingHub1);
-	 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-	 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+	 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+	 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 	 				//ex.setAccuracy(Integer.parseInt(accuracy));
 	 				ex.setStringValue(vo.getTransformationOneURL());
 	 		  	} else if ( vo.getFromSRSCode().equalsIgnoreCase(abaVoxel) ) {
@@ -1094,8 +1094,8 @@ public class WHSUtil {
 	 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 	 				ex.setCode(code);
 	 				ex.setHub(implementingHub1);
-	 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-	 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+	 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+	 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 	 				//ex.setAccuracy(Integer.parseInt(accuracy));
 	 				ex.setStringValue(vo.getTransformationOneURL());
 	 		  	}
@@ -1119,5 +1119,5 @@ public class WHSUtil {
 
 		}
 
-	
+
 }

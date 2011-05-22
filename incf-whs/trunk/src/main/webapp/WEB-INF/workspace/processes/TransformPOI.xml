@@ -4,7 +4,7 @@
     processVersion="1.0.0" 
     storeSupported="true" 
     statusSupported="false" 
-    xmlns="http://www.deegree.org/processes/java" 
+    xmlns="http://www.deegree.org/processes/java"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
     xsi:schemaLocation="http://www.deegree.org/processes/java http://schemas.deegree.org/processes/java/3.0.0/java.xsd"> 
   <Identifier>TransformPOI</Identifier>
@@ -32,23 +32,28 @@
         <Value>Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0</Value>
       </AllowedValues>
     </LiteralInput>
-    <LiteralInput>
+    <LiteralInput minOccurs="0">
       <Identifier>x</Identifier>
       <Title>X-Coordinate Value</Title>
       <Abstract>Value in the X dimension as defined in the SRS.</Abstract>
       <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
     </LiteralInput>
-    <LiteralInput>
+    <LiteralInput minOccurs="0">
       <Identifier>y</Identifier>
       <Title>Y-Coordinate Value</Title>
       <Abstract>Value in the Y dimension as defined in the SRS.</Abstract>
       <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
     </LiteralInput>
-    <LiteralInput>
+    <LiteralInput minOccurs="0">
       <Identifier>z</Identifier>
       <Title>Z-Coordinate Value</Title>
       <Abstract>Value in the Z dimension as defined in the SRS.</Abstract>
       <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
+    </LiteralInput>
+    <LiteralInput minOccurs="0">
+      <Identifier>points</Identifier>
+      <Title>Number of points</Title>
+      <Abstract>Number of points.</Abstract>
     </LiteralInput>
   </InputParameters>
   

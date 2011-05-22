@@ -30,6 +30,7 @@ import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
 import org.deegree.services.wps.input.LiteralInput;
 import org.deegree.services.wps.output.ComplexOutput;
+import org.incf.atlas.waxml.generated.FeatureReferenceType;
 import org.incf.atlas.waxml.generated.IncfNameType;
 import org.incf.atlas.waxml.generated.InputStringType;
 import org.incf.atlas.waxml.generated.QueryInfoType;
@@ -285,6 +286,11 @@ public class GetStructureNamesByPOI implements Processlet {
 			// t1name.setStringValue("");
 			term1.addNewDescription().setStringValue("Term - " + structureName + " derived from WHS hub based on the supplied POI.");
 
+
+			FeatureReferenceType t1ft = term1.addNewFeature();
+			t1ft.addNewUrl().setStringValue("http://212.87.16.231:8080/getPreview?cafDatasetName=whs_0.51&structureName="+structureName);
+
+			
 			ArrayList errorList = new ArrayList();
 			opt.setErrorListener(errorList);
 			boolean isValid = document.validate(opt);
