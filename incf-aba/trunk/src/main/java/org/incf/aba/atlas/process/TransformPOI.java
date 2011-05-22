@@ -1,17 +1,23 @@
 package org.incf.aba.atlas.process;
 
 import java.io.File;
+import java.math.BigInteger;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
+import net.opengis.gml.x32.DirectPositionListType;
 import net.opengis.gml.x32.PointType;
 
+import org.apache.xmlbeans.XmlDouble;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
@@ -83,53 +89,103 @@ public class TransformPOI implements Processlet {
 
 		try {
 
-			ABAServiceVO vo = new ABAServiceVO();
+			ABAServiceVO vo = null;
 
 			// parse dataInputs string
 			LOG.debug(" Inside TransformPOI... ");
 
 			URL processDefinitionUrl = this.getClass().getResource(
 					"/" + this.getClass().getSimpleName() + ".xml");
+			
 			DataInputHandler dataInputHandler = new DataInputHandler(new File(
 					processDefinitionUrl.toURI()));
-			String transformationCode = dataInputHandler
-					.getValidatedStringValue(in, "transformationCode");
-			String x = String.valueOf(DataInputHandler.getDoubleInputValue(in,
-					"x"));
-			String y = String.valueOf(DataInputHandler.getDoubleInputValue(in,
-					"y"));
-			String z = String.valueOf(DataInputHandler.getDoubleInputValue(in,
-					"z"));
+			String transformationCode = "";
+			transformationCode = dataInputHandler.getValidatedStringValue(in, "transformationCode");
+			String points = dataInputHandler.getValidatedStringValue(in, "points");
+			String x = "";
+			String y = "";
+			String z = "";
+			List pointsList = new ArrayList(); 
+			
+			if ( points == null || points.equals("") ) {
 
-			vo.setTransformationCode(transformationCode);
-			String[] transformationNameArray;
-			String delimiter = "_To_";
-			transformationNameArray = vo.getTransformationCode().split(
-					delimiter);
-			String fromSRSCode = transformationNameArray[0];
-			String toSRSCode = transformationNameArray[1].replace("_v1.0", "");
+				vo = new ABAServiceVO();
+				
+				x = String.valueOf(DataInputHandler.getDoubleInputValue(in,
+						"x"));
+				y = String.valueOf(DataInputHandler.getDoubleInputValue(in,
+						"y"));
+				z = String.valueOf(DataInputHandler.getDoubleInputValue(in,
+						"z"));
+				vo.setOriginalCoordinateX(String.valueOf(x));
+				vo.setOriginalCoordinateY(String.valueOf(y));
+				vo.setOriginalCoordinateZ(String.valueOf(z));
+				LOG.debug("X: {}" , vo.getOriginalCoordinateX());
+				LOG.debug("Y: {}" , vo.getOriginalCoordinateY());
+				LOG.debug("Z: {}" , vo.getOriginalCoordinateZ());
+				vo.setTransformationCode(transformationCode);
+				String[] transformationNameArray;
+				String delimiter = "_To_";
+				transformationNameArray = vo.getTransformationCode().split(
+						delimiter);
+				String fromSRSCode = transformationNameArray[0];
+				String toSRSCode = transformationNameArray[1].replace("_v1.0", "");
 
-			LOG.debug(" Input SRS Name: {}" , fromSRSCode);
-			LOG.debug(" Output SRS Name: {}" , toSRSCode);
+				LOG.debug(" Input SRS Name: {}" , fromSRSCode);
+				LOG.debug(" Output SRS Name: {}" , toSRSCode);
 
-			vo.setFromSRSCodeOne(fromSRSCode);
-			vo.setFromSRSCode(fromSRSCode);
-			vo.setToSRSCodeOne(toSRSCode);
-			vo.setToSRSCode(toSRSCode);
+				vo.setFromSRSCodeOne(fromSRSCode);
+				vo.setFromSRSCode(fromSRSCode);
+				vo.setToSRSCodeOne(toSRSCode);
+				vo.setToSRSCode(toSRSCode);
 
-			// vo.setFilter(filter);
+				LOG.debug("From SRS Code: {}" , vo.getFromSRSCodeOne());
+				LOG.debug("To SRS Code: {}" , vo.getToSRSCodeOne());
+				pointsList.add(vo);
 
-			LOG.debug("From SRS Code: {}" , vo.getFromSRSCodeOne());
-			LOG.debug("To SRS Code: {}" , vo.getToSRSCodeOne());
-			// LOG.debug("Filter: " + vo.getFilter());
+			} else {
+				//Parse the string and create a list
 
-			vo.setOriginalCoordinateX(String.valueOf(x));
-			vo.setOriginalCoordinateY(String.valueOf(y));
-			vo.setOriginalCoordinateZ(String.valueOf(z));
+				//String points = "(1,2,3)(4,5,6)(7,8,9)";
+				StringTokenizer tokens1 = new StringTokenizer(points, ")(");
 
-			LOG.debug("X: {}" , vo.getOriginalCoordinateX());
-			LOG.debug("Y: {}" , vo.getOriginalCoordinateY());
-			LOG.debug("Z: {}" , vo.getOriginalCoordinateZ());
+				int a = 0;
+				while (tokens1.hasMoreTokens()){
+
+					vo = new ABAServiceVO();
+					LOG.debug("*****************COUNT***************" + a++ );
+					StringTokenizer tokens2 = new StringTokenizer(tokens1.nextToken(), ",");
+
+					vo.setOriginalCoordinateX(tokens2.nextToken());
+					vo.setOriginalCoordinateY(tokens2.nextToken());
+					vo.setOriginalCoordinateZ(tokens2.nextToken());
+
+					LOG.debug("X: {}" , vo.getOriginalCoordinateX());
+					LOG.debug("Y: {}" , vo.getOriginalCoordinateY());
+					LOG.debug("Z: {}" , vo.getOriginalCoordinateZ());
+					vo.setTransformationCode(transformationCode);
+					String[] transformationNameArray;
+					String delimiter = "_To_";
+					transformationNameArray = vo.getTransformationCode().split(
+							delimiter);
+					String fromSRSCode = transformationNameArray[0];
+					String toSRSCode = transformationNameArray[1].replace("_v1.0", "");
+
+					LOG.debug(" Input SRS Name: {}" , fromSRSCode);
+					LOG.debug(" Output SRS Name: {}" , toSRSCode);
+
+					vo.setFromSRSCodeOne(fromSRSCode);
+					vo.setFromSRSCode(fromSRSCode);
+					vo.setToSRSCodeOne(toSRSCode);
+					vo.setToSRSCode(toSRSCode);
+	
+					LOG.debug("From SRS Code: {}" , vo.getFromSRSCodeOne());
+					LOG.debug("To SRS Code: {}" , vo.getToSRSCodeOne());
+					pointsList.add(vo);
+
+				}
+
+			}
 
 			// text return for debugging
 			// Set<String> dataInputKeys = dataInputs.getKeys();
@@ -137,36 +193,54 @@ public class TransformPOI implements Processlet {
 
 			// Start - Call the main method here
 			ABAUtil util = new ABAUtil();
-			String completeCoordinatesString = util.spaceTransformation(vo);
+			ABAServiceVO vo1 = null;
+			List transformedPointsList = new ArrayList();
 
-			if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
-				throw new OWSException(
-						"No Such Transformation is available under ABA Hub.",
-						ControllerException.NO_APPLICABLE_CODE);
-			}
+			Iterator iterator = pointsList.iterator();
+			LOG.debug("*****************COUNT SIZE***************" + pointsList.size() );
+			int b = 0;
+			while ( iterator.hasNext() ) {
 
-			vo = util.splitCoordinatesFromStringToVO(vo,
-					completeCoordinatesString);
-			// End
+				LOG.debug("*****************UNMARSHALLING COUNT***************" + b++ );
 
-			// Start - Exception Handling
-			if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
-				throw new OWSException("Coordinates - Out of Range.",
-						ControllerException.NO_APPLICABLE_CODE);
-			}
+				vo1 = (ABAServiceVO)iterator.next();
+				String completeCoordinatesString = util.spaceTransformation(vo1);
+				if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+					throw new OWSException(
+							"No Such Transformation is available under ABA Hub.",
+							ControllerException.NO_APPLICABLE_CODE);
+				}
+	
+				vo1 = util.splitCoordinatesFromStringToVO(vo1,
+						completeCoordinatesString);
+				// End
+	
+				// Start - Exception Handling
+				if (vo1.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+					throw new OWSException("Coordinates - Out of Range.",
+							ControllerException.NO_APPLICABLE_CODE);
+				}
 
-			// Checking out of bound exception
-			CommonUtil commonUtil = new CommonUtil();
-			String outOfBoundCheck = commonUtil.outOfBoundException(Double
-					.parseDouble(vo.getTransformedCoordinateX()), Double
-					.parseDouble(vo.getTransformedCoordinateY()), Double
-					.parseDouble(vo.getTransformedCoordinateZ()), vo
-					.getToSRSCodeOne());
+				// Checking out of bound exception
+				CommonUtil commonUtil = new CommonUtil();
+				String outOfBoundCheck = commonUtil.outOfBoundException(Double
+						.parseDouble(vo1.getTransformedCoordinateX()), Double
+						.parseDouble(vo1.getTransformedCoordinateY()), Double
+						.parseDouble(vo1.getTransformedCoordinateZ()), vo1
+						.getToSRSCodeOne());
 
-			if (outOfBoundCheck.equalsIgnoreCase("Coordinates - Out of Range")) {
-				throw new OWSException("Coordinates - Out of Range.",
-						ControllerException.NO_APPLICABLE_CODE);
-			}
+				LOG.debug("***Before OutputX***" + vo1.getTransformedCoordinateX().toString());
+				LOG.debug("***Before OutputY***" + vo1.getTransformedCoordinateY().toString());
+				LOG.debug("***Before OutputZ***" + vo1.getTransformedCoordinateZ().toString());
+
+				if (outOfBoundCheck.equalsIgnoreCase("Coordinates - Out of Range")) {
+					throw new OWSException("Coordinates - Out of Range.",
+							ControllerException.NO_APPLICABLE_CODE);
+				}
+
+				transformedPointsList.add(vo1);
+			} 				
+
 			// End
 
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
@@ -204,53 +278,31 @@ public class TransformPOI implements Processlet {
 
 			TransformationResponseType rootDoc = document
 					.addNewTransformationResponse();
-			// QueryInfo and criteria should be done as a utility
-			// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
-			/*
-			 * QueryInfoType query = rootDoc.addNewQueryInfo();
-			 * QueryInfoType.Criteria criterias = query.addNewCriteria();
-			 * 
-			 * query.addNewQueryUrl();
-			 * query.getQueryUrl().setName("TransformPOI");
-			 * query.getQueryUrl().setStringValue(uri.toString());
-			 * query.setTimeCreated(Calendar.getInstance());
-			 * 
-			 * InputStringType targetsrsCriteria = (InputStringType) criterias
-			 * .addNewInput().changeType(InputStringType.type);
-			 * 
-			 * targetsrsCriteria.setName("transformationCode");
-			 * targetsrsCriteria.setValue(vo.getTransformationCode());
-			 * 
-			 * InputStringType xCriteria = (InputStringType)
-			 * criterias.addNewInput() .changeType(InputStringType.type);
-			 * xCriteria.setName("x");
-			 * xCriteria.setValue(vo.getOriginalCoordinateX());
-			 * 
-			 * InputStringType yCriteria = (InputStringType)
-			 * criterias.addNewInput() .changeType(InputStringType.type);
-			 * yCriteria.setName("y");
-			 * yCriteria.setValue(vo.getOriginalCoordinateY());
-			 * 
-			 * InputStringType zCriteria = (InputStringType)
-			 * criterias.addNewInput() .changeType(InputStringType.type);
-			 * zCriteria.setName("z");
-			 * zCriteria.setValue(vo.getOriginalCoordinateZ());
-			 * 
-			 * InputStringType filterCodeCriteria = (InputStringType) criterias
-			 * .addNewInput().changeType(InputStringType.type);
-			 * filterCodeCriteria.setName("filter");
-			 * filterCodeCriteria.setValue("cerebellum");
-			 */
-			POIType poi = rootDoc.addNewPOI();
-			PointType poipnt = poi.addNewPoint();
-			poipnt.setId(String.valueOf(randomGMLID2));
-			poipnt.setSrsName(vo.getToSRSCode());
-			poipnt.addNewPos();
-			poipnt.getPos().setStringValue(
-					vo.getTransformedCoordinateX() + " "
-							+ vo.getTransformedCoordinateY() + " "
-							+ vo.getTransformedCoordinateZ());
 
+			POIType poi = rootDoc.addNewPOI();
+			net.opengis.gml.x32.MultiPointType poipnt = poi.addNewMultiPoint();
+			poipnt.setSrsName(vo.getToSRSCode());
+			poipnt.setId(String.valueOf(randomGenerator1));
+
+			PointType pType = null;	
+			Iterator iterator1 = transformedPointsList.iterator();
+			while (iterator1.hasNext()) {
+
+				ABAServiceVO transformedVO = (ABAServiceVO) iterator1.next();
+				LOG.debug("***Inside OutputX***" + transformedVO.getTransformedCoordinateX().toString());
+				LOG.debug("***Inside OutputY***" + transformedVO.getTransformedCoordinateY().toString());
+				LOG.debug("***Inside OutputZ***" + transformedVO.getTransformedCoordinateZ().toString());
+
+				pType =	poipnt.addNewPointMember().addNewPoint();
+				pType.addNewPos().setStringValue(transformedVO.getTransformedCoordinateX().toString() +" "+ transformedVO.getTransformedCoordinateX().toString() +" "+transformedVO.getTransformedCoordinateZ().toString() );
+				//pType.setId("p2");
+				
+			}
+
+			//poipnt.setListValue(list);
+			poipnt.setSrsDimension( BigInteger.valueOf(3));
+			//poipnt.setCount( BigInteger.valueOf(list.size()));
+			
 			ArrayList errorList = new ArrayList();
 			opt.setErrorListener(errorList);
 			boolean isValid = document.validate(opt);

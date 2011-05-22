@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import javax.xml.namespace.QName;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -1961,7 +1962,7 @@ public class ABAUtil {
 	 		    	if ( vo.getFromSRSCode().equalsIgnoreCase(whs10) && 
 		 		    		 vo.getToSRSCode().equalsIgnoreCase(whs09) || 
 		 		    		 vo.getFromSRSCode().equalsIgnoreCase(whs09) && 
-		 		    		 vo.getToSRSCode().equalsIgnoreCase(whs10) ) {
+		 		    		 vo.getToSRSCode().equalsIgnoreCase(whs10) ) { 
 
 		 		  		implementingHub1 = "WHS";
 		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + whsServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
@@ -1973,8 +1974,8 @@ public class ABAUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(paxinos) ||
@@ -1989,8 +1990,8 @@ public class ABAUtil {
 
 		 		    	ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 
@@ -2004,8 +2005,8 @@ public class ABAUtil {
 		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(agea) ) {
@@ -2018,8 +2019,8 @@ public class ABAUtil {
 		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(abaReference) ) {
@@ -2032,8 +2033,8 @@ public class ABAUtil {
 		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		  	} else if ( vo.getFromSRSCode().equalsIgnoreCase(abaVoxel) ) {
@@ -2046,8 +2047,8 @@ public class ABAUtil {
 		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		  	}
