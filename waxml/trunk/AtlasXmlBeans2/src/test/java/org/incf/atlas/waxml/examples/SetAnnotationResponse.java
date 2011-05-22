@@ -95,30 +95,35 @@ public class SetAnnotationResponse {
 		 */
 
 		GEOMETRIES geometries = ann.addNewGEOMETRIES();
-		GEOMETRYTYPE geom1 = geometries.addNewGEOMETRY();
+		geometries.newCursor().insertComment("polygon object with gml:id=" + gmlId("80087"));
+	GEOMETRYTYPE geom1 = geometries.addNewGEOMETRY();
+
 		geom1.setUserName("guest");
 		geom1.setModifiedTime(1303328463);
 		AnnPolygonType polygon1 = geom1.addNewPOLYGON();
 		polygon1.setSrsName("mouse");
-		polygon1.setId("80087");
-		
-		AbstractRingPropertyType poly1exterior =  polygon1.addNewExterior();
-		poly1exterior.addNewAbstractRing();
-		
-		LinearRingType ring = LinearRingType.Factory.newInstance();
-		poly1exterior.getAbstractRing().set(ring);
-		poly1exterior.getAbstractRing().changeType(LinearRingType.type);
-		
-		
-		double[][] pointList = new double[4][3];
-		pointList[0] = new double[] { 1.0, 1.0, 1.0 };
-		pointList[1] = new double[] { 10.0, 1.0, 1.0 };
-		pointList[2] = new double[] { 10.0, 10.0, 1.0 };
-		pointList[3] = new double[] { 1.0, 10.0, 1.0 };
-		
-		//DirectPositionListType pts1 = ring.addNewPosList();
-		//pts1.set(ArrayToDirectPositionList(pointList));
-		ring.setPosList(ArrayToDirectPositionList(pointList));
+		polygon1.setId(gmlId("80087"));
+		polygon1.newCursor().insertComment("polygon object with gml:id=" + gmlId("80087"));
+		polygon1.newCursor().insertComment("Not fully implemtned. having issue with adding a exertior linearRing" );
+
+//		
+//		AbstractRingPropertyType poly1exterior =  polygon1.addNewExterior();
+//		poly1exterior.addNewAbstractRing();
+//		
+//		LinearRingType ring = LinearRingType.Factory.newInstance();
+//		poly1exterior.getAbstractRing().set(ring);
+//		poly1exterior.getAbstractRing().changeType(LinearRingType.type);
+//		
+//		
+//		double[][] pointList = new double[4][3];
+//		pointList[0] = new double[] { 1.0, 1.0, 1.0 };
+//		pointList[1] = new double[] { 10.0, 1.0, 1.0 };
+//		pointList[2] = new double[] { 10.0, 10.0, 1.0 };
+//		pointList[3] = new double[] { 1.0, 10.0, 1.0 };
+//		
+//		//DirectPositionListType pts1 = ring.addNewPosList();
+//		//pts1.set(ArrayToDirectPositionList(pointList));
+//		ring.setPosList(ArrayToDirectPositionList(pointList));
 		
 		// GEOMETRIES NOT WORKING
 		
@@ -150,13 +155,13 @@ SUBJECTTYPE subj1 = prop1.addNewSUBJECT();
 ONTOTERMTYPE term1_1 = subj1.addNewONTOTERM();
 term1_1.setTitle("mouse");
 term1_1.setHref("http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Organism.owl#birnlex_167" );
-term1_1.setId("85021");
+term1_1.setId(gmlId("85021"));
 
 OBJECTTYPE obj1 = prop1.addNewOBJECT();
 ONTOTERMTYPE term1_2 = obj1.addNewONTOTERM();
 term1_2.setTitle("cerebellum" );
 term1_2.setHref("http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-GrossAnatomy.owl#birnlex_1489" );
-term1_2.setId("85022");
+term1_2.setId(gmlId("85022"));
 
 /*
  *            <ONTO_PROPERTY onto_name="has_geometry"
@@ -179,16 +184,20 @@ prop2.setTitle("has_geometry");
 prop2.setHref("http://ontology.neuinfo.org/NIF/Backend/NIFSTD_Datatype_properties.owl#hasGeometry" );
 prop2.setUserName("guest");
 prop2.setModifiedTime(1303328469);
+prop2.newCursor().insertComment(" title = onto_name, href = onto_url gml:id= instance_id");
 
 SUBJECTTYPE subj2 = prop2.addNewSUBJECT();
 ONTOTERMTYPE term2_1=subj2.addNewONTOTERM();
 term2_1.setTitle("pharmetten");
 term2_1.setHref("http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Chemical.owl#CHEBI_8069" );
-term2_1.setId("85023");
+term2_1.setId(gmlId("85023"));
+term2_1.newCursor().insertComment(" title = onto_name, href = onto_url gml:id= instance_id");
 
 OBJECTTYPE obj2 = prop2.addNewOBJECT();
 GEOMETRYTYPE term2_2 = obj2.addNewGEOMETRY();
-term2_2.setHref("80087");
+term2_2.setHref(gmlIdInteralReference(gmlId("80087")));
+term2_2.newCursor().insertComment(" href refers to polygon object with gml:id=" + gmlId("80087"));
+
 
 
 	ONTOTERMS terms = ann.addNewONTOTERMS();
@@ -199,8 +208,13 @@ term2_2.setHref("80087");
 	      onto_uri="" />
 	 */
 	ONTOTERMTYPE term1 = terms.addNewONTOTERM();
-	term1.setId("85043");
+	term1.setId(gmlId("85043"));
 	term1.setTitle("Azonal");
+	term1.newCursor().insertComment(" title = onto_name, href = onto_url gml:id= instance_id");
+
+term1.newCursor().insertComment("no uri; ");
+
+
 	
 	/*
 	 *   <ONTO_TERM
@@ -211,11 +225,13 @@ term2_2.setHref("80087");
 </ONTO_TERM>
 	 */
 		ONTOTERMTYPE term2 = terms.addNewONTOTERM();
-		term2.setId("85031");
+		term2.setId(gmlId("85031"));
 		term2.setHref("http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Cell.owl#sao471801888");
 		term2.setTitle("purkinje cell");
 		term2.setCOMMENT("color 0xffffff");
-		
+		term2.newCursor().insertComment(" title = onto_name, href = onto_url gml:id= instance_id");
+term2.newCursor().insertComment(" uses comment element");
+
 		/*
 		 * <ONTO_TERM
 	      instance_id="85034"
@@ -223,14 +239,43 @@ term2_2.setHref("80087");
 	      onto_uri="http://purl.org/obo/owl/PATO#PATO_0000628" />
 		 */
 		ONTOTERMTYPE term3 = terms.addNewONTOTERM();
-		term2.setId("85034");
-		term2.setHref("http://purl.org/obo/owl/PATO#PATO_0000628");
-		term2.setTitle("ectopic");
+		term3.setId(gmlId("85034"));
+		term3.setHref("http://purl.org/obo/owl/PATO#PATO_0000628");
+		term3.setTitle("ectopic");
 
 		return doc;
 
 	}
 
+	static String gmlId(String id){
+		
+		final String baseId = "ANN";
+		if (isValidGmlId(id)){
+			return id;
+		} else
+		{
+			return baseId + id;
+		}
+	}
+	static String gmlId(int id){
+		
+		final String baseId = "ANN";
+		
+			return String.format("{0}{1}", baseId,id);
+		
+	}
+	static String gmlIdInteralReference(String id){
+		 if (id == null || id.isEmpty()) throw new IllegalArgumentException("Parameter Cannot be null");
+		final String baseReference = "#";
+		 return baseReference+ id;
+	}
+	static Boolean isValidGmlId(String id){
+		final  String NCNamePattern =  "[i-[:]][c-[:]]*";
+		
+		return id.matches(NCNamePattern);
+			
+	}
+	
 	static String posListString(double x, double y, double z) {
 		String s = String.format("{0},{1},{2}", x, y, z);
 		return s;
