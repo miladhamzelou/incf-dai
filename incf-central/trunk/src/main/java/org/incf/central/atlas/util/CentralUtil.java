@@ -996,8 +996,8 @@ public class CentralUtil {
 	 				ex.setCode(code);
 	 				ex.setHub(implementingHub1);
 	 				//ex.setOrder(Integer.parseInt(orderNumber)); 
-	 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-	 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+	 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+	 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 	 				//ex.setAccuracy(Integer.parseInt(accuracy));
 	 				ex.setStringValue(vo.getTransformationOneURL());
 	 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(whs10) && 
@@ -1015,8 +1015,8 @@ public class CentralUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(paxinos) ||
@@ -1032,8 +1032,8 @@ public class CentralUtil {
 		 		    	ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 
@@ -1049,8 +1049,8 @@ public class CentralUtil {
 
 		 		    	ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 
@@ -1065,8 +1065,8 @@ public class CentralUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(agea) ) {
@@ -1080,8 +1080,8 @@ public class CentralUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(abaReference) ) {
@@ -1095,8 +1095,8 @@ public class CentralUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		  	} else if ( vo.getFromSRSCode().equalsIgnoreCase(abaVoxel) ) {
@@ -1110,8 +1110,8 @@ public class CentralUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		  	}
@@ -1265,8 +1265,8 @@ public class CentralUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				//ex.setOrder(Integer.parseInt(orderNumber)); 
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(paxinos) ||
@@ -1282,8 +1282,8 @@ public class CentralUtil {
 		 		    	ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				//ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 
@@ -1299,8 +1299,8 @@ public class CentralUtil {
 
 		 		    	ex.setCode(code);
 		 				ex.setHub(implementingHub1);
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 
@@ -1315,8 +1315,8 @@ public class CentralUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				//ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(agea) ) {
@@ -1330,8 +1330,8 @@ public class CentralUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				//ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(abaReference) ) {
@@ -1345,8 +1345,8 @@ public class CentralUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				//ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		  	} else if ( vo.getFromSRSCode().equalsIgnoreCase(abaVoxel) ) {
@@ -1360,8 +1360,8 @@ public class CentralUtil {
 		 				ex.setCode(code);
 		 				ex.setHub(implementingHub1);
 		 				//ex.setOrder(Integer.parseInt(orderNumber));
-		 				//ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				//ex.setOutputSrsName(new QName(vo.getToSRSCode()));
+		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
+		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
 		 		  	}
