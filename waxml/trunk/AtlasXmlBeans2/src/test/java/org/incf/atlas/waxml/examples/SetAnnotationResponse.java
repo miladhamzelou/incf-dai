@@ -2,6 +2,7 @@ package org.incf.atlas.waxml.examples;
 
 import static org.junit.Assert.assertTrue;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -120,7 +121,10 @@ public class SetAnnotationResponse {
 		 pointList[2] = new double[] { 10.0, 10.0, 1.0 };
 		 pointList[3] = new double[] { 1.0, 10.0, 1.0 };
 		 
+//		DirectPositionType pos1 =  ((LinearRingType)linearRing).addNewPos();
+//		 pos1.setStringValue("1.0 1.0 1.0");
 		 DirectPositionListType posList= ((LinearRingType)linearRing).addNewPosList();
+		 //posList.getListValue().add( pointList[0] );
 		XmlObject alist= posList.set(ArrayToDirectPositionList(pointList));
 		
 		 //((LinearRingType)linearRing).setPosList(ArrayToDirectPositionList(pointList));
@@ -272,13 +276,15 @@ public class SetAnnotationResponse {
 	}
 
 	static String posListString(double x, double y, double z) {
-		String s = String.format("{0},{1},{2}", x, y, z);
+		String s = String.format("%g %g %g", x, y, z);
 		return s;
 	}
 
 	static DirectPositionListType ArrayToDirectPositionList(double[][] points) {
 		DirectPositionListType posList = DirectPositionListType.Factory
 				.newInstance();
+		posList.setSrsDimension(BigInteger.valueOf((long) 3.0));
+		
 		StringBuffer sb = new StringBuffer();
 		for (int point = 0; point < points.length; point++) {
 			String s = posListString(points[point][0], points[point][1],
@@ -288,6 +294,8 @@ public class SetAnnotationResponse {
 				sb.append(" ");
 
 		}
+	
+		posList.setStringValue(sb.toString());
 		return posList;
 	}
 
