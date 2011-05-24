@@ -193,7 +193,7 @@ public class Main {
 				SetAnnotationResponse sar = new SetAnnotationResponse();
 			    String SetAnnotationResponse = sar.asXml();
 			     try {
-			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/SetAnnotationResponse1.xml"));
+			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/SetAnnotationResponsePolygon.xml"));
 			         out.write(SetAnnotationResponse);
 			         out.close();
 				} catch (IOException e) {
@@ -201,7 +201,29 @@ public class Main {
 					System.out.println("Error SetAnnotationResponse");
 					e.printStackTrace();
 				}
+				SetAnnotationResponseLine sar2 = new SetAnnotationResponseLine();
+			    String SetAnnotationResponseLine = sar2.asXml();
+			     try {
+			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/SetAnnotationResponseLine.xml"));
+			         out.write(SetAnnotationResponseLine);
+			         out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Error SetAnnotationResponse");
+					e.printStackTrace();
+				}		
 				
+				SetAnnotationResponseSurface sar3 = new SetAnnotationResponseSurface();
+			    String SetAnnotationResponsePoint = sar3.asXml();
+			     try {
+			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/SetAnnotationResponseSurface.xml"));
+			         out.write(SetAnnotationResponsePoint);
+			         out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Error SetAnnotationResponse");
+					e.printStackTrace();
+				}		
 	System.out.println("done");
        
 	}

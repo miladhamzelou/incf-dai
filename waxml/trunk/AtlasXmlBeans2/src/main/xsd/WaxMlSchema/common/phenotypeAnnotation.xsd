@@ -20,7 +20,7 @@
     </xs:complexType>
     <xs:complexType name="ann_SurfaceType">
         <xs:complexContent>
-            <xs:extension xmlns:q3="http://www.opengis.net/gml/3.2" base="q3:PolygonType" />
+            <xs:extension xmlns:q3="http://www.opengis.net/gml/3.2" base="q3:SurfaceType" />
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="ann_MultiPolygonType">
@@ -42,6 +42,11 @@
     <xs:complexType name="ann_PolylineType">
         <xs:complexContent>
             <xs:extension xmlns:q6="http://www.opengis.net/gml/3.2" base="q6:LineStringType" />
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ann_MultipointType">
+        <xs:complexContent>
+            <xs:extension base="gml:MultiPointType" />
         </xs:complexContent>
     </xs:complexType>
     <xs:complexType name="POLYGON_TYPE">

@@ -1,12 +1,13 @@
 <ANNOTATION xmlns="http://www.incf.org/WaxML/" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlin="http://www.w3.org/1999/xlink">
-  <MODIFIED_DATE xmlns="">2011-05-22-07:00</MODIFIED_DATE>
+  <MODIFIED_DATE xmlns="">2011-05-23-07:00</MODIFIED_DATE>
   <RESOURCE xmlns="" filepath="http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_23_rec"/>
-  <!--polygon object with gml:id=ANN80087-->
+  <!--PolyLINE object with gml:id=ANN80087-->
   <GEOMETRIES xmlns="">
     <GEOMETRY user_name="guest" modified_time="1303328463">
-      <!--polygon object with gml:id=ANN80087-->
-      <!--Not fully implemtned. having issue with adding a exertior linearRing-->
-      <POLYGON srsName="mouse" gml:id="ANN80087"/>
+      <!--PolyLINE object with gml:id=ANN80087-->
+      <POLYLINE srsName="mouse" gml:id="ANN80087">
+        <gml:posList srsDimension="3">1.00000 1.00000 1.00000 10.0000 1.00000 1.00000 10.0000 10.0000 1.00000 1.00000 10.0000 1.00000</gml:posList>
+      </POLYLINE>
     </GEOMETRY>
   </GEOMETRIES>
   <GENERAL_ONTO_MODEL xmlns="">

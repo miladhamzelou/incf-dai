@@ -1,0 +1,52 @@
+<ANNOTATION xmlns="http://www.incf.org/WaxML/" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlin="http://www.w3.org/1999/xlink">
+  <MODIFIED_DATE xmlns="">2011-05-23-07:00</MODIFIED_DATE>
+  <RESOURCE xmlns="" filepath="http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_23_rec"/>
+  <!--polygon object with gml:id=ANN80087-->
+  <GEOMETRIES xmlns="">
+    <GEOMETRY user_name="guest" modified_time="1303328463">
+      <!--polygon object with gml:id=ANN80087-->
+      <!--Not fully implemtned. having issue with adding a exertior linearRing-->
+      <POLYGON srsName="mouse" gml:id="ANN80087">
+        <gml:exterior>
+          <gml:LinearRing>
+            <gml:posList srsDimension="3">1.00000 1.00000 1.00000 10.0000 1.00000 1.00000 10.0000 10.0000 1.00000 1.00000 10.0000 1.00000</gml:posList>
+          </gml:LinearRing>
+        </gml:exterior>
+      </POLYGON>
+    </GEOMETRY>
+  </GEOMETRIES>
+  <GENERAL_ONTO_MODEL xmlns="">
+    <RELATIONS>
+      <ONTO_PROPERTY xlin:title="has_part" xlin:href="http://www.obofoundry.org/ro/ro.owl#has_part" user_name="guest" modified_time="1303328469">
+        <SUBJECT>
+          <ONTO_TERM xlin:title="mouse" xlin:href="http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Organism.owl#birnlex_167" gml:id="ANN85021"/>
+        </SUBJECT>
+        <OBJECT>
+          <ONTO_TERM xlin:title="cerebellum" xlin:href="http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-GrossAnatomy.owl#birnlex_1489" gml:id="ANN85022"/>
+        </OBJECT>
+      </ONTO_PROPERTY>
+      <!--title = onto_name, href = onto_url gml:id= instance_id-->
+      <ONTO_PROPERTY xlin:title="has_geometry" xlin:href="http://ontology.neuinfo.org/NIF/Backend/NIFSTD_Datatype_properties.owl#hasGeometry" user_name="guest" modified_time="1303328469">
+        <SUBJECT>
+          <!--title = onto_name, href = onto_url gml:id= instance_id-->
+          <ONTO_TERM xlin:title="pharmetten" xlin:href="http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Chemical.owl#CHEBI_8069" gml:id="ANN85023"/>
+        </SUBJECT>
+        <OBJECT>
+          <!--href refers to polygon object with gml:id=ANN80087-->
+          <GEOMETRY xlin:href="#ANN80087"/>
+        </OBJECT>
+      </ONTO_PROPERTY>
+    </RELATIONS>
+  </GENERAL_ONTO_MODEL>
+  <ONTO_TERMS xmlns="">
+    <!--title = onto_name, href = onto_url gml:id= instance_id-->
+    <!--no uri;-->
+    <ONTO_TERM gml:id="ANN85043" xlin:title="Azonal"/>
+    <!--title = onto_name, href = onto_url gml:id= instance_id-->
+    <!--uses comment element-->
+    <ONTO_TERM gml:id="ANN85031" xlin:href="http://ontology.neuinfo.org/NIF/BiomaterialEntities/NIF-Cell.owl#sao471801888" xlin:title="purkinje cell">
+      <COMMENT>color 0xffffff</COMMENT>
+    </ONTO_TERM>
+    <ONTO_TERM gml:id="ANN85034" xlin:href="http://purl.org/obo/owl/PATO#PATO_0000628" xlin:title="ectopic"/>
+  </ONTO_TERMS>
+</ANNOTATION>
