@@ -130,7 +130,7 @@
                     </xs:complexContent>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="GEOMETRIES">
+            <xs:element name="GEOMETRIES" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="GEOMETRY" type="wax:GEOMETRY_TYPE" minOccurs="0" maxOccurs="unbounded" />
@@ -142,8 +142,8 @@
                     </xs:attribute>
                 </xs:complexType>
             </xs:element>
-            <xs:element name="GENERAL_ONTO_MODEL" type="wax:GENERAL_ONTO_MODEL" />
-            <xs:element name="ONTO_TERMS">
+            <xs:element name="GENERAL_ONTO_MODEL" type="wax:GENERAL_ONTO_MODEL" minOccurs="0" />
+            <xs:element name="ONTO_TERMS" minOccurs="0">
                 <xs:complexType>
                     <xs:sequence>
                         <xs:element name="ONTO_TERM" type="wax:ONTO_TERM_TYPE" minOccurs="0" maxOccurs="unbounded" />

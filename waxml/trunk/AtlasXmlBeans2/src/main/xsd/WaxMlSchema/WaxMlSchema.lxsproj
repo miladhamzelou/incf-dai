@@ -18,6 +18,7 @@
 		<File Uri=".\ListProcessesResponse.xsd"/>
 		<File Uri=".\CorrelationMapResponse.xsd"/>
 		<File Uri=".\SetAnnotationResponse.xsd"/>
+		<File Uri=".\DescribeProcesses_central.xsd"/>
 		<SubGroup Name="Documents">
 			<File Uri=".\SampleDocuments\TransformResponse.xml"/>
 			<File Uri=".\SampleDocuments\CoordinateTransformInfo.xml"/>
