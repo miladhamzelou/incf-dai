@@ -6,4 +6,15 @@
     <xs:include schemaLocation="common/WaxML_Base.xsd" />
     <xs:include schemaLocation="common/phenotypeAnnotation.xsd" />
     <xs:element name="Annotation" type="wax:AnnotationType" />
+    <xs:element name="AnnotationResponse">
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="wax:BaseResponseType">
+                    <xs:sequence>
+                        <xs:element ref="wax:Annotation" maxOccurs="unbounded" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

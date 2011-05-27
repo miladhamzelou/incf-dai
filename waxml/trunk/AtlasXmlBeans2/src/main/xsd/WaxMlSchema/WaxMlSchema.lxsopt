@@ -9,7 +9,6 @@
 	<OpenFile Uri=".\CorrelationMapResponse.xsd"/>
 	<OpenFile Uri=".\SetAnnotationResponse.xsd"/>
 	<OpenFile Uri=".\common\WaxML_Base.xsd"/>
-	<OpenFile Uri=".\common\phenotypeAnnotation.xsd"/>
 	<OpenFile Uri=".\GenesResponse.xsd"/>
 	<OpenFile Uri=".\DescribeProcesses_central.xsd"/>
 </XmlStudioProjectOptions>

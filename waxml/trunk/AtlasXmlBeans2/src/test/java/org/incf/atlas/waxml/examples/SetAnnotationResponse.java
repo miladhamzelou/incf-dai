@@ -57,7 +57,7 @@ public class SetAnnotationResponse {
 		// dnsMap.put("http://www.incf.org/WaxML/", null);
 		opt.setSaveImplicitNamespaces(Utilities.SuggestedNamespaces());
 
-		ANNOTATIONDocument2 co = completeResponse();
+		AnnotationResponseDocument co = completeResponse();
 		ArrayList errorList = new ArrayList();
 		Utilities.validateXml(opt, co, errorList);
 
@@ -73,17 +73,18 @@ public class SetAnnotationResponse {
 		opt.setSaveAggressiveNamespaces();
 		opt.setUseDefaultNamespace();
 
-		ANNOTATIONDocument2 co = completeResponse();
+		AnnotationResponseDocument co = completeResponse();
 		ArrayList errorList = new ArrayList();
 		boolean validXml = Utilities.validateXml(opt, co, errorList);
 		assertTrue(errorList.toString(), validXml);
 
 	}
 
-	public ANNOTATIONDocument2 completeResponse() {
-		ANNOTATIONDocument2 doc = ANNOTATIONDocument2.Factory.newInstance();
+	public AnnotationResponseDocument completeResponse() {
+		AnnotationResponseDocument doc = AnnotationResponseDocument.Factory.newInstance();
+		AnnotationType ann  =doc.addNewAnnotationResponse().addNewAnnotation();
+		//AnnotationType ann = doc.addNewANNOTATION();
 
-		AnnotationType ann = doc.addNewANNOTATION();
 
 		ann.setMODIFIEDDATE(Calendar.getInstance());
 
@@ -106,9 +107,6 @@ public class SetAnnotationResponse {
 		polygon1.setId(gmlId("80087"));
 		polygon1.newCursor().insertComment(
 				"polygon object with gml:id=" + gmlId("80087"));
-		polygon1.newCursor()
-				.insertComment(
-						"Not fully implemtned. having issue with adding a exertior linearRing");
 
 		
 		  AbstractRingPropertyType poly1exterior = polygon1.addNewExterior();

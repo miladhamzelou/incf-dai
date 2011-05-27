@@ -57,7 +57,7 @@ public class SetAnnotationResponseLine {
 		// dnsMap.put("http://www.incf.org/WaxML/", null);
 		opt.setSaveImplicitNamespaces(Utilities.SuggestedNamespaces());
 
-		ANNOTATIONDocument2 co = completeResponse();
+		AnnotationResponseDocument co = completeResponse();
 		ArrayList errorList = new ArrayList();
 		Utilities.validateXml(opt, co, errorList);
 
@@ -73,17 +73,18 @@ public class SetAnnotationResponseLine {
 		opt.setSaveAggressiveNamespaces();
 		opt.setUseDefaultNamespace();
 
-		ANNOTATIONDocument2 co = completeResponse();
+		AnnotationResponseDocument co = completeResponse();
 		ArrayList errorList = new ArrayList();
 		boolean validXml = Utilities.validateXml(opt, co, errorList);
 		assertTrue(errorList.toString(), validXml);
 
 	}
 
-	public ANNOTATIONDocument2 completeResponse() {
-		ANNOTATIONDocument2 doc = ANNOTATIONDocument2.Factory.newInstance();
+	public AnnotationResponseDocument completeResponse() {
+		AnnotationResponseDocument doc = AnnotationResponseDocument.Factory.newInstance();
+		AnnotationType ann = doc.addNewAnnotationResponse().addNewAnnotation();
+		//AnnotationType ann = doc.addNewANNOTATION();
 
-		AnnotationType ann = doc.addNewANNOTATION();
 
 		ann.setMODIFIEDDATE(Calendar.getInstance());
 

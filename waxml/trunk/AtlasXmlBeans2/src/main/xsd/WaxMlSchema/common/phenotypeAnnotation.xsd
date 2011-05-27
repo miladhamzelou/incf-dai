@@ -93,16 +93,16 @@
         <xs:attribute xmlns:q2="http://www.w3.org/1999/xlink" ref="q2:href" />
     </xs:complexType>
     <xs:complexType name="SUBJECT_TYPE">
-        <xs:sequence>
-            <xs:element name="ONTO_TERM" type="wax:ONTO_TERM_TYPE" minOccurs="0" maxOccurs="1" />
-            <xs:element name="GEOMETRY" type="wax:GEOMETRY_TYPE" minOccurs="0" maxOccurs="1" />
-        </xs:sequence>
+        <xs:choice>
+            <xs:element name="ONTO_TERM" type="wax:ONTO_TERM_TYPE" />
+            <xs:element name="GEOMETRY" type="wax:GEOMETRY_TYPE" />
+        </xs:choice>
     </xs:complexType>
     <xs:complexType name="OBJECT_TYPE">
-        <xs:sequence>
-            <xs:element name="ONTO_TERM" type="wax:ONTO_TERM_TYPE" minOccurs="0" maxOccurs="1" />
-            <xs:element name="GEOMETRY" type="wax:GEOMETRY_TYPE" minOccurs="0" maxOccurs="1" />
-        </xs:sequence>
+        <xs:choice>
+            <xs:element name="ONTO_TERM" type="wax:ONTO_TERM_TYPE" />
+            <xs:element name="GEOMETRY" type="wax:GEOMETRY_TYPE" />
+        </xs:choice>
     </xs:complexType>
     <xs:complexType name="ONTO_PROPERTY_TYPE">
         <xs:sequence>
