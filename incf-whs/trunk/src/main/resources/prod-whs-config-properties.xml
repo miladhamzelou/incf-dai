@@ -126,14 +126,13 @@
 
 	<property>
         <name>incf.deploy.host.name</name>
-        <value>132.239.131.188</value>
-        <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
+        <!-- <value>132.239.131.188</value>  -->
+        <value>incf-dev.crbs.ucsd.edu</value>
     </property>
 
 	<property>
         <name>incf.deploy.port.delimitor</name>
         <value>:</value>
-        <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
     </property>
 
 	<property>
