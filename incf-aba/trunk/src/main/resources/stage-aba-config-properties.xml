@@ -40,6 +40,27 @@
         <value>aba4321</value>
         <!--<value>beer</value>-->
     </property>
+
+	<property>
+        <name>ccdbpostgres.server.database.driverClassName</name>
+        <value>org.postgresql.Driver</value>
+    </property>
+	<property>
+        <name>ccdbpostgres.server.database.atlasdburl</name>
+        <value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdbv2_2</value>
+        <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
+    </property>
+    <property>
+        <name>ccdbpostgres.server.database.atlasdbuser</name>
+        <value>ccdbd_dev</value>
+ 		<!--<value>atlas</value>-->
+    </property>
+    <property>
+        <name>ccdbpostgres.server.database.atlasdbpassword</name>
+        <value>sand|ego</value>
+        <!--<value>beer</value>-->
+    </property>
+
 	<!-- end postgres database properties -->
 
 	<!-- begin logger properties-->

@@ -1,5 +1,5 @@
 <!-- Created by amemon on June 16, 2009, 16:17 -->
-<aba-config-properties>
+<prod-aba-config-properties.xml>
  
 	<!-- begin database properties for servlet -->
 	<property>
@@ -40,6 +40,27 @@
         <value>aba4321</value>
         <!--<value>beer</value>-->
     </property>
+
+	<property>
+        <name>ccdbpostgres.server.database.driverClassName</name>
+        <value>org.postgresql.Driver</value>
+    </property>
+	<property>
+        <name>ccdbpostgres.server.database.atlasdburl</name>
+        <value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdbv2_2</value>
+        <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
+    </property>
+    <property>
+        <name>ccdbpostgres.server.database.atlasdbuser</name>
+        <value>ccdbd_dev</value>
+ 		<!--<value>atlas</value>-->
+    </property>
+    <property>
+        <name>ccdbpostgres.server.database.atlasdbpassword</name>
+        <value>sand|ego</value>
+        <!--<value>beer</value>-->
+    </property>
+
 	<!-- end postgres database properties -->
 
 	<!-- begin logger properties-->
@@ -125,7 +146,7 @@
 
 	<property>
         <name>incf.deploy.host.name</name>
-        <value>132.239.131.188</value>
+        <value>incf-dev.crbs.ucsd.edu</value>
         <!-- <value>132.239.131.188</value> -->
         <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
     </property>
@@ -194,7 +215,7 @@
 	<!-- End INCF-AGEA properties --> 
 
 	<!-- Start WEBSERVICE properties --> 
-
+ 
 	<property>
         <name>ucsd.webservice.host.name</name>
         <value>smartatlas.crbs.ucsd.edu</value>
@@ -295,4 +316,4 @@
 
 	<!-- End SRSNames properties --> 
 	
-</aba-config-properties>
+</prod-aba-config-properties.xml>

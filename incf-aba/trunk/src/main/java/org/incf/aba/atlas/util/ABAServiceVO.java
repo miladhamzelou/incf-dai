@@ -9,6 +9,8 @@
 
 package org.incf.aba.atlas.util; 
 
+import java.sql.Date;
+
 
 /**
  * @author Asif Memon
@@ -151,8 +153,110 @@ public class ABAServiceVO {
 	
 	private String transformationCode;
 
+	private String coordinates;
+	private String polygonID;
+	private String depth;
+	private String userName;
+	private String instanceID;
+	private String ontoName;
+	private String ontoURI;
 	
+	private String tolerance;
+
+	private Date updatedTime;
+	private String transformedCoordinates;
+	private String ontoFilePath;
+	private String uniqueID;
+
 	//Public Methods
+
+	public String getUniqueID() {
+		return uniqueID;
+	}
+
+	public void setUniqueID(String uniqueID) {
+		this.uniqueID = uniqueID;
+	}
+
+	public String getOntoFilePath() {
+		return ontoFilePath;
+	}
+
+	public void setOntoFilePath(String ontoFilePath) {
+		this.ontoFilePath = ontoFilePath;
+	}
+
+	public String getTransformedCoordinates() {
+		return transformedCoordinates;
+	}
+
+	public void setTransformedCoordinates(String transformedCoordinates) {
+		this.transformedCoordinates = transformedCoordinates;
+	}
+
+	public String getTolerance() {
+		return tolerance;
+	}
+
+	public void setTolerance(String tolerance) {
+		this.tolerance = tolerance;
+	}
+
+	public String getCoordinates() {
+		return coordinates;
+	}
+
+	public void setCoordinates(String coordinates) {
+		this.coordinates = coordinates;
+	}
+
+	public String getPolygonID() {
+		return polygonID;
+	}
+
+	public void setPolygonID(String polygonID) {
+		this.polygonID = polygonID;
+	}
+
+	public String getDepth() {
+		return depth;
+	}
+
+	public void setDepth(String depth) {
+		this.depth = depth;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getInstanceID() {
+		return instanceID;
+	}
+
+	public void setInstanceID(String instanceID) {
+		this.instanceID = instanceID;
+	}
+
+	public String getOntoName() {
+		return ontoName;
+	}
+
+	public void setOntoName(String ontoName) {
+		this.ontoName = ontoName;
+	}
+
+	public String getOntoURI() {
+		return ontoURI;
+	}
+
+	public void setOntoURI(String ontoURI) {
+		this.ontoURI = ontoURI;
+	}
 
 	public String getTransformationCode() {
 		return transformationCode;
@@ -779,6 +883,14 @@ public class ABAServiceVO {
 
 	public void setNeuroPlusZCode(String neuroPlusZCode) {
 		this.neuroPlusZCode = neuroPlusZCode;
+	}
+
+	public Date getUpdatedTime() {
+		return updatedTime;
+	}
+
+	public void setUpdatedTime(Date updatedTime) {
+		this.updatedTime = updatedTime;
 	}
 
 	public String getNeuroMinusZCode() {

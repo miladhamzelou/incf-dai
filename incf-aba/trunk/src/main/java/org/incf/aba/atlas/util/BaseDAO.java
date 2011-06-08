@@ -165,6 +165,50 @@ public class BaseDAO {
 
 
     /**
+     * Gets the connection to the database. Does not do connection pooling.
+     *
+     * @param jndiName - The jndi name of the datasource
+     * @return A Connection object
+     * @throws DataAccessObjectException - If there is an exception establishing the connection.
+     *
+     */
+    public Connection getStandAloneConnectionForPostgresFromCCDB()// please change public to protected
+            throws Exception {
+
+    	LOG.debug( "Start - getStandAloneConnectionForPostgresFromCCDB()");
+        
+    	Connection connection = null;
+
+        ABAConfigurator props = ABAConfigurator.INSTANCE;
+        
+        String driverClassName = props.getValue("ccdbpostgres.server.database.driverClassName"); 
+        String dbUrl = props.getValue("ccdbpostgres.server.database.atlasdburl");
+        String dbUser = props.getValue("ccdbpostgres.server.database.atlasdbuser");
+        String dbPassword = props.getValue("ccdbpostgres.server.database.atlasdbpassword");
+
+        LOG.debug( "driverClassName - {}",driverClassName);
+        LOG.debug( "dbUrl - {}",dbUrl);
+        LOG.debug( "dbUser - {}",dbUser);
+        LOG.debug( "dbPassword - {}",dbPassword);
+ 
+        try {
+        	Class.forName( driverClassName );
+        	LOG.debug( "Start - getStandAloneConnectionForPostgresFromCCDB()");
+            connection = 
+            	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
+            LOG.debug( "End - getStandAloneConnectionForPostgresFromCCDB()");
+        } catch ( Exception e ) {
+        	LOG.debug( "There is an error {}" , e.getClass() + e.getMessage());
+            throw new Exception( e.getMessage() );
+        }
+
+        LOG.debug( "End - getStandAloneConnectionForPostgresFromCCDB()");
+        return connection;
+
+    }// end of getStandAloneConnectionForPostgresFromCCDB method
+
+    
+    /**
      * Closes an open connection.
      *
      * @param connection - A connection object
