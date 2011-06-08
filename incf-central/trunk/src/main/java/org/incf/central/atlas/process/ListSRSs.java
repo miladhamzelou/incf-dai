@@ -184,7 +184,10 @@ public class ListSRSs implements Processlet {
 			SRSType srs = null;
 			SRSCollection coll1 = null;
 			SRSList srsList = null;
-			
+
+			String tempHubCode = "test";
+			String hubCode = "";
+
 			while (iterator.hasNext()) {
 
 				vo = (CentralServiceVO) iterator.next();
@@ -195,27 +198,72 @@ public class ListSRSs implements Processlet {
 				String tempSrsName = vo.getSrsName(); 
 				LOG.debug("VO SRSName: {}" , vo.getSrsName());
 				LOG.debug("temp SRSName: {}" , tempSrsName);
+				
 				if (vo.getSrsName().equals(tempSrsName)) {
-					coll1 = rootDoc.addNewSRSCollection();
+				
 					LOG.debug("Different SRS Name for ListSRS");
-					if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") ) {  
+					System.out.println("*****************TEMPHUBCODE**************************"+tempHubCode);
+
+					if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") && !tempHubCode.equalsIgnoreCase("WHS") ) {
+					
+						System.out.println("*****************INSIDE IF**************************"+tempHubCode);
+						coll1 = rootDoc.addNewSRSCollection();
+						srsList = coll1.addNewSRSList();
 						coll1.setHubCode(vo.getSrsName().replace("Mouse_", "").replaceAll("_0.9", ""));
+						tempHubCode = "";
+						tempHubCode = coll1.getHubCode(); 
+					
 					} else { 
-						coll1.setHubCode(vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", ""));
-						if (coll1.getHubCode().equalsIgnoreCase("Paxinos")){
+
+						hubCode = vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", "");
+						//coll1.setHubCode(vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", ""));
+						if (hubCode.equalsIgnoreCase("Paxinos") && !tempHubCode.equalsIgnoreCase("UCSD") ) {
+							System.out.println("*****************INSIDE ELSE IF 1**************************"+tempHubCode);
+							coll1 = rootDoc.addNewSRSCollection();
+							srsList = coll1.addNewSRSList();
 							coll1.setHubCode("UCSD");
-						} else if (coll1.getHubCode().equalsIgnoreCase("ABAvoxel")){
+							tempHubCode = "";
+							tempHubCode = coll1.getHubCode(); 
+						} else if (hubCode.equalsIgnoreCase("ABAvoxel") && !tempHubCode.equalsIgnoreCase("ABA")){
+							System.out.println("*****************INSIDE ELSE IF 2**************************"+tempHubCode);
+							coll1 = rootDoc.addNewSRSCollection();
+							srsList = coll1.addNewSRSList();
 							coll1.setHubCode("ABA");
-						} else if (coll1.getHubCode().equalsIgnoreCase("AGEA")){
+							tempHubCode = "";
+							tempHubCode = coll1.getHubCode();
+						} else if (hubCode.equalsIgnoreCase("AGEA") && !tempHubCode.equalsIgnoreCase("ABA")){
+							System.out.println("*****************INSIDE ELSE IF 3**************************"+tempHubCode);
+							coll1 = rootDoc.addNewSRSCollection();
+							srsList = coll1.addNewSRSList();
 							coll1.setHubCode("ABA");
-						} else if (coll1.getHubCode().equalsIgnoreCase("BrainStem") ){
+							tempHubCode = "";
+							tempHubCode = coll1.getHubCode();
+						} else if (hubCode.equalsIgnoreCase("BrainStem") && !tempHubCode.equalsIgnoreCase("UCSD")){
+							System.out.println("*****************INSIDE ELSE IF 4**************************"+tempHubCode);
+							coll1 = rootDoc.addNewSRSCollection();
+							srsList = coll1.addNewSRSList();
 							coll1.setHubCode("UCSD");
-						} else if (coll1.getHubCode().equalsIgnoreCase("ABAreference")){
+							tempHubCode = "";
+							tempHubCode = coll1.getHubCode(); 
+						} else if (hubCode.equalsIgnoreCase("ABAreference") && !tempHubCode.equalsIgnoreCase("ABA")){
+							System.out.println("*****************INSIDE ELSE IF 5**************************"+tempHubCode);
+							coll1 = rootDoc.addNewSRSCollection();
+							srsList = coll1.addNewSRSList();
 							coll1.setHubCode("ABA");
+							tempHubCode = "";
+							tempHubCode = coll1.getHubCode(); 
+						} else if (hubCode.equalsIgnoreCase("WHS") && !tempHubCode.equalsIgnoreCase("WHS")){
+							System.out.println("*****************INSIDE ELSE IF 5**************************"+tempHubCode);
+							coll1 = rootDoc.addNewSRSCollection();
+							srsList = coll1.addNewSRSList();
+							coll1.setHubCode("WHS");
+							tempHubCode = "";
+							tempHubCode = coll1.getHubCode();
 						}
 					}
+
 				}
-				srsList = coll1.addNewSRSList();
+				
 				srs = srsList.addNewSRS();
 
 				Name name = srs.addNewName();

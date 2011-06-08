@@ -44,7 +44,7 @@ public class CentralServiceDAOImpl {
 		Connection conn = dao.getStandAloneConnectionForPostgres();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from srs where srs_name in (" + srsName + ") " );
+		query.append( " select * from srs where srs_name in (" + srsName + ") order by srs_name " );
 
 		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
