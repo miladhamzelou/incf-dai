@@ -97,6 +97,12 @@
     </property>
 
 	<property>
+        <name>incf.slamont.staging.host</name>
+        <!--<value>incf-dev-mapserver.crbs.ucsd.edu</value>-->
+        <value>tirebiter.ucsd.edu</value>
+    </property>
+
+	<property>
         <name>ucsd.aba.service.path</name>
         <value>/aba/atlas?</value>
     </property>
@@ -127,14 +133,13 @@
 
 	<property>
         <name>incf.deploy.host.name</name>
-        <value>132.239.131.188</value>
-        <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
+        <!-- <value>132.239.131.188</value>  -->
+        <value>incf-dev.crbs.ucsd.edu</value>
     </property>
 
 	<property>
         <name>incf.deploy.port.delimitor</name>
         <value>:</value>
-        <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
     </property>
 
 	<property>
@@ -176,12 +181,6 @@
 	<property>
         <name>incf.imageserver.host.name</name>
         <value>image.wholebraincatalog.org</value>
-    </property>
-
-	<property>
-        <name>incf.slamont.staging.host</name>
-        <!--<value>incf-dev-mapserver.crbs.ucsd.edu</value>-->
-        <value>tirebiter.ucsd.edu</value>
     </property>
 
 	<!-- End INCF-UCSD properties --> 
@@ -255,7 +254,7 @@
         <value>Mouse_EMAP-T26_1.0</value>
     </property>
     
-	<property>
+    <property>
         <name>srsname.ucsdnewsrs.10</name>
         <value>Mouse_BrainStem_1.0</value>
     </property>

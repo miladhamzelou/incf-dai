@@ -127,11 +127,33 @@ public class Get2DImagesByPOI implements Processlet {
 			LOG.debug("Before getPaxinosImageList");
 
 			// Convert the coordinates ABAVOXEL into PAXINOS
-			if (vo.getFromSRSCode().equalsIgnoreCase(abaReference)
-					|| vo.getFromSRSCode().equalsIgnoreCase(paxinos)) {
+			if (vo.getFromSRSCode().equalsIgnoreCase(abaReference)) {
+
 				vo.setTransformedCoordinateX(vo.getOriginalCoordinateX());
 				vo.setTransformedCoordinateY(vo.getOriginalCoordinateY());
 				vo.setTransformedCoordinateZ(vo.getOriginalCoordinateZ());
+				
+				LOG.debug("Before getABAReferenceImageList");
+				completeImageList = getABAReferenceImageList(completeImageList,
+						vo.getFromSRSCode(), "abareference", vo
+								.getTransformedCoordinateX(), vo
+								.getTransformedCoordinateY(), vo
+								.getTransformedCoordinateZ(), vo.getFilter(),
+						vo.getTolerance());
+
+			} else if (vo.getFromSRSCode().equalsIgnoreCase(paxinos)) {
+
+				vo.setTransformedCoordinateX(vo.getOriginalCoordinateX());
+				vo.setTransformedCoordinateY(vo.getOriginalCoordinateY());
+				vo.setTransformedCoordinateZ(vo.getOriginalCoordinateZ());
+				
+				LOG.debug("Before getPaxinosImageList");
+				completeImageList = getPaxinosImageList(vo.getFromSRSCode(),
+						"paxinos", vo.getTransformedCoordinateX(), vo
+								.getTransformedCoordinateY(), vo
+								.getTransformedCoordinateZ(), vo.getFilter(),
+						vo.getTolerance());
+
 			} else {
 				// Call getTransformationChain method here...
 				// PAXINOS
@@ -517,6 +539,10 @@ public class Get2DImagesByPOI implements Processlet {
 			String webserviceName = "ImageMetadataForROI";
 			String methodName = "get2DImageListForROI";
 
+			System.out.println("Transformed Coordinate X in ABAReference: " + transformedCoordinateX);
+			System.out.println("Transformed Coordinate Y in ABAReference: " + transformedCoordinateY);
+			System.out.println("Transformed Coordinate Z in ABAReference: " + transformedCoordinateZ);
+
 			// Create an arbitrary polygon with + or - 3
 			String x1 = transformedCoordinateX;
 			String x2 = String.valueOf(Double
@@ -622,6 +648,11 @@ public class Get2DImagesByPOI implements Processlet {
 			String methodName = "get2DImageListForROI";
 			String srscode = "ABA_REFERENCE";
 
+			System.out.println("Transformed Coordinate X in ABAReference: " + transformedCoordinateX);
+			System.out.println("Transformed Coordinate Y in ABAReference: " + transformedCoordinateY);
+			System.out.println("Transformed Coordinate Z in ABAReference: " + transformedCoordinateZ);
+			
+			
 			// Create an arbitrary polygon with + or - 3
 			String x1 = transformedCoordinateX;
 			String x2 = String.valueOf(Double
