@@ -15,3 +15,7 @@
   # Use the standard [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS/WPS Exception Report] for reporting exceptions or conditions that prevent the hub from returning a normal response.
   # Consider using the WPS exception report to report INCF Atlas-defined functions not supported at your hub or not yet implemented.
   # Publish, test, and register your hub with INCF Atlas Central.
+
+=INCF Common API=
+
+  # Review the [http://132.239.131.188/incf-common/doc INCF Common API].
