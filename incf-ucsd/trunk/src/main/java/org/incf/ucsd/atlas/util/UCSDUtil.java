@@ -1412,7 +1412,7 @@ public class UCSDUtil {
 		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(ucsdSrsName) ||
 		 		    	 vo.getToSRSCode().equalsIgnoreCase(ucsdSrsName) ) {
 		 		  		implementingHub1 = "UCSD";
-		 		  		transformationURL1 = "http://" + incfSteveMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
+		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
 		 		  		vo.setTransformationOneURL(transformationURL1);
 		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
 		 		    	orderNumber = String.valueOf(i);
