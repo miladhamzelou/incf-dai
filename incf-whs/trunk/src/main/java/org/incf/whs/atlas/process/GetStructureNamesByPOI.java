@@ -46,6 +46,7 @@ import org.incf.common.atlas.util.AllowedValuesValidator;
 import org.incf.common.atlas.util.DataInputHandler;
 import org.incf.common.atlas.util.Util;
 import org.incf.whs.atlas.util.WHSConfigurator;
+import org.incf.whs.atlas.util.WHSServiceDAOImpl;
 import org.incf.whs.atlas.util.WHSServiceVO;
 import org.incf.whs.atlas.util.WHSUtil;
 import org.incf.whs.atlas.util.XMLUtilities;
@@ -286,10 +287,26 @@ public class GetStructureNamesByPOI implements Processlet {
 			// t1name.setStringValue("");
 			term1.addNewDescription().setStringValue("Term - " + structureName + " derived from WHS hub based on the supplied POI.");
 
-
 			FeatureReferenceType t1ft = term1.addNewFeature();
-			t1ft.addNewUrl().setStringValue("http://212.87.16.231:8080/getPreview?cafDatasetName=whs_0.51&structureName="+structureName);
+			WHSServiceDAOImpl impl = new WHSServiceDAOImpl();
+			ArrayList list = impl.getStructureData();
+			Iterator iterator = list.iterator();
+			WHSServiceVO vo1 = null;
+			String matchingStructureName = "";
+			while (iterator.hasNext()) {
+				vo1 = (WHSServiceVO) iterator.next();
+				matchingStructureName = vo1.getStructureName();
+				if (structureName.equalsIgnoreCase(matchingStructureName)) {
+					LOG.debug("Inside matching structureName");
+					t1ft.addNewUrl().setStringValue("http://www.3dbar.org:8080/getPreview?cafDatasetName=whs_0.5&structureName="+structureName);
+					break;
+				} 
+			}
 
+			if (!structureName.equalsIgnoreCase(matchingStructureName)) {
+				LOG.debug("Inside un-matching structureName");
+				t1ft.addNewUrl().setStringValue("");
+			}
 			
 			ArrayList errorList = new ArrayList();
 			opt.setErrorListener(errorList);

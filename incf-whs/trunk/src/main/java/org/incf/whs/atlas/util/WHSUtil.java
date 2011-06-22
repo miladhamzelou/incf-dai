@@ -256,7 +256,7 @@ public class WHSUtil {
 	String transformedCoordinateString = "";
 
 	try {
-	
+
 		if ( atlasSpaceName.trim().equalsIgnoreCase(whs09) ) { 
 
 			String transformationHostName = config.getValue("incf.transformationservice.host.name");

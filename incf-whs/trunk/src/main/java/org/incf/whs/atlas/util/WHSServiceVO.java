@@ -174,6 +174,25 @@ public class WHSServiceVO {
 	private String dateUpdated = "";
 	private String pos = "";
 
+	private String structureID = "";
+	private String structureName = "";
+
+
+	public String getStructureID() {
+		return structureID;
+	}
+
+	public void setStructureID(String structureID) {
+		this.structureID = structureID;
+	}
+
+	public String getStructureName() {
+		return structureName;
+	}
+
+	public void setStructureName(String structureName) {
+		this.structureName = structureName;
+	}
 	
 	public String getTransformationCode() {
 		return transformationCode;

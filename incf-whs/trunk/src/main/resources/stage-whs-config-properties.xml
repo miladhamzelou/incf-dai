@@ -14,7 +14,7 @@
         <name>server.database.atlasdbuser</name>
         <value>atlas</value>
     </property>
-    <property> 
+    <property>
         <name>server.database.atlasdbpassword</name>
         <value>beer</value>
     </property>

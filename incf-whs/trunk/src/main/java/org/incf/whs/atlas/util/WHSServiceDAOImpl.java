@@ -19,13 +19,13 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class WHSServiceDAOImpl {
-	
+
 	private WHSConfigurator configurator = WHSConfigurator.INSTANCE;
 	private static final Logger LOG = LoggerFactory
 	.getLogger(WHSServiceDAOImpl.class);
 
 	public ArrayList getSRSsData() {
-		
+
 		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
 		String srsName = "'"+configurator.getValue("srsname.whs.09")+"','"+configurator.getValue("srsname.whs.10")+"'"; 
@@ -235,7 +235,7 @@ public class WHSServiceDAOImpl {
 		return list;
 	}
 
-	
+
 	public ArrayList getFiducialsData( WHSServiceVO vo ) {
 
 		ArrayList list = new ArrayList();
@@ -280,5 +280,43 @@ public class WHSServiceDAOImpl {
 		return list;
 	}
 
-	
+
+	public ArrayList getStructureData() {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+
+		try {
+
+		//Used for postgres connection
+		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Statement stmt = conn.createStatement();
+		StringBuffer query = new StringBuffer();
+		query.append( " select * from incf_whs_structure " );
+
+		LOG.debug("getStructureData - Query is - {}", query.toString() );
+
+		ResultSet rs = stmt.executeQuery(query.toString()); 
+		WHSServiceVO vo = null;
+
+		while ( rs.next() ) {
+
+			vo = new WHSServiceVO();
+
+			vo.setStructureID(rs.getString("structure_id"));
+			vo.setStructureName(rs.getString("structure_name"));
+
+			list.add(vo);
+
+		}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+
+	}
+
+
 }
