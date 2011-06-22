@@ -121,6 +121,10 @@ public class Get2DImagesByPOI implements Processlet {
     			z = Double.parseDouble(vo.getTransformedCoordinateZ());
 		    }
 
+    		LOG.debug("X from Transformation Method: " + x);
+    		LOG.debug("Y from Transformation Method: " + y);
+    		LOG.debug("Z from Transformation Method: " + z);
+
     		String srsFromClient = srsName;
     		Point3d poiFromClient = new Point3d(x, y, z);
 
@@ -357,6 +361,11 @@ public class Get2DImagesByPOI implements Processlet {
 					Double.parseDouble(lineSegs[0]),
 					Double.parseDouble(lineSegs[1]),
 					Double.parseDouble(lineSegs[2]));
+
+			LOG.debug("lineSegs X: {}", lineSegs[0]);
+			LOG.debug("lineSegs Y: {}", lineSegs[1]);
+			LOG.debug("lineSegs Z: {}", lineSegs[2]);
+			
 			if (poi100.distanceSquared(abaCoordinates) < leastDistance) {
 				leastDistance = poi100.distanceSquared(abaCoordinates);
 				bestLineSegs = lineSegs;

@@ -214,7 +214,7 @@ public class TransformPOI implements Processlet {
 				vo1 = util.splitCoordinatesFromStringToVO(vo1,
 						completeCoordinatesString);
 				// End
-	
+
 				// Start - Exception Handling
 				if (vo1.getTransformedCoordinateX().equalsIgnoreCase("out")) {
 					throw new OWSException("Coordinates - Out of Range.",
@@ -294,7 +294,7 @@ public class TransformPOI implements Processlet {
 				LOG.debug("***Inside OutputZ***" + transformedVO.getTransformedCoordinateZ().toString());
 
 				pType =	poipnt.addNewPointMember().addNewPoint();
-				pType.addNewPos().setStringValue(transformedVO.getTransformedCoordinateX().toString() +" "+ transformedVO.getTransformedCoordinateX().toString() +" "+transformedVO.getTransformedCoordinateZ().toString() );
+				pType.addNewPos().setStringValue(transformedVO.getTransformedCoordinateX().toString() +" "+ transformedVO.getTransformedCoordinateY().toString() +" "+transformedVO.getTransformedCoordinateZ().toString() );
 				//pType.setId("p2");
 				
 			}
