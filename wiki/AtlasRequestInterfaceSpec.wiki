@@ -372,9 +372,11 @@ Atlas Processes
   <tr>
     <th align="left">Examples</th>
     <td>
- * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3
- * ABA: http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal
- * UCSD: http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3
+ * Central: (Planned, but not yet implemented)
+ * ABA: (Planned, but not yet implemented)
+ * EMAP: (Planned, but not yet implemented)
+ * UCSD: (Planned, but not yet implemented)
+ * WHS: (Planned, but not yet implemented)
     </td>
   </tr>
 </table>
