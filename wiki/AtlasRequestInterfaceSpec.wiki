@@ -477,7 +477,7 @@ Atlas Processes
   </tr>
   <tr>
     <th align="left">GET Request</th>
-    <td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=GetObjectsByPOI&DataInputs=[to be determined]</td>
+    <td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=GetObjectsByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z]</td>
   </tr>
   <tr>
     <th align="left">Description</th>
@@ -485,11 +485,14 @@ Atlas Processes
   </tr>
   <tr>
     <th align="left">Applicability</th>
-    <td>Central and all hubs. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
+    <td>Central only. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td></td>
+    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
+[AtlasRequestInterfaceSpec#Coordinates x]<br/>
+[AtlasRequestInterfaceSpec#Coordinates y]<br/>
+[AtlasRequestInterfaceSpec#Coordinates z]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -503,10 +506,6 @@ Atlas Processes
     <th align="left">Examples</th>
     <td>
  * Central: (Planned, but not yet implemented)
- * ABA: (Planned, but not yet implemented)
- * EMAP: (Planned, but not yet implemented)
- * UCSD: (Planned, but not yet implemented)
- * WHS: (Planned, but not yet implemented)
     </td>
   </tr>
 </table>
