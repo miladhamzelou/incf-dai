@@ -489,9 +489,9 @@ Atlas Processes
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
-[AtlasRequestInterfaceSpec#Coordinates x]<br/>
-[AtlasRequestInterfaceSpec#Coordinates y]<br/>
+    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName]
+[AtlasRequestInterfaceSpec#Coordinates x]
+[AtlasRequestInterfaceSpec#Coordinates y]
 [AtlasRequestInterfaceSpec#Coordinates z]</td>
   </tr>
   <tr>
