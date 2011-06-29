@@ -768,6 +768,50 @@ Atlas Processes
   </tr>
 </table>
 
+===SetAnnotations===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <th colspan="2">SetAnnotations</th>
+  </tr>
+  <tr>
+    <th align="left">GET Request</th>
+    <td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=SetAnnotations&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z];filter=[filter]</td>
+  </tr>
+  <tr>
+    <th align="left">Description</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th align="left">Applicability</th>
+    <td>Central, ABA, and UCSD. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
+  </tr>
+  <tr>
+    <th align="left">Data Inputs</th>
+    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName], [AtlasRequestInterfaceSpec#Coordinates x], [AtlasRequestInterfaceSpec#Coordinates y], [AtlasRequestInterfaceSpec#Coordinates z], and see [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess] for additional hub-specific data inputs
+ * [http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=SetAnnotations Central DescribeProcess] 
+ * [http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=SetAnnotations ABA DescribeProcess] 
+ * [http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=SetAnnotations UCSD DescribeProcess] 
+    </td>
+  </tr>
+  <tr>
+    <th align="left">Normal Return</th>
+    <td>XML document.[http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ImagesResponse.xsd WaxML Schema]</td>
+  </tr>
+  <tr>
+    <th align="left">Error Return</th>
+    <td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+  </tr>
+  <tr>
+    <th align="left">Examples</th>
+    <td>
+ * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotations&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3
+ * ABA: http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotations&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal
+ * UCSD: http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotations&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3
+    </td>
+  </tr>
+</table>
+
 ===TransformPOI===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
