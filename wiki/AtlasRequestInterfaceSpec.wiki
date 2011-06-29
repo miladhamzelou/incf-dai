@@ -680,8 +680,7 @@ Atlas Processes
  * ABA: http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
  * EMAP: (Planned, but not yet implemented)
  * UCSD: http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
- * WHS: http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
-    </td>
+ * WHS: http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs</td>
   </tr>
 </table>
 
@@ -705,8 +704,9 @@ Atlas Processes
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#SRS_Names inputSrsName]<br/>
-[AtlasRequestInterfaceSpec#SRS_Names outputSrsName]</td>
+    <td>
+ * [AtlasRequestInterfaceSpec#SRS_Names inputSrsName]
+ * [AtlasRequestInterfaceSpec#SRS_Names outputSrsName]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -723,8 +723,7 @@ Atlas Processes
  * ABA: http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
  * EMAP: http://incf-dev.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
  * UCSD: http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
- * WHS: http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations
-    </td>
+ * WHS: http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations</td>
   </tr>
 </table>
 
@@ -794,11 +793,15 @@ Atlas Processes
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName], [AtlasRequestInterfaceSpec#Coordinates x], [AtlasRequestInterfaceSpec#Coordinates y], [AtlasRequestInterfaceSpec#Coordinates z], and see [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess] for additional hub-specific data inputs
- * [http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=SetAnnotations Central DescribeProcess] 
- * [http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=SetAnnotations ABA DescribeProcess] 
- * [http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=SetAnnotations UCSD DescribeProcess] 
-    </td>
+    <td>
+ * [AtlasRequestInterfaceSpec#SRS_Names srsName]
+ * [AtlasRequestInterfaceSpec#Coordinates x]
+ * [AtlasRequestInterfaceSpec#Coordinates y]
+ * [AtlasRequestInterfaceSpec#Coordinates z]
+ * and see [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess] for additional hub-specific data inputs
+   * [http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=SetAnnotations Central DescribeProcess] 
+   * [http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=SetAnnotations ABA DescribeProcess] 
+   * [http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=SetAnnotations UCSD DescribeProcess]/td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -814,8 +817,7 @@ Atlas Processes
  * ABA: (Planned, but not yet implemented.)
  * EMAP: (Planned, but not yet implemented.)
  * UCSD: http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotations&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3
- * WHS: (Planned, but not yet implemented.)
-    </td>
+ * WHS: (Planned, but not yet implemented.)</td>
   </tr>
 </table>
 
@@ -839,10 +841,11 @@ Atlas Processes
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#Transformation_Code transformationCode]<br/>
-[AtlasRequestInterfaceSpec#Coordinates x]<br/>
-[AtlasRequestInterfaceSpec#Coordinates y]<br/>
-[AtlasRequestInterfaceSpec#Coordinates z]</td>
+    <td>
+ * [AtlasRequestInterfaceSpec#Transformation_Code transformationCode]
+ * [AtlasRequestInterfaceSpec#Coordinates x]
+ * [AtlasRequestInterfaceSpec#Coordinates y]
+ * [AtlasRequestInterfaceSpec#Coordinates z]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -859,7 +862,6 @@ Atlas Processes
 http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0;points=(281,112,162)(281,112,162)
  * EMAP: http://incf-dev.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_WHS_1.0_To_Mouse_EMAP-T26_1.0_v1.0;x=12;y=-29;z=-73
  * UCSD: http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;x=1;y=4.3;z=1.78
- * WHS: http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0;x=1.5;y=1;z=0.6
-    </td>
+ * WHS: http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0;x=1.5;y=1;z=0.6</td>
   </tr>
 </table>
