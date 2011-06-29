@@ -407,11 +407,12 @@ Atlas Processes
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
-[AtlasRequestInterfaceSpec#Coordinates x]<br/>
-[AtlasRequestInterfaceSpec#Coordinates y]<br/>
-[AtlasRequestInterfaceSpec#Coordinates z]<br/>
-[AtlasRequestInterfaceSpec#Filter filter]</td>
+    <td>
+ * [AtlasRequestInterfaceSpec#SRS_Names srsName]
+ * [AtlasRequestInterfaceSpec#Coordinates x]
+ * [AtlasRequestInterfaceSpec#Coordinates y]
+ * [AtlasRequestInterfaceSpec#Coordinates z]
+ * [AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -425,8 +426,7 @@ Atlas Processes
     <th align="left">Examples</th>
     <td>
  * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal
- * ABA: http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal
-    </td>
+ * ABA: http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal</td>
   </tr>
 </table>
 
@@ -451,11 +451,12 @@ Atlas Processes
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
-[AtlasRequestInterfaceSpec#Coordinates x]<br/>
-[AtlasRequestInterfaceSpec#Coordinates y]<br/>
-[AtlasRequestInterfaceSpec#Coordinates z]<br/>
-[AtlasRequestInterfaceSpec#Filter filter]</td>
+    <td>
+ * [AtlasRequestInterfaceSpec#SRS_Names srsName]
+ * [AtlasRequestInterfaceSpec#Coordinates x]
+ * [AtlasRequestInterfaceSpec#Coordinates y]
+ * [AtlasRequestInterfaceSpec#Coordinates z]
+ * [AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -470,8 +471,7 @@ Atlas Processes
     <td>
  * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE
  * ABA: http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE
- * EMAP: (Planned, but not yet implemented)
-    </td>
+ * EMAP: (Planned, but not yet implemented)</td>
   </tr>
 </table>
 
@@ -553,8 +553,7 @@ Atlas Processes
  * ABA: (Planned, but not yet implemented)
  * EMAP: (Planned, but not yet implemented)
  * UCSD: (Planned, but not yet implemented)
- * WHS: (Planned, but not yet implemented)
-    </td>
+ * WHS: (Planned, but not yet implemented)</td>
   </tr>
 </table>
 
@@ -578,12 +577,13 @@ Atlas Processes
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#SRS_Names srsName]<br/>
-[AtlasRequestInterfaceSpec#Coordinates x]<br/>
-[AtlasRequestInterfaceSpec#Coordinates y]<br/>
-[AtlasRequestInterfaceSpec#Coordinates z]<br/>
-[AtlasRequestInterfaceSpec#Vocabulary vocabulary]<br/>
-[AtlasRequestInterfaceSpec#Filter filter]</td>
+    <td>
+ * [AtlasRequestInterfaceSpec#SRS_Names srsName]
+ * [AtlasRequestInterfaceSpec#Coordinates x]
+ * [AtlasRequestInterfaceSpec#Coordinates y]
+ * [AtlasRequestInterfaceSpec#Coordinates z]
+ * [AtlasRequestInterfaceSpec#Vocabulary vocabulary]
+ * [AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -599,8 +599,7 @@ Atlas Processes
  * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=structureset:anatomic
  * ABA: http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:fine
  * UCSD: http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=-4;y=-2.3;z=2;vocabulary=Mouse_Paxinos_1.0;filter=NONE
- * WHS: http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=
-    </td>
+ * WHS: http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=;filter=</td>
   </tr>
 </table>
 
@@ -624,9 +623,10 @@ Atlas Processes
   </tr>
   <tr>
     <th align="left">Data Inputs</th>
-    <td>[AtlasRequestInterfaceSpec#SRS_Names inputSrsName]<br/>
-[AtlasRequestInterfaceSpec#SRS_Names outputSrsName]<br/>
-[AtlasRequestInterfaceSpec#Filter filter]</td>
+    <td>
+ * [AtlasRequestInterfaceSpec#SRS_Names inputSrsName]
+ * [AtlasRequestInterfaceSpec#SRS_Names outputSrsName]
+ * [AtlasRequestInterfaceSpec#Filter filter]</td>
   </tr>
   <tr>
     <th align="left">Normal Return</th>
@@ -639,8 +639,7 @@ Atlas Processes
   <tr>
     <th align="left">Examples</th>
     <td>
- * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAreference_1.0;outputSrsName=Mouse_WHS_1.0;filter=cerebellum
-    </td>
+ * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAreference_1.0;outputSrsName=Mouse_WHS_1.0;filter=cerebellum</td>
   </tr>
 </table>
 
