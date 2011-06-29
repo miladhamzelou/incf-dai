@@ -288,6 +288,7 @@ Atlas Processes
  * WHS: (Planned, but not yet implemented)</td>
   </tr>
 </table>
+<br/>
 
 ===Get2DImagesByPOI===
 
