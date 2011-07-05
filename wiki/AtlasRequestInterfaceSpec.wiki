@@ -524,48 +524,6 @@ Atlas Processes
 </table>
 <br/>
 
-===GetPropertiesByPOI===
-
-<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
-<tr>
-<th colspan="2">GetPropertiesByPOI</th>
-</tr>
-<tr>
-<th align="left">GET Request</th>
-<td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=GetPropertiesByPOI&DataInputs=[to be determined]</td>
-</tr>
-<tr>
-<th align="left">Description</th>
-<td></td>
-</tr>
-<tr>
-<th align="left">Applicability</th>
-<td>Central and all hubs. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
-</tr>
-<tr>
-<th align="left">Data Inputs</th>
-<td></td>
-</tr>
-<tr>
-<th align="left">Normal Return</th>
-<td>XML document. [http://schemas.opengis.net/wps/1.0.0/wpsGetCapabilities_response.xsd WPS Schema].</td>
-</tr>
-<tr>
-<th align="left">Error Return</th>
-<td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
-</tr>
-<tr>
-<th align="left">Examples</th>
-<td>
- * Central: (Planned, but not yet implemented)
- * ABA: (Planned, but not yet implemented)
- * EMAP: (Planned, but not yet implemented)
- * UCSD: (Planned, but not yet implemented)
- * WHS: (Planned, but not yet implemented)</td>
-</tr>
-</table>
-<br/>
-
 ===GetStructureNamesByPOI===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
