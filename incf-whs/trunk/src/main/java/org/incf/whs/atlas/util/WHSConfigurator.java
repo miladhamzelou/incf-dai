@@ -52,7 +52,6 @@ public class WHSConfigurator {
 	/** Force all users to use the static reference */
 	private WHSConfigurator() {
 	}
-	
 
 	private InputStream getInputFileURL() {
 
