@@ -154,7 +154,7 @@ Atlas Processes
 </tr>
 <tr>
 <th align="left">Error Return</th>
-<td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+<td>XML exception report.&nbsp;[http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
 </tr>
 <tr>
 <th align="left">Examples</th>
