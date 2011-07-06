@@ -359,7 +359,7 @@ Atlas Processes
 </tr>
 <tr>
 <th align="left">Applicability</th>
-<td>Central, ABA, and UCSD. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
+<td>Central and all hubs. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
 </tr>
 <tr>
 <th align="left">Data Inputs</th>
