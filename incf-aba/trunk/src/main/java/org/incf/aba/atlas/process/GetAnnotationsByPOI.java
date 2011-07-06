@@ -271,7 +271,7 @@ public class GetAnnotationsByPOI implements Processlet {
 
 		ArrayList annotationDataList = new ArrayList();
 		ABAServiceDAOImpl daoImpl = new ABAServiceDAOImpl();
-		
+
 		LOG.debug("*********************************SRSName outside: "+vo.getFromSRSCode());
 		LOG.debug("*********************************filter outside: "+vo.getFilter());
 		if (!vo.getFromSRSCode().equalsIgnoreCase("image")) {
