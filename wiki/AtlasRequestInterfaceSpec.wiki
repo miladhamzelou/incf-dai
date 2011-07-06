@@ -351,7 +351,7 @@ Atlas Processes
 </tr>
 <tr>
 <th align="left">GET Request</th>
-<td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z];filter=[filter]</td>
+<td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=[srsName];x=[x];y=[y];z=[z];tolerance=[tolerance]</td>
 </tr>
 <tr>
 <th align="left">Description</th>
@@ -384,8 +384,8 @@ Atlas Processes
 <tr>
 <th align="left">Examples</th>
 <td>
- * Central: (Planned, but not yet implemented)
- * ABA: (Planned, but not yet implemented)
+ * Central: http://132.239.131.188:8080/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=Mouse_ABAreference_1.0;x=-2;y=-1;z=0;tolerance=3
+ * ABA: http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=Mouse_ABAreference_1.0;x=-2;y=-1;z=0;tolerance=3
  * EMAP: (Planned, but not yet implemented)
  * UCSD: (Planned, but not yet implemented)
  * WHS: (Planned, but not yet implemented)</td>
