@@ -57,7 +57,7 @@ This table indicates which INCF Atlas processes are applicable to the various hu
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetAnnotationsByPOI GetAnnotationsByPOI]</th>
-    <td align="center">*[http://132.239.131.188:8080/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=Mouse_ABAreference_1.0;x=-2;y=-1;z=0;tolerance=3 X]*</td>
+    <td align="center">*[http://132.239.131.188:8080/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=Mouse_ABAreference_1.0;x=-2;y=-1;z=0;tolerance=3 X]*<sup>2</sup></td>
     <td align="center">*[http://132.239.131.188:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=Mouse_ABAreference_1.0;x=-2;y=-1;z=0;tolerance=3 X]*</td>
     <td align="center">*O*</td>
     <td align="center">*O*</td>
