@@ -223,7 +223,19 @@ public class Main {
 					// TODO Auto-generated catch block
 					System.out.println("Error SetAnnotationResponse");
 					e.printStackTrace();
-				}		
+				}	
+				
+				DescribeProcess_central pdc = new DescribeProcess_central();
+			    String DescribeProcess_Xml = pdc.AsXml();
+			     try {
+			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/DescribeProcess_central.xml"));
+			         out.write( DescribeProcess_Xml );
+			         out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Error SetAnnotationResponse");
+					e.printStackTrace();
+				}	
 	System.out.println("done");
        
 	}

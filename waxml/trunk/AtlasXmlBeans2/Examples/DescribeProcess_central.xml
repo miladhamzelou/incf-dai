@@ -1,0 +1,23 @@
+<!--Generated Thu Jul 14 15:28:11 PDT 2011-->
+<DescribeProcessForHubsResponse xmlns="http://www.incf.org/WaxML/" xmlns:ns="http://www.opengis.net/wps/1.0.0" xmlns:ns1="http://www.opengis.net/ows/1.1">
+  <QueryInfo>
+    <QueryUrl name="DescribeProcessForHubs">URL</QueryUrl>
+  </QueryInfo>
+  <DescribeProcessCollection hubCode="HUBA">
+    <ProcessDescription ns:processVersion="1.0.0" statusSupported="true" storeSupported="false">
+      <ns1:Identifier>eample</ns1:Identifier>
+      <ns1:Title xml:lang="en">Tilte</ns1:Title>
+      <ns1:Abstract>absstract</ns1:Abstract>
+      <ProcessOutputs xmlns="">
+        <Output>
+          <ns1:Identifier>eample</ns1:Identifier>
+          <ns1:Title xml:lang="en">Tilte</ns1:Title>
+          <ns1:Abstract>absstract</ns1:Abstract>
+          <LiteralOutput>
+            <ns1:DataType ns1:reference="http://www.w3.org/TR/xmlschema-2/#double">double</ns1:DataType>
+          </LiteralOutput>
+        </Output>
+      </ProcessOutputs>
+    </ProcessDescription>
+  </DescribeProcessCollection>
+</DescribeProcessForHubsResponse>
