@@ -95,6 +95,7 @@
 			<sourceSchema>WaxMlSchema/ListProcessesResponse.xsd</sourceSchema>
 			<sourceSchema>WaxMlSchema/GetProcessByIdentifier.xsd</sourceSchema>
 			<sourceSchema>WaxMlSchema/SetAnnotationResponse.xsd</sourceSchema>
+			<sourceSchema>WaxMlSchema/DescribeProcesses_central.xsd</sourceSchema>
 					     
 			<sourceSchema>SCHEMAS_OPENGIS_NET/ows/2.0/owsExceptionReport.xsd</sourceSchema>  
 			<!--	
