@@ -6,7 +6,7 @@ Version 0.7.4 - updated to DEEGREE-based services, and including annotations and
 
   http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_074_iz.docx (Microsoft Word)
 
-http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_074_iz.pdf (Adobe PDF)
+ http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_074_iz.pdf (Adobe PDF)
 
 
 
