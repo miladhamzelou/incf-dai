@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessDefinition 
+    configVersion="3.0.0" 
+    processVersion="1.0.0" 
+    storeSupported="true" 
+    statusSupported="false"
+    xmlns="http://www.deegree.org/processes/java" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.deegree.org/processes/java http://schemas.deegree.org/processes/java/3.0.0/java.xsd">
+  <Identifier>GetObjectsByPOI</Identifier>
+  <JavaClass>org.incf.central.atlas.process.GetObjectsByPOI</JavaClass>
+  <Title>Get Objects by POI</Title>
+  <Abstract>
+    Get genes at a POI (point of interest) specified in the request.
+  </Abstract>
+
+  <InputParameters>
+    <LiteralInput>
+      <Identifier>srsName</Identifier>
+      <Title>Atlas SRS Name</Title>
+      <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>x</Identifier>
+      <Title>X-Coordinate Value</Title>
+      <Abstract>Value in the X dimension as defined in the SRS.</Abstract>
+      <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>y</Identifier>
+      <Title>Y-Coordinate Value</Title>
+      <Abstract>Value in the Y dimension as defined in the SRS.</Abstract>
+      <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>z</Identifier>
+      <Title>Z-Coordinate Value</Title>
+      <Abstract>Value in the Z dimension as defined in the SRS.</Abstract>
+      <DataType reference="http://www.w3.org/TR/xmlschema-2/#double">double</DataType>
+    </LiteralInput>
+  </InputParameters>
+
+  <OutputParameters>
+    <ComplexOutput>
+      <Identifier>GetObjectsByPOIOutput</Identifier>
+      <Title>GetObjectsByPOI Output</Title>
+      <Abstract>The response from this request contains URIs to images at the specified POI (point of interest).</Abstract>
+      <!--  TODO set proper schema -->
+      <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
+          schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ObjectsResponse.xsd"/>
+    </ComplexOutput>
+  </OutputParameters>
+  
+</ProcessDefinition>
