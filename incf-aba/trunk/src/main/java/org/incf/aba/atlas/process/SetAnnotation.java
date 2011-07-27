@@ -115,7 +115,11 @@ public class SetAnnotation implements Processlet {
 
 	        XML2AnnotObjects xml2o = new XML2AnnotObjects();
 	        IncfDBUtil util = new IncfDBUtil();
-	        String xml = util.getXMLString(filePath);
+	        
+	        //String xml = util.getXMLString(filePath);
+	        XMLUtilities xmlUtil = new XMLUtilities();
+	        String xml = xmlUtil.convertFromURLToString(filePath);
+
 	        System.out.println(xml);
 	        AnnotationModel amodel = xml2o.xml2polygons(xml);
 	        System.out.println("Resource path:"+amodel.getResourcePath());

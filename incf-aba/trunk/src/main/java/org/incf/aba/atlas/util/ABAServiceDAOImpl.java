@@ -370,5 +370,44 @@ public class ABAServiceDAOImpl {
 		return list;
 	}
 
+
+	public ArrayList getStructureData() {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+
+		try {
+
+		//Used for postgres connection
+		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Statement stmt = conn.createStatement();
+		StringBuffer query = new StringBuffer();
+		query.append( " select * from incf_aba_structure " );
+
+		LOG.debug("getStructureData - Query is - {}", query.toString() );
+
+		ResultSet rs = stmt.executeQuery(query.toString()); 
+		ABAServiceVO vo = null;
+
+		while ( rs.next() ) {
+
+			vo = new ABAServiceVO();
+
+			vo.setStructureName(rs.getString("abbreviation"));
+			vo.setStructureDescription(rs.getString("description"));
+			vo.setStructureID(rs.getString("parent"));
+
+			list.add(vo);
+
+		}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+
+	}
+
 	
 }

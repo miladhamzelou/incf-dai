@@ -168,7 +168,35 @@ public class ABAServiceVO {
 	private String ontoFilePath;
 	private String uniqueID;
 
+	private String structureID;
+	private String structureName;
+	private String structureDescription;
+
 	//Public Methods
+
+	public String getStructureID() {
+		return structureID;
+	}
+
+	public void setStructureID(String structureID) {
+		this.structureID = structureID;
+	}
+
+	public String getStructureName() {
+		return structureName;
+	}
+
+	public void setStructureName(String structureName) {
+		this.structureName = structureName;
+	}
+
+	public String getStructureDescription() {
+		return structureDescription;
+	}
+
+	public void setStructureDescription(String structureDescription) {
+		this.structureDescription = structureDescription;
+	}
 
 	public String getUniqueID() {
 		return uniqueID;

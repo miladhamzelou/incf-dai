@@ -6,6 +6,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Random;
 import java.util.StringTokenizer;
 
@@ -25,6 +26,7 @@ import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
 import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.aba.atlas.util.ABAConfigurator;
+import org.incf.aba.atlas.util.ABAServiceDAOImpl;
 import org.incf.aba.atlas.util.ABAServiceVO;
 import org.incf.aba.atlas.util.ABAUtil;
 import org.incf.aba.atlas.util.XMLUtilities;
@@ -126,8 +128,7 @@ public class GetStructureNamesByPOI implements Processlet {
 
 				LOG.debug("1.2: {}" , vo.getOriginalCoordinateX());
 				LOG.debug("1.3: {}" , vo.getOriginalCoordinateX());
-				String delimitor = config
-						.getValue("incf.deploy.port.delimitor");
+				String delimitor = config.getValue("incf.deploy.port.delimitor");
 
 				// Start - FIXME - Uncomment below two lines and comment the
 				// other three lines
@@ -334,13 +335,24 @@ public class GetStructureNamesByPOI implements Processlet {
 			// term1.setUri("");
 			IncfNameType t1name = term1.addNewName();
 			// t1name.setStringValue("");
-			term1
-					.addNewDescription()
-					.setStringValue(
-							"Term - "
-									+ structureName
-									+ " derived from ABA hub based on the supplied POI.");
+			
+			ABAServiceDAOImpl impl = new ABAServiceDAOImpl();
+			ArrayList list = impl.getStructureData();
+			Iterator iterator = list.iterator();
+			ABAServiceVO vo1 = null;
+			String matchingStructureName = "";
+			while (iterator.hasNext()) {
+				vo1 = (ABAServiceVO) iterator.next();
+				matchingStructureName = vo1.getStructureName();
+				if (structureName.equalsIgnoreCase(matchingStructureName)) {
+					LOG.debug("Inside matching structureName");
+					term1.addNewDescription().setStringValue(vo1.getStructureDescription());
+					break;
+				} 
+			}
 
+
+			
 			ArrayList errorList = new ArrayList();
 			opt.setErrorListener(errorList);
 			boolean isValid = document.validate(opt);
