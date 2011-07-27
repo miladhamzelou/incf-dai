@@ -60,7 +60,7 @@ public class WHSConfigurator {
 		LOG.debug("2");
 
 		path = getClass().getResourceAsStream(
-		"/prod-whs-config-properties.xml");
+		"/stage-whs-config-properties.xml");
 		LOG.debug("3");
 
 		LOG.debug("WHS Config Path is - " + path);

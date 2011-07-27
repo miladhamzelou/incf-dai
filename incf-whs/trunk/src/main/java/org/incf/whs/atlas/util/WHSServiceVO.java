@@ -9,6 +9,7 @@
 
 package org.incf.whs.atlas.util; 
 
+import java.sql.Date;
 import java.util.ArrayList;
 
 /**
@@ -176,7 +177,127 @@ public class WHSServiceVO {
 
 	private String structureID = "";
 	private String structureName = "";
+	private String structureDescription = "";
 
+	private Date updatedTime;
+	private String transformedCoordinates;
+	private String ontoFilePath;
+	private String uniqueID;
+
+	private String coordinates;
+	private String polygonID;
+	private String depth;
+	private String userName;
+	private String instanceID;
+	private String ontoName;
+	private String ontoURI;
+
+	private String tolerance;
+
+
+	public String getTolerance() {
+		return tolerance;
+	}
+
+	public void setTolerance(String tolerance) {
+		this.tolerance = tolerance;
+	}
+
+	public String getStructureDescription() {
+		return structureDescription;
+	}
+
+	public Date getUpdatedTime() {
+		return updatedTime;
+	}
+
+	public void setUpdatedTime(Date updatedTime) {
+		this.updatedTime = updatedTime;
+	}
+
+	public String getTransformedCoordinates() {
+		return transformedCoordinates;
+	}
+
+	public void setTransformedCoordinates(String transformedCoordinates) {
+		this.transformedCoordinates = transformedCoordinates;
+	}
+
+	public String getOntoFilePath() {
+		return ontoFilePath;
+	}
+
+	public void setOntoFilePath(String ontoFilePath) {
+		this.ontoFilePath = ontoFilePath;
+	}
+
+	public String getUniqueID() {
+		return uniqueID;
+	}
+
+	public void setUniqueID(String uniqueID) {
+		this.uniqueID = uniqueID;
+	}
+
+	public String getCoordinates() {
+		return coordinates;
+	}
+
+	public void setCoordinates(String coordinates) {
+		this.coordinates = coordinates;
+	}
+
+	public String getPolygonID() {
+		return polygonID;
+	}
+
+	public void setPolygonID(String polygonID) {
+		this.polygonID = polygonID;
+	}
+
+	public String getDepth() {
+		return depth;
+	}
+
+	public void setDepth(String depth) {
+		this.depth = depth;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getInstanceID() {
+		return instanceID;
+	}
+
+	public void setInstanceID(String instanceID) {
+		this.instanceID = instanceID;
+	}
+
+	public String getOntoName() {
+		return ontoName;
+	}
+
+	public void setOntoName(String ontoName) {
+		this.ontoName = ontoName;
+	}
+
+	public String getOntoURI() {
+		return ontoURI;
+	}
+
+	public void setOntoURI(String ontoURI) {
+		this.ontoURI = ontoURI;
+	}
+
+	public void setStructureDescription(String structureDescription) {
+		this.structureDescription = structureDescription;
+	}
 
 	public String getStructureID() {
 		return structureID;

@@ -176,8 +176,8 @@ public class GetStructureNamesByPOI implements Processlet {
 			// Start - Call the main method here
 			WHSUtil util = new WHSUtil();
 			responseString = util.getStructureNameLookup(whs09, vo.getTransformedCoordinateX(), vo.getTransformedCoordinateY(), vo.getTransformedCoordinateZ() );
-			StringTokenizer tokens = new StringTokenizer(responseString); 
-			
+			StringTokenizer tokens = new StringTokenizer(responseString);
+
 			while ( tokens.hasMoreTokens() ) {
 				structureName = tokens.nextToken();
 				LOG.debug("Structure Name is - {}", structureName);
@@ -285,7 +285,6 @@ public class GetStructureNamesByPOI implements Processlet {
 			// term1.setUri("");
 			IncfNameType t1name = term1.addNewName();
 			// t1name.setStringValue("");
-			term1.addNewDescription().setStringValue("Term - " + structureName + " derived from WHS hub based on the supplied POI.");
 
 			FeatureReferenceType t1ft = term1.addNewFeature();
 			WHSServiceDAOImpl impl = new WHSServiceDAOImpl();
@@ -298,6 +297,7 @@ public class GetStructureNamesByPOI implements Processlet {
 				matchingStructureName = vo1.getStructureName();
 				if (structureName.equalsIgnoreCase(matchingStructureName)) {
 					LOG.debug("Inside matching structureName");
+					term1.addNewDescription().setStringValue(vo1.getStructureDescription());
 					t1ft.addNewUrl().setStringValue("http://www.3dbar.org:8080/getPreview?cafDatasetName=whs_0.5&structureName="+structureName);
 					break;
 				} 
@@ -307,7 +307,7 @@ public class GetStructureNamesByPOI implements Processlet {
 				LOG.debug("Inside un-matching structureName");
 				t1ft.addNewUrl().setStringValue("");
 			}
-			
+
 			ArrayList errorList = new ArrayList();
 			opt.setErrorListener(errorList);
 			boolean isValid = document.validate(opt);

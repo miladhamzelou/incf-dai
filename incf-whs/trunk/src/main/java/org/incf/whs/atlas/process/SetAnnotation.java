@@ -64,6 +64,7 @@ import org.incf.whs.atlas.util.IncfDBUtil;
 import org.incf.whs.atlas.util.WHSConfigurator;
 import org.incf.whs.atlas.util.WHSServiceVO;
 import org.incf.whs.atlas.util.XML2AnnotObjects;
+import org.incf.whs.atlas.util.XMLUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -106,13 +107,15 @@ public class SetAnnotation implements Processlet {
 			String filePath = dataInputHandler.getValidatedStringValue(in,
 					"filePath");
 
-	    	org.incf.whs.atlas.util.PostgresDBService.URL = "jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-aba-db";
-	    	org.incf.whs.atlas.util.PostgresDBService.USERNAME = "atlas-aba-db";
-	    	org.incf.whs.atlas.util.PostgresDBService.PASSWORD = "aba4321";
+	    	org.incf.whs.atlas.util.PostgresDBService.URL = "jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-whs-db";
+	    	org.incf.whs.atlas.util.PostgresDBService.USERNAME = "atlas-whs-db";
+	    	org.incf.whs.atlas.util.PostgresDBService.PASSWORD = "whs4321";
 
 	        XML2AnnotObjects xml2o = new XML2AnnotObjects();
 	        IncfDBUtil util = new IncfDBUtil();
-	        String xml = util.getXMLString(filePath);
+	        //String xml = util.getXMLString(filePath);
+	        XMLUtilities xmlUtil = new XMLUtilities();
+	        String xml = xmlUtil.convertFromURLToString(filePath);
 	        System.out.println(xml);
 	        AnnotationModel amodel = xml2o.xml2polygons(xml);
 	        System.out.println("Resource path:"+amodel.getResourcePath());

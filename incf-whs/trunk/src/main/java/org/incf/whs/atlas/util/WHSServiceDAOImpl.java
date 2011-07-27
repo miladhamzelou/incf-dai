@@ -3,7 +3,6 @@
  */
 package org.incf.whs.atlas.util; 
 
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -305,6 +304,7 @@ public class WHSServiceDAOImpl {
 
 			vo.setStructureID(rs.getString("structure_id"));
 			vo.setStructureName(rs.getString("structure_name"));
+			vo.setStructureDescription(rs.getString("description"));
 
 			list.add(vo);
 
@@ -318,5 +318,100 @@ public class WHSServiceDAOImpl {
 
 	}
 
+	public ArrayList getAnnotationData(WHSServiceVO vo, String polygonString) { 
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+
+		try {
+
+		Connection conn = dao.getStandAloneConnectionForWHSHub();
+		Statement stmt = conn.createStatement();
+		StringBuffer query = new StringBuffer();
+		//query.append( " select srs_name, dataset_name, coordinates, polygon_id, depth, username, instance_id, onto_name, onto_uri, modified_time, transformed_sdo, transformed_coordinate from annotation_sdo s, annotation_dataset m " )
+		     //.append( " where ST_INTERSECTS(sdo, ST_GEOMFROMTEXT('POLYGON((6333 6163, 6163 6163, 6163 6333, 6333 6333, 6333 6163))')) " );
+			 //.append( " and s.id = m.id " );
+
+		query.append( " select m.id, srs_name, dataset_name, coordinates, polygon_id, depth, username, instance_id, onto_name, onto_uri, modified_time, transformed_sdo, transformed_coordinate from annotation_sdo s, annotation_dataset m " )
+	         .append( " where ST_INTERSECTS(transformed_sdo, ST_GEOMFROMTEXT('POLYGON(("+polygonString+"))')) " )
+		     .append( " and s.id = m.id " );
+
+		LOG.debug("getAnnotationData - Query is - {}" , query.toString() );
+
+		ResultSet rs = stmt.executeQuery(query.toString()); 
+
+		while ( rs.next() ) {
+
+			vo = new WHSServiceVO();
+
+			vo.setUniqueID(rs.getString("id"));
+			vo.setOntoFilePath(rs.getString("dataset_name"));
+			vo.setSrsName(rs.getString("srs_name"));
+			vo.setCoordinates(rs.getString("coordinates"));
+			vo.setPolygonID(rs.getString("polygon_id"));
+			vo.setDepth(rs.getString("depth"));
+			vo.setUserName(rs.getString("username"));
+			vo.setInstanceID(rs.getString("instance_id"));
+			vo.setOntoName(rs.getString("onto_name"));
+			vo.setOntoURI(rs.getString("onto_uri"));
+			vo.setUpdatedTime(rs.getDate("modified_time"));
+			vo.setTransformedCoordinates(rs.getString("transformed_coordinate"));
+			list.add(vo);
+
+		}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	//Method override
+	public ArrayList getAnnotationData(WHSServiceVO vo) { 
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+
+		LOG.debug("Filter in database side: " + vo.getFilter());
+
+		try {
+
+		Connection conn = dao.getStandAloneConnectionForWHSHub();
+		Statement stmt = conn.createStatement();
+		StringBuffer query = new StringBuffer();
+
+		query.append( " select m.id, srs_name, dataset_name, coordinates, polygon_id, depth, username, instance_id, onto_name, onto_uri, modified_time, transformed_sdo, transformed_coordinate from annotation_sdo s, annotation_dataset m " )
+	         .append( " where m.dataset_name = '"+vo.getFilter()+"' " )
+		     .append( " and s.id = m.id " );
+
+		LOG.debug("getAnnotationData - Query is - {}" , query.toString() );
+
+		ResultSet rs = stmt.executeQuery(query.toString()); 
+
+		while ( rs.next() ) {
+
+			vo = new WHSServiceVO();
+
+			vo.setUniqueID(rs.getString("id"));
+			vo.setOntoFilePath(rs.getString("dataset_name"));
+			vo.setSrsName(rs.getString("srs_name"));
+			vo.setCoordinates(rs.getString("coordinates"));
+			vo.setPolygonID(rs.getString("polygon_id"));
+			vo.setDepth(rs.getString("depth"));
+			vo.setUserName(rs.getString("username"));
+			vo.setInstanceID(rs.getString("instance_id"));
+			vo.setOntoName(rs.getString("onto_name"));
+			vo.setOntoURI(rs.getString("onto_uri"));
+			vo.setUpdatedTime(rs.getDate("modified_time"));
+			vo.setTransformedCoordinates(rs.getString("coordinates"));
+			list.add(vo);
+
+		}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 
 }

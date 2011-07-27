@@ -41,6 +41,28 @@
     </property>
 	<!-- end postgres database properties -->
 
+	<!-- begin postgres WHS database properties -->
+	<property>
+        <name>postgres.whs.database.driverClassName</name>
+        <value>org.postgresql.Driver</value>
+    </property>
+	<property>
+        <name>postgres.whs.database.atlasdburl</name>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-whs-db</value>
+        <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
+    </property>
+    <property>
+        <name>postgres.whs.database.atlasdbuser</name>
+        <value>atlas-whs-db</value>
+ 		<!--<value>atlas</value>-->
+    </property>
+    <property>
+        <name>postgres.whs.database.atlasdbpassword</name>
+        <value>whs4321</value>
+        <!--<value>beer</value>-->
+    </property>
+	<!-- end postgres WHS database properties -->
+
 	<!-- begin logger properties -->
 
     <property>

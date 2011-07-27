@@ -498,5 +498,41 @@ public class BaseDAO {
 
 	}// end of getStandAloneConnection method
 
+    public Connection getStandAloneConnectionForWHSHub()// please change public to protected
+			throws Exception {
 
+		LOG.debug( "Start - getStandAloneConnectionForPostgres()");
+		
+		Connection connection = null;
+		
+		WHSConfigurator props = WHSConfigurator.INSTANCE;
+		
+		String driverClassName = props.getValue("postgres.whs.database.driverClassName"); 
+		String dbUrl = props.getValue("postgres.whs.database.atlasdburl");
+		String dbUser = props.getValue("postgres.whs.database.atlasdbuser");
+		String dbPassword = props.getValue("postgres.whs.database.atlasdbpassword");
+		
+		LOG.debug( "driverClassName - {}",driverClassName);
+		LOG.debug( "dbUrl - {}",dbUrl);
+		LOG.debug( "dbUser - {}",dbUser);
+		LOG.debug( "dbPassword - {}",dbPassword);
+		
+		try {
+			Class.forName( driverClassName );
+			LOG.debug( "Start - getStandAloneConnectionForPostgres()");
+		    connection = 
+		    	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
+		    LOG.debug( "End - getStandAloneConnectionForPostgres()");
+		
+		} catch ( Exception e ) {
+			LOG.debug( "There is an error{}", e.getClass() + e.getMessage());
+		    throw new Exception( e.getMessage() );
+		}
+		
+		LOG.debug( "End - getStandAloneConnectionForPostgres()");
+		return connection;
+		
+	}// end of getStandAloneConnection method
+
+    
 }//end of DataAccessObject.java
