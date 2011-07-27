@@ -9,12 +9,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.XMLStreamWriter;
+
 import net.opengis.wps.x100.ProcessDescriptionType;
 import net.opengis.wps.x100.ProcessDescriptionsDocument;
 import net.opengis.wps.x100.ProcessDescriptionsDocument.ProcessDescriptions;
 
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlOptions;
+import org.deegree.commons.xml.XMLAdapter;
 import org.deegree.services.controller.exception.ControllerException;
 import org.deegree.services.controller.ows.OWSException;
 import org.deegree.services.wps.Processlet;
@@ -22,16 +26,19 @@ import org.deegree.services.wps.ProcessletException;
 import org.deegree.services.wps.ProcessletExecutionInfo;
 import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
+import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.atlas.waxml.generated.DescribeProcessForHubsResponseDocument;
 import org.incf.atlas.waxml.generated.DescribeProcessForHubsResponseType;
 import org.incf.atlas.waxml.generated.DescribeProcessForHubsResponseType.DescribeProcessCollection;
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.incf.common.atlas.util.DataInputHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GetObjectsByPOI implements Processlet {
 
-//    private static final Logger LOG = LoggerFactory.getLogger(
-//            GetObjectsByPOI.class);
+    private static final Logger LOG = LoggerFactory.getLogger(
+            GetObjectsByPOI.class);
     
 	private static final String SERVER = "incf-dev.crbs.ucsd.edu";
 	private static final int PORT = 80;
@@ -90,34 +97,48 @@ public class GetObjectsByPOI implements Processlet {
     		y = DataInputHandler.getDoubleInputValue(in, "y");
     		z = DataInputHandler.getDoubleInputValue(in, "z");
     		
-//    		LOG.debug(String.format(
-//    				"DataInputs: srsName: %s, poi: (%f, %f, %f)",
-//    				srsName, x, y, z));
+    		LOG.debug(String.format(
+    				"DataInputs: srsName: %s, poi: (%f, %f, %f)",
+    				srsName, x, y, z));
     		
     		// prepare response document
     		prepareResponse();
+    		LOG.debug("ObjectsByPOI 1");
     		
-    		// 3. XML it
-    		// GenesResponseDocument 'is a' org.apache.xmlbeans.XmlObject
-    		//	'is a' org.apache.xmlbeans.XmlTokenSource
+    		if (LOG.isDebugEnabled()) {
+    			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+    			opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+    			opt.setSaveNamespacesFirst();
+    			opt.setSaveAggressiveNamespaces();
+    			opt.setUseDefaultNamespace();
+    			LOG.debug("Xml:\n{}", document.xmlText(opt));
+    		}
+    		LOG.debug("ObjectsByPOI 2");
 
-//    		if (LOG.isDebugEnabled()) {
-//    			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
-//    			opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
-//    			opt.setSaveNamespacesFirst();
-//    			opt.setSaveAggressiveNamespaces();
-//    			opt.setUseDefaultNamespace();
-//    			LOG.debug("Xml:\n{}", document.xmlText(opt));
-//    		}
+    		// send it
+    		// get reader on document
+    		XMLStreamReader reader = document.newXMLStreamReader();
+    		LOG.debug("ObjectsByPOI 3");
+    		
+    		// get ComplexOutput object from ProcessletOutput...
+    		ComplexOutput complexOutput = (ComplexOutput) out.getParameter(
+    				"GetObjectsByPOIOutput");
 
-
-    		// TODO uncomment
-//        } catch (OWSException e) {
-//            LOG.error(e.getMessage(), e);
-//        	throw new ProcessletException(e);	// is already OWSException
+    		LOG.debug("Setting complex output (requested=" 
+    				+ complexOutput.isRequested() + ")");
+    		
+    		// ComplexOutput objects can be huge so stream it 
+    		XMLStreamWriter writer = complexOutput.getXMLStreamWriter();
+    		XMLAdapter.writeElement(writer, reader);
+    		
+    		// transform any exceptions into ProcessletException wrapping
+    		// OWSException
+        } catch (OWSException e) {
+            LOG.error(e.getMessage(), e);
+        	throw new ProcessletException(e);	// is already OWSException
         } catch (Throwable e) {
         	String message = "Unexpected exception occurred: " + e.getMessage();
-//        	LOG.error(message, e);
+        	LOG.error(message, e);
         	throw new ProcessletException(new OWSException(message, e, 
         			ControllerException.NO_APPLICABLE_CODE));
         }
@@ -204,7 +225,7 @@ public class GetObjectsByPOI implements Processlet {
 	private boolean doesGet2DImagesContainResults(Hub hub) throws IOException {
 		URL url = new URL(assembleGet2DImagesByPOIURI(hub.getHubCode(), srsName, x, y, z));
 		
-		System.out.printf("Get2DImages URI: %s%n", url.toString());
+		LOG.debug("Get2DImages URI: {}", url.toString());
 
         InputStream in = url.openStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -216,7 +237,7 @@ public class GetObjectsByPOI implements Processlet {
         	}
         	
         	// once we see this, no need to read further
-        	if (line.contains("<Image2Dcollection hubCode=\"" + hub.getHubCode() + "\">")) {
+        	if (line.contains("<Image2D>")) {
         		return true;
         	}
         }
@@ -226,7 +247,7 @@ public class GetObjectsByPOI implements Processlet {
 	private boolean doesGetAnnotationsContainResults(Hub hub) throws IOException {
 		URL url = new URL(assembleGetAnnotationsByPOIURI(hub.getHubCode(), srsName, x, y, z));
 		
-		System.out.printf("GetAnnotations URI: %s%n", url.toString());
+		LOG.debug("GetAnnotations URI: {}", url.toString());
 
         InputStream in = url.openStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
@@ -248,18 +269,19 @@ public class GetObjectsByPOI implements Processlet {
 	private boolean doesGetStructureNamesContainResults(Hub hub) throws IOException {
 		URL url = new URL(assembleGetStructureNamesByPOIURI(hub.getHubCode(), srsName, x, y, z));
 		
-		System.out.printf("GetStructureNames URI: %s%n", url.toString());
+		LOG.debug("GetStructureNames URI: {}", url.toString());
 
         InputStream in = url.openStream();
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         String line = null;
         while ((line = reader.readLine()) != null) {
-        	if (line.contains("<AnnotationResponse/>")) {
+        	if (line.contains("<StructureTerms hubCode=\"" + hub.getHubCode() + "\"/>")
+        			|| line.contains("<wps:ProcessFailed>")) {
         		return false;
         	}
         	
         	// once we see this, no need to read further
-        	if (line.contains("<Annotation>")) {
+        	if (line.contains("<StructureTerm>")) {
         		return true;
         	}
         }
@@ -325,7 +347,7 @@ public class GetObjectsByPOI implements Processlet {
 			String identifier) throws IOException, XmlException {
 		URL u = new URL(assembleDescribeProcessURI(hub.getHubCode(), identifier));		
 		
-		System.out.printf("DescribeProcess URI: %s%n", u.toString());
+		LOG.debug("DescribeProcess URI: {}", u.toString());
 
         InputStream in = u.openStream();
         ProcessDescriptionsDocument pdDoc = ProcessDescriptionsDocument.Factory.parse(in);
