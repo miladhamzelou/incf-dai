@@ -519,7 +519,7 @@ Atlas Processes
 <tr>
 <th align="left">Examples</th>
 <td>
- * Central: http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetObjectsByPOI&DataInputs=srsName=Mouse_ABAreference_1.0;x=-2;y=-1;z=0</td>
+ * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetObjectsByPOI&DataInputs=srsName=Mouse_ABAreference_1.0;x=-2;y=-1;z=0</td>
 </tr>
 </table>
 <br/>
