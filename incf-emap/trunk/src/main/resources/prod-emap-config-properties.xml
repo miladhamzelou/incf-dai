@@ -41,6 +41,28 @@
     </property>
 	<!-- end postgres database properties -->
 
+	<!-- begin postgres EMAP database properties -->
+	<property>
+        <name>postgres.emap.database.driverClassName</name>
+        <value>org.postgresql.Driver</value>
+    </property>
+	<property>
+        <name>postgres.emap.database.atlasdburl</name>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-emap-db</value>
+        <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
+    </property>
+    <property>
+        <name>postgres.emap.database.atlasdbuser</name>
+        <value>atlas-emap-db</value>
+ 		<!--<value>atlas</value>-->
+    </property>
+    <property>
+        <name>postgres.emap.database.atlasdbpassword</name>
+        <value>emap4321</value>
+        <!--<value>beer</value>-->
+    </property>
+	<!-- end postgres EMAP database properties -->
+
 	<!-- begin logger properties-->
 	<!--FIXME-->
     <property>

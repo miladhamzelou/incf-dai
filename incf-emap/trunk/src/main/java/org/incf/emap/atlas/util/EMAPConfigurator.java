@@ -57,7 +57,7 @@ public class EMAPConfigurator {
 		InputStream path = null;
 
 		path = getClass().getResourceAsStream( 
-		"/prod-emap-config-properties.xml");
+		"/stage-emap-config-properties.xml");
 
 		LOG.debug("Config Path is - {}" , path);
 		return path;
