@@ -141,10 +141,13 @@ public class IncfDBUtil {
 
     private int insertPolygon(PolygonModel pm,int id, String resourcePath)throws Exception
     {
-        int pid = pm.getPolygonID();
+    	
+    	int pid = pm.getPolygonID();
         String sql = "insert into annotation_sdo(polygon_id,id, sdo, depth, coordinates, username,instance_id ,onto_name ,onto_uri, modified_time) values(?,?, "+this.getPolygonString(pm)+ ", ?, ?,?,?,?,?,?)";
+
+        System.out.println("SQL is - " + sql);
         Connection c = db.getConnection();
-         PreparedStatement ps  = c.prepareStatement(sql);
+        PreparedStatement ps  = c.prepareStatement(sql);
         ps.setInt(1, pid);
         ps.setInt(2, id);
         ps.setDouble(3, this.getDepth(pm));
@@ -171,10 +174,8 @@ public class IncfDBUtil {
             ps.setTimestamp(9, ts);
         }
 
-
         ps.executeUpdate();
         c.close();
-
 
         if(this.isInteger(resourcePath))
         {
@@ -187,8 +188,8 @@ public class IncfDBUtil {
 
             test.updateCoordinates(rid+"", d2Coord, pid+"");
         }
-
-        return pid;
+        
+      return pid;
 
     }
 

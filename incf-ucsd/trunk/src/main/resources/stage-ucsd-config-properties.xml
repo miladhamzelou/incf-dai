@@ -42,6 +42,28 @@
     </property>
 	<!-- end postgres database properties -->
 
+	<!-- begin postgres UCSD database properties -->
+	<property>
+        <name>postgres.ucsd.database.driverClassName</name>
+        <value>org.postgresql.Driver</value>
+    </property>
+	<property>
+        <name>postgres.ucsd.database.atlasdburl</name>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-ucsd-db</value>
+        <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
+    </property>
+    <property>
+        <name>postgres.ucsd.database.atlasdbuser</name>
+        <value>atlas-ucsd-db</value>
+ 		<!--<value>atlas</value>-->
+    </property>
+    <property>
+        <name>postgres.ucsd.database.atlasdbpassword</name>
+        <value>ucsd4321</value>
+        <!--<value>beer</value>-->
+    </property>
+	<!-- end postgres UCSD database properties -->
+
 	<!-- begin logger properties -->
 
     <property>

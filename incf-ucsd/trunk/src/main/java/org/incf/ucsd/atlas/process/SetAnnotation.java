@@ -64,6 +64,7 @@ import org.incf.ucsd.atlas.util.IncfDBUtil;
 import org.incf.ucsd.atlas.util.UCSDConfigurator;
 import org.incf.ucsd.atlas.util.UCSDServiceVO;
 import org.incf.ucsd.atlas.util.XML2AnnotObjects;
+import org.incf.ucsd.atlas.util.XMLUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -106,13 +107,15 @@ public class SetAnnotation implements Processlet {
 			String filePath = dataInputHandler.getValidatedStringValue(in,
 					"filePath");
 
-	    	org.incf.ucsd.atlas.util.PostgresDBService.URL = "jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-aba-db";
-	    	org.incf.ucsd.atlas.util.PostgresDBService.USERNAME = "atlas-aba-db";
-	    	org.incf.ucsd.atlas.util.PostgresDBService.PASSWORD = "aba4321";
+	    	org.incf.ucsd.atlas.util.PostgresDBService.URL = "jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-ucsd-db";
+	    	org.incf.ucsd.atlas.util.PostgresDBService.USERNAME = "atlas-ucsd-db";
+	    	org.incf.ucsd.atlas.util.PostgresDBService.PASSWORD = "ucsd4321";
 
 	        XML2AnnotObjects xml2o = new XML2AnnotObjects();
 	        IncfDBUtil util = new IncfDBUtil();
-	        String xml = util.getXMLString(filePath);
+	        //String xml = util.getXMLString(filePath);
+	        XMLUtilities xmlUtil = new XMLUtilities();
+	        String xml = xmlUtil.convertFromURLToString(filePath);
 	        System.out.println(xml);
 	        AnnotationModel amodel = xml2o.xml2polygons(xml);
 	        System.out.println("Resource path:"+amodel.getResourcePath());
