@@ -276,7 +276,7 @@ public class GetAnnotationsByPOI implements Processlet {
 		LOG.debug("*********************************filter outside: "+vo.getFilter());
 		if (!vo.getFromSRSCode().equalsIgnoreCase("image")) {
 			LOG.debug("*********************************SRSName inside Image: "+vo.getSrsName());
-			annotationDataList = daoImpl.getAnnotationData(vo, polygonString); 
+			annotationDataList = daoImpl.getAnnotationData(vo, polygonString);
 		} else if (vo.getFromSRSCode().equalsIgnoreCase("image")) {
 			LOG.debug("*********************************SRSName inside Not Actual SRSName: "+vo.getFromSRSCode());
 			annotationDataList = daoImpl.getAnnotationData(vo);
@@ -457,7 +457,7 @@ public class GetAnnotationsByPOI implements Processlet {
 		}
 	}
 	static String gmlId(int id){
-		
+
 		final String baseId = "ANN";
 		
 			return String.format("{0}{1}", baseId,id);

@@ -43,7 +43,7 @@ public class CentralConfigurator {
 	.getLogger(CentralConfigurator.class);
 
 	/**
-	 * holds the name/value propertg pairs
+	 * holds the name/value property pairs
 	 * 
 	 */
 	private Hashtable propsH;
@@ -57,7 +57,7 @@ public class CentralConfigurator {
 		InputStream path = null;
 
 		path = getClass().getResourceAsStream( 
-		"/prod-central-config-properties.xml");
+		"/stage-central-config-properties.xml");
 
 		LOG.debug("Config Path is - {}" , path);
 		return path;
