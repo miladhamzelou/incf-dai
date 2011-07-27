@@ -16,7 +16,7 @@
       </snapshots>
     </repository>
   </repositories>
-  
+
   <scm>
     <connection>scm:svn:http://incf-dai.googlecode.com/svn/incf-common/trunk</connection>
     <developerConnection>scm:svn:https://incf-dai.googlecode.com/svn/incf-common/trunk</developerConnection>
