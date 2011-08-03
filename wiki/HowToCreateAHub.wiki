@@ -8,7 +8,12 @@
   # Determine what coordinate system you would like to use.
   # Learn and use the [WaxML WaxML schema], or SRS (spacial reference system), for XML responses to a client.
   # Choose a name the hub. Existing hub names are 
-    * ABA
+    * ABA (Allen Brain Atlas)
+    * EMAP (Edinburgh Mouse Atlas Project)
+    * UCSD (University of California, San Diego, CCDB (Cell-Centered Database)
+    * WHS (Waxholm)
+    * Central (Central is not a hub but rather a compiler that unions data across the hubs)
+  # Consider using a framework library such as [http://www.deegree.org/ Deegree] which facilitates software development. The hubs listed above use Deegree.
   # Implement the requests !GetCapabilities and !DescribeProcess. These standard WPS request describes the Execute requests methods offered by the hub and allow a hub to be cataloged.
   # Examine the [http://code.google.com/p/incf-dai/wiki/AtlasFunctionHubApplicabilityTable  Atlas Function-Hub Applicability Table].
   # Select the functions you wish to offer at your hub. Beyond the standard GetCapabilities and DescribeProcee requests, it is expected this minimal set of functions would be offered by a hub: DescibeSRS, DescribeTransformations, GetStructureNamesByPOI, ListSRSs, ListTransformations, and TransformPOI.
