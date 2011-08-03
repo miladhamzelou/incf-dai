@@ -4,7 +4,7 @@
 
   # Review the [https://docs.google.com/Doc?docid=0Af-22shvZFIQZGQ5eDk3d2tfMmRyaGhqNmZw&hl=en INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview] which describes INCF Atlas rpoject.
   # Have some data to offer. Remember that an INCF Atlas Hub is a _front end_ to your data that provides a common interface to your data.
-  # Have the desire to follow INCF [http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec Atlas Interface Specification] which is based on the [http://www.opengeospatial.org/standards/wps OGC WPS standard]. This describes the client-server _contract_ in terms of requests from a client to the hub and responses from the hub to a client.
+  # Have the desire to follow INCF [http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec Atlas Interface Specification] which is based on the [http://www.opengeospatial.org/standards/wps OGC WPS standard]. This describes the client-server _contract_ in terms of requests from a client to the hub and responses from the hub to a client. Remember a hub offers web services. It is not a web application. Hubs use standard HTTP GET requests and responds with XML documents. There is no GUI and no HTML.
   # Determine what coordinate system you would like to use.
   # Learn and use the [WaxML WaxML schema], or SRS (spacial reference system), for XML responses to a client.
   # Choose a name the hub. Existing hub names are 
