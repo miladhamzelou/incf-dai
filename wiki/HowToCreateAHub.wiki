@@ -14,12 +14,12 @@
     * WHS (Waxholm)
     * Central (Central is not a hub but rather a compiler that unions data across the hubs)
   # Consider using a framework library such as [http://www.deegree.org/ Deegree] which facilitates software development. The hubs listed above use Deegree.
+  # Implement the requests !GetCapabilities and !DescribeProcess. These standard WPS request describes the Execute requests methods offered by the hub and allow a hub to be cataloged. These implementations are required. Using a framework library like Deegree simplifies these implementations.
   # Decide what processes are applicable to your data and you wish to offer. Examine the [http://code.google.com/p/incf-dai/wiki/AtlasFunctionHubApplicabilityTable  Atlas Function-Hub Applicability Table] to see the processes the current hubs offer. Here are some general suggestions:
     * SRSs (spatial reference systems). Every hub must have at least one, so plan to implement ListSRSs and DescribeSRS. This supports POIs (points of interest).
     * POIs. Depending on the data you have you would likely implement Get2DImagesByPOI and possibly GetGenesByPOI and GetStructureNamesByPOI.
     * Annotations. If you want to support annotations, implement !SetAnnotations and GetAnnotationsByPOI.
-    * Transformations. If you plan to support multiple SRSs, as the existing hubs do, then should implement !ListTransformations, TransformPOI, and possibly GetTransformationChain.
-  # Implement the requests !GetCapabilities and !DescribeProcess. These standard WPS request describes the Execute requests methods offered by the hub and allow a hub to be cataloged.
+    * Transformations. If you plan to support multiple SRSs, as the existing hubs do, then should implement !ListTransformations, TransformPOI, and possibly !GetTransformationChain.
   # Select the functions you wish to offer at your hub. Beyond the standard !GetCapabilities and !DescribeProcee requests, it is expected this minimal set of functions would be offered by a hub: DescibeSRS, !DescribeTransformations, GetStructureNamesByPOI, ListSRSs, !ListTransformations, and TransformPOI.
   # Review section 6 of the [https://docs.google.com/Doc?docid=0Af-22shvZFIQZGQ5eDk3d2tfMmRyaGhqNmZw&hl=en INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview].
   # Use the atlas-common code. This is optional, but this library, or hub building toolkit, is used by the INCF Atlas development team at UCSD. It includes code that is common across multiple hubs such as standard SRS transformations and exception reporting.
