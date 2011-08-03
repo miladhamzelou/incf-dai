@@ -16,7 +16,7 @@
   # Consider using a framework library such as [http://www.deegree.org/ Deegree] which facilitates software development. The hubs listed above use Deegree.
   # Implement the requests !GetCapabilities and !DescribeProcess. These standard WPS request describes the Execute requests methods offered by the hub and allow a hub to be cataloged.
   # Examine the [http://code.google.com/p/incf-dai/wiki/AtlasFunctionHubApplicabilityTable  Atlas Function-Hub Applicability Table].
-  # Select the functions you wish to offer at your hub. Beyond the standard GetCapabilities and DescribeProcee requests, it is expected this minimal set of functions would be offered by a hub: DescibeSRS, DescribeTransformations, GetStructureNamesByPOI, ListSRSs, ListTransformations, and TransformPOI.
+  # Select the functions you wish to offer at your hub. Beyond the standard !GetCapabilities and !DescribeProcee requests, it is expected this minimal set of functions would be offered by a hub: DescibeSRS, !DescribeTransformations, GetStructureNamesByPOI, ListSRSs, !ListTransformations, and TransformPOI.
   # Review section 6 of the [https://docs.google.com/Doc?docid=0Af-22shvZFIQZGQ5eDk3d2tfMmRyaGhqNmZw&hl=en INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview].
   # Use the atlas-common code. This is optional, but this library, or hub building toolkit, is used by the INCF Atlas development team at UCSD. It includes code that is common across multiple hubs such as standard SRS transformations and exception reporting.
   # Use the standard [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS/WPS Exception Report] for reporting exceptions or conditions that prevent the hub from returning a normal response.
