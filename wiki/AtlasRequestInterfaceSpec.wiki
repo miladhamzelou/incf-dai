@@ -114,15 +114,16 @@ Atlas Processes
  * [AtlasRequestInterfaceSpec#DescribeSRS DescribeSRS]
  * [AtlasRequestInterfaceSpec#DescribeTransformation DescribeTransformation]
  * [AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]
+ * [AtlasRequestInterfaceSpec#GetAnnotationsByPOI GetAnnotationsByPOI]
  * [AtlasRequestInterfaceSpec#GetCorrlationMap GetCorrelationMap]
  * [AtlasRequestInterfaceSpec#GetGenesByPOI GetGenesByPOI]
  * [AtlasRequestInterfaceSpec#GetObjectsByPOI GetOjbectsByPOI]
- * [AtlasRequestInterfaceSpec#GetPropertiesByPOI GetPropertiesByPOI]
  * [AtlasRequestInterfaceSpec#GetStructureNamesByPOI GetStructureNamesByPOI]
  * [AtlasRequestInterfaceSpec#GetTransformationChain GetTransformationChain]
  * [AtlasRequestInterfaceSpec#ListSRSs ListSRSs]
  * [AtlasRequestInterfaceSpec#ListTransformations ListTransformations]
  * [AtlasRequestInterfaceSpec#Retrieve2DImage Retrieve2DImage]
+ * [AtlasRequestInterfaceSpec#SetAnnotations SetAnnotations]
  * [AtlasRequestInterfaceSpec#TransformPOI TransformPOI]
 <br/>
 
