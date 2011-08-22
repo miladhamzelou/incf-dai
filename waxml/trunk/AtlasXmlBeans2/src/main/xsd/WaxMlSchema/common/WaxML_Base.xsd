@@ -108,12 +108,12 @@ Optional</xs:documentation>
         </xs:simpleContent>
     </xs:complexType>
     <xs:complexType name="incfCodeType">
-        <xs:complexContent>
+        <xs:simpleContent>
             <xs:extension base="gml:CodeType">
                 <xs:attribute name="isDefault" type="xs:boolean" />
                 <xs:attribute ref="gml:id" />
             </xs:extension>
-        </xs:complexContent>
+        </xs:simpleContent>
     </xs:complexType>
     <xs:complexType name="incf_DocumentCitation">
         <xs:sequence>

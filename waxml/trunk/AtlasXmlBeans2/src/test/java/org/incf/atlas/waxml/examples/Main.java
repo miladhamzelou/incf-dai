@@ -233,7 +233,31 @@ public class Main {
 			         out.close();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					System.out.println("Error SetAnnotationResponse");
+					System.out.println("Error DescribeProcess_central");
+					e.printStackTrace();
+				}	
+				
+				RegistrationResponse rrc = new RegistrationResponse();
+			    String RegistrationResponseXml = rrc.asXml();
+			     try {
+			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/RegistrationResponse.xml"));
+			         out.write( RegistrationResponseXml );
+			         out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Error RegistrationResponse");
+					e.printStackTrace();
+				}	
+				
+				RegistrationRequestXml rrx = new RegistrationRequestXml();
+			    String RegistrationRequestXml = rrx.asXml();
+			     try {
+			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/RegistrationRequest.xml"));
+			         out.write( RegistrationRequestXml );
+			         out.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Error RegistrationResponse");
 					e.printStackTrace();
 				}	
 	System.out.println("done");
