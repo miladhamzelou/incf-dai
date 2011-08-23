@@ -1,0 +1,4 @@
+<RegistrationResponse xmlns="http://www.incf.org/WaxML/">
+  <StatusString>done</StatusString>
+  <Message>worked</Message>
+</RegistrationResponse>

@@ -1,0 +1,4 @@
+<RegistrationRequest xmlns="http://www.incf.org/WaxML/" RegistrationType="itk_process">
+  <ObjectUrl>http://example.com/</ObjectUrl>
+  <ObjectUrl>http://example.com/</ObjectUrl>
+</RegistrationRequest>

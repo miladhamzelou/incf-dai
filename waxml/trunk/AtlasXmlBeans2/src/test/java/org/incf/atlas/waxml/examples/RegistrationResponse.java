@@ -7,12 +7,8 @@ import java.util.Calendar;
 
 import junit.framework.TestCase;
 
-import net.opengis.gml.x32.PointType;
-import net.opengis.ows.x11.CodeType;
-import net.opengis.ows.x11.LanguageStringType;
-import net.opengis.ows.x20.ExceptionReportDocument;
-import net.opengis.wps.x100.DescriptionType;
-import noNamespace.RegistrationResponseType;
+
+
 
 
 import org.apache.xmlbeans.XmlError;
@@ -50,7 +46,7 @@ return doc	;
 
 		
 	}
-	
+	@Test
 	public void validFullResponse() {
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());

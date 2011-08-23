@@ -1,21 +1,22 @@
 package org.incf.atlas.waxml.examples;
 
 import static org.junit.Assert.assertTrue;
+import junit.framework.TestCase;
 
 import java.util.ArrayList;
 
-import noNamespace.RegistrationResponseType;
 
 import org.apache.xmlbeans.XmlAnyURI;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.RegistrationRequestDocument;
 import org.incf.atlas.waxml.generated.RegistrationRequestDocument.RegistrationRequest;
-import org.incf.atlas.waxml.generated.RegistrationResponseDocument;
+
 
 import org.incf.atlas.waxml.utilities.Utilities;
+import org.junit.Test;
 
-class RegistrationRequestXml {
+public class RegistrationRequestXml {
 
 	
 		public String asXml() {
@@ -47,6 +48,8 @@ class RegistrationRequestXml {
 
 			
 		}
+		
+		@Test
 		public void validFullResponse() {
 			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 			opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());

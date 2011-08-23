@@ -6,7 +6,7 @@ targetNamespace="http://www.incf.org/WaxML/"
 xmlns:wax="http://www.incf.org/WaxML/" >
     <xs:import schemaLocation="http://schemas.opengis.net/ows/1.1.0/owsAll.xsd" namespace="http://www.opengis.net/ows/1.1" />
     <xs:import schemaLocation="http://schemas.opengis.net/wps/1.0.0/wpsAll.xsd" namespace="http://www.opengis.net/wps/1.0.0" />
-    <xs:element name="RegistrationResponse" type="RegistrationResponseType" />
+    <xs:element name="RegistrationResponse" type="wax:RegistrationResponseType" />
     <xs:complexType name="RegistrationResponseType">
         <xs:annotation>
             <xs:documentation>To meet the needs of Registering data.</xs:documentation>

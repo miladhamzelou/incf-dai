@@ -1,0 +1,9 @@
+<ExecuteResponse xmlns="http://www.opengis.net/wps/1.0.0" xmlns:ns="http://www.opengis.net/ows/1.1" serviceInstance="http://example.com/serviceinstance" service="WPS" version="1.0.0" xml:lang="es-US">
+  <Process xmlns:ns1="http://www.opengis.net/wps/1.0.0" ns1:processVersion="1.0.0.0">
+    <ns:Identifier>RegisterWPSIdentifier</ns:Identifier>
+    <ns:Title>RegisterWPSName</ns:Title>
+  </Process>
+  <Status creationTime="2011-08-23T08:45:20.788-07:00">
+    <ProcessSucceeded>suceeded</ProcessSucceeded>
+  </Status>
+</ExecuteResponse>
