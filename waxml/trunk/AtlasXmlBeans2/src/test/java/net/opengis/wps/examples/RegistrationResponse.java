@@ -18,6 +18,7 @@ import net.opengis.wps.x100.ProcessBriefType;
 import net.opengis.wps.x100.StatusType;
 
 import org.apache.xmlbeans.XmlError;
+import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.*;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
@@ -63,5 +64,20 @@ status.setProcessSucceeded("suceeded");
 return doc	;
 
 		
+	}
+	
+	@Test
+	public void validFullResponse() {
+		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+		opt.setSaveNamespacesFirst();
+		opt.setSaveAggressiveNamespaces();
+		opt.setUseDefaultNamespace();
+
+		XmlObject co = completeResponse();
+		ArrayList errorList = new ArrayList();
+		boolean validXml = Utilities.validateXml(opt, co, errorList);
+		assertTrue(errorList.toString(), validXml);
+
 	}
 }
