@@ -160,23 +160,4 @@ It is important for publishers and administrators to not only publish resources 
 </p>
 <a name="Edit_metadata_using_the_incfportal_editor" id="Edit_metadata_using_the_incfportal_editor"></a><h3> <span class="mw-headline">Edit metadata using the incfportal editor</span></h3>
 <p>The incfportal metadata editor is accessed from the <b>Administration</b> tab, when a publisher or administrator clicks the pencil icon <a href="/apps/mediawiki/incfportal/index.php?title=File:Edit.gif" class="image" title="File:edit.gif"><img alt="File:edit.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/b/b8/Edit.gif" width="15" height="19" border="0" /></a> next to a record in the document table. The metadata editor form is loaded and populated with the information previously entered describing the resource. After updating information in the form, click the <b>Save</b> button at the bottom of the screen. The old information will be replaced with your new information, and the resource is republished.
-</p><p><b>Caution:</b>If the metadata was not created using the incfportal metadata editor, then the pencil icon will be grayed out, and the edit option will not be available.
 </p>
-<a name="Edit_metadata_in_an_external_editor" id="Edit_metadata_in_an_external_editor"></a><h3> <span class="mw-headline">Edit metadata in an external editor</span></h3>
-<p>It is possible to update a resource's metadata in an external non-incfportal editor by accessing the record's REST URL. You then will open the record in an external XML editor, such as Altova® XMLSpy, make edits to the raw XML, and when the document is saved, it is updated in the incfportal catalog. Steps for editing in an external editor are below.
-</p><p><b>Caution</b>: Do not use this edit method for resources that are synchronized in the incfportal catalog through a registered network resource. Any edits made with the external XML editor will be overwritten the next time the resource is synchronized.
-</p>
-<ol><li>Verify that you are the owner of the resource whose metadata you want to edit. You can do this by logging in to the incfportal, clicking the <b>Administration</b> tab, finding your document and looking at the <b>owner</b> column.
-</li><li>Procure the REST URL for the resource. Do this by searching for the resource, and then clicking on the <b>Details</b> link when you see it in the search results list. The REST URL for the record is at the bottom of the Details page, and is prefixed with the following: <code>/incfportal/rest/document?f=html&amp;id=</code>
-</li><li>This REST URL will contain a document ID. This is not the same ID that appears in the browser URL for the record. Copy the entire REST URL from the <b>Details</b> page and paste it into a text editor such as Notepad.
-</li><li>Copy the following sample text and paste it in the text editor, below your REST URL: <code><a href="http://server:port/incfportal/rest/manage/document/" class="external free" title="http://server:port/incfportal/rest/manage/document/" rel="nofollow">http://server:port/incfportal/rest/manage/document/</a></code>
-</li><li>In your text editor, edit the sample text. Replace server with the incfportal server name and port with the port number (if applicable).
-</li><li>Copy the URL after the &amp;id= part of the REST URL and paste it after document part in the sample text, similar to the example below. <code><a href="http://serverName:8080/incfportal/rest/manage/document/%7B2A850F59-354D-46BF-B63C-E8FB2B7B79A6%7D" class="external free" title="http://serverName:8080/incfportal/rest/manage/document/%7B2A850F59-354D-46BF-B63C-E8FB2B7B79A6%7D" rel="nofollow">http://serverName:8080/incfportal/rest/manage/document/%7B2A850F59-354D-46BF-B63C-E8FB2B7B79A6%7D</a></code>
-</li><li>Now that you have constructed the URL for connecting to the resource, you can make the connection to the resource in the incfportal through the third party external editor. Open the XML editor software. <b>Note:</b> Steps here describe the process using Altova® XMLSpy.
-</li><li>Click the <b>File</b> menu, and then select the <b>Open URL</b> option.
-</li><li>Enter the URL that you have just constructed in your text editor into the dialog.
-</li><li>Provide your incfportal username and password.
-</li><li>Click <b>OK</b>.
-</li><li>Your document should appear as raw XML in the interface.
-</li><li>Make any edits necessary. When you save the file, the changes are reflected in the document available from the incfportal. There is no need to republish your document, as edits are published when you save in the external editor.
-</li></ol>
