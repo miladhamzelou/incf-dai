@@ -40,11 +40,11 @@ The common API is a module that can be used across all the hubs for code develop
   # Maven: This can be downloaded from: http://maven.apache.org/download.html
   # Eclipse: This can be downloaded from: http://www.eclipse.org/downloads/
 
-  <strong>Operating System Environment supported:</strong>
+  <strong>Operating system environment supported:</strong>
   # Windows 2003 Server, Windows Vista, Windows 7
   # Linux
 
-  <strong>Hub code Downloads:</strong>
+  <strong>Hub code downloads:</strong>
   # ABA: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-aba%2Ftrunk
   # UCSD: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-ucsd%2Ftrunk 
   # WHS: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-whs%2Ftrunk
