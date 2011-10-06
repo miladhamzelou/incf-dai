@@ -1,142 +1,33 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<meta http-equiv="Content-Style-Type" content="text/css" />
-		<meta name="generator" content="MediaWiki 1.15.1" />
-		<meta name="keywords" content="How to Manage and Edit Resources,How to Restrict Access to Resources" />
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="search" type="application/opensearchdescription+xml" href="/apps/mediawiki/geoportal/opensearch_desc.php" title="geoportal (en)" />
-		<link rel="alternate" type="application/rss+xml" title="geoportal RSS Feed" href="/apps/mediawiki/geoportal/index.php?title=Special:RecentChanges&amp;feed=rss" />
-		<link rel="alternate" type="application/atom+xml" title="geoportal Atom Feed" href="/apps/mediawiki/geoportal/index.php?title=Special:RecentChanges&amp;feed=atom" />
-		<title>SourceForge.net: How to Manage and Edit Resources - geoportal</title>
-		<link rel="stylesheet" href="/apps/mediawiki/geoportal/skins/common/shared.css?207" type="text/css" media="screen" />
-		<link rel="stylesheet" href="/apps/mediawiki/geoportal/skins/common/commonPrint.css?207" type="text/css" media="print" />
-		<link rel="stylesheet" href="/apps/mediawiki/geoportal/skins/sourceforge/main.css?207" type="text/css" media="screen" />
-		<!--[if lt IE 5.5000]><link rel="stylesheet" href="/apps/mediawiki/geoportal/skins/sourceforge/IE50Fixes.css?207" type="text/css" media="screen" /><![endif]-->
-		<!--[if IE 5.5000]><link rel="stylesheet" href="/apps/mediawiki/geoportal/skins/sourceforge/IE55Fixes.css?207" type="text/css" media="screen" /><![endif]-->
-		<!--[if IE 6]><link rel="stylesheet" href="/apps/mediawiki/geoportal/skins/sourceforge/IE60Fixes.css?207" type="text/css" media="screen" /><![endif]-->
-		<!--[if IE 7]><link rel="stylesheet" href="/apps/mediawiki/geoportal/skins/sourceforge/IE70Fixes.css?207" type="text/css" media="screen" /><![endif]-->
-		<link rel="stylesheet" href="/apps/mediawiki/geoportal/index.php?title=MediaWiki:Common.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" />
-		<link rel="stylesheet" href="/apps/mediawiki/geoportal/index.php?title=MediaWiki:Print.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" media="print" />
-		<link rel="stylesheet" href="/apps/mediawiki/geoportal/index.php?title=MediaWiki:Sourceforge.css&amp;usemsgcache=yes&amp;ctype=text%2Fcss&amp;smaxage=18000&amp;action=raw&amp;maxage=18000" type="text/css" />
-		<link rel="stylesheet" href="/apps/mediawiki/geoportal/index.php?title=-&amp;action=raw&amp;maxage=18000&amp;gen=css" type="text/css" />
-		<!--[if lt IE 7]><script type="text/javascript" src="/apps/mediawiki/geoportal/skins/common/IEFixes.js?207"></script>
-		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
-
-		<script type= "text/javascript">/*<![CDATA[*/
-		var skin = "sourceforge";
-		var stylepath = "/apps/mediawiki/geoportal/skins";
-		var wgArticlePath = "/apps/mediawiki/geoportal/index.php?title=$1";
-		var wgScriptPath = "/apps/mediawiki/geoportal";
-		var wgScript = "/apps/mediawiki/geoportal/index.php";
-		var wgVariantArticlePath = false;
-		var wgActionPaths = {};
-		var wgServer = "http://sourceforge.net";
-		var wgCanonicalNamespace = "";
-		var wgCanonicalSpecialPageName = false;
-		var wgNamespaceNumber = 0;
-		var wgPageName = "How_to_Manage_and_Edit_Resources";
-		var wgTitle = "How to Manage and Edit Resources";
-		var wgAction = "view";
-		var wgArticleId = "20";
-		var wgIsArticle = true;
-		var wgUserName = null;
-		var wgUserGroups = null;
-		var wgUserLanguage = "en";
-		var wgContentLanguage = "en";
-		var wgBreakFrames = false;
-		var wgCurRevisionId = 97;
-		var wgVersion = "1.15.1";
-		var wgEnableAPI = true;
-		var wgEnableWriteAPI = true;
-		var wgSeparatorTransformTable = ["", ""];
-		var wgDigitTransformTable = ["", ""];
-		var wgRestrictionEdit = [];
-		var wgRestrictionMove = [];
-		/*]]>*/</script>
-
-		<script type="text/javascript" src="/apps/mediawiki/geoportal/skins/common/wikibits.js?207"><!-- wikibits js --></script>
-		<!-- Head Scripts -->
-		<script type="text/javascript" src="/apps/mediawiki/geoportal/skins/common/ajax.js?207"></script>
-		<script type="text/javascript" src="/apps/mediawiki/geoportal/index.php?title=-&amp;action=raw&amp;gen=js&amp;useskin=sourceforge"><!-- site js --></script>
-	
-    <link rel="stylesheet" type="text/css" href="http://static.sourceforge.net/css/develop/hosted.php?secure=0&amp;1316681349" media="all" />
-
-    <!-- BEGIN: AdSolution-Tag 4.2: Global-Code [PLACE IN HTML-HEAD-AREA!] -->
-    <!-- DoubleClick Random Number -->
-    <script type="text/javascript">
-      dfp_ord=Math.random()*10000000000000000;
-      dfp_tile = 1;
-    </script>
-	
-    <!-- End DoubleClick Random Number -->
-    <!-- END: AdSolution-Tag 4.2: Global-Code -->
-
-</head>
-<body class="mediawiki ltr ns-0 ns-subject page-How_to_Manage_and_Edit_Resources skin-sourceforge">
-
-<script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-</script>
-
-<script type="text/javascript">
-  var pageTracker = _gat._getTracker("UA-32013-36");
-</script>
-<div id="sf_header">
-    <div class="sfh_n">
-        <ol class="sfh_n_ol">
-            <li class="sfh_n_li"><span><a href="/" id="sf_logo"><strong>SourceForge</strong></a></span></li>
-            <li class="sfh_n_li"><span><a href="/projects/geoportal" title="Summary page hosted on SourceForge.net">Summary</a></span></li>
-            <li class="sfh_n_li"><span><a href="/projects/geoportal/files" title="Files available for download">Files</a></span></li>                            <li class="sfh_n_li"><span><a href="/projects/geoportal/support">Support</a></span></li>
-                        <li class="sfh_n_li"><span><a href="/support">Report Spam</a></span></li>
-                            <li class="sfh_n_li right"><span><a href="/user/registration/" title="Get a SourceForge.net account">Create account</a></span></li>
-                <li class="sfh_n_li right"><span><a href="/account/login.php" title="Log in and gain access to additional features">Log in</a></span></li>
-                    </ol>
-    </div>
-</div>
-<div id="fad1happ" class="ads">
-   <script type="text/javascript">
-   //<![CDATA[
-    document.write('<script src="http://ad.doubleclick.net/adj/ostg.sourceforge/cons_hosted_apps_p11_spons;pg=default;dcopt=ist;sz=728x90;tile='+dfp_tile+';tpc=project;tpc=geoportal;ord='+dfp_ord+'?" type="text/javascript"><\/script>');
-     dfp_tile++;
-    //]]>
-    </script>
-</div>
-    
-
 	<div id="globalWrapper">
 		<div id="column-content">
 	<div id="content">
 		<a name="top" id="top"></a>
 				<h1 id="firstHeading" class="firstHeading">How to Manage and Edit Resources</h1>
 		<div id="bodyContent">
-			<h3 id="siteSub">From geoportal</h3>
+			<h3 id="siteSub">From incfportal</h3>
 			<div id="contentSub"></div>
 									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
-			<p>It is important for publishers and administrators to not only publish resources to the geoportal, but to manage their published resources as well. Tasks such as updating existing records with new information, setting the access level of a resource, reviewing and approving records (if you are an administrator), and maintaining updated registration information for registered resources on the network are important maintenance tasks for resources within the geoportal. This topic discusses how to use the <b>Manage</b> page on the geoportal web application, and then discusses different ways to edit resources.
+			<p>It is important for publishers and administrators to not only publish resources to the incfportal, but to manage their published resources as well. Tasks such as updating existing records with new information, setting the access level of a resource, reviewing and approving records (if you are an administrator), and maintaining updated registration information for registered resources on the network are important maintenance tasks for resources within the incfportal. This topic discusses how to use the <b>Manage</b> page on the incfportal web application, and then discusses different ways to edit resources.
 </p>
 <table id="toc" class="toc" summary="Contents"><tr><td><div id="toctitle"><h2>Contents</h2></div>
 <ul>
 <li class="toclevel-1"><a href="#How_to_Manage_Resources"><span class="tocnumber">1</span> <span class="toctext">How to Manage Resources</span></a></li>
 <li class="toclevel-1"><a href="#Editing_Resources"><span class="tocnumber">2</span> <span class="toctext">Editing Resources</span></a>
 <ul>
-<li class="toclevel-2"><a href="#Edit_metadata_using_the_geoportal_editor"><span class="tocnumber">2.1</span> <span class="toctext">Edit metadata using the geoportal editor</span></a></li>
+<li class="toclevel-2"><a href="#Edit_metadata_using_the_incfportal_editor"><span class="tocnumber">2.1</span> <span class="toctext">Edit metadata using the incfportal editor</span></a></li>
 <li class="toclevel-2"><a href="#Edit_metadata_in_an_external_editor"><span class="tocnumber">2.2</span> <span class="toctext">Edit metadata in an external editor</span></a></li>
 </ul>
 </li>
 </ul>
 </td></tr></table><script type="text/javascript"> if (window.showTocToggle) { var tocShowText = "show"; var tocHideText = "hide"; showTocToggle(); } </script>
 <a name="How_to_Manage_Resources" id="How_to_Manage_Resources"></a><h2> <span class="mw-headline">How to Manage Resources</span></h2>
-<p>Resources are managed through the <b>Administration &gt; Manage</b> interface in the geoportal web application. A publisher user can only view and manage the resources he/she owns, whereas an administrator can view and manage all the records uploaded by all publishers and him/herself. The <b>Manage Resources</b> page, available when a publisher or administrator clicks <b>Administration &gt; Manage</b>, has five parts. Each is described below.
+<p>Resources are managed through the <b>Administration &gt; Manage</b> interface in the incfportal web application. A publisher user can only view and manage the resources he/she owns, whereas an administrator can view and manage all the records uploaded by all publishers and him/herself. The <b>Manage Resources</b> page, available when a publisher or administrator clicks <b>Administration &gt; Manage</b>, has five parts. Each is described below.
 </p>
 <ul><li><b>Links at the Top</b>: At the top of the page, just above the Manage Resources text, there are two links.
 <ul><li> <b>Manage</b>: brings users to the Manage Resources page, and is activated by default when a user first clicks the Administration tab.
-</li><li> <b>Add</b>: directs users to a list of choices for adding a resource to the geoportal through publishing.
+</li><li> <b>Add</b>: directs users to a list of choices for adding a resource to the incfportal through publishing.
 </li></ul>
-</li><li><b>Manage resources search fields</b>: The Manage Resources search allows publishers to search through the resources they published to the geoportal. Underneath the Manage Resources text, there are fields that help organize the list of resources. By filling these fields with terms, publishers can filter the records he/she owns to find specific records. Each field is described below. The filters are applied when the publisher clicks <b>Search</b>. 
+</li><li><b>Manage resources search fields</b>: The Manage Resources search allows publishers to search through the resources they published to the incfportal. Underneath the Manage Resources text, there are fields that help organize the list of resources. By filling these fields with terms, publishers can filter the records he/she owns to find specific records. Each field is described below. The filters are applied when the publisher clicks <b>Search</b>. 
 </li></ul>
 <table style="border-collapse: collapse; border-width: 1px; border-style: solid; border-color: #000">
 
@@ -150,11 +41,11 @@
 </td></tr>
 <tr>
 <td style="border-style: solid; border-width: 1px"> Document UUID
-</td><td style="border-style: solid; border-width: 1px"> searches for the DocUID from the geoportal database (will be the same DocUID in the resource's REST URL)
+</td><td style="border-style: solid; border-width: 1px"> searches for the DocUID from the incfportal database (will be the same DocUID in the resource's REST URL)
 </td></tr>
 <tr>
 <td style="border-style: solid; border-width: 1px"> Document owner
-</td><td style="border-style: solid; border-width: 1px"> Select a publisher from this drop down list to search for resources that are owned by that publisher. If you are not a geoportal administrator, this drop down list will only populate with your username.
+</td><td style="border-style: solid; border-width: 1px"> Select a publisher from this drop down list to search for resources that are owned by that publisher. If you are not a incfportal administrator, this drop down list will only populate with your username.
 </td></tr>
 <tr>
 <td style="border-style: solid; border-width: 1px"> Approval status
@@ -162,13 +53,13 @@
 </td></tr>
 <tr>
 <td style="border-style: solid; border-width: 1px"> Publication method
-</td><td style="border-style: solid; border-width: 1px"> Select a publication method from this drop down list to search for resources that were published to the geoportal by a certain method:
+</td><td style="border-style: solid; border-width: 1px"> Select a publication method from this drop down list to search for resources that were published to the incfportal by a certain method:
 <ul><li> Any: resources will be returned regardless of their publication method
 </li><li> Registration: resources registered as a network resource
 </li><li> Upload: resources published by Uploading
-</li><li> Editor: resources published through the Geoportal's Create Metadata form
+</li><li> Editor: resources published through the incfportal's Create Metadata form
 </li><li> Synchronization: resources published from synchronizing with a registered network resource
-</li><li> Batch: resources published using the Geoportal Publish Client
+</li><li> Batch: resources published using the incfportal Publish Client
 </li><li> Other: resources published by a means other than Registration, Upload, Editor, Synchronization, or Batch
 </li></ul>
 </td></tr>
@@ -176,7 +67,7 @@
 <td style="border-style: solid; border-width: 1px"> Update date
 </td><td style="border-style: solid; border-width: 1px"> These two fields define the beginning and ending dates between which the resource was most recently updated
 </td></tr></table>
-<p>When results are returned, you can work with each resource individually, or if you are an Administrative user you can apply changes to the status of all resulting records by checking the <b>Apply action to the entire result set</b> checkbox. Note, this checkbox will only appear after you have carried out a search using the manage resources search fields, and any status changes you apply will be reflected in the Geoportal Search page after the Lucene index synchronizes with the Geoportal database (a process that occurs at a scheduled time increment set in the Geoportal configuration files).
+<p>When results are returned, you can work with each resource individually, or if you are an Administrative user you can apply changes to the status of all resulting records by checking the <b>Apply action to the entire result set</b> checkbox. Note, this checkbox will only appear after you have carried out a search using the manage resources search fields, and any status changes you apply will be reflected in the incfportal Search page after the Lucene index synchronizes with the incfportal database (a process that occurs at a scheduled time increment set in the incfportal configuration files).
 </p>
 <ul><li><b>For selected records drop down list</b>: Below the search fields section, there is a drop down box where publishers can dictate specific actions that change the status of selected resources in the resources table. The actions available from the drop down list are different for publishers and administrators. Actions are carried out when a user checks the checkbox next to one or more resources in the resources table, chooses an action, and clicks the <b>Execute Actio</b>n button. The table below describes the actions and which user roles can access them.
 </li></ul>
@@ -189,12 +80,12 @@
 </th></tr>
 <tr>
 <td style="border-style: solid; border-width: 1px"> Set as Posted
-</td><td style="border-style: solid; border-width: 1px"> Posted resources have not yet been approved, and therefore cannot be discovered through the geoportal search interface.
+</td><td style="border-style: solid; border-width: 1px"> Posted resources have not yet been approved, and therefore cannot be discovered through the incfportal search interface.
 </td><td style="border-style: solid; border-width: 1px"> publisher, administrator
 </td></tr>
 <tr>
 <td style="border-style: solid; border-width: 1px"> Set as Approved
-</td><td style="border-style: solid; border-width: 1px"> Marks the resource as searchable through the geoportal interface.
+</td><td style="border-style: solid; border-width: 1px"> Marks the resource as searchable through the incfportal interface.
 </td><td style="border-style: solid; border-width: 1px"> administrator
 </td></tr>
 <tr>
@@ -204,12 +95,12 @@
 </td></tr>
 <tr>
 <td style="border-style: solid; border-width: 1px"> Set as Disapproved
-</td><td style="border-style: solid; border-width: 1px"> Marks the resource as being reviewed and not approved by the geoportal administrator. Disapproved resources are not discoverable through the geoportal search interface.
+</td><td style="border-style: solid; border-width: 1px"> Marks the resource as being reviewed and not approved by the incfportal administrator. Disapproved resources are not discoverable through the incfportal search interface.
 </td><td style="border-style: solid; border-width: 1px"> administrator
 </td></tr>
 <tr>
 <td style="border-style: solid; border-width: 1px"> Set as Reviewed
-</td><td style="border-style: solid; border-width: 1px"> Marks the resource as having been reviewed by the geoportal administrator, and discoverable in search results.
+</td><td style="border-style: solid; border-width: 1px"> Marks the resource as having been reviewed by the incfportal administrator, and discoverable in search results.
 </td><td style="border-style: solid; border-width: 1px"> administrator
 </td></tr>
 <tr>
@@ -219,16 +110,16 @@
 </td></tr>
 <tr>
 <td style="border-style: solid; border-width: 1px"> Delete
-</td><td style="border-style: solid; border-width: 1px"> Deletes the resource from the geoportal.
+</td><td style="border-style: solid; border-width: 1px"> Deletes the resource from the incfportal.
 </td><td style="border-style: solid; border-width: 1px"> publisher, administrator
 </td></tr>
 <tr>
 <td style="border-style: solid; border-width: 1px"> Set Access Level
-</td><td style="border-style: solid; border-width: 1px"> Allows the publisher to determine what groups should be allowed access the resource. For more information, see <a href="/apps/mediawiki/geoportal/index.php?title=How_to_Restrict_Access_to_Resources" title="How to Restrict Access to Resources">How to Restrict Access to Resources</a>
+</td><td style="border-style: solid; border-width: 1px"> Allows the publisher to determine what groups should be allowed access the resource. For more information, see <a href="/apps/mediawiki/incfportal/index.php?title=How_to_Restrict_Access_to_Resources" title="How to Restrict Access to Resources">How to Restrict Access to Resources</a>
 </td><td style="border-style: solid; border-width: 1px"> publisher, administrator
 </td></tr></table>
 <ul><li><b>Resources Table</b>: This table lists all of the resources returned as a result of the Manage Resources search field criteria. Above the resources table is text indicating how many records were returned and how many are displayed on the page. If many resources are returned, results may span more than one page, and can be navigated using the page number boxes just above the table. There are several headings in the table. The resources in the table can be sorted according to the headings by clicking on the heading. Each record has an empty checkbox and also buttons next to it. Select the record by clicking the checkbox, and then choose an action to be executed from the For selected records drop down list above the table.
-</li><li><b>Icons next to each resource in the table</b>: There are two types of resources in the resource table. One type is metadata documents that are published by uploading, using the Publish Client, synchronized from a network resource, or created using the geoportal editor. The other type is registered resources on the network. In the resources table, each resource button icons next to it. Some buttons appear for both types of resources, whereas others appear only for one or the other. The table below describes the buttons, their functionalities, and with which types of resources they are used.
+</li><li><b>Icons next to each resource in the table</b>: There are two types of resources in the resource table. One type is metadata documents that are published by uploading, using the Publish Client, synchronized from a network resource, or created using the incfportal editor. The other type is registered resources on the network. In the resources table, each resource button icons next to it. Some buttons appear for both types of resources, whereas others appear only for one or the other. The table below describes the buttons, their functionalities, and with which types of resources they are used.
 </li></ul>
 <table style="border-collapse: collapse; border-width: 1px; border-style: solid; border-color: #000">
 
@@ -238,75 +129,75 @@
 </th><th style="border-style: solid; border-width: 1px"> Type of resource
 </th></tr>
 <tr>
-<td style="border-style: solid; border-width: 1px"> View <a href="/apps/mediawiki/geoportal/index.php?title=File:View.gif" class="image" title="File:view.gif"><img alt="File:view.gif" src="/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/3/37/View.gif" width="16" height="19" border="0" /></a>
+<td style="border-style: solid; border-width: 1px"> View <a href="/apps/mediawiki/incfportal/index.php?title=File:View.gif" class="image" title="File:view.gif"><img alt="File:view.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/3/37/View.gif" width="16" height="19" border="0" /></a>
 </td><td style="border-style: solid; border-width: 1px"> Opens a new window displaying the raw metadata XML for the resource.
 </td><td style="border-style: solid; border-width: 1px"> metadata resource
 </td></tr>
 <tr>
-<td style="border-style: solid; border-width: 1px"> History <a href="/apps/mediawiki/geoportal/index.php?title=File:History.gif" class="image" title="File:history.gif"><img alt="File:history.gif" src="/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/a/a4/History.gif" width="16" height="19" border="0" /></a>
+<td style="border-style: solid; border-width: 1px"> History <a href="/apps/mediawiki/incfportal/index.php?title=File:History.gif" class="image" title="File:history.gif"><img alt="File:history.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/a/a4/History.gif" width="16" height="19" border="0" /></a>
 </td><td style="border-style: solid; border-width: 1px"> Navigates to the <b>Synchronization History</b> page, where it is possible to view reports on the synchronization sessions.
 </td><td style="border-style: solid; border-width: 1px"> registered resource on the network
 </td></tr>
 <tr>
-<td style="border-style: solid; border-width: 1px"> Edit <a href="/apps/mediawiki/geoportal/index.php?title=File:Edit.gif" class="image" title="File:edit.gif"><img alt="File:edit.gif" src="/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/b/b8/Edit.gif" width="15" height="19" border="0" /></a>
-</td><td style="border-style: solid; border-width: 1px"> If the resource was published using an online form in the geoportal interface, then this icon will be activated. It opens the form and allows users to change the resource's metadata (for metadata resources) or registration information (for registered resources on the network). This button will be grayed out if the record was published through Upload, the Publish Client, or synchronization from another resource.
+<td style="border-style: solid; border-width: 1px"> Edit <a href="/apps/mediawiki/incfportal/index.php?title=File:Edit.gif" class="image" title="File:edit.gif"><img alt="File:edit.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/b/b8/Edit.gif" width="15" height="19" border="0" /></a>
+</td><td style="border-style: solid; border-width: 1px"> If the resource was published using an online form in the incfportal interface, then this icon will be activated. It opens the form and allows users to change the resource's metadata (for metadata resources) or registration information (for registered resources on the network). This button will be grayed out if the record was published through Upload, the Publish Client, or synchronization from another resource.
 </td><td style="border-style: solid; border-width: 1px"> metadata resource and registered resource on the network
 </td></tr>
 <tr>
-<td style="border-style: solid; border-width: 1px"> Download <a href="/apps/mediawiki/geoportal/index.php?title=File:Download.gif" class="image" title="File:download.gif"><img alt="File:download.gif" src="/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/f/f3/Download.gif" width="16" height="17" border="0" /></a>
-</td><td style="border-style: solid; border-width: 1px"> Allows the owner of the resource to download the metadata resource from the geoportal. The downloaded XML document can be imported in ArcCatalog with the original dataset or updated using external XML editors.
+<td style="border-style: solid; border-width: 1px"> Download <a href="/apps/mediawiki/incfportal/index.php?title=File:Download.gif" class="image" title="File:download.gif"><img alt="File:download.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/f/f3/Download.gif" width="16" height="17" border="0" /></a>
+</td><td style="border-style: solid; border-width: 1px"> Allows the owner of the resource to download the metadata resource from the incfportal. The downloaded XML document can be imported in ArcCatalog with the original dataset or updated using external XML editors.
 </td><td style="border-style: solid; border-width: 1px"> metadata resource
 </td></tr>
 <tr>
-<td style="border-style: solid; border-width: 1px"> Synchronize content <a href="/apps/mediawiki/geoportal/index.php?title=File:Sync.gif" class="image" title="File:sync.gif"><img alt="File:sync.gif" src="/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/c/c5/Sync.gif" width="16" height="19" border="0" /></a>
+<td style="border-style: solid; border-width: 1px"> Synchronize content <a href="/apps/mediawiki/incfportal/index.php?title=File:Sync.gif" class="image" title="File:sync.gif"><img alt="File:sync.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/c/c5/Sync.gif" width="16" height="19" border="0" /></a>
 </td><td style="border-style: solid; border-width: 1px"> Initiates a synchronization session immediately upon clicking. Once clicked, the user will be prompted to continue and synchronization will begin.
 </td><td style="border-style: solid; border-width: 1px"> registered resource on the network
 </td></tr>
 <tr>
-<td style="border-style: solid; border-width: 1px"> Cancel Synchronization <a href="/apps/mediawiki/geoportal/index.php?title=File:Cancel_sync.gif" class="image" title="File:cancel_sync.gif"><img alt="File:cancel_sync.gif" src="/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/a/a3/Cancel_sync.gif" width="16" height="19" border="0" /></a>
-</td><td style="border-style: solid; border-width: 1px"> If the resource is being synchronized at this moment, this icon will replace the Synchronize content icon. Clicking the Cancel synchronization icon will prompt the user if he/she wants to cancel the synchronization process. If he/she chooses to cancel it, all records that have already been synchronized during that session will remain in the geoportal, but the synchronization session will immediately halt.
+<td style="border-style: solid; border-width: 1px"> Cancel Synchronization <a href="/apps/mediawiki/incfportal/index.php?title=File:Cancel_sync.gif" class="image" title="File:cancel_sync.gif"><img alt="File:cancel_sync.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/a/a3/Cancel_sync.gif" width="16" height="19" border="0" /></a>
+</td><td style="border-style: solid; border-width: 1px"> If the resource is being synchronized at this moment, this icon will replace the Synchronize content icon. Clicking the Cancel synchronization icon will prompt the user if he/she wants to cancel the synchronization process. If he/she chooses to cancel it, all records that have already been synchronized during that session will remain in the incfportal, but the synchronization session will immediately halt.
 </td><td style="border-style: solid; border-width: 1px"> registered resource on the network
 </td></tr>
 <tr>
-<td style="border-style: solid; border-width: 1px"> Delete <a href="/apps/mediawiki/geoportal/index.php?title=File:Delete.gif" class="image" title="File:delete.gif"><img alt="File:delete.gif" src="/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/8/82/Delete.gif" width="15" height="19" border="0" /></a>
+<td style="border-style: solid; border-width: 1px"> Delete <a href="/apps/mediawiki/incfportal/index.php?title=File:Delete.gif" class="image" title="File:delete.gif"><img alt="File:delete.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/8/82/Delete.gif" width="15" height="19" border="0" /></a>
 </td><td style="border-style: solid; border-width: 1px"> Allows the owner of the resource to delete the selected resource from the collection.
 </td><td style="border-style: solid; border-width: 1px"> metadata resource and registered resource on the network
 </td></tr>
 <tr>
-<td style="border-style: solid; border-width: 1px"> Find Parent Resource <a href="/apps/mediawiki/geoportal/index.php?title=File:Find_parent.gif" class="image" title="File:find_parent.gif"><img alt="File:find_parent.gif" src="/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/6/6a/Find_parent.gif" width="16" height="19" border="0" /></a>
+<td style="border-style: solid; border-width: 1px"> Find Parent Resource <a href="/apps/mediawiki/incfportal/index.php?title=File:Find_parent.gif" class="image" title="File:find_parent.gif"><img alt="File:find_parent.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/6/6a/Find_parent.gif" width="16" height="19" border="0" /></a>
 </td><td style="border-style: solid; border-width: 1px"> Will find and display the parent resource from which the selected resource is synchronized.
 </td><td style="border-style: solid; border-width: 1px"> metadata resource
 </td></tr>
 <tr>
-<td style="border-style: solid; border-width: 1px"> Find Child Resources <a href="/apps/mediawiki/geoportal/index.php?title=File:Find_child.gif" class="image" title="File:find_child.gif"><img alt="File:find_child.gif" src="/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/2/2d/Find_child.gif" width="16" height="19" border="0" /></a>
+<td style="border-style: solid; border-width: 1px"> Find Child Resources <a href="/apps/mediawiki/incfportal/index.php?title=File:Find_child.gif" class="image" title="File:find_child.gif"><img alt="File:find_child.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/2/2d/Find_child.gif" width="16" height="19" border="0" /></a>
 </td><td style="border-style: solid; border-width: 1px"> Will find and display all resources synchronized from the selected registered network resource.
 </td><td style="border-style: solid; border-width: 1px"> registered resource on the network
 </td></tr></table>
 <a name="Editing_Resources" id="Editing_Resources"></a><h2> <span class="mw-headline">Editing Resources</span></h2>
-<p>There are a number of ways to edit resources published to the geoportal. Best practice is to edit metadata at its source, and then republish the metadata so it is updated in the geoportal catalog. For example, if you use ArcGIS Desktop to author and update metadata, you would want to make your edits to the metadata using ArcCatalog, and then republish by either registering your resource on the network, uploading the updated metadata xml, or running the Publish Client. This way, the latest information is published to the geoportal, but the information is also associated with your data resource as well.
-</p><p>Sometimes it is not possible to edit metadata at the source. In these cases, it is possible to use tools provided by the geoportal to edit the information about the resource. For example, if you used the geoportal's dedicated editor to create metadata manually, then you can use the dedicated editor to edit and update the metadata. Or if you uploaded the metadata or it was synchronized from a registered resource on the network, you can edit the metadata using an external metadata editor. These two methods are described below.
+<p>There are a number of ways to edit resources published to the incfportal. Best practice is to edit metadata at its source, and then republish the metadata so it is updated in the incfportal catalog. For example, if you use ArcGIS Desktop to author and update metadata, you would want to make your edits to the metadata using ArcCatalog, and then republish by either registering your resource on the network, uploading the updated metadata xml, or running the Publish Client. This way, the latest information is published to the incfportal, but the information is also associated with your data resource as well.
+</p><p>Sometimes it is not possible to edit metadata at the source. In these cases, it is possible to use tools provided by the incfportal to edit the information about the resource. For example, if you used the incfportal's dedicated editor to create metadata manually, then you can use the dedicated editor to edit and update the metadata. Or if you uploaded the metadata or it was synchronized from a registered resource on the network, you can edit the metadata using an external metadata editor. These two methods are described below.
 </p>
-<a name="Edit_metadata_using_the_geoportal_editor" id="Edit_metadata_using_the_geoportal_editor"></a><h3> <span class="mw-headline">Edit metadata using the geoportal editor</span></h3>
-<p>The geoportal metadata editor is accessed from the <b>Administration</b> tab, when a publisher or administrator clicks the pencil icon <a href="/apps/mediawiki/geoportal/index.php?title=File:Edit.gif" class="image" title="File:edit.gif"><img alt="File:edit.gif" src="/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/b/b8/Edit.gif" width="15" height="19" border="0" /></a> next to a record in the document table. The metadata editor form is loaded and populated with the information previously entered describing the resource. After updating information in the form, click the <b>Save</b> button at the bottom of the screen. The old information will be replaced with your new information, and the resource is republished.
-</p><p><b>Caution:</b>If the metadata was not created using the geoportal metadata editor, then the pencil icon will be grayed out, and the edit option will not be available.
+<a name="Edit_metadata_using_the_incfportal_editor" id="Edit_metadata_using_the_incfportal_editor"></a><h3> <span class="mw-headline">Edit metadata using the incfportal editor</span></h3>
+<p>The incfportal metadata editor is accessed from the <b>Administration</b> tab, when a publisher or administrator clicks the pencil icon <a href="/apps/mediawiki/incfportal/index.php?title=File:Edit.gif" class="image" title="File:edit.gif"><img alt="File:edit.gif" src="/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/b/b8/Edit.gif" width="15" height="19" border="0" /></a> next to a record in the document table. The metadata editor form is loaded and populated with the information previously entered describing the resource. After updating information in the form, click the <b>Save</b> button at the bottom of the screen. The old information will be replaced with your new information, and the resource is republished.
+</p><p><b>Caution:</b>If the metadata was not created using the incfportal metadata editor, then the pencil icon will be grayed out, and the edit option will not be available.
 </p>
 <a name="Edit_metadata_in_an_external_editor" id="Edit_metadata_in_an_external_editor"></a><h3> <span class="mw-headline">Edit metadata in an external editor</span></h3>
-<p>It is possible to update a resource's metadata in an external non-geoportal editor by accessing the record's REST URL. You then will open the record in an external XML editor, such as Altova® XMLSpy, make edits to the raw XML, and when the document is saved, it is updated in the geoportal catalog. Steps for editing in an external editor are below.
-</p><p><b>Caution</b>: Do not use this edit method for resources that are synchronized in the geoportal catalog through a registered network resource. Any edits made with the external XML editor will be overwritten the next time the resource is synchronized.
+<p>It is possible to update a resource's metadata in an external non-incfportal editor by accessing the record's REST URL. You then will open the record in an external XML editor, such as Altova® XMLSpy, make edits to the raw XML, and when the document is saved, it is updated in the incfportal catalog. Steps for editing in an external editor are below.
+</p><p><b>Caution</b>: Do not use this edit method for resources that are synchronized in the incfportal catalog through a registered network resource. Any edits made with the external XML editor will be overwritten the next time the resource is synchronized.
 </p>
-<ol><li>Verify that you are the owner of the resource whose metadata you want to edit. You can do this by logging in to the geoportal, clicking the <b>Administration</b> tab, finding your document and looking at the <b>owner</b> column.
-</li><li>Procure the REST URL for the resource. Do this by searching for the resource, and then clicking on the <b>Details</b> link when you see it in the search results list. The REST URL for the record is at the bottom of the Details page, and is prefixed with the following: <code>/geoportal/rest/document?f=html&amp;id=</code>
+<ol><li>Verify that you are the owner of the resource whose metadata you want to edit. You can do this by logging in to the incfportal, clicking the <b>Administration</b> tab, finding your document and looking at the <b>owner</b> column.
+</li><li>Procure the REST URL for the resource. Do this by searching for the resource, and then clicking on the <b>Details</b> link when you see it in the search results list. The REST URL for the record is at the bottom of the Details page, and is prefixed with the following: <code>/incfportal/rest/document?f=html&amp;id=</code>
 </li><li>This REST URL will contain a document ID. This is not the same ID that appears in the browser URL for the record. Copy the entire REST URL from the <b>Details</b> page and paste it into a text editor such as Notepad.
-</li><li>Copy the following sample text and paste it in the text editor, below your REST URL: <code><a href="http://server:port/geoportal/rest/manage/document/" class="external free" title="http://server:port/geoportal/rest/manage/document/" rel="nofollow">http://server:port/geoportal/rest/manage/document/</a></code>
-</li><li>In your text editor, edit the sample text. Replace server with the geoportal server name and port with the port number (if applicable).
-</li><li>Copy the URL after the &amp;id= part of the REST URL and paste it after document part in the sample text, similar to the example below. <code><a href="http://serverName:8080/geoportal/rest/manage/document/%7B2A850F59-354D-46BF-B63C-E8FB2B7B79A6%7D" class="external free" title="http://serverName:8080/geoportal/rest/manage/document/%7B2A850F59-354D-46BF-B63C-E8FB2B7B79A6%7D" rel="nofollow">http://serverName:8080/geoportal/rest/manage/document/%7B2A850F59-354D-46BF-B63C-E8FB2B7B79A6%7D</a></code>
-</li><li>Now that you have constructed the URL for connecting to the resource, you can make the connection to the resource in the geoportal through the third party external editor. Open the XML editor software. <b>Note:</b> Steps here describe the process using Altova® XMLSpy.
+</li><li>Copy the following sample text and paste it in the text editor, below your REST URL: <code><a href="http://server:port/incfportal/rest/manage/document/" class="external free" title="http://server:port/incfportal/rest/manage/document/" rel="nofollow">http://server:port/incfportal/rest/manage/document/</a></code>
+</li><li>In your text editor, edit the sample text. Replace server with the incfportal server name and port with the port number (if applicable).
+</li><li>Copy the URL after the &amp;id= part of the REST URL and paste it after document part in the sample text, similar to the example below. <code><a href="http://serverName:8080/incfportal/rest/manage/document/%7B2A850F59-354D-46BF-B63C-E8FB2B7B79A6%7D" class="external free" title="http://serverName:8080/incfportal/rest/manage/document/%7B2A850F59-354D-46BF-B63C-E8FB2B7B79A6%7D" rel="nofollow">http://serverName:8080/incfportal/rest/manage/document/%7B2A850F59-354D-46BF-B63C-E8FB2B7B79A6%7D</a></code>
+</li><li>Now that you have constructed the URL for connecting to the resource, you can make the connection to the resource in the incfportal through the third party external editor. Open the XML editor software. <b>Note:</b> Steps here describe the process using Altova® XMLSpy.
 </li><li>Click the <b>File</b> menu, and then select the <b>Open URL</b> option.
 </li><li>Enter the URL that you have just constructed in your text editor into the dialog.
-</li><li>Provide your geoportal username and password.
+</li><li>Provide your incfportal username and password.
 </li><li>Click <b>OK</b>.
 </li><li>Your document should appear as raw XML in the interface.
-</li><li>Make any edits necessary. When you save the file, the changes are reflected in the document available from the geoportal. There is no need to republish your document, as edits are published when you save in the external editor.
+</li><li>Make any edits necessary. When you save the file, the changes are reflected in the document available from the incfportal. There is no need to republish your document, as edits are published when you save in the external editor.
 </li></ol>
 
 <!-- 
@@ -317,9 +208,9 @@ Template argument size: 0/2097152 bytes
 Expensive parser function count: 0/100
 -->
 
-<!-- Saved in parser cache with key p_geoportal_mediawiki:pcache:idhash:20-0!1!0!!en!2!edit=0 and timestamp 20111006084909 -->
+<!-- Saved in parser cache with key p_incfportal_mediawiki:pcache:idhash:20-0!1!0!!en!2!edit=0 and timestamp 20111006084909 -->
 <div class="printfooter">
-Retrieved from "<a href="http://sourceforge.net/apps/mediawiki/geoportal/index.php?title=How_to_Manage_and_Edit_Resources">http://sourceforge.net/apps/mediawiki/geoportal/index.php?title=How_to_Manage_and_Edit_Resources</a>"</div>
+Retrieved from "<a href="http://sourceforge.net/apps/mediawiki/incfportal/index.php?title=How_to_Manage_and_Edit_Resources">http://sourceforge.net/apps/mediawiki/incfportal/index.php?title=How_to_Manage_and_Edit_Resources</a>"</div>
 						<!-- end content -->
 						<div class="visualClear"></div>
 		</div>
@@ -331,10 +222,10 @@ Retrieved from "<a href="http://sourceforge.net/apps/mediawiki/geoportal/index.p
 		<div class="pBody">
 			<ul>
 	
-				 <li id="ca-nstab-main" class="selected"><a href="/apps/mediawiki/geoportal/index.php?title=How_to_Manage_and_Edit_Resources" title="View the content page [c]" accesskey="c">Page</a></li>
-				 <li id="ca-talk" class="new"><a href="/apps/mediawiki/geoportal/index.php?title=Talk:How_to_Manage_and_Edit_Resources&amp;action=edit&amp;redlink=1" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
-				 <li id="ca-viewsource"><a href="/apps/mediawiki/geoportal/index.php?title=How_to_Manage_and_Edit_Resources&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></li>
-				 <li id="ca-history"><a href="/apps/mediawiki/geoportal/index.php?title=How_to_Manage_and_Edit_Resources&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></li>			</ul>
+				 <li id="ca-nstab-main" class="selected"><a href="/apps/mediawiki/incfportal/index.php?title=How_to_Manage_and_Edit_Resources" title="View the content page [c]" accesskey="c">Page</a></li>
+				 <li id="ca-talk" class="new"><a href="/apps/mediawiki/incfportal/index.php?title=Talk:How_to_Manage_and_Edit_Resources&amp;action=edit&amp;redlink=1" title="Discussion about the content page [t]" accesskey="t">Discussion</a></li>
+				 <li id="ca-viewsource"><a href="/apps/mediawiki/incfportal/index.php?title=How_to_Manage_and_Edit_Resources&amp;action=edit" title="This page is protected.&#10;You can view its source [e]" accesskey="e">View source</a></li>
+				 <li id="ca-history"><a href="/apps/mediawiki/incfportal/index.php?title=How_to_Manage_and_Edit_Resources&amp;action=history" title="Past revisions of this page [h]" accesskey="h">History</a></li>			</ul>
 		</div>
 	</div>
 	<div class="portlet" id="p-personal">
@@ -346,15 +237,15 @@ Retrieved from "<a href="http://sourceforge.net/apps/mediawiki/geoportal/index.p
 		</div>
 	</div>
 	<div class="portlet" id="p-logo">
-		<a style="background-image: url(/apps/mediawiki/geoportal/nfs/project/g/ge/geoportal/7/70/MediaWikiSidebarLogo.png);" href="/apps/mediawiki/geoportal/index.php?title=Main_Page" title="Visit the main page [z]" accesskey="z"></a>
+		<a style="background-image: url(/apps/mediawiki/incfportal/nfs/project/g/ge/incfportal/7/70/MediaWikiSidebarLogo.png);" href="/apps/mediawiki/incfportal/index.php?title=Main_Page" title="Visit the main page [z]" accesskey="z"></a>
 	</div>
 	<script type="text/javascript"> if (window.isMSIE55) fixalpha(); </script>
 	<div id="p-search" class="portlet">
 		<h5><label for="searchInput">Search</label></h5>
 		<div id="searchBody" class="pBody">
-			<form action="/apps/mediawiki/geoportal/index.php" id="searchform"><div>
+			<form action="/apps/mediawiki/incfportal/index.php" id="searchform"><div>
 				<input type='hidden' name="title" value="Special:Search"/>
-				<input id="searchInput" name="search" type="text" title="Search geoportal [f]" accesskey="f" value="" />
+				<input id="searchInput" name="search" type="text" title="Search incfportal [f]" accesskey="f" value="" />
 				<input type='submit' name="go" class="searchButton" id="searchGoButton"	value="Go" title="Go to a page with this exact name if exists" />&nbsp;
 				<input type='submit' name="fulltext" class="searchButton" id="mw-searchButton" value="Search" title="Search the pages for this text" />
 			</div></form>
@@ -364,17 +255,17 @@ Retrieved from "<a href="http://sourceforge.net/apps/mediawiki/geoportal/index.p
 		<h5>User help</h5>
 		<div class='pBody'>
 			<ul>
-				<li id="n-mainpage-description"><a href="/apps/mediawiki/geoportal/index.php?title=Main_Page">Main Page</a></li>
-				<li id="n-What-are-geoportals"><a href="/apps/mediawiki/geoportal/index.php?title=What_is_a_geoportal_and_the_Geoportal_Server">What are geoportals</a></li>
-				<li id="n-What.27s-New"><a href="/apps/mediawiki/geoportal/index.php?title=What%27s_New">What's New</a></li>
-				<li id="n-User-Roles"><a href="/apps/mediawiki/geoportal/index.php?title=User_Functions_and_Roles">User Roles</a></li>
-				<li id="n-How-to-Search"><a href="/apps/mediawiki/geoportal/index.php?title=How_to_Search_for_Resources">How to Search</a></li>
-				<li id="n-How-to-Browse"><a href="/apps/mediawiki/geoportal/index.php?title=How_to_Browse_for_Resources">How to Browse</a></li>
-				<li id="n-Use-Search-Results"><a href="/apps/mediawiki/geoportal/index.php?title=How_to_Use_Search_Page_Results">Use Search Results</a></li>
-				<li id="n-Use-Geoportal-REST"><a href="/apps/mediawiki/geoportal/index.php?title=REST_API_Syntax">Use Geoportal REST</a></li>
-				<li id="n-How-to-Publish-Resources"><a href="/apps/mediawiki/geoportal/index.php?title=How_to_Publish_Resources">How to Publish Resources</a></li>
-				<li id="n-Manage-and-Edit-Resources"><a href="/apps/mediawiki/geoportal/index.php?title=How_to_Manage_and_Edit_Resources">Manage and Edit Resources</a></li>
-				<li id="n-Clients-for-ArcGIS"><a href="/apps/mediawiki/geoportal/index.php?title=Geoportal_Clients_for_ArcGIS">Clients for ArcGIS</a></li>
+				<li id="n-mainpage-description"><a href="/apps/mediawiki/incfportal/index.php?title=Main_Page">Main Page</a></li>
+				<li id="n-What-are-incfportals"><a href="/apps/mediawiki/incfportal/index.php?title=What_is_a_incfportal_and_the_incfportal_Server">What are incfportals</a></li>
+				<li id="n-What.27s-New"><a href="/apps/mediawiki/incfportal/index.php?title=What%27s_New">What's New</a></li>
+				<li id="n-User-Roles"><a href="/apps/mediawiki/incfportal/index.php?title=User_Functions_and_Roles">User Roles</a></li>
+				<li id="n-How-to-Search"><a href="/apps/mediawiki/incfportal/index.php?title=How_to_Search_for_Resources">How to Search</a></li>
+				<li id="n-How-to-Browse"><a href="/apps/mediawiki/incfportal/index.php?title=How_to_Browse_for_Resources">How to Browse</a></li>
+				<li id="n-Use-Search-Results"><a href="/apps/mediawiki/incfportal/index.php?title=How_to_Use_Search_Page_Results">Use Search Results</a></li>
+				<li id="n-Use-incfportal-REST"><a href="/apps/mediawiki/incfportal/index.php?title=REST_API_Syntax">Use incfportal REST</a></li>
+				<li id="n-How-to-Publish-Resources"><a href="/apps/mediawiki/incfportal/index.php?title=How_to_Publish_Resources">How to Publish Resources</a></li>
+				<li id="n-Manage-and-Edit-Resources"><a href="/apps/mediawiki/incfportal/index.php?title=How_to_Manage_and_Edit_Resources">Manage and Edit Resources</a></li>
+				<li id="n-Clients-for-ArcGIS"><a href="/apps/mediawiki/incfportal/index.php?title=incfportal_Clients_for_ArcGIS">Clients for ArcGIS</a></li>
 			</ul>
 		</div>
 	</div>
@@ -382,13 +273,13 @@ Retrieved from "<a href="http://sourceforge.net/apps/mediawiki/geoportal/index.p
 		<h5>Developer Help</h5>
 		<div class='pBody'>
 			<ul>
-				<li id="n-Release-Notes"><a href="/apps/mediawiki/geoportal/index.php?title=Release_Notes">Release Notes</a></li>
-				<li id="n-Mgmt-Considerations"><a href="http://www.esri.com/library/whitepapers/pdfs/creating-and-maintaining-geoportal.pdf">Mgmt Considerations</a></li>
-				<li id="n-Installation"><a href="/apps/mediawiki/geoportal/index.php?title=Installation">Installation</a></li>
-				<li id="n-Quickstart-Guide"><a href="http://www.esri.com/news/arcuser/0611/how-to-set-up-an-esri-geoportal-server.html">Quickstart Guide</a></li>
-				<li id="n-Customizations"><a href="/apps/mediawiki/geoportal/index.php?title=Customizations">Customizations</a></li>
-				<li id="n-Components"><a href="/apps/mediawiki/geoportal/index.php?title=Components">Components</a></li>
-				<li id="n-Get-Help"><a href="/apps/mediawiki/geoportal/index.php?title=Get_Assistance_with_an_Implementation">Get Help</a></li>
+				<li id="n-Release-Notes"><a href="/apps/mediawiki/incfportal/index.php?title=Release_Notes">Release Notes</a></li>
+				<li id="n-Mgmt-Considerations"><a href="http://www.esri.com/library/whitepapers/pdfs/creating-and-maintaining-incfportal.pdf">Mgmt Considerations</a></li>
+				<li id="n-Installation"><a href="/apps/mediawiki/incfportal/index.php?title=Installation">Installation</a></li>
+				<li id="n-Quickstart-Guide"><a href="http://www.esri.com/news/arcuser/0611/how-to-set-up-an-esri-incfportal-server.html">Quickstart Guide</a></li>
+				<li id="n-Customizations"><a href="/apps/mediawiki/incfportal/index.php?title=Customizations">Customizations</a></li>
+				<li id="n-Components"><a href="/apps/mediawiki/incfportal/index.php?title=Components">Components</a></li>
+				<li id="n-Get-Help"><a href="/apps/mediawiki/incfportal/index.php?title=Get_Assistance_with_an_Implementation">Get Help</a></li>
 			</ul>
 		</div>
 	</div>
@@ -396,16 +287,16 @@ Retrieved from "<a href="http://sourceforge.net/apps/mediawiki/geoportal/index.p
 		<h5>Toolbox</h5>
 		<div class="pBody">
 			<ul>
-				<li id="t-whatlinkshere"><a href="/apps/mediawiki/geoportal/index.php?title=Special:WhatLinksHere/How_to_Manage_and_Edit_Resources" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
-				<li id="t-recentchangeslinked"><a href="/apps/mediawiki/geoportal/index.php?title=Special:RecentChangesLinked/How_to_Manage_and_Edit_Resources" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
-<li id="t-specialpages"><a href="/apps/mediawiki/geoportal/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
-				<li id="t-print"><a href="/apps/mediawiki/geoportal/index.php?title=How_to_Manage_and_Edit_Resources&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/apps/mediawiki/geoportal/index.php?title=How_to_Manage_and_Edit_Resources&amp;oldid=97" title="Permanent link to this revision of the page">Permanent link</a></li>			</ul>
+				<li id="t-whatlinkshere"><a href="/apps/mediawiki/incfportal/index.php?title=Special:WhatLinksHere/How_to_Manage_and_Edit_Resources" title="List of all wiki pages that link here [j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="/apps/mediawiki/incfportal/index.php?title=Special:RecentChangesLinked/How_to_Manage_and_Edit_Resources" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li>
+<li id="t-specialpages"><a href="/apps/mediawiki/incfportal/index.php?title=Special:SpecialPages" title="List of all special pages [q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="/apps/mediawiki/incfportal/index.php?title=How_to_Manage_and_Edit_Resources&amp;printable=yes" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="/apps/mediawiki/incfportal/index.php?title=How_to_Manage_and_Edit_Resources&amp;oldid=97" title="Permanent link to this revision of the page">Permanent link</a></li>			</ul>
 		</div>
 	</div>
 		</div><!-- end of the left (by default at least) column -->
 			<div class="visualClear"></div>
 			<div id="footer">
-				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/apps/mediawiki/geoportal/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="/apps/mediawiki/incfportal/skins/common/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" /></a></div>
 			<ul id="f-list">
 					<li id="lastmod"> This page was last modified on 20 October 2010, at 23:50.</li>
 					<li id="viewcount">This page has been accessed 704 times.</li>
