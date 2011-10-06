@@ -29,3 +29,5 @@
 =INCF Common API=
 
   # Review the [http://132.239.131.188/incf-common/doc INCF Common API].
+
+The common API is a module that can be used across all the hubs for code development purpose. It basically serves the common code to avoid any  redundancy in the code. Here is some information about creating a new process in a hub that uses common module: http://code.google.com/p/incf-dai/wiki/DeegreeHowToDevelopWPSProcesses. 
