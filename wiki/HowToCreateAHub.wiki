@@ -30,4 +30,37 @@
 
   # Review the [http://132.239.131.188/incf-common/doc INCF Common API].
 
-The common API is a module that can be used across all the hubs for code development purpose. It basically serves the common code to avoid any  redundancy in the code. Here is some information about creating a new process in a hub that uses common module: http://code.google.com/p/incf-dai/wiki/DeegreeHowToDevelopWPSProcesses. 
+The common API is a module that can be used across all the hubs for code development purpose. It basically serves the common code to avoid any  redundancy in the code. 
+
+Softwares needed: 
+Java 5 and above. This can be downloaded from: http://www.oracle.com/technetwork/java/javase/downloads/index-jdk5-jsp-142662.html
+Tomcat Server: http://tomcat.apache.org/download-70.cgi
+Maven: http://maven.apache.org/download.html
+Eclipse: http://www.eclipse.org/downloads/
+
+Operating System Environment supported:
+Windows 2003 Server, Windows Vista, Windows 7
+Linux
+
+Hub code Downloads:
+ABA: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-aba%2Ftrunk
+UCSD: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-ucsd%2Ftrunk 
+WHS: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-whs%2Ftrunk
+EMAP: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-emap%2Ftrunk
+Central: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-central%2Ftrunk
+Common: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-common%2Ftrunk
+AtlasXMLBeans: http://code.google.com/p/incf-dai/source/browse/#svn%2Fwaxml%2Ftrunk
+
+Step 1: 
+First you need to download AtlasXMLBeans module from SVN from the above link, then run Maven Clean on AtlasXMLBeans > Maven Install on AtlasXMLBeans. This will create necessary jar files in your home directory where Maven can read the jar files.
+
+Step 2:
+Download common module from SVN from the above link, then run Maven Clean on Common > Maven Install on Common. This will create necessary jar files in your home directory where Maven can read the jar files.
+
+Step 3: 
+Download the hub (ABA, WHS, UCSD, EMAP) of your interest, and work with it by following the instructions given in this page. 
+
+Step 4: 
+Here is some information about creating a new process/function in a hub: http://code.google.com/p/incf-dai/wiki/DeegreeHowToDevelopWPSProcesses. 
+
+Please feel free to contact Asif Memon at mamemon@ucsd.edu for any questions. 
