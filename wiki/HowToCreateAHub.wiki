@@ -34,24 +34,24 @@ The common API is a module that can be used across all the hubs for code develop
 
 =Getting Started Guide on using the hub code=
 
-Softwares needed: 
-Java 5 and above. This can be downloaded from: http://www.oracle.com/technetwork/java/javase/downloads/index-jdk5-jsp-142662.html
-Tomcat Server: http://tomcat.apache.org/download-70.cgi
-Maven: http://maven.apache.org/download.html
-Eclipse: http://www.eclipse.org/downloads/
+  # Softwares needed: 
+  # Java 5 and above. This can be downloaded from: http://www.oracle.com/technetwork/java/javase/downloads/index-jdk5-jsp-142662.html
+  # Tomcat Server: This can be downloaded from: http://tomcat.apache.org/download-70.cgi
+  # Maven: This can be downloaded from: http://maven.apache.org/download.html
+  # Eclipse: This can be downloaded from: http://www.eclipse.org/downloads/
 
-Operating System Environment supported:
-Windows 2003 Server, Windows Vista, Windows 7
-Linux
+  # Operating System Environment supported:
+  # Windows 2003 Server, Windows Vista, Windows 7
+  # Linux
 
-Hub code Downloads:
-ABA: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-aba%2Ftrunk
-UCSD: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-ucsd%2Ftrunk 
-WHS: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-whs%2Ftrunk
-EMAP: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-emap%2Ftrunk
-Central: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-central%2Ftrunk
-Common: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-common%2Ftrunk
-AtlasXMLBeans: http://code.google.com/p/incf-dai/source/browse/#svn%2Fwaxml%2Ftrunk
+  # Hub code Downloads:
+  # ABA: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-aba%2Ftrunk
+  # UCSD: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-ucsd%2Ftrunk 
+  # WHS: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-whs%2Ftrunk
+  # EMAP: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-emap%2Ftrunk
+  # Central: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-central%2Ftrunk
+  # Common: http://code.google.com/p/incf-dai/source/browse/#svn%2Fincf-common%2Ftrunk
+  # AtlasXMLBeans: http://code.google.com/p/incf-dai/source/browse/#svn%2Fwaxml%2Ftrunk
 
 Step 1: 
 First you need to download AtlasXMLBeans module from SVN from the above link, then run Maven Clean on AtlasXMLBeans > Maven Install on AtlasXMLBeans. This will create necessary jar files in your home directory where Maven can read the jar files.
