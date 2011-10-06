@@ -1,8 +1,4 @@
-	<div id="globalWrapper">
-		<div id="column-content">
-	<div id="content">
-		<a name="top" id="top"></a>
-				<h1 id="firstHeading" class="firstHeading">How to Manage Resources</h1>
+<h1>How to Manage Resources</h1>
 
 It is important for publishers and administrators to not only publish resources to the incfportal, but to manage their published resources as well. Tasks such as updating existing records with new information, setting the access level of a resource, reviewing and approving records (if you are an administrator), and maintaining updated registration information for registered resources on the network are important maintenance tasks for resources within the incfportal. This topic discusses how to use the <b>Manage</b> page on the incfportal web application, and then discusses different ways to edit resources.
 
