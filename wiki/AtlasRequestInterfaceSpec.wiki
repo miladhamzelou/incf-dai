@@ -771,7 +771,7 @@ Atlas Processes
 </tr>
 <tr>
 <th align="left">Normal Return</th>
-<td>XML document. [http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/ImagesResponse.xsd WaxML Schema]</td>
+<td>XML document. [http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/SetAnnotationResponse.xsd WaxML Schema]. The process-specific content of the WPS ExecuteResponse will be an empty element.</td>
 </tr>
 <tr>
 <th align="left">Error Return</th>
