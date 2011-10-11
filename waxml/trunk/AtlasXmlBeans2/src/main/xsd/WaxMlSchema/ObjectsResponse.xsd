@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--Created with Liquid XML Studio Developer Edition (Education) 9.1.5.3408 (http://www.liquid-technologies.com)-->
+<xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
+    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:include schemaLocation="common/WaxML_Base.xsd" />
+    <xs:include schemaLocation="GenesResponse.xsd" />
+    <xs:include schemaLocation="ImagesResponse.xsd" />
+    <xs:include schemaLocation="StructureTermsResponse.xsd" />
+    <xs:include schemaLocation="SetAnnotationResponse.xsd" />
+    <xs:element name="ObjectsResponse" type="wax:ObjectsResponseType" />
+    <xs:complexType name="ObjectsResponseType">
+        <xs:complexContent>
+            <xs:extension base="wax:BaseResponseType">
+                <xs:sequence>
+                    <xs:element name="ObjectsByPOI" type="wax:ObjectsByPoiType" minOccurs="0" maxOccurs="unbounded" />
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:complexType name="ObjectsByPoiType">
+        <xs:choice>
+            <xs:element name="Image2D">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="wax:Image2DType">
+                            <xs:attribute name="hubCode" type="xs:string" />
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GenesByPOI">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="wax:GeneByPoiType">
+                            <xs:attribute name="hubCode" type="xs:string" />
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="StructureTerm">
+                <xs:complexType>
+                    <xs:complexContent>
+                        <xs:extension base="wax:StructureTermType">
+                            <xs:attribute name="hubCode" type="xs:string" />
+                        </xs:extension>
+                    </xs:complexContent>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Annotation" type="wax:AnnotationType" />
+            <xs:element name="Other" type="xs:anyType" />
+        </xs:choice>
+    </xs:complexType>
+</xs:schema>

@@ -98,6 +98,7 @@
 			<sourceSchema>WaxMlSchema/DescribeProcesses_central.xsd</sourceSchema>
 			<sourceSchema>WaxMlSchema/RegistrationResponse.xsd</sourceSchema>
 			<sourceSchema>WaxMlSchema/RegistrationRequest.xsd</sourceSchema>
+			<sourceSchema>WaxMlSchema/ObjectsResponse.xsd</sourceSchema>
 					     
 			<sourceSchema>SCHEMAS_OPENGIS_NET/ows/2.0/owsExceptionReport.xsd</sourceSchema>  
 			<!--	
