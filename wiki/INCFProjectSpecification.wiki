@@ -1,5 +1,5 @@
 #summary Overview of the Digital Atlasing Infrastructure task force work in this repository
-#labels Featured
+#labels Phase-Requirements
 
 INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview
 Version 0.7.4 - updated to DEEGREE-based services, and including annotations and GetObjectsByPOI
