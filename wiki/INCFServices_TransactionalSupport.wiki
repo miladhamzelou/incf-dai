@@ -4,4 +4,44 @@
 
 The INCF CS-W implementation supports GetAllApprovedRecords, insertCSWRecord, updateCSWRecord and deleteCSWRecord. The Transaction insert and update requests publish or update entire documents only. The Transaction delete request is based on file identifier alone. INCFportal publisher permissions for executing Transaction requests are included in the HTTP header in the client application that submits the CS-W request. The client application's header and credentials follows HTTP Authorization standards. Below are the webservice calls:
 
-1. InsertCWSRecord:
+===InsertCSWRecord===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">InsertCSWRecord</th>
+</tr>
+<tr>
+<th align="left">POST Request</th>
+<td>http://[host:port]/[service]?func=insertCSWRecord&title=[title]&serviceURL=[serviceURL]&description=[description]&creator=[creator]</td>
+</tr>
+<tr>
+<th align="left">Description</th>
+<td></td>
+</tr>
+<tr>
+<th align="left">Data Inputs</th>
+<td>
+ * title
+ * serviceURL
+ * description
+ * creator
+</td>
+</tr>
+<tr>
+<th align="left">Normal Return</th>
+<td>XML format. 
+[http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS
+</td>
+</tr>
+<tr>
+<th align="left">Error Return</th>
+<td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td>
+ * http://132.239.131.188:8080/atlas-serverside/service/CSWService?func=insertCSWRecord&title=Test%20Brain%20Atlas&serviceURL=http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities&description=Test%20Service%20for%20Brain%20Atlas&creator=Anonymous
+</td>
+</tr>
+</table>
+<br/>
