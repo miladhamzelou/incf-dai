@@ -1,4 +1,4 @@
-#How to Manage Resources in the INCF Portal using the web services.
+= How to Manage Resources in the INCF Portal using the web services. =
 
 = Introduction =
 
@@ -11,7 +11,7 @@ The INCF CS-W implementation supports GetAllApprovedRecords, insertCSWRecord, up
 <th colspan="2">InsertCSWRecord</th>
 </tr>
 <tr>
-<th align="left">POST Request</th>
+<th align="left">GET Request</th>
 <td>http://[host:port]/[service]?func=insertCSWRecord&title=[title]&serviceURL=[serviceURL]&description=[description]&creator=[creator]</td>
 </tr>
 <tr>
@@ -40,7 +40,50 @@ The INCF CS-W implementation supports GetAllApprovedRecords, insertCSWRecord, up
 <tr>
 <th align="left">Examples</th>
 <td>
- * http://132.239.131.188:8080/atlas-serverside/service/CSWService?func=insertCSWRecord&title=Test%20Brain%20Atlas&serviceURL=http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities&description=Test%20Service%20for%20Brain%20Atlas&creator=Anonymous
+ * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=insertCSWRecord&title=Test%20Brain%20Atlas&serviceURL=http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities&description=Test%20Service%20for%20Brain%20Atlas&creator=Anonymous
+</td>
+</tr>
+</table>
+<br/>
+
+===UpdateCSWRecord===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">UpdateCSWRecord</th>
+</tr>
+<tr>
+<th align="left">GET Request</th>
+<td>http://[host:port]/[service]?func=updateCSWRecord&title=[title]&serviceURL=[serviceURL]&description=[description]&creator=[creator]&id=[id]</td>
+</tr>
+<tr>
+<th align="left">Description</th>
+<td></td>
+</tr>
+<tr>
+<th align="left">Data Inputs</th>
+<td>
+ * title
+ * serviceURL
+ * description
+ * creator
+ * id
+</td>
+</tr>
+<tr>
+<th align="left">Normal Return</th>
+<td>XML format. 
+[http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS
+</td>
+</tr>
+<tr>
+<th align="left">Error Return</th>
+<td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td>
+ * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=updateCSWRecord&title=Test%20Brain%20Atlas&serviceURL=http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities&description=Test%20Service%20for%20Brain%20Atlas&creator=Anonymous&id=toq4dm1rpl4roaqgh7eiqfccdf
 </td>
 </tr>
 </table>
