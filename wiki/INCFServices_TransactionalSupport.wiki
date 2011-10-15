@@ -1,0 +1,7 @@
+#How to Manage Resources in the INCF Portal using the web services.
+
+= Introduction =
+
+The INCF CS-W implementation supports GetAllApprovedRecords, insertCSWRecord, updateCSWRecord and deleteCSWRecord. The Transaction insert and update requests publish or update entire documents only. The Transaction delete request is based on file identifier alone. INCFportal publisher permissions for executing Transaction requests are included in the HTTP header in the client application that submits the CS-W request. The client application's header and credentials follows HTTP Authorization standards. Below are the webservice calls:
+
+1. InsertCWSRecord:
