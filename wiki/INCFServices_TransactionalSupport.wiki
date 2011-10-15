@@ -2,7 +2,7 @@
 
 = Introduction =
 
-The INCF CS-W implementation supports GetAllApprovedRecord, insertCSWRecord, updateCSWRecord and deleteCSWRecord. The Transaction insert and update requests publish or update entire documents only. The Transaction delete request is based on file identifier alone. INCFportal publisher permissions for executing Transaction requests are included in the HTTP header in the client application that submits the CS-W request. The client application's header and credentials follows HTTP Authorization standards. Below are the webservice calls:
+The INCF CS-W implementation supports getAllApprovedRecords, insertCSWRecord, updateCSWRecord and deleteCSWRecord. The Transaction insert and update requests publish or update entire documents only. The Transaction delete request is based on file identifier alone. INCFportal publisher permissions for executing Transaction requests are included in the HTTP header in the client application that submits the CS-W request. The client application's header and credentials follows HTTP Authorization standards. Below are the webservice calls:
 
 ===InsertCSWRecord===
 
@@ -83,7 +83,7 @@ The INCF CS-W implementation supports GetAllApprovedRecord, insertCSWRecord, upd
 <tr>
 <th align="left">Examples</th>
 <td>
- * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=updateCSWRecord&title=Test%20Brain%20Atlas&serviceURL=http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities&description=Test%20Service%20for%20Brain%20Atlas&creator=Anonymous&id=toq4dm1rpl4roaqgh7eiqfccdf
+ * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=updateCSWRecord&title=Test%20Brain%20Atlas&serviceURL=http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities&description=Test%20Service%20for%20Brain%20Atlas&creator=AnonymousYou&id=toq4dm1rpl4roaqgh7eiqfccdf
 </td>
 </tr>
 </table>
@@ -123,7 +123,7 @@ The INCF CS-W implementation supports GetAllApprovedRecord, insertCSWRecord, upd
 <tr>
 <th align="left">Examples</th>
 <td>
- * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=deleteCSWRecord&id=l4q5mlj2m3259jm8qsq6sadqce
+ * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=deleteCSWRecord&id=toq4dm1rpl4roaqgh7eiqfccdf
 </td>
 </tr>
 </table>
@@ -163,7 +163,7 @@ The INCF CS-W implementation supports GetAllApprovedRecord, insertCSWRecord, upd
 <tr>
 <th align="left">Examples</th>
 <td>
- * http://incf-dev-local.crbs.ucsd.edu/incfportal/csw/discovery?REQUEST=GetRecordById&service=CSW&version=2.0.2&Id={7B09458C-C044-4F7C-BD79-9A3434184BD7}
+ * http://incf-dev-local.crbs.ucsd.edu/incfportal/csw/discovery?REQUEST=GetRecordById&service=CSW&version=2.0.2&Id={7B09458C-C044-4F7C-BD79-9A3434184BD7} 
 </td>
 </tr>
 </table>
