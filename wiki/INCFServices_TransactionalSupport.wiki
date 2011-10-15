@@ -88,3 +88,123 @@ The INCF CS-W implementation supports GetAllApprovedRecords, insertCSWRecord, up
 </tr>
 </table>
 <br/>
+
+===DeleteCSWRecord===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">DeleteCSWRecord</th>
+</tr>
+<tr>
+<th align="left">GET Request</th>
+<td>http://[host:port]/[service]?func=deleteCSWRecord&id=[id]
+</td>
+</tr>
+<tr>
+<th align="left">Description</th>
+<td></td>
+</tr>
+<tr>
+<th align="left">Data Inputs</th>
+<td>
+ * id
+</td>
+</tr>
+<tr>
+<th align="left">Normal Return</th>
+<td>XML format. 
+[http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS
+</td>
+</tr>
+<tr>
+<th align="left">Error Return</th>
+<td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td>
+ * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=deleteCSWRecord&id=l4q5mlj2m3259jm8qsq6sadqce
+</td>
+</tr>
+</table>
+<br/>
+
+===GetRecordByID===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">GetRecordByID</th>
+</tr>
+<tr>
+<th align="left">GET Request</th>
+<td>http://[host:port]/incfportal/csw/discovery?REQUEST=GetRecordById&service=CSW&version=2.0.2&Id=[id]
+</td>
+</tr>
+<tr>
+<th align="left">Description</th>
+<td></td>
+</tr>
+<tr>
+<th align="left">Data Inputs</th>
+<td>
+ * id
+</td>
+</tr>
+<tr>
+<th align="left">Normal Return</th>
+<td>XML format. 
+[http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS
+</td>
+</tr>
+<tr>
+<th align="left">Error Return</th>
+<td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td>
+ * http://incf-dev-local.crbs.ucsd.edu/incfportal/csw/discovery?REQUEST=GetRecordById&service=CSW&version=2.0.2&Id={7B09458C-C044-4F7C-BD79-9A3434184BD7}
+</td>
+</tr>
+</table>
+<br/>
+
+===GetAllApprovedRecords===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">GetAllApprovedRecords</th>
+</tr>
+<tr>
+<th align="left">GET Request</th>
+<td>http://[host:port]/[service]?func=GetAllApprovedRecords&service=CSW&version=2.0.2&maxRecords=[maxRecords]
+</td>
+</tr>
+<tr>
+<th align="left">Description</th>
+<td></td>
+</tr>
+<tr>
+<th align="left">Data Inputs</th>
+<td>
+ * maxRecords
+</td>
+</tr>
+<tr>
+<th align="left">Normal Return</th>
+<td>XML format. 
+[http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS
+</td>
+</tr>
+<tr>
+<th align="left">Error Return</th>
+<td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td>
+ * http://132.239.131.188:8080/atlas-serverside/service/CSWService?func=GetAllApprovedRecords&service=CSW&version=2.0.2&maxRecords=10
+</td>
+</tr>
+</table>
+<br/>
