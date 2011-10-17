@@ -12,7 +12,7 @@ The INCF CS-W implementation supports getAllApprovedRecords, insertCSWRecord, up
 </tr>
 <tr>
 <th align="left">GET Request</th>
-<td>http://[host:port]/[service]?func=insertCSWRecord&title=[title]&serviceURL=[serviceURL]&description=[description]&creator=[creator]</td>
+<td>http://[host:port]/[service]?func=insertCSWRecord&title=[title]&serviceURL=[serviceURL]&description=[description]&creator=[creator]&userID=[userID]&password=[password]</td>
 </tr>
 <tr>
 <th align="left">Description</th>
@@ -25,6 +25,8 @@ The INCF CS-W implementation supports getAllApprovedRecords, insertCSWRecord, up
  * serviceURL
  * description
  * creator
+ * userID
+ * password
 </td>
 </tr>
 <tr>
@@ -40,7 +42,7 @@ The INCF CS-W implementation supports getAllApprovedRecords, insertCSWRecord, up
 <tr>
 <th align="left">Examples</th>
 <td>
- * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=insertCSWRecord&title=Test%20Brain%20Atlas&serviceURL=http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities&description=Test%20Service%20for%20Brain%20Atlas&creator=Anonymous
+ * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=insertCSWRecord&title=Test%20Brain%20Atlas&serviceURL=http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities&description=Test%20Service%20for%20Brain%20Atlas&creator=Anonymous&userID=[userID]&password=[password]
 </td>
 </tr>
 </table>
@@ -54,7 +56,8 @@ The INCF CS-W implementation supports getAllApprovedRecords, insertCSWRecord, up
 </tr>
 <tr>
 <th align="left">GET Request</th>
-<td>http://[host:port]/[service]?func=updateCSWRecord&title=[title]&serviceURL=[serviceURL]&description=[description]&creator=[creator]&id=[id]</td>
+<td>http://[host:port]/[service]?func=updateCSWRecord&title=[title]&serviceURL=[serviceURL]&description=[description]&creator=[creator]&id=[id]&userID=[userID]&password=[password]
+</td>
 </tr>
 <tr>
 <th align="left">Description</th>
@@ -68,6 +71,8 @@ The INCF CS-W implementation supports getAllApprovedRecords, insertCSWRecord, up
  * description
  * creator
  * id
+ * userID
+ * password
 </td>
 </tr>
 <tr>
@@ -83,7 +88,7 @@ The INCF CS-W implementation supports getAllApprovedRecords, insertCSWRecord, up
 <tr>
 <th align="left">Examples</th>
 <td>
- * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=updateCSWRecord&title=Test%20Brain%20Atlas&serviceURL=http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities&description=Test%20Service%20for%20Brain%20Atlas&creator=AnonymousYou&id=toq4dm1rpl4roaqgh7eiqfccdf
+ * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=updateCSWRecord&title=Test%20Brain%20Atlas&serviceURL=http://incf-dev-local.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities&description=Test%20Service%20for%20Brain%20Atlas&creator=AnonymousYou&id=toq4dm1rpl4roaqgh7eiqfccdf&userID=[userID]&password=[password]
 </td>
 </tr>
 </table>
@@ -97,7 +102,7 @@ The INCF CS-W implementation supports getAllApprovedRecords, insertCSWRecord, up
 </tr>
 <tr>
 <th align="left">GET Request</th>
-<td>http://[host:port]/[service]?func=deleteCSWRecord&id=[id]
+<td>http://[host:port]/[service]?func=deleteCSWRecord&id=[id]&userID=[userID]&password=[password]
 </td>
 </tr>
 <tr>
@@ -108,6 +113,8 @@ The INCF CS-W implementation supports getAllApprovedRecords, insertCSWRecord, up
 <th align="left">Data Inputs</th>
 <td>
  * id
+ * userID
+ * password
 </td>
 </tr>
 <tr>
