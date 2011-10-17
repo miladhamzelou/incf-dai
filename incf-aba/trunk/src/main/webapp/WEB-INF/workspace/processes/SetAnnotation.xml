@@ -20,6 +20,11 @@
       <Title>Local File Path</Title>
       <Abstract>Local File Path.</Abstract>
     </LiteralInput>
+    <LiteralInput minOccurs="1">
+      <Identifier>filter</Identifier>
+      <Title>Filter</Title>
+      <Abstract></Abstract>
+    </LiteralInput>
   </InputParameters>
 
   <OutputParameters>
