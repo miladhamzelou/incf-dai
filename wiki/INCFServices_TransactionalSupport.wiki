@@ -130,7 +130,7 @@ The INCF CS-W implementation supports getAllApprovedRecords, insertCSWRecord, up
 <tr>
 <th align="left">Examples</th>
 <td>
- * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=deleteCSWRecord&id=toq4dm1rpl4roaqgh7eiqfccdf
+ * http://incf-dev-local.crbs.ucsd.edu/atlas-serverside/service/CSWService?func=deleteCSWRecord&id=toq4dm1rpl4roaqgh7eiqfccdf;userID=[userID]&password=[password]
 </td>
 </tr>
 </table>
