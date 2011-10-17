@@ -27,7 +27,7 @@
     </property>
 	<property>
         <name>postgres.server.database.atlasdburl</name>
-        <value>jdbc:postgresql://incf-dev.crbs.ucsd.edu:5432/atlas-aba-db</value>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-aba-db</value>
         <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
     </property>
     <property>
@@ -157,7 +157,7 @@
 
 	<property>
         <name>incf.deploy.host.name</name>
-        <value>incf-dev.crbs.ucsd.edu</value>
+        <value>incf-dev-local.crbs.ucsd.edu</value>
         <!-- <value>132.239.131.188</value> -->
         <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
     </property>
@@ -337,7 +337,7 @@
     </property>
 	<property>
         <name>postgres.aba.database.atlasdburl</name>
-        <value>jdbc:postgresql://incf-dev.crbs.ucsd.edu:5432/atlas-aba-db</value>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-aba-db</value>
         <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
     </property>
     <property>
@@ -358,7 +358,7 @@
     </property>
 	<property>
         <name>postgres.ucsd.database.atlasdburl</name>
-        <value>jdbc:postgresql://incf-dev.crbs.ucsd.edu:5432/atlas-ucsd-db</value>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-ucsd-db</value>
         <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
     </property>
     <property>
@@ -379,7 +379,7 @@
     </property>
 	<property>
         <name>postgres.whs.database.atlasdburl</name>
-        <value>jdbc:postgresql://incf-dev.crbs.ucsd.edu:5432/atlas-whs-db</value>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-whs-db</value>
         <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
     </property>
     <property>
@@ -400,7 +400,7 @@
     </property>
 	<property>
         <name>postgres.emap.database.atlasdburl</name>
-        <value>jdbc:postgresql://incf-dev.crbs.ucsd.edu:5432/atlas-emap-db</value>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-emap-db</value>
         <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
     </property>
     <property>

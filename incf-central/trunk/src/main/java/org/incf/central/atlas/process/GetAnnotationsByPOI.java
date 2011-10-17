@@ -276,10 +276,25 @@ public class GetAnnotationsByPOI implements Processlet {
 		LOG.debug("*********************************filter outside: "+vo.getFilter());
 		if (!vo.getFromSRSCode().equalsIgnoreCase("image")) {
 			LOG.debug("*********************************SRSName inside Image: "+vo.getSrsName());
-			annotationDataList = daoImpl.getAnnotationData(vo, polygonString);
+			//Get Data From ABA
+			annotationDataList = daoImpl.getAnnotationData(vo, polygonString, annotationDataList, "aba");
+			//Get Data From UCSD
+			annotationDataList = daoImpl.getAnnotationData(vo, polygonString, annotationDataList, "ucsd");
+			//Get Data From WHS
+			annotationDataList = daoImpl.getAnnotationData(vo, polygonString, annotationDataList, "whs");
+			//Get Data From EMAP
+			annotationDataList = daoImpl.getAnnotationData(vo, polygonString, annotationDataList, "emap");
+			
 		} else if (vo.getFromSRSCode().equalsIgnoreCase("image")) {
 			LOG.debug("*********************************SRSName inside Not Actual SRSName: "+vo.getFromSRSCode());
-			annotationDataList = daoImpl.getAnnotationData(vo);
+			//Get Data From ABA
+			annotationDataList = daoImpl.getAnnotationData(vo, annotationDataList, "aba");
+			//Get Data From UCSD
+			annotationDataList = daoImpl.getAnnotationData(vo, annotationDataList, "ucsd");
+			//Get Data From WHS
+			annotationDataList = daoImpl.getAnnotationData(vo, annotationDataList, "whs");
+			//Get Data From EMAP
+			annotationDataList = daoImpl.getAnnotationData(vo, annotationDataList, "emap");
 		} else {
 			//FIXME - Put some exception code here to throw an exception
 			LOG.debug("SRS TYPE NOT SUPPORTED"); 

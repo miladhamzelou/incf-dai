@@ -199,15 +199,25 @@ public class CentralServiceDAOImpl {
 	}
 
 
-	public ArrayList getAnnotationData(CentralServiceVO vo, String polygonString) { 
+	public ArrayList getAnnotationData(CentralServiceVO vo, String polygonString, ArrayList list, String hubName) { 
 
-		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
 
 		try {
 
 		//Used for postgres connection from ccdb
-		Connection conn = dao.getStandAloneConnectionForPostgresFromCCDB();
+		Connection conn = null;
+
+		if ( hubName.equalsIgnoreCase("aba")) {
+			conn = dao.getStandAloneConnectionForPostgresFromCCDB();
+		} else if ( hubName.equalsIgnoreCase("ucsd")) {
+			conn = dao.getStandAloneConnectionForPostgresFromUCSD();
+		} else if ( hubName.equalsIgnoreCase("whs")) {
+			conn = dao.getStandAloneConnectionForPostgresFromWHS();
+		} else if ( hubName.equalsIgnoreCase("emap")) {
+			conn = dao.getStandAloneConnectionForPostgresFromEMAP();
+		}  
+		
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		//query.append( " select srs_name, dataset_name, coordinates, polygon_id, depth, username, instance_id, onto_name, onto_uri, modified_time, transformed_sdo, transformed_coordinate from annotation_sdo s, annotation_dataset m " )
@@ -249,9 +259,8 @@ public class CentralServiceDAOImpl {
 	}
 
 	//Method override
-	public ArrayList getAnnotationData(CentralServiceVO vo) { 
+	public ArrayList getAnnotationData(CentralServiceVO vo, ArrayList list, String hubName) { 
 
-		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
 
 		LOG.debug("Filter in database side: " + vo.getFilter());
@@ -259,7 +268,18 @@ public class CentralServiceDAOImpl {
 		try {
 
 		//Used for postgres connection from ccdb
-		Connection conn = dao.getStandAloneConnectionForPostgresFromCCDB();
+		Connection conn = null;
+		
+		if ( hubName.equalsIgnoreCase("aba")) {
+			conn = dao.getStandAloneConnectionForPostgresFromCCDB();
+		} else if ( hubName.equalsIgnoreCase("ucsd")) {
+			conn = dao.getStandAloneConnectionForPostgresFromUCSD();
+		} else if ( hubName.equalsIgnoreCase("whs")) {
+			conn = dao.getStandAloneConnectionForPostgresFromWHS();
+		} else if ( hubName.equalsIgnoreCase("emap")) {
+			conn = dao.getStandAloneConnectionForPostgresFromEMAP();
+		}  
+
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 
@@ -286,7 +306,7 @@ public class CentralServiceDAOImpl {
 			vo.setOntoName(rs.getString("onto_name"));
 			vo.setOntoURI(rs.getString("onto_uri"));
 			vo.setUpdatedTime(rs.getDate("modified_time"));
-			vo.setTransformedCoordinates(rs.getString("transformed_coordinate"));
+			vo.setTransformedCoordinates(rs.getString("coordinates"));
 			list.add(vo);
 
 		}

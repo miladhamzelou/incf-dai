@@ -208,6 +208,179 @@ public class BaseDAO {
 
     }// end of getStandAloneConnectionForPostgresFromCCDB method
 
+
+    /**
+     * Gets the connection to the database. Does not do connection pooling.
+     *
+     * @param jndiName - The jndi name of the datasource
+     * @return A Connection object
+     * @throws DataAccessObjectException - If there is an exception establishing the connection.
+     *
+     */
+    public Connection getStandAloneConnectionForPostgresFromABA()// please change public to protected
+            throws Exception {
+
+    	LOG.debug( "Start - getStandAloneConnectionForPostgresFromABA()");
+        
+    	Connection connection = null;
+
+        CentralConfigurator props = CentralConfigurator.INSTANCE;
+
+        String driverClassName = props.getValue("postgres.aba.database.driverClassName"); 
+        String dbUrl = props.getValue("postgres.aba.database.atlasdburl");
+        String dbUser = props.getValue("postgres.aba.database.atlasdbuser");
+        String dbPassword = props.getValue("postgres.aba.database.atlasdbpassword");
+
+        LOG.debug( "driverClassName in central standalone oracle - {}",driverClassName);
+        LOG.debug( "dbUrl in central standalone oracle - {}",dbUrl);
+        LOG.debug( "dbUser in central standalone oracle - {}",dbUser);
+        LOG.debug( "dbPassword in central standalone oracle - {}",dbPassword);
+
+        try {
+        	Class.forName( driverClassName );
+        	LOG.debug( "Start - getStandAloneConnectionForPostgresFromaBA()");
+            connection = 
+            	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
+            LOG.debug( "End - getStandAloneConnectionForPostgresFromABA()");
+        } catch ( Exception e ) {
+        	LOG.debug( "There is an error {}" , e.getClass() + e.getMessage());
+            throw new Exception( e.getMessage() );
+        }
+
+        LOG.debug( "End - getStandAloneConnectionForPostgresFromABA()");
+        return connection;
+
+    }// end of getStandAloneConnectionForPostgresFromCCDB method
+
+    /**
+     * Gets the connection to the database. Does not do connection pooling.
+     *
+     * @param jndiName - The jndi name of the datasource
+     * @return A Connection object
+     * @throws DataAccessObjectException - If there is an exception establishing the connection.
+     *
+     */
+    public Connection getStandAloneConnectionForPostgresFromUCSD()// please change public to protected
+            throws Exception {
+
+    	LOG.debug( "Start - getStandAloneConnectionForPostgresFromUCSD()");
+        
+    	Connection connection = null;
+
+        CentralConfigurator props = CentralConfigurator.INSTANCE;
+
+        String driverClassName = props.getValue("postgres.ucsd.database.driverClassName"); 
+        String dbUrl = props.getValue("postgres.ucsd.database.atlasdburl");
+        String dbUser = props.getValue("postgres.ucsd.database.atlasdbuser");
+        String dbPassword = props.getValue("postgres.ucsd.database.atlasdbpassword");
+
+        LOG.debug( "driverClassName in central standalone oracle - {}",driverClassName);
+        LOG.debug( "dbUrl in central standalone oracle - {}",dbUrl);
+        LOG.debug( "dbUser in central standalone oracle - {}",dbUser);
+        LOG.debug( "dbPassword in central standalone oracle - {}",dbPassword);
+
+        try {
+        	Class.forName( driverClassName );
+        	LOG.debug( "Start - getStandAloneConnectionForPostgresFromUCSD()");
+            connection = 
+            	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
+            LOG.debug( "End - getStandAloneConnectionForPostgresFromUCSD()");
+        } catch ( Exception e ) {
+        	LOG.debug( "There is an error {}" , e.getClass() + e.getMessage());
+            throw new Exception( e.getMessage() );
+        }
+
+        LOG.debug( "End - getStandAloneConnectionForPostgresFromUCSD()");
+        return connection;
+
+    }// end of getStandAloneConnectionForPostgresFromUCSD method
+
+    /**
+     * Gets the connection to the database. Does not do connection pooling.
+     *
+     * @param jndiName - The jndi name of the datasource
+     * @return A Connection object
+     * @throws DataAccessObjectException - If there is an exception establishing the connection.
+     *
+     */
+    public Connection getStandAloneConnectionForPostgresFromWHS()// please change public to protected
+            throws Exception {
+
+    	LOG.debug( "Start - getStandAloneConnectionForPostgresFromWHS()");
+        
+    	Connection connection = null;
+
+        CentralConfigurator props = CentralConfigurator.INSTANCE;
+
+        String driverClassName = props.getValue("postgres.whs.database.driverClassName"); 
+        String dbUrl = props.getValue("postgres.whs.database.atlasdburl");
+        String dbUser = props.getValue("postgres.whs.database.atlasdbuser");
+        String dbPassword = props.getValue("postgres.whs.database.atlasdbpassword");
+
+        LOG.debug( "driverClassName in central standalone oracle - {}",driverClassName);
+        LOG.debug( "dbUrl in central standalone oracle - {}",dbUrl);
+        LOG.debug( "dbUser in central standalone oracle - {}",dbUser);
+        LOG.debug( "dbPassword in central standalone oracle - {}",dbPassword);
+
+        try {
+        	Class.forName( driverClassName );
+        	LOG.debug( "Start - getStandAloneConnectionForPostgresFromWHS()");
+            connection = 
+            	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
+            LOG.debug( "End - getStandAloneConnectionForPostgresFromWHS()");
+        } catch ( Exception e ) {
+        	LOG.debug( "There is an error {}" , e.getClass() + e.getMessage());
+            throw new Exception( e.getMessage() );
+        }
+
+        LOG.debug( "End - getStandAloneConnectionForPostgresFromWHS()");
+        return connection;
+
+    }// end of getStandAloneConnectionForPostgresFromCCDB method
+
+    /**
+     * Gets the connection to the database. Does not do connection pooling.
+     *
+     * @param jndiName - The jndi name of the datasource
+     * @return A Connection object
+     * @throws DataAccessObjectException - If there is an exception establishing the connection.
+     *
+     */
+    public Connection getStandAloneConnectionForPostgresFromEMAP()// please change public to protected
+            throws Exception {
+
+    	LOG.debug( "Start - getStandAloneConnectionForPostgresFromEMAP()");
+        
+    	Connection connection = null;
+
+        CentralConfigurator props = CentralConfigurator.INSTANCE;
+
+        String driverClassName = props.getValue("postgres.emap.database.driverClassName"); 
+        String dbUrl = props.getValue("postgres.emap.database.atlasdburl");
+        String dbUser = props.getValue("postgres.emap.database.atlasdbuser");
+        String dbPassword = props.getValue("postgres.emap.database.atlasdbpassword");
+
+        LOG.debug( "driverClassName in central standalone oracle - {}",driverClassName);
+        LOG.debug( "dbUrl in central standalone oracle - {}",dbUrl);
+        LOG.debug( "dbUser in central standalone oracle - {}",dbUser);
+        LOG.debug( "dbPassword in central standalone oracle - {}",dbPassword);
+
+        try {
+        	Class.forName( driverClassName );
+        	LOG.debug( "Start - getStandAloneConnectionForPostgresFromEMAP()");
+            connection = 
+            	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
+            LOG.debug( "End - getStandAloneConnectionForPostgresFromEMAP()");
+        } catch ( Exception e ) {
+        	LOG.debug( "There is an error {}" , e.getClass() + e.getMessage());
+            throw new Exception( e.getMessage() );
+        }
+
+        LOG.debug( "End - getStandAloneConnectionForPostgresFromEMAP()");
+        return connection;
+
+    }// end of getStandAloneConnectionForPostgresFromEMAP method
+
     
     /**
      * Closes an open connection.
