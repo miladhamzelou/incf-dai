@@ -1,4 +1,5 @@
-<whs-config-properties>
+<!-- Created by amemon on June 16, 2009, 16:17 -->
+<stage-whs-config-properties>
  
 	<!-- begin database properties for servlet -->
 	<property>
@@ -13,7 +14,7 @@
         <name>server.database.atlasdbuser</name>
         <value>atlas</value>
     </property>
-    <property> 
+    <property>
         <name>server.database.atlasdbpassword</name>
         <value>beer</value>
     </property>
@@ -26,7 +27,7 @@
     </property>
 	<property>
         <name>postgres.server.database.atlasdburl</name>
-        <value>jdbc:postgresql://incf-dev.crbs.ucsd.edu:5432/atlas-aba-db</value>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-aba-db</value>
         <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
     </property>
     <property>
@@ -48,7 +49,7 @@
     </property>
 	<property>
         <name>postgres.whs.database.atlasdburl</name>
-        <value>jdbc:postgresql://incf-dev.crbs.ucsd.edu:5432/atlas-whs-db</value>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-whs-db</value>
         <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
     </property>
     <property>
@@ -108,7 +109,7 @@
 	<property>
         <name>ucsd.host.name</name>
         <value></value>
-        <!--<value>incf-dev.crbs.ucsd.edu</value>-->
+        <!--<value>incf-dev-local.crbs.ucsd.edu</value>-->
         <!--<value>incf.crbs.ucsd.edu</value>-->
     </property>
 
@@ -148,8 +149,8 @@
 
 	<property>
         <name>incf.deploy.host.name</name>
-        <!-- <value>132.239.131.188</value> -->
-        <value>incf.crbs.ucsd.edu</value>
+        <!-- <value>132.239.131.188</value>  -->
+        <value>incf-dev-local.crbs.ucsd.edu</value>
     </property>
 
 	<property>
@@ -270,4 +271,4 @@
     </property>
 	<!-- End SRSNames properties --> 
 	
-</whs-config-properties>
+</stage-whs-config-properties>

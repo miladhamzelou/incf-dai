@@ -22,6 +22,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamReader;
@@ -106,6 +107,45 @@ public class SetAnnotation implements Processlet {
 					processDefinitionUrl.toURI()));
 			String filePath = dataInputHandler.getValidatedStringValue(in,
 					"filePath");
+
+			String filter = dataInputHandler.getValidatedStringValue(in,
+			"filter");
+
+			//Start - Seperate userID and password from the filter attribute
+			String serviceUserID = "";
+			String servicePassword = "";
+			StringTokenizer tokens1 = new StringTokenizer(filter, "=");
+			System.out.println("Tokens: " + tokens1.countTokens() );
+			while (tokens1.hasMoreTokens()){
+				System.out.println("passtoken: " +tokens1.nextToken());	
+				serviceUserID = tokens1.nextToken();
+				servicePassword = tokens1.nextToken();
+			}
+			serviceUserID = serviceUserID.replaceAll(":password", "");
+			System.out.println("userID after: " + serviceUserID);
+			System.out.println("Password: " + servicePassword);
+			//End - Seperate userID and password from the filter attribute
+			
+			//Check for userID and password
+			if ( serviceUserID == null || serviceUserID.equals("") ) {
+    			throw new OWSException("Please provide a valid \"userID\" to access the service.", 
+					ControllerException.NO_APPLICABLE_CODE);
+			}
+
+			if ( servicePassword == null || servicePassword.equals("") ) {
+    			throw new OWSException("Please provide a valid \"password\" to access the service.", 
+    					ControllerException.NO_APPLICABLE_CODE);
+			}
+
+			if ( !serviceUserID.equals("incfadmin") ) {
+    			throw new OWSException("User Authentication Fails. Please provide the correct User ID.", 
+    					ControllerException.NO_APPLICABLE_CODE);
+			}
+
+			if ( !servicePassword.equals("1ncfA1la5") ) {
+    			throw new OWSException("User Authentication Fails. Please provide the correct Password.", 
+    					ControllerException.NO_APPLICABLE_CODE);
+			}
 
 	    	org.incf.whs.atlas.util.PostgresDBService.URL = "jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-whs-db";
 	    	org.incf.whs.atlas.util.PostgresDBService.USERNAME = "atlas-whs-db";
