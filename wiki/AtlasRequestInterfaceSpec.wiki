@@ -754,7 +754,7 @@ Atlas Processes
 </tr>
 <tr>
 <th align="left">GET Request</th>
-<td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=SetAnnotations&DataInputs=filePath=[remoteServerFilePath]</td>
+<td>http://[host:port]/[hub]/atlas?service=WPS&version=[version]&request=Execute&Identifier=SetAnnotations&DataInputs=filePath=[remoteServerFilePath];filter</td>
 </tr>
 <tr>
 <th align="left">Description</th>
@@ -767,7 +767,9 @@ Atlas Processes
 <tr>
 <th align="left">Data Inputs</th>
 <td>
- * filePath</td>
+ * filePath
+ * filter
+</td>
 </tr>
 <tr>
 <th align="left">Normal Return</th>
@@ -780,10 +782,11 @@ Atlas Processes
 <tr>
 <th align="left">Examples</th>
 <td>
- * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/Annotation1.xml
- * EMAP: http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/Annotation1.xml
- * UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/Annotation1.xml
- * WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/Annotation1.xml</td>
+ * ABA: http://incf-dev-local.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/Annotation1.xml;filter=[userID=:password=]
+ * EMAP: http://incf-dev-local.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/Annotation1.xml;filter=[userID=:password=]
+ * UCSD: http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/Annotation1.xml;filter=[userID=:password=]
+ * WHS: http://incf-dev-local.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/Annotation1.xml;filter=[userID=:password=]
+</td>
 </tr>
 </table>
 <br/>
