@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessDefinition
+    configVersion="3.0.0" 
+    processVersion="1.0.0" 
+    storeSupported="true" 
+    statusSupported="false"
+    xmlns="http://www.deegree.org/processes/java" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.deegree.org/processes/java http://schemas.deegree.org/processes/java/3.0.0/java.xsd">
+  <Identifier>updateSlices</Identifier>
+  <JavaClass>org.incf.ucsd.atlas.process.UpdateSlices</JavaClass>
+  <Title>Update Slices</Title>
+  <Abstract>
+	Update Slices
+  </Abstract>
+
+  <InputParameters>
+    <LiteralInput>
+      <Identifier>spaceCode</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>slideValueOrigin</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>valueDirection</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>rightDirection</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>upDirection</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>plusX</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>plusY</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>plusZ</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>sliceID</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>slideValue</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+
+  </InputParameters>
+
+  <OutputParameters>
+    <ComplexOutput>
+      <Identifier>UpdateSlicesOutput</Identifier>
+      <Title>Update Slices Output</Title>
+      <Abstract>Update Slices</Abstract>
+      <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
+          schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/SetAnnotationResponse.xsd"/>
+    </ComplexOutput>
+  </OutputParameters>
+
+</ProcessDefinition>

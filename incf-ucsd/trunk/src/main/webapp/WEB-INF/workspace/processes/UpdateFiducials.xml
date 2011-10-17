@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ProcessDefinition
+    configVersion="3.0.0" 
+    processVersion="1.0.0" 
+    storeSupported="true" 
+    statusSupported="false"
+    xmlns="http://www.deegree.org/processes/java" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.deegree.org/processes/java http://schemas.deegree.org/processes/java/3.0.0/java.xsd">
+  <Identifier>updateFiducials</Identifier>
+  <JavaClass>org.incf.ucsd.atlas.process.UpdateFiducials</JavaClass>
+  <Title>Update Fiducials</Title>
+  <Abstract>
+	Update Fiducials
+  </Abstract>
+
+  <InputParameters>
+    <LiteralInput>
+      <Identifier>fiducialCode</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>fiducialName</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>fiducialType</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>derivedFrom</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>authorCode</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>certaintyLevel</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>srsName</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>description</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+    <LiteralInput>
+      <Identifier>pos</Identifier>
+      <Title>srs</Title>
+      <Abstract>srsName.</Abstract>
+    </LiteralInput>
+  </InputParameters>
+
+  <OutputParameters>
+    <ComplexOutput>
+      <Identifier>UpdateFiducialsOutput</Identifier>
+      <Title>Update Fiducials Output</Title>
+      <Abstract>Update Fiducials</Abstract>
+      <DefaultFormat mimeType="application/vnd.incf.waxml" encoding="UTF-8"
+          schema="http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/SetAnnotationResponse.xsd"/>
+    </ComplexOutput>
+  </OutputParameters>
+
+</ProcessDefinition>

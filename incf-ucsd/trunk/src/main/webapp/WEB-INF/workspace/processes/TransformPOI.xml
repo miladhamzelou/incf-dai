@@ -19,20 +19,6 @@
       <Identifier>transformationCode</Identifier>
       <Title>Transformation Code</Title>
       <Abstract>Transformation code</Abstract>
-      <AllowedValues>
-        <!-- <Value>Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0</Value> -->
-        <!-- <Value>Mouse_AGEA_1.0_To_Mouse_ABAvoxel_1.0_v1.0</Value> -->
-        <!-- <Value>Mouse_WHS_0.9_To_Mouse_AGEA_1.0_v1.0</Value> -->
-        <!-- <Value>Mouse_AGEA_1.0_To_Mouse_WHS_0.9_v1.0</Value> -->
-        <!-- <Value>Mouse_WHS_0.9_To_Mouse_WHS_1.0_v1.0</Value> -->
-        <!-- <Value>Mouse_WHS_1.0_To_Mouse_WHS_0.9_v1.0</Value> -->
-        <!-- <Value>Mouse_ABAreference_1.0_To_Mouse_ABAvoxel_1.0_v1.0</Value> -->
-        <!-- <Value>Mouse_ABAvoxel_1.0_To_Mouse_ABAreference_1.0_v1.0</Value> -->
-        <Value>Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0</Value>
-        <Value>Mouse_WHS_0.9_To_Mouse_Paxinos_1.0_v1.0</Value>
-        <Value>Mouse_BrainStem_1.0_To_Mouse_ABAreference_1.0_v1.0</Value>
-        <Value>Mouse_ABAreference_1.0_To_Mouse_BrainStem_1.0_v1.0</Value>
-      </AllowedValues>
     </LiteralInput>
     <LiteralInput minOccurs="0">
       <Identifier>x</Identifier>

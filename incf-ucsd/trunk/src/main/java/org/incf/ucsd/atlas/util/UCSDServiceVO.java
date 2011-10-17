@@ -115,6 +115,7 @@ public class UCSDServiceVO {
 	private String neuroPlusZCode = "";
 	private String neuroMinusZCode = "";
 	private String sourceURI = "";
+	private String sourceDescriptionURI = "";
 	private String sourceFileFormat = "";
 	private String srsAbstract = "";
 	private String derivedFromSRSCode = "";
@@ -156,6 +157,8 @@ public class UCSDServiceVO {
 	private String coefficientD = "";
 	private String sliceConstant = "";
 
+	private String status = "";
+	
 	private String fiducialCode = "";
 	private String fiducialName = "";
 	private String fiducialType = "";
@@ -180,6 +183,11 @@ public class UCSDServiceVO {
 	private String ontoName;
 	private String ontoURI;
 
+	private String transformationSource;
+	private String transformationDestination;
+	private String transformationHub;
+	private String transformationURL;
+	
 	//Public Methods
 
 	public String getSliceConstant() {
@@ -196,6 +204,14 @@ public class UCSDServiceVO {
 
 	public String getTransformedCoordinates() {
 		return transformedCoordinates;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public void setTransformedCoordinates(String transformedCoordinates) {
@@ -256,6 +272,38 @@ public class UCSDServiceVO {
 
 	public void setInstanceID(String instanceID) {
 		this.instanceID = instanceID;
+	}
+
+	public String getTransformationSource() {
+		return transformationSource;
+	}
+
+	public void setTransformationSource(String transformationSource) {
+		this.transformationSource = transformationSource;
+	}
+
+	public String getTransformationDestination() {
+		return transformationDestination;
+	}
+
+	public void setTransformationDestination(String transformationDestination) {
+		this.transformationDestination = transformationDestination;
+	}
+
+	public String getTransformationHub() {
+		return transformationHub;
+	}
+
+	public void setTransformationHub(String transformationHub) {
+		this.transformationHub = transformationHub;
+	}
+
+	public String getTransformationURL() {
+		return transformationURL;
+	}
+
+	public void setTransformationURL(String transformationURL) {
+		this.transformationURL = transformationURL;
 	}
 
 	public String getOntoName() {
@@ -617,6 +665,14 @@ public class UCSDServiceVO {
 
 	public String getDestSRSCode() {
 		return destSRSCode;
+	}
+
+	public String getSourceDescriptionURI() {
+		return sourceDescriptionURI;
+	}
+
+	public void setSourceDescriptionURI(String sourceDescriptionURI) {
+		this.sourceDescriptionURI = sourceDescriptionURI;
 	}
 
 	public void setDestSRSCode(String destSRSCode) {

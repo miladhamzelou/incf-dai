@@ -4,6 +4,7 @@
 package org.incf.ucsd.atlas.util; 
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -30,14 +31,15 @@ public class UCSDServiceDAOImpl {
 		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
 		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
-		String srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
+		String srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"','Mouse_Yuko_1.0'";
+		
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForUCSDHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from srs where srs_name in (" + srsName + ") " );
+		query.append( " select * from srs where srs_name in (" + srsName + ") and STATUS = 'ACTIVE'" );
 
 		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
@@ -95,14 +97,15 @@ public class UCSDServiceDAOImpl {
 		BaseDAO dao = new BaseDAO();
 		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
 		//srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
+		//srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"','Mouse_Yuko_1.0'";
 
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForUCSDHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from srs where srs_name in ('" + srsName + "') " ); 
+		query.append( " select * from srs where srs_name in ('" + srsName + "') and STATUS = 'ACTIVE'" ); 
 
 		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
@@ -249,7 +252,7 @@ public class UCSDServiceDAOImpl {
 		Connection conn = dao.getStandAloneConnectionForPostgres();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from fiducial where srs_name = '"+vo.getSpaceCode()+"' " );
+		query.append( " select * from fiducial where srs_name = '"+vo.getSpaceCode()+"' and STATUS = 'ACTIVE'" );
 
 		LOG.debug("getSliceData - Query is - {}" , query.toString() );
 
@@ -421,5 +424,314 @@ public class UCSDServiceDAOImpl {
 		return list;
 	}
 
+
+	public String updateSRSs(UCSDServiceVO vo) {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
+		String srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
+
+		String statusMessage = "";
+
+		try {
+
+			Connection connection = dao.getStandAloneConnectionForUCSDHub();
+		    PreparedStatement stmt1 = null;
+			StringBuffer updateQuery = new StringBuffer();
+			updateQuery.append("update srs set status = 'INACTIVE' where srs_name = '"
+							+ vo.getSrsName() + "'");
+		
+		    PreparedStatement stmt2 = null;
+			StringBuffer insertQuery = new StringBuffer();
+			insertQuery.append(
+					" INSERT INTO srs( " + 
+					"       srs_code, srs_name, srs_description, srs_author_code, srs_date_submitted,  " + 
+					"       origin, units_abbreviation, units_name, neuro_plus_x_code, neuro_minus_x_code, " + 
+					"       neuro_plus_y_code, neuro_minus_y_code, neuro_plus_z_code, neuro_minus_z_code, " +
+					"       source_uri, source_description_uri, source_file_format, abstract,  " +
+					"       derived_from_srs_code, derived_method, species, srs_base, region_of_validity, " + 
+					"       region_uri, srs_version, dimension_min_x, dimension_max_x, dimension_min_y,  " +
+					"       dimension_max_y, dimension_min_z, dimension_max_z, status) " +
+				    " VALUES ('"+vo.getSrcSRSCode()+"', '"+vo.getSrsName()+"', '"+vo.getSrsDescription()+"', '"+vo.getAuthorCode()+"', '"+vo.getDateSubmitted()+"',  '" +
+				    vo.getOrigin()+"', '"+vo.getUnitsAbbreviation()+"', '"+vo.getUnitsName()+"', '"+vo.getNeuroPlusXCode()+"', '"+vo.getNeuroMinusXCode()+"', '" +
+				    vo.getNeuroPlusYCode()+"', '"+vo.getNeuroMinusYCode()+"', '"+vo.getNeuroPlusZCode()+"', '"+vo.getNeuroMinusZCode()+"', '" +
+				    vo.getSourceURI()+"', '"+vo.getSourceDescriptionURI()+"', '"+vo.getSourceFileFormat()+"', '"+vo.getSrsAbstract()+"', '" +
+				    vo.getDerivedFromSRSCode()+"', '"+vo.getDerivedMethod()+"', '"+vo.getSpecies()+"', '"+vo.getSrsBase()+"', '"+vo.getRegionOfValidity()+"', '"  +
+				    vo.getRegionURI()+"', "+vo.getSrsVersion()+", "+vo.getDimensionMinX()+", "+vo.getDimensionMaxX()+", "+vo.getDimensionMinY()+", " +
+				    vo.getDimensionMaxY()+", "+vo.getDimensionMinZ()+", "+vo.getDimensionMaxZ()+", '"+vo.getStatus() + "' )"); 
+
+				//Delete a record from 2nd table
+				System.out.println("Update SRS - Query is - " + updateQuery.toString() );
+
+				stmt1 = connection.prepareStatement(updateQuery.toString());
+
+				stmt1.executeUpdate();
+				
+/*				if (stmt1.executeUpdate() != 1) {
+					statusMessage = "Error: Unable to delete a record, please contact the administrator to resolve this issue";
+				}
+*/				System.out.println("Query 1 Done");
+
+				System.out.println("BaseDAO - InsertQuery is - "
+						+ insertQuery.toString());
+				stmt2 = connection.prepareStatement(insertQuery.toString());
+				if (stmt2.executeUpdate() != 1) {
+					statusMessage = "Error: Unable to insert a record, please contact the administrator to resolve this issue";
+				} else {
+					statusMessage = "Successfully registered the data to the hub";
+				}
+
+				System.out.println("Query 2 Done");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return statusMessage;
+	}
+
+
+	public String updateFiducials(UCSDServiceVO vo) {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
+		String srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
+
+		String statusMessage = "";
+
+		try {
+
+			Connection connection = dao.getStandAloneConnectionForUCSDHub();
+		    PreparedStatement stmt1 = null;
+			StringBuffer updateQuery = new StringBuffer();
+			updateQuery.append("update fiducial set status = 'INACTIVE' where fiducial_name = '"+ vo.getFiducialName() + "'");
+
+		    PreparedStatement stmt2 = null;
+			StringBuffer insertQuery = new StringBuffer();
+
+			insertQuery.append(
+					" INSERT INTO fiducial( " + 
+					"       fiducial_code, fiducial_name, fiducial_type, derived_from, author_code,  " + 
+					"       certainty_level, srs_name, description, date_submitted, " + 
+					"       date_updated, pos, status) " + 
+				    " VALUES ('"+vo.getFiducialCode()+"', '"+vo.getFiducialName()+"', '"+vo.getFiducialType()+"', '"+vo.getDerivedFrom()+"', '"+vo.getAuthorCode()+"', '" +
+				    vo.getCertaintyLevel()+"', '"+vo.getSrsName()+"', '"+vo.getDescription()+"', '"+vo.getDateSubmitted()+"', '" +
+				    vo.getDateUpdated()+"', '"+vo.getPos()+"', '"+vo.getStatus()+ "' )");
+
+				//Delete a record from 2nd table
+ 				System.out.println("Update Fiducial - Query is - " + updateQuery.toString() );
+
+				stmt1 = connection.prepareStatement(updateQuery.toString());
+
+				stmt1.executeUpdate();
+
+/*				if (stmt1.executeUpdate() != 1) {
+					statusMessage = "Error: Unable to delete a record, please contact the administrator to resolve this issue";
+				}
+*/				System.out.println("Query 1 Done");
+
+				System.out.println("BaseDAO - InsertQuery is - "
+						+ insertQuery.toString());
+				stmt2 = connection.prepareStatement(insertQuery.toString());
+				if (stmt2.executeUpdate() != 1) {
+					statusMessage = "Error: Unable to insert a record, please contact the administrator to resolve this issue";
+				} else {
+					statusMessage = "Successfully registered the data to the hub";
+				}
+
+				System.out.println("Query 2 Done");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return statusMessage;
+	}
+
+
+	public String updateSpaceTransformation(UCSDServiceVO vo) {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
+		String srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
+
+		String statusMessage = "";
+
+		try {
+
+			Connection connection = dao.getStandAloneConnectionForUCSDHub();
+		    PreparedStatement stmt1 = null;
+			StringBuffer updateQuery = new StringBuffer();
+			updateQuery.append("update space_transformations set status = 'INACTIVE' where source = '"+ vo.getTransformationSource() + "' and destination = '"+ vo.getTransformationDestination()+"'");
+
+		    PreparedStatement stmt2 = null;
+			StringBuffer insertQuery = new StringBuffer();
+
+			insertQuery.append(
+					" INSERT INTO space_transformations( " + 
+					"       source, destination, hub, status, transformation_url)  " + 
+				    " VALUES ('"+vo.getTransformationSource()+"', '"+vo.getTransformationDestination()+"', '"+vo.getTransformationHub()+"', '"+vo.getStatus()+"', '"+vo.getTransformationURL()+"')" );
+
+				//Delete a record from 2nd table
+ 				System.out.println("Update Space Trasnformation - Query is - " + updateQuery.toString() );
+
+				stmt1 = connection.prepareStatement(updateQuery.toString());
+
+				stmt1.executeUpdate();
+
+/*				if (stmt1.executeUpdate() != 1) {
+					statusMessage = "Error: Unable to delete a record, please contact the administrator to resolve this issue";
+				}
+*/				System.out.println("Query 1 Done");
+
+				System.out.println("BaseDAO - InsertQuery is - "
+						+ insertQuery.toString());
+				stmt2 = connection.prepareStatement(insertQuery.toString());
+				if (stmt2.executeUpdate() != 1) {
+					statusMessage = "Error: Unable to insert a record, please contact the administrator to resolve this issue";
+				} else {
+					statusMessage = "Successfully registered the data to the hub";
+				}
+
+				System.out.println("Query 2 Done");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return statusMessage;
+	}
+
 	
+	public String updateSlices(UCSDServiceVO vo) {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
+		String srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
+
+		String statusMessage = "";
+
+		try {
+
+			Connection connection = dao.getStandAloneConnectionForUCSDHub();
+		    PreparedStatement stmt1 = null;
+			StringBuffer updateQuery = new StringBuffer();
+			updateQuery.append("update slice set status = 'INACTIVE' where slice_id = '"+ vo.getSliceID() + "' and space_code = '" +vo.getSpaceCode()+ "'"); 
+
+		    PreparedStatement stmt2 = null;
+			StringBuffer insertQuery = new StringBuffer();
+
+			insertQuery.append(
+					" INSERT INTO slice( " + 
+					"       space_code, slide_value_origin, value_direction, right_direction, " + 
+					"       up_direction, plus_x, plus_y, plus_z, slice_id, slide_value, " + 
+					"       status) " + 
+				    " VALUES ('"+vo.getSpaceCode()+"', '"+vo.getSlideValueOrigin()+"', '"+vo.getValueDirection()+"', '"+vo.getRightDirection()+"', '" +
+				    vo.getUpDirection()+"', '"+vo.getPlusX()+"', '"+vo.getPlusY()+"', '"+vo.getPlusZ()+"', '" +
+				    vo.getSliceID()+"', '"+vo.getSlideValue()+"', '"+vo.getStatus()+ "' )");
+
+				//Delete a record from 2nd table
+ 				System.out.println("Update Space Code - Query is - " + updateQuery.toString() );
+
+				stmt1 = connection.prepareStatement(updateQuery.toString());
+
+				stmt1.executeUpdate();
+
+/*				if (stmt1.executeUpdate() != 1) {
+					statusMessage = "Error: Unable to delete a record, please contact the administrator to resolve this issue";
+				}
+*/				System.out.println("Query 1 Done");
+
+				System.out.println("BaseDAO - InsertQuery is - "
+						+ insertQuery.toString());
+				stmt2 = connection.prepareStatement(insertQuery.toString());
+				if (stmt2.executeUpdate() != 1) {
+					statusMessage = "Error: Unable to insert a record, please contact the administrator to resolve this issue";
+				} else {
+					statusMessage = "Successfully registered the data to the hub";
+				}
+
+				System.out.println("Query 2 Done");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return statusMessage;
+	}
+
+
+	public ArrayList getAllSpaceTransformationData( UCSDServiceVO vo ) {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+
+		try {
+
+		//Used for postgres connection
+		Connection conn = dao.getStandAloneConnectionForUCSDHub();
+		Statement stmt = conn.createStatement();
+		StringBuffer query = new StringBuffer();
+		query.append( " select * from space_transformations where status = 'ACTIVE' " );
+
+		LOG.debug("getSpaceTransformationData - Query is - {}" , query.toString() );
+
+		ResultSet rs = stmt.executeQuery(query.toString()); 
+
+		while ( rs.next() ) {
+
+			vo = new UCSDServiceVO();
+
+			vo.setTransformationSource(rs.getString("source"));
+			vo.setTransformationDestination(rs.getString("destination"));
+			vo.setTransformationHub(rs.getString("hub"));
+			vo.setTransformationURL(rs.getString("transformation_url"));
+
+			list.add(vo);
+
+		}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	
+	public ArrayList getUCSDSpaceTransformationData( UCSDServiceVO vo ) {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+
+		try {
+
+		//Used for postgres connection
+		Connection conn = dao.getStandAloneConnectionForUCSDHub();
+		Statement stmt = conn.createStatement();
+		StringBuffer query = new StringBuffer();
+		query.append( " select * from space_transformations where status = 'ACTIVE' and hub = 'UCSD'" ); 
+
+		LOG.debug("getSpaceTransformationData - Query is - {}" , query.toString() );
+
+		ResultSet rs = stmt.executeQuery(query.toString()); 
+
+		while ( rs.next() ) {
+
+			vo = new UCSDServiceVO();
+			
+			vo.setTransformationSource(rs.getString("source"));
+			vo.setTransformationDestination(rs.getString("destination"));
+			vo.setTransformationHub(rs.getString("hub"));
+			vo.setTransformationURL(rs.getString("transformation_url"));
+
+			list.add(vo);
+
+		}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

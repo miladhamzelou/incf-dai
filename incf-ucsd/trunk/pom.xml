@@ -165,6 +165,18 @@
       <artifactId>postgresql</artifactId>
       <version>8.4-701.jdbc3</version>
 	</dependency>    
+	
+	<dependency>
+      <groupId>asif.transformation</groupId>
+      <artifactId>InsightTransform</artifactId>
+      <version>1.0</version>
+    </dependency>
+	<dependency>
+      <groupId>asif.transformation</groupId>
+      <artifactId>jsci-core</artifactId>
+      <version>1.0</version>
+    </dependency>
+	
   </dependencies>
 
   <distributionManagement>

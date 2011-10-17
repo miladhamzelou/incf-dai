@@ -204,7 +204,7 @@ public class TransformPOI implements Processlet {
 				LOG.debug("*****************UNMARSHALLING COUNT***************" + b++ );
 
 				vo1 = (UCSDServiceVO)iterator.next();
-				String completeCoordinatesString = util.spaceTransformation(vo1);
+				String completeCoordinatesString = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
 				if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
 					throw new OWSException(
 							"No Such Transformation is available under UCSD Hub.",
@@ -214,7 +214,7 @@ public class TransformPOI implements Processlet {
 				vo1 = util.splitCoordinatesFromStringToVO(vo1,
 						completeCoordinatesString);
 				// End
-	
+
 				// Start - Exception Handling
 				if (vo1.getTransformedCoordinateX().equalsIgnoreCase("out")) {
 					throw new OWSException("Coordinates - Out of Range.",

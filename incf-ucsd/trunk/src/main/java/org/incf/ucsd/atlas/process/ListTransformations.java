@@ -137,8 +137,7 @@ public class ListTransformations implements Processlet {
 				vo.setToSRSCodeOne("all");
 				vo.setToSRSCode("all");
 				vo.setFilter("");
-				responseString = util.getCoordinateTransformationChain(vo,
-						complexOutput);
+				responseString = util.listTransformations(vo, complexOutput, new ArrayList());
 
 			} else if (inputSrsName.equalsIgnoreCase("all")
 					&& outputSrsName.equalsIgnoreCase("all")) {
@@ -148,13 +147,12 @@ public class ListTransformations implements Processlet {
 				vo.setToSRSCodeOne("all");
 				vo.setToSRSCode("all");
 				vo.setFilter("");
-				responseString = util.getCoordinateTransformationChain(vo,
-						complexOutput);
+				responseString = util.listTransformations(vo, complexOutput, new ArrayList());
 
 			} else if (!inputSrsName.equals("")
 					&& outputSrsName.equalsIgnoreCase("all")) {
 				LOG.debug("Inside inputSRSName not empty.");
-				if (inputSrsName.equals(paxinos)) {
+/*				if (inputSrsName.equals(paxinos)) {
 					vo1 = new UCSDServiceVO();
 					vo1.setFromSRSCode(paxinos);
 					vo1.setToSRSCode(whs09);
@@ -179,13 +177,18 @@ public class ListTransformations implements Processlet {
 					srsCodeList.add(vo1);
 					vo.setFilter("");
 				}
+*/
+				vo.setFromSRSCodeOne("all");
+				vo.setFromSRSCode("all");
+				vo.setToSRSCodeOne("all");
+				vo.setToSRSCode("all");
+				vo.setFilter("");
+				responseString = util.listTransformations(vo, complexOutput, new ArrayList());
 
-				responseString = util.listTransformations(vo, complexOutput,
-						srsCodeList);
 			} else if (!outputSrsName.equals("")
 					&& inputSrsName.equalsIgnoreCase("all")) {
 				LOG.debug("Inside outputSRSName not empty.");
-				if (outputSrsName.equals(paxinos)) {
+/*				if (outputSrsName.equals(paxinos)) {
 					vo1 = new UCSDServiceVO();
 					vo1.setFromSRSCode(whs09);
 					vo1.setToSRSCode(paxinos);
@@ -210,8 +213,14 @@ public class ListTransformations implements Processlet {
 					srsCodeList.add(vo1);
 					vo.setFilter("");
 				}
-				responseString = util.listTransformations(vo, complexOutput,
-						srsCodeList);
+*/								
+				vo.setFromSRSCodeOne("all");
+				vo.setFromSRSCode("all");
+				vo.setToSRSCodeOne("all");
+				vo.setToSRSCode("all");
+				vo.setFilter("");
+				responseString = util.listTransformations(vo, complexOutput, new ArrayList());
+
 			} else if (!inputSrsName.equals("") || inputSrsName != null
 					&& !outputSrsName.equals("") || outputSrsName != null) {
 				LOG.debug("Both Legitimate values.");
@@ -220,8 +229,7 @@ public class ListTransformations implements Processlet {
 				vo.setToSRSCodeOne(outputSrsName);
 				vo.setToSRSCode(outputSrsName);
 				vo.setFilter(filter);
-				responseString = util.getCoordinateTransformationChain(vo,
-						complexOutput);
+				responseString = util.listTransformations(vo, complexOutput, new ArrayList());
 			} else {
 				LOG.debug("Nothing matched..");
 				responseString = "Error: No such transformation chain is supported under this hub.";
