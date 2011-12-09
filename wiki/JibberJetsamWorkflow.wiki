@@ -4,8 +4,14 @@
 
 Jibber Jetsam Based Workflow
 
-[https://docs.google.com/drawings/d/1H3IwAV1hulzaXeGaGi89oID0jBiP6ZD2RhZrP7vyvRw/editS&nonsense=something_that_ends_with.png]
+Version 1
+[https://docs.google.com/drawings/d/1H3IwAV1hulzaXeGaGi89oID0jBiP6ZD2RhZrP7vyvRw/edit&nonsense=something_that_ends_with.png]
 
+Version 2
+[https://docs.google.com/drawings/d/1H3IwAV1hulzaXeGaGi89oID0jBiP6ZD2RhZrP7vyvRw/edit&nonsense=something_that_ends_with.png]
+
+Version 3
+[https://docs.google.com/drawings/d/1H3IwAV1hulzaXeGaGi89oID0jBiP6ZD2RhZrP7vyvRw/edit]
 
 
 
