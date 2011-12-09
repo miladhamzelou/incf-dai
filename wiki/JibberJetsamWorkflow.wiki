@@ -7,7 +7,7 @@ Jibber Jetsam Based Workflow
 Version 1
 [https://docs.google.com/drawings/d/1H3IwAV1hulzaXeGaGi89oID0jBiP6ZD2RhZrP7vyvRw/edit&w=829&h=602]
 
-http://132.239.131.188/ImageWorkflowPics/JibberJetsam/Step%201.png
+http://132.239.131.188/ImageWorkflowPics/JibberJetsam/Step 1.png
 
 Version 2
 [https://picasaweb.google.com/113457379767396414055/ImageWorkflowPics&w=829&h=602&nonsense=something_that_ends_with.png]
