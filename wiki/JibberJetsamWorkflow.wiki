@@ -1,10 +1,14 @@
 #summary One-sentence summary of this page.
 
-= Introduction =
+= Image Workflow =
 
-Jibber Jetsam Based Workflow
+Getting Started
 
-Step 1
+Register as a new user on CCDB portal at: http://ccdb-portal.crbs.ucsd.edu/web/guest/home?p_p_id=58&p_p_lifecycle=1&p_p_state=maximized&p_p_mode=view&saveLastPath=0&_58_struts_action=%2Flogin%2Fcreate_account
+
+After you login as a ccdb user, 
+The CCDB image workflow page has an upload tool called Jibber that will help you spatially register and warp your mouse brain microscopy products to the Allen Reference Atlas and/or WHS. 
+
 [https://lh5.googleusercontent.com/-IYRgh1QfUCs/TuGCJ8wUBKI/AAAAAAAAABc/wWmfUrzM9vk/s912/Step%2525201.jpg]
 
 Step 2
