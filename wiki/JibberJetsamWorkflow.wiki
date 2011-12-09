@@ -6,37 +6,83 @@ Getting Started
 
 Register as a new user on CCDB portal at: http://ccdb-portal.crbs.ucsd.edu/web/guest/home?p_p_id=58&p_p_lifecycle=1&p_p_state=maximized&p_p_mode=view&saveLastPath=0&_58_struts_action=%2Flogin%2Fcreate_account
 
+
 After you login as a CCDB user, click on a “CCDB” tab that will list down the available sub-menus as shown in the image below, then click on Imaging Product Registration link. 
 [https://lh5.googleusercontent.com/-IYRgh1QfUCs/TuGCJ8wUBKI/AAAAAAAAABc/wWmfUrzM9vk/s912/Step%2525201.jpg]
 
+
 After Imaging product registration page is loaded, click on “Add new” button as shown in the image below to create a new CCDB project.[https://lh4.googleusercontent.com/-aNtmT-ODzpc/TuGCKvtYlkI/AAAAAAAAABg/iISjAoGN0ls/s912/Step%2525202.jpg]
 
-Step 3
-[https://lh6.googleusercontent.com/-jARy9COzHJw/TuGCLDp0crI/AAAAAAAAABk/3woZjawCtw4/s912/Step%2525203.jpg]
 
-Step 4
+Supply all the information about the project in the available fields as shown in an image below and press “submit” to create a project. [https://lh6.googleusercontent.com/-jARy9COzHJw/TuGCLDp0crI/AAAAAAAAABk/3woZjawCtw4/s912/Step%2525203.jpg]
+
+
+On a project page, click on “Add New Experiment” link as shown below to create an experiment.
 [https://lh6.googleusercontent.com/-kUYcSVshARQ/TuGCLmsqXeI/AAAAAAAAABo/huctibVm4oQ/s912/Step%2525204.jpg]
 
-Step 5
+
+Supply all the information about the new experiment and click on “Submit” button as shown below.
 [https://lh5.googleusercontent.com/-_Ol45VtDIuE/TuGCMFsXBsI/AAAAAAAAABs/1DABgEvUgsg/s912/Step%2525205.jpg]
 
-Step 6
+
+Now click on “Add New Microscopy” link as shown below to register the microscopy product. 
 [https://lh3.googleusercontent.com/-168f2_Xa7eM/TuGCMvqL25I/AAAAAAAAABw/1PDJuJQGSnA/s912/Step%2525206.jpg]
 
-Step 7
+
+Supply the information about the microscopy product and click on “Submit”.
 [https://lh4.googleusercontent.com/-acHc4WWjElI/TuGCM9tT-YI/AAAAAAAAAB0/PSzTVuBk6xk/s912/Step%2525207.jpg]
 
-Step 8
+
+After registering the microscopy product, now upload your full resolution reconstruction file using the upload tool as shown in an image below.
 [https://lh4.googleusercontent.com/-fR-YZZh2Hgk/TuGCNRqxhdI/AAAAAAAAAB4/62A_AjTPe_8/s912/Step%2525208.jpg]
 
-Step 9
+Then click on “Browse” to locate an image folder from the local machine and click upload to initiate the upload process. 
 [https://lh5.googleusercontent.com/-7KqMX6zITLQ/TuGCNh0JtXI/AAAAAAAAAB8/k-RPAXJZiRs/s912/Step%2525209.jpg]
 
-Step 10
+Once upload process is finished, a link “Launch image registration” will appear in the dialog box.
 https://lh6.googleusercontent.com/-UuHhciRSyc0/TuGCOJA4l6I/AAAAAAAAACA/0Aihf7cKiVg/s589/Step%25252010.jpg
 
-Step 11
+
+On click of “Launch image registration” link, the process will send out an email to the portal user with the Jibber/Jetsam Registration Page as shown  in an image below.
 https://lh3.googleusercontent.com/-qNYKw0RERlQ/TuGCOgL3ZnI/AAAAAAAAACE/N4qpKnY32DI/s912/Step%25252011.jpg
+
+
+Step 1
+
+Step 2
+
+Step 3
+
+Step 4
+
+Step 5
+
+Step 6
+
+Step 7
+
+Step 8
+
+Step 9
+
+Step 10
+
+Step 11
+
+Step 12
+
+Step 13
+
+Step 14
+
+Step 15
+
+Step 16
+
+Step 17
+
+Step 18
+
 = Details =
 
 Add your content here.  Format your content with:
