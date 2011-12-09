@@ -19,7 +19,7 @@ Version 4
 [https://docs.google.com/drawings/d/1CijiHZV2iW0xOEkszTxlwApbeHxrdxkXOe4_Sm1ArwQ/edit]
 
 Version 5
-[http://code.google.com/ http://code.google.com/images/code_sm.png]
+[http://code.google.com/]
 
 Version 6
 [http://132.239.131.188/ImageWorkflowPics/JibberJetsam/Step%201.png http://132.239.131.188/ImageWorkflowPics/JibberJetsam/Step%201.png]
