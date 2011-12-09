@@ -119,11 +119,5 @@ When the 'Register' window opens, click on the Send button (bottom right):
 https://lh5.googleusercontent.com/-1_0LQyzZGtA/TuGgh9MEYhI/AAAAAAAAADI/62XzLpqpIDQ/s851/Page16.jpg
 
 
-
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+Once the process is finished, you will receive an email with the URL for a client application named WIB(Web Image Browser) where you can navigate the warped image from the above process. You can also query across various hubs registered under INCF.
+  
