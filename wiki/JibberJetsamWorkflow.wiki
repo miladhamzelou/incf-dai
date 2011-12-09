@@ -6,13 +6,10 @@ Getting Started
 
 Register as a new user on CCDB portal at: http://ccdb-portal.crbs.ucsd.edu/web/guest/home?p_p_id=58&p_p_lifecycle=1&p_p_state=maximized&p_p_mode=view&saveLastPath=0&_58_struts_action=%2Flogin%2Fcreate_account
 
-After you login as a ccdb user, 
-The CCDB image workflow page has an upload tool called Jibber that will help you spatially register and warp your mouse brain microscopy products to the Allen Reference Atlas and/or WHS. 
-
+After you login as a CCDB user, click on a “CCDB” tab that will list down the available sub-menus as shown in the image below, then click on Imaging Product Registration link. 
 [https://lh5.googleusercontent.com/-IYRgh1QfUCs/TuGCJ8wUBKI/AAAAAAAAABc/wWmfUrzM9vk/s912/Step%2525201.jpg]
 
-Step 2
-[https://lh4.googleusercontent.com/-aNtmT-ODzpc/TuGCKvtYlkI/AAAAAAAAABg/iISjAoGN0ls/s912/Step%2525202.jpg]
+After Imaging product registration page is loaded, click on “Add new” button as shown in the image below to create a new CCDB project.[https://lh4.googleusercontent.com/-aNtmT-ODzpc/TuGCKvtYlkI/AAAAAAAAABg/iISjAoGN0ls/s912/Step%2525202.jpg]
 
 Step 3
 [https://lh6.googleusercontent.com/-jARy9COzHJw/TuGCLDp0crI/AAAAAAAAABk/3woZjawCtw4/s912/Step%2525203.jpg]
