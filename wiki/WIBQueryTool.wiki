@@ -1,0 +1,36 @@
+#summary One-sentence summary of this page.
+
+Web Image Browser (WIB) is a light weight web based client used for viewing high resolution microscopy images over the web. The WIB reads and manages tiled images in a manner similar to Google Maps or similar applications, allowing viewing of images of arbitrarily large size. WIB uses one of its mechanism to query INCF's POI based services across different hubs. 
+
+Step 1
+https://lh5.googleusercontent.com/-iUBXUOggBDg/TuGB8kR9XCI/AAAAAAAAAAs/XYqA77vcUuw/s912/Page%2525201.jpg
+
+Step2
+https://lh6.googleusercontent.com/-OkS-Ryo--z4/TuGB9TmbI7I/AAAAAAAAAAw/W83HC4BQlec/s640/Page%2525202.jpg
+
+Step3
+https://lh4.googleusercontent.com/-oLdqS23Cetg/TuGB-C0SxLI/AAAAAAAAAA0/V0jrqBY-M7Y/s640/Page%2525203.jpg
+
+Step4
+https://lh5.googleusercontent.com/-xD_5PPm4Cv4/TuGB-tYlrlI/AAAAAAAAAA4/O3-YLTo2jE4/s640/Page%2525204.jpg
+
+Step5
+https://lh6.googleusercontent.com/-kyRTmW_X7TY/TuGB_vAW6jI/AAAAAAAAAA8/xSXm5uWtNNs/s640/Page%2525205.jpg
+
+Step6 - Get2DImagesByPOI
+https://lh5.googleusercontent.com/-Jo0cfqayQew/TuGCAXTyTBI/AAAAAAAAABA/PFwOZ88uf54/s640/Page%2525206.jpg
+
+Step 6.1 - Get2DImagesByPOI result
+https://lh3.googleusercontent.com/-FVyAmxKYo-E/TuGCCy1iNoI/AAAAAAAAABU/LK63Qx7HmNg/s912/Page%2525204.1.jpg
+
+Step7 - Structure Name
+https://lh4.googleusercontent.com/-7vw8ajbGRN8/TuGCBKBOG4I/AAAAAAAAABE/i8V2xr8Lq_U/s640/Page%2525207.jpg
+
+Step7.1 - Structure Results
+https://lh3.googleusercontent.com/-bJhW5zmoHz4/TuGCBmiLYMI/AAAAAAAAABI/FVNdvC2TDGs/s640/Page%2525207.1.jpg
+
+Step8 - CorrelationMap
+https://lh5.googleusercontent.com/-89CV8RzlxhA/TuGCCBA7G9I/AAAAAAAAABM/YG7iLOO4j7E/s640/Page%2525208.jpg
+
+Step8.1 - Correlation Map reults
+https://lh6.googleusercontent.com/-Byg_rOtyWZQ/TuGCCkOCUII/AAAAAAAAABQ/S2iJ0_VBheY/s912/Page%2525208.1.jpg
