@@ -1,9 +1,9 @@
 <AnnotationResponse xmlns="http://www.incf.org/WaxML/" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlin="http://www.w3.org/1999/xlink">
   <Annotation>
-    <MODIFIED_DATE xmlns="">2011-08-23-07:00</MODIFIED_DATE>
-    <RESOURCE xmlns="" filepath="http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_23_rec"/>
+    <MODIFIED_DATE>2011-12-15-08:00</MODIFIED_DATE>
+    <RESOURCE filepath="http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_23_rec"/>
     <!--PolyLINE object with gml:id=ANN80087-->
-    <GEOMETRIES xmlns="">
+    <GEOMETRIES>
       <GEOMETRY user_name="guest" modified_time="1303328463">
         <!--PolyLINE object with gml:id=ANN80087-->
         <POLYLINE srsName="mouse" gml:id="ANN80087">
@@ -11,7 +11,7 @@
         </POLYLINE>
       </GEOMETRY>
     </GEOMETRIES>
-    <GENERAL_ONTO_MODEL xmlns="">
+    <GENERAL_ONTO_MODEL>
       <RELATIONS>
         <ONTO_PROPERTY xlin:title="has_part" xlin:href="http://www.obofoundry.org/ro/ro.owl#has_part" user_name="guest" modified_time="1303328469">
           <SUBJECT>
@@ -34,7 +34,7 @@
         </ONTO_PROPERTY>
       </RELATIONS>
     </GENERAL_ONTO_MODEL>
-    <ONTO_TERMS xmlns="">
+    <ONTO_TERMS>
       <!--title = onto_name, href = onto_url gml:id= instance_id-->
       <!--no uri;-->
       <ONTO_TERM gml:id="ANN85043" xlin:title="Azonal"/>
