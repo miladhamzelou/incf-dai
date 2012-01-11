@@ -1,0 +1,29 @@
+INCF Atlas Services Enhancements: Aim 1 is modeling of coordinate transformations, and assessment of transformation accuracy. 
+
+Under this aim, the plan is to:
+
+a.	Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation. 
+
+
+
+b.	Conduct accuracy assessment of coordinate transformation functions developed earlier, by a) simulating series of forward and inverse transformations for available images and generating an image volume with transformation performance statistics, b) assessing consistency of transformation results under different transformation parameters and sets of fiducials.
+
+
+
+c.	Visualize deformation fields to display regions of lower accuracy (e.g. as “heat maps”.) 
+
+
+
+d.	Develop specification and output schemas for coordinate transformation services that include accuracy estimates.
+
+
+
+e.	Implement atlas services that return transformation accuracy information. 
+
+
+
+f.	Develop an error propagation model and include error assessment in GetTransformationChain responses. 
+
+
+
+g.	Generate a report and publications on the inclusion of accuracy assessment and accuracy propagation in brain atlas web services
