@@ -13,7 +13,7 @@
 </tr>
 <tr>
 <th align="left">Notes</th>
-<td>
+<td width="80%">
 <pre>&nbsp;</pre>
 <br/>
 <br/>
