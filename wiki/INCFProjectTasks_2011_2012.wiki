@@ -1,8 +1,11 @@
 #summary Specific tasks and sub-tasks related to INCF Atlas Services Enhancements listed below.
 <wiki:toc max_depth="5" />
 
- * [INCFProjectTasks_2011_2012#GetCapabilities GetCapabilities]
- * [INCFProjectTasks_2011_2012#DescribeProcess DescribeProcess]
+==Atlas Requests/Processes==
+
+Standard WPS Requests
+ * [AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
+ * [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]
 
 
 ===!GetCapabilties===
