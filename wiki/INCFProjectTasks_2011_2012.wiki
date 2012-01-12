@@ -3,11 +3,10 @@
 
 ==Modeling of coordinate transformations, and assessment of transformation accuracy==
 
-Standard WPS Requests
- * [AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
+ * [INCFProjectTasks_2011_2012#Task1 Task1]
 <br/>
 
-===!GetCapabilities===
+===!Task1===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
