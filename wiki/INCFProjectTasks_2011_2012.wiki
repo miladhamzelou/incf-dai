@@ -1,9 +1,7 @@
 #summary Specific tasks and sub-tasks related to INCF Atlas Services Enhancements listed below.
 <wiki:toc max_depth="5" />
 
-==Modeling of coordinate transformations, and assessment of transformation accuracy==
-
- * [INCFProjectTasks_2011_2012#Task1 Task1]
+ * [INCFProjectTasks_2011_2012#Task1 Modeling of coordinate transformations, and assessment of transformation accuracy]
 <br/>
 
 ===!Task1===
