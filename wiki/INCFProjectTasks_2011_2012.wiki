@@ -1,10 +1,40 @@
 #summary Specific tasks and sub-tasks related to INCF Atlas Services Enhancements listed below.
 <wiki:toc max_depth="5" />
 
- * [INCFProjectTasks_2011_2012#Task1 Modeling of coordinate transformations, and assessment of transformation accuracy]
+ * [INCFProjectTasks_2011_2012#Modeling of coordinate transformations, and assessment of transformation accuracy Modeling of coordinate transformations, and assessment of transformation accuracy]
+<br/>
+ * [INCFProjectTasks_2011_2012#Modeling of coordinate transformations, and assessment of transformation accuracies Modeling of coordinate transformations, and assessment of transformation accuracies]
 <br/>
 
 ===!Modeling of coordinate transformations, and assessment of transformation accuracy===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <td></td>
+    <th align="center">Central</th>
+    <th align="center">ABA Hub</th>
+    <th align="center">EMAP Hub</th>
+    <th align="center">UCSD Hub</th>
+    <th align="center">WHS Hub</th>
+  </tr>
+  <tr>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]<sup>1</sup></th>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&request=GetCapabilities X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/emap/atlas?service=WPS&request=GetCapabilities X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&request=GetCapabilities X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&request=GetCapabilities X]*</td>
+  </tr>
+  <tr>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]<sup>1</sup></th>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL X]*</td>
+  </tr>
+
+===!Modeling of coordinate transformations, and assessment of transformation accuracies===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
