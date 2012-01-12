@@ -1,4 +1,5 @@
-==!Wazzup==
+
+
  * [AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
  * [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]
 
