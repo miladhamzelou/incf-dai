@@ -1,10 +1,10 @@
 #summary Sub-tasks related to INCF Atlas Services Enhancements.
 
- * [INCFProjectSubTasks_2011_2012#Task:1A Task:1A.]
+ * [INCFProjectSubTasks_2011_2012#Task1A Task1A.]
 
 <br/>
 
-===!Task:1A===
+===!Task1A===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
 <tr>
