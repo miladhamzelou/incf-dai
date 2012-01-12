@@ -2,7 +2,7 @@
 
 <wiki:toc max_depth="5" />
 
-===Modeling of coordinate transformations, and assessment of transformation accuracy===
+==Modeling of coordinate transformations, and assessment of transformation accuracy==
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
 <tr>
