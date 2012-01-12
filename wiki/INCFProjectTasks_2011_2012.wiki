@@ -1,12 +1,12 @@
 #summary Specific tasks and sub-tasks related to INCF Atlas Services Enhancements listed below.
 <wiki:toc max_depth="5" />
 
- * [INCFProjectTasks_2011_2012#Modeling of coordinate transformations, and assessment of transformation accuracy]
+ * [INCFProjectTasks_2011_2012#Task1]
 <br/>
- * [INCFProjectTasks_2011_2012#Modeling of coordinate transformations, and assessment of transformation accuracies Modeling of coordinate transformations, and assessment of transformation accuracies]
+ * [INCFProjectTasks_2011_2012#Task2]
 <br/>
 
-===!Modeling of coordinate transformations, and assessment of transformation accuracy===
+===!Task1===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
@@ -34,7 +34,7 @@
     <td align="center">*[http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL X]*</td>
   </tr>
 
-===!Modeling of coordinate transformations, and assessment of transformation accuracies===
+===!Task2===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
