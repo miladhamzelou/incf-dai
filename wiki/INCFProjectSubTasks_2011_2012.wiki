@@ -1,6 +1,6 @@
 #summary Sub-tasks related to INCF Atlas Services Enhancements.
 
- * [INCFProjectSubTasks_2011_2012#Task1A Task1A.]
+ * [INCFProjectSubTasks_2011_2012#Task1A Task1A]
 
 <br/>
 
