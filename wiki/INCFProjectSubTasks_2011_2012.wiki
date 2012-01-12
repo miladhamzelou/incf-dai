@@ -1,11 +1,10 @@
 #summary Sub-tasks related to INCF Atlas Services Enhancements.
 
- * [INCFProjectSubTasks_2011_2012#Task1A Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation. 
-]
+ * [INCFProjectSubTasks_2011_2012#Task:1A Task:1A.]
 
 <br/>
 
-===!Task1A===
+===!Task:1A===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
 <tr>
@@ -13,8 +12,7 @@
 </tr>
 <tr>
 <th align="left">Notes</th>
-<td width="80%">
-<pre>&nbsp;</pre>
+<td>
 <br/>
 <br/>
 <br/>
