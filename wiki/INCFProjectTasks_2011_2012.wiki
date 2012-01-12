@@ -17,12 +17,12 @@
     <th align="center">Status</th>
   </tr>
   <tr>
-    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]<sup>1</sup></th>
-    <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities X]*</td>
-    <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&request=GetCapabilities X]*</td>
-    <td align="center">*[http://incf-dev.crbs.ucsd.edu/emap/atlas?service=WPS&request=GetCapabilities X]*</td>
-    <td align="center">*[http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&request=GetCapabilities X]*</td>
-    <td align="center">*[http://incf-dev.crbs.ucsd.edu/whs/atlas?service=WPS&request=GetCapabilities X]*</td>
+    <th align="left">Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation.</th>
+    <td align="center">*X*</td>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">*Asif*</td>
+    <td align="center">*In Progress*</td>
   </tr>
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]<sup>1</sup></th>
