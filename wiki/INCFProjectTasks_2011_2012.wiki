@@ -4,7 +4,7 @@
  * [INCFProjectTasks_2011_2012#Task1 Modeling of coordinate transformations, and assessment of transformation accuracy]
 <br/>
 
-===!Task1===
+===!Modeling of coordinate transformations, and assessment of transformation accuracy===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
