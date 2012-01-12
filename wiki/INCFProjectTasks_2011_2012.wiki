@@ -3,10 +3,10 @@
 
 ==Atlas Requests/Processes==
 
-Standard WPS Requests
  * [AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
  * [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]
 
+</br>
 
 ===!GetCapabilties===
 
