@@ -1,6 +1,6 @@
 Standard WPS Requests
- * [AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
- * [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]
+ * [INCFProjectTasks_2011_2012#GetCapabilities GetCapabilities]
+ * [INCFProjectTasks_2011_2012#DescribeProcess DescribeProcess]
 
 
 ===!GetCapabilities===
