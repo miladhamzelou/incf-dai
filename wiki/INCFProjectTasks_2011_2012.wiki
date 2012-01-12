@@ -2,7 +2,30 @@
 
 <wiki:toc max_depth="5" />
 
-==Modeling of coordinate transformations, and assessment of transformation accuracy==
+==Atlas Requests/Processes==
+
+Standard WPS Requests
+ * [AtlasRequestInterfaceSpec#GetCapabilities GetCapabilities]
+ * [AtlasRequestInterfaceSpec#DescribeProcess DescribeProcess]
+
+Atlas Processes
+ * [AtlasRequestInterfaceSpec#DescribeSRS DescribeSRS]
+ * [AtlasRequestInterfaceSpec#DescribeTransformation DescribeTransformation]
+ * [AtlasRequestInterfaceSpec#Get2DImagesByPOI Get2DImagesByPOI]
+ * [AtlasRequestInterfaceSpec#GetAnnotationsByPOI GetAnnotationsByPOI]
+ * [AtlasRequestInterfaceSpec#GetCorrlationMap GetCorrelationMap]
+ * [AtlasRequestInterfaceSpec#GetGenesByPOI GetGenesByPOI]
+ * [AtlasRequestInterfaceSpec#GetObjectsByPOI GetOjbectsByPOI]
+ * [AtlasRequestInterfaceSpec#GetStructureNamesByPOI GetStructureNamesByPOI]
+ * [AtlasRequestInterfaceSpec#GetTransformationChain GetTransformationChain]
+ * [AtlasRequestInterfaceSpec#ListSRSs ListSRSs]
+ * [AtlasRequestInterfaceSpec#ListTransformations ListTransformations]
+ * [AtlasRequestInterfaceSpec#Retrieve2DImage Retrieve2DImage]
+ * [AtlasRequestInterfaceSpec#SetAnnotation SetAnnotation]
+ * [AtlasRequestInterfaceSpec#TransformPOI TransformPOI]
+<br/>
+
+===!GetCapabilities===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
 <tr>
