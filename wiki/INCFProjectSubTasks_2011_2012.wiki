@@ -7,7 +7,24 @@
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:E Deliverables:1:E]
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:F Deliverables:1:F]
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:G Deliverables:1:G]
-
+<br/>
+ * [INCFProjectSubTasks_2011_2012#Deliverables:2:A Deliverables:2:A]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:2:B Deliverables:2:B]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:2:C Deliverables:2:C]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:2:D Deliverables:2:D]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:2:E Deliverables:2:E]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:2:F Deliverables:2:F]
+<br/>
+ * [INCFProjectSubTasks_2011_2012#Deliverables:3:A Deliverables:3:A]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:3:B Deliverables:3:B]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:3:C Deliverables:3:C]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:3:D Deliverables:3:D]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:3:E Deliverables:3:E]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:3:F Deliverables:3:F]
+<br/>
+ * [INCFProjectSubTasks_2011_2012#Deliverables:4:A Deliverables:4:A]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:4:B Deliverables:4:B]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:4:C Deliverables:4:C]
 <br/>
 
 ===Deliverables:1:A===
@@ -331,6 +348,246 @@
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
 <tr>
 <th colspan="2" align="left">Develop an online manual and tutorials for using the online atlas registration hub.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+
+
+
+
+===Deliverables:3:A===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Describe available coordinate systems for the rat brain and register them to the spatial reference system registry.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:3:B===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Develop an atlas hub for rat brain. (and assist other INCF partners in developing their hubs).</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:3:C===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Identify common anatomic features across mouse and rat brain atlases that can be used to map between them. Develop an algorithm and implement an engine for a) expressing a given ROI or POI as a set of spatial placement rules, and b) pruning the set of rules into a parsimonious location description.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:3:D===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Create rule-based location descriptions for anatomic features identified in both mouse and rat brain atlases.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:3:E===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Develop an algorithm and implement an engine for resolving a set of spatial placement rules to local coordinates of an ROI in a target brain.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:3:F===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Incorporate transformations between location descriptions by coordinates, and by spatial placement rules, into WaxML and atlas services.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+
+
+===Deliverables:4:A===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Develop a data registration user interface supporting data upload to iRODS with automatic registration of the uploaded data to the Data Discovery Portal.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:4:B===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Develop procedures for synchronizing content of iRODS in the cloud appliance with the metadata catalog underlying the Data Discovery Portal.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:4:C===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Develop better integration between the Portal’s search facility, and the WBC and WIB clients, so that the discovered image resources can be visualized in WBC or WIB depending on their atlas registration properties. Integrate selected web-based mouse brain atlas viewers developed by members of the INCF Atlasing program (in particular, the Scalable Brain Atlas and the EMAP Atlas Viewer) into the portal.</th>
 </tr>
 <tr>
 <th align="left">Notes</th>
