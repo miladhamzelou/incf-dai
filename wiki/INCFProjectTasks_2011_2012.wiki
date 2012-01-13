@@ -41,8 +41,8 @@
   <tr>
     <td>*1:C*</td>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:1:C Visualize deformation fields to display regions of lower accuracy (e.g. as “heat maps”.)]</th>
-    <td align="center">*X*</td>
     <td align="center">**</td>
+    <td align="center">*X*</td>
     <td align="center">**</td>
     <td align="center">**</td>
     <td align="center">*In Progress*</td>
@@ -50,8 +50,8 @@
   <tr>
     <td>*1:D*</td>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:1:D Develop specification and output schemas for coordinate transformation services that include accuracy estimates.]</th>
-    <td align="center">*X*</td>
     <td align="center">**</td>
+    <td align="center">*A*</td>
     <td align="center">**</td>
     <td align="center">**</td>
     <td align="center">*In Progress*</td>
@@ -59,9 +59,9 @@
   <tr>
     <td>*1:E*</td>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:1:E Implement atlas services that return transformation accuracy information.]</th>
-    <td align="center">*X*</td>
     <td align="center">**</td>
-    <td align="center">**</td>
+    <td align="center">*A*</td>
+    <td align="center">*XB*</td>
     <td align="center">**</td>
     <td align="center">*In Progress*</td>
   </tr>
@@ -87,6 +87,77 @@
 </table>
 <br/>
 
+
+
+<br/>
+
+===Deliverables:2===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+  <tr>
+    <td>*2*</td>
+    <td>*Development of atlas registration workflow and a registration hub:*</td>
+
+    <th align="center">01/31/2012</th>
+    <th align="center">05/15/2012</th>
+    <th align="center">08/15/2012</th>
+    <th align="center">Assignee</th>
+    <th align="center">Status</th>
+  </tr>
+  <tr>
+    <td>*2:A*</td>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:2:A Develop a specification of services and exchange formats to be used in the workflow, and approbate them with image datasets of varying complexity (contributed by the Atlasing TF members).]</th>
+    <td align="center">*X*</td>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">*In Progress*</td>
+  </tr>
+  <tr>
+    <td>*2:B*</td>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:2:B Develop atlas registration services, by wrapping ITK/ANTs scripts as WFS-compliant services, register them in INCF-DAI.]<sup>1</sup></th>
+    <td align="center">*A*</td>
+    <td align="center">**</td>
+    <td align="center">*XB*</td>
+    <td align="center">**</td>
+    <td align="center">*In Progress*</td>
+  </tr>
+  <tr>
+    <td>*2:C*</td>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:2:C Test the services on the contributed image datasets.]</th>
+    <td align="center">**</td>
+    <td align="center">*X*</td>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">*In Progress*</td>
+  </tr>
+  <tr>
+    <td>*2:D*</td>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:2:D Use ITK to generate and compare deformation fields resulting from WHS registration using different transformations (B-spline warping, thin plate spline, landmark warping, etc.) and parameters.]</th>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">*X*</td>
+    <td align="center">**</td>
+    <td align="center">*In Progress*</td>
+  </tr>
+  <tr>
+    <td>*2:E*</td>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:2:E Organize the services into an INCF registration hub that takes advantage of iRODS storage and is available online for registering images to WHS.]</th>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">*In Progress*</td>
+  </tr>
+  <tr>
+    <td>*2:F*</td>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:2:F Develop an online manual and tutorials for using the online atlas registration hub.]</th>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">**</td>
+    <td align="center">*In Progress*</td>
+  </tr>
 
 </table>
 <br/>
