@@ -18,6 +18,7 @@
     <th align="center">Status</th>
   </tr>
   <tr>
+    <td></td>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Task1A Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation.]</th>
     <td align="center">*X*</td>
     <td align="center">**</td>
@@ -26,6 +27,7 @@
     <td align="center">*In Progress*</td>
   </tr>
   <tr>
+    <td></td>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Task1A Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation.]<sup>1</sup></th>
     <td align="center">*X*</td>
     <td align="center">**</td>
