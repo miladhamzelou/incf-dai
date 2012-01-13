@@ -1,6 +1,9 @@
 #summary Specific tasks and sub-tasks related to INCF Atlas Services Enhancements listed below.
 
  * [INCFProjectTasks_2011_2012#Deliverables:1 Deliverables:1]
+ * [INCFProjectTasks_2011_2012#Deliverables:2 Deliverables:2]
+ * [INCFProjectTasks_2011_2012#Deliverables:3 Deliverables:3]
+ * [INCFProjectTasks_2011_2012#Deliverables:4 Deliverables:4]
 
 <br/>
 
