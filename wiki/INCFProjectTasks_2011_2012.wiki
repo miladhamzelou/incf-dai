@@ -10,7 +10,7 @@
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
     <td></td>
-    <td><strong>Modeling of coordinate transformations, and assessment of transformation accuracy:</strong></td>
+    <td>*Modeling of coordinate transformations, and assessment of transformation accuracy:*</td>
 
     <th align="center">01/31/2012</th>
     <th align="center">05/15/2012</th>
@@ -19,7 +19,7 @@
     <th align="center">Status</th>
   </tr>
   <tr>
-    <td>1:A</td>
+    <td>*1:A*</td>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Task1A Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation.]</th>
     <td align="center">*X*</td>
     <td align="center">**</td>
@@ -28,7 +28,7 @@
     <td align="center">*In Progress*</td>
   </tr>
   <tr>
-    <td>1:B</td>
+    <td>*1:B*</td>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Task1A Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation.]<sup>1</sup></th>
     <td align="center">*X*</td>
     <td align="center">**</td>
