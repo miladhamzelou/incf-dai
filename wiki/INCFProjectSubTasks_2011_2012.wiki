@@ -30,3 +30,159 @@
 </tr>
 </table>
 <br/>
+===Deliverables:1:B===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">Conduct accuracy assessment of coordinate transformation functions developed earlier, by i) simulating series of forward and inverse transformations for available images and generating an image volume with transformation performance statistics, ii) assessing consistency of transformation results under different transformation parameters and sets of fiducials.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:1:C===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">Visualize deformation fields to display regions of lower accuracy (e.g. as “heat maps”.)</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:1:D===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">Develop specification and output schemas for coordinate transformation services that include accuracy estimates.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:1:E===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">Implement atlas services that return transformation accuracy information.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:1:F===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">Develop an error propagation model and include error assessment in GetTransformationChain responses.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:1:G===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">Generate a report and publications on the inclusion of accuracy assessment and accuracy propagation in brain atlas web services.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
