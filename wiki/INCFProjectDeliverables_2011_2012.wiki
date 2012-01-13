@@ -8,7 +8,7 @@ This table indicates which INCF Atlas processes are applicable to the various hu
     <th align="center">Deliverables</th>
   </tr>
   <tr>
-    <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&request=GetCapabilities Deliverable:1]*</td>
-    <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&request=GetCapabilities Wazz up]*</td>
+    <td align="center">*Deliverable:1*</td>
+    <td align="center">*[http://code.google.com/p/incf-dai/w/edit/INCFProjectTasks_2011_2012#Deliverables1 Modeling of coordinate transformations, and assessment of transformation accuracy.]*</td>
   </tr>
 </table>
