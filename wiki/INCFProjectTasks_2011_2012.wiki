@@ -68,7 +68,7 @@
   <tr>
     <td>*1:F*</td>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:1:F Develop an error propagation model and include error assessment in GetTransformationChain responses.]</th>
-    <td align="center">*X*</td>
+    <td align="center">**</td>
     <td align="center">**</td>
     <td align="center">**</td>
     <td align="center">**</td>
@@ -77,7 +77,7 @@
   <tr>
     <td>*1:G*</td>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:1:G Generate a report and publications on the inclusion of accuracy assessment and accuracy propagation in brain atlas web services.]</th>
-    <td align="center">*X*</td>
+    <td align="center">**</td>
     <td align="center">**</td>
     <td align="center">**</td>
     <td align="center">**</td>
@@ -226,7 +226,7 @@
   <tr>
     <td>*3:F*</td>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:3:F Incorporate transformations between location descriptions by coordinates, and by spatial placement rules, into WaxML and atlas services.]</th>
-    <td align="center">*X*</td>
+    <td align="center">**</td>
     <td align="center">**</td>
     <td align="center">**</td>
     <td align="center">**</td>
