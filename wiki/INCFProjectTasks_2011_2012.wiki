@@ -20,20 +20,20 @@
   </tr>
   <tr>
     <td>*1:A*</td>
-    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Task1A Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation.]</th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:1:A Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation.]</th>
     <td align="center">*X*</td>
     <td align="center">**</td>
     <td align="center">**</td>
-    <td align="center">*Asif*</td>
+    <td align="center">**</td>
     <td align="center">*In Progress*</td>
   </tr>
   <tr>
     <td>*1:B*</td>
-    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Task1A Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation.]<sup>1</sup></th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:1:B Conduct accuracy assessment of coordinate transformation functions developed earlier, by a) simulating series of forward and inverse transformations for available images and generating an image volume with transformation performance statistics, b) assessing consistency of transformation results under different transformation parameters and sets of fiducials.]<sup>1</sup></th>
     <td align="center">*X*</td>
     <td align="center">**</td>
     <td align="center">**</td>
-    <td align="center">*Steve Lamont*</td>
+    <td align="center">**</td>
     <td align="center">*In Progress*</td>
   </tr>
 
