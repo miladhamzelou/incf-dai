@@ -192,3 +192,163 @@
 </tr>
 </table>
 <br/>
+
+
+<br/>
+
+===Deliverables:2:A===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Develop a specification of services and exchange formats to be used in the workflow, and approbate them with image datasets of varying complexity (contributed by the Atlasing TF members).</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:2:B===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Develop atlas registration services, by wrapping ITK/ANTs scripts as WFS-compliant services, register them in INCF-DAI.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:2:C===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Test the services on the contributed image datasets.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:2:D===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Use ITK to generate and compare deformation fields resulting from WHS registration using different transformations (B-spline warping, thin plate spline, landmark warping, etc.) and parameters.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:2:E===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Organize the services into an INCF registration hub that takes advantage of iRODS storage and is available online for registering images to WHS.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
+===Deliverables:2:F===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2" align="left">Develop an online manual and tutorials for using the online atlas registration hub.</th>
+</tr>
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+<br/>
+<br/>
+<br/>
+<br/>
+</td>
+</tr>
+</table>
+<br/>
