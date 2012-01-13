@@ -7,21 +7,21 @@
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:E Deliverables:1:E]
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:F Deliverables:1:F]
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:G Deliverables:1:G]
-<br/>
+
  * [INCFProjectSubTasks_2011_2012#Deliverables:2:A Deliverables:2:A]
  * [INCFProjectSubTasks_2011_2012#Deliverables:2:B Deliverables:2:B]
  * [INCFProjectSubTasks_2011_2012#Deliverables:2:C Deliverables:2:C]
  * [INCFProjectSubTasks_2011_2012#Deliverables:2:D Deliverables:2:D]
  * [INCFProjectSubTasks_2011_2012#Deliverables:2:E Deliverables:2:E]
  * [INCFProjectSubTasks_2011_2012#Deliverables:2:F Deliverables:2:F]
-<br/>
+
  * [INCFProjectSubTasks_2011_2012#Deliverables:3:A Deliverables:3:A]
  * [INCFProjectSubTasks_2011_2012#Deliverables:3:B Deliverables:3:B]
  * [INCFProjectSubTasks_2011_2012#Deliverables:3:C Deliverables:3:C]
  * [INCFProjectSubTasks_2011_2012#Deliverables:3:D Deliverables:3:D]
  * [INCFProjectSubTasks_2011_2012#Deliverables:3:E Deliverables:3:E]
  * [INCFProjectSubTasks_2011_2012#Deliverables:3:F Deliverables:3:F]
-<br/>
+
  * [INCFProjectSubTasks_2011_2012#Deliverables:4:A Deliverables:4:A]
  * [INCFProjectSubTasks_2011_2012#Deliverables:4:B Deliverables:4:B]
  * [INCFProjectSubTasks_2011_2012#Deliverables:4:C Deliverables:4:C]
