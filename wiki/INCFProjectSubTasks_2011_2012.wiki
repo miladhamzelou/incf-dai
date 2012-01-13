@@ -62,10 +62,7 @@
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
-<br/>
-<br/>
-<br/>
+These are preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates. 
 </td>
 </tr>
 <tr>
