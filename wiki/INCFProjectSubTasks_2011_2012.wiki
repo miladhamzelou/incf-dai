@@ -1,6 +1,12 @@
 #summary Sub-tasks related to INCF Atlas Services Enhancements.
 
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:A Deliverables:1:A]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:1:B Deliverables:1:B]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:1:C Deliverables:1:C]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:1:D Deliverables:1:D]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:1:E Deliverables:1:E]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:1:F Deliverables:1:F]
+ * [INCFProjectSubTasks_2011_2012#Deliverables:1:G Deliverables:1:G]
 
 <br/>
 
