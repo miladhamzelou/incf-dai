@@ -6,19 +6,19 @@
     <th align="center">Deliverables</th>
   </tr>
   <tr>
-    <td align="center">*Deliverable:1*</td>
-    <td align="center">*[http://code.google.com/p/incf-dai/wiki/INCFProjectTasks_2011_2012/INCFProjectTasks_2011_2012#Deliverables:1 Modeling of coordinate transformations, and assessment of transformation accuracy.]*</td>
+    <td align="left">*Deliverable:1*</td>
+    <td align="left">*[http://code.google.com/p/incf-dai/wiki/INCFProjectTasks_2011_2012/INCFProjectTasks_2011_2012#Deliverables:1 Modeling of coordinate transformations, and assessment of transformation accuracy.]*</td>
   </tr>
   <tr>
-    <td align="center">*Deliverable:2*</td>
-    <td align="center">*[http://code.google.com/p/incf-dai/wiki/INCFProjectTasks_2011_2012/INCFProjectTasks_2011_2012#Deliverables:2 Development of atlas registration workflow and a registration hub.]*</td>
+    <td align="left">*Deliverable:2*</td>
+    <td align="left">*[http://code.google.com/p/incf-dai/wiki/INCFProjectTasks_2011_2012/INCFProjectTasks_2011_2012#Deliverables:2 Development of atlas registration workflow and a registration hub.]*</td>
   </tr>
   <tr>
-    <td align="center">*Deliverable:3*</td>
-    <td align="center">*[http://code.google.com/p/incf-dai/wiki/INCFProjectTasks_2011_2012/INCFProjectTasks_2011_2012#Deliverables:3 Extending the Waxholm space approach to a rat brain atlas, and exchanging location information based on spatial placement rules.]*</td>
+    <td align="left">*Deliverable:3*</td>
+    <td align="left">*[http://code.google.com/p/incf-dai/wiki/INCFProjectTasks_2011_2012/INCFProjectTasks_2011_2012#Deliverables:3 Extending the Waxholm space approach to a rat brain atlas, and exchanging location information based on spatial placement rules.]*</td>
   </tr>
   <tr>
-    <td align="center">*Deliverable:4*</td>
-    <td align="center">*[http://code.google.com/p/incf-dai/wiki/INCFProjectTasks_2011_2012/INCFProjectTasks_2011_2012#Deliverables:4 Enhancing the INCF Data Discovery Portal and integrating it with iRODS backend and visualization clients.]*</td>
+    <td align="left">*Deliverable:4*</td>
+    <td align="left">*[http://code.google.com/p/incf-dai/wiki/INCFProjectTasks_2011_2012/INCFProjectTasks_2011_2012#Deliverables:4 Enhancing the INCF Data Discovery Portal and integrating it with iRODS backend and visualization clients.]*</td>
   </tr>
 </table>
