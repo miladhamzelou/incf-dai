@@ -9,7 +9,8 @@
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
   <tr>
-    <td></td>
+    <td>Deliverables:1</td>
+    <td>Modeling of coordinate transformations, and assessment of transformation accuracy.</td>
     <th align="center">01/31/2012</th>
     <th align="center">05/15/2012</th>
     <th align="center">08/15/2012</th>
