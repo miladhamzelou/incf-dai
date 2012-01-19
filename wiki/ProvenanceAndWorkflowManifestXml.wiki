@@ -1,5 +1,5 @@
 #labels workflow,provenance,xml
-#This page is the gathering of the thoughts to examine existing workflows and provenance, and  better define the requirements.
+#examines existing workflows and provenance
 
 = Introduction =
 
