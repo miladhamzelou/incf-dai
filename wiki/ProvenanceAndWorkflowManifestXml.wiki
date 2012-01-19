@@ -1,5 +1,5 @@
 #labels workflow,provenance,xml
-# examines existing workflows and provenance
+#examines existing workflows and provenance.
 
 = Introduction =
 
