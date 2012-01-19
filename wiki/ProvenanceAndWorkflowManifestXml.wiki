@@ -1,0 +1,23 @@
+#summary One-sentence summary of this page.
+#labels workflow,provenance,xml
+
+= Introduction =
+
+We need to document the processing provenance of the workflow. This page is the gathering of the thoughts to examine existing workflows and provenance, and  better define the requirements.
+
+The present manifest XML is strongly typed to the defined workflow, and is really a documentation of the provenance.
+
+
+= Notes =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
+
+= Sites =
+  * [http://www.workflowpatterns.com/ workflow patterns]
+  * [http://www.e-workflow.org/]
+  * [http://openprovenance.org/tutorial/
+  * [http://openprovenance.org/ open provenance model]
+  * [http://msdn.microsoft.com/library/ee342461.aspx definitions from Microsofts workflow foundation]
