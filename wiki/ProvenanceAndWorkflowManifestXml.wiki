@@ -21,3 +21,7 @@ Add your content here.  Format your content with:
   * [http://openprovenance.org/tutorial/
   * [http://openprovenance.org/ open provenance model]
   * [http://msdn.microsoft.com/library/ee342461.aspx definitions from Microsofts workflow foundation]
+  * [http://www.w3.org/2005/Incubator/prov/wiki/Provenance_Vocabulary_Mappings w3c provenance incubator]
+
+= workflow systems =
+  * [http://galaxy.psu.edu/]
