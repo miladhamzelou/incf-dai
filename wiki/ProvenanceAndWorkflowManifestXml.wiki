@@ -10,10 +10,11 @@ The present manifest XML is strongly typed to the defined workflow, and is reall
 
 = Notes =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+There is an [https://github.com/INCF/ProvenanceLibrary/wiki/terms INCF provenance library]
+ using [http://www.w3.org/blog/SW/2011/10/18/first-draft-of-a-provenance-data-model-published/ w3c] 
+  * [http://dvcs.w3.org/hg/prov/file/tip/model/ProvenanceModel.html Data model]
+  * [http://dvcs.w3.org/hg/prov/file/tip/ontology/ProvenanceFormalModel.html Ontology]
+  * [https://github.com/lucmoreau/ProvToolbox/blob/master/xml/src/main/resources/prov-20111110.xsd Upstream schema]
 
 = Sites =
   * [http://www.workflowpatterns.com/ workflow patterns]
@@ -22,7 +23,7 @@ Add your content here.  Format your content with:
   * [http://openprovenance.org/ open provenance model]
   * [http://msdn.microsoft.com/library/ee342461.aspx definitions from Microsofts workflow foundation]
   * [http://www.w3.org/2005/Incubator/prov/wiki/Provenance_Vocabulary_Mappings w3c provenance incubator]
-* [http://www.gridworkflow.org/kwfgrid/gworkflowdl/docs/ xml schema and tools]
+  * [http://www.gridworkflow.org/kwfgrid/gworkflowdl/docs/ xml schema and tools]
 
 = workflow systems =
   * [http://galaxy.psu.edu/]
