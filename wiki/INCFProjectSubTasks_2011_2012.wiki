@@ -378,17 +378,7 @@ https://lh4.googleusercontent.com/-T2zY54BhbJI/TxADqAIT1kI/AAAAAAAAADc/HZIx22XwJ
 <th colspan="2" align="left">Describe available coordinate systems for the rat brain and register them to the spatial reference system registry.</th>
 </tr>
 <tr>
-<th>
-Notes
-</th>
-
-Step by Step guide for registration: 
-http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow
-
-<br/>
-
-Step by Step guide for registration: 
-http://code.google.com/p/incf-dai/wiki/WIBQueryTool
+<th align="left">Notes</th>
 <td width="80%">
 <br/>
 <br/>
