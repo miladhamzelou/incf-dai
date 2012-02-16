@@ -380,19 +380,12 @@ https://lh4.googleusercontent.com/-T2zY54BhbJI/TxADqAIT1kI/AAAAAAAAADc/HZIx22XwJ
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
-<br/>
-<br/>
-<br/>
-</td>
-</tr>
+
 <tr>
-<th align="left">Examples</th>
-<td width="80%">
-<br/>
-<br/>
-<br/>
-<br/>
+Step by Step guide for registration: 
+http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow
+</tr>
+
 </td>
 </tr>
 </table>
