@@ -2,7 +2,7 @@
 
 = Image Workflow =
 
-Getting Started
+Getting Started  
 
 Register as a new user on CCDB portal at: http://ccdb-portal.crbs.ucsd.edu/web/guest/home?p_p_id=58&p_p_lifecycle=1&p_p_state=maximized&p_p_mode=view&saveLastPath=0&_58_struts_action=%2Flogin%2Fcreate_account
 
@@ -121,3 +121,7 @@ https://lh5.googleusercontent.com/-1_0LQyzZGtA/TuGgh9MEYhI/AAAAAAAAADI/62XzLpqpI
 
 Once the process is finished, you will receive an email with the URL for a client application named WIB(Web Image Browser) where you can navigate the warped image from the above process. You can also query across various hubs registered under INCF.
   
+
+For Querying the registered image, please follow the steps listed here:
+http://code.google.com/p/incf-dai/wiki/WIBQueryTool
+
