@@ -381,10 +381,10 @@ https://lh4.googleusercontent.com/-T2zY54BhbJI/TxADqAIT1kI/AAAAAAAAADc/HZIx22XwJ
 <th align="left">Notes</th>
 <td width="80%">
 
-<tr>
+
 Step by Step guide for registration: 
 http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow
-</tr>
+
 
 </td>
 </tr>
