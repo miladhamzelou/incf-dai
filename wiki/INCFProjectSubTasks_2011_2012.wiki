@@ -387,9 +387,9 @@ Notes
 http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow
 </th>
 <br/>
-<th align="left">Step by Step guide for registration: 
+Step by Step guide for registration: 
 http://code.google.com/p/incf-dai/wiki/WIBQueryTool
-</th>
+
 <td width="80%">
 <br/>
 <br/>
