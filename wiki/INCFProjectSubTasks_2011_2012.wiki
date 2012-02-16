@@ -379,6 +379,10 @@ https://lh4.googleusercontent.com/-T2zY54BhbJI/TxADqAIT1kI/AAAAAAAAADc/HZIx22XwJ
 </tr>
 <tr>
 </th>
+<th>
+Notes
+</th>
+
 <th align="left">Step by Step guide for registration: 
 http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow
 </th>
