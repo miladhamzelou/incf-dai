@@ -122,6 +122,6 @@ https://lh5.googleusercontent.com/-1_0LQyzZGtA/TuGgh9MEYhI/AAAAAAAAADI/62XzLpqpI
 Once the process is finished, you will receive an email with the URL for a client application named WIB(Web Image Browser) where you can navigate the warped image from the above process. You can also query across various hubs registered under INCF.
   
 
-For Querying the registered image, please follow the steps listed here:
+= Queries = 
+For querying the registered image, please follow the steps listed = 
 http://code.google.com/p/incf-dai/wiki/WIBQueryTool
-
