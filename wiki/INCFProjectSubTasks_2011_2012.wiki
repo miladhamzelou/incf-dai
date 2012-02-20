@@ -93,7 +93,7 @@ https://lh4.googleusercontent.com/-T2zY54BhbJI/TxADqAIT1kI/AAAAAAAAADc/HZIx22XwJ
 <th align="left">Examples</th>
 <td width="80%">
 <br/>
-WHS-PAXINOS-WHS
+= WHS-PAXINOS-WHS = 
 <br/>
 https://lh3.googleusercontent.com/-_hdv4O-9D60/T0IO5My4jdI/AAAAAAAAAEU/WilTP18gdIs/s640/WHS-PAXINOS-WHS-Corrected-coronal-0.02mm-discrepency.jpg
 <br/>
@@ -105,7 +105,7 @@ https://lh3.googleusercontent.com/-whBJgcbaFqY/T0IO6MssLuI/AAAAAAAAAEg/xzjhgOsje
 <br/>
 
 <br>
-WHS-AGEA-WHS
+= WHS-AGEA-WHS = 
 <br>
 https://lh6.googleusercontent.com/-c915N363Yvc/T0IO7nAZq8I/AAAAAAAAAEk/Fj4bUFB0NKU/s512/WHS-AGEA-WHS-whs-agea-whs.coronal.0584.jpg
 <br>
