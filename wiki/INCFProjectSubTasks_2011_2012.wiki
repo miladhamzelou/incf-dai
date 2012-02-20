@@ -87,18 +87,31 @@ https://lh4.googleusercontent.com/-T2zY54BhbJI/TxADqAIT1kI/AAAAAAAAADc/HZIx22XwJ
 <th align="left">Notes</th>
 <td width="80%">
 <br/>
-<br/>
-<br/>
-<br/>
 </td>
 </tr>
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
 <br/>
+WHS-PAXINOS-WHS
 <br/>
+https://lh3.googleusercontent.com/-_hdv4O-9D60/T0IO5My4jdI/AAAAAAAAAEU/WilTP18gdIs/s640/WHS-PAXINOS-WHS-Corrected-coronal-0.02mm-discrepency.jpg
 <br/>
+https://lh6.googleusercontent.com/-oDwu7wIOQGY/T0IO5Y-a7eI/AAAAAAAAAEY/AzBlpXrS1zs/s912/WHS-PAXINOS-WHS-Corrected-lateral-0.12mm-discrepency.jpg
 <br/>
+https://lh4.googleusercontent.com/-VueuYQiUJOU/T0IO59ByejI/AAAAAAAAAEc/mLo3HO1Lpk0/s511/WHS-PAXINOS-WHS-coronal-512-pixels-discrepency.jpg
+<br/>
+https://lh3.googleusercontent.com/-whBJgcbaFqY/T0IO6MssLuI/AAAAAAAAAEg/xzjhgOsjeC4/s912/WHS-PAXINOS-WHS-sagittal-256-pixels-discrepency.jpg
+<br/>
+
+<br>
+WHS-AGEA-WHS
+<br>
+https://lh6.googleusercontent.com/-c915N363Yvc/T0IO7nAZq8I/AAAAAAAAAEk/Fj4bUFB0NKU/s512/WHS-AGEA-WHS-whs-agea-whs.coronal.0584.jpg
+<br>
+https://lh6.googleusercontent.com/-5mB6T9VyBK4/T0IO9MOrmSI/AAAAAAAAAEo/n85r1uAn_wg/s912/WHS-AGEA-WHS-whs-agea-whs.sagittal.0292.jpg
+<br>
+
 </td>
 </tr>
 </table>
