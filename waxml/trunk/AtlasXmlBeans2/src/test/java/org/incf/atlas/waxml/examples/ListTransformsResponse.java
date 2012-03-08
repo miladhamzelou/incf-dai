@@ -125,7 +125,7 @@ co.getListTransformationsResponse().newCursor().insertComment("Generated " + Cal
 	ex1.setHub("UCSD");
 	ex1.setInputSrsName(new QName("Mouse_Paxinos_1.0"));
 	ex1.setOutputSrsName(new QName("Mouse_WHS_1.0"));
-	ex1.setAccuracy(1);
+	ex1.setDisplacement(1);
 	ex1.setStringValue("RequestUrl_1");
 	
 	CoordinateTransformationInfoType ex2 =ct.addNewCoordinateTransformation();
@@ -134,7 +134,7 @@ co.getListTransformationsResponse().newCursor().insertComment("Generated " + Cal
 	ex2.setHub("ABA");
 	ex2.setInputSrsName(new QName("Mouse_WHS_1.0"));
 	ex2.setOutputSrsName(new QName("Mouse_AGEA_1.0"));
-	ex2.setAccuracy(1);
+	ex2.setDisplacement(1);
 	ex2.setStringValue("RequestUrl_2");
 	return co;
 }

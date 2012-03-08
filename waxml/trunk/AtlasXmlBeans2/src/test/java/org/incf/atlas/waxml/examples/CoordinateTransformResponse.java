@@ -109,7 +109,7 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 	ex1.setHub("UCSD");
 	ex1.setInputSrsName(new QName("Mouse_Paxinos_1.0"));
 	ex1.setOutputSrsName(new QName("Mouse_WHS_1.0"));
-	ex1.setAccuracy(1);
+	ex1.setDisplacement(1);
 	ex1.setVersion("1.0");
 	ex1.setStringValue("RequestUrl_1");
 	
@@ -119,7 +119,7 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 	ex2.setHub("ABA");
 	ex2.setInputSrsName(new QName("Mouse_WHS_1.0"));
 	ex2.setOutputSrsName(new QName("Mouse_AGEA_1.0"));
-	ex2.setAccuracy(1);
+	ex2.setDisplacement(1);
 	ex1.setVersion("1.0");
 	ex2.setStringValue("RequestUrl_2");
 	
@@ -130,7 +130,7 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 	ex3.setHub("ABA");
 	ex3.setInputSrsName(new QName("Mouse_AGEA_1.0"));
 	ex3.setOutputSrsName(new QName("Mouse_ABAvoxel_1.0"));
-//	ex3.setAccuracy(1);
+//	ex3.setDisplacement(1);
 	ex1.setVersion("1.0");
 	ex3.setStringValue("RequestUrl_3");
 	
@@ -140,7 +140,7 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 	ex4.setHub("ABA");
 	ex4.setInputSrsName(new QName("Mouse_ABAvoxel_1.0"));
 	ex4.setOutputSrsName(new QName("Mouse_ABAreference_1.0"));
-//	ex4.setAccuracy(1);
+//	ex4.setDisplacement(1);
 	ex4.setStringValue("RequestUrl_4");
 	return co;
 }
