@@ -93,6 +93,7 @@ Utilities.addInputStringCriteria(criterias,"transformationCode", "Mouse_ABAvoxel
 		filterCodeCriteria.setValue("cerebellum");
 
 		POIType poi = rootDoc.addNewPOI();
+		poi.setDisplacement(1.0);
 		PointType poipnt = poi.addNewPoint();
 		poipnt.setId("AnyIndentifier");
 		poipnt.newCursor().insertComment("id on Point Required By GML\n Scoped to the document only");

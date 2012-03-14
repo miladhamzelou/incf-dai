@@ -1,6 +1,6 @@
 <AnnotationResponse xmlns="http://www.incf.org/WaxML/" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlin="http://www.w3.org/1999/xlink">
   <Annotation>
-    <MODIFIED_DATE>2012-03-08-08:00</MODIFIED_DATE>
+    <MODIFIED_DATE>2012-03-14-07:00</MODIFIED_DATE>
     <RESOURCE filepath="http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_23_rec"/>
     <!--polygon object with gml:id=ANN80087-->
     <GEOMETRIES>
