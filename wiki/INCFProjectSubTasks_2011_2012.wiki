@@ -149,21 +149,9 @@ https://lh6.googleusercontent.com/-5mB6T9VyBK4/T0IO9MOrmSI/AAAAAAAAAEo/n85r1uAn_
 <th colspan="2" align="left">Implement atlas services that return transformation accuracy information.</th>
 </tr>
 <tr>
-<th align="left">Notes</th>
-<td width="80%">
-<br/>
-<br/>
-<br/>
-<br/>
-</td>
-</tr>
-<tr>
 <th align="left">Examples</th>
 <td width="80%">
-<br/>
-<br/>
-<br/>
-<br/>
+http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;x=3;y=5.3;z=4.78
 </td>
 </tr>
 </table>
@@ -255,15 +243,6 @@ https://lh6.googleusercontent.com/-5mB6T9VyBK4/T0IO9MOrmSI/AAAAAAAAAEo/n85r1uAn_
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
 <tr>
 <th colspan="2" align="left">Develop atlas registration services, by wrapping ITK/ANTs scripts as WFS-compliant services, register them in INCF-DAI.</th>
-</tr>
-<tr>
-<th align="left">Notes</th>
-<td width="80%">
-<br/>
-<br/>
-<br/>
-<br/>
-</td>
 </tr>
 <tr>
 <th align="left">Examples</th>
