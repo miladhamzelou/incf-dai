@@ -268,31 +268,31 @@ https://lh6.googleusercontent.com/-5mB6T9VyBK4/T0IO9MOrmSI/AAAAAAAAAEo/n85r1uAn_
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
-3D Reconstruction Service: 
+===3D Reconstruction Service:===
 http://132.239.131.188:8080/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
-Alignment to WHS: 
+===Alignment to WHS:===
 http://132.239.131.188:8080/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
-Fine Registration: 
+===Fine Registration:===
 http://132.239.131.188:8080/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=WarpReferenceAfterRoughVolumetricRegistration&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
-UpdateITK:
+===UpdateITK:===
 http://132.239.131.188:8080/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
-ListSRSs:
+===ListSRSs:===
 http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs 
 
-DescribeSRS: 
+===DescribeSRS:===
 http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Mouse_ABAvoxel_1.0
 
-ListTransformations:
+===ListTransformations:===
 http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations 
 
-TransformPOI:
+===TransformPOI:===
 http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Yuko_1.0_To_Mouse_WHS_0.9_v1.0;x=200;y=320;z=211 
 
-Warped Dataset:
+===Warped Dataset:===
 http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?volumeID=irods:/telescience/home/asifmemon/canon_hist_affined_warped.nii 
 </td>
 </tr>
