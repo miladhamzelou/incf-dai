@@ -62,7 +62,7 @@
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-These are preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates. 
+These are preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates. The transformation in question is a thin plate spline created by matching the atlas outline features with corresponding image features.
 </td>
 </tr>
 <tr>
@@ -86,7 +86,7 @@ https://lh4.googleusercontent.com/-T2zY54BhbJI/TxADqAIT1kI/AAAAAAAAADc/HZIx22XwJ
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
+These are also the preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates. 
 </td>
 </tr>
 <tr>
@@ -394,14 +394,23 @@ http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?volumeID=irods:/teles
 <tr>
 <th align="left">Details</th>
 <td width="80%">
-
-
-Step by Step guide for registration: 
+We are looking at mouse data from Oslo. Here is a step by ttep guide for registration:
 http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow
+</td>
+</tr>
 
+<tr>
+<th align="left">Examples</th>
+<td width="80%">
+http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/49-388_12_s362_20x.pnz
+
+http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/26-388_12_s178_20x.pnz
+
+http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/26-388_12_s178_20x.pnz
 
 </td>
 </tr>
+
 </table>
 <br/>
 ===Deliverables:3:B===
