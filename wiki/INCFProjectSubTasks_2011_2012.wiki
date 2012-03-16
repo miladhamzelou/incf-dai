@@ -221,19 +221,11 @@ http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
-<br/>
-<br/>
-<br/>
-</td>
-</tr>
-<tr>
-<th align="left">Examples</th>
-<td width="80%">
-<br/>
-<br/>
-<br/>
-<br/>
+Here is a sample of Workflow Example File(please download and view the format):
+https://www.sugarsync.com/pf/D387646_3733681_28450
+
+Here is a sample of Manifest Example File(please download and view the format):
+https://www.sugarsync.com/pf/D387646_3733681_28475
 </td>
 </tr>
 </table>
@@ -244,6 +236,20 @@ http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute
 <tr>
 <th colspan="2" align="left">Develop atlas registration services, by wrapping ITK/ANTs scripts as WFS-compliant services, register them in INCF-DAI.</th>
 </tr>
+
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+Here is the script definition for ITK used for defining the Registration Workflow:
+https://github.com/luisibanez/ImageReconstruction
+
+https://github.com/luisibanez/ImageRegistration
+
+https://github.com/picslHISTO/HistoRecon/blob/master/scripts/entire_pipeline.sh
+
+</td>
+</tr>
+
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
