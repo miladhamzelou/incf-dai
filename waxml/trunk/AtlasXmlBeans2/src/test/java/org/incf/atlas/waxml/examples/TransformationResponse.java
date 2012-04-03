@@ -105,11 +105,12 @@ Utilities.addInputStringCriteria(criterias,"transformationCode", "Mouse_ABAvoxel
 		QName newName = new QName("Displacement");
 		//AbstractMetaDataType md10 =  poipnt.addNewMetaDataProperty().addNewAbstractMetaData();
 		MetaDataPropertyType md10 =   poipnt.addNewMetaDataProperty();
-		DisplacementMetaDataType dmd = DisplacementMetaDataType.Factory.newInstance();
+		DisplacementDocument dis = DisplacementDocument.Factory.newInstance();
+		DisplacementMetaDataType dmd = dis.addNewDisplacement();
 			LengthType dist1 = dmd.addNewDistance();
 		 dist1.setUom("mm");
 		 dist1.setDoubleValue(2.00);
-		 md10.set(dmd);
+		 md10.set(dis);
 		//DisplacementMetaDataType md1 = (DisplacementMetaDataType) md10.changeType( DisplacementMetaDataType.type);
 		//DisplacementMetaDataType md1 = (DisplacementMetaDataType) md10.substitute(newName, Displacement.type);
 	
