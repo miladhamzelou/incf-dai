@@ -5,11 +5,19 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import javax.xml.namespace.QName;
+
+import net.opengis.gml.x32.AbstractMetaDataType;
+import net.opengis.gml.x32.GenericMetaDataType;
+import net.opengis.gml.x32.LengthType;
+import net.opengis.gml.x32.MetaDataPropertyType;
 import net.opengis.gml.x32.PointType;
+import net.opengis.gml.x32.impl.GenericMetaDataTypeImpl;
 
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.*;
+import org.incf.atlas.waxml.generated.DisplacementMetaDataType.Displacement;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
@@ -93,11 +101,24 @@ Utilities.addInputStringCriteria(criterias,"transformationCode", "Mouse_ABAvoxel
 		filterCodeCriteria.setValue("cerebellum");
 
 		POIType poi = rootDoc.addNewPOI();
-		poi.setDisplacement(1.0);
+		//poi.setDisplacement(1.0);
 		PointType poipnt = poi.addNewPoint();
 		poipnt.setId("AnyIndentifier");
 		poipnt.newCursor().insertComment("id on Point Required By GML\n Scoped to the document only");
 		poipnt.setSrsName("Mouse_AGEA_1.0");
+
+		QName newName = new QName("Displacement");
+		//AbstractMetaDataType md10 =  poipnt.addNewMetaDataProperty().addNewAbstractMetaData();
+		MetaDataPropertyType md10 =   poipnt.addNewMetaDataProperty();
+		DisplacementMetaDataType dmd = DisplacementMetaDataType.Factory.newInstance();
+			LengthType dist1 = dmd.addNewDisplacement().addNewDistance();
+		 dist1.setUom("mm");
+		 dist1.setDoubleValue(2.00);
+		 md10.set(dmd);
+		//DisplacementMetaDataType md1 = (DisplacementMetaDataType) md10.changeType( DisplacementMetaDataType.type);
+		//DisplacementMetaDataType md1 = (DisplacementMetaDataType) md10.substitute(newName, Displacement.type);
+	
+		
 		poipnt.addNewPos();
 		
 		poipnt.getPos().setStringValue("2 2 2");

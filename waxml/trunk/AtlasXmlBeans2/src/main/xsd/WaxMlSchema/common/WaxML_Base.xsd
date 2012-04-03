@@ -75,7 +75,6 @@ Optional</xs:documentation>
             <xs:element ref="gml:Point"/>
             <xs:element ref="gml:MultiPoint"/>
         </xs:choice>
-        <xs:attribute name="displacement" type="xs:double"/>
     </xs:complexType>
     <xs:element name="BoundedBy" type="gml:BoundingShapeType"/>
     <xs:element name="Name" type="wax:IncfNameType"/>
@@ -196,5 +195,25 @@ Optional</xs:documentation>
     <xs:complexType name="UnitsOfMeasureType">
         <xs:attribute name="unitsName" type="xs:string"/>
         <xs:attribute name="unitsAbbreviation" type="xs:Name"/>
+    </xs:complexType>
+
+    <xs:element name="Displacement" type="wax:DisplacementMetaDataType"
+        substitutionGroup="gml:AbstractMetaData">
+        <xs:annotation>
+            <xs:appinfo>deprecated</xs:appinfo>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="DisplacementMetaDataType" mixed="true">
+        <xs:annotation>
+            <xs:appinfo>deprecated</xs:appinfo>
+        </xs:annotation>
+        <xs:complexContent mixed="true">
+            <xs:extension base="gml:AbstractMetaDataType">
+                <xs:choice>
+                    <xs:element name="vector" type="gml:VectorType"/>
+                    <xs:element name="distance" type="gml:LengthType"/>
+                </xs:choice>
+            </xs:extension>
+        </xs:complexContent>
     </xs:complexType>
 </xs:schema>

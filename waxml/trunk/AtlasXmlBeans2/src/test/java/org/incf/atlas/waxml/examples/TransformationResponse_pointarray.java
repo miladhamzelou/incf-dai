@@ -8,14 +8,19 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
 
+import net.opengis.gml.x32.AbstractMetaDataType;
 import net.opengis.gml.x32.DirectPositionListType;
+import net.opengis.gml.x32.LengthType;
+import net.opengis.gml.x32.MetaDataPropertyType;
 import net.opengis.gml.x32.MultiPointType;
 import net.opengis.gml.x32.PointType;
+import net.opengis.gml.x32.VectorType;
 
 import org.apache.xmlbeans.XmlDouble;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.*;
+import org.incf.atlas.waxml.generated.DisplacementMetaDataType.Displacement;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
@@ -99,16 +104,31 @@ Utilities.addInputStringCriteria(criterias,"transformationCode", "Mouse_ABAvoxel
 		filterCodeCriteria.setValue("cerebellum");
 
 		POIType poi = rootDoc.addNewPOI();
-		poi.setDisplacement(1.0);
+		//poi.setDisplacement(1.0);
 		MultiPointType poipnt = poi.addNewMultiPoint();
 		//poipnt.setId("AnyIndentifier");
 		poipnt.newCursor().insertComment("id on Point Required By GML\n Scoped to the document only");
 		poipnt.setSrsName("Mouse_AGEA_1.0");
 		poipnt.setId("mp");
+	
 	PointType p1=	poipnt.addNewPointMember().addNewPoint();
+	
+	DisplacementMetaDataType dmd = DisplacementMetaDataType.Factory.newInstance();
+	LengthType dist1 = dmd.addNewDisplacement().addNewDistance();
+ dist1.setUom("mm");
+ dist1.setDoubleValue(2.00);
+ p1.addNewMetaDataProperty().set(dmd);
+	 
 	p1.addNewPos().setStringValue("2 2 2");
 	p1.setId("p1");
+	
 	PointType p2=	poipnt.addNewPointMember().addNewPoint();
+	DisplacementMetaDataType dmd2 = DisplacementMetaDataType.Factory.newInstance();
+	VectorType dist2 = dmd2.addNewDisplacement().addNewVector();
+ dist2.setSrsName("Mouse_AGEA_1.0");
+ dist2.setStringValue("2.00 3.00");
+ p2.addNewMetaDataProperty().set(dmd2);
+ 
 	p2.addNewPos().setStringValue("3 3 3");
 	p2.setId("p2");
 	poipnt.setSrsDimension( BigInteger.valueOf(3));
