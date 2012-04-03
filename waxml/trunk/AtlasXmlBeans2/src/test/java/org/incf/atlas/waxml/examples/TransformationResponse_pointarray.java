@@ -8,10 +8,9 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Vector;
 
-import net.opengis.gml.x32.AbstractMetaDataType;
-import net.opengis.gml.x32.DirectPositionListType;
+
 import net.opengis.gml.x32.LengthType;
-import net.opengis.gml.x32.MetaDataPropertyType;
+
 import net.opengis.gml.x32.MultiPointType;
 import net.opengis.gml.x32.PointType;
 import net.opengis.gml.x32.VectorType;
@@ -20,7 +19,6 @@ import org.apache.xmlbeans.XmlDouble;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.*;
-import org.incf.atlas.waxml.generated.DisplacementMetaDataType.Displacement;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
@@ -114,7 +112,7 @@ Utilities.addInputStringCriteria(criterias,"transformationCode", "Mouse_ABAvoxel
 	PointType p1=	poipnt.addNewPointMember().addNewPoint();
 	
 	DisplacementMetaDataType dmd = DisplacementMetaDataType.Factory.newInstance();
-	LengthType dist1 = dmd.addNewDisplacement().addNewDistance();
+	LengthType dist1 = dmd.addNewDistance();
  dist1.setUom("mm");
  dist1.setDoubleValue(2.00);
  p1.addNewMetaDataProperty().set(dmd);
@@ -124,7 +122,7 @@ Utilities.addInputStringCriteria(criterias,"transformationCode", "Mouse_ABAvoxel
 	
 	PointType p2=	poipnt.addNewPointMember().addNewPoint();
 	DisplacementMetaDataType dmd2 = DisplacementMetaDataType.Factory.newInstance();
-	VectorType dist2 = dmd2.addNewDisplacement().addNewVector();
+	VectorType dist2 = dmd2.addNewVector();
  dist2.setSrsName("Mouse_AGEA_1.0");
  dist2.setStringValue("2.00 3.00");
  p2.addNewMetaDataProperty().set(dmd2);

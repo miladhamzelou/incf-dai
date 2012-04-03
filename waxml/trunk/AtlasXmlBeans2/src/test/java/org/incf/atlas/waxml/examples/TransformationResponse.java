@@ -7,17 +7,12 @@ import java.util.Calendar;
 
 import javax.xml.namespace.QName;
 
-import net.opengis.gml.x32.AbstractMetaDataType;
-import net.opengis.gml.x32.GenericMetaDataType;
 import net.opengis.gml.x32.LengthType;
 import net.opengis.gml.x32.MetaDataPropertyType;
 import net.opengis.gml.x32.PointType;
-import net.opengis.gml.x32.impl.GenericMetaDataTypeImpl;
-
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.incf.atlas.waxml.generated.*;
-import org.incf.atlas.waxml.generated.DisplacementMetaDataType.Displacement;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
@@ -111,7 +106,7 @@ Utilities.addInputStringCriteria(criterias,"transformationCode", "Mouse_ABAvoxel
 		//AbstractMetaDataType md10 =  poipnt.addNewMetaDataProperty().addNewAbstractMetaData();
 		MetaDataPropertyType md10 =   poipnt.addNewMetaDataProperty();
 		DisplacementMetaDataType dmd = DisplacementMetaDataType.Factory.newInstance();
-			LengthType dist1 = dmd.addNewDisplacement().addNewDistance();
+			LengthType dist1 = dmd.addNewDistance();
 		 dist1.setUom("mm");
 		 dist1.setDoubleValue(2.00);
 		 md10.set(dmd);
