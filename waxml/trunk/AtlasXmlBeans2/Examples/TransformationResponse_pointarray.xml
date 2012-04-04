@@ -1,4 +1,4 @@
-<!--Generated Mon Apr 02 17:56:52 PDT 2012-->
+<!--Generated Wed Apr 04 16:35:41 PDT 2012-->
 <TransformationResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
   <QueryInfo>
     <QueryUrl name="TransformPOI">URL</QueryUrl>
@@ -28,9 +28,7 @@
       <gml:pointMember>
         <gml:Point gml:id="p1">
           <gml:metaDataProperty>
-            <Displacement>
-              <distance uom="mm">2.0</distance>
-            </Displacement>
+            <distance uom="mm">2.0</distance>
           </gml:metaDataProperty>
           <gml:pos>2 2 2</gml:pos>
         </gml:Point>
@@ -38,9 +36,7 @@
       <gml:pointMember>
         <gml:Point gml:id="p2">
           <gml:metaDataProperty>
-            <Displacement>
-              <vector srsName="Mouse_AGEA_1.0">2.00 3.00</vector>
-            </Displacement>
+            <vector srsName="Mouse_AGEA_1.0">2.00 3.00</vector>
           </gml:metaDataProperty>
           <gml:pos>3 3 3</gml:pos>
         </gml:Point>

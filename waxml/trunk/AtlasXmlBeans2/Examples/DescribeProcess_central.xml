@@ -1,4 +1,4 @@
-<!--Generated Mon Apr 02 17:56:53 PDT 2012-->
+<!--Generated Wed Apr 04 16:35:42 PDT 2012-->
 <DescribeProcessForHubsResponse xmlns="http://www.incf.org/WaxML/" xmlns:ns="http://www.opengis.net/wps/1.0.0" xmlns:ns1="http://www.opengis.net/ows/1.1">
   <QueryInfo>
     <QueryUrl name="DescribeProcessForHubs">URL</QueryUrl>

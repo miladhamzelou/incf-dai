@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.incf</groupId>
   <artifactId>WaxML</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.2.0-SNAPSHOT</version>
   <name>XmlBeansWaxMl</name>
   <description>XmlBeans compiled from the WaxML amd GML schemas.  Also includes the WaxML schemas themselves along with examples.</description>
   
