@@ -115,18 +115,19 @@ Utilities.addInputStringCriteria(criterias,"transformationCode", "Mouse_ABAvoxel
 	LengthType dist1 = dmd.addNewDistance();
  dist1.setUom("mm");
  dist1.setDoubleValue(2.00);
- p1.addNewMetaDataProperty().set(dmd);
+ p1.addNewMetaDataProperty().set(dis);
 	 
 	p1.addNewPos().setStringValue("2 2 2");
 	p1.setId("p1");
 	
 	PointType p2=	poipnt.addNewPointMember().addNewPoint();
+	
 	DisplacementDocument dis2 = DisplacementDocument.Factory.newInstance();
 	DisplacementMetaDataType dmd2 = dis2.addNewDisplacement();
 	VectorType dist2 = dmd2.addNewVector();
  dist2.setSrsName("Mouse_AGEA_1.0");
  dist2.setStringValue("2.00 3.00");
- p2.addNewMetaDataProperty().set(dmd2);
+ p2.addNewMetaDataProperty().set(dis2);
  
 	p2.addNewPos().setStringValue("3 3 3");
 	p2.setId("p2");
