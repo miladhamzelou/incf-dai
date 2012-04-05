@@ -123,6 +123,7 @@ https://lh6.googleusercontent.com/-5mB6T9VyBK4/T0IO9MOrmSI/AAAAAAAAAEo/n85r1uAn_
 <td width="80%">
 <br/>
 Here is the schema for coordinate transformation services: 
+<br/>
 http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/TransformationResponse.xsd
 <br/>
 http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/common/WaxML_Base.xsd
