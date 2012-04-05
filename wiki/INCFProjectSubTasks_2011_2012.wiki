@@ -408,7 +408,7 @@ The services are being tested on datasets provided by Rob Williams. We will publ
 We are looking at mouse data from Oslo. Here is a step by ttep guide for registration:
 http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow
 
-<br>
+<br/>
 A gallery of mouse images uploaded and available for registration is here: http://tirebiter.ucsd.edu/cgi-bin/align.pl?uri=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_84380/OsloData/manifest.xml&email=amemon@ncmir.ucsd.edu
 </td>
 </tr>
