@@ -144,10 +144,10 @@ public class Main {
 		e.printStackTrace();
 	}
 	CorrelationMapResponseMultipoint cmr2 = new CorrelationMapResponseMultipoint();
-    String CorrelationResponse_Multipoint = cmr2.AsXml();
+    String CorrelationResponseMultipoint = cmr2.AsXml();
      try {
      	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/CorrelationMapResponse_Multipoint.xml"));
-         out.write(CorrelationResponse_Multipoint);
+         out.write(CorrelationResponseMultipoint);
          out.close();
 	} catch (IOException e) {
 		// TODO Auto-generated catch block

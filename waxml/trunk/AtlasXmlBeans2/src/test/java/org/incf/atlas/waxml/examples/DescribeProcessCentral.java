@@ -34,7 +34,7 @@ import org.incf.atlas.waxml.generated.ListSRSResponseType.SRSCollection.SRSList;
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.junit.Test;
 
-public class DescribeProcess_central {
+public class DescribeProcessCentral {
 	@Test 
 	public void validFullResponse()
 	{
