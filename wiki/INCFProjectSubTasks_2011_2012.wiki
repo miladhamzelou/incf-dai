@@ -37,6 +37,8 @@
 <th align="left">Notes</th>
 <td width="80%">
 <br/>
+Please click the URL below:
+<br/>
 https://docs.google.com/document/d/1O-eaEg4-259_y73AV4T49YW4hPbD6KhzxA_YhN6bcLc/edit?pli=1#
 <br/>
 </td>
