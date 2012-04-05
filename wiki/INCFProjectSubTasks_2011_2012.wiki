@@ -61,7 +61,7 @@ These are preliminary error estimates, based on Euclidean distance between coord
 <th align="left">Examples</th>
 <td width="80%">
 Thin Plate Spine:
-</br>
+<br/>
 https://lh4.googleusercontent.com/-viAKSQ7hWAM/TxADoyukPNI/AAAAAAAAADU/2P_EvP4vkAY/s800/error.jpg
 <br/>
 https://lh5.googleusercontent.com/-v3BT7cOSook/TxADpuluLZI/AAAAAAAAADY/ZJTm5nmUgdw/s800/error-overlay.jpg<br/>
