@@ -237,6 +237,11 @@ https://github.com/luisibanez/ImageRegistration
 
 https://github.com/picslHISTO/HistoRecon/blob/master/scripts/entire_pipeline.sh
 
+<br/>
+Here is the diagram for ITK workflow:
+<br/>
+https://docs.google.com/presentation/d/1Sf_edu7DeKAbUhOLtKXpwLXNvLMrnXrTjJ9lvaSvPVU/edit
+
 </td>
 </tr>
 
