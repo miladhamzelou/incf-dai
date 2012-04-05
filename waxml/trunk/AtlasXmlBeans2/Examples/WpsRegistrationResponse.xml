@@ -3,7 +3,7 @@
     <ns:Identifier>RegisterWPSIdentifier</ns:Identifier>
     <ns:Title>RegisterWPSName</ns:Title>
   </Process>
-  <Status creationTime="2012-04-04T16:42:12.241-07:00">
+  <Status creationTime="2012-04-04T16:44:27.224-07:00">
     <ProcessSucceeded>suceeded</ProcessSucceeded>
   </Status>
 </ExecuteResponse>

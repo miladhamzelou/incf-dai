@@ -61,7 +61,7 @@ public class Main {
 		e.printStackTrace();
 	}
 	
-	TransformationResponse_pointarray tr2 = new TransformationResponse_pointarray();
+	TransformationResponsePointarray tr2 = new TransformationResponsePointarray();
     String tranformationResponse2 = tr2.AsXml();
      try {
      	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/TransformationResponse_pointarray.xml"));
@@ -85,7 +85,7 @@ public class Main {
 		e.printStackTrace();
 	}
 	
-	ImagesResponse_2DImagesByPOI ir = new ImagesResponse_2DImagesByPOI();
+	ImagesResponse2DImagesByPOI ir = new ImagesResponse2DImagesByPOI();
     String ImagesResponse = ir.AsXml();
      try {
      	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/ImagesResponse_2DImagesByPOI.xml"));
@@ -143,7 +143,7 @@ public class Main {
 		System.out.println("Error CorrelationMapResponse");
 		e.printStackTrace();
 	}
-	CorrelationMapResponse_Multipoint cmr2 = new CorrelationMapResponse_Multipoint();
+	CorrelationMapResponseMultipoint cmr2 = new CorrelationMapResponseMultipoint();
     String CorrelationResponse_Multipoint = cmr2.AsXml();
      try {
      	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/CorrelationMapResponse_Multipoint.xml"));
@@ -225,7 +225,7 @@ public class Main {
 					e.printStackTrace();
 				}	
 				
-				DescribeProcess_central pdc = new DescribeProcess_central();
+				DescribeProcessCentral pdc = new DescribeProcessCentral();
 			    String DescribeProcess_Xml = pdc.AsXml();
 			     try {
 			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/DescribeProcess_central.xml"));
