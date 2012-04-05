@@ -60,7 +60,7 @@ These are preliminary error estimates, based on Euclidean distance between coord
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
-Thin Plate Spine:
+===Thin Plate Spine:===
 <br/>
 https://lh4.googleusercontent.com/-viAKSQ7hWAM/TxADoyukPNI/AAAAAAAAADU/2P_EvP4vkAY/s800/error.jpg
 <br/>
