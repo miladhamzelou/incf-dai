@@ -23,7 +23,7 @@ import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
 
-public class TransformationResponsePointarray {
+public class TransformationPointarrayResponse {
 	public String AsXml() {
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());

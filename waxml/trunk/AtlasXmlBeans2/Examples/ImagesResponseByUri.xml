@@ -1,4 +1,4 @@
-<!--Generated Wed Apr 04 18:45:16 PDT 2012-->
+<!--Generated Wed Apr 04 19:26:35 PDT 2012-->
 <ImagesResponse xmlns="http://www.incf.org/WaxML/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml/3.2">
   <QueryInfo>
     <QueryUrl name="Get2DImagesByURI  ">URL</QueryUrl>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="13.2">
+    <meta>
+        <filters directoryPatterns="" filePatterns="" positiveFilePatterns="" showHiddenFiles="false"/>
+        <options/>
+    </meta>
+    <projectTree name="Waxml.xpr">
+        <folder path="../../../Examples/"/>
+        <folder path="SCHEMAS_OPENGIS_NET/"/>
+        <folder path="WaxMlSchema/"/>
+        <folder path="WaxMlSchema/workflow/workflowoutput/"/>
+        <file name="../../../manifest.xml"/>
+        <file name="../../../workflow2_ITKalignment.xml"/>
+        <file name="../../../workflow_jibber.xml"/>
+    </projectTree>
+</project>

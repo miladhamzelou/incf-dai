@@ -24,7 +24,7 @@ import org.isotc211.x2005.gmd.CIResponsiblePartyType;
 import org.junit.Test;
 import org.junit.Ignore;
 
-public class ListSRSResponse_Multi {
+public class ListSRSMultiResponse {
 	//@Ignore("not ready")
 	@Test
 	public void validFullResponse() {

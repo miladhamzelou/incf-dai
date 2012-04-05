@@ -18,7 +18,7 @@ import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
 
-public class CorrelationMapResponseMultipoint   {
+public class CorrelationMapMultipointResponse   {
 	@Test 
 	public void validFullResponse()
 	{

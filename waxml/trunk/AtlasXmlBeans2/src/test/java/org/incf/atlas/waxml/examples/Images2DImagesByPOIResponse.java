@@ -28,7 +28,7 @@ import org.incf.atlas.waxml.generated.QueryInfoType.QueryUrl;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
 
-public class ImagesResponse2DImagesByPOI  {
+public class Images2DImagesByPOIResponse  {
 	@Test 
 	public void validFullResponse()
 	{

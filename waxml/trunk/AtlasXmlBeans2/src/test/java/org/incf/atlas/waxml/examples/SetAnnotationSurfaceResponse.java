@@ -44,7 +44,7 @@ import org.junit.Test;
  * ** ontoterm
  * ***- comment
  */
-public class SetAnnotationResponseLine {
+public class SetAnnotationSurfaceResponse {
 
 	public String asXml() {
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
@@ -81,10 +81,10 @@ public class SetAnnotationResponseLine {
 	}
 
 	public AnnotationResponseDocument completeResponse() {
+		
 		AnnotationResponseDocument doc = AnnotationResponseDocument.Factory.newInstance();
 		AnnotationType ann = doc.addNewAnnotationResponse().addNewAnnotation();
 		//AnnotationType ann = doc.addNewANNOTATION();
-
 
 		ann.setMODIFIEDDATE(Calendar.getInstance());
 
@@ -97,29 +97,39 @@ public class SetAnnotationResponseLine {
 
 		GEOMETRIES geometries = ann.addNewGEOMETRIES();
 		geometries.newCursor().insertComment(
-				"PolyLINE object with gml:id=" + gmlId("80087"));
+				"polygon object with gml:id=" + gmlId("80087"));
 		GEOMETRYTYPE geom1 = geometries.addNewGEOMETRY();
 
 		geom1.setUserName("guest");
 		geom1.setModifiedTime(1303328463);
-		AnnPolylineType polyLine1 = geom1.addNewPOLYLINE();
-		polyLine1.setSrsName("mouse");
-		polyLine1.setId(gmlId("80087"));
-		polyLine1.newCursor().insertComment(
-				"PolyLINE object with gml:id=" + gmlId("80087"));
+		AnnSurfaceType surface1 = geom1.addNewSURFACE();
+		surface1.setSrsName("mouse");
+		surface1.setId(gmlId("80087"));
+		surface1.newCursor().insertComment(
+				"surface object with gml:id=" + gmlId("80087"));
+
 		
-		  DirectPositionListType poly1exterior = polyLine1.addNewPosList();
-		 
+		  SurfacePatchArrayPropertyType surface1Patches = surface1.addNewPatches();
+		  AbstractSurfacePatchType patches1 = surface1Patches.addNewAbstractSurfacePatch();
+		
+		  PolygonPatchType polygonPatch1 = (PolygonPatchType) patches1.substitute(new QName ("http://www.opengis.net/gml/3.2","PolygonPatch"), PolygonPatchType.type);
+		  AbstractRingPropertyType PolygonPatch1surface = polygonPatch1.addNewExterior();
+		  XmlObject ring = PolygonPatch1surface.addNewAbstractRing();
+
+ XmlObject linearRing = ring.substitute(new QName ("http://www.opengis.net/gml/3.2","LinearRing"), LinearRingType.type);
+
 		 double[][] pointList = new double[4][3];
 		 pointList[0] = new double[] { 1.0, 1.0, 1.0 };
-		 pointList[1] = new double[] { 10.0, 1.0, 1.0 };
-		 pointList[2] = new double[] { 10.0, 10.0, 1.0 };
+		 pointList[1] = new double[] { 10.0, 1.0, 2.0 };
+		 pointList[2] = new double[] { 10.0, 10.0, 3.0 };
 		 pointList[3] = new double[] { 1.0, 10.0, 1.0 };
 		 
-		 XmlObject alist= poly1exterior.set(ArrayToDirectPositionList(pointList));
-//		
+
+		 DirectPositionListType posList= ((LinearRingType)linearRing).addNewPosList();
+
+		XmlObject alist= posList.set(ArrayToDirectPositionList(pointList));
 		
-		 
+
 		// GEOMETRIES NOT WORKING
 
 		GENERALONTOMODEL model1 = ann.addNewGENERALONTOMODEL();

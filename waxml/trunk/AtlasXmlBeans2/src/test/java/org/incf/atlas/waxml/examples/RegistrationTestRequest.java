@@ -16,7 +16,7 @@ import org.incf.atlas.waxml.generated.RegistrationRequestDocument.RegistrationRe
 import org.incf.atlas.waxml.utilities.Utilities;
 import org.junit.Test;
 
-public class RegistrationRequestXml {
+public class RegistrationTestRequest {
 
 	
 		public String asXml() {

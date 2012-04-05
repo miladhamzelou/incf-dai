@@ -61,7 +61,7 @@ public class Main {
 		e.printStackTrace();
 	}
 	
-	TransformationResponsePointarray tr2 = new TransformationResponsePointarray();
+	TransformationPointarrayResponse tr2 = new TransformationPointarrayResponse();
     String tranformationResponse2 = tr2.AsXml();
      try {
      	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/TransformationResponse_pointarray.xml"));
@@ -85,7 +85,7 @@ public class Main {
 		e.printStackTrace();
 	}
 	
-	ImagesResponse2DImagesByPOI ir = new ImagesResponse2DImagesByPOI();
+	Images2DImagesByPOIResponse ir = new Images2DImagesByPOIResponse();
     String ImagesResponse = ir.AsXml();
      try {
      	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/ImagesResponse_2DImagesByPOI.xml"));
@@ -143,7 +143,7 @@ public class Main {
 		System.out.println("Error CorrelationMapResponse");
 		e.printStackTrace();
 	}
-	CorrelationMapResponseMultipoint cmr2 = new CorrelationMapResponseMultipoint();
+	CorrelationMapMultipointResponse cmr2 = new CorrelationMapMultipointResponse();
     String CorrelationResponseMultipoint = cmr2.AsXml();
      try {
      	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/CorrelationMapResponse_Multipoint.xml"));
@@ -178,7 +178,7 @@ public class Main {
 				e.printStackTrace();
 			}
 			
-			ListSRSResponse_Multi srs2 = new ListSRSResponse_Multi();
+			ListSRSMultiResponse srs2 = new ListSRSMultiResponse();
 			String SrsResponseFull_Multi = srs2.AsXml();
 			 try {
 			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/ListSRSResponse_multi.xml"));
@@ -201,7 +201,7 @@ public class Main {
 					System.out.println("Error SetAnnotationResponse");
 					e.printStackTrace();
 				}
-				SetAnnotationResponseLine sar2 = new SetAnnotationResponseLine();
+				SetAnnotationLineResponse sar2 = new SetAnnotationLineResponse();
 			    String SetAnnotationResponseLine = sar2.asXml();
 			     try {
 			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/SetAnnotationResponseLine.xml"));
@@ -213,7 +213,7 @@ public class Main {
 					e.printStackTrace();
 				}		
 				
-				SetAnnotationResponseSurface sar3 = new SetAnnotationResponseSurface();
+				SetAnnotationSurfaceResponse sar3 = new SetAnnotationSurfaceResponse();
 			    String SetAnnotationResponsePoint = sar3.asXml();
 			     try {
 			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/SetAnnotationResponseSurface.xml"));
@@ -249,7 +249,7 @@ public class Main {
 					e.printStackTrace();
 				}	
 				
-				RegistrationRequestXml rrx = new RegistrationRequestXml();
+				RegistrationTestRequest rrx = new RegistrationTestRequest();
 			    String RegistrationRequestXml = rrx.asXml();
 			     try {
 			     	BufferedWriter out = new BufferedWriter(new FileWriter("Examples/RegistrationRequest.xml"));

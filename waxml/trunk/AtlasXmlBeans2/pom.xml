@@ -122,6 +122,8 @@
         <configuration>
           <includes>
             <include>**/*Response.java</include>
+            <include>**/*Report.java</include>
+            <include>**/*Request.java</include>
           </includes>
         </configuration>
       </plugin>
