@@ -37,17 +37,7 @@
 <th align="left">Notes</th>
 <td width="80%">
 <br/>
-<br/>
-<br/>
-<br/>
-</td>
-</tr>
-<tr>
-<th align="left">Examples</th>
-<td width="80%">
-<br/>
-<br/>
-<br/>
+https://docs.google.com/document/d/1O-eaEg4-259_y73AV4T49YW4hPbD6KhzxA_YhN6bcLc/edit?pli=1#
 <br/>
 </td>
 </tr>
@@ -293,17 +283,7 @@ http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?volumeID=irods:/teles
 <th align="left">Notes</th>
 <td width="80%">
 <br/>
-<br/>
-<br/>
-<br/>
-</td>
-</tr>
-<tr>
-<th align="left">Examples</th>
-<td width="80%">
-<br/>
-<br/>
-<br/>
+The services are being tested on datasets provided by Rob Williams. We will publish comparison statistics, between scripts and services. The datasets themselves will be available once the work is released to the public. 
 <br/>
 </td>
 </tr>
