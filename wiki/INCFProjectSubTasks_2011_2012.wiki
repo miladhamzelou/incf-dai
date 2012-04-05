@@ -54,7 +54,7 @@ https://docs.google.com/document/d/1O-eaEg4-259_y73AV4T49YW4hPbD6KhzxA_YhN6bcLc/
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-These are preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates. The transformation in question is a thin plate spline created by matching the atlas outline features with corresponding image features.
+These are preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates. The transformation in question is a thin plate spline created by matching the atlas outline features with corresponding image features. The displacement values are shown in the units of the target coordinate system in the transformation.
 </td>
 </tr>
 <tr>
