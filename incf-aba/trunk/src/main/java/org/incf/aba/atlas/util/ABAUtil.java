@@ -2291,7 +2291,7 @@ public class ABAUtil {
 
 			LOG.debug("Inside ABAREF 2 ABAVOX...");
 
-			double[] abar2abav = ABATransform.convertReferenceToVoxel(Double.parseDouble(originalCoordinateX), 
+			int[] abar2abav = ABATransform.convertReferenceToVoxel(Double.parseDouble(originalCoordinateX), 
 					Double.parseDouble(originalCoordinateY), Double.parseDouble(originalCoordinateZ));
 
 			transformedCoordinateString = originalCoordinateX + " " + originalCoordinateY + " "+ originalCoordinateZ + " " + abar2abav[0] + " " + abar2abav[1]  + " " + abar2abav[2];
@@ -2305,8 +2305,8 @@ public class ABAUtil {
 
 			LOG.debug("Inside ABAVOX 2 ABAREF...");
 
-			double[] abav2abar = ABATransform.convertVoxelToReference(Double.parseDouble(originalCoordinateX), 
-					Double.parseDouble(originalCoordinateY), Double.parseDouble(originalCoordinateZ)); 
+			double[] abav2abar = ABATransform.convertVoxelToReference(Integer.parseInt(originalCoordinateX), 
+					Integer.parseInt(originalCoordinateY), Integer.parseInt(originalCoordinateZ)); 
 
 			transformedCoordinateString = originalCoordinateX + " " + originalCoordinateY + " "+ originalCoordinateZ + " " + abav2abar[0] + " " + abav2abar[1]  + " " + abav2abar[2];
 
@@ -3887,7 +3887,7 @@ public class ABAUtil {
 		LOG.debug("Start - getFineStructureNameByPOI Method...");
 
 		ABAUtil util = new ABAUtil();
-		
+
 		// http://mouse.brain-map.org/mouse_agea_1.0/all_coronal/slice_correlation_image?plane=coronal&index=7525&blend=0&width=217&height=152&loc=7525,4075,6300&lowerRange=0.5&upperRange=1
 		// 1) Define and Get parameters from URL
 		LOG.debug(" Parameters... ");

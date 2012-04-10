@@ -1,35 +1,19 @@
 package org.incf.aba.atlas.process;
 
-import net.opengis.gml.x32.AbstractRingPropertyType;
 import net.opengis.gml.x32.DirectPositionListType;
 import net.opengis.gml.x32.DirectPositionType;
-import net.opengis.gml.x32.LinearRingType;
 import net.opengis.gml.x32.PointPropertyType;
 import net.opengis.gml.x32.PointType;
 
 import org.incf.atlas.waxml.generated.AnnotationResponseDocument.AnnotationResponse;
-import org.incf.atlas.waxml.generated.AnnotationType.GEOMETRIES;
-import org.incf.atlas.waxml.generated.AnnotationType.ONTOTERMS;
-import org.incf.atlas.waxml.generated.AnnotationType.RESOURCE;
-import org.incf.atlas.waxml.generated.CorrelatioMapType.CorrelationCollection;
 import java.io.File;
 import java.net.URL;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Random;
 import java.util.StringTokenizer;
 
-import javax.xml.namespace.QName;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
-import org.apache.xmlbeans.XmlError;
-import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
 import org.deegree.commons.utils.kvp.MissingParameterException;
@@ -41,12 +25,9 @@ import org.deegree.services.wps.ProcessletException;
 import org.deegree.services.wps.ProcessletExecutionInfo;
 import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
-import org.deegree.services.wps.input.LiteralInput;
 import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.aba.atlas.util.ABAConfigurator;
-import org.incf.aba.atlas.util.ABAServiceDAOImpl;
 import org.incf.aba.atlas.util.ABAServiceVO;
-import org.incf.aba.atlas.util.ABAUtil;
 import org.incf.aba.atlas.util.AnnotationModel;
 import org.incf.aba.atlas.util.IncfDBUtil;
 import org.incf.aba.atlas.util.XML2AnnotObjects;

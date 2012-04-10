@@ -201,13 +201,13 @@ public final class XMLUtilities {
 		}
 
 		return responseString;
-		
+
 	}
 
  	public String convertFromURLToString(String stringURL) {
- 		
+
  		String responseString = "";
- 		
+
 		try {
 			URL url = new URL(stringURL);
 			URLConnection urlCon = url.openConnection();

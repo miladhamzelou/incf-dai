@@ -4,26 +4,44 @@ package org.incf.aba.atlas.util;
  * A converter between ABA Reference and ABA Voxel coordinates and
  * <i>vice versa</i>.
  * @author spl
- * @version 1.1
+ * @version 1.2
  */
 
 public class ABATransform
 
 {
 
-    private static final double[][] ABAr_to_ABAv = {
-	{ -9.635000e+02, -3.070000e+01, -1.980000e+01,  5.762658e+03 },
-	{ -8.700000e+00,  8.861000e+02, -2.930000e+01,  1.155562e+03 },
-	{ -1.780000e+01,  2.100000e+00,  9.197000e+02,  1.266430e+03 },
-	{  0.000000e+00,  0.000000e+00,  0.000000e+00,  1.000000e+00 },
-    };
+    // Fudged.
 
     private static final double[][] ABAv_to_ABAr = {
-	{ -1.037125e-03, -3.587682e-05, -2.347099e-05,  6.047780e+00 },
-	{ -1.084572e-05,  1.128080e-03,  3.570513e-05, -1.286285e+00 },
-	{ -2.004790e-05, -3.270171e-06,  1.086775e-03, -1.257017e+00 },
-	{  0.000000e+00,  0.000000e+00,  0.000000e+00,  1.000000e+00 },
+	{ -2.592856e-02, -8.965538e-04, -5.293892e-04,  6.045235e+00 },
+	{ -2.390147e-04,  2.820589e-02, -9.035575e-04, -1.203377e+00 },
+	{ -5.017826e-04, -8.286750e-05,  2.717415e-02, -6.000000e+00 },
+	{  0.000000e+00,  0.000000e+00,  0.000000e+00,  1.000000e+00 }
     };
+
+    private static final double[][] ABAr_to_ABAv = {
+	{ -3.854088e+01, -1.227388e+00, -7.916398e-01,  2.267618e+02 },
+	{ -3.494248e-01,  3.544592e+01,  1.171792e+00,  5.179792e+01 },
+	{ -7.127397e-01,  8.542800e-02,  3.678863e+01,  2.251433e+02 },
+	{  0.000000e+00,  0.000000e+00,  0.000000e+00,  1.000000e+00 }
+    };
+
+    // Original???
+
+    // private static final double[][] ABAr_to_ABAv = {
+    //     { -3.854088e+01, -1.227388e+00, -7.916400e-01,  2.305164e+02 },
+    // 	{ -3.494248e-01,  3.544592e+01,  1.171792e+00,  4.624043e+01 },
+    // 	{ -7.127400e-01,  8.542800e-02,  3.678864e+01,  5.066534e+01 },
+    // 	{  0.000000e+00,  0.000000e+00,  0.000000e+00,  1.000000e+00 }
+    // };
+    
+    // private static final double[][] ABAv_to_ABAr = {
+    // 	{ -2.592856e-02, -8.965538e-04, -5.293892e-04,  6.045235e+00 },
+    // 	{ -2.390147e-04,  2.820589e-02, -9.035575e-04, -1.203377e+00 },
+    // 	{ -5.017826e-04, -8.286750e-05,  2.717415e-02, -1.257287e+00 },
+    // 	{  0.000000e+00,  0.000000e+00,  0.000000e+00,  1.000000e+00 }
+    // };
 
     // Don't instantiate.
 
@@ -34,11 +52,16 @@ public class ABATransform
      * @param u U coordinate.
      * @param v V coordinate.
      * @param w W coordinate.
+     * @throws IndexOutOfBoundsException Thrown when result is out of
+     * the range x 0..527, y 0..319, z 0..455
      * @return an integer array of length 3 containing the ABA Voxel
      * position.
      */
 
-    static public double[] convertReferenceToVoxel( double u, double v, double w ) {
+    static public int[] convertReferenceToVoxel( double u, double v, double w )
+        throws IndexOutOfBoundsException
+
+    {
 
         double[] xyz1 = { u, v, w, 1 };
         double[] xyz2 = { 0, 0, 0, 0 };
@@ -47,11 +70,18 @@ public class ABATransform
 	    for ( int i = 0; i < 4; i++ )
 		xyz2[j] += xyz1[i] * ABAr_to_ABAv[j][i];
 
-	return new double[] {
-	    ( double ) Math.round( xyz2[0]/25 ),
-	    ( double ) Math.round( xyz2[1]/25 ),
-	    ( double ) Math.round( xyz2[2]/25 ),
+	int[] r = {
+	    ( int ) Math.round( xyz2[0] ),
+	    ( int ) Math.round( xyz2[1] ),
+	    ( int ) Math.round( xyz2[2] ),
 	};
+
+	if ( !( ( ( 0 <= r[0] ) && ( r[0] <= 527 ) ) &&
+		( ( 0 <= r[1] ) && ( r[1] <= 319 ) ) &&
+		( ( 0 <= r[2] ) && ( r[2] <= 455 ) ) ) )
+	    throw new IndexOutOfBoundsException( "Result out of range" );
+
+	return r;
 
     }
 
@@ -60,15 +90,23 @@ public class ABATransform
      * @param u u ABA Voxel coordinate
      * @param v v ABA Voxel coordinate
      * @param w w ABA Voxel coordinate
+     * @throws IndexOutOfBoundsException Thrown when input parameters
+     * are out of the range x 0..527, y 0..319, z 0..455
      * @return an instace of an object of type ABAReference containing
      * the planar coordinates (u and v) and the image ID.
      */
 
-    static public double[] convertVoxelToReference( double u, double v, double w )
-		throws ArrayIndexOutOfBoundsException {
+    static public double[] convertVoxelToReference( int u, int v, int w )
+        throws IndexOutOfBoundsException
 
-	double[] xyz1 = { u*25, v*25, w*25, 1 };
+    {
 
+	if ( !( ( ( 0 <= u ) && ( u <= 527 ) ) ||
+		( ( 0 <= v ) && ( v <= 319 ) ) ||
+		( ( 0 <= w ) && ( w <= 455 ) ) ) )
+	    throw new IndexOutOfBoundsException( "Result out of range" );
+	
+	double[] xyz1 = { u, v, w, 1 };
 	double[] xyz2 = new double[4];
 
 	for ( int j = 0; j < 4; j++ )

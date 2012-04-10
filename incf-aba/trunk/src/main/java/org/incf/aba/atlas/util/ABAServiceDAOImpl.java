@@ -28,7 +28,7 @@ public class ABAServiceDAOImpl {
 
 		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
-		String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
+		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
 
 		try {
 
@@ -36,7 +36,8 @@ public class ABAServiceDAOImpl {
 		Connection conn = dao.getStandAloneConnectionForPostgres();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from srs where srs_name in (" + srsName + ") " );
+		//query.append( " select * from srs where srs_name in (" + srsName + ") " );
+		query.append( " select * from srs where status = 'ACTIVE' and srs_author_code = 'ABA' " );
 
 		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
