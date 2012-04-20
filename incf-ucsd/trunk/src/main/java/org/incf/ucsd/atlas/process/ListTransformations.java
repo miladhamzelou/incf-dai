@@ -56,8 +56,6 @@ public class ListTransformations implements Processlet {
 	String paxinos2whs09 = config.getValue("code.paxinos2whs09.v1");
 	String whs092paxinos = config.getValue("code.whs092paxinos.v1");
 
-	// private String dataInputString;
-	// private DataInputs dataInputs;
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
@@ -79,9 +77,6 @@ public class ListTransformations implements Processlet {
 			String inputSrsName = "";
 			String outputSrsName = "";
 			String filter = "";
-			// collect input values
-			// String transformationCode = ((LiteralInput)
-			// in.getParameter("transformationCode")).getValue();
 
 			if (in != null) {
 				LOG.debug(" Inside parameter value... ");
@@ -94,12 +89,8 @@ public class ListTransformations implements Processlet {
 				outputSrsName = dataInputHandler.getValidatedStringValue(in,
 						"outputSrsName");
 				filter = dataInputHandler.getValidatedStringValue(in, "filter");
-				/*
-				 * inputSrsName = Util.getStringInputValue(in, "inputSrsName");
-				 * outputSrsName = Util.getStringInputValue(in,
-				 * "outputSrsName"); filter = Util.getStringInputValue(in,
-				 * "filter");
-				 */}
+
+			}
 
 			// Start - FIXME - Uncomment below two lines and comment the other
 			// three lines
@@ -108,10 +99,8 @@ public class ListTransformations implements Processlet {
 			hostName = config.getValue("incf.deploy.host.name");
 			portNumber = config.getValue("incf.aba.port.number");
 			String delimitor = config.getValue("incf.deploy.port.delimitor");
-			// portNumber = delimitor + portNumber;
 			// End - FIXME
 
-			// vo.setUrlString(uri.toString());
 			vo.setIncfDeployHostname(hostName);
 			vo.setIncfDeployPortNumber(portNumber);
 
@@ -152,32 +141,6 @@ public class ListTransformations implements Processlet {
 			} else if (!inputSrsName.equals("")
 					&& outputSrsName.equalsIgnoreCase("all")) {
 				LOG.debug("Inside inputSRSName not empty.");
-/*				if (inputSrsName.equals(paxinos)) {
-					vo1 = new UCSDServiceVO();
-					vo1.setFromSRSCode(paxinos);
-					vo1.setToSRSCode(whs09);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (inputSrsName.equals(whs09)) {
-					vo1 = new UCSDServiceVO();
-					vo1.setFromSRSCode(whs09);
-					vo1.setToSRSCode(paxinos);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (inputSrsName.equals(ucsdSrsName)) {
-					vo1 = new UCSDServiceVO();
-					vo1.setFromSRSCode(ucsdSrsName);
-					vo1.setToSRSCode(abaReference);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (inputSrsName.equals(abaReference)) {
-					vo1 = new UCSDServiceVO();
-					vo1.setFromSRSCode(abaReference);
-					vo1.setToSRSCode(ucsdSrsName);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				}
-*/
 				vo.setFromSRSCodeOne("all");
 				vo.setFromSRSCode("all");
 				vo.setToSRSCodeOne("all");
@@ -188,32 +151,6 @@ public class ListTransformations implements Processlet {
 			} else if (!outputSrsName.equals("")
 					&& inputSrsName.equalsIgnoreCase("all")) {
 				LOG.debug("Inside outputSRSName not empty.");
-/*				if (outputSrsName.equals(paxinos)) {
-					vo1 = new UCSDServiceVO();
-					vo1.setFromSRSCode(whs09);
-					vo1.setToSRSCode(paxinos);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (outputSrsName.equals(whs09)) {
-					vo1 = new UCSDServiceVO();
-					vo1.setFromSRSCode(paxinos);
-					vo1.setToSRSCode(whs09);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (outputSrsName.equals(ucsdSrsName)) {
-					vo1 = new UCSDServiceVO();
-					vo1.setFromSRSCode(abaReference);
-					vo1.setToSRSCode(ucsdSrsName);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (outputSrsName.equals(abaReference)) {
-					vo1 = new UCSDServiceVO();
-					vo1.setFromSRSCode(ucsdSrsName);
-					vo1.setToSRSCode(abaReference);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				}
-*/								
 				vo.setFromSRSCodeOne("all");
 				vo.setFromSRSCode("all");
 				vo.setToSRSCodeOne("all");

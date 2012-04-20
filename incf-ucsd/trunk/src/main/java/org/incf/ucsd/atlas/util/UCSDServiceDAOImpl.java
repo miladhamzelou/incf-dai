@@ -31,7 +31,7 @@ public class UCSDServiceDAOImpl {
 		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
 		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.agea.10")+"'";
-		String srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"','Mouse_Yuko_1.0'";
+		//String srsName = "'"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"','Mouse_Yuko_1.0'";
 		
 		try {
 
@@ -39,7 +39,8 @@ public class UCSDServiceDAOImpl {
 		Connection conn = dao.getStandAloneConnectionForUCSDHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from srs where srs_name in (" + srsName + ") and STATUS = 'ACTIVE'" );
+		//query.append( " select * from srs where srs_name in (" + srsName + ") and STATUS = 'ACTIVE'" );
+		query.append( " select * from srs where status = 'ACTIVE' and srs_author_code in ( 'UCSD', 'Dmatthews' )" );
 
 		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
@@ -105,11 +106,13 @@ public class UCSDServiceDAOImpl {
 		Connection conn = dao.getStandAloneConnectionForUCSDHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
+		
 		query.append( " select * from srs where srs_name in ('" + srsName + "') and STATUS = 'ACTIVE'" ); 
 
 		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
+
 		UCSDServiceVO vo = null;
 
 		while ( rs.next() ) {
@@ -334,16 +337,19 @@ public class UCSDServiceDAOImpl {
 		try {
 
 		//Used for postgres connection from ccdb
-		Connection conn = dao.getStandAloneConnectionForUCSDHub();
+		Connection conn = dao.getStandAloneConnectionForSlashDB();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		//query.append( " select srs_name, dataset_name, coordinates, polygon_id, depth, username, instance_id, onto_name, onto_uri, modified_time, transformed_sdo, transformed_coordinate from annotation_sdo s, annotation_dataset m " )
 		     //.append( " where ST_INTERSECTS(sdo, ST_GEOMFROMTEXT('POLYGON((6333 6163, 6163 6163, 6163 6333, 6333 6333, 6333 6163))')) " );
 			 //.append( " and s.id = m.id " );
 
-		query.append( " select m.id, srs_name, dataset_name, coordinates, polygon_id, depth, username, instance_id, onto_name, onto_uri, modified_time, transformed_sdo, transformed_coordinate from annotation_sdo s, annotation_dataset m " )
-	         .append( " where ST_INTERSECTS(transformed_sdo, ST_GEOMFROMTEXT('POLYGON(("+polygonString+"))')) " )
-		     .append( " and s.id = m.id " );
+		query.append( " select u.user_name as username, a.annotation_id as id, b.srs_name as srs_name, a.object_name as dataset_name, st_astext (b.polyline) AS coordinates, b.geom_id as polygon_id, b.z_index as depth, map.map_id as instance_id, a.object_name as onto_name, a.object_name_ont_uri as onto_uri, b.modified_time, st_astext (b.transformed_sdo) AS transformed_coordinate " ) 
+		.append( " from slash_geometry b, slash_annotation a, slash_annot_geom_map map, slash_user u ")
+		.append( " where ST_INTERSECTS(transformed_sdo, ST_GEOMFROMTEXT('POLYGON(("+polygonString+"))')) ")
+		.append( " and a.annotation_id = map.annotation_id ")
+		.append( " and b.geom_id = map.geometry_id ")
+		.append( " and u.user_id = b.user_id ");
 
 		LOG.debug("getAnnotationData - Query is - {}" , query.toString() );
 
@@ -709,7 +715,7 @@ public class UCSDServiceDAOImpl {
 		Connection conn = dao.getStandAloneConnectionForUCSDHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from space_transformations where status = 'ACTIVE' and hub = 'UCSD'" ); 
+		query.append( " select * from space_transformations where status = 'ACTIVE' and hub = 'UCSD'" );
 
 		LOG.debug("getSpaceTransformationData - Query is - {}" , query.toString() );
 

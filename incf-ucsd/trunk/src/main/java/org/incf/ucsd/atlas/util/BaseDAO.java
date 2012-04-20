@@ -206,6 +206,41 @@ public class BaseDAO {
 		
 	}// end of getStandAloneConnection method
 
+    public Connection getStandAloneConnectionForSlashDB()// please change public to protected
+			throws Exception {
+
+		LOG.debug( "Start - getStandAloneConnectionForPostgres()");
+		
+		Connection connection = null;
+		
+		UCSDConfigurator props = UCSDConfigurator.INSTANCE;
+		
+		String driverClassName = props.getValue("postgres.ucsd.database.driverClassName"); 
+		String dbUrl = props.getValue("postgres.ucsd.slash.database.atlasdburl");
+		String dbUser = props.getValue("postgres.ucsd.slash.database.atlasdbuser");
+		String dbPassword = props.getValue("postgres.ucsd.slash.database.atlasdbpassword");
+		
+		LOG.debug( "driverClassName - {}",driverClassName);
+		LOG.debug( "dbUrl - {}",dbUrl);
+		LOG.debug( "dbUser - {}",dbUser);
+		LOG.debug( "dbPassword - {}",dbPassword);
+		
+		try {
+			Class.forName( driverClassName );
+			LOG.debug( "Start - getStandAloneConnectionForPostgres()");
+		    connection = 
+		    	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
+		    LOG.debug( "End - getStandAloneConnectionForPostgres()");
+		
+		} catch ( Exception e ) {
+			LOG.debug( "There is an error{}", e.getClass() + e.getMessage());
+		    throw new Exception( e.getMessage() );
+		}
+		
+		LOG.debug( "End - getStandAloneConnectionForPostgres()");
+		return connection;
+		
+	}// end of getStandAloneConnection method
     
     /**
      * Closes an open connection.

@@ -382,7 +382,6 @@ public class GetAnnotationsByPOI implements Processlet {
 
 			DirectPositionType pos1 =  ((LinearRingType)linearRing).addNewPos();
 
-
 			if ( vo2.getTransformedCoordinates() != null ){
 				pos1.setStringValue(vo2.getTransformedCoordinates().replaceAll(",", " "));
 			} else {

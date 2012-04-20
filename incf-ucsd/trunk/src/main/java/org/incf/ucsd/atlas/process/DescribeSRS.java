@@ -116,6 +116,11 @@ public class DescribeSRS implements Processlet {
 			String srsName = dataInputHandler.getValidatedStringValue(in,
 					"srsName");
 
+/*			//FIXME - Demo for SfN 2011. Please uncomment this. 
+			if (srsName.equalsIgnoreCase("mouse_ucsd_1.0")) {
+				srsName = "'"+srsName+"', 'Dmatthews";
+			}
+*/			
 			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 			opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
 			opt.setSaveNamespacesFirst();

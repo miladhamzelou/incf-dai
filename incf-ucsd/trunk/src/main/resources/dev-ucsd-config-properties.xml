@@ -62,6 +62,23 @@
         <value>ucsd4321</value>
         <!--<value>beer</value>-->
     </property>
+    
+   	<property>
+        <name>postgres.ucsd.slash.database.atlasdburl</name>
+        <value>jdbc:postgresql://dev-db.crbs.ucsd.edu:5432/ccdbv2_2</value>
+        <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
+    </property>
+    <property>
+        <name>postgres.ucsd.slash.database.atlasdbuser</name>
+        <value>ccdbd_dev</value>
+ 		<!--<value>atlas</value>-->
+    </property>
+    <property>
+        <name>postgres.ucsd.slash.database.atlasdbpassword</name>
+        <value>Test753</value>
+        <!--<value>beer</value>-->
+    </property>
+    
 	<!-- end postgres UCSD database properties -->
 
 	<!-- begin logger properties -->

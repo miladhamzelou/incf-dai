@@ -18,6 +18,8 @@ import javax.xml.stream.XMLStreamWriter;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.xml.XMLAdapter;
+import org.deegree.services.controller.exception.ControllerException;
+import org.deegree.services.controller.ows.OWSException;
 import org.deegree.services.wps.output.ComplexOutput;
 
 import org.incf.atlas.waxml.generated.CoordinateChainTransformType;
@@ -1344,7 +1346,38 @@ public class UCSDUtil {
 	 		    UCSDServiceDAOImpl impl = new UCSDServiceDAOImpl();
 	 		    
 	 		    Set chainsList = spaceTransformationFromDB(vo.getFromSRSCode(), vo.getToSRSCode());
-	 		    
+	 			
+	 		    //Starts - Check to see if the transformation is supported in the hub or not
+	 		    Iterator iter = chainsList.iterator();
+	 			String chain = "";
+	 			StringTokenizer token1 = null;
+	 			StringTokenizer token2 = null;
+	 			Set srcSet = new HashSet();
+	 			Set destSet = new HashSet();
+	 			
+ 				System.out.println("chainsList Size is: " + chainsList.size());
+	 			while ( iter.hasNext()) {
+	 				chain = (String)iter.next();
+	 				System.out.println("Chain is: " + chain);
+	 				token1 = new StringTokenizer(chain, ":");
+	 				String tokenModify = token1.nextToken().replaceAll("_To_", ":");
+	 				token2 = new StringTokenizer(tokenModify, ":");
+	 				srcSet.add(token2.nextToken());
+	 				destSet.add(token2.nextToken());
+	 			}
+	 			
+	 			while (!destSet.contains(vo.getToSRSCode()) && !vo.getToSRSCode().equalsIgnoreCase("all")) { 
+	 				String responseString = "Error: No such transformation is available under this hub.";
+	 				System.out.println("Dest Not available");
+	 				return responseString;
+				}
+	 			while (!srcSet.contains(vo.getFromSRSCode()) && !vo.getFromSRSCode().equalsIgnoreCase("all")) { 
+	 				String responseString = "Error: No such transformation is available under this hub.";
+	 				System.out.println("Src Not available");
+	 				return responseString;
+	 			}
+	 			//Ends
+	 			
 	 		    Iterator iterator = chainsList.iterator();
 	 			//vo = null;
 
@@ -1410,99 +1443,7 @@ public class UCSDUtil {
 		 				ex.setOutputSrsName(new QName(toSRSCode));
 		 				//ex.setAccuracy(Integer.parseInt(accuracy));
 		 				ex.setStringValue(vo.getTransformationOneURL());
-/*		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(ucsdSrsName) ||
-		 		    	 vo.getToSRSCode().equalsIgnoreCase(ucsdSrsName) ) {
-		 		  		implementingHub1 = "UCSD";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
-		 		  		vo.setTransformationOneURL(transformationURL1);
-		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
-		 		    	orderNumber = String.valueOf(i);
-
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
-
-		 		    	ex.setCode(code);
-		 				ex.setHub(implementingHub1);
-		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
-		 				//ex.setAccuracy(Integer.parseInt(accuracy));
-		 				ex.setStringValue(vo.getTransformationOneURL());
-
-		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(paxinos) ||
-		 		    	 vo.getToSRSCode().equalsIgnoreCase(paxinos) ) {
-		 		  		implementingHub1 = "UCSD";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + ucsdServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
-		 		  		vo.setTransformationOneURL(transformationURL1);
-		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
-		 		    	orderNumber = String.valueOf(i);
-
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
-
-		 		    	ex.setCode(code);
-		 				ex.setHub(implementingHub1);
-		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
-		 				//ex.setAccuracy(Integer.parseInt(accuracy));
-		 				ex.setStringValue(vo.getTransformationOneURL());
-
-		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(whs09) ) {
-		 		  		implementingHub1 = "ABA";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
-		 		  		vo.setTransformationOneURL(transformationURL1);
-		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
-		 		    	orderNumber = String.valueOf(i);
-
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
-		 				ex.setCode(code);
-		 				ex.setHub(implementingHub1);
-		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
-		 				//ex.setAccuracy(Integer.parseInt(accuracy));
-		 				ex.setStringValue(vo.getTransformationOneURL());
-		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(agea) ) {
-		 		  		implementingHub1 = "ABA";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
-		 		  		vo.setTransformationOneURL(transformationURL1);
-		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
-		 		    	orderNumber = String.valueOf(i);
-
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
-		 				ex.setCode(code);
-		 				ex.setHub(implementingHub1);
-		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
-		 				//ex.setAccuracy(Integer.parseInt(accuracy));
-		 				ex.setStringValue(vo.getTransformationOneURL());
-		 		    } else if ( vo.getFromSRSCode().equalsIgnoreCase(abaReference) ) {
-		 		  		implementingHub1 = "ABA";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
-		 		  		vo.setTransformationOneURL(transformationURL1);
-		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
-		 		    	orderNumber = String.valueOf(i);
-
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
-		 				ex.setCode(code);
-		 				ex.setHub(implementingHub1);
-		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
-		 				//ex.setAccuracy(Integer.parseInt(accuracy));
-		 				ex.setStringValue(vo.getTransformationOneURL());
-		 		  	} else if ( vo.getFromSRSCode().equalsIgnoreCase(abaVoxel) ) {
-		 		  		implementingHub1 = "ABA";
-		 		  		transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + abaServicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+vo.getFromSRSCode()+"_To_"+vo.getToSRSCode()+"_v1.0;x=;y=;z=";
-		 		  		vo.setTransformationOneURL(transformationURL1);
-		 		  		code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; 
-		 		    	orderNumber = String.valueOf(i);
-		 		    	
-		 		    	CoordinateTransformationInfoType ex = ct.addNewCoordinateTransformation();
-		 				ex.setCode(code);
-		 				ex.setHub(implementingHub1);
-		 				ex.setInputSrsName(new QName(vo.getFromSRSCode()));
-		 				ex.setOutputSrsName(new QName(vo.getToSRSCode()));
-		 				//ex.setAccuracy(Integer.parseInt(accuracy));
-		 				ex.setStringValue(vo.getTransformationOneURL());
-		 		  	}
-*/	 			}
-// 		    }
+	 			}
  			
  			 ArrayList errorList = new ArrayList();
  			 opt.setErrorListener(errorList);
@@ -1524,7 +1465,6 @@ public class UCSDUtil {
  			              error.getCursorLocation().xmlText() + "\n");
  			      }
  			 }
-
 
  			XMLStreamReader reader = co.newXMLStreamReader();
  			XMLStreamWriter writer = complexOutput.getXMLStreamWriter();
@@ -1728,6 +1668,121 @@ public class UCSDUtil {
 		}
 */
 	
+
+	public String calculateAccuracy(UCSDServiceVO vo) {
+
+/*		String transformationCode = "Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0";
+		String originalCoordinateX = "2";
+		String originalCoordinateY = "-1";
+		String originalCoordinateZ = "3";
+*/
+		String transformationCode = vo.getTransformationCode();
+		String originalCoordinateX = vo.getOriginalCoordinateX();
+		String originalCoordinateY = vo.getOriginalCoordinateY();
+		String originalCoordinateZ = vo.getOriginalCoordinateZ();
+
+		double accuracy = 0;
+		
+		//Parsing transformationCode
+		String[] transformationNameArray;
+		String delimiter = "_To_";
+		transformationNameArray = transformationCode.split(delimiter);
+		String fromSRSCode = transformationNameArray[0];
+		String toSRSCode = transformationNameArray[1].replace("_v1.0", "");
+
+		String transformedCoordinateX1 = "";
+		String transformedCoordinateY1 = "";
+		String transformedCoordinateZ1 = "";
+
+		String transformedCoordinateX2 = "";
+		String transformedCoordinateY2 = "";
+		String transformedCoordinateZ2 = "";
+
+		String transformedCoordinateX3 = "";
+		String transformedCoordinateY3 = "";
+		String transformedCoordinateZ3 = "";
+
+		try {
+
+			UCSDUtil util = new UCSDUtil();
+			
+			//Transformation 1
+			String completeCoordinatesString = util.directSpaceTransformation(fromSRSCode, toSRSCode, originalCoordinateX, originalCoordinateY, originalCoordinateZ);
+			if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+				throw new OWSException(
+						"No Such Transformation is available under UCSD Hub.",
+						ControllerException.NO_APPLICABLE_CODE);
+			}
+
+			vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+
+			if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+				throw new OWSException("Coordinates - Out of Range.",
+						ControllerException.NO_APPLICABLE_CODE);
+			}
+
+			transformedCoordinateX1 = vo.getTransformedCoordinateX();
+			transformedCoordinateY1 = vo.getTransformedCoordinateY();
+			transformedCoordinateZ1 = vo.getTransformedCoordinateZ();
+			System.out.println("transformedCoordinateX1: " + transformedCoordinateX1);
+			System.out.println("transformedCoordinateY1: " + transformedCoordinateY1);
+			System.out.println("transformedCoordinateZ1: " + transformedCoordinateZ1);
+			
+			//Transformation 2
+			completeCoordinatesString = "";
+			completeCoordinatesString = util.directSpaceTransformation(toSRSCode, fromSRSCode, vo.getTransformedCoordinateX(), vo.getTransformedCoordinateY(), vo.getTransformedCoordinateZ());
+			if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+				throw new OWSException(
+						"No Such Transformation is available under UCSD Hub.",
+						ControllerException.NO_APPLICABLE_CODE);
+			}
+
+			vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+
+			if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+				throw new OWSException("Coordinates - Out of Range.",
+						ControllerException.NO_APPLICABLE_CODE);
+			}
+
+			transformedCoordinateX2 = vo.getTransformedCoordinateX();
+			transformedCoordinateY2 = vo.getTransformedCoordinateY();
+			transformedCoordinateZ2 = vo.getTransformedCoordinateZ();
+
+			//Transformation 3
+			completeCoordinatesString = "";
+			completeCoordinatesString = util.directSpaceTransformation(fromSRSCode, toSRSCode, vo.getTransformedCoordinateX(), vo.getTransformedCoordinateY(), vo.getTransformedCoordinateZ());
+			if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+				throw new OWSException(
+						"No Such Transformation is available under UCSD Hub.",
+						ControllerException.NO_APPLICABLE_CODE);
+			}
+
+			vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+
+			if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+				throw new OWSException("Coordinates - Out of Range.",
+						ControllerException.NO_APPLICABLE_CODE);
+			}
+
+			transformedCoordinateX3 = vo.getTransformedCoordinateX();
+			transformedCoordinateY3 = vo.getTransformedCoordinateY();
+			transformedCoordinateZ3 = vo.getTransformedCoordinateZ();
+
+			//Apply the Euclidean Formula to get the accuracy and divide it by 3
+			double doubleCoordinateX = (Double.parseDouble(transformedCoordinateX3))-(Double.parseDouble(transformedCoordinateX1));
+			double doubleCoordinateY = (Double.parseDouble(transformedCoordinateY3))-(Double.parseDouble(transformedCoordinateY1));
+			double doubleCoordinateZ = (Double.parseDouble(transformedCoordinateZ3))-(Double.parseDouble(transformedCoordinateZ1));
+			accuracy = Math.sqrt((doubleCoordinateX*doubleCoordinateX)+(doubleCoordinateY*doubleCoordinateY)+(doubleCoordinateZ*doubleCoordinateZ))/3;
+
+		} catch ( Exception e ) {
+		e.printStackTrace();
+		}
+
+		return String.valueOf(accuracy);
+
+	}
+
+
 	//FIXME - amemon - will eventually go to commons
 	public String spaceTransformation( UCSDServiceVO vo ) {
 
@@ -1829,7 +1884,7 @@ public class UCSDUtil {
 
 		//Alex
 		} else if ( vo.getTransformationSource().equalsIgnoreCase(fromSpace.trim()) && vo.getTransformationDestination().equalsIgnoreCase(toSpace.trim()) 
-		&& vo.getTransformationURL().equalsIgnoreCase("whs092paxinos1")) { 
+										&& vo.getTransformationURL().equalsIgnoreCase("whs092paxinos1")) { 
 
 			LOG.debug("Hello - Inside WHS 2 PAXINOS...");
 			LOG.debug("Coordinate X: {}" , originalCoordinateX); 
@@ -3599,19 +3654,25 @@ public class UCSDUtil {
 
 	public static void main ( String args[] ) {
 		UCSDUtil util = new UCSDUtil();
+
+		UCSDServiceVO vo = new UCSDServiceVO();
+		String accuracy = util.calculateAccuracy(vo);
 		
-		StringTokenizer tokens = new StringTokenizer("Fine Structure Name: DG"); 
+		System.out.println("Accuracy: " + accuracy);
+		
+/*		StringTokenizer tokens = new StringTokenizer("Fine Structure Name: DG"); 
 		while ( tokens.hasMoreTokens() ) {
 			String structureName = tokens.nextToken();
 			LOG.debug("Structure Name is - {}" , structureName);
 		}
-		
+*/		
 		//util.splitCoordinatesFromStringToVO(new ABAServiceVO(), "13 12 3 4 5 6");
 
 	}
 
 	public UCSDServiceVO splitCoordinatesFromStringToVO(UCSDServiceVO vo, String completeCoordinatesString ) {
 
+		System.out.println("completeCoordinatesString: "+completeCoordinatesString);
 		StringTokenizer tokens = new StringTokenizer(completeCoordinatesString, " ");
 		int tokensSize = tokens.countTokens();
 
@@ -3879,6 +3940,7 @@ public class UCSDUtil {
 
 		//Check for direct transformation
 		try {
+
 		for ( int i=0; iterator1.hasNext(); i++ ) {
 			
 			vo1 = (UCSDServiceVO) iterator1.next();
@@ -3888,14 +3950,14 @@ public class UCSDUtil {
 			if ( fromSRS == null || fromSRS.equals("") || toSRS == null ||
 				  toSRS.equals("") || fromSRS.equals("all") || toSRS.equals("all")) {
 				chain = vo1.getTransformationSource() + "_To_" + vo1.getTransformationDestination()+":"+vo1.getTransformationHub();
-				System.out.println("Inside empty from.." + chain);
+				//System.out.println("Inside empty from.." + chain);
 				chainsList.add(chain);
 			}
 		}
-		return chainsList;
+		//return chainsList;
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		}
 
 		Set srcSet = new HashSet();
 		while (iterator2.hasNext()) {
@@ -3909,70 +3971,83 @@ public class UCSDUtil {
 			vo2 = (UCSDServiceVO) iterator2.next();
 			destSet.add(vo2.getTransformationDestination().toLowerCase());
 		}
-		
-		if ( !srcSet.contains(fromSRS.toLowerCase()) ) {
+
+		if ( !srcSet.contains(fromSRS.toLowerCase()) && !fromSRS.equalsIgnoreCase("all") ) {
 			//System.out.println("*****************************NOT PRESENT in FROM***************************************");
 			chain = "Error: No such transformation is available under this hub.";
 			chainsList.add(chain);
 		}
 
-		if ( !destSet.contains(toSRS.toLowerCase()) ) {
+		if ( !destSet.contains(toSRS.toLowerCase()) && !toSRS.equalsIgnoreCase("all") ) {
 			//System.out.println("*****************************NOT PRESENT in TO***************************************");
 			chain = "Error: No such transformation is available under this hub.";
 			chainsList.add(chain);
 		}
 
 
+		iterator1 = list.iterator();
 		//Check for direct transformation
 		for ( int i=0; iterator1.hasNext(); i++ ) {
-			
+
 			vo1 = (UCSDServiceVO) iterator1.next();
-			
-			//System.out.println("fromSRS from List: " + vo1.getTransformationSource() + ", toSRS from List: " + vo1.getTransformationDestination());
-			
+
 			if ( vo1.getTransformationSource().equalsIgnoreCase(fromSRS) &&
 				 vo1.getTransformationDestination().equalsIgnoreCase(toSRS) ) {
+				System.out.println("Inside Direct... fromSRS from List: " + vo1.getTransformationSource() + ", toSRS from List: " + vo1.getTransformationDestination());
 				//System.out.println("Inside Direct Transformation..");
 				chain = vo1.getTransformationSource() + "_To_" + vo1.getTransformationDestination()+":"+vo1.getTransformationHub();
 				chainsList.add(chain);
-				break;
+				chain = vo1.getTransformationDestination() + "_To_" + vo1.getTransformationSource()+":"+vo1.getTransformationHub();
+				chainsList.add(chain);
+				return chainsList;
 			}
-
+			
 		}
 
 		//Check for indirect transformation
 		iterator1 = list.iterator();
 		for ( int i=0; iterator1.hasNext(); i++ ) {
-			
 			vo1 = (UCSDServiceVO) iterator1.next();
+			
 			
 			//System.out.println("fromSRS from List: " + vo1.getTransformationSource() + ", toSRS from List: " + vo1.getTransformationDestination());
 			
-				if ( vo1.getTransformationDestination().equalsIgnoreCase(toSRS) ) {
+		if ( vo1.getTransformationDestination().equalsIgnoreCase(toSRS) ) {
 
-					//System.out.println("Inside ToSRS match..");
+					System.out.println("Inside ToSRS match..");
 					if (vo1.getTransformationSource().equalsIgnoreCase(oldToSRS)) {
-						//System.out.println("Inside OldToSRS match. So ignore this and move on.");
+						System.out.println("Inside OldToSRS match. So ignore this and move on.");
 						
 					} else if (vo1.getTransformationSource().equalsIgnoreCase(fromSRS)) {
-						//System.out.println("Closing step to build chain.");
+						System.out.println("Closing step to build chain.");
 						chain = vo1.getTransformationSource() + "_To_" + vo1.getTransformationDestination()+":"+vo1.getTransformationHub();
-						//System.out.println("****DONE CHAIN***" + chain);
+						chainsList.add(chain);
+						
+						//Reverse Chain
+						chain = vo1.getTransformationDestination() + "_To_" + vo1.getTransformationSource()+":"+vo1.getTransformationHub();
+						chainsList.add(chain);
+
+						System.out.println("****DONE CHAIN***" + chain);
 						//break;
 					} else {
 						//System.out.println("Ongoing step to build chain.");
 						chain = vo1.getTransformationSource() + "_To_" + vo1.getTransformationDestination()+":"+vo1.getTransformationHub();
+						chainsList.add(chain);
 						
+						//Reverse Chain
+						chain = vo1.getTransformationDestination() + "_To_" + vo1.getTransformationSource()+":"+vo1.getTransformationHub();
+						chainsList.add(chain);
+
 						toSRS = vo1.getTransformationSource();
 						oldToSRS = vo1.getTransformationDestination();
 
 						//Rewrite the list to default to go against the new toSRS value
 						iterator1 = list.iterator();
 
-						//System.out.println("****ONGOING CHAIN ***" + chain);	 
+						System.out.println("****ONGOING CHAIN ***" + chain);	 
 					}
 
-					chainsList.add(chain);
+					//chainsList.add(chain);
 	
 				}
 

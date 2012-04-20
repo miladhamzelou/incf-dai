@@ -65,6 +65,7 @@ import org.incf.ucsd.atlas.util.IncfDBUtil;
 import org.incf.ucsd.atlas.util.UCSDConfigurator;
 import org.incf.ucsd.atlas.util.UCSDServiceVO;
 import org.incf.ucsd.atlas.util.XML2AnnotObjects;
+import org.incf.ucsd.atlas.util.XMLReader;
 import org.incf.ucsd.atlas.util.XMLUtilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -109,7 +110,7 @@ public class SetAnnotation implements Processlet {
 					"filePath");
 
 			String filter = dataInputHandler.getValidatedStringValue(in,
-			"filter");
+					"filter");
 
 			//Start - Seperate userID and password from the filter attribute
 			String serviceUserID = "";
@@ -147,13 +148,13 @@ public class SetAnnotation implements Processlet {
     					ControllerException.NO_APPLICABLE_CODE);
 			}
 
-	    	org.incf.ucsd.atlas.util.PostgresDBService.URL = "jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-ucsd-db";
+			//Start 
+/*	    	org.incf.ucsd.atlas.util.PostgresDBService.URL = "jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/atlas-ucsd-db";
 	    	org.incf.ucsd.atlas.util.PostgresDBService.USERNAME = "atlas-ucsd-db";
 	    	org.incf.ucsd.atlas.util.PostgresDBService.PASSWORD = "ucsd4321";
 
 	        XML2AnnotObjects xml2o = new XML2AnnotObjects();
 	        IncfDBUtil util = new IncfDBUtil();
-	        //String xml = util.getXMLString(filePath);
 	        XMLUtilities xmlUtil = new XMLUtilities();
 	        String xml = xmlUtil.convertFromURLToString(filePath);
 	        System.out.println(xml);
@@ -162,7 +163,20 @@ public class SetAnnotation implements Processlet {
 
 	        IncfDBUtil iutil = new IncfDBUtil();
 	        iutil.insertAnnotation(amodel);
+*/	        //End
 
+			XMLReader xmlReader = new XMLReader();
+			String annotationURL = filePath;
+			//"http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=Mouse_ABAreference_1.0;x=-2;y=-1;z=0;tolerance=3";
+			System.out.println("Before calling - setAnnotationURL - " + annotationURL);
+			String responseString = xmlReader.setAnnotation(annotationURL);
+			System.out.println("After calling - setAnnotationResponse - " + responseString);
+
+			if (responseString.startsWith("Error:")	) {
+				System.out.println("Error Caused");
+	            throw new OWSException("Error: "+responseString, 
+	                    vo.getTransformationXMLResponseString());
+			}
 
 			// Generating 2 random number to be used as GMLID
 			Random randomGenerator1 = new Random();
@@ -172,6 +186,7 @@ public class SetAnnotation implements Processlet {
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID1 = randomGenerator1.nextInt(100);
 			}
+
 			Random randomGenerator2 = new Random();
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID2 = randomGenerator2.nextInt(100);
@@ -188,10 +203,9 @@ public class SetAnnotation implements Processlet {
 			opt.setUseDefaultNamespace();
 
 			System.out.println("Before Submit: " );
-			AnnotationResponseDocument document = completeResponse(vo);
+			AnnotationResponseDocument document = completeResponse(vo, responseString);
 			System.out.println("After Submit: " );
 
-			/*			
 			ArrayList errorList = new ArrayList();
 			opt.setErrorListener(errorList);
 			boolean isValid = document.validate(opt);
@@ -208,7 +222,7 @@ public class SetAnnotation implements Processlet {
 							, error.getCursorLocation().xmlText() + "\n");
 				}
 			}
-*/
+
 
 			ComplexOutput complexOutput = (ComplexOutput) out
 					.getParameter("SetAnnotationOutput");
@@ -238,13 +252,16 @@ public class SetAnnotation implements Processlet {
 		}
 	}
 
-	
-	public AnnotationResponseDocument completeResponse(UCSDServiceVO vo) {
+
+	public AnnotationResponseDocument completeResponse(UCSDServiceVO vo, String responseString) {
 
 		System.out.println("****Before Complete Response****");
 		AnnotationResponseDocument doc = AnnotationResponseDocument.Factory.newInstance();
 		AnnotationResponse annResp = doc.addNewAnnotationResponse();
-		System.out.println("****After Complete Response****");
+/*		AnnotationType annResp = doc.addNewAnnotationResponse().addNewAnnotation();
+		RESOURCE res = annResp.addNewRESOURCE();
+		res.setFilepath(responseString);
+*/		System.out.println("****After Complete Response****");
 
 		return doc;
 

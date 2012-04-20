@@ -2,18 +2,27 @@ package org.incf.ucsd.atlas.util;
 
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.io.RandomAccessFile;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.incf.ucsd.atlas.process.Test;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
+import org.jdom.output.XMLOutputter;
 
 public class XMLReader {
 
@@ -263,5 +272,70 @@ public class XMLReader {
 		return transformedCoordinates;
 
 	}
+
+	public String setAnnotation(String annotationURL) {
+
+		System.out.println("1");
+        //String surl = "http://ccdb-stage-portal.crbs.ucsd.edu:8081/SLASH_Annotation_Service/SubmitAnnotationByINCFXML";
+		String surl = "http://ccdb-stage-portal.crbs.ucsd.edu:8081/SLASH_Annotation_Service2/SubmitAnnotationByINCFXML";
+		
+        String line = null;
+        String responseString = "";
+
+        try {
+    		System.out.println("2");
+	            URL url = new URL(surl);
+	            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+	            conn.setDoOutput(true);
+	            conn.setRequestMethod( "POST" );
+
+	    		System.out.println("3");
+	            OutputStreamWriter osw = new OutputStreamWriter(conn.getOutputStream() , "UTF-8");
+
+	            PrintWriter pw = new PrintWriter(osw);
+		        //annotationURL = "http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=Mouse_ABAreference_1.0;x=-2;y=-1;z=0;tolerance=3";
+		        String xml = getXMLFromURL(annotationURL);
+
+                pw.write(xml);
+                pw.close();
+		        InputStreamReader inputS = new InputStreamReader(conn.getInputStream() , "UTF-8");
+
+				System.out.println("4");
+		        BufferedReader in = null;
+	           in  = new BufferedReader(inputS);
+                  StringBuffer buff = new StringBuffer();
+                  line = in.readLine();
+                  buff.append(line);
+          		System.out.println("5");
+                  while(line != null)
+                  {
+                   line = in.readLine();
+                   if(line != null)
+                        buff.append(line+"\n");
+                   }
+                   String result = buff.toString();
+
+                   responseString = result; 
+                   System.out.println("Result is - " + result);
+
+		        }
+		         catch(Exception e)
+		         {
+		             e.printStackTrace();
+		         }
+		        
+         return responseString;
+		         
+	}
+
+    public String getXMLFromURL(String url) throws Exception {
+        SAXBuilder builder = new SAXBuilder();
+        org.jdom.Document document = builder.build(new URL(url).openStream());
+        ByteArrayOutputStream bi = new ByteArrayOutputStream();
+        XMLOutputter serializer = new XMLOutputter();
+        serializer.output(document, bi);
+        return bi.toString();
+    }
+
 
 }

@@ -50,13 +50,13 @@ public class UCSDConfigurator {
 	/** Force all users to use the static reference */
 	private UCSDConfigurator() {
 	}
-	
+
 	private InputStream getInputFileURL() {
 
 		InputStream path = null;
 
 		path = getClass().getResourceAsStream(
-		"/prod-ucsd-config-properties.xml");
+		"/dev-ucsd-config-properties.xml");
 
 		LOG.debug("Config Path is - {}" , path);
 		return path;
