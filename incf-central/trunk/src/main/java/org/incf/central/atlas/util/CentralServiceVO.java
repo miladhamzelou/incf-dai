@@ -116,6 +116,11 @@ public class CentralServiceVO {
 	private String toSRSCodeEleven;
 	private String toSRSCodeTwelve;
 
+	private String transformationSource;
+	private String transformationDestination;
+	private String transformationHub;
+	private String transformationURL;
+
 	//Start - SRS Related
 	private String srsCode = "";
 	private String srsName = "";
@@ -281,6 +286,14 @@ public class CentralServiceVO {
 		return spaceCode;
 	}
 
+	public String getTransformationURL() {
+		return transformationURL;
+	}
+
+	public void setTransformationURL(String transformationURL) {
+		this.transformationURL = transformationURL;
+	}
+
 	public void setSpaceCode(String spaceCode) {
 		this.spaceCode = spaceCode;
 	}
@@ -303,6 +316,30 @@ public class CentralServiceVO {
 
 	public String getRightDirection() {
 		return rightDirection;
+	}
+
+	public String getTransformationSource() {
+		return transformationSource;
+	}
+
+	public void setTransformationSource(String transformationSource) {
+		this.transformationSource = transformationSource;
+	}
+
+	public String getTransformationDestination() {
+		return transformationDestination;
+	}
+
+	public void setTransformationDestination(String transformationDestination) {
+		this.transformationDestination = transformationDestination;
+	}
+
+	public String getTransformationHub() {
+		return transformationHub;
+	}
+
+	public void setTransformationHub(String transformationHub) {
+		this.transformationHub = transformationHub;
 	}
 
 	public void setRightDirection(String rightDirection) {

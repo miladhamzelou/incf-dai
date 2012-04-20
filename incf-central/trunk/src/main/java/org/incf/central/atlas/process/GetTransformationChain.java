@@ -1,12 +1,10 @@
 package org.incf.central.atlas.process;
 
-import java.io.File;
-import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import org.incf.common.atlas.exception.InvalidDataInputValueException;
-import org.incf.common.atlas.util.AllowedValuesValidator;
 import org.incf.common.atlas.util.Util;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
 import org.deegree.commons.utils.kvp.MissingParameterException;
@@ -17,7 +15,6 @@ import org.deegree.services.wps.ProcessletException;
 import org.deegree.services.wps.ProcessletExecutionInfo;
 import org.deegree.services.wps.ProcessletInputs;
 import org.deegree.services.wps.ProcessletOutputs;
-import org.deegree.services.wps.input.LiteralInput;
 import org.deegree.services.wps.output.ComplexOutput;
 import org.incf.central.atlas.util.CentralConfigurator;
 import org.incf.central.atlas.util.CentralServiceVO;
@@ -142,7 +139,7 @@ public class GetTransformationChain implements Processlet {
 	 			"GetTransformationChainOutput");
 
 		CentralUtil util = new CentralUtil(); 
-		String responseString = util.getCoordinateTransformationChain(vo, complexOutput);
+		String responseString = util.getCoordinateTransformationChain(vo, complexOutput, new ArrayList());
 
 		if ( responseString.startsWith("Error:")) {
 			responseString = responseString.replaceAll("Error: ", "");

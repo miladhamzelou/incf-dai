@@ -252,6 +252,7 @@ public class BaseDAO {
 
     }// end of getStandAloneConnectionForPostgresFromCCDB method
 
+    
     /**
      * Gets the connection to the database. Does not do connection pooling.
      *

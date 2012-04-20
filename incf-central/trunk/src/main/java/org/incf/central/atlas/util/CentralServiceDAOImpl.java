@@ -35,7 +35,7 @@ public class CentralServiceDAOImpl {
 		
 		ArrayList list = new ArrayList();
 		BaseDAO dao = new BaseDAO();
-		String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.whs.09")+"','"+configurator.getValue("srsname.whs.10")+"','"+configurator.getValue("srsname.agea.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
+		//String srsName = "'"+configurator.getValue("srsname.abareference.10")+"','"+configurator.getValue("srsname.abavoxel.10")+"','"+configurator.getValue("srsname.paxinos.10")+"','"+configurator.getValue("srsname.whs.09")+"','"+configurator.getValue("srsname.whs.10")+"','"+configurator.getValue("srsname.agea.10")+"','"+configurator.getValue("srsname.ucsdnewsrs.10")+"'";
 
 		try {
 
@@ -43,7 +43,9 @@ public class CentralServiceDAOImpl {
 		Connection conn = dao.getStandAloneConnectionForPostgres();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from srs where srs_name in (" + srsName + ") order by srs_name " );
+		//query.append( " select * from srs where srs_name in (" + srsName + ") order by srs_name " );
+		
+		query.append( "select * from srs where status = 'ACTIVE' and srs_author_code in ( 'UCSD', 'ABA', 'WHS', 'EMAP' ) order by srs_name" );
 
 		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
@@ -357,5 +359,41 @@ public class CentralServiceDAOImpl {
 		return coordinatesRange;
 	}
 */
-	
+
+	public ArrayList getCentralSpaceTransformationData( CentralServiceVO vo ) {
+
+		ArrayList list = new ArrayList();
+		BaseDAO dao = new BaseDAO();
+
+		try {
+
+		//Used for postgres connection
+		Connection conn = dao.getStandAloneConnectionForPostgresFromUCSD();
+		Statement stmt = conn.createStatement();
+		StringBuffer query = new StringBuffer();
+		query.append( " select * from space_transformations where status = 'ACTIVE' and hub in ( 'UCSD', 'ABA', 'WHS' ) order by hub" );
+
+		LOG.debug("getSpaceTransformationData - Query is - {}" , query.toString() );
+
+		ResultSet rs = stmt.executeQuery(query.toString()); 
+
+		while ( rs.next() ) {
+
+			vo = new CentralServiceVO();
+			
+			vo.setTransformationSource(rs.getString("source"));
+			vo.setTransformationDestination(rs.getString("destination"));
+			vo.setTransformationHub(rs.getString("hub"));
+			vo.setTransformationURL(rs.getString("transformation_url"));
+
+			list.add(vo);
+
+		}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

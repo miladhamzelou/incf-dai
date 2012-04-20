@@ -41,6 +41,7 @@ public class ListTransformations implements Processlet {
 	String whs10 = config.getValue("srsname.whs.10");
 	String emap = config.getValue("srsname.emap.10");
 	String paxinos = config.getValue("srsname.paxinos.10");
+	String ucsdSrsName = config.getValue("srsname.ucsdnewsrs.10");
 
 	String abavoxel2agea = config.getValue("code.abavoxel2agea.v1");
 	String agea2abavoxel = config.getValue("code.agea2abavoxel.v1");
@@ -55,8 +56,6 @@ public class ListTransformations implements Processlet {
 	String paxinos2whs09 = config.getValue("code.paxinos2whs09.v1");
 	String whs092paxinos = config.getValue("code.whs092paxinos.v1");
 
-	// private String dataInputString;
-	// private DataInputs dataInputs;
 	String hostName = "";
 	String portNumber = "";
 	String servicePath = "";
@@ -74,6 +73,7 @@ public class ListTransformations implements Processlet {
 
 			CentralServiceVO vo = new CentralServiceVO();
 
+			LOG.debug(" Inside ListTransformations");
 			String inputSrsName = "";
 			String outputSrsName = "";
 			String filter = "";
@@ -89,14 +89,8 @@ public class ListTransformations implements Processlet {
 				outputSrsName = dataInputHandler.getValidatedStringValue(in,
 						"outputSrsName");
 				filter = dataInputHandler.getValidatedStringValue(in, "filter");
-				/*
-				 * inputSrsName = Util.getStringInputValue(in, "inputSrsName");
-				 * outputSrsName = Util.getStringInputValue(in,
-				 * "outputSrsName"); filter = Util.getStringInputValue(in,
-				 * "filter");
-				 */}
 
-			// new
+			}
 
 			// Start - FIXME - Uncomment below two lines and comment the other
 			// three lines
@@ -105,10 +99,8 @@ public class ListTransformations implements Processlet {
 			hostName = config.getValue("incf.deploy.host.name");
 			portNumber = config.getValue("incf.aba.port.number");
 			String delimitor = config.getValue("incf.deploy.port.delimitor");
-			// portNumber = delimitor + portNumber;
 			// End - FIXME
 
-			// vo.setUrlString(uri.toString());
 			vo.setIncfDeployHostname(hostName);
 			vo.setIncfDeployPortNumber(portNumber);
 
@@ -134,132 +126,38 @@ public class ListTransformations implements Processlet {
 				vo.setToSRSCodeOne("all");
 				vo.setToSRSCode("all");
 				vo.setFilter("");
-				responseString = util.getCoordinateTransformationChain(vo,
-						complexOutput);
+				responseString = util.listTransformations(vo, complexOutput, new ArrayList());
 
 			} else if (inputSrsName.equalsIgnoreCase("all")
 					&& outputSrsName.equalsIgnoreCase("all")) {
-				LOG.debug("Inside All both.");
+				LOG.debug("Inside All Both.");
 				vo.setFromSRSCodeOne("all");
 				vo.setFromSRSCode("all");
 				vo.setToSRSCodeOne("all");
 				vo.setToSRSCode("all");
 				vo.setFilter("");
-				responseString = util.getCoordinateTransformationChain(vo,
-						complexOutput);
+				responseString = util.listTransformations(vo, complexOutput, new ArrayList());
 
-			} else if ((!inputSrsName.equals("") || inputSrsName != null)
+			} else if (!inputSrsName.equals("")
 					&& outputSrsName.equalsIgnoreCase("all")) {
 				LOG.debug("Inside inputSRSName not empty.");
-				if (inputSrsName.equals(abaReference)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(abaReference);
-					vo1.setToSRSCode(abaVoxel);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (inputSrsName.equals(abaVoxel)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(abaVoxel);
-					vo1.setToSRSCode(agea);
-					srsCodeList.add(vo1);
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(abaVoxel);
-					vo1.setToSRSCode(abaReference);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (inputSrsName.equals(agea)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(agea);
-					vo1.setToSRSCode(whs09);
-					srsCodeList.add(vo1);
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(agea);
-					vo1.setToSRSCode(abaVoxel);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (inputSrsName.equals(whs09)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(whs09);
-					vo1.setToSRSCode(agea);
-					srsCodeList.add(vo1);
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(whs09);
-					vo1.setToSRSCode(whs10);
-					srsCodeList.add(vo1);
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(whs09);
-					vo1.setToSRSCode(paxinos);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (inputSrsName.equals(whs10)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(whs10);
-					vo1.setToSRSCode(whs09);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (inputSrsName.equals(paxinos)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(paxinos);
-					vo1.setToSRSCode(whs09);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				}
-				responseString = util.listTransformations(vo, complexOutput,
-						srsCodeList);
-			} else if ((!outputSrsName.equals("") || outputSrsName != null)
+				vo.setFromSRSCodeOne("all");
+				vo.setFromSRSCode("all");
+				vo.setToSRSCodeOne("all");
+				vo.setToSRSCode("all");
+				vo.setFilter("");
+				responseString = util.listTransformations(vo, complexOutput, new ArrayList());
+
+			} else if (!outputSrsName.equals("")
 					&& inputSrsName.equalsIgnoreCase("all")) {
 				LOG.debug("Inside outputSRSName not empty.");
-				if (outputSrsName.equals(abaVoxel)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(abaReference);
-					vo1.setToSRSCode(abaVoxel);
-					srsCodeList.add(vo1);
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(agea);
-					vo1.setToSRSCode(abaVoxel);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (outputSrsName.equals(agea)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(abaVoxel);
-					vo1.setToSRSCode(agea);
-					srsCodeList.add(vo1);
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(whs09);
-					vo1.setToSRSCode(agea);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (outputSrsName.equals(whs09)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(agea);
-					vo1.setToSRSCode(whs09);
-					srsCodeList.add(vo1);
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(whs10);
-					vo1.setToSRSCode(whs09);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (outputSrsName.equals(whs10)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(whs09);
-					vo1.setToSRSCode(whs10);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (outputSrsName.equals(paxinos)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(whs09);
-					vo1.setToSRSCode(paxinos);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				} else if (outputSrsName.equals(abaReference)) {
-					vo1 = new CentralServiceVO();
-					vo1.setFromSRSCode(abaVoxel);
-					vo1.setToSRSCode(abaReference);
-					srsCodeList.add(vo1);
-					vo.setFilter("");
-				}
-				responseString = util.listTransformations(vo, complexOutput,
-						srsCodeList);
+				vo.setFromSRSCodeOne("all");
+				vo.setFromSRSCode("all");
+				vo.setToSRSCodeOne("all");
+				vo.setToSRSCode("all");
+				vo.setFilter("");
+				responseString = util.listTransformations(vo, complexOutput, new ArrayList());
+
 			} else if (!inputSrsName.equals("") || inputSrsName != null
 					&& !outputSrsName.equals("") || outputSrsName != null) {
 				LOG.debug("Both Legitimate values.");
@@ -268,10 +166,9 @@ public class ListTransformations implements Processlet {
 				vo.setToSRSCodeOne(outputSrsName);
 				vo.setToSRSCode(outputSrsName);
 				vo.setFilter(filter);
-				responseString = util.getCoordinateTransformationChain(vo,
-						complexOutput);
+				responseString = util.listTransformations(vo, complexOutput, new ArrayList());
 			} else {
-				LOG.debug("Nothing matched.");
+				LOG.debug("Nothing matched..");
 				responseString = "Error: No such transformation chain is supported under this hub.";
 			}
 
