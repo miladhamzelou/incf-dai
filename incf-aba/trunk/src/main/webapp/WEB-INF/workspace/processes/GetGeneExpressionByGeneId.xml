@@ -39,6 +39,10 @@
       <Abstract>The gene expression map or link thereto.</Abstract>
       <DefaultFormat mimeType="text/plain" encoding="UTF-8"/>
     </ComplexOutput>
+<!--     <LiteralOutput> -->
+<!--       <Identifier>GetGeneExpressionByGeneIdOutput</Identifier> -->
+<!--       <Title>GetGeneExpressionByGeneId Output</Title> -->
+<!--     </LiteralOutput> -->
   </OutputParameters>
   
 </ProcessDefinition>

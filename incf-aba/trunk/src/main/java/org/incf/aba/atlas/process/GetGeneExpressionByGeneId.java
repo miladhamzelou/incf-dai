@@ -3,18 +3,20 @@ package org.incf.aba.atlas.process;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.Writer;
 import java.net.URL;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import javax.xml.stream.XMLStreamWriter;
 
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
 import org.deegree.commons.utils.kvp.MissingParameterException;
-import org.deegree.commons.xml.XMLAdapter;
 import org.deegree.services.controller.exception.ControllerException;
 import org.deegree.services.controller.ows.OWSException;
 import org.deegree.services.wps.Processlet;
@@ -37,8 +39,10 @@ public class GetGeneExpressionByGeneId implements Processlet {
     @Override
     public void process(ProcessletInputs in, ProcessletOutputs out, 
             ProcessletExecutionInfo info) throws ProcessletException {
-    	InputStream inStream = null;
-    	OutputStream outStream = null;
+//    	InputStream inStream = null;
+//    	OutputStream outStream = null;
+    	Reader reader = null;
+    	Writer writer = null;
     	try {
     		
     		// validate against allowed values in process definition file
@@ -94,21 +98,45 @@ http://localhost:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identi
     		
     		// step 2: get sparse volume file
     		URL u = new URL(assembleExpressionEnergyVolumeURI(imageSeriesId));
-    		inStream = u.openStream();
-
-    		ComplexOutput complexOutput = (ComplexOutput) out.getParameter(
+    		
+    		// complex output approach
+    		reader = new InputStreamReader(u.openStream());
+    		ComplexOutput output = (ComplexOutput) out.getParameter(
     				"GetGeneExpressionByGeneIdOutput");
-    		
-    		LOG.debug("Setting complex output (requested=" 
-    				+ complexOutput.isRequested() + ")");
-    		
-    		outStream = complexOutput.getBinaryOutputStream();
-    		
-    		byte[] bytes = new byte[1024];
-    		int bytesRead;
-    		while ((bytesRead = inStream.read(bytes)) != -1) {
-    			outStream.write(bytes, 0, bytesRead);
+    		writer = new OutputStreamWriter(output.getBinaryOutputStream());
+    		char[] chars = new char[1024];
+    		int charsRead;
+    		while ((charsRead = reader.read(chars)) != -1) {
+    			writer.write(chars, 0, charsRead);
     		}
+    		
+//    		inStream = u.openStream();
+//    		reader = new BufferedReader(new InputStreamReader(u.openStream()));
+
+//    		ComplexOutput output = (ComplexOutput) out.getParameter(
+//    				"GetGeneExpressionByGeneIdOutput");
+//    		LiteralOutput output = (LiteralOutput) out.getParameter(
+//					"GetGeneExpressionByGeneIdOutput");
+    		
+//    		LOG.debug("Setting output (requested=" + output.isRequested() + ")");
+    		
+//    		outStream = complexOutput.getBinaryOutputStream();
+//    		writer = new OutputStreamWriter(output.getBinaryOutputStream());
+//    		writer = new PrintWriter(new StringWriter());
+    		
+//    		byte[] bytes = new byte[1024];
+//    		int bytesRead;
+//    		while ((bytesRead = inStream.read(bytes)) != -1) {
+//    			outStream.write(bytes, 0, bytesRead);
+//    		}
+    		
+//    		char[] chars = new char[1024];
+//    		int charsRead;
+//    		while ((charsRead = reader.read(chars)) != -1) {
+//    			writer.write(chars, 0, charsRead);
+//    		}
+    		
+//    		output.setValue(writer.toString());
     		
 //    		// get ComplexOutput object from ProcessletOutput...
 //    		ComplexOutput complexOutput = (ComplexOutput) out.getParameter(
@@ -141,8 +169,10 @@ http://localhost:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identi
         	throw new ProcessletException(new OWSException(message, e, 
         			ControllerException.NO_APPLICABLE_CODE));
         } finally {
-        	close(inStream);
-        	close(outStream);
+//        	close(inStream);
+//        	close(outStream);
+        	close(reader);
+        	close(writer);
         }
     }
     
@@ -226,6 +256,26 @@ http://localhost:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identi
     	if (outStream != null) {
     		try {
     			outStream.close();
+    		} catch (IOException logOnly) {
+    			LOG.warn("Problem closing OutputStream", logOnly);
+    		}
+    	}
+    }
+
+    private void close(Reader reader) {
+    	if (reader != null) {
+    		try {
+    			reader.close();
+    		} catch (IOException logOnly) {
+    			LOG.warn("Problem closing InputStream", logOnly);
+    		}
+    	}
+    }
+
+    private void close(Writer writer) {
+    	if (writer != null) {
+    		try {
+    			writer.close();
     		} catch (IOException logOnly) {
     			LOG.warn("Problem closing OutputStream", logOnly);
     		}
