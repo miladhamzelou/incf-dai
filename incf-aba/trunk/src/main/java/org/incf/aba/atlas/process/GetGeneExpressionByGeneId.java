@@ -31,6 +31,13 @@ import org.incf.common.atlas.util.DataInputHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
+/**
+ * E.g. http://drlittle.ucsd.edu:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGeneExpressionByGeneId&DataInputs=geneSymbol=Coch;filter=maptype:coronal&RawDataOutput=GetGeneExpressionByGeneIdOutput
+ * 
+ * @author dave
+ *
+ */
 public class GetGeneExpressionByGeneId implements Processlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(
