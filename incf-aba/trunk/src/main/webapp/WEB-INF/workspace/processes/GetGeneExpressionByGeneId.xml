@@ -16,9 +16,13 @@
 
   <InputParameters>
     <LiteralInput>
-      <Identifier>geneSymbol</Identifier>
-      <Title>Gene Symbol</Title>
-      <Abstract>The ABA gene symbol.</Abstract>
+      <Identifier>geneIdentifier</Identifier>
+      <Title>Gene Identifier</Title>
+      <Abstract>
+        A gene identifier. If the identifier is a number, it is
+        considered to be the Entrez Gene Id. If the identifier is not a number,
+        it is interpreted as the ABA gene symbol.
+      </Abstract>
     </LiteralInput>
     <LiteralInput minOccurs="0">
       <Identifier>filter</Identifier>
@@ -34,9 +38,8 @@
   
   <OutputParameters>
     <ComplexOutput>
-      <Identifier>GetGeneExpressionByGeneIdOutput</Identifier>
-      <Title>GetGeneExpressionByGeneId Output</Title>
-      <Abstract>The gene expression map or link thereto.</Abstract>
+      <Identifier>SparseValueVolumeXML</Identifier>
+      <Title>Gene Expression Data in SparseValueVolume XML</Title>
       <DefaultFormat mimeType="text/plain" encoding="UTF-8"/>
     </ComplexOutput>
 <!--     <LiteralOutput> -->

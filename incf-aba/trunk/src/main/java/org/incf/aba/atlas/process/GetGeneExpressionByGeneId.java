@@ -1,20 +1,27 @@
 package org.incf.aba.atlas.process;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLOutputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.XMLStreamWriter;
 
+import org.apache.commons.io.IOUtils;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
 import org.deegree.commons.utils.kvp.MissingParameterException;
 import org.deegree.services.controller.exception.ControllerException;
@@ -33,21 +40,37 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * E.g. http://drlittle.ucsd.edu:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGeneExpressionByGeneId&DataInputs=geneSymbol=Coch;filter=maptype:coronal&RawDataOutput=GetGeneExpressionByGeneIdOutput
+ * E.g.
+ * http://<server:port>/aba/atlas?service=WPS&request=GetCapabilities
+ * http://<server:port>/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+ * http://<server:port>/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=GetGeneExpressionByGeneId
+ * 
+ * Using geneIdentifier=<entrez-gene-id> 
+ * http://<server:port>/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGeneExpressionByGeneId&DataInputs=geneIdentifier=12810;filter=maptype:coronal&RawDataOutput=SparseValueVolumeXML
+ * 
+ * Using geneIdentifier=<aba-gene-symbol> 
+ * http://<server:port>/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGeneExpressionByGeneId&DataInputs=geneIdentifier=Coch;filter=maptype:coronal&RawDataOutput=SparseValueVolumeXML
  * 
  * @author dave
- *
  */
 public class GetGeneExpressionByGeneId implements Processlet {
 
     private static final Logger LOG = LoggerFactory.getLogger(
     		GetGeneExpressionByGeneId.class);
+    
+    private static final String ENTREZ_TO_SYMBOL_FILE = "/entrezGeneIdToABAGeneSymbol.csv";
+    
+    private Map<String, String> entrezToSymbol;
+    
+    private String entrezGeneId;
+    private String abaGeneSymbol;
+    private String geneName;
+    private String organism;
+    private String chromosome;
 
     @Override
     public void process(ProcessletInputs in, ProcessletOutputs out, 
             ProcessletExecutionInfo info) throws ProcessletException {
-//    	InputStream inStream = null;
-//    	OutputStream outStream = null;
     	Reader reader = null;
     	Writer writer = null;
     	try {
@@ -59,21 +82,33 @@ public class GetGeneExpressionByGeneId implements Processlet {
     		// get validated data inputs or default values
     		DataInputHandler dataInputHandler = new DataInputHandler(
     				new File(processDefinitionUrl.toURI()));
-    		String geneSymbol = dataInputHandler.getValidatedStringValue(in, 
-    				"geneSymbol");
+    		String geneIdentifier = dataInputHandler.getValidatedStringValue(in, 
+    				"geneIdentifier");
     		String filter = dataInputHandler.getValidatedStringValue(in, 
 					"filter");
     		
     		LOG.debug(String.format(
     				"DataInputs: geneSymbol: %s, filter: %s",
-    				geneSymbol, filter));
+    				geneIdentifier, filter));
+    		
+    		// if geneIdentifer int, it's entrez gene id otherwise ABA gene symbol
+    		boolean isIdEntrezGeneId = true; 
+    		try {
+				Integer.parseInt(geneIdentifier);	// see if exception thrown
+			} catch (NumberFormatException e) {
+				isIdEntrezGeneId = false;
+			}
+
+			// if geneIdentifier is entrez gene id, translate to ABA gene symbol
+			abaGeneSymbol = isIdEntrezGeneId 
+					? entrezToSymbol.get(geneIdentifier) : geneIdentifier;
     		
     		// get plane; defaults to coronal
     		ImageSeriesPlane desiredPlane = filter.equals("maptype:sagittal")
     				? ImageSeriesPlane.SAGITTAL : ImageSeriesPlane.CORONAL;
 
     		/*
-Say you are interested in gene (symbol) "Coch", at a browser ...
+Say you are interested in gene symbol "Coch", at a browser ...
 
 Step 1: http://www.brain-map.org/aba/api/gene/Coch.xml
 
@@ -92,69 +127,28 @@ This returns a "sparse volume file". You can read about this file content at
 http://community.brain-map.org/confluence/download/attachments/525267/TheABAAPI_Final.pdf?version=2
 About 3 pages from the end of the PDF file under the heading "The Sparse Volume (.sva) Format".
 
-Test
-http://localhost:8080/aba/atlas?service=WPS&request=GetCapabilities
-http://localhost:8080/aba/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
-http://localhost:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGeneExpressionByGeneId&DataInputs=geneSymbol=Coch;filter=maptype:coronal
-http://localhost:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGeneExpressionByGeneId&DataInputs=geneSymbol=Coch;filter=maptype:coronal&rawDataOutput=GetGeneExpressionByGeneIdOutput
+Test: See class javadoc comment
     		 */
     		
     		// step 1: get imageseriesid for given gene and plane
-    		String imageSeriesId = retrieveImagesSeriesIdForGene(geneSymbol,
+    		String imageSeriesId = retrieveImagesSeriesIdForGene(abaGeneSymbol,
     				desiredPlane);
     		
     		// step 2: get sparse volume file
     		URL u = new URL(assembleExpressionEnergyVolumeURI(imageSeriesId));
     		
-    		// complex output approach
-    		reader = new InputStreamReader(u.openStream());
+    		String xmlString = buildXMLString(u.openStream());
+    		
+    		reader = new StringReader(xmlString);
+
     		ComplexOutput output = (ComplexOutput) out.getParameter(
-    				"GetGeneExpressionByGeneIdOutput");
+    				"SparseValueVolumeXML");
     		writer = new OutputStreamWriter(output.getBinaryOutputStream());
     		char[] chars = new char[1024];
     		int charsRead;
     		while ((charsRead = reader.read(chars)) != -1) {
     			writer.write(chars, 0, charsRead);
     		}
-    		
-//    		inStream = u.openStream();
-//    		reader = new BufferedReader(new InputStreamReader(u.openStream()));
-
-//    		ComplexOutput output = (ComplexOutput) out.getParameter(
-//    				"GetGeneExpressionByGeneIdOutput");
-//    		LiteralOutput output = (LiteralOutput) out.getParameter(
-//					"GetGeneExpressionByGeneIdOutput");
-    		
-//    		LOG.debug("Setting output (requested=" + output.isRequested() + ")");
-    		
-//    		outStream = complexOutput.getBinaryOutputStream();
-//    		writer = new OutputStreamWriter(output.getBinaryOutputStream());
-//    		writer = new PrintWriter(new StringWriter());
-    		
-//    		byte[] bytes = new byte[1024];
-//    		int bytesRead;
-//    		while ((bytesRead = inStream.read(bytes)) != -1) {
-//    			outStream.write(bytes, 0, bytesRead);
-//    		}
-    		
-//    		char[] chars = new char[1024];
-//    		int charsRead;
-//    		while ((charsRead = reader.read(chars)) != -1) {
-//    			writer.write(chars, 0, charsRead);
-//    		}
-    		
-//    		output.setValue(writer.toString());
-    		
-//    		// get ComplexOutput object from ProcessletOutput...
-//    		ComplexOutput complexOutput = (ComplexOutput) out.getParameter(
-//    				"Get2DImagesByPOIOutput");
-//
-//    		LOG.debug("Setting complex output (requested=" 
-//    				+ complexOutput.isRequested() + ")");
-//    		
-//    		// ComplexOutput objects can be huge so stream it 
-//    		XMLStreamWriter writer = complexOutput.getXMLStreamWriter();
-//    		XMLAdapter.writeElement(writer, reader);
     		
     		// transform any exceptions into ProcessletException wrapping
     		// OWSException
@@ -176,10 +170,8 @@ http://localhost:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identi
         	throw new ProcessletException(new OWSException(message, e, 
         			ControllerException.NO_APPLICABLE_CODE));
         } finally {
-//        	close(inStream);
-//        	close(outStream);
-        	close(reader);
-        	close(writer);
+        	IOUtils.closeQuietly(reader);
+        	IOUtils.closeQuietly(writer);
         }
     }
     
@@ -189,50 +181,99 @@ http://localhost:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identi
 
     @Override
     public void init() {
-    }
-    
-	private String retrieveImagesSeriesIdForGene(String geneSymbol,
-			ImageSeriesPlane desiredPlane) throws IOException, 
-					XMLStreamException {
-		String imageSeriesId = null;
-		URL u = new URL(ABAUtil.assembleGeneURI(geneSymbol));
-
-		LOG.debug("Gene info URI: {}", u.toString());
-
-		InputStream in = u.openStream();
-		XMLInputFactory factory = XMLInputFactory.newInstance();
-		XMLStreamReader parser = factory.createXMLStreamReader(in);
-
-		boolean inISid = false;
-		boolean inPlane = false;
-		String isId = null;
-		String plane = null;
-		for (int event = parser.next();  
-		event != XMLStreamConstants.END_DOCUMENT;
-		event = parser.next()) {
-			if (event == XMLStreamConstants.START_ELEMENT) {
-				if (parser.getLocalName().equals("imageseriesid")) {
-					inISid = true;
-				} else if (parser.getLocalName().equals("plane")) {
-					inPlane = true;
+    	entrezToSymbol = new HashMap<String, String>();
+    	InputStream is = this.getClass().getResourceAsStream(ENTREZ_TO_SYMBOL_FILE);
+    	BufferedReader in = null;
+    	try {
+			in = new BufferedReader(new InputStreamReader(is));
+			String line = null;
+			while ((line = in.readLine()) != null) {
+				if (line.startsWith("#")) {
+					continue;
 				}
-			} else if (event == XMLStreamConstants.CHARACTERS) {
-				if (inISid) {
-					isId = parser.getText();
-					inISid = false;
-				} else if (inPlane) {
-					plane = parser.getText();
-					if (plane.equals(desiredPlane.toString())) {
-						imageSeriesId = isId;
-					}
-					inPlane = false;
+				String[] parts = line.split(",");
+				entrezToSymbol.put(parts[0], parts[1]);
+			}
+		} catch (IOException e) {
+			entrezToSymbol = null;
+			LOG.error("Problem building entrezGeneId to ABAGeneSymbol map.", e);
+		} finally {
+			if (in != null) {
+				try {
+					in.close();
+				} catch (IOException ignore) {
 				}
 			}
 		}
+    }
+    
+	private String retrieveImagesSeriesIdForGene(String geneSymbol,
+			ImageSeriesPlane desiredPlane) throws IOException, XMLStreamException {
+		String imageSeriesId = null;
+		InputStream in = null;
+		XMLStreamReader parser = null;
 		try {
-			parser.close();
-		} catch (XMLStreamException e) {
-			LOG.warn(e.getMessage(), e);		// log but go on
+			URL u = new URL(ABAUtil.assembleGeneURI(geneSymbol));
+
+			LOG.debug("Gene info URI: {}", u.toString());
+
+			in = u.openStream();
+			XMLInputFactory factory = XMLInputFactory.newInstance();
+			parser = factory.createXMLStreamReader(in);
+
+			boolean inChromosome = false;
+			boolean inEntrezGeneId = false;
+			boolean inGeneName = false;
+			boolean inOrganism = false;
+			boolean inISid = false;
+			boolean inPlane = false;
+			String isId = null;
+			String plane = null;
+			for (int event = parser.next();  
+			event != XMLStreamConstants.END_DOCUMENT;
+			event = parser.next()) {
+				if (event == XMLStreamConstants.START_ELEMENT) {
+					if (imageSeriesId == null && parser.getLocalName().equals("imageseriesid")) {
+						inISid = true;
+					} else if (plane == null && parser.getLocalName().equals("plane")) {
+						inPlane = true;
+					} else if (chromosome == null && parser.getLocalName().equals("chromosome")) {
+						inChromosome = true;
+					} else if (entrezGeneId == null && parser.getLocalName().equals("entrezgeneid")) {
+						inEntrezGeneId = true;
+					} else if (geneName == null && parser.getLocalName().equals("genename")) {
+						inGeneName = true;
+					} else if (organism == null && parser.getLocalName().equals("organism")) {
+						inOrganism = true;
+					}
+				} else if (event == XMLStreamConstants.CHARACTERS) {
+					if (inISid) {
+						isId = parser.getText();
+						inISid = false;
+					} else if (inPlane) {
+						plane = parser.getText();
+						if (plane.equals(desiredPlane.toString())) {
+							imageSeriesId = isId;
+						}
+						inPlane = false;
+					} else if (inChromosome) {
+						chromosome = parser.getText();
+						inChromosome = false;
+					} else if (inEntrezGeneId) {
+						entrezGeneId = parser.getText();
+						inEntrezGeneId = false;
+					} else if (inGeneName) {
+						geneName = parser.getText();
+						inGeneName = false;
+					} else if (inOrganism) {
+						organism = parser.getText();
+						inOrganism = false;
+					}
+				}
+			}
+		} finally {
+			IOUtils.closeQuietly(in);
+			close(parser);
 		}
 	    return imageSeriesId;
 	}
@@ -249,41 +290,113 @@ http://localhost:8080/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identi
 				imageSeriesId);
 	}
 	
-    private void close(InputStream inStream) {
-    	if (inStream != null) {
-    		try {
-    			inStream.close();
-    		} catch (IOException logOnly) {
-    			LOG.warn("Problem closing InputStream", logOnly);
-    		}
-    	}
-    }
+	private String buildXMLString(InputStream svaText) throws XMLStreamException, IOException {
+		StringWriter stringWriter = new StringWriter();
+		XMLOutputFactory factory = XMLOutputFactory.newInstance();
+		XMLStreamWriter out = null;
+		try {
+			int indentDepth = 0;
+			out = factory.createXMLStreamWriter(stringWriter);
+			out.writeStartDocument("1.0");
+			
+			indentXML(out, indentDepth++);
+			out.writeStartElement("SparseValueVolume");
 
-    private void close(OutputStream outStream) {
-    	if (outStream != null) {
-    		try {
-    			outStream.close();
-    		} catch (IOException logOnly) {
-    			LOG.warn("Problem closing OutputStream", logOnly);
-    		}
-    	}
-    }
+			BufferedReader in = new BufferedReader(new InputStreamReader(svaText));
+			String line = null;
+			int count = 0;
+			while ((line = in.readLine()) != null) {
+				count++;
+				switch (count) {
+				case 1:		// 1st line
+					if (line.startsWith("Comment:")) {
+						
+						// expecting: Comment:Xxx
+						String comment = line.split(":")[1];
+						indentXML(out, indentDepth);
+						out.writeStartElement("Comment");
+						out.writeCharacters(String.format(
+								"Entrez gene id: %s; ABA gene symbol: %s; "
+								+ "Organism: %s; Chronosome: %s; Gene name: %s; "
+								+ "Description: %s", 
+								entrezGeneId, abaGeneSymbol, 
+								organism, chromosome, geneName, 
+								comment));
+						out.writeEndElement();
+					} else {
+						// TODO unexpected
+					}
+					break;
+				case 2:		// 2d line
+					if (line.startsWith("Dimensions:")) {
+						
+						// expecting: Dimensions:67,41,58
+						String[] dimensions = line.split(":")[1].split(",");
+						indentXML(out, indentDepth);
+						out.writeStartElement("MaxDimension");
+						out.writeAttribute("x", dimensions[0]);
+						out.writeAttribute("y", dimensions[1]);
+						out.writeAttribute("z", dimensions[2]);
+						out.writeEndElement();
+					} else {
+						// TODO unexpected
+					}
+					break;
+				case 3:		// 3d line
+					
+					// 1st data point, e.g. 39,2,1,3.40352e-06
+					indentXML(out, indentDepth++);
+					out.writeStartElement("SparseValueData");
+					
+					// fall thru
+				default:	// all subsequent lines
+					
+					// 1st and additional data points, e.g. 39,2,1,3.40352e-06
+					String[] values = line.split(",");
+					indentXML(out, indentDepth);
+					out.writeStartElement("Datum");
+					out.writeAttribute("x", values[0]);
+					out.writeAttribute("y", values[1]);
+					out.writeAttribute("z", values[2]);
+					out.writeEndElement();
+				} // switch
+			} // while
 
-    private void close(Reader reader) {
+			indentXML(out, --indentDepth);
+			out.writeEndElement();		// SparseValueData
+			indentXML(out, --indentDepth);
+			out.writeEndElement();		// SparseValueVolume
+			out.writeEndDocument();
+		} finally {
+			IOUtils.closeQuietly(stringWriter);
+			close(out);
+		}
+		
+		return stringWriter.toString();
+	}
+	
+	private void indentXML(XMLStreamWriter out, int indentDepth) throws XMLStreamException {
+		out.writeCharacters("\n");
+		for (int i = 0; i < indentDepth; i++) {
+			out.writeCharacters("  ");
+		}
+	}
+	
+    private void close(XMLStreamReader reader) {
     	if (reader != null) {
     		try {
     			reader.close();
-    		} catch (IOException logOnly) {
+    		} catch (XMLStreamException logOnly) {
     			LOG.warn("Problem closing InputStream", logOnly);
     		}
     	}
     }
 
-    private void close(Writer writer) {
+    private void close(XMLStreamWriter writer) {
     	if (writer != null) {
     		try {
     			writer.close();
-    		} catch (IOException logOnly) {
+    		} catch (XMLStreamException logOnly) {
     			LOG.warn("Problem closing OutputStream", logOnly);
     		}
     	}
