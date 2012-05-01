@@ -2,6 +2,7 @@ package org.incf.aba.atlas.process;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -131,13 +132,24 @@ Test: See class javadoc comment
     		 */
     		
     		// step 1: get imageseriesid for given gene and plane
-    		String imageSeriesId = retrieveImagesSeriesIdForGene(abaGeneSymbol,
-    				desiredPlane);
+    		String imageSeriesId = null;
+    		String xmlString = null;
+			try {
+				imageSeriesId = retrieveImagesSeriesIdForGene(abaGeneSymbol,
+						desiredPlane);
+			} catch (FileNotFoundException e) {
+				String message = String.format("Gene identifier '%s' is not "
+						+ "recognized as an entrez gene id or an ABA gene symbol.", 
+						geneIdentifier);
+	            LOG.info(message);
+				xmlString = buildNotFoundXMLString(message);
+			}
     		
     		// step 2: get sparse volume file
-    		URL u = new URL(assembleExpressionEnergyVolumeURI(imageSeriesId));
-    		
-    		String xmlString = buildXMLString(u.openStream());
+			if (imageSeriesId != null) {
+				URL u = new URL(assembleExpressionEnergyVolumeURI(imageSeriesId));
+				xmlString = buildXMLString(u.openStream());
+			}
     		
     		reader = new StringReader(xmlString);
 
@@ -368,10 +380,37 @@ Test: See class javadoc comment
 			out.writeEndElement();		// SparseValueVolume
 			out.writeEndDocument();
 		} finally {
+        	IOUtils.closeQuietly(svaText);
 			IOUtils.closeQuietly(stringWriter);
 			close(out);
 		}
-		
+		return stringWriter.toString();
+	}
+	
+	private String buildNotFoundXMLString(String message) throws XMLStreamException {
+		StringWriter stringWriter = new StringWriter();
+		XMLOutputFactory factory = XMLOutputFactory.newInstance();
+		XMLStreamWriter out = null;
+		try {
+			int indentDepth = 0;
+			out = factory.createXMLStreamWriter(stringWriter);
+			out.writeStartDocument("1.0");
+			
+			indentXML(out, indentDepth++);
+			out.writeStartElement("SparseValueVolume");
+
+			indentXML(out, indentDepth);
+			out.writeStartElement("Comment");
+			out.writeCharacters(message);
+			out.writeEndElement();
+
+			indentXML(out, --indentDepth);
+			out.writeEndElement();		// SparseValueVolume
+			out.writeEndDocument();
+		} finally {
+			IOUtils.closeQuietly(stringWriter);
+			close(out);
+		}
 		return stringWriter.toString();
 	}
 	
