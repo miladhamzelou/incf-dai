@@ -138,7 +138,8 @@ Test: See class javadoc comment
 				imageSeriesId = retrieveImagesSeriesIdForGene(abaGeneSymbol,
 						desiredPlane);
 			} catch (FileNotFoundException e) {
-				String message = String.format("Gene identifier '%s' is not "
+				String message = String.format(
+						"404 - Not found: Gene identifier '%s' is not "
 						+ "recognized as an entrez gene id or an ABA gene symbol.", 
 						geneIdentifier);
 	            LOG.info(message);
@@ -309,10 +310,8 @@ Test: See class javadoc comment
 		try {
 			int indentDepth = 0;
 			out = factory.createXMLStreamWriter(stringWriter);
-			out.writeStartDocument("1.0");
-			
-			indentXML(out, indentDepth++);
-			out.writeStartElement("SparseValueVolume");
+			startXMLDoc(out);
+			indentDepth++;
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(svaText));
 			String line = null;
@@ -358,7 +357,7 @@ Test: See class javadoc comment
 					
 					// 1st data point, e.g. 39,2,1,3.40352e-06
 					indentXML(out, indentDepth++);
-					out.writeStartElement("SparseValueData");
+					out.writeStartElement("SparseVolumeData");
 					
 					// fall thru
 				default:	// all subsequent lines
@@ -370,15 +369,15 @@ Test: See class javadoc comment
 					out.writeAttribute("x", values[0]);
 					out.writeAttribute("y", values[1]);
 					out.writeAttribute("z", values[2]);
+					out.writeAttribute("value", values[3]);
 					out.writeEndElement();
 				} // switch
 			} // while
 
 			indentXML(out, --indentDepth);
 			out.writeEndElement();		// SparseValueData
-			indentXML(out, --indentDepth);
-			out.writeEndElement();		// SparseValueVolume
-			out.writeEndDocument();
+
+			endXMLDoc(out);
 		} finally {
         	IOUtils.closeQuietly(svaText);
 			IOUtils.closeQuietly(stringWriter);
@@ -394,19 +393,17 @@ Test: See class javadoc comment
 		try {
 			int indentDepth = 0;
 			out = factory.createXMLStreamWriter(stringWriter);
-			out.writeStartDocument("1.0");
+
+			startXMLDoc(out);
 			
-			indentXML(out, indentDepth++);
-			out.writeStartElement("SparseValueVolume");
+			indentDepth++;
 
 			indentXML(out, indentDepth);
 			out.writeStartElement("Comment");
 			out.writeCharacters(message);
 			out.writeEndElement();
 
-			indentXML(out, --indentDepth);
-			out.writeEndElement();		// SparseValueVolume
-			out.writeEndDocument();
+			endXMLDoc(out);
 		} finally {
 			IOUtils.closeQuietly(stringWriter);
 			close(out);
@@ -419,6 +416,30 @@ Test: See class javadoc comment
 		for (int i = 0; i < indentDepth; i++) {
 			out.writeCharacters("  ");
 		}
+	}
+	
+	private void startXMLDoc(XMLStreamWriter out) throws XMLStreamException {
+		out.writeStartDocument("UTF-8", "1.0");
+		
+		indentXML(out, 0);
+		out.writeStartElement("SparseValueVolume");
+		out.writeAttribute(
+				"xmlns", 
+				"http://wholebrainproject.org/wbc/generated/sparsevaluevolume");
+		out.writeAttribute(
+				"xmlns:xsi",
+				"http://www.w3.org/2001/XMLSchema-instance");
+		out.writeAttribute(
+				"xsi:schemaLocation", 
+				"http://wholebrainproject.org/wbc/generated/sparsevaluevolume "
+				+ "http://wholebrain.googlecode.com/svn/wbc-core/trunk/src/main/resources/SparseValueVolume.xsd");
+	}
+	
+	private void endXMLDoc(XMLStreamWriter out) throws XMLStreamException {
+		indentXML(out, 0);
+		out.writeEndElement();		// SparseValueVolume
+		out.writeEndDocument();
+		indentXML(out, 0);
 	}
 	
     private void close(XMLStreamReader reader) {
