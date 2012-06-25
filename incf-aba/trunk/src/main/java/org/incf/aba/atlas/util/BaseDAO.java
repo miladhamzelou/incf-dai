@@ -87,6 +87,50 @@ public class BaseDAO {
      * @throws DataAccessObjectException - If there is an exception establishing the connection.
      *
      */
+    public Connection getStandAloneConnectionForPostgresFromABA()// please change public to protected
+            throws Exception {
+
+    	LOG.debug( "Start - getStandAloneConnectionForPostgresFromABA()");
+        
+    	Connection connection = null;
+
+        ABAConfigurator props = ABAConfigurator.INSTANCE;
+
+        String driverClassName = props.getValue("postgres.aba.database.driverClassName"); 
+        String dbUrl = props.getValue("postgres.aba.database.atlasdburl");
+        String dbUser = props.getValue("postgres.aba.database.atlasdbuser");
+        String dbPassword = props.getValue("postgres.aba.database.atlasdbpassword");
+
+        LOG.debug( "driverClassName in central standalone oracle - {}",driverClassName);
+        LOG.debug( "dbUrl in central standalone oracle - {}",dbUrl);
+        LOG.debug( "dbUser in central standalone oracle - {}",dbUser);
+        LOG.debug( "dbPassword in central standalone oracle - {}",dbPassword);
+
+        try {
+        	Class.forName( driverClassName );
+        	LOG.debug( "Start - getStandAloneConnectionForPostgresFromaBA()");
+            connection = 
+            	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
+            LOG.debug( "End - getStandAloneConnectionForPostgresFromABA()");
+        } catch ( Exception e ) {
+        	LOG.debug( "There is an error {}" , e.getClass() + e.getMessage());
+            throw new Exception( e.getMessage() );
+        }
+
+        LOG.debug( "End - getStandAloneConnectionForPostgresFromABA()");
+        return connection;
+
+    }// end of getStandAloneConnectionForPostgresFromCCDB method
+
+
+    /**
+     * Gets the connection to the database. Does not do connection pooling.
+     *
+     * @param jndiName - The jndi name of the datasource
+     * @return A Connection object
+     * @throws DataAccessObjectException - If there is an exception establishing the connection.
+     *
+     */
     public Connection getStandAloneConnection()// please change public to protected
             throws Exception {
 

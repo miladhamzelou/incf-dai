@@ -1,6 +1,9 @@
 package org.incf.aba.atlas.process;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -162,7 +165,18 @@ public class ListSRSs implements Processlet {
 		orient.setName(name);
 		Author author = orient.addNewAuthor();
 
-		author.setDateSubmitted(new XmlCalendar(dateSubmitted));
+		Calendar c = Calendar.getInstance();
+		try {
+			//Start - Date submitted
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	        Date d = sdf.parse(dateSubmitted);
+			c.setTime(d);
+			//End - Date submitted
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		author.setDateSubmitted(c);
 
 		//author.setDateSubmitted(Calendar.getInstance());
 		author.setAuthorCode(authorCode);
@@ -214,7 +228,15 @@ public class ListSRSs implements Processlet {
 
 				AuthorType author = srs.addNewAuthor();
 				author.setAuthorCode(vo.getSrsAuthorCode());
-				author.setDateSubmitted(new XmlCalendar(vo.getSrsDateSubmitted()));
+				
+				//Start - Date submitted
+				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		        Date d = sdf.parse(vo.getSrsDateSubmitted());
+				Calendar c = Calendar.getInstance();
+				c.setTime(d);
+				//End - Date submitted
+
+				author.setDateSubmitted(c);
 
 				IncfCodeType origin = srs.addNewOrigin();
 				// origin.setCodeSpace("URN");

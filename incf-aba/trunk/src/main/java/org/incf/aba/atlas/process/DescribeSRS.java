@@ -2,8 +2,10 @@ package org.incf.aba.atlas.process;
 
 import java.io.File;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -174,13 +176,24 @@ public class DescribeSRS implements Processlet {
 
 	public static OrientationType orientation(OrientationType orient,
 			String code, String name, String gmlID, String authorCode,
-			String authorName, String orientationDescription) {
+			String authorName, String orientationDescription, String orientationDate) {
 
 		orient.setCode(code);
 		orient.setId(gmlID); // this is what is linked, to
 		orient.setName(name);
 		Author author = orient.addNewAuthor();
-		author.setDateSubmitted(Calendar.getInstance());
+
+		Calendar c = Calendar.getInstance();
+		try { 
+		//Start - Date submitted
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        Date d = sdf.parse(orientationDate);
+		c.setTime(d);
+		//End - Date submitted
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		author.setDateSubmitted(c);
 		author.setAuthorCode(authorCode);
 		author.setStringValue(authorName);
 
@@ -230,7 +243,15 @@ public class DescribeSRS implements Processlet {
 
 				AuthorType author = srs.addNewAuthor();
 				author.setAuthorCode(vo.getSrsAuthorCode());
-				author.setDateSubmitted(Calendar.getInstance());
+				
+				//Start - Date submitted
+				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		        Date d = sdf.parse(vo.getSrsDateSubmitted());
+				Calendar c = Calendar.getInstance();
+				c.setTime(d);
+				//End - Date submitted
+
+				author.setDateSubmitted(c);
 
 				IncfCodeType origin = srs.addNewOrigin();
 				// origin.setCodeSpace("URN");
@@ -330,7 +351,7 @@ public class DescribeSRS implements Processlet {
 			orientation(orientation, vo.getOrientationName(), vo
 					.getOrientationName(), String.valueOf(randomGMLID), vo
 					.getOrientationAuthor(), vo.getOrientationAuthor(), vo
-					.getOrientationDescription());
+					.getOrientationDescription(), vo.getOrientationDateSubmitted());
 		}
 
 		// Start - Get Slice data

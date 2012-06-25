@@ -177,6 +177,7 @@ public class GetStructureNamesByPOI implements Processlet {
 			// Start - Call the main method here
 			ABAUtil util = new ABAUtil();
 			if (vo.getFilter().equalsIgnoreCase("structureset:fine")) {
+
 				responseString = util.getFineStructureNameByPOI(vo);
 				StringTokenizer tokens = new StringTokenizer(responseString);
 				while (tokens.hasMoreTokens()) {
