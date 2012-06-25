@@ -22,21 +22,21 @@
 
 	<!-- begin postgres database properties -->
 	<property>
-        <name>postgres.server.database.driverClassName</name>
+        <name>postgres.aba.database.driverClassName</name>
         <value>org.postgresql.Driver</value>
     </property>
 	<property>
-        <name>postgres.server.database.atlasdburl</name>
+        <name>postgres.aba.database.atlasdburl</name>
         <value>jdbc:postgresql://incf-dev.crbs.ucsd.edu:5432/atlas-aba-db</value>
         <!--<value>jdbc:postgresql://ceecee.ucsd.edu:5432/ccdb_atlas_merged</value>-->
     </property>
     <property>
-        <name>postgres.server.database.atlasdbuser</name>
+        <name>postgres.aba.database.atlasdbuser</name>
         <value>atlas-aba-db</value>
  		<!--<value>atlas</value>-->
     </property>
     <property>
-        <name>postgres.server.database.atlasdbpassword</name>
+        <name>postgres.aba.database.atlasdbpassword</name>
         <value>aba4321</value>
         <!--<value>beer</value>-->
     </property>

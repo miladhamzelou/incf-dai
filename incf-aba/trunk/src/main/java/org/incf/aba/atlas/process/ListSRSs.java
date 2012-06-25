@@ -329,7 +329,7 @@ public class ListSRSs implements Processlet {
 		//o = rootDoc.addNewOrientations();
 
 		Random randomGenerator = new Random();
-		
+
 		while (iterator2.hasNext()) {
 			for (int idx = 1; idx <= 10; ++idx) {
 				randomGMLID = randomGenerator.nextInt(100);
@@ -339,7 +339,7 @@ public class ListSRSs implements Processlet {
 			orientation(orientaiton1, vo.getOrientationName(), vo
 					.getOrientationName(), String.valueOf(randomGMLID), vo
 					.getOrientationAuthor(), vo.getOrientationAuthor(), vo
-					.getOrientationDescription(), vo.getSrsDateSubmitted());
+					.getOrientationDescription(), vo.getOrientationDateSubmitted());
 		}
 		return document;
 	}
