@@ -68,6 +68,7 @@ public class GetGeneExpressionByGeneId implements Processlet {
     private String geneName;
     private String organism;
     private String chromosome;
+    private String plane;
 
     @Override
     public void process(ProcessletInputs in, ProcessletOutputs out, 
@@ -104,9 +105,10 @@ public class GetGeneExpressionByGeneId implements Processlet {
 			abaGeneSymbol = isIdEntrezGeneId 
 					? entrezToSymbol.get(geneIdentifier) : geneIdentifier;
     		
-    		// get plane; defaults to coronal
-    		ImageSeriesPlane desiredPlane = filter.equals("maptype:sagittal")
-    				? ImageSeriesPlane.SAGITTAL : ImageSeriesPlane.CORONAL;
+			ImageSeriesPlane desiredPlane = null;	
+//    		// get plane; defaults to coronal
+//    		ImageSeriesPlane desiredPlane = filter.equals("maptype:sagittal")
+//    				? ImageSeriesPlane.SAGITTAL : ImageSeriesPlane.CORONAL;
 
     		/*
 Say you are interested in gene symbol "Coch", at a browser ...
@@ -142,6 +144,20 @@ Test: See class javadoc comment
 						"404 - Not found: Gene identifier '%s' is not "
 						+ "recognized as an entrez gene id or an ABA gene symbol.", 
 						geneIdentifier);
+	            LOG.info(message);
+				xmlString = buildNotFoundXMLString(message);
+			}
+			if (imageSeriesId == null) {
+				String notFound = ImageSeriesPlane.CORONAL.toString();
+				String tryInstead = ImageSeriesPlane.SAGITTAL.toString();
+				if (desiredPlane == ImageSeriesPlane.SAGITTAL) {
+					notFound = ImageSeriesPlane.SAGITTAL.toString();
+					tryInstead = ImageSeriesPlane.CORONAL.toString();
+				}
+				String message = String.format(
+						"404 - Not found: There is no maptype:%s image series "
+						+ "available for gene identifier '%s'. Try maptype:%s "
+						+ "instead.", notFound, geneIdentifier, tryInstead);
 	            LOG.info(message);
 				xmlString = buildNotFoundXMLString(message);
 			}
@@ -241,7 +257,11 @@ Test: See class javadoc comment
 			boolean inISid = false;
 			boolean inPlane = false;
 			String isId = null;
-			String plane = null;
+			plane = null;
+			chromosome = null;
+			entrezGeneId = null;
+			geneName = null;
+			organism = null;
 			for (int event = parser.next();  
 			event != XMLStreamConstants.END_DOCUMENT;
 			event = parser.next()) {
@@ -262,12 +282,15 @@ Test: See class javadoc comment
 				} else if (event == XMLStreamConstants.CHARACTERS) {
 					if (inISid) {
 						isId = parser.getText();
+						imageSeriesId = isId;
 						inISid = false;
 					} else if (inPlane) {
 						plane = parser.getText();
-						if (plane.equals(desiredPlane.toString())) {
-							imageSeriesId = isId;
-						}
+//						if (plane.equals(desiredPlane.toString())) {
+//							imageSeriesId = isId;
+//						} else {
+//							plane = null;
+//						}
 						inPlane = false;
 					} else if (inChromosome) {
 						chromosome = parser.getText();
@@ -328,11 +351,11 @@ Test: See class javadoc comment
 						out.writeStartElement("Comment");
 						out.writeCharacters(String.format(
 								"Entrez gene id: %s; ABA gene symbol: %s; "
-								+ "Organism: %s; Chronosome: %s; Gene name: %s; "
-								+ "Description: %s", 
+								+ "Organism: %s; Chromosome: %s; Gene name: %s; "
+								+ "Plane: %s; Description: %s", 
 								entrezGeneId, abaGeneSymbol, 
 								organism, chromosome, geneName, 
-								comment));
+								plane, comment));
 						out.writeEndElement();
 					} else {
 						// TODO unexpected
