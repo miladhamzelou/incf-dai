@@ -169,7 +169,7 @@ public class UCSDServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForUCSDHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from orientation " );
@@ -200,6 +200,7 @@ public class UCSDServiceDAOImpl {
 	}
 
 
+	//AM: Changed to UCSD HUB
 	public ArrayList getSliceData( UCSDServiceVO vo ) {
 
 		ArrayList list = new ArrayList();
@@ -208,7 +209,7 @@ public class UCSDServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForUCSDHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from slice where space_code = '"+vo.getSpaceCode()+"' " );
@@ -243,7 +244,8 @@ public class UCSDServiceDAOImpl {
 		return list;
 	}
 
-
+	
+	//AM: Changed to UCSD HUB
 	public ArrayList getFiducialsData( UCSDServiceVO vo ) {
 
 		ArrayList list = new ArrayList();
@@ -252,7 +254,7 @@ public class UCSDServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForUCSDHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from fiducial where srs_name = '"+vo.getSpaceCode()+"' and STATUS = 'ACTIVE'" );
@@ -288,7 +290,7 @@ public class UCSDServiceDAOImpl {
 		return list;
 	}
 
-
+	//AM: Changed to UCSD HUB
 	public String[] getCoordinateRangeForSRS( String srsName ) { 
 
 		BaseDAO dao = new BaseDAO();
@@ -300,7 +302,7 @@ public class UCSDServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForUCSDHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select dimension_min_x, dimension_max_x, dimension_min_y, dimension_max_y, dimension_min_z, dimension_max_z " )

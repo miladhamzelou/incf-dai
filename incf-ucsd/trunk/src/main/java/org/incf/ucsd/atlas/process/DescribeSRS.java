@@ -2,6 +2,7 @@ package org.incf.ucsd.atlas.process;
 
 import java.io.File;
 import java.net.URL;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -185,25 +186,31 @@ public class DescribeSRS implements Processlet {
 
 	public static OrientationType orientation(OrientationType orient,
 			String code, String name, String gmlID, String authorCode,
-			String authorName, String orientationDescription) {
+			String authorName, String orientationDescription, String orientationDate) {
 
 		orient.setCode(code);
 		orient.setId(gmlID); // this is what is linked, to
 		orient.setName(name);
 		Author author = orient.addNewAuthor();
-
-		Calendar calendar = new GregorianCalendar(2000, // year
-	            10, // month
-	            1); // day of month
-	        java.sql.Date date = new java.sql.Date(calendar.getTimeInMillis());
-	        
-		author.setDateSubmitted(Calendar.getInstance());
-		author.setAuthorCode(authorCode);
-		author.setStringValue(authorName);
-
-		Incfdescription desc = orient.addNewDescription();
-		desc.setStringValue(orientationDescription);
-
+		
+		try { 
+			//Start - Date submitted
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	        Date d = sdf.parse(orientationDate);
+			Calendar c = Calendar.getInstance();
+			c.setTime(d);
+			//End - Date submitted
+			
+			author.setDateSubmitted(c);
+			author.setAuthorCode(authorCode);
+			author.setStringValue(authorName);
+	
+			Incfdescription desc = orient.addNewDescription();
+			desc.setStringValue(orientationDescription);
+		} catch (Exception e){
+			e.printStackTrace();
+		}
+		
 		return orient;
 
 	}
@@ -247,7 +254,17 @@ public class DescribeSRS implements Processlet {
 
 				AuthorType author = srs.addNewAuthor();
 				author.setAuthorCode(vo.getSrsAuthorCode());
-				author.setDateSubmitted(Calendar.getInstance());
+
+				System.out.println("Date1: " + vo.getSrsDateSubmitted());
+
+				//Start - Date submitted
+				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		        Date d = sdf.parse(vo.getSrsDateSubmitted());
+				Calendar c = Calendar.getInstance();
+				c.setTime(d);
+				//End - Date submitted
+
+				author.setDateSubmitted(c);
 
 				IncfCodeType origin = srs.addNewOrigin();
 				// origin.setCodeSpace("URN");
@@ -347,7 +364,7 @@ public class DescribeSRS implements Processlet {
 			orientation(orientation, vo.getOrientationName(), vo
 					.getOrientationName(), String.valueOf(randomGMLID), vo
 					.getOrientationAuthor(), vo.getOrientationAuthor(), vo
-					.getOrientationDescription());
+					.getOrientationDescription(), vo.getOrientationDateSubmitted());
 		}
 
 		// Start - Get Slice data
@@ -410,15 +427,18 @@ public class DescribeSRS implements Processlet {
 			fiducialType.setName(vo.getFiducialName());
 			fiducialType.addNewDescription().setStringValue(vo.getDescription());
 	
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-			Date date = sdf.parse(vo.getDateSubmitted());
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(date);
+			//Start - Date submitted
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	        Date d = sdf.parse(vo.getDateSubmitted());
+			Calendar c = Calendar.getInstance();
+			c.setTime(d);
+			//End - Date submitted
 	
 			AuthorType author=	fiducialType.addNewAuthor();
 			author.setAuthorCode(vo.getAuthorCode());
-			author.setDateSubmitted(cal.getInstance());
-
+			//author.setDateSubmitted(cal.getInstance());
+			author.setDateSubmitted(c);
+			
 			fiducialType.setCertaintyLevel(vo.getCertaintyLevel());
 			fiducialType.setDerivedFrom(vo.getDerivedFrom());
 			
