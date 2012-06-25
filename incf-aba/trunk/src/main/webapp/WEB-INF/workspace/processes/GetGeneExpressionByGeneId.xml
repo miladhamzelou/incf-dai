@@ -24,16 +24,16 @@
         it is interpreted as the ABA gene symbol.
       </Abstract>
     </LiteralInput>
-    <LiteralInput minOccurs="0">
-      <Identifier>filter</Identifier>
-      <Title>Filter</Title>
-      <Abstract></Abstract>
-      <DefaultValue>maptype:coronal</DefaultValue>
-      <AllowedValues>
-        <Value>maptype:coronal</Value>
-        <Value>maptype:sagittal</Value>
-      </AllowedValues>
-    </LiteralInput>
+<!--    <LiteralInput minOccurs="0">-->
+<!--      <Identifier>filter</Identifier>-->
+<!--      <Title>Filter</Title>-->
+<!--      <Abstract></Abstract>-->
+<!--      <DefaultValue>maptype:coronal</DefaultValue>-->
+<!--      <AllowedValues>-->
+<!--        <Value>maptype:coronal</Value>-->
+<!--        <Value>maptype:sagittal</Value>-->
+<!--      </AllowedValues>-->
+<!--    </LiteralInput>-->
   </InputParameters>
   
   <OutputParameters>
