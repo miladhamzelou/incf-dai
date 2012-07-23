@@ -6,7 +6,7 @@
     xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"
         namespace="http://www.opengis.net/gml/3.2"/>
-    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"
+    <xs:import schemaLocation="http://www.w3.org/1999/xlink.xsd"
         namespace="http://www.w3.org/1999/xlink"/>
     <xs:complexType name="BaseResponseType">
         <xs:sequence>

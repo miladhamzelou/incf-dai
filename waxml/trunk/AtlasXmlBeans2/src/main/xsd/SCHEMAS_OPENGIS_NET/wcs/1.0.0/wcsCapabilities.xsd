@@ -2,7 +2,8 @@
 <xs:schema targetNamespace="http://www.opengis.net/wcs" xmlns="http://www.opengis.net/wcs"
     xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified"
-    attributeFormDefault="unqualified" xml:lang="en" version="1.0.2 2010-02-01">
+    attributeFormDefault="unqualified" xml:lang="en" version="1.0.0.3">
+  <!-- This version of wcs/1.0.0 was previously versioned as '1.0.2 2010-02-01' . -->
     <xs:annotation>
         <xs:appinfo>wcsCapabilities.xsd v1.0.2 2010-02-01</xs:appinfo>
         <xs:documentation>This schema defines the Capabilities operation request and reply XML
@@ -10,7 +11,7 @@
             schemas it uses are believed to be GML Application Schemas. </xs:documentation>
         <xs:documentation>
             WCS is an OGC Standard.
-            Copyright (c) 2003,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+            Copyright (c) 2003,2010 Open Geospatial Consortium.
             To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
         </xs:documentation>
         <xs:documentation>AEW 03/07/22 Changes made: Changed element name "Section" to "section" in
@@ -41,10 +42,11 @@
         <xs:documentation>JDE 2005/08/31 Changes made: AbstractDescriptionBaseType: made
             metadataLink repeatable </xs:documentation>
     </xs:annotation>
-    <!-- ==============================================================       includes and imports	============================================================== -->
+    <!-- ========= includes and imports ================================ -->
+    <xs:include schemaLocation="./wcsAll.xsd"/>
     <xs:include schemaLocation="./owsBase.xsd"/>
     <xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/wcs/1.0.0/gml4wcs.xsd"/>
-    <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+    <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
     <!-- ==============================================================       elements and types	============================================================== -->
     <xs:element name="GetCapabilities">
         <xs:annotation>
@@ -233,7 +235,7 @@
             <xs:documentation>Reference to on-line resource from which data can be obtained.
             </xs:documentation>
         </xs:annotation>
-        <xs:attributeGroup ref="xlink:simpleLink"/>
+        <xs:attributeGroup ref="xlink:simpleAttrs"/>
     </xs:complexType>
     <!-- ========================================================== -->
     <xs:complexType name="TelephoneType">

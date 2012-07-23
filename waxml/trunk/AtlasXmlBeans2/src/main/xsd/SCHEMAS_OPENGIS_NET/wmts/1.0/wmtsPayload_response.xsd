@@ -4,9 +4,9 @@
 	xmlns:ows="http://www.opengis.net/ows/1.1" 
 	xmlns:wmts="http://www.opengis.net/wmts/1.0" 
 	elementFormDefault="qualified" xml:lang="en"
-	version="1.0.0">
+	version="1.0.1">
 	<annotation>
-		<appinfo>wmtsPayload_response 2009-06-15</appinfo>
+		<appinfo>wmtsPayload_response</appinfo>
 		<documentation>
 			This XML Schema Document initially was intended to encode SOAP 
 			response for a WMTS GetTile request but in the future it might be used 
@@ -14,13 +14,14 @@
 			binary encoding. 
 			
 			WMTS is an OGC Standard.
-			Copyright (c) 2009,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2009,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
 		</documentation>
 	</annotation>
 	<!-- =============================================================
 		includes and imports
 	============================================================== -->
+	<include schemaLocation="wmts.xsd"/>
 	<import namespace="http://www.opengis.net/ows/1.1" 
 				schemaLocation="http://schemas.opengis.net/ows/1.1.0/owsAll.xsd"/>
 	<!-- =============================================================

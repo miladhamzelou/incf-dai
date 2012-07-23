@@ -5,19 +5,16 @@
 	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
 	name="WMTS-Example">
 	
-	<!-- VERSION = 1.0.0 -->
+	<!-- version="1.0.1" updated 2012-07-21 -->
 
-	<xsd:annotation>
-		<xsd:appinfo>wmts_concrete.wsdl 2009-02-21</xsd:appinfo>
-		<xsd:documentation>This WSDL document is an exemple that describes 
-			a WMTS server instance for KVP and SOAP encodings.
+	<!-- This WSDL document encodes describes the WMTS 
+		service for KVP and SOAP encodings.
 			
-			WMTS is an OGC Standard.
-			Copyright (c) 2009,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
-			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
-		</xsd:documentation>
-	</xsd:annotation>
-
+		WMTS is an OGC Standard.
+		Copyright (c) 2009,2010 Open Geospatial Consortium.
+		To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
+	-->
+	
 	<!-- import WMTS types, message and portType -->
 	<import namespace="http://www.opengis.net/wmts_wsdl/1.0"
 		location="http://schemas.opengis.net/wmts/1.0/wmtsAbstract.wsdl"/> 

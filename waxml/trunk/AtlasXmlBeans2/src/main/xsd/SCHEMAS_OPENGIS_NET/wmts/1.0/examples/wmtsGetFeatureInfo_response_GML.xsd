@@ -5,7 +5,7 @@
 	xmlns:gmlsf="http://www.opengis.net/gmlsf" 
 	xmlns="http://www.w3.org/2001/XMLSchema" 
 	elementFormDefault="qualified"
-	version="1.0.0">
+	version="1.0.1">
 	<annotation>
 		<appinfo source="http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsfLevels.xsd">
 			<gmlsf:ComplianceLevel>0</gmlsf:ComplianceLevel>
@@ -15,7 +15,7 @@
 			This is an example of a KVP WMTS GetFeatureInfo response schema.
 
 			WMTS is an OGC Standard.
-			Copyright (c) 2009,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2009,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
 		</documentation>
 	</annotation>

@@ -4,14 +4,14 @@ xmlns:ows="http://www.opengis.net/ows/1.1"
 xmlns="http://www.w3.org/2001/XMLSchema" 
 elementFormDefault="qualified" xml:lang="en">
 	<annotation>
-		<appinfo>exampleCapabilities.xsd 2006-08-09</appinfo>
-		<documentation>Copyright (c) 2006 Open Geospatial Consortium, Inc. All Rights Reserved. </documentation>
+		<appinfo>exampleCapabilities.xsd</appinfo>
+		<documentation>Copyright (c) 2006 Open Geospatial Consortium. </documentation>
 	</annotation>
 	<!-- ==============================================================
 		includes and imports
 	============================================================== -->
 	<include schemaLocation="../owsGetCapabilities.xsd"/>
-	<include schemaLocation="../owscontents.xsd"/>
+	<include schemaLocation="../owsContents.xsd"/>
 	<!-- ==============================================================
 		elements and types
 	============================================================== -->

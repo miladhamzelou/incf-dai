@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" version="3.0.2" xml:lang="en">
+<schema targetNamespace="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" version="3.0.0.1" xml:lang="en">
+  <!-- This version of gml/3.0.1 was previously labeled as 3.0.2 . -->
 	<annotation>
 		<appinfo source="urn:opengis:specification:gml:schema-coordinateOperations:v3.0c3"/>
 		<documentation>
@@ -9,7 +10,7 @@
 			<description>Builds on referenceSystems.xsd to encode the data needed to define coordinate operations, including Transformations, Conversions, and other specific subtypes of operations. Primary editor: Arliss Whiteside.</description>
 			<copyright>
 				GML is an OGC Standard.
-				Copyright (c) 2001,2002,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+				Copyright (c) 2001,2002,2010 Open Geospatial Consortium.
 				To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .	
 			</copyright>
 			<conformance>This schema encodes the Coordinate Operation (CC_) package of the extended UML Model for OGC Abstract Specification Topic 2: Spatial Referencing by Coordinates. That UML model is adapted from ISO 19111 - Spatial referencing by coordinates, as described in Annex B of Topic 2. </conformance>

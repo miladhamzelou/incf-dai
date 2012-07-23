@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema targetNamespace="http://www.opengis.net/context" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sld="http://www.opengis.net/sld" xmlns:context="http://www.opengis.net/context" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.1.0 2010-01-21">
+<xs:schema targetNamespace="http://www.opengis.net/context" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sld="http://www.opengis.net/sld" xmlns:context="http://www.opengis.net/context" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.1.0.2">
+	<!-- This version of context/1.1 was previously labeled as 1.1.1 . -->
 	<xs:annotation>
-		<xs:appinfo>context.xsd 2010-01-21</xs:appinfo>
+		<xs:appinfo>context.xsd</xs:appinfo>
 		<xs:documentation>
 	This XML Schema defines the encoding of a Web Map Context Document.  Primary editor: Tom Kralidis 
 		
 	WMC is an OGC Standard.
-	Copyright (c) 2005,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+	Copyright (c) 2005,2010 Open Geospatial Consortium.
 	To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</xs:documentation>
 	</xs:annotation>
@@ -14,7 +15,9 @@
 		includes and imports
 	============================================================== -->
 	<xs:import namespace="http://www.opengis.net/sld" schemaLocation="http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd"/>
-	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
+	<xs:include schemaLocation="./ort.xsd"/>
+	<xs:include schemaLocation="./wmcAll.xsd"/>
 	<!-- ==============================================================
 		elements and types
 	============================================================== -->
@@ -187,9 +190,6 @@
 				<xs:attribute name="current" type="xs:boolean"/>
 			</xs:extension>
 		</xs:simpleContent>
-	</xs:complexType>
-	<xs:complexType name="OnlineResourceType">
-		<xs:attributeGroup ref="xlink:simpleLink"/>
 	</xs:complexType>
 	<xs:complexType name="ExtensionType">
 		<xs:annotation>

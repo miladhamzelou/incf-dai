@@ -16,7 +16,7 @@
         <xs:documentation source="http://portal.opengeospatial.org/files/?artifact_id=21630">
             This document defines geodetic shape types for PIDF-LO.
             
-            Copyright (c) 2007,2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+            Copyright (c) 2007,2009 Open Geospatial Consortium.
             To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
         </xs:documentation>
     </xs:annotation>

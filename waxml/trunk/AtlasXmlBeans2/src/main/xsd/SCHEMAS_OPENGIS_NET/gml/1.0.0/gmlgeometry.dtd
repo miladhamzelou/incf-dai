@@ -7,7 +7,7 @@
 <!--                                                                --> 
 <!--        G E O M E T R Y   D T D                                 --> 
 <!--                                                                --> 
-<!--  Copyright (c) 2000 OGC All Rights Reserved.                   --> 
+<!--  Copyright (c) 2000 Open Geospatial Consortium.                --> 
 <!-- ============================================================== --> 
 
 <!-- the coordinate element holds a list of coordinates as parsed character data. Note that it

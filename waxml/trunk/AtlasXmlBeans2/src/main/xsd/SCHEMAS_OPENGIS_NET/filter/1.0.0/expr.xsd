@@ -5,11 +5,11 @@
    xmlns:gml="http://www.opengis.net/gml"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
    elementFormDefault="qualified"
-   version="1.0.0 2010-01-22">
+   version="1.0.0.2">
   
   <!-- 
     filter is an OGC Standard.
-    Copyright (c) 2002,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+    Copyright (c) 2002,2010 Open Geospatial Consortium.
     To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
   -->
   <xsd:element name="Add"

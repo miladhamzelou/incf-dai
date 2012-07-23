@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="3.2.1 2010-01-28">
+<schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="3.2.1.2">
 	<annotation>
 		<appinfo source="urn:x-ogc:specification:gml:schema-xsd:geometryComplexes:3.2.1">geometryComplexes.xsd</appinfo>
 		<documentation>See ISO/DIS 19136 12.2.
@@ -9,10 +9,11 @@ A geometric composite (gml:CompositeCurve, gml:CompositeSurface and gml:Composit
 Geometric complexes and composites are intended to be used in application schemas where the sharing of geometry is important.
 
 GML is an OGC Standard.
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
+	<include schemaLocation="gml.xsd"/>
 	<include schemaLocation="geometryAggregates.xsd"/>
 	<complexType name="GeometricComplexType">
 		<complexContent>

@@ -27,14 +27,15 @@
      [1] http://www.w3.org/Consortium/Legal/copyright-software-19980720
      [2] http://www.w3.org/Consortium/Legal/IPR-FAQ-20000620.html#DTD
 
- Copyright (c) 2006 Open Geospatial Consortium, Inc. All Rights Reserved.
+ Copyright (c) 2006 Open Geospatial Consortium.
  To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 
   -->
 <xs:schema targetNamespace="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://schemas.xmlsoap.org/soap/envelope/">
+  <!-- This version of ols/1.1 was previously versioned as '1.1.1' . -->
 	<xs:annotation>
 		<xs:documentation>
-			Copyright (c) 2006 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2006 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</xs:documentation>
 	</xs:annotation>

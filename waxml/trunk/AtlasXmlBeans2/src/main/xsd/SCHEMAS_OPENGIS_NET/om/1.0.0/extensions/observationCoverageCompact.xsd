@@ -3,7 +3,7 @@
         xmlns="http://www.w3.org/2001/XMLSchema" xmlns:om="http://www.opengis.net/om/1.0"
         xmlns:swe="http://www.opengis.net/swe/1.0.1" xmlns:cv="http://www.opengis.net/cv/0.2.1"
 		  targetNamespace="http://www.opengis.net/om/1.0"
-        elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+        elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.3">
 	<annotation>
 		<documentation>observationCoverageCompact.xsd
 
@@ -13,7 +13,7 @@ This document contains specializations of the basic observation pattern, fixing 
 In this schema, the derivation model is **restriction**
 
 Observations and Measurements is an OGC Standard.
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
@@ -22,6 +22,7 @@ To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 	<import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
 	<import namespace="http://www.opengis.net/swe/1.0.1" schemaLocation="http://schemas.opengis.net/sweCommon/1.0.1/swe.xsd"/>
 	<import namespace="http://www.opengis.net/cv/0.2.1" schemaLocation="http://bp.schemas.opengis.net/06-188r1/cv/0.2.1/cv.xsd"/>	
+	<include schemaLocation="./om_extended.xsd"/>
 	<include schemaLocation="../observation.xsd"/>
 	<!-- ====================================================================== -->
 	<!-- ====================================================================== -->

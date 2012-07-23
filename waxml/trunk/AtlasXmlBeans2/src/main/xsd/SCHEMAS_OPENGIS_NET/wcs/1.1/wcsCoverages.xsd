@@ -10,7 +10,7 @@
 		<documentation>This XML Schema Document specifies types and elements for groups of coverages, allowing each coverage to include or reference multiple files.
 			
 			WCS is an OGC Standard.
-			Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2006,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>

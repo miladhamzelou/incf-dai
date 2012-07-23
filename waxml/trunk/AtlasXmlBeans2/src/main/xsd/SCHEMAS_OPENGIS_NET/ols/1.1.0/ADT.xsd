@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/xls" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:xls="http://www.opengis.net/xls" elementFormDefault="qualified" version="1.1.1">
+<schema targetNamespace="http://www.opengis.net/xls" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:xls="http://www.opengis.net/xls" elementFormDefault="qualified" version="1.1.0.2">
+  <!-- This version of ols/1.1 was previously versioned as '1.1.1' . -->
 <!--
- Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+ Copyright (c) 2006,2010 Open Geospatial Consortium.
  To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 -->
+	<include schemaLocation="olsAll.xsd"/>
 	<import namespace="http://www.opengis.net/gml" schemaLocation="gml4xls.xsd"/>
 	<include schemaLocation="geometry.xsd"/>
 	<!--  The ADTs defined in this document represent the minimum set of essential elements as determined from the analysis of the APIs provided by OpenLS sponsors and participants. There are many additional elements that may be added but these are considered to be optional. The APIs considered include: Oracle, Webraska, ESRI, Vodafone, opt[e]way, NavTech, IntelliWhere, and LocatioNet. -->

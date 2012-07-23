@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/wcs/1.1/ows" xmlns:owcs="http://www.opengis.net/wcs/1.1/ows" xmlns:ows="http://www.opengis.net/ows" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xml:lang="en" version="1.1.0 2010-02-01">
+<schema targetNamespace="http://www.opengis.net/wcs/1.1/ows" xmlns:owcs="http://www.opengis.net/wcs/1.1/ows" xmlns:ows="http://www.opengis.net/ows" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xml:lang="en" version="1.1.0.2">
 	<annotation>
-		<appinfo>owsInterpolationMethod.xsd 2010-02-01</appinfo>
+		<appinfo>owsInterpolationMethod.xsd</appinfo>
 		<documentation>This XML Schema Document defines interpolation method elements and types, used by the OGC Web Coverage Service (WCS) version 1.1 and intended to be included in OWS Common version 1.1. 
 			
 			WCS is an OGC Standard.
-			Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2006,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>

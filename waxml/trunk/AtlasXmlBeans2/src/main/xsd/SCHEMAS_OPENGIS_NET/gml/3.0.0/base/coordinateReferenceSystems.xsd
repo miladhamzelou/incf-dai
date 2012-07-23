@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" xml:lang="en" version="3.0.0 2010-01-26">
+<xsd:schema targetNamespace="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" xml:lang="en" version="3.0.0.1">
   <xsd:annotation>
     <xsd:appinfo source="urn:opengis:specification:gml:schema-coordinateReferenceSystems:v3.0.0"/>
     <xsd:documentation>
@@ -9,7 +9,7 @@
       <description>Builds on referenceSystems.xsd to encode the data needed to define coordinate reference systems, including the specific subtypes of coordinate reference systems. GML 3.0 candidate schema, primary editor: Arliss Whiteside.</description>
       <copyright>
         GML is an OGC Standard.
-        Copyright (c) 2001,2002,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+        Copyright (c) 2001,2002,2010 Open Geospatial Consortium.
         To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
       </copyright>
       <conformance>This schema encodes the Coordinate Reference System (SC_) package of the extended UML Model for OGC Abstract Specification Topic 2: Spatial Referencing by Coordinates, with the exception of the abstract "SC_CRS" class. The "SC_CRS" class is encoded in referenceSystems.xsd, to eliminate the (circular) references from coordinateOperations.xsd to coordinateReferenceSystems.xsd. That UML model is adapted from ISO 19111 - Spatial referencing by coordinates, as described in Annex B of Topic 2. </conformance>

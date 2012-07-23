@@ -4,7 +4,7 @@
    xmlns:csw="http://www.opengis.net/cat/csw/2.0.2"
    xmlns:ogc="http://www.opengis.net/ogc"
    xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
-   version="2.0.2 2010-01-22">
+   version="2.0.2.2">
    <xsd:annotation>
       <xsd:appinfo>
          <dc:identifier xmlns:dc="http://purl.org/dc/elements/1.1/">http://schemas.opengis.net/csw/2.0.2/CSW-publication.xsd</dc:identifier>
@@ -14,11 +14,14 @@
          CSW-Publication operations specified in clause 10 of OGC-07-066.
          
          CSW is an OGC Standard.
-         Copyright (c) 2004, 2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+         Copyright (c) 2004, 2010 Open Geospatial Consortium.
          To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
       </xsd:documentation>
    </xsd:annotation>
+   
+   <xsd:include schemaLocation="csw.xsd"/>
    <xsd:include schemaLocation="CSW-discovery.xsd"/>
+   
    <xsd:element name="Transaction" type="csw:TransactionType" id="Transaction"/>
    <xsd:complexType name="TransactionType" id="TransactionType">
       <xsd:annotation>

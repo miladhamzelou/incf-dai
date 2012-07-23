@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema targetNamespace="http://www.opengis.net/wcs" xmlns:gml="http://www.opengis.net/gml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opengis.net/wcs" elementFormDefault="qualified" attributeFormDefault="unqualified" xml:lang="en" version="1.0.2 2010-02-01">
+<xs:schema targetNamespace="http://www.opengis.net/wcs" xmlns:gml="http://www.opengis.net/gml" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.opengis.net/wcs" elementFormDefault="qualified" attributeFormDefault="unqualified" xml:lang="en" version="1.0.0.3">
+  <!-- This version of wcs/1.0.0 was previously versioned as '1.0.2 2010-02-01' . -->
 	<xs:annotation>
 		<xs:appinfo>getCoverage.xsd v1.0.2 2010-02-01</xs:appinfo>
 		<xs:documentation>This schema defines the GetCoverage operation request and response XML elements and types, used by an OGC Web Coverage Service (WCS). This schema is believed to be a GML Application Schema. </xs:documentation>
 		<xs:documentation>
 			WCS is an OGC Standard.
-			Copyright (c) 2003,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2003,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</xs:documentation>
 		<xs:documentation>AEW 03/07/22 Changes made:
@@ -37,6 +38,7 @@
 	<!-- ==========================================================
            includes and imports
 	========================================================== -->
+	<xs:include schemaLocation="./wcsAll.xsd"/>
 	<xs:include schemaLocation="./describeCoverage.xsd"/>
 	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/wcs/1.0.0/gml4wcs.xsd"/>
 	<!-- ==============================================================

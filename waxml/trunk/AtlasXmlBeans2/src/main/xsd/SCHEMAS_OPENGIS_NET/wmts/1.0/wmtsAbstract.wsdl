@@ -8,19 +8,16 @@
 	xmlns:ows="http://www.opengis.net/ows/1.1"
 	name="WMTS">
 	
-	<!-- version 1.0.0 -->
-	
-	<xsd:annotation>
-		<xsd:appinfo>wmts_abstract.wsdl 2009-02-14</xsd:appinfo>
-		<xsd:documentation>This WSDL document encodes describes the WMTS 
-			service for KVP and SOAP encodings.
-			
-			WMTS is an OGC Standard.
-			Copyright (c) 2009,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
-			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
-		</xsd:documentation>
-	</xsd:annotation>
+	<!-- version="1.0.1" updated 2012-07-21 -->
 
+	<!-- This WSDL document encodes describes the WMTS 
+		service for KVP and SOAP encodings.
+			
+		WMTS is an OGC Standard.
+		Copyright (c) 2009,2010 Open Geospatial Consortium.
+		To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
+	-->
+	
 	<types>
 		<xsd:schema targetNamespace="http://www.opengis.net/wmts_wsdl/1.0">
 		    <xsd:import namespace="http://www.opengis.net/ows/1.1" 

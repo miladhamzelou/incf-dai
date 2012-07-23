@@ -11,7 +11,7 @@
    xsi:schemaLocation="http://www.opengis.net/cat/csw/2.0.2
                        ../../../csw/2.0.2/CSW-discovery.xsd
                        urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0
-                       ../../../ebrim/3.0/schema/rim.xsd">
+                       ../../../csw/2.0.2/profiles/ebrim/1.0/csw-ebrim.xsd">
    <Query typeNames="rim:Service rim:Classification rim:Association">
       <ElementSetName typeNames="rim:Service">brief</ElementSetName>
       <!-- ... -->

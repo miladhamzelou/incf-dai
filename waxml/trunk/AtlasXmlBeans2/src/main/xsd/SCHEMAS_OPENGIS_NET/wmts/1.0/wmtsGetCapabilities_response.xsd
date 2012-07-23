@@ -6,23 +6,24 @@
 	xmlns:gml="http://www.opengis.net/gml" 
 	xmlns:xlink="http://www.w3.org/1999/xlink" 
 	elementFormDefault="qualified" xml:lang="en"
-	version="1.0.0">
+	version="1.0.1">
 	<annotation>
-		<appinfo>wmtsGetCapabilities_response 2009-01-31</appinfo>
+		<appinfo>wmtsGetCapabilities_response</appinfo>
 		<documentation>
 			This XML Schema Document encodes the WMTS GetCapabilities 
 			operations response message.
 			
 			WMTS is an OGC Standard.
-			Copyright (c) 2009,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2009,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
 		</documentation>
 	</annotation>
 	<!-- *********************************************************************
 	             Includes and imports.                            
           ********************************************************************* -->
+	<include schemaLocation="wmts.xsd"/>
 	<import namespace="http://www.opengis.net/ows/1.1" schemaLocation="http://schemas.opengis.net/ows/1.1.0/owsAll.xsd"/>
-	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
 	<!-- *********************************************************************
 	          The top-level Capabilities element.                            
           ********************************************************************* -->

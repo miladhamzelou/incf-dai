@@ -4,13 +4,14 @@
    xmlns:gmlsf="http://www.opengis.net/gmlsf"
    xmlns="http://www.w3.org/2001/XMLSchema"
    elementFormDefault="qualified"
-   version="1.0.1">
+   version="1.0.0.2">
+  <!-- This version of gmlsfProfile/1.0.0 profile of gml/3.1.1 was previously versioned as '1.0.1' . -->
    <annotation>
       <appinfo source="urn:opengis:specification:gml:schema-xsd:gmlsf:1.0.0">gmlsfLevels.xsd</appinfo>
       <documentation>
          Compliance levels schema for Simple features GML 3.1.1 Profile
          
-         Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+         Copyright (c) 2006,2010 Open Geospatial Consortium.
          To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
       </documentation>
    </annotation>

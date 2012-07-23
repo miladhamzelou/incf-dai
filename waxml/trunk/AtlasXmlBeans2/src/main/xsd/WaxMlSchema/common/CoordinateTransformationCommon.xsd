@@ -6,7 +6,7 @@ elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/"
 xmlns:xs="http://www.w3.org/2001/XMLSchema"
 version="1.01">
     <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
-    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:import schemaLocation="http://www.w3.org/1999/xlink.xsd" namespace="http://www.w3.org/1999/xlink" />
     <xs:include schemaLocation="WaxML_Base.xsd" />
     <xs:complexType name="CoordinateTransformationInfoType">
         <xs:simpleContent>
@@ -16,6 +16,7 @@ version="1.01">
                 <xs:attribute name="inputSrsName" type="xs:QName" use="required" />
                 <xs:attribute name="outputSrsName" type="xs:QName" use="required" />
                 <xs:attribute name="accuracy" type="xs:float" use="optional" >
+                
                 <xs:annotation>
       <xs:documentation>
 depreciated use displacement
@@ -24,7 +25,7 @@ depreciated use displacement
                  <xs:attribute name="displacement" type="xs:float" use="optional" />
                 <xs:attribute name="filter" type="xs:string" use="optional" />
                 <xs:attribute name="version" type="xs:string" />
-            </xs:extension>
+                <xs:attribute name="accuracyDefinition" type="xs:anyURI" use="optional" /></xs:extension>
         </xs:simpleContent>
     </xs:complexType>
     <xs:complexType name="CoordinateChainTransformType">

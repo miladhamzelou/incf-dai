@@ -8,7 +8,7 @@
   xmlns:xsd="http://www.w3.org/2001/XMLSchema"
   xmlns:xmime="http://www.w3.org/2005/05/xmlmime"
   elementFormDefault="qualified" 
-  version="1.0.1">
+  version="1.0.2">
 
   <xsd:annotation>
     <xsd:appinfo xmlns:sch="http://www.ascc.net/xml/schematron">
@@ -28,7 +28,7 @@
   <xsd:import namespace="http://www.opengis.net/cat/csw/2.0.2"
     schemaLocation="http://schemas.opengis.net/csw/2.0.2/CSW-publication.xsd" />
   <xsd:import namespace="http://www.w3.org/1999/xlink" 
-    schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" />
+    schemaLocation="http://www.w3.org/1999/xlink.xsd" />
   <xsd:import namespace="http://www.opengis.net/ogc"
     schemaLocation="http://schemas.opengis.net/filter/1.1.0/filter.xsd"/>
     
@@ -64,7 +64,7 @@
     <xsd:complexContent>
       <xsd:extension base="rim:ExtrinsicObjectType">
         <xsd:choice minOccurs="0" maxOccurs="1">
-          <xsd:element name="repositoryItemRef" type="wrs:SimpleLinkType"/>
+          <xsd:element name="repositoryItemRef" type="wrs:simpleAttrsType"/>
           <xsd:element name="repositoryItem" type="xsd:base64Binary" xmime:expectedContentTypes="*/*" />
         </xsd:choice>
       </xsd:extension>
@@ -93,12 +93,12 @@
     </xsd:sequence>
   </xsd:complexType>
   
-  <xsd:complexType name="SimpleLinkType" id="SimpleLinkType">
+  <xsd:complexType name="simpleAttrsType" id="simpleAttrsType">
     <xsd:annotation>
       <xsd:documentation xml:lang="en">
       Incorporates the attributes defined for use in simple XLink elements.
       </xsd:documentation>
     </xsd:annotation>
-    <xsd:attributeGroup ref="xlink:simpleLink" />
+    <xsd:attributeGroup ref="xlink:simpleAttrs" />
   </xsd:complexType>
 </xsd:schema>

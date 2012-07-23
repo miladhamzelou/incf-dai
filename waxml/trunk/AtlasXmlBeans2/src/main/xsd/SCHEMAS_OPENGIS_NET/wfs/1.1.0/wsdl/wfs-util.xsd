@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema xmlns:util="http://www.opengis.net/wfs-util" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.opengis.net/wfs-util">
+<xsd:schema xmlns:util="http://www.opengis.net/wfs-util" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.opengis.net/wfs-util" version="1.1.2.0">
   <xsd:annotation>
     <xsd:documentation>
          This file defines the type of the DescribeFeatureType response, because WSDL requires that types be explicitly defined in the types section, perhaps thru imports.

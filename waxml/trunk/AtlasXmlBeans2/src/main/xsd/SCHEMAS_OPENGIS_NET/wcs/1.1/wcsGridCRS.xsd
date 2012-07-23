@@ -4,7 +4,7 @@
 	xmlns:gml="http://www.opengis.net/gml" 
 	xmlns="http://www.w3.org/2001/XMLSchema" 
 	elementFormDefault="qualified" xml:lang="en"
-	version="1.1.3">
+	version="1.1.4">
 	<annotation>
 		<appinfo>wcsGridCRS.xsd 2010-02-02</appinfo>
 		<appinfo>
@@ -14,7 +14,7 @@
 		This XML Schema Document is not a GML Application Schema, although it uses the GML 3.1.1 profile for WCS 1.1.1.
 		
 		WCS is an OGC Standard.
-		Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+		Copyright (c) 2006,2010 Open Geospatial Consortium.
 		To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 </documentation>
 	</annotation>

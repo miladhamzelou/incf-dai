@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="3.2.1 2010-01-28">
+<schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="3.2.1.2">
 	<annotation>
 		<appinfo source="urn:x-ogc:specification:gml:schema-xsd:topology:3.2.1">topology.xsd</appinfo>
 		<documentation>See ISO/DIS 19136 Clause 14.
@@ -8,11 +8,12 @@ There are four instantiable classes of primitive topology objects, one for each 
 There is strong symmetry in the (topological boundary and coboundary) relationships between topology primitives of adjacent dimensions. Topology primitives are bounded by directed primitives of one lower dimension. The coboundary of each topology primitive is formed from directed topology primitives of one higher dimension.
 
 GML is an OGC Standard.
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
-	<include schemaLocation="geometryComplexes.xsd"/>
+  <include schemaLocation="gml.xsd"/>
+  <include schemaLocation="geometryComplexes.xsd"/>
   <complexType name="AbstractTopologyType" abstract="true">
     <annotation>
       <documentation>This abstract type supplies the root or base type for all topological elements including primitives and complexes. It inherits AbstractGMLType and hence can be identified using the gml:id attribute.</documentation>

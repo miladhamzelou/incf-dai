@@ -41,7 +41,7 @@ and
 Policies, Procedures, Terms, and Conditions of OGC(r) are available
   http://www.opengeospatial.org/ogc/legal/ .
 
-Copyright (c) 2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2009 Open Geospatial Consortium.
 
 -----------------------------------------------------------------------
 

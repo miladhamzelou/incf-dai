@@ -4,7 +4,8 @@ xmlns:gml="http://www.opengis.net/gml"
 xmlns:xlink="http://www.w3.org/1999/xlink" 
 xmlns:ex="http://www.opengis.net/examples" 
 xmlns="http://www.w3.org/2001/XMLSchema" 
-elementFormDefault="qualified" xml:lang="en">
+elementFormDefault="qualified" xml:lang="en"
+version="1.0.0.2">
 	<annotation>
 		<appinfo>transverseMercator.xsd</appinfo>
 		<documentation>How to encode definition of specific Transverse Mercator conversion. Example Application Schema to encode the data needed to define a specific Transverse Mercator type of map projection, which is a coordinate conversion. Written in the "ex" namespace. 
@@ -13,7 +14,7 @@ elementFormDefault="qualified" xml:lang="en">
 		Primary editor: Arliss Whiteside.
 		
 		GML is an OGC Standard.
-		Copyright (c) 2005,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+		Copyright (c) 2005,2010 Open Geospatial Consortium.
 		To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 </documentation>
 	</annotation>
@@ -21,7 +22,7 @@ elementFormDefault="qualified" xml:lang="en">
        includes and imports
 	====================================================== -->
 	<import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/profiles/CommonCRSs/1.0.0//gmlCommonCRSsProfile.xsd"/>
-	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
 	<!-- ======================================================
        elements and types
 	====================================================== -->

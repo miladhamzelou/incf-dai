@@ -3,23 +3,24 @@
         xmlns="http://www.w3.org/2001/XMLSchema"
         targetNamespace="http://www.opengis.net/ows/2.0"
         elementFormDefault="qualified"
-        version="2.0.0"
+        version="2.0.2"
         xml:lang="en">
   <annotation>
-    <appinfo>owsGetCapabilities.xsd 2009-09-09</appinfo>
+    <appinfo>owsGetCapabilities.xsd</appinfo>
     <documentation>This XML Schema Document defines the GetCapabilities
     operation request and response XML elements and types, which are common to
     all OWSs. This XML Schema shall be edited by each OWS, for example, to
     specify a specific value for the "service" attribute.
     
     OWS is an OGC Standard.
-    Copyright (c) 2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+    Copyright (c) 2009 Open Geospatial Consortium.
     To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
     </documentation>
   </annotation>
   <!-- ==============================================================
                 includes and imports
         ============================================================== -->
+  <include schemaLocation="owsAll.xsd"/>
   <include schemaLocation="owsServiceIdentification.xsd" />
   <include schemaLocation="owsServiceProvider.xsd" />
   <include schemaLocation="owsOperationsMetadata.xsd" />
@@ -67,7 +68,7 @@
         </annotation>
         <complexType>
           <sequence>
-            <element ref="ows:Language" />
+            <element ref="ows:Language" maxOccurs="unbounded"/>
           </sequence>
         </complexType>
       </element>
@@ -138,7 +139,7 @@
         </annotation>
         <complexType>
           <sequence>
-            <element ref="ows:Language" />
+            <element ref="ows:Language" maxOccurs="unbounded"/>
           </sequence>
         </complexType>
       </element>

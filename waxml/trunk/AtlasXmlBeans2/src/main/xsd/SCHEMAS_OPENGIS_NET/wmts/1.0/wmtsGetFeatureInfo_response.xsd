@@ -5,9 +5,9 @@
 	xmlns:ows="http://www.opengis.net/ows/1.1"
 	xmlns:wmts="http://www.opengis.net/wmts/1.0" 
 	elementFormDefault="qualified" xml:lang="en"
-	version="1.0.0">
+	version="1.0.1">
 	<annotation>
-		<appinfo>wmtsGetFeatureInfo_response 2009-06-14</appinfo>
+		<appinfo>wmtsGetFeatureInfo_response</appinfo>
 		<documentation>
 			This XML Schema Document was intended to encode SOAP 
 			response for a WMTS GetFeatureInfo request but it can be used in other 
@@ -15,7 +15,7 @@
 			be more specific.
 			
 			WMTS is an OGC Standard.
-			Copyright (c) 2009,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2009,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
 		</documentation>
 	</annotation>

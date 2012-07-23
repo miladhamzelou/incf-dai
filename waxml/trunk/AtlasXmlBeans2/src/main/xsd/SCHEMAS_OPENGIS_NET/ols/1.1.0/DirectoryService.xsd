@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/xls" xmlns:xls="http://www.opengis.net/xls" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.1.1">
+<schema targetNamespace="http://www.opengis.net/xls" xmlns:xls="http://www.opengis.net/xls" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="1.1.0.2">
+  <!-- This version of ols/1.1 was previously versioned as '1.1.1' . -->
 <!--
- Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+ Copyright (c) 2006,2010 Open Geospatial Consortium.
  To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 -->
 	<import namespace="http://www.opengis.net/gml" schemaLocation="gml4xls.xsd"/>

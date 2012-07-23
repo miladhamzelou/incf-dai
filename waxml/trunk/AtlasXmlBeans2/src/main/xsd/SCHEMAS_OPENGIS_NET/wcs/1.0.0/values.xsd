@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema targetNamespace="http://www.opengis.net/wcs" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.opengis.net/wcs" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" xml:lang="en" version="1.0.2 2010-02-01">
+<xs:schema targetNamespace="http://www.opengis.net/wcs" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.opengis.net/wcs" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" xml:lang="en" version="1.0.0.3">
+  <!-- This version of wcs/1.0.0 was previously versioned as '1.0.2 2010-02-01' . -->
 	<xs:annotation>
 		<xs:appinfo>values.xsd v1.0.2 2010-02-01</xs:appinfo>
 		<xs:documentation> This schema defines the values and enumeration elements and types used by the OGC Web Coverage Service (WCS). </xs:documentation>
 		<xs:documentation>
 			WCS is an OGC Standard.
-			Copyright (c) 2003,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2003,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</xs:documentation>
 		<xs:documentation>JDE 2003-07-30 Removed empty "sequence" from valueEnumType</xs:documentation>
 		<xs:documentation>AEW 2005-07-15 Edited almost all documentation elements to remove TBRs and TBDs and to make them clearer. However, I do not know enough to resolve the TBD in the documentation of the "atomic" attribute in the valueRangeType. I also added documentation elements where I thought they were needed. </xs:documentation>
 	</xs:annotation>
+	<!-- ========= includes and imports ================================ -->
+	<xs:include schemaLocation="wcsAll.xsd"/>
 	<!-- ==============================================================
 		elements and types 		
 	============================================================== -->

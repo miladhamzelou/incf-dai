@@ -2,7 +2,7 @@
 <!--Created with Liquid XML Studio Developer Edition (Education) 9.0.8.3018 (http://www.liquid-technologies.com)-->
 <xs:schema xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:wax="http://www.incf.org/WaxML/" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" namespace="http://www.opengis.net/gml/3.2" />
-    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:import schemaLocation="http://www.w3.org/1999/xlink.xsd" namespace="http://www.w3.org/1999/xlink" />
     <xs:include schemaLocation="common/WaxML_Base.xsd" />
     <xs:element name="GenesResponse" type="wax:GenesResponseType" />
     <xs:complexType name="GenesResponseType">

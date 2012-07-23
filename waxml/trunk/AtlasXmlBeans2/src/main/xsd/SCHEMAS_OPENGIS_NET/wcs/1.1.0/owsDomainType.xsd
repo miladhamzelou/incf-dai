@@ -5,13 +5,13 @@ xmlns:ows="http://www.opengis.net/ows"
 xmlns:xlink="http://www.w3.org/1999/xlink" 
 xmlns="http://www.w3.org/2001/XMLSchema" 
 elementFormDefault="qualified" xml:lang="en"
-version="1.1.0 2010-02-01">
+version="1.1.0.2">
 	<annotation>
-		<appinfo>owsDomainType.xsd 2010-02-01</appinfo>
+		<appinfo>owsDomainType.xsd</appinfo>
 		<documentation>This XML Schema Document encodes the allowed values (or domain) of a quantity, usually for an input or output parameter to an OWS. Such a parameter is sometimes called a variable, quantity, literal, or typed literal. Such a quantity can use one of many data types, including double, integer, boolean, string, or URI. The allowed values can also be encoded for a quantity that is not explicit or not transferred, but is constrained by a server implementation.
 			
 			WCS is an OGC Standard.
-			Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2006,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
@@ -19,7 +19,7 @@ version="1.1.0 2010-02-01">
 		includes and imports
 	============================================================== -->
 	<import namespace="http://www.opengis.net/ows" schemaLocation="http://schemas.opengis.net/ows/1.0.0/owsCommon.xsd"/>
-	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
 	<!-- ==============================================================
 		elements and types
 	============================================================== -->

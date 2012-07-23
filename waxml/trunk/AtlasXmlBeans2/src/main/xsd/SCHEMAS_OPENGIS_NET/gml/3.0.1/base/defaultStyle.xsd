@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:smil20="http://www.w3.org/2001/SMIL20/" elementFormDefault="qualified" version="3.0.2">
+<xsd:schema targetNamespace="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" xmlns:smil20="http://www.w3.org/2001/SMIL20/" elementFormDefault="qualified" version="3.0.0.1">
+  <!-- This version of gml/3.0.1 was previously labeled as 3.0.2 . -->
   <xsd:annotation>
     <xsd:appinfo source="urn:opengis:specification:gml:schema-defaultStyle:v3.0.1">defaultStyle.xsd</xsd:appinfo>
     <xsd:documentation>
@@ -9,7 +10,7 @@
       <description>Default Style schema for GML 3.0</description>
       <copyright>
         GML is an OGC Standard.
-        Copyright (c) 2001,2002,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+        Copyright (c) 2001,2002,2010 Open Geospatial Consortium.
         To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
       </copyright>
       <conformance>reference to ISO Specifications</conformance>

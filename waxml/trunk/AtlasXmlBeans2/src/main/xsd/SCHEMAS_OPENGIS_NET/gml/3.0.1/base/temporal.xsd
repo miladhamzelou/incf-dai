@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/gml" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="3.0.2">
+<schema targetNamespace="http://www.opengis.net/gml" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" version="3.0.0.1">
+  <!-- This version of gml/3.0.1 was previously labeled as 3.0.2 . -->
   <annotation>
     <appinfo source="urn:opengis:specification:gml:schema-xsd:temporal:v3.0.1"/>
     <documentation xml:lang="en">
@@ -8,7 +9,7 @@
     in ISO 19108 (topological complexes and feature succession are not included).
     
     GML is an OGC Standard.
-    Copyright (c) 2001,2002,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+    Copyright (c) 2001,2002,2010 Open Geospatial Consortium.
     To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
     </documentation>
   </annotation>

@@ -3,9 +3,9 @@
 	xmlns:wcs="http://www.opengis.net/wcs/1.1" 
 	xmlns:gml="http://www.opengis.net/gml" 
 	xmlns="http://www.w3.org/2001/XMLSchema" 
-	elementFormDefault="qualified" version="1.0.1 2010-02-01" xml:lang="en">
+	elementFormDefault="qualified" version="1.1.0.2" xml:lang="en">
 	<annotation>
-		<appinfo>wcsGridCRS.xsd 2010-02-01</appinfo>
+		<appinfo>wcsGridCRS.xsd</appinfo>
 		<appinfo>
 			<GMLProfileSchema>http://schemas.opengis.net/gml/3.1.1/profiles/GridCRSs/1.0.0/gmlGridCRSsProfile.xsd</GMLProfileSchema>
 		</appinfo>
@@ -13,7 +13,7 @@
 		This XML Schema Document is not a GML Application Schema, although it uses the GML 3.1.1 CRS support profile that is specified in document OGC 05-094r1. 
 		
 		WCS is an OGC Standard.
-		Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+		Copyright (c) 2006,2010 Open Geospatial Consortium.
 		To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>

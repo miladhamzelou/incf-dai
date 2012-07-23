@@ -33,7 +33,7 @@
 			<File Uri="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
 			<File Uri="http://schemas.opengis.net/wps/1.0.0/wpsAll.xsd"/>
 			<File Uri="http://schemas.opengis.net/filter/1.1.0/filter.xsd"/>
-			<File Uri="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+			<File Uri="http://www.w3.org/1999/xlink.xsd"/>
 			<File Uri="http://schemas.opengis.net/ows/1.1.0/owsAll.xsd"/>
 		</SubGroup>
 		<SubGroup Name="Transforms"/>

@@ -4,13 +4,13 @@ xmlns:owcs="http://www.opengis.net/wcs/1.1/ows"
 xmlns:ows="http://www.opengis.net/ows" 
 xmlns="http://www.w3.org/2001/XMLSchema" 
 elementFormDefault="qualified" xml:lang="en"
-version="1.1.0 2010-02-01">
+version="1.1.0.2">
 	<annotation>
-		<appinfo>owsOperationsMetadata.xsd 2010-02-01</appinfo>
+		<appinfo>owsOperationsMetadata.xsd</appinfo>
 		<documentation>This XML Schema Document encodes the basic contents of the "OperationsMetadata" section of the GetCapabilities operation response, also known as the Capabilities XML document.
 			
 			WCS is an OGC Standard.
-			Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2006,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
@@ -123,7 +123,7 @@ version="1.1.0 2010-02-01">
 	<!-- ========================================================== -->
 	<complexType name="RequestMethodType">
 		<annotation>
-			<documentation>Connect point URL and any constraints for this HTTP request method for this operation request. In the OnlineResourceType, the xlink:href attribute in the xlink:simpleLink attribute group shall be used to contain this URL. The other attributes in the xlink:simpleLink attribute group should not be used. </documentation>
+			<documentation>Connect point URL and any constraints for this HTTP request method for this operation request. In the OnlineResourceType, the xlink:href attribute in the xlink:simpleAttrs attribute group shall be used to contain this URL. The other attributes in the xlink:simpleAttrs attribute group should not be used. </documentation>
 		</annotation>
 		<complexContent>
 			<extension base="ows:OnlineResourceType">

@@ -16,7 +16,7 @@
     <xs:documentation source="http://www.ietf.org/rfc/rfc4119.txt">
       This document defines geodetic shape types for PIDF-LO.
       
-      Copyright (c) 2005,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+      Copyright (c) 2005,2010 Open Geospatial Consortium.
       To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
     </xs:documentation>
   </xs:annotation>

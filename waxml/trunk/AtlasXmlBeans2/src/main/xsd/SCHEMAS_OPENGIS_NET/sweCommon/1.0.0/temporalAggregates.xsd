@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/1.0" targetNamespace="http://www.opengis.net/swe/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1">
+<schema xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/1.0" targetNamespace="http://www.opengis.net/swe/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.2">
+  <!-- This version of sweCommon/1.0.0 was previously versioned as '1.0.1' . -->
 	<annotation>
 		<documentation>
 temporalAggregates.xsd
 
 time geometric complex, time aggregates and time grids
 
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
 	<!-- ====================================================================== -->
 	<!-- bring in other schemas -->
 	<import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+	<include schemaLocation="./swe.xsd"/>
 	<!-- ================================================================== -->
 	<!-- =========================================================== -->
 	<!-- ============================================================== -->

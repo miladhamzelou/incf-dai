@@ -144,6 +144,7 @@ exampleFiducial(f.addNewFiducial(), 1);
 		fiducial.setFiducialType("anatomic");
 		fiducial.setCertaintyLevel("optional value");
 		fiducial.setDerivedFrom("optional value");
+		fiducial.setModality(1);
 		
 	AuthorType author=	fiducial.addNewAuthor();
 	author.setAuthorCode("aCode");
@@ -160,5 +161,6 @@ exampleFiducial(f.addNewFiducial(), 1);
 	pnt.setId("a35");
 
 	}
+	
 	
 }

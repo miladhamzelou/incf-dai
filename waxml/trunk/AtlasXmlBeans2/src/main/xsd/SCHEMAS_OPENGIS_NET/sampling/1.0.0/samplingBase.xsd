@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns:gml="http://www.opengis.net/gml" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:swe="http://www.opengis.net/swe/1.0.1" xmlns:om="http://www.opengis.net/om/1.0" xmlns="http://www.w3.org/2001/XMLSchema"
-        xmlns:sa="http://www.opengis.net/sampling/1.0" targetNamespace="http://www.opengis.net/sampling/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+        xmlns:sa="http://www.opengis.net/sampling/1.0" targetNamespace="http://www.opengis.net/sampling/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.3">
 	<annotation>
 		<documentation>samplingBase.xsd
 
@@ -11,7 +11,7 @@ SamplingPoint, SamplingCurve, SamplingSurface and SamplingSolid are described in
 Specimen and LocatedSpecimen are described in specimen.xsd
 
 Sampling is an OGC Standard.
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
@@ -26,7 +26,7 @@ To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 	-->
 	<import namespace="http://www.opengis.net/swe/1.0.1" schemaLocation="http://schemas.opengis.net/sweCommon/1.0.1/swe.xsd"/>
 	<import namespace="http://www.opengis.net/om/1.0" schemaLocation="http://schemas.opengis.net/om/1.0.0/om.xsd"/>
-	<include schemaLocation="./surveyProcedure.xsd"/>
+	<include schemaLocation="./sampling.xsd"/>
 	<!-- ====================================================================== -->
 	<!-- ====================================================================== -->
 	<!-- ===== Feature types in Site hierarchy ====== -->

@@ -4,13 +4,13 @@ xmlns:owcs="http://www.opengis.net/wcs/1.1/ows"
 xmlns:ows="http://www.opengis.net/ows" 
 xmlns="http://www.w3.org/2001/XMLSchema" 
 elementFormDefault="qualified" xml:lang="en"
-version="1.1.0 2010-02-01">
+version="1.1.0.2">
 	<annotation>
-		<appinfo>owsGetCapabilities.xsd 2010-02-01</appinfo>
+		<appinfo>owsGetCapabilities.xsd</appinfo>
 		<documentation>This XML Schema Document defines the GetCapabilities operation request and response XML elements and types, which are common to all OWSs. This XML Schema shall be edited by each OWS, for example, to specify a specific value for the "service" attribute.
 			
 			WCS is an OGC Standard.
-			Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2006,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>

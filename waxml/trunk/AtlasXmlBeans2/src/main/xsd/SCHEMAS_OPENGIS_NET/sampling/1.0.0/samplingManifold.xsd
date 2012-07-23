@@ -2,7 +2,7 @@
 <schema xmlns:gml="http://www.opengis.net/gml" 
         xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sa="http://www.opengis.net/sampling/1.0"
         targetNamespace="http://www.opengis.net/sampling/1.0" elementFormDefault="qualified"
-        attributeFormDefault="unqualified" version="1.0.0">
+        attributeFormDefault="unqualified" version="1.0.3">
 	<annotation>
 		<documentation>samplingManifold.xsd
 
@@ -17,14 +17,14 @@ SamplingSolid (3-D) are described in this schema document
 In many cases the properties of interest vary within the site, so may be represented as a coverage associated with the SamplingFeature. 
 
 Sampling is an OGC Standard.
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
 	<!-- ====================================================================== -->
 	<!-- bring in other schemas -->
 	<import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
-	<include schemaLocation="./samplingBase.xsd"/>
+	<include schemaLocation="./sampling.xsd"/>
 	<!-- ====================================================================== -->
 	<!-- ====================================================================== -->
 	<!-- 0-D sampling regimes -->

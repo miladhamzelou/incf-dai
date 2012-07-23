@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema targetNamespace="http://www.opengis.net/wcs" xmlns="http://www.opengis.net/wcs" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" attributeFormDefault="unqualified" xml:lang="en" version="1.0.2 2010-02-01">
+<xs:schema targetNamespace="http://www.opengis.net/wcs" xmlns="http://www.opengis.net/wcs" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" attributeFormDefault="unqualified" xml:lang="en" version="1.0.0.3">
+  <!-- This version of wcs/1.0.0 was previously versioned as '1.0.2 2010-02-01' . -->
 	<xs:annotation>
 		<xs:appinfo>owsBase.xsd v1.0.2 2010-02-01</xs:appinfo>
 		<xs:documentation> This schema defines the XML elements and types expected to be used by multiple OGC Web Services (OWSs). This schema is believed to be a GML Application Schema. </xs:documentation>
 		<xs:documentation>
 			WCS is an OGC Standard.
-			Copyright (c) 2003,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2003,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</xs:documentation>
 		<xs:documentation>AEW 03/07/22 Changes made:

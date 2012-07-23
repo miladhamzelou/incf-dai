@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns:gml="http://www.opengis.net/gml" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sa="http://www.opengis.net/sampling/1.0"
-        targetNamespace="http://www.opengis.net/sampling/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+        targetNamespace="http://www.opengis.net/sampling/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.3">
 	<annotation>
 		<documentation>specimen.xsd
 
@@ -10,7 +10,7 @@ SamplingFeature,  and collections are described in samplingBase.xsd
 Specimen and LocatedSpecimen are described in this schema document
 
 Sampling is an OGC Standard.
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
@@ -20,7 +20,7 @@ To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 	<!-- GMD cannot be used with GML 3.1.1
 		<import namespace="http://www.isotc211.org/2005/gmd" schemaLocation="http://schemas.opengis.net/iso/19139/20070417/gmd/gmd.xsd"/>
 	-->
-	<include schemaLocation="./samplingBase.xsd"/>
+	<include schemaLocation="./sampling.xsd"/>
 	<!-- ====================================================================== -->
 	<!-- ====================================================================== -->
 	<complexType name="SpecimenType">

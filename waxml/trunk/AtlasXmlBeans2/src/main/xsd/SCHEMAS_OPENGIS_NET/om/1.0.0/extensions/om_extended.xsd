@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:om="http://www.opengis.net/om/1.0" targetNamespace="http://www.opengis.net/om/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:om="http://www.opengis.net/om/1.0" targetNamespace="http://www.opengis.net/om/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.3">
 	<annotation>
 		<documentation>om.xsd
 
@@ -10,7 +10,7 @@ This document includes  the normative elements, plus
    * coverage-observations
 
 Observations and Measurements is an OGC Standard.
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>

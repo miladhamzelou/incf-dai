@@ -4,10 +4,10 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         xmlns="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified"
-        version="2.0.0"
+        version="2.0.2"
         xml:lang="en">
   <annotation>
-    <appinfo>ows19115subset.xsd 2009-09-09</appinfo>
+    <appinfo>ows19115subset.xsd</appinfo>
     <documentation>This XML Schema Document encodes the parts of ISO 19115 used
     by the common "ServiceIdentification" and "ServiceProvider" sections of the
     GetCapabilities operation response, known as the service metadata XML
@@ -18,7 +18,7 @@
     multiple languages, simplified from Annex J of ISO 19115.
 		
     OWS is an OGC Standard.
-    Copyright (c) 2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+    Copyright (c) 2009 Open Geospatial Consortium.
     To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
     </documentation>
   </annotation>
@@ -26,8 +26,9 @@
   <!-- ==============================================================
                 includes and imports
         ============================================================== -->
+  <include schemaLocation="owsAll.xsd"/>
   <import namespace="http://www.w3.org/1999/xlink"
-          schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" />
+          schemaLocation="http://www.w3.org/1999/xlink.xsd" />
   <import namespace="http://www.w3.org/XML/1998/namespace"
           schemaLocation="http://www.w3.org/2001/xml.xsd" />
   <!-- ==============================================================
@@ -241,12 +242,12 @@
         <annotation>
           <documentation>On-line information that can be used to contact the
           individual or organization. OWS specifics: The xlink:href attribute
-          in the xlink:simpleLink attribute group shall be used to reference
+          in the xlink:simpleAttrs attribute group shall be used to reference
           this resource. Whenever practical, the xlink:href attribute with
           type anyURI should be a URL from which more contact information can
           be electronically retrieved. The xlink:title attribute with type
           "string" can be used to name this set of information. The other
-          attributes in the xlink:simpleLink attribute group should not be
+          attributes in the xlink:simpleAttrs attribute group should not be
           used.</documentation>
         </annotation>
       </element>
@@ -275,9 +276,9 @@
       obtained.</documentation>
       <documentation>For OWS use in the service metadata document, the
       CI_OnlineResource class was XML encoded as the attributeGroup
-      "xlink:simpleLink", as used in GML.</documentation>
+      "xlink:simpleAttrs", as used in GML.</documentation>
     </annotation>
-    <attributeGroup ref="xlink:simpleLink" />
+    <attributeGroup ref="xlink:simpleAttrs" />
   </complexType>
   <!-- ========================================================== -->
   <complexType name="TelephoneType">

@@ -1,15 +1,16 @@
 <?xml version="1.0"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/1.0.1"
         targetNamespace="http://www.opengis.net/swe/1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified"
-        version="1.0.1 2010-02-01">
+        version="1.0.1.2">
 	<annotation>
 		<documentation>A basic schema for XML-tagged data aggregates (Records and Arrays), using terminology consistent with ISO 11404. 
 			
-			Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2007,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
 	<!-- ============== -->
+	<include schemaLocation="./swe.xsd"/>
 	<!-- ============== -->
 	<element name="Item">
 		<annotation>

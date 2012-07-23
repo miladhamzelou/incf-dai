@@ -6,7 +6,8 @@
    xmlns:gml="http://www.opengis.net/gml"
    xmlns:gmlsf="http://www.opengis.net/gmlsf"
    elementFormDefault="qualified"
-   version="1.0.1">
+   version="1.0.0.2">
+  <!-- This version of gmlsfProfile/1.0.0 profile of gml/3.1.1 was previously versioned as '1.0.1' . -->
 
    <annotation>
       <appinfo source="http://schemas.opengis.net/gml/3.1.1/profiles/gmlsfProfile/1.0.0/gmlsfLevels.xsd">

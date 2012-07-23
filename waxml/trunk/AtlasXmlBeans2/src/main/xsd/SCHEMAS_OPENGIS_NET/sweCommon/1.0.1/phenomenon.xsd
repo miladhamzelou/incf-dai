@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns:swe="http://www.opengis.net/swe/1.0.1" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" targetNamespace="http://www.opengis.net/swe/1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1 2010-02-01">
+<schema xmlns:swe="http://www.opengis.net/swe/1.0.1" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" targetNamespace="http://www.opengis.net/swe/1.0.1" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1.2">
 	<annotation>
 		<documentation>phenomenon.xsd
 			
 	A GML conformant schema 
 	for definitions of phenomena, per Annex C of OM specification
 	
-	Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+	Copyright (c) 2007,2010 Open Geospatial Consortium.
 	To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
 	<!-- ====================================================================== -->
 	<!-- bring in other schemas -->
 	<import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+	<include schemaLocation="./swe.xsd"/>
 	<include schemaLocation="./aggregateTypes.xsd"/>
 	<!-- ====================================================================== -->
 	<complexType name="PhenomenonType">

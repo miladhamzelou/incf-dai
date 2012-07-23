@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsd:schema targetNamespace="http://www.opengis.net/sld" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ogc="http://www.opengis.net/ogc" xmlns:sld="http://www.opengis.net/sld" elementFormDefault="qualified" version="1.0.0 2010-02-01">
+<xsd:schema targetNamespace="http://www.opengis.net/sld" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ogc="http://www.opengis.net/ogc" xmlns:sld="http://www.opengis.net/sld" elementFormDefault="qualified" version="1.0.0.2">
 	
-	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
 	<xsd:import namespace="http://www.opengis.net/ogc" schemaLocation="http://schemas.opengis.net/filter/1.0.0/filter.xsd"/>
 	<!-- *********************************************************************** -->
 	<xsd:annotation>
 		<xsd:documentation>
-      STYLED LAYER DESCRIPTOR version 1.0.0 (2010-02-01)
+      STYLED LAYER DESCRIPTOR version 1.0.0
       
       SLD is an OGC Standard.
-      Copyright (c) 2001,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+      Copyright (c) 2001,2010 Open Geospatial Consortium.
       To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</xsd:documentation>
 	</xsd:annotation>
@@ -120,7 +120,7 @@
       </xsd:documentation>
 		</xsd:annotation>
 		<xsd:complexType>
-			<xsd:attributeGroup ref="xlink:simpleLink"/>
+			<xsd:attributeGroup ref="xlink:simpleAttrs"/>
 		</xsd:complexType>
 	</xsd:element>
 	<xsd:element name="LayerFeatureConstraints">

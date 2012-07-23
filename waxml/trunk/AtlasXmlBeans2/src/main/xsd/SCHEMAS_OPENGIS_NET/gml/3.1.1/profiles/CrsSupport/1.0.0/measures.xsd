@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/gml" elementFormDefault="qualified" attributeFormDefault="unqualified"  xml:lang="en" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" version="3.1.1 2010-01-28">
+<schema targetNamespace="http://www.opengis.net/gml" elementFormDefault="qualified" attributeFormDefault="unqualified"  xml:lang="en" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml" version="3.1.1.2">
 	<annotation>
 		<appinfo source="urn:opengis:specification:gml:schema-measures:3.1.1"/>
 		<documentation>Subset of measures.xsd for GML 3.1.1 CRS Support profile. Primary editor: Primary editor: Arliss Whiteside.
 			
 			GML is an OGC Standard.
-			Copyright (c) 2005,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2005,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>

@@ -8,7 +8,7 @@ OGC KML standard found in document OGC 07-147r2 at
 Policies, Procedures, Terms, and Conditions of OGC(r) are available
   http://www.opengeospatial.org/ogc/legal/ .
 
-Copyright (c) 2008 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2008 Open Geospatial Consortium.
 
 -----------------------------------------------------------------------
 

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 
 	WMC is an OGC Standard.
-	Copyright (c) 2003,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+	Copyright (c) 2003,2010 Open Geospatial Consortium.
 	To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 	
-	Updated: 2010-01-21
+	Updated: 2012-07-21
 -->
-<xs:schema version="1.0.0 2010-01-21"
+<xs:schema version="1.0.0.2"
 			 xmlns:xs="http://www.w3.org/2001/XMLSchema"
  			 targetNamespace="http://www.opengis.net/context"
 			 xmlns:context="http://www.opengis.net/context"
@@ -14,7 +14,7 @@
 			 xmlns:xlink="http://www.w3.org/1999/xlink"
 			 elementFormDefault="qualified">
 	<xs:import namespace="http://www.opengis.net/sld" schemaLocation="http://schemas.opengis.net/sld/1.0.0/StyledLayerDescriptor.xsd"/>
-	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+	<xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
 	<xs:element name="ViewContext" type="context:ViewContextType"/>
 	<xs:complexType name="ViewContextType">
 		<xs:sequence>
@@ -156,7 +156,7 @@
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="OnlineResourceType">
-		<xs:attributeGroup ref="xlink:simpleLink"/>
+		<xs:attributeGroup ref="xlink:simpleAttrs"/>
 	</xs:complexType>
 	<xs:complexType name="ExtensionType">
 		<xs:annotation>

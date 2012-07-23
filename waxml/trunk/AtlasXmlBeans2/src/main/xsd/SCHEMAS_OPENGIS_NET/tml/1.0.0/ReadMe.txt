@@ -23,7 +23,7 @@ The most current schema are available at http://schemas.opengis.net/ .
 Policies, Procedures, Terms, and Conditions of OGC(r) are available
   http://www.opengeospatial.org/ogc/legal/ .
 
-Copyright (c) 2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2010 Open Geospatial Consortium.
 
 -----------------------------------------------------------------------
 

@@ -2,7 +2,7 @@
 <xs:schema id="dcmes" targetNamespace="http://purl.org/dc/elements/1.1/"
    xmlns:xs="http://www.w3.org/2001/XMLSchema"
    xmlns:dc="http://purl.org/dc/elements/1.1/" elementFormDefault="qualified"
-   attributeFormDefault="unqualified" version="2.0.2">
+   attributeFormDefault="unqualified" version="2.0.2.2">
    <xs:annotation>
       <xs:documentation xml:lang="en"
          source="http://dublincore.org/documents/dces/">This schema declares XML elements for the 15 Dublin Core elements in 

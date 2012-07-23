@@ -4,23 +4,24 @@
         xmlns:xlink="http://www.w3.org/1999/xlink"
         xmlns="http://www.w3.org/2001/XMLSchema"
         elementFormDefault="qualified"
-        version="2.0.0"
+        version="2.0.2"
         xml:lang="en">
   <annotation>
-    <appinfo>owsCommon.xsd 2009-09-09</appinfo>
+    <appinfo>owsCommon.xsd</appinfo>
     <documentation>This XML Schema Document encodes various parameters and
     parameter types that can be used in OWS operation requests and responses.
     
     OWS is an OGC Standard.
-    Copyright (c) 2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+    Copyright (c) 2009 Open Geospatial Consortium.
     To obtain additional rights of use, visit http://www.opengeospatial.org/legal/
     </documentation>
   </annotation>
   <!-- ==============================================================
                 includes and imports
         ============================================================== -->
+  <include schemaLocation="owsAll.xsd"/>
   <import namespace="http://www.w3.org/1999/xlink"
-          schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" />
+          schemaLocation="http://www.w3.org/1999/xlink.xsd" />
 
   <!-- ==============================================================
                 elements and types
@@ -60,9 +61,9 @@
     <annotation>
       <documentation>This element either references or contains more metadata
       about the element that includes this element. To reference metadata
-      stored remotely, at least the xlinks:href attribute in xlink:simpleLink
+      stored remotely, at least the xlinks:href attribute in xlink:simpleAttrs
       shall be included. Either at least one of the attributes in
-      xlink:simpleLink or a substitute for the AbstractMetaData element shall
+      xlink:simpleAttrs or a substitute for the AbstractMetaData element shall
       be included, but not both. An Implementation Specification can restrict
       the contents of this element to always be a reference or always contain
       metadata. (Informative: This element was adapted from the
@@ -72,7 +73,7 @@
       <element ref="ows:AbstractMetaData"
                minOccurs="0" />
     </sequence>
-    <attributeGroup ref="xlink:simpleLink">
+    <attributeGroup ref="xlink:simpleAttrs">
       <annotation>
         <documentation>Reference to metadata recorded elsewhere, either
         external to this XML document or within it. Whenever practical, the

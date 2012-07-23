@@ -20,5 +20,5 @@ Policies, Procedures, Terms, and Conditions of OGC(r) are available
 The Open Geospatial Consortium, Inc. official schema repository is at
   http://schemas.opengis.net/ .
 
-Copyright (c) 2007-2009 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007-2009 Open Geospatial Consortium.
 

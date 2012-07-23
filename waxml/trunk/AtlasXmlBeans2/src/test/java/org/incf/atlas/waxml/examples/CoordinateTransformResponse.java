@@ -112,6 +112,8 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 	ex1.setDisplacement(1);
 	ex1.setVersion("1.0");
 	ex1.setStringValue("RequestUrl_1");
+	ex1.setAccuracy(2);
+	ex1.setAccuracyDefinition("http://example.com/urltoaccuracydefinition");
 	
 	CoordinateChainTransformType ex2 =ct.addNewCoordinateTransformation();
 	ex2.setOrder(2);
@@ -120,9 +122,10 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 	ex2.setInputSrsName(new QName("Mouse_WHS_1.0"));
 	ex2.setOutputSrsName(new QName("Mouse_AGEA_1.0"));
 	ex2.setDisplacement(1);
-	ex1.setVersion("1.0");
+	ex2.setVersion("1.0");
 	ex2.setStringValue("RequestUrl_2");
-	
+	ex2.setAccuracy((float) 1.0);
+	ex2.setAccuracyDefinition("couldbetext");
 	
 	CoordinateChainTransformType ex3 =ct.addNewCoordinateTransformation();
 	ex3.setOrder(3);
@@ -131,7 +134,7 @@ public CoordinateTransformationChainResponseDocument completeResponse() {
 	ex3.setInputSrsName(new QName("Mouse_AGEA_1.0"));
 	ex3.setOutputSrsName(new QName("Mouse_ABAvoxel_1.0"));
 //	ex3.setDisplacement(1);
-	ex1.setVersion("1.0");
+	ex2.setVersion("1.0");
 	ex3.setStringValue("RequestUrl_3");
 	
 	CoordinateChainTransformType ex4 =ct.addNewCoordinateTransformation();

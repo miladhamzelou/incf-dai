@@ -9,8 +9,8 @@
         <Name srsCode="INCF:0101" srsBase="ABAreference" srsVersion="1.0" species="mouse" urn="ReferenceUrl">Mouse_ABAreference_1.0</Name>
         <Description>some description here</Description>
         <Author authorCode="123" dateSubmitted="2011-07-04"/>
-        <DateCreated>2012-04-04-07:00</DateCreated>
-        <DateUpdated>2012-04-04-07:00</DateUpdated>
+        <DateCreated>2012-07-23-07:00</DateCreated>
+        <DateUpdated>2012-07-23-07:00</DateUpdated>
         <Origin codeSpace="URN">bregma</Origin>
         <Area structureName="whole brain" structureURN="URN"/>
         <Units uom="nm"/>

@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:om="http://www.opengis.net/om/1.0"
-        xmlns:swe="http://www.opengis.net/swe/1.0.1" xmlns:sml="http://www.opengis.net/sensorML/1.0.1" targetNamespace="http://www.opengis.net/om/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+        xmlns:swe="http://www.opengis.net/swe/1.0.1" xmlns:sml="http://www.opengis.net/sensorML/1.0.1" targetNamespace="http://www.opengis.net/om/1.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.3">
 	<annotation>
 		<documentation>observation.xsd
 
 An XML implementation of the OandM model from OGC 07-022
 
 Observations and Measurements is an OGC Standard.
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
+	<include schemaLocation="om.xsd"/>
 	<!-- ====================================================================== -->
 	<!-- bring in other schemas -->
 	<import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>

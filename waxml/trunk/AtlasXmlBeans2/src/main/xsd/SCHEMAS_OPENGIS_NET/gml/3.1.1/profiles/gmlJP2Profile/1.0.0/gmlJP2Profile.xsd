@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sch="http://www.ascc.net/xml/schematron" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:smil20="http://www.w3.org/2001/SMIL20/" xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opengis.net/gml" elementFormDefault="qualified" version="3.1.1 2010-01-28">
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:sch="http://www.ascc.net/xml/schematron" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:smil20="http://www.w3.org/2001/SMIL20/" xmlns:smil20lang="http://www.w3.org/2001/SMIL20/Language" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.opengis.net/gml" elementFormDefault="qualified" version="1.0.0.2">
+	<!-- This version of gmlJP2Profile/1.0.0 profile of gml/3.1.1 was previously versioned as '3.1.1 2010-01-28' . -->
+
 	<annotation>
 		<documentation>GML Subset schema for gml:_Feature,gml:_FeatureCollection,gml:FeatureCollection,gml:_Coverage,gml:RectifiedGridCoverage,gml:MeasureOrNullListType,gml:Point,gml:LineString,gml:Polygon,gml:LinearRing,gml:Dictionary,gml:_Definition,gml:dictionaryEntry,gml:Dictionary,gml:BaseUnit,gml:ConventionalUnit,gml:DerivedUnit,gml:ProjectedCRS,gml:Conversion,gml:GeographicCRS,gml:centerLineOf,gml:extentOf,gml:QuantityList,gml:GeometryPropertyType,gml:PolygonPropertyType,gml:defaultStyle,gml:MultiSurface,gml:Style,gml:_MetaData, written by gmlSubset.xslt.
 		
-		Copyright (c) 2005-2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+		Copyright (c) 2005-2010 Open Geospatial Consortium.
 		To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
-	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
 	<import namespace="http://www.w3.org/2001/SMIL20/" schemaLocation="http://schemas.opengis.net/gml/3.1.1/smil/smil20.xsd"/>
 	<import namespace="http://www.w3.org/2001/SMIL20/Language" schemaLocation="http://schemas.opengis.net/gml/3.1.1/smil/smil20-language.xsd"/>
 	<!-- ================================================= -->
@@ -84,7 +86,7 @@ in this hierarchy may have an ID and are thus referenceable.</documentation>
 		<annotation>
 			<documentation>Attribute group used to enable property elements to refer to their value remotely. It contains the simple link components from xlinks.xsd, with all members optional, and the remoteSchema attribute, which is also optional.  These attributes can be attached to any element, thus allowing it to act as a pointer. The 'remoteSchema' attribute allows an element  that carries link attributes to indicate that the element is declared  in a remote schema rather than by the schema that constrains the current document instance. </documentation>
 		</annotation>
-		<attributeGroup ref="xlink:simpleLink"/>
+		<attributeGroup ref="xlink:simpleAttrs"/>
 		<attribute ref="gml:remoteSchema" use="optional"/>
 	</attributeGroup>
 	<!-- ================================================= -->

@@ -10,7 +10,7 @@
 		<xs:documentation>
 			This schema defines the ProcessCoverages operation request elements and types, used by an OGC Web Coverage Service (WCS) Processing Extension, see OGC 08-059r3.
 			A WCPS query can be sent either as XML tree or as a string encoded in the Abstract Syntax defined in OGC Web Coverage Processing Service (WCPS), see OGC 08-068r2.
-			Copyright (c) 2008 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2008 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/.
 	</xs:documentation>
 	</xs:annotation>

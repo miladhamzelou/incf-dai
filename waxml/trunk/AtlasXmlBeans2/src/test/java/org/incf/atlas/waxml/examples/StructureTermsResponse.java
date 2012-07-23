@@ -21,6 +21,7 @@ import org.incf.atlas.waxml.generated.StructureTermType.Code;
 import org.incf.atlas.waxml.generated.StructureTermsResponseType.*;
 import org.incf.atlas.waxml.utilities.*;
 import org.junit.Test;
+import org.w3.x1999.xlink.TypeType.Enum;
 
 public class StructureTermsResponse {
 	@Test
@@ -158,8 +159,31 @@ t1lc.setAxisLabels(AxsList2);
 	t1uc.setStringValue("20 20 20");
 	
 	t1ft.addNewUrl().setStringValue("URI");
-	t1ft.getUrl().setSrsName("Mouse_ABAvoxel_1.0");
-	t1ft.setFormat(GeomFormatEnum.SHAPE.toString());
+	//t1ft.getUrl().setSrsName("Mouse_ABAvoxel_1.0");
+Url u1=	t1ft.addNewUrl();
+u1.setSrsName("Mouse_ABAvoxel_1.0");
+u1.setStringValue("http://example.com/thisUrl");
+/*
+ * new Enum("simple", INT_SIMPLE),
+                new Enum("extended", INT_EXTENDED),
+                new Enum("title", INT_TITLE),
+                new Enum("resource", INT_RESOURCE),
+                new Enum("locator", INT_LOCATOR),
+                new Enum("arc", INT_ARC),
+                
+ */
+u1.setType(org.w3.x1999.xlink.TypeType.Enum.forString("simple"));
+ u1.setTitle("Another Title");
+ u1.setHref("http://example.com/link/to/definition");
+ Url u2=	t1ft.addNewUrl();
+ u2.setSrsName("Mouse_ABAvoxel_1.0");
+ 
+ u2.setType(org.w3.x1999.xlink.TypeType.Enum.forString("simple"));
+  u2.setTitle("A Title");
+  u2.setHref("http://example.com/link/to/definition");
+  u2.setStringValue("http://example.com/thisUrl"); 
+	
+  t1ft.setFormat(GeomFormatEnum.SHAPE.toString());
 	return document;
 }
 }

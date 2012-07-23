@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema targetNamespace="http://www.opengis.net/sensorML/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/1.0" xmlns:gml="http://www.opengis.net/gml" xmlns:sml="http://www.opengis.net/sensorML/1.0" xmlns:ism="urn:us:gov:ic:ism:v2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0 2010-02-01">
+<xs:schema targetNamespace="http://www.opengis.net/sensorML/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/1.0" xmlns:gml="http://www.opengis.net/gml" xmlns:sml="http://www.opengis.net/sensorML/1.0" xmlns:ism="urn:us:gov:ic:ism:v2" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.2">
 	<!--  -->
 	<xs:annotation>
 		<xs:documentation>
 			Base class definitions for core SensorML
 			
 			SensorML is an OGC Standard.
-			Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2007,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</xs:documentation>
 	</xs:annotation>
@@ -17,6 +17,7 @@
 	<xs:import namespace="http://www.opengis.net/swe/1.0" schemaLocation="http://schemas.opengis.net/sweCommon/1.0.0/swe.xsd"/>
 	<!-- import US Intelligence Community schema for security speciifications-->
 	<xs:import namespace="urn:us:gov:ic:ism:v2" schemaLocation="http://schemas.opengis.net/ic/2.0/IC-ISM-v2.xsd"/>
+	<xs:include schemaLocation="./sensorML.xsd"/>
 	<!-- ================================================= -->
 	<xs:complexType name="AbstractSMLType" abstract="true">
 		<xs:annotation>

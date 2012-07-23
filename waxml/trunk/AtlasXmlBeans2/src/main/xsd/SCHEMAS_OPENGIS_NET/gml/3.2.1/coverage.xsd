@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" elementFormDefault="qualified" version="3.2.1 2010-01-28">
+<schema targetNamespace="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" elementFormDefault="qualified" version="3.2.1.2">
 	<annotation>
 		<appinfo source="urn:x-ogc:specification:gml:schema-xsd:coverage:3.2.1">coverage.xsd</appinfo>
 		<documentation>See ISO/DIS 19136 20.3.
@@ -9,10 +9,11 @@ A coverage is implemented as a GML feature. We can thus speak of a "temperature 
 As is the case for any GML object, a coverage object may also be the value of a property of a feature.
 
 GML is an OGC Standard.
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
+	<include schemaLocation="gml.xsd"/>
 	<include schemaLocation="feature.xsd"/>
 	<include schemaLocation="valueObjects.xsd"/>
 	<include schemaLocation="grids.xsd"/>

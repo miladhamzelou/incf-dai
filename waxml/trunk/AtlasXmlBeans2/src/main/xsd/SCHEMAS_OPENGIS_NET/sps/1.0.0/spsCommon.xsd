@@ -2,10 +2,11 @@
 <xs:schema xmlns:swe="http://www.opengis.net/swe/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:sps="http://www.opengis.net/sps/1.0" xmlns:gml="http://www.opengis.net/gml"
     targetNamespace="http://www.opengis.net/sps/1.0" elementFormDefault="qualified"
-    attributeFormDefault="unqualified" xml:lang="en" version="1.0.1">
+    attributeFormDefault="unqualified" xml:lang="en" version="1.0.0.2">
     <!-- ==============================================================
         includes and imports
         ============================================================== -->
+    <xs:include schemaLocation="spsAll.xsd"/>
     <xs:import namespace="http://www.opengis.net/swe/1.0" schemaLocation="http://schemas.opengis.net/sweCommon/1.0.0/swe.xsd"/>
     <xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
     <xs:annotation>
@@ -15,7 +16,7 @@
             SPS operations.</description>
             <copyright>
                 SPS is an OGC Standard.
-                Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+                Copyright (c) 2007,2010 Open Geospatial Consortium.
                 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
             </copyright> 
         </xs:documentation>

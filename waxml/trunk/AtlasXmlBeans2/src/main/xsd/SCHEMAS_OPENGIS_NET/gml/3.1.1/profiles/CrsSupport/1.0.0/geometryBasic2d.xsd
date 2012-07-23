@@ -3,13 +3,13 @@
 xmlns:gml="http://www.opengis.net/gml" 
 xmlns:xlink="http://www.w3.org/1999/xlink" 
 xmlns="http://www.w3.org/2001/XMLSchema" 
-elementFormDefault="qualified" version="3.1.1 2010-01-28">
+elementFormDefault="qualified" version="3.1.1.2">
 	<annotation>
 		<appinfo source="urn:opengis:specification:gml:schema-xsd::3.1.1">geometryBasic2d.xsd</appinfo>
 		<documentation>Subset of geometryBasic2d.xsd for GML 3.1.1 CRS Support profile. Primary editor: Primary editor: Arliss Whiteside.
 			
 			GML is an OGC Standard.
-			Copyright (c) 2005,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2005,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>

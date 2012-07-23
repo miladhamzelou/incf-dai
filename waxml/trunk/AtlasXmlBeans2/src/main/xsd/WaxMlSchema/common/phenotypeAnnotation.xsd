@@ -5,7 +5,7 @@
 elementFormDefault="qualified" targetNamespace="http://www.incf.org/WaxML/" version="1.0" id="annotation"
   xmlns:xs="http://www.w3.org/2001/XMLSchema">
     <xs:import schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd" id="gml" namespace="http://www.opengis.net/gml/3.2" />
-    <xs:import schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd" namespace="http://www.w3.org/1999/xlink" />
+    <xs:import schemaLocation="http://www.w3.org/1999/xlink.xsd" namespace="http://www.w3.org/1999/xlink" />
     <xs:complexType name="ann_GeometryType">
         <xs:complexContent>
             <xs:restriction xmlns:q1="http://www.opengis.net/gml/3.2" base="q1:AbstractGeometryType" />

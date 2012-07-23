@@ -7,7 +7,7 @@ elementFormDefault="qualified" version="3.1.1" xml:lang="en">
 		<appinfo source="urn:opengis:specification:gml:schema-xsd:datums:3.1.1"/>
 		<documentation>Subset of datums.xsd for GML 3.1.1 GridCRSs profile. Primary editor: Arliss Whiteside.
 			
-			Copyright (c) 2005,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2005,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>

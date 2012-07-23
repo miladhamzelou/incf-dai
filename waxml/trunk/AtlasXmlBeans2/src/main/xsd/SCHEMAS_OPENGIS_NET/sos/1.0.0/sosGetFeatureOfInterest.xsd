@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/sos/1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ogc="http://www.opengis.net/ogc" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:sos="http://www.opengis.net/sos/1.0" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" version="1.0.1" xml:lang="en">
+<schema targetNamespace="http://www.opengis.net/sos/1.0" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ogc="http://www.opengis.net/ogc" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:sos="http://www.opengis.net/sos/1.0" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" version="1.0.0.2" xml:lang="en">
+  <!-- This version of sos/1.0.0 was previously versioned as '1.0.1' . -->
 	<annotation>
 		<documentation>
 			<description>
 				This XML Schema defines the GetFeatureOfInterest request and response XML elements and types.
 				
 				SOS is an OGC Standard.
-				Copyright (c) 2006,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+				Copyright (c) 2006,2010 Open Geospatial Consortium.
 				To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 			</description>
 		</documentation>
@@ -15,6 +16,7 @@
 		includes and imports
 	============================================================== -->
 	<import namespace="http://www.opengis.net/ogc" schemaLocation="http://schemas.opengis.net/sos/1.0.0/ogc4sos.xsd"/>
+	<include schemaLocation="sosAll.xsd"/>
 	<include schemaLocation="sosCommon.xsd"/>
 	<!-- ==============================================================
 		request

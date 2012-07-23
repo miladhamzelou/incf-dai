@@ -6,7 +6,7 @@ xmlns:om="http://www.opengis.net/om/1.0"
 xmlns:omx="http://www.opengis.net/omx/1.0"
 xmlns:cv="http://www.opengis.net/cv/0.2.1"
 		  targetNamespace="http://www.opengis.net/omx/1.0"
-        elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1">
+        elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.2">
 	<annotation>
 		<appinfo source="urn:ogc:specification:om:doc-is(07-022r3):1.0.0">
 			<sch:title>Schematron validation</sch:title>
@@ -22,12 +22,13 @@ This document contains specializations of the basic observation pattern, fixing 
 In this schema, the derivation model is **restriction**
 
 Observation Extensions is an OGC Standard.
-Copyright (c) 2007,2008,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2008,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
 	<!-- ====================================================================== -->
 	<!-- bring in other schemas -->
+	<include schemaLocation="om_extended.xsd"/>
 	<import namespace="http://www.opengis.net/cv/0.2.1" schemaLocation="http://bp.schemas.opengis.net/06-188r1/cv/0.2.1/cv.xsd"/>	
 	<import namespace="http://www.opengis.net/om/1.0"  schemaLocation="http://schemas.opengis.net/om/1.0.0/om.xsd"/>
 	<!-- ====================================================================== -->

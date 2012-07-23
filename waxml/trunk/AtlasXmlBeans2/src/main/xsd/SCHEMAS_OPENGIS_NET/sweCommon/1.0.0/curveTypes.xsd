@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema targetNamespace="http://www.opengis.net/swe/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.1">
+<xs:schema targetNamespace="http://www.opengis.net/swe/1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:swe="http://www.opengis.net/swe/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.2">
+  <!-- This version of sweCommon/1.0.0 was previously versioned as '1.0.1' . -->
 	<xs:annotation>
 		<xs:documentation>Schema for defining different types of curves based on aggregate data types
 			
-			Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2007,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</xs:documentation>
 	</xs:annotation>
 	<!-- ================================================= -->
 	<xs:import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
+	<xs:include schemaLocation="./swe.xsd"/>
 	<xs:include schemaLocation="./aggregateTypes.xsd"/>
 	<!-- ================================================= -->
 	<!--                  Curve Components                 -->

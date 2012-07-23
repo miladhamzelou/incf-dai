@@ -5,7 +5,7 @@ xmlns:om="http://www.opengis.net/om/1.0"
 xmlns:swe="http://www.opengis.net/swe/1.0.1" 
 xmlns:sch="http://purl.oclc.org/dsdl/schematron" 
         targetNamespace="http://www.opengis.net/om/1.0" 
-elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0">
+elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.3">
 	<annotation>
 		<appinfo source="urn:x-iso:std:ISO:fts:19139:2006">
 			<sch:title>Schematron validation</sch:title>
@@ -24,7 +24,7 @@ This document contains various specializations of the basic observation pattern,
 In this version, the specialization is achieved by using Schematron to constrain the type of the result element from om:ObservationType
 
 Observations and Measurements is an OGC Standard.
-Copyright (c) 2007,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+Copyright (c) 2007,2010 Open Geospatial Consortium.
 To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 	</annotation>
@@ -32,6 +32,7 @@ To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 	<!-- bring in other schemas -->
 	<import namespace="http://www.opengis.net/gml" schemaLocation="http://schemas.opengis.net/gml/3.1.1/base/gml.xsd"/>
 	<import namespace="http://www.opengis.net/swe/1.0.1" schemaLocation="http://schemas.opengis.net/sweCommon/1.0.1/swe.xsd"/>
+	<include schemaLocation="./om_extended.xsd"/>
 	<include schemaLocation="../observation.xsd"/>
 	<!-- ====================================================================== -->
 	<!-- ====================================================================== -->

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" version="3.1.0 2010-01-26">
+<schema targetNamespace="http://www.opengis.net/gml" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:gml="http://www.opengis.net/gml" elementFormDefault="qualified" version="3.1.0.2">
   <annotation>
     <appinfo source="urn:opengis:specification:gml:schema-xsd:temporalTopology:v3.1.0"/>
     <documentation xml:lang="en">
@@ -14,7 +14,7 @@
 		This schema reflects a partial yet consistent implementation of the model described in ISO 19108:2002.
 		
 		GML is an OGC Standard.
-		Copyright (c) 2001,2002,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+		Copyright (c) 2001,2002,2010 Open Geospatial Consortium.
 		To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
     </documentation>
   </annotation>

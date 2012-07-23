@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema targetNamespace="http://www.opengis.net/gml" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xml:lang="en" version="1.0.2 2010-02-01">
+<schema targetNamespace="http://www.opengis.net/gml" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xml:lang="en" version="1.0.0.3">
+  <!-- This version of wcs/1.0.0 was previously versioned as '1.0.2 2010-02-01' . -->
 	<annotation>
 		<appinfo>gml4wcs.xsd v1.0.2 20120-02-01</appinfo>
 		<documentation>GML profile for WCS </documentation>
 		<documentation>
 			WCS is an OGC Standard.
-			Copyright (c) 2003,2010 Open Geospatial Consortium, Inc. All Rights Reserved.
+			Copyright (c) 2003,2010 Open Geospatial Consortium.
 			To obtain additional rights of use, visit http://www.opengeospatial.org/legal/ .
 		</documentation>
 		<documentation>AEW 03/07/22 Changes made:
@@ -21,7 +22,7 @@
 		<documentation>JDE 2003-07-30 Added TimeDurationType</documentation>
 	</annotation>
 	<!-- ======== includes and imports =================================== -->
-	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://schemas.opengis.net/xlink/1.0.0/xlinks.xsd"/>
+	<import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.w3.org/1999/xlink.xsd"/>
 	<!-- ===========================================================
 	GML profile elements and types from gmlBase.xsd	============================================================== -->
 	<element name="_Object" abstract="true">
@@ -116,7 +117,7 @@ This type is available wherever there is a need for a "text" type property. It i
 		<annotation>
 			<documentation>Attribute group used to enable property elements to refer to their value remotely. It contains the “simple link” components from xlinks.xsd, with all members “optional”, and the remoteSchema attribute, which is also optional.  These attributes can be attached to any element, thus allowing it to act as a pointer. The 'remoteSchema' attribute allows an element  that carries link attributes to indicate that the element is declared  in a remote schema rather than by the schema that constrains the current document instance. </documentation>
 		</annotation>
-		<attributeGroup ref="xlink:simpleLink"/>
+		<attributeGroup ref="xlink:simpleAttrs"/>
 		<attribute ref="gml:remoteSchema" use="optional"/>
 	</attributeGroup>
 	<!-- =========================================================== -->
