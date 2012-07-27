@@ -5,7 +5,7 @@
     <td></td>
     <th align="center">Deliverables</th>
   </tr>
-  <tr>
+  <tr> 
     <td align="left">*Deliverable:1*</td>
     <td align="left">*[http://code.google.com/p/incf-dai/wiki/INCFProjectTasks_2011_2012/INCFProjectTasks_2011_2012#Deliverables:1 Modeling of coordinate transformations, and assessment of transformation accuracy.]*</td>
   </tr>
