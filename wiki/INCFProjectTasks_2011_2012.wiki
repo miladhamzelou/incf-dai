@@ -115,7 +115,7 @@
   </tr>
   <tr>
     <td>*2:B*</td>
-    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:2:B Develop atlas registration services, by wrapping ITK/ANTs scripts as WFS-compliant services, register them in INCF-DAI.]<sup>1</sup></th>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/INCFProjectSubTasks_2011_2012#Deliverables:2:B Develop atlas registration services, by wrapping ITK/ANTs scripts as WPS-compliant services, register them in INCF-DAI.]<sup>1</sup></th>
     <td align="center">*A*</td>
     <td align="center">**</td>
     <td align="center">*XB*</td>
