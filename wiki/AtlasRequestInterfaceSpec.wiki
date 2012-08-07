@@ -338,7 +338,7 @@ Atlas Processes
 <th align="left">Examples</th>
 <td>
  * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3
- * ABA: (ABA has changed their web services API without maintaining backward compatibility with their old API on which, at a minimum, break the ABA hub implementations of Get2DIMagesByPOI)
+ * ABA: (ABA has changed their web services API without maintaining backward compatibility with their old API on which break the ABA hub implementations of Get2DIMagesByPOI)
  * UCSD: http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:sagittal;tolerance=3</td>
 </tr>
 </table>
@@ -477,7 +477,7 @@ Atlas Processes
 <th align="left">Examples</th>
 <td>
  * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE
- * ABA: (ABA has changed their web services API without maintaining backward compatibility with their old API on which, at a minimum, break the ABA hub implementations of GetGenesByPOI)
+ * ABA: (ABA has changed their web services API without maintaining backward compatibility with their old API on which break the ABA hub implementations of GetGenesByPOI)
  * EMAP: (Planned, but not yet implemented)</td>
 </tr>
 </table>
