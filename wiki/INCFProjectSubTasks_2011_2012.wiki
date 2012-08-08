@@ -1,4 +1,4 @@
-#summary Sub-tasks related to INCF Atlas Services Enhancements.
+Mult#summary Sub-tasks related to INCF Atlas Services Enhancements.
 
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:A Deliverables:1:A]
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:B Deliverables:1:B]
@@ -176,7 +176,7 @@ http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execu
 <br/>
 Multi-Point:
 <br/>
-http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;points=%28281,112,162%29%28281,112,162
+http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;points=(3,5.3,4.78)(3,5.3,4.78)
 </td>
 </tr>
 </table>
