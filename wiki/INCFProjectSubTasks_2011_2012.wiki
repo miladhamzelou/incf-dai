@@ -56,14 +56,14 @@ Alternately, open it as a docx file here: https://www.sugarsync.com/pf/D387646_7
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-These are preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates. The transformation in question is a thin plate spline created by matching the atlas outline features with corresponding image features. The displacement values are shown in the units of the target coordinate system in the transformation.
+These are preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates. The transformation in question is a thin plate spline created by matching the atlas outline features with corresponding image features. The displacement values are shown in the units of the target coordinate system in the transformation.   
 </td>
 </tr>
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
 ===Brainstem to ABA Reference.===
-These transformations are based upon a thin plate spline warping function.  The test dataset was marked up by a non-expert in neuroanatomy and may suffer from incomplete knowledge of the structural anatomy of the mouse brain.  Correspondence points only on the outline of the histological slice were established.  For the most part interior landmarks were ignored.  Adding interior landmark correspondences would certainly improve the fidelity and invertibility.
+These transformations are based upon a thin plate spline warping function.  The test dataset was marked up by a non-expert in neuroanatomy and may suffer from incomplete knowledge of the structural anatomy of the mouse brain.  Correspondence points only on the outline of the histological slice were established.  For the most part interior landmarks were ignored.  Adding interior landmark correspondences would certainly improve the fidelity and invertibility. As expected, with the thin plate spline functions, Euclidean displacement (the measure used here) increases away from correspondence points. Additional visualizations are shown under 1C. 
 <br/>
 https://lh4.googleusercontent.com/-viAKSQ7hWAM/TxADoyukPNI/AAAAAAAAADU/2P_EvP4vkAY/s800/error.jpg
 <br/>
@@ -91,7 +91,7 @@ These are also the preliminary error estimates, based on Euclidean distance betw
 <td width="80%">
 <br/>
 = WHS-PAXINOS-WHS = 
-These are based upon a piecewise approximation (derivation unknown but probably an empirical solution of some sort), which manifests itself in stripes and banding.
+These are based upon a piecewise approximation (derivation and statistics described in https://www.sugarsync.com/pf/D387646_3733681_280059), which manifests itself in stripes and banding, in the sagittal view in particular.
 <br/>
 https://lh3.googleusercontent.com/-_hdv4O-9D60/T0IO5My4jdI/AAAAAAAAAEU/WilTP18gdIs/s640/WHS-PAXINOS-WHS-Corrected-coronal-0.02mm-discrepency.jpg
 <br/>
