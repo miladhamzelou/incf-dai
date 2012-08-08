@@ -92,6 +92,8 @@ These are also the preliminary error estimates, based on Euclidean distance betw
 <br/>
 = WHS-PAXINOS-WHS = 
 <br/>
+These are based upon a piecewise approximation (derivation unknown but probably an empirical solution of some sort), which manifests itself in stripes and banding.
+<br/>
 https://lh3.googleusercontent.com/-_hdv4O-9D60/T0IO5My4jdI/AAAAAAAAAEU/WilTP18gdIs/s640/WHS-PAXINOS-WHS-Corrected-coronal-0.02mm-discrepency.jpg
 <br/>
 https://lh6.googleusercontent.com/-oDwu7wIOQGY/T0IO5Y-a7eI/AAAAAAAAAEY/AzBlpXrS1zs/s912/WHS-PAXINOS-WHS-Corrected-lateral-0.12mm-discrepency.jpg
@@ -104,6 +106,9 @@ https://lh3.googleusercontent.com/-whBJgcbaFqY/T0IO6MssLuI/AAAAAAAAAEg/xzjhgOsje
 <br/>
 = WHS-AGEA-WHS = 
 <br/>
+The transformation is based upon tables supplied to us by
+(who?) and are accomplished through a straight lookup mechanism.  The error in roundtrip transformation is due entirely to rounding error and at its maximum is approximately the diagonal length of a voxel (sqrt(3)/3).
+<br/>
 https://lh6.googleusercontent.com/-c915N363Yvc/T0IO7nAZq8I/AAAAAAAAAEk/Fj4bUFB0NKU/s512/WHS-AGEA-WHS-whs-agea-whs.coronal.0584.jpg
 <br/>
 https://lh6.googleusercontent.com/-5mB6T9VyBK4/T0IO9MOrmSI/AAAAAAAAAEo/n85r1uAn_wg/s912/WHS-AGEA-WHS-whs-agea-whs.sagittal.0292.jpg
@@ -111,6 +116,8 @@ https://lh6.googleusercontent.com/-5mB6T9VyBK4/T0IO9MOrmSI/AAAAAAAAAEo/n85r1uAn_
 
 <br/>
 = ABAvoxel-ABAreference, thin plate spine = 
+<br/>
+This is a thin plate spline estimate, performed in a similar manner to the Brainstem to ABA Reference experiment.
 <br/>
 https://lh6.googleusercontent.com/-bNp4-48uYW0/T31BEWlXyyI/AAAAAAAAAE8/mLOGM97tanM/s720/crop-jibber-1-all.jpg
 <br/>
