@@ -268,12 +268,14 @@ https://www.sugarsync.com/pf/D387646_3733681_28475
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
 <tr>
-<th colspan="2" align="left">Develop atlas registration services, by wrapping ITK/ANTs scripts as WFS-compliant services, register them in INCF-DAI.</th>
+<th colspan="2" align="left">Develop atlas registration services, by wrapping ITK/ANTs scripts as WPS-compliant services, register them in INCF-DAI.</th>
 </tr>
 
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
+A working package received from the ITK team in mid-July, and compiled. The next step is to test it with data from Rob Williams. 
+
 Here is the script definition for ITK used for defining the Registration Workflow:
 https://github.com/luisibanez/ImageReconstruction
 
@@ -290,29 +292,30 @@ https://docs.google.com/presentation/d/1Sf_edu7DeKAbUhOLtKXpwLXNvLMrnXrTjJ9lvaSv
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
+Here are the ITK registration scripts implemented as WPS services:
 ===3D Reconstruction Service:===
-http://132.239.131.188:8080/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
+http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
 ===Alignment to WHS:===
-http://132.239.131.188:8080/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
+http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
 ===Fine Registration:===
-http://132.239.131.188:8080/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=WarpReferenceAfterRoughVolumetricRegistration&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
+http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=WarpReferenceAfterRoughVolumetricRegistration&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
 ===UpdateITK:===
-http://132.239.131.188:8080/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
+http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
 ===ListSRSs:===
-http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs 
+http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs 
 
 ===DescribeSRS:===
-http://incf-dev-local.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Mouse_ABAvoxel_1.0
+http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Mouse_ABAvoxel_1.0
 
 ===ListTransformations:===
-http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations 
+http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations 
 
 ===TransformPOI:===
-http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Yuko_1.0_To_Mouse_WHS_0.9_v1.0;x=200;y=320;z=211 
+http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Yuko_1.0_To_Mouse_WHS_0.9_v1.0;x=200;y=320;z=211 
 
 ===Warped Dataset:===
 http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?volumeID=irods:/telescience/home/asifmemon/canon_hist_affined_warped.nii 
@@ -320,6 +323,7 @@ http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?volumeID=irods:/teles
 </tr>
 </table>
 <br/>
+
 ===Deliverables:2:C===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
