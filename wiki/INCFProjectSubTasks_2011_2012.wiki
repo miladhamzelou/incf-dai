@@ -91,7 +91,7 @@ These are also the preliminary error estimates, based on Euclidean distance betw
 <td width="80%">
 <br/>
 = WHS-PAXINOS-WHS = 
-These are based upon a piecewise approximation (derivation and statistics described in https://www.sugarsync.com/pf/D387646_3733681_280059), which manifests itself in stripes and banding, in the sagittal view in particular.
+These are based upon a piecewise approximation (derivation and statistics described in https://www.sugarsync.com/pf/D387646_3733681_280059), which manifests itself in stripes and banding, in the sagittal view in particular. In coronal views, the Euclidean displacement is quite small. Since the WHS to Paxinos and Paxinos to WHS transformations have been computed separately, two displacement fields are shown, for both coronal and sagittal views: for the WHS to Paxinos transform (expressed in mm of the target coordinate system), and for the Paxinos to WHS transform (in pixels of WHS)
 <br/>
 https://lh3.googleusercontent.com/-_hdv4O-9D60/T0IO5My4jdI/AAAAAAAAAEU/WilTP18gdIs/s640/WHS-PAXINOS-WHS-Corrected-coronal-0.02mm-discrepency.jpg
 <br/>
