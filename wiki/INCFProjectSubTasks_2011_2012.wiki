@@ -1,5 +1,5 @@
 #summary Sub-tasks related to INCF Atlas Services Enhancements.
-   
+
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:A Deliverables:1:A]
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:B Deliverables:1:B]
  * [INCFProjectSubTasks_2011_2012#Deliverables:1:C Deliverables:1:C]
@@ -157,16 +157,25 @@ http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/m
 <tr>
 <th colspan="2" align="left">Implement atlas services that return transformation accuracy information.</th>
 </tr>
+
+<tr>
+<th align="left">Notes</th>
+<td width="80%">
+<br/>
+The implemented services use the initial schema as developed in task 1D, and return displacement estimates, for a single point or a collection of points (multi-point)
+</td>
+</tr>
+
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
 Single Point:
 <br/>
-http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;x=3;y=5.3;z=4.78
+http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;x=3;y=5.3;z=4.78
 <br/>
 Multi-Point:
 <br/>
-http://132.239.131.188:8080/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;points=%28281,112,162%29%28281,112,162
+http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;points=%28281,112,162%29%28281,112,162
 </td>
 </tr>
 </table>
