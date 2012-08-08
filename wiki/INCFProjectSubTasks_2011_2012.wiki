@@ -51,7 +51,7 @@ Alternately, open it as a docx file here: https://www.sugarsync.com/pf/D387646_7
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
 <tr>
-<th colspan="2" align="left">Conduct accuracy assessment of coordinate transformation functions developed earlier, by i) simulating series of forward and inverse transformations for available images and generating an image volume with transformation performance statistics, ii) assessing consistency of transformation results under different transformation parameters and sets of fiducials.</th>
+<th colspan="2" align="left">Conduct accuracy assessment of coordinate transformation functions developed earlier</th>
 </tr>
 <tr>
 <th align="left">Notes</th>
@@ -63,7 +63,7 @@ These are preliminary error estimates, based on Euclidean distance between coord
 <th align="left">Examples</th>
 <td width="80%">
 ===Brainstem to ABA Reference.===
-These transformations are based upon a thin plate spline warping function.  The test dataset was marked up by a non-expert in neuroanatomy (me) and may suffer from incomplete knowledge of the structural anatomy of the mouse brain.  Correspondence points only on the outline of the histological slice were established.  For the most part interior landmarks were ignored.  Adding interior landmark correspondences would certainly improve the fidelity and invertibility.
+These transformations are based upon a thin plate spline warping function.  The test dataset was marked up by a non-expert in neuroanatomy and may suffer from incomplete knowledge of the structural anatomy of the mouse brain.  Correspondence points only on the outline of the histological slice were established.  For the most part interior landmarks were ignored.  Adding interior landmark correspondences would certainly improve the fidelity and invertibility.
 <br/>
 https://lh4.googleusercontent.com/-viAKSQ7hWAM/TxADoyukPNI/AAAAAAAAADU/2P_EvP4vkAY/s800/error.jpg
 <br/>
