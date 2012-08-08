@@ -245,8 +245,8 @@ http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execu
 </tr>
 <tr>
 <th align="left">Notes</th>
-</br>
-The initial manifest and workflow process files have been developed, and used in the spatial registration process. We are working with Christian Haselgrove on aligning these formats with the new provenance model.  </br>
+<br/>
+The initial manifest and workflow process files have been developed, and used in the spatial registration process. We are working with Christian Haselgrove on aligning these formats with the new provenance model.  <br/>
 </td>
 </tr>
 
