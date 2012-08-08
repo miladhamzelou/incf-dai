@@ -377,7 +377,6 @@ The services are being tested on datasets provided by Rob Williams. We will publ
 <td width="80%">
 <br/>
 The work has started, with installation of registration portal components on incf-dev, adding a registration page to atlas portal, and configuring the portal and the registration workflow with INCF-managed iRODS and LDAP (with Ruggero).
-A new image registration tool is developed (doesn’t require Web Start): <a href="http://tirebiter.ucsd.edu/JAWS/JAWSHelp.html">JAWS Tutorial</a>
 <br/>
 </td>
 </tr>
@@ -385,9 +384,10 @@ A new image registration tool is developed (doesn’t require Web Start): <a hre
 <th align="left">Examples</th>
 <td width="80%">
 <br/>
-<a href="http://incf-dev.crbs.ucsd.edu/atlasportal/catalog/dataregistration/dataRegistration.page">Registration</a>
+Spatial Registration:
+<a href="http://incf-dev.crbs.ucsd.edu/atlasportal/catalog/dataregistration/dataRegistration.page">click here</a>
 <br/>
-<a href="http://tirebiter.ucsd.edu/JAWS/JAWS.html">JAWS</a>
+A new image registration tool is developed (doesn’t require Web Start): <a href="http://tirebiter.ucsd.edu/JAWS/JAWS.html">JAWS</a>
 <br/>
 </td>
 </tr>
@@ -403,18 +403,7 @@ A new image registration tool is developed (doesn’t require Web Start): <a hre
 <th align="left">Notes</th>
 <td width="80%">
 <br/>
-<br/>
-<br/>
-<br/>
-</td>
-</tr>
-<tr>
-<th align="left">Examples</th>
-<td width="80%">
-<br/>
-<br/>
-<br/>
-<br/>
+A tutorial for using the registration workflow is <a href="http://tirebiter.ucsd.edu/JAWS/JAWSHelp.html">here</a>. It is now being updated to include the new version of the registration client.<br/>
 </td>
 </tr>
 </table>
