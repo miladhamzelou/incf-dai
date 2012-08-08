@@ -163,6 +163,7 @@ http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/m
 <td width="80%">
 <br/>
 The implemented services use the initial schema as developed in task 1D, and return displacement estimates, for a single point or a collection of points (multi-point)
+<br/>
 </td>
 </tr>
 
