@@ -421,7 +421,7 @@ A tutorial for using the registration workflow is <a href="http://tirebiter.ucsd
 <tr>
 <th align="left">Details</th>
 <td width="80%">
-We are looking at mouse data from Oslo. Here is a step by ttep guide for registration:
+We are looking at mouse data from Oslo. Here is a step by step guide for registration:
 http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow
 
 <br/>
