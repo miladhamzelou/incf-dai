@@ -57,7 +57,7 @@ Alternately, open it as a docx file here: https://www.sugarsync.com/pf/D387646_7
 <th align="left">Notes</th>
 <td width="80%">
 These are preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates. The transformation in question is a thin plate spline created by matching the atlas outline features with corresponding image features. The displacement values are shown in the units of the target coordinate system in the transformation.
-These transformations are based upon a thin plate spline warping function.  The test dataset was marked up by a non-expert in neuroanatomy (me) and may suffer from incomplete knowledge of the structural anatomy of the mouse brain.  Correspondence points only on the outline of the histological slice were established.  For the most part interior landmarks were ignored.  Adding interior landmark correspondences would certainly improve the fidelity and invertibility.
+These are based upon a thin plate spline warping function.  The test dataset was marked up by a non-expert in neuroanatomy (me) and may suffer from incomplete knowledge of the structural anatomy of the mouse brain.  Correspondence points only on the outline of the histological slice were established.  For the most part interior landmarks were ignored.  Adding interior landmark correspondences would certainly improve the fidelity and invertibility.
 </td>
 </tr>
 <tr>
