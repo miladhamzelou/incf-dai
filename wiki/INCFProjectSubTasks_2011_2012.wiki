@@ -652,17 +652,26 @@ http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Ge
 <th align="left">Notes</th>
 <td width="80%">
 <br/>
+Atlas portals (based on spatial location in the brain, and based on geographic location of respective labs) are updated to the new version of the portal and customized for brain data categories. 
+The links are:
+AtlasPortal: http://incf-dev.crbs.ucsd.edu/atlasportal/
 <br/>
+AtlasGeoportal: http://incf-dev.crbs.ucsd.edu/atlasgeoportal/
 <br/>
+Many brain-atlas –related resources are registered to both portals. Currently, XXX resources are registered.
 <br/>
-</td>
-</tr>
-<tr>
-<th align="left">Examples</th>
-<td width="80%">
-<br/>
-<br/>
-<br/>
+Service monitoring system has been upgraded:
+INCF:
+https://ops.crbs.ucsd.edu/g519da168/document/_/!index.html
+
+INCF-DEV:
+https://ops.crbs.ucsd.edu/g519042c3/document/_/!index.html
+
+INCF-DEV-LOCAL:
+https://ops.crbs.ucsd.edu/g519c6565/document/_/!index.html
+
+Other clients:
+https://ops.crbs.ucsd.edu/g51c1a206/document/_/!index.html
 <br/>
 </td>
 </tr>
