@@ -473,6 +473,7 @@ http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=iro
 <td width="80%">
 <br/>
 The initial atlas hubs have been setup for:
+<br/>
 Edinburgh mouse atlas project:
 http://incf-dev.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=GetCapabilities
 <br/>
