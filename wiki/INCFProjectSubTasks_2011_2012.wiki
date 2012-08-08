@@ -422,15 +422,16 @@ A tutorial for using the registration workflow is <a href="http://tirebiter.ucsd
 <th align="left">Details</th>
 <td width="80%">
 Three coordinate systems for the rat brain are described in the “ratoslo” hub:
-<a href="http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs">ListSRSs
-</a>
-<br/>
-<a href="
-http://incf-dev-local.crbs.ucsd.edu/oslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Paxinos_1.0">Rat_Paxinos_1.0</a>
-<br/>
-<a http://132.239.131.188:8080/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_WHS_1.0">Rat_WHS_1.0</a>
-<br/>
-<a http://132.239.131.188:8080/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_WHS_0.9">Rat_WHS_0.9</a>
+ListSRS: 
+http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+
+DescribeSRS:
+Rat_Paxinos_1.0:
+http://incf-dev-local.crbs.ucsd.edu/oslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Paxinos_1.0
+Rat_WHS_1.0:
+http://incf-dev-local.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_WHS_1.0
+Rat_WHS_0.9:
+http://132.239.131.188:8080/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_WHS_0.9
 
 In addition to the rat data, we are also working on spatial registration of mouse atlas data from Oslo. Both collections of rat slices and mouse slices are loaded and available for spatial registration:
 
