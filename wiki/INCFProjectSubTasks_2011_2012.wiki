@@ -336,7 +336,9 @@ http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execu
 http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Yuko_1.0_To_Mouse_WHS_0.9_v1.0;x=200;y=320;z=211 
 
 ===The Warped Dataset:===
-http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?volumeID=irods:/telescience/home/asifmemon/canon_hist_affined_warped.nii 
+ 
+http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/spl/jjtest/pnz/H7ctb-2010-03-29-17.19.06.000.pnz&plugin=INCF
+
 </td>
 </tr>
 </table>
