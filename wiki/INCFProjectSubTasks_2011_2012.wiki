@@ -307,7 +307,8 @@ https://docs.google.com/presentation/d/1Sf_edu7DeKAbUhOLtKXpwLXNvLMrnXrTjJ9lvaSv
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
-Here are the ITK registration scripts implemented as WPS services:
+==ITK/ANTs registration scripts implemented as WPS services==
+
 ===3D Reconstruction Service:===
 http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
@@ -320,7 +321,7 @@ http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&reque
 ===UpdateITK:===
 http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
-===WPS Service request updated as a result of the workflow===
+==Atlas service requests updated as a result of the workflow==
 
 ===ListSRSs:===
 http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs 
@@ -334,7 +335,7 @@ http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execu
 ===TransformPOI:===
 http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Yuko_1.0_To_Mouse_WHS_0.9_v1.0;x=200;y=320;z=211 
 
-===Warped Dataset:===
+===The Warped Dataset:===
 http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?volumeID=irods:/telescience/home/asifmemon/canon_hist_affined_warped.nii 
 </td>
 </tr>
@@ -366,7 +367,7 @@ The services are being tested on datasets provided by Rob Williams. We will publ
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
+<br/> scheduled in Year 2
 <br/>
 <br/>
 <br/>
@@ -392,7 +393,8 @@ The services are being tested on datasets provided by Rob Williams. We will publ
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
+<br/> scheduled in Year 2
+<br/> 
 The work has started, with installation of registration portal components on incf-dev, adding a registration page to atlas portal, and configuring the portal and the registration workflow with INCF-managed iRODS and LDAP (with Ruggero).
 <br/>
 </td>
@@ -419,8 +421,8 @@ A new image registration tool is developed (doesn’t require Web Start): <a hre
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
-A tutorial for using the registration workflow is <a href="http://tirebiter.ucsd.edu/JAWS/JAWSHelp.html">here</a>. It is now being updated to include the new version of the registration client.<br/>
+<br/> scheduled in Year 2
+<br/> A tutorial for using the registration workflow is <a href="http://tirebiter.ucsd.edu/JAWS/JAWSHelp.html">here</a>. It is now being updated to include the new version of the registration client.<br/>
 </td>
 </tr>
 </table>
@@ -510,7 +512,7 @@ http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Ge
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
+<br/> scheduled in Year 2
 <br/>
 <br/>
 <br/>
@@ -536,7 +538,7 @@ http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Ge
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
+<br/> scheduled in Year 2
 <br/>
 <br/>
 <br/>
@@ -562,7 +564,7 @@ http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Ge
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
+<br/> scheduled in Year 2
 <br/>
 <br/>
 <br/>
@@ -588,7 +590,7 @@ http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Ge
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
+<br/> scheduled in Year 2
 <br/>
 <br/>
 <br/>
@@ -616,7 +618,7 @@ http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Ge
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
+<br/> scheduled in Year 2
 <br/>
 <br/>
 <br/>
@@ -642,7 +644,7 @@ http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Ge
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
+<br/> scheduled in Year 2
 <br/>
 <br/>
 <br/>
@@ -668,8 +670,8 @@ http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Ge
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
-Atlas portals (based on spatial location in the brain, and based on geographic location of respective labs) are updated to the new version of the portal and customized for brain data categories.
+<br/> scheduled in Year 2
+<br/> Atlas portals (based on spatial location in the brain, and based on geographic location of respective labs) are updated to the new version of the portal framework, and customized for brain data categories.
 <br/>
 The links are:
 <br/>
