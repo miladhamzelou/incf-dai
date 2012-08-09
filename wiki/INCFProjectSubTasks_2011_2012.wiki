@@ -104,8 +104,7 @@ https://lh3.googleusercontent.com/-whBJgcbaFqY/T0IO6MssLuI/AAAAAAAAAEg/xzjhgOsje
 
 <br/>
 = WHS-AGEA-WHS = 
-The transformation is based upon tables supplied to us by
-(who?) and are accomplished through a straight lookup mechanism.  The error in roundtrip transformation is due entirely to rounding error and at its maximum is approximately the diagonal length of a voxel (sqrt(3)/3).
+The transformation is based upon tables supplied to us by Lydia Ng from the ABA team; they are accomplished through a straight lookup mechanism.  The error in roundtrip transformation is due entirely to rounding error and at its maximum is approximately the diagonal length of a voxel (sqrt(3)/3).
 <br/>
 https://lh6.googleusercontent.com/-c915N363Yvc/T0IO7nAZq8I/AAAAAAAAAEk/Fj4bUFB0NKU/s512/WHS-AGEA-WHS-whs-agea-whs.coronal.0584.jpg
 <br/>
@@ -114,7 +113,7 @@ https://lh6.googleusercontent.com/-5mB6T9VyBK4/T0IO9MOrmSI/AAAAAAAAAEo/n85r1uAn_
 
 <br/>
 = ABAvoxel-ABAreference, thin plate spine = 
-This is a thin plate spline estimate, performed in a similar manner to the Brainstem to ABA Reference experiment.
+This is a thin plate spline estimate, performed in a similar manner to the Brainstem to ABA Reference experiment described in 1B.Sagittal slices are generally more problematic, but percentage displacement is in single digits.
 <br/>
 https://lh6.googleusercontent.com/-bNp4-48uYW0/T31BEWlXyyI/AAAAAAAAAE8/mLOGM97tanM/s720/crop-jibber-1-all.jpg
 <br/>
@@ -143,11 +142,22 @@ https://lh5.googleusercontent.com/-yHE2z2VQsbw/T31BIjMVDcI/AAAAAAAAAFg/X-aOhtW1b
 <th align="left">Notes</th>
 <td width="80%">
 <br/>
-The schema includes Euclidean displacement estimates for a sequence of forward and inverse transforms, computed from spline functions. This estimate is attached to transformed point locations. Additional accuracy measures as implemented in ITK/ANTs are being experimented with; a working version of ITK/ANTs has been received from Gang in mid-July, and successfully compiled. As discussed at the Edinburgh meeting, the plan is to include additional accuracy estimated in the registration workflow process (initially), and then into service output schema, if such measures are found to be useful.
+The schema includes Euclidean displacement estimates for a sequence of forward and inverse transforms, computed from spline functions. This estimate is attached to transformed point locations. Additional accuracy measures as implemented in ITK/ANTs are being experimented with; a  version of ITK/ANTs has been received from Gang in mid-July, and successfully compiled - however version dependencies still need to be resolved to have sample scripts run to completion (as of 8/8). As discussed during the Edinburgh meeting, the plan is to include additional accuracy estimated in the registration workflow process (initially), and then into service output schema, if such measures are found to be useful. The focus is not on emphasizing a single measure but on providing multiple measures along with the ability to visualize deformation fields.
 <br/>
 Here is the schema for coordinate transformation services: 
 <br/>
 http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/TransformationResponse.xsd
+<br/>
+
+and
+<br/>
+
+http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/common/CoordinateTransformationCommon.xsd
+
+<br/>
+The Displacement field is retained for simplicity, though  we are considering deprecating it in favor of more generic ISO treatment, as in http://schemas.opengis.net/gml/3.2.1/coordinateOperations.xsd
+<br/>
+The WaxML base schema is:
 <br/>
 http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/common/WaxML_Base.xsd
 <br/>
