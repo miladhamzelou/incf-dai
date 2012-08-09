@@ -232,7 +232,7 @@ http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execu
 <th align="left">Notes</th>
 <td width="80%">
 <br/>
-<br/>
+<br/> scheduled in Year 2
 <br/>
 <br/>
 </td>
@@ -289,7 +289,7 @@ https://www.sugarsync.com/pf/D387646_3733681_28475
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-A working package received from the ITK team in mid-July, and compiled. The next step is to test it with data from Rob Williams. 
+A working package received from the ITK/ANTs team - however version dependencies still need to be resolved to have sample scripts run to completion (as of 8/8). The next step is to test it with data from Rob Williams. At the same time, several working IT/ANTs scripts, which are part of the workflow, have been wrapped as web services. 
 
 Here is the script definition for ITK used for defining the Registration Workflow:
 https://github.com/luisibanez/ImageReconstruction
