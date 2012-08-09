@@ -427,7 +427,7 @@ A new image registration tool is developed (doesn’t require Web Start): <a hre
 <br/> The initial spatial registration tutorial was developed to help the Oslo team register their mouse slices; it used CCDB portal and Jibber: http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow . 
 
 <br/>
-Now that Jibber (spatial registration client) is being replaced with JAWS, and we are moving it from the CCDB portal to a dedicated atlas portal, the tutorial is being updated. A tutorial for using JAWS is <a href="http://tirebiter.ucsd.edu/JAWS/JAWSHelp.html">here</a>. <br/>
+Now that Jibber (spatial registration client) is being replaced with JAWS, and we are moving the workflow from the CCDB portal to a dedicated atlas portal, the tutorial is being updated. A tutorial for using JAWS is <a href="http://tirebiter.ucsd.edu/JAWS/JAWSHelp.html">here</a>. <br/>
 </td>
 </tr>
 </table>
