@@ -476,7 +476,7 @@ Atlas Processes
 <tr>
 <th align="left">Examples</th>
 <td>
- * Central: http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGenesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=NONE
+ * Central: (ABA has changed their web services API without maintaining backward compatibility with their old API on which break the ABA hub implementations of GetGenesByPOI)
  * ABA: (ABA has changed their web services API without maintaining backward compatibility with their old API on which break the ABA hub implementations of GetGenesByPOI)
  * EMAP: (Planned, but not yet implemented)</td>
 </tr>
