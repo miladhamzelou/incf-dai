@@ -155,9 +155,9 @@ and
 http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/common/CoordinateTransformationCommon.xsd
 
 <br/>
-The Displacement field is retained for simplicity, though  we are considering deprecating it in favor of more generic ISO treatment, as in http://schemas.opengis.net/gml/3.2.1/coordinateOperations.xsd
+The Displacement field (a child of Point's metaDataProperty) is retained for simplicity, though  we are considering deprecating it in favor of a more generic ISO treatment of positional accuracy, as in http://schemas.opengis.net/gml/3.2.1/coordinateOperations.xsd
 <br/>
-The WaxML base schema is:
+The updated WaxML base schema is:
 <br/>
 http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/common/WaxML_Base.xsd
 <br/>
@@ -205,7 +205,7 @@ http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execu
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/>
+<br/> scheduled in Year 2
 <br/>
 <br/>
 <br/>
