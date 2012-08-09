@@ -320,6 +320,8 @@ http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&reque
 ===UpdateITK:===
 http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
+===WPS Service request updated as a result of the workflow===
+
 ===ListSRSs:===
 http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs 
 
