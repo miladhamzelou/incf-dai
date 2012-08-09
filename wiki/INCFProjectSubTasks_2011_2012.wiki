@@ -367,7 +367,7 @@ The services are being tested on datasets provided by Rob Williams. We will publ
 <tr>
 <th align="left">Notes</th>
 <td width="80%">
-<br/> scheduled in Year 2
+<br/> dependency on 2b-2c
 <br/>
 <br/>
 <br/>
