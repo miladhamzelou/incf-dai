@@ -619,9 +619,9 @@ http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Ge
 <th align="left">Notes</th>
 <td width="80%">
 <br/> scheduled in Year 2
-<br/>
-<br/>
-<br/>
+<br/> A spatial registration page is added to the atlas portal on incf-dev. Once the portal is configured with INCF LDAP and the image upload tool and the new user interface (JAWS) are configured with INCF iRODS, we'll be able to test the new registration system<br/>
+<br/>The portal registration page is <a href="http://incf-dev.crbs.ucsd.edu/atlasportal/catalog/dataregistration/dataRegistration.page">here</a>
+
 </td>
 </tr>
 <tr>
