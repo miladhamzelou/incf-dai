@@ -336,8 +336,8 @@ http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execu
 http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Yuko_1.0_To_Mouse_WHS_0.9_v1.0;x=200;y=320;z=211 
 
 ===The Warped Dataset:===
- 
-http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/spl/jjtest/pnz/H7ctb-2010-03-29-17.19.06.000.pnz&plugin=INCF
+
+http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/spl/jjtest/pnz/H7ctb-2010-03-29-17.19.06.000.pnz&plugin=INCF
 
 </td>
 </tr>
@@ -475,11 +475,11 @@ According to Eszter and Jan, a student will be assigned to do spatial registrati
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
-http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/49-388_12_s362_20x.pnz
+http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/49-388_12_s362_20x.pnz
 
-http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/26-388_12_s178_20x.pnz
+http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/26-388_12_s178_20x.pnz
 
-http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/26-388_12_s178_20x.pnz
+http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/26-388_12_s178_20x.pnz
 
 </td>
 </tr>
