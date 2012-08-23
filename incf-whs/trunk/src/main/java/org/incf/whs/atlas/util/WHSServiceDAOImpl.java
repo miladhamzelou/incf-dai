@@ -32,7 +32,7 @@ public class WHSServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForWHSHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		//query.append( " select * from srs where srs_name in (" + srsName + ") " );
@@ -97,7 +97,7 @@ public class WHSServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForWHSHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from orientation " );
@@ -137,7 +137,7 @@ public class WHSServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForWHSHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from srs where srs_name in ('" + srsName + "') " ); 
@@ -201,7 +201,7 @@ public class WHSServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForWHSHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from slice where space_code = '"+vo.getSpaceCode()+"' " );
@@ -245,10 +245,10 @@ public class WHSServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForWHSHub();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from fiducial where srs_name = '"+vo.getSpaceCode()+"' " );
+		query.append( " select * from fiducial where srs_name = '"+vo.getSpaceCode()+"'" );
 
 		LOG.debug("getSliceData - Query is - {}", query.toString() );
 
@@ -270,6 +270,7 @@ public class WHSServiceDAOImpl {
 			vo.setDateSubmitted(rs.getString("date_submitted"));
 			vo.setDateUpdated(rs.getString("date_updated"));
 			vo.setPos(rs.getString("pos"));
+			vo.setModality(rs.getString("modality"));
 
 			list.add(vo);
 

@@ -17,6 +17,8 @@ import javax.xml.stream.XMLStreamWriter;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.xml.XMLAdapter;
+import org.deegree.services.controller.exception.ControllerException;
+import org.deegree.services.controller.ows.OWSException;
 import org.deegree.services.wps.output.ComplexOutput;
 
 import org.incf.atlas.waxml.generated.CoordinateChainTransformType;
@@ -1119,5 +1121,118 @@ public class WHSUtil {
 
 		}
 
+	public String calculateAccuracy(WHSServiceVO vo) {
 
+		/*		String transformationCode = "Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0";
+				String originalCoordinateX = "2";
+				String originalCoordinateY = "-1";
+				String originalCoordinateZ = "3";
+		*/
+				String transformationCode = vo.getTransformationCode();
+				String originalCoordinateX = vo.getOriginalCoordinateX();
+				String originalCoordinateY = vo.getOriginalCoordinateY();
+				String originalCoordinateZ = vo.getOriginalCoordinateZ();
+
+				double accuracy = 0;
+				
+				//Parsing transformationCode
+				String[] transformationNameArray;
+				String delimiter = "_To_";
+				transformationNameArray = transformationCode.split(delimiter);
+				String fromSRSCode = transformationNameArray[0];
+				String toSRSCode = transformationNameArray[1].replace("_v1.0", "");
+
+				String transformedCoordinateX1 = "";
+				String transformedCoordinateY1 = "";
+				String transformedCoordinateZ1 = "";
+
+				String transformedCoordinateX2 = "";
+				String transformedCoordinateY2 = "";
+				String transformedCoordinateZ2 = "";
+
+				String transformedCoordinateX3 = "";
+				String transformedCoordinateY3 = "";
+				String transformedCoordinateZ3 = "";
+
+				try {
+
+					WHSUtil util = new WHSUtil();
+					
+					//Transformation 1
+					String completeCoordinatesString = util.directSpaceTransformation(fromSRSCode, toSRSCode, originalCoordinateX, originalCoordinateY, originalCoordinateZ);
+					if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+						throw new OWSException(
+								"No Such Transformation is available under WHS Hub.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+
+					if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+						throw new OWSException("Coordinates - Out of Range.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					transformedCoordinateX1 = vo.getTransformedCoordinateX();
+					transformedCoordinateY1 = vo.getTransformedCoordinateY();
+					transformedCoordinateZ1 = vo.getTransformedCoordinateZ();
+					System.out.println("transformedCoordinateX1: " + transformedCoordinateX1);
+					System.out.println("transformedCoordinateY1: " + transformedCoordinateY1);
+					System.out.println("transformedCoordinateZ1: " + transformedCoordinateZ1);
+					
+					//Transformation 2
+					completeCoordinatesString = "";
+					completeCoordinatesString = util.directSpaceTransformation(toSRSCode, fromSRSCode, vo.getTransformedCoordinateX(), vo.getTransformedCoordinateY(), vo.getTransformedCoordinateZ());
+					if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+						throw new OWSException(
+								"No Such Transformation is available under WHS Hub.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+
+					if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+						throw new OWSException("Coordinates - Out of Range.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					transformedCoordinateX2 = vo.getTransformedCoordinateX();
+					transformedCoordinateY2 = vo.getTransformedCoordinateY();
+					transformedCoordinateZ2 = vo.getTransformedCoordinateZ();
+
+					//Transformation 3
+					completeCoordinatesString = "";
+					completeCoordinatesString = util.directSpaceTransformation(fromSRSCode, toSRSCode, vo.getTransformedCoordinateX(), vo.getTransformedCoordinateY(), vo.getTransformedCoordinateZ());
+					if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+						throw new OWSException(
+								"No Such Transformation is available under WHS Hub.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+
+					if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+						throw new OWSException("Coordinates - Out of Range.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					transformedCoordinateX3 = vo.getTransformedCoordinateX();
+					transformedCoordinateY3 = vo.getTransformedCoordinateY();
+					transformedCoordinateZ3 = vo.getTransformedCoordinateZ();
+
+					//Apply the Euclidean Formula to get the accuracy and divide it by 3
+					double doubleCoordinateX = (Double.parseDouble(transformedCoordinateX3))-(Double.parseDouble(transformedCoordinateX1));
+					double doubleCoordinateY = (Double.parseDouble(transformedCoordinateY3))-(Double.parseDouble(transformedCoordinateY1));
+					double doubleCoordinateZ = (Double.parseDouble(transformedCoordinateZ3))-(Double.parseDouble(transformedCoordinateZ1));
+					accuracy = Math.sqrt((doubleCoordinateX*doubleCoordinateX)+(doubleCoordinateY*doubleCoordinateY)+(doubleCoordinateZ*doubleCoordinateZ))/3;
+
+				} catch ( Exception e ) {
+				e.printStackTrace();
+				}
+
+				return String.valueOf(accuracy);
+
+			}
+
+	
 }

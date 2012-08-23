@@ -1,5 +1,6 @@
 package org.incf.whs.atlas.process;
 
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
@@ -35,6 +36,7 @@ import org.incf.atlas.waxml.generated.IncfNameType;
 import org.incf.atlas.waxml.generated.InputStringType;
 import org.incf.atlas.waxml.generated.QueryInfoType;
 import org.incf.atlas.waxml.generated.StructureTermType;
+import org.incf.atlas.waxml.generated.FeatureReferenceType.Url;
 import org.incf.atlas.waxml.generated.QueryInfoType.Criteria;
 import org.incf.atlas.waxml.generated.StructureTermType.Code;
 import org.incf.atlas.waxml.generated.StructureTermsResponseDocument;
@@ -298,7 +300,28 @@ public class GetStructureNamesByPOI implements Processlet {
 				if (structureName.equalsIgnoreCase(matchingStructureName)) {
 					LOG.debug("Inside matching structureName");
 					term1.addNewDescription().setStringValue(vo1.getStructureDescription());
-					t1ft.addNewUrl().setStringValue("http://www.3dbar.org:8080/getPreview?cafDatasetName=whs_0.5&structureName="+structureName);
+					
+					Url u1=	t1ft.addNewUrl();
+				 	//u1.setType(org.w3.x1999.xlink.TypeType.Enum.forString("URL"));
+					u1.setTitle("Preview");
+					u1.setStringValue("http://www.3dbar.org:8080/getPreview?cafDatasetName=whs_0.5&structureName="+structureName);
+
+					Url u2=	t1ft.addNewUrl();
+					//u2.setType(org.w3.x1999.xlink.TypeType.Enum.forString("Thumbnail"));
+					u2.setTitle("Thumbnail");
+					u2.setStringValue("http://www.3dbar.org:8080/getThumbnail?cafDatasetName=whs_0.5;structureName="+structureName);
+
+					Url u3=	t1ft.addNewUrl();
+					//u3.setType(org.w3.x1999.xlink.TypeType.Enum.forString("Mesh"));
+					u3.setTitle("Mesh");
+					u3.setStringValue("http://service.3dbar.org/getReconstruction?cafDatasetName=whs_0.5;structureName="+structureName+";qualityPreset=high;outputFormat=vrml");
+
+					Url u4=	t1ft.addNewUrl();
+					//u4.setType(org.w3.x1999.xlink.TypeType.Enum.forString("Volumetric mask"));
+					u4.setTitle("Volumetric mask");
+					u4.setStringValue("http://www.3dbar.org:8080/getReconstruction?cafDatasetName=whs_0.5;structureName="+structureName+";qualityPreset=high;outputFormat=niftii");
+
+					//t1ft.addNewUrl().setStringValue("http://www.3dbar.org:8080/getPreview?cafDatasetName=whs_0.5&structureName="+structureName);
 					break;
 				} 
 			}

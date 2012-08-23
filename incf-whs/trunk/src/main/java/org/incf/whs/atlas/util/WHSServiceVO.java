@@ -29,6 +29,9 @@ public class WHSServiceVO {
 
 	private String wms = "";
 	private String flag = "";
+
+	private String modality = "";
+	
 	public String getFlag() {
 		return flag;
 	}
@@ -1172,6 +1175,14 @@ public class WHSServiceVO {
 
 	public void setOrientationDateSubmitted(String orientationDateSubmitted) {
 		this.orientationDateSubmitted = orientationDateSubmitted;
+	}
+
+	public String getModality() {
+		return modality;
+	}
+
+	public void setModality(String modality) {
+		this.modality = modality;
 	}
 
 

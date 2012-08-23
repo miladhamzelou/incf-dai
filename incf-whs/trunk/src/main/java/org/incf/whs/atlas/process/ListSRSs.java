@@ -1,7 +1,9 @@
 package org.incf.whs.atlas.process;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -56,7 +58,6 @@ public class ListSRSs implements Processlet {
 	WHSConfigurator config = WHSConfigurator.INSTANCE;
 
 	String abaReference = config.getValue("srsname.abareference.10");
-	String abaVoxel = config.getValue("srsname.abavoxel.10");
 	String agea = config.getValue("srsname.agea.10");
 	String whs09 = config.getValue("srsname.whs.09");
 	String whs10 = config.getValue("srsname.whs.10");
@@ -152,13 +153,24 @@ public class ListSRSs implements Processlet {
 		return ;
 	}
 
-	public static OrientationType orientation(OrientationType orient, String code, String name, String gmlID, String authorCode, String authorName, String orientationDescription) { 
+	public static OrientationType orientation(OrientationType orient, String code, String name, String gmlID, String authorCode, String authorName, String orientationDescription, String orientationDate) { 
 		
 		orient.setCode(code);
 		orient.setId(gmlID); // this is what is linked, to
 		orient.setName(name);
 		Author author = orient.addNewAuthor();
-		author.setDateSubmitted(Calendar.getInstance());
+		
+		Calendar c = Calendar.getInstance();
+		try {
+			//Start - Date submitted
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	        Date d = sdf.parse(orientationDate);
+			c.setTime(d);
+			//End - Date submitted
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		author.setDateSubmitted(c);
 		author.setAuthorCode(authorCode);
 		author.setStringValue(authorName);
 		
@@ -205,7 +217,15 @@ public class ListSRSs implements Processlet {
 
 		AuthorType author = 	srs.addNewAuthor();
 		author.setAuthorCode(vo.getSrsAuthorCode());
-		author.setDateSubmitted(Calendar.getInstance());
+		
+		//Start - Date submitted
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        Date d = sdf.parse(vo.getSrsDateSubmitted());
+		Calendar c = Calendar.getInstance();
+		c.setTime(d);
+		//End - Date submitted
+
+		author.setDateSubmitted(c);
 		
 		IncfCodeType origin = 	srs.addNewOrigin();
 		//origin.setCodeSpace("URN");
@@ -286,7 +306,7 @@ public class ListSRSs implements Processlet {
 			    }
 			vo = (WHSServiceVO) iterator2.next();
 			orientation = o.addNewOrientation();
-			orientation(orientation,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription());
+			orientation(orientation,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription(), vo.getOrientationDateSubmitted());
 		}
 		return document;
 	}

@@ -32,7 +32,8 @@ public class AnnotationVO {
 	private String pointZ = "";
 	private String filePath = "";
 	private String polygonString = "";
-
+	private String modality = "";
+	
 	private String tfwLine1 = "";
 	private String tfwLine2 = "";
 	private String tfwLine3 = "";
@@ -135,6 +136,14 @@ public class AnnotationVO {
 
 	public void setPolygonID(String polygonID) {
 		this.polygonID = polygonID;
+	}
+
+	public String getModality() {
+		return modality;
+	}
+
+	public void setModality(String modality) {
+		this.modality = modality;
 	}
 
 }

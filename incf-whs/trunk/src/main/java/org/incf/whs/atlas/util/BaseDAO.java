@@ -169,7 +169,7 @@ public class BaseDAO {
 
     }// end of getStandAloneConnection method
 
-
+    
     /**
      * Closes an open connection.
      *
@@ -498,10 +498,11 @@ public class BaseDAO {
 
 	}// end of getStandAloneConnection method
 
+
     public Connection getStandAloneConnectionForWHSHub()// please change public to protected
 			throws Exception {
 
-		LOG.debug( "Start - getStandAloneConnectionForPostgres()");
+		LOG.debug( "Start - getStandAloneConnectionForWHSHub()");
 		
 		Connection connection = null;
 		
@@ -519,20 +520,20 @@ public class BaseDAO {
 		
 		try {
 			Class.forName( driverClassName );
-			LOG.debug( "Start - getStandAloneConnectionForPostgres()");
+			LOG.debug( "Start - getStandAloneConnectionForWHSHub()");
 		    connection = 
 		    	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
-		    LOG.debug( "End - getStandAloneConnectionForPostgres()");
-		
+		    LOG.debug( "End - getStandAloneConnectionForWHSHub()");
+
 		} catch ( Exception e ) {
 			LOG.debug( "There is an error{}", e.getClass() + e.getMessage());
 		    throw new Exception( e.getMessage() );
 		}
 		
-		LOG.debug( "End - getStandAloneConnectionForPostgres()");
+		LOG.debug( "End - getStandAloneConnectionForWHSHub()");
 		return connection;
 		
 	}// end of getStandAloneConnection method
 
-    
+
 }//end of DataAccessObject.java

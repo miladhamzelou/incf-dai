@@ -174,13 +174,26 @@ public class DescribeSRS implements Processlet {
 
 	public static OrientationType orientation(OrientationType orient,
 			String code, String name, String gmlID, String authorCode,
-			String authorName, String orientationDescription) {
+			String authorName, String orientationDescription, String orientationDate) {
 
 		orient.setCode(code);
 		orient.setId(gmlID); // this is what is linked, to
 		orient.setName(name);
 		Author author = orient.addNewAuthor();
-		author.setDateSubmitted(Calendar.getInstance());
+
+		Calendar c = Calendar.getInstance();
+
+		try { 
+			//Start - Date submitted
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	        Date d = sdf.parse(orientationDate);
+			c.setTime(d);
+			//End - Date submitted
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		author.setDateSubmitted(c);
 		author.setAuthorCode(authorCode);
 		author.setStringValue(authorName);
 
@@ -230,7 +243,14 @@ public class DescribeSRS implements Processlet {
 
 				AuthorType author = srs.addNewAuthor();
 				author.setAuthorCode(vo.getSrsAuthorCode());
-				author.setDateSubmitted(Calendar.getInstance());
+				
+				//Start - Date submitted
+				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		        Date d = sdf.parse(vo.getSrsDateSubmitted());
+				Calendar c = Calendar.getInstance();
+				c.setTime(d);
+				//End - Date submitted
+				author.setDateSubmitted(c);
 
 				IncfCodeType origin = srs.addNewOrigin();
 				// origin.setCodeSpace("URN");
@@ -330,7 +350,7 @@ public class DescribeSRS implements Processlet {
 			orientation(orientation, vo.getOrientationName(), vo
 					.getOrientationName(), String.valueOf(randomGMLID), vo
 					.getOrientationAuthor(), vo.getOrientationAuthor(), vo
-					.getOrientationDescription());
+					.getOrientationDescription(), vo.getOrientationDateSubmitted());
 		}
 
 		// Start - Get Slice data
@@ -364,7 +384,7 @@ public class DescribeSRS implements Processlet {
 			vo.setSpaceCode("");
 		}
 		ArrayList fiducialsDataList = daoImpl.getFiducialsData(vo);
-		
+
 		Fiducials f = rootDoc.addNewFiducials();
 		iterator = fiducialsDataList.iterator();
 		int fiducialCount = 0;
@@ -423,27 +443,34 @@ public class DescribeSRS implements Processlet {
 	}
 
 	public static void fiducialElements(FiducialType fiducialType, int identifier, WHSServiceVO vo){
-		
+
 		try {
 
 			fiducialType.setCode(vo.getFiducialCode());
 			fiducialType.setFiducialType(vo.getFiducialType());
 			fiducialType.setName(vo.getFiducialName());
 			fiducialType.addNewDescription().setStringValue(vo.getDescription());
-	
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-			Date date = sdf.parse(vo.getDateSubmitted());
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(date);
-	
+
+			System.out.println("**************MODALITY IS HERE**************" + vo.getModality());
+
+			//fiducialType.setModality(Integer.parseInt(vo.getModality()));
+
+			//Start - Date submitted
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	        Date d = sdf.parse(vo.getDateSubmitted());
+			Calendar c = Calendar.getInstance();
+			c.setTime(d);
+			//End - Date submitted
+
 			AuthorType author=	fiducialType.addNewAuthor();
 			author.setAuthorCode(vo.getAuthorCode());
-			author.setDateSubmitted(cal.getInstance());
+			author.setDateSubmitted(c);
 
 			fiducialType.setCertaintyLevel(vo.getCertaintyLevel());
 			fiducialType.setDerivedFrom(vo.getDerivedFrom());
-			
+
 			PointType pnt=	 fiducialType.addNewPoint();
+			System.out.println("**************POS IS HERE**************" + vo.getPos());
 			pnt.addNewPos().setStringValue(vo.getPos());
 			pnt.setSrsName(vo.getSrsName());
 			pnt.setId(String.valueOf(identifier));
