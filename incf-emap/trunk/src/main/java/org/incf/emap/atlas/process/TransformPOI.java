@@ -130,7 +130,6 @@ public class TransformPOI implements Processlet {
 			vo.setToSRSCodeOne(toSRSCode);
 			vo.setToSRSCode(toSRSCode);
 
-
 			//FIXME - emap URL needs to come from a config file
 			String emapURL = "http://"
 				+ "lxbisel.macs.hw.ac.uk"
@@ -138,11 +137,11 @@ public class TransformPOI implements Processlet {
 				+ "/EMAPServiceController?request=Execute&identifier=TransformPOI&dataInputs=inputSRSCode="+fromSRSCode+";targetSRSCode="+toSRSCode
 				+ ";x=" + vo.getOriginalCoordinateX()
 				+ ";y=" + vo.getOriginalCoordinateY() + ";z="
-				+ vo.getOriginalCoordinateZ(); 
-			
+				+ vo.getOriginalCoordinateZ();
+
 			ReadXML readXML = new ReadXML();
 			vo = readXML.getPOIFromEMAPData(emapURL, vo);
-			
+
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			java.util.Date date = new java.util.Date();
 			String currentTime = dateFormat.format(date);
@@ -178,43 +177,6 @@ public class TransformPOI implements Processlet {
 
 			TransformationResponseType rootDoc = document
 					.addNewTransformationResponse();
-			// QueryInfo and criteria should be done as a utility
-			// addQueryInfo(GenesResponseType,srscode,filter,X,Y,Z)
-			/*
-			 * QueryInfoType query = rootDoc.addNewQueryInfo();
-			 * QueryInfoType.Criteria criterias = query.addNewCriteria();
-			 * 
-			 * query.addNewQueryUrl();
-			 * query.getQueryUrl().setName("TransformPOI");
-			 * query.getQueryUrl().setStringValue(uri.toString());
-			 * query.setTimeCreated(Calendar.getInstance());
-			 * 
-			 * InputStringType targetsrsCriteria = (InputStringType) criterias
-			 * .addNewInput().changeType(InputStringType.type);
-			 * 
-			 * targetsrsCriteria.setName("transformationCode");
-			 * targetsrsCriteria.setValue(vo.getTransformationCode());
-			 * 
-			 * InputStringType xCriteria = (InputStringType)
-			 * criterias.addNewInput() .changeType(InputStringType.type);
-			 * xCriteria.setName("x");
-			 * xCriteria.setValue(vo.getOriginalCoordinateX());
-			 * 
-			 * InputStringType yCriteria = (InputStringType)
-			 * criterias.addNewInput() .changeType(InputStringType.type);
-			 * yCriteria.setName("y");
-			 * yCriteria.setValue(vo.getOriginalCoordinateY());
-			 * 
-			 * InputStringType zCriteria = (InputStringType)
-			 * criterias.addNewInput() .changeType(InputStringType.type);
-			 * zCriteria.setName("z");
-			 * zCriteria.setValue(vo.getOriginalCoordinateZ());
-			 * 
-			 * InputStringType filterCodeCriteria = (InputStringType) criterias
-			 * .addNewInput().changeType(InputStringType.type);
-			 * filterCodeCriteria.setName("filter");
-			 * filterCodeCriteria.setValue("cerebellum");
-			 */
 			LOG.debug("----POS Value1---- {}" , vo.getValue());
 			POIType poi = rootDoc.addNewPOI();
 			PointType poipnt = poi.addNewPoint();
