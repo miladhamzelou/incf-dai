@@ -1672,9 +1672,9 @@ public class UCSDUtil {
 	public String calculateAccuracy(UCSDServiceVO vo) {
 
 /*		String transformationCode = "Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0";
-		String originalCoordinateX = "2";
-		String originalCoordinateY = "-1";
-		String originalCoordinateZ = "3";
+		String originalCoordinateX = "1";
+		String originalCoordinateY = "4.3";
+		String originalCoordinateZ = "1.78";
 */
 		String transformationCode = vo.getTransformationCode();
 		String originalCoordinateX = vo.getOriginalCoordinateX();
@@ -1748,6 +1748,10 @@ public class UCSDUtil {
 			transformedCoordinateY2 = vo.getTransformedCoordinateY();
 			transformedCoordinateZ2 = vo.getTransformedCoordinateZ();
 
+			System.out.println("transformedCoordinateX2: " + transformedCoordinateX2);
+			System.out.println("transformedCoordinateY2: " + transformedCoordinateY2);
+			System.out.println("transformedCoordinateZ2: " + transformedCoordinateZ2);
+
 			//Transformation 3
 			completeCoordinatesString = "";
 			completeCoordinatesString = util.directSpaceTransformation(fromSRSCode, toSRSCode, vo.getTransformedCoordinateX(), vo.getTransformedCoordinateY(), vo.getTransformedCoordinateZ());
@@ -1768,11 +1772,19 @@ public class UCSDUtil {
 			transformedCoordinateY3 = vo.getTransformedCoordinateY();
 			transformedCoordinateZ3 = vo.getTransformedCoordinateZ();
 
+			System.out.println("transformedCoordinateX3: " + transformedCoordinateX3);
+			System.out.println("transformedCoordinateY3: " + transformedCoordinateY3);
+			System.out.println("transformedCoordinateZ3: " + transformedCoordinateZ3);
+
 			//Apply the Euclidean Formula to get the accuracy and divide it by 3
 			double doubleCoordinateX = (Double.parseDouble(transformedCoordinateX3))-(Double.parseDouble(transformedCoordinateX1));
 			double doubleCoordinateY = (Double.parseDouble(transformedCoordinateY3))-(Double.parseDouble(transformedCoordinateY1));
 			double doubleCoordinateZ = (Double.parseDouble(transformedCoordinateZ3))-(Double.parseDouble(transformedCoordinateZ1));
 			accuracy = Math.sqrt((doubleCoordinateX*doubleCoordinateX)+(doubleCoordinateY*doubleCoordinateY)+(doubleCoordinateZ*doubleCoordinateZ))/3;
+		
+			System.out.println("Math without sqrt: "+transformedCoordinateX1);
+			System.out.println("Math with sqrt: "+Math.sqrt((doubleCoordinateX*doubleCoordinateX)+(doubleCoordinateY*doubleCoordinateY)+(doubleCoordinateZ*doubleCoordinateZ)));
+			System.out.println("Accuracy actual value is: " + accuracy);
 
 		} catch ( Exception e ) {
 		e.printStackTrace();
@@ -1953,8 +1965,9 @@ public class UCSDUtil {
 		} else if ( vo.getTransformationSource().equalsIgnoreCase(fromSpace.trim()) && vo.getTransformationDestination().equalsIgnoreCase(toSpace.trim()) 
 				&& vo.getTransformationURL().equalsIgnoreCase("yuko12whs09")) { 
 
-			LOG.debug("Hello - Inside Yuko 2 WHS09...");
-			InsightTransform transform = new InsightTransform("C:\\Asif\\work\\projects\\birn\\smartatlas\\itk\\tools\\ITKData\\Yuko\\images\\output\\canon_to_user_Affine.txt");
+			LOG.debug("Hello - Inside Yuko 2 WHS09..."); 
+			//InsightTransform transform = new InsightTransform("C:\\Asif\\work\\projects\\birn\\smartatlas\\itk\\tools\\ITKData\\Yuko\\images\\output\\canon_to_user_Affine.txt");
+			InsightTransform transform = new InsightTransform("/home/amemon/canon_to_user_Affine.txt");
 			LOG.debug("Hello - InsightTransform..." + transform);
 			double[] forward = transform.transformForward(Double.parseDouble(originalCoordinateX), Double.parseDouble(originalCoordinateY), Double.parseDouble(originalCoordinateZ));
 			System.out.println("X: "+forward[0]);

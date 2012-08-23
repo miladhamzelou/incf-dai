@@ -1,6 +1,6 @@
 <!-- Created by amemon on June 16, 2009, 16:17 -->
 <ucsd-config-properties>
- 
+
 	<!-- begin database properties for servlet -->
 	<property>
         <name>server.database.driverClassName</name>

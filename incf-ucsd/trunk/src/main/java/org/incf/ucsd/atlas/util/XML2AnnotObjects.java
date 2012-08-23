@@ -7,6 +7,7 @@ package org.incf.ucsd.atlas.util;
 
 import java.util.*;
 import java.io.*;
+
 import org.jdom.*;
 import org.jdom.input.*;
 import org.jdom.output.*;
@@ -55,7 +56,7 @@ public class XML2AnnotObjects
 
         Element geometries = root.getChild("GEOMETRIES");
         List<Element> glist = geometries.getChildren();
-        
+
         for(int i=0;i<glist.size();i++)
         {
             Element ge = glist.get(i);
@@ -140,8 +141,6 @@ public class XML2AnnotObjects
     }
 
 
-
-
     private HasGeometryProperty getGeometryProperty(Element oproperty)
     {
         
@@ -156,11 +155,11 @@ public class XML2AnnotObjects
        String instID = ontoTerm.getAttributeValue("instance_id");
        String oName = ontoTerm.getAttributeValue("onto_name");
        String ouri = ontoTerm.getAttributeValue("onto_uri");
-       
+
        prop.setInstanceID(instID);
        prop.setOntoName(oName);
        prop.setOntoUri(ouri);
-       
+
        Element object = oproperty.getChild("OBJECT");
        Element geometry = object.getChild("GEOMETRY");
        if(geometry == null)
@@ -182,9 +181,11 @@ public class XML2AnnotObjects
     	org.incf.ucsd.atlas.util.PostgresDBService.PASSWORD = "sand|ego";
 
         XML2AnnotObjects xml2o = new XML2AnnotObjects();
-        File f = new File("C:\\Users\\wawong\\Desktop\\wibdb.pl.xml");
-        String xml = xml2o.fileToXML(f);
-        System.out.println(xml);
+        //File f = new File("C:\\temp\\asif\\AnnotationSchema.xml");
+        XMLUtilities xmlUtil = new XMLUtilities();
+        String xml = xmlUtil.convertFromURLToString("http://132.239.131.188/incf-common/AnnotationSchema.xml");
+        xml = xml.replace("﻿", "");
+        System.out.println(xml.replace("﻿", ""));
         AnnotationModel amodel = xml2o.xml2polygons(xml);
         IncfDBUtil util = new IncfDBUtil();
         util.insertAnnotation(amodel);

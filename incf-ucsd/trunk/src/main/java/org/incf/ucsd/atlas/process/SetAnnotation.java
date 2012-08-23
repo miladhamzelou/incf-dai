@@ -192,7 +192,7 @@ public class SetAnnotation implements Processlet {
 				randomGMLID2 = randomGenerator2.nextInt(100);
 			}
 			LOG.debug("Random GML ID1: - {}" , randomGMLID1);
-			LOG.debug("Random GML ID2: - {}" , randomGMLID2);
+ 			LOG.debug("Random GML ID2: - {}" , randomGMLID2);
 
 			// url = "http://" + hostName + portNumber + servicePath +
 			// "&DataInputs=" + dataInputsString;

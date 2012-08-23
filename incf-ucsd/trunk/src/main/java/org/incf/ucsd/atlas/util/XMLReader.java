@@ -302,7 +302,7 @@ public class XMLReader {
 
 				System.out.println("4");
 		        BufferedReader in = null;
-	           in  = new BufferedReader(inputS);
+		        in = new BufferedReader(inputS);
                   StringBuffer buff = new StringBuffer();
                   line = in.readLine();
                   buff.append(line);

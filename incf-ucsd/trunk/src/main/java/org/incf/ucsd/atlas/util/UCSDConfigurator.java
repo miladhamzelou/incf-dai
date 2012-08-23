@@ -56,7 +56,7 @@ public class UCSDConfigurator {
 		InputStream path = null;
 
 		path = getClass().getResourceAsStream(
-		"/stage-ucsd-config-properties.xml");
+		"/dev-ucsd-config-properties.xml");
 
 		LOG.debug("Config Path is - {}" , path);
 		return path;

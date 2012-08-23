@@ -291,7 +291,7 @@ public class TransformPOI implements Processlet {
 					poipnt.setId(String.valueOf(randomGMLID1));
 					//poipnt.newCursor().insertComment("id on Point Required By GML\n Scoped to the document only");
 					poipnt.setSrsName(vo.getFromSRSCode());
- 
+
 					//Starts - Displacement info
 					QName newName = new QName("Displacement");
 					MetaDataPropertyType md10 =   poipnt.addNewMetaDataProperty();
@@ -362,10 +362,12 @@ public class TransformPOI implements Processlet {
 					vo.setToSRSCodeOne(toSRSCode);
 					vo.setToSRSCode(toSRSCode);
 	
+					poipnt.setSrsName(vo.getFromSRSCode());
+
 					LOG.debug("From SRS Code: {}" , vo.getFromSRSCodeOne());
 					LOG.debug("To SRS Code: {}" , vo.getToSRSCodeOne());
 					//Ends - Parse list of points one by one
-					
+
 					//--------------------------------------------------------------------------------------------------------
 
 					//Starts - Main Method to retrieve the data
@@ -489,163 +491,6 @@ public class TransformPOI implements Processlet {
 			LOG.debug("-2");
 
 			// Start - Call the main method here
-/*			UCSDUtil util = new UCSDUtil();
-			UCSDServiceVO vo1 = null;
-			List transformedPointsList = new ArrayList();
-
-			Iterator iterator = pointsList.iterator();
-			LOG.debug("*****************COUNT SIZE***************" + pointsList.size() );
-			int b = 0;
-			while ( iterator.hasNext() ) {
-
-				LOG.debug("*****************UNMARSHALLING COUNT***************" + b++ );
-
-				vo1 = (UCSDServiceVO)iterator.next();
-				String completeCoordinatesString = util.directSpaceTransformation(vo.getFromSRSCodeOne(), vo.getToSRSCodeOne(), vo.getOriginalCoordinateX(), vo.getOriginalCoordinateY(), vo.getOriginalCoordinateZ());
-				if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
-					throw new OWSException(
-							"No Such Transformation is available under UCSD Hub.",
-							ControllerException.NO_APPLICABLE_CODE);
-				}
-
-				vo1 = util.splitCoordinatesFromStringToVO(vo1,
-						completeCoordinatesString);
-				// End
-
-				// Start - Exception Handling
-				if (vo1.getTransformedCoordinateX().equalsIgnoreCase("out")) {
-					throw new OWSException("Coordinates - Out of Range.",
-							ControllerException.NO_APPLICABLE_CODE);
-				}
-
-				// Checking out of bound exception
-				CommonUtil commonUtil = new CommonUtil();
-				String outOfBoundCheck = commonUtil.outOfBoundException(Double
-						.parseDouble(vo1.getTransformedCoordinateX()), Double
-						.parseDouble(vo1.getTransformedCoordinateY()), Double
-						.parseDouble(vo1.getTransformedCoordinateZ()), vo1
-						.getToSRSCodeOne());
-
-				LOG.debug("***Before OutputX***" + vo1.getTransformedCoordinateX().toString());
-				LOG.debug("***Before OutputY***" + vo1.getTransformedCoordinateY().toString());
-				LOG.debug("***Before OutputZ***" + vo1.getTransformedCoordinateZ().toString());
-
-				StringTokenizer tokens = null;
-				String var = "";
-				String minRange = "";
-				String maxRange = "";
-
-				System.out.println("Before" + outOfBoundCheck);
-				if (outOfBoundCheck.startsWith("Coordinates - Out of Range:x:")) {
-
-					tokens = new StringTokenizer(outOfBoundCheck, ":");
-					tokens.nextToken();
-					var = tokens.nextToken();
-					minRange = tokens.nextToken();
-					maxRange = tokens.nextToken();
-					//System.out.println("Tokens: "+var+minRange+maxRange);
-					String message = "The transformed coordinates for the transformation "+transformationCode+" has allowed range from \""+minRange+"\" to \""+maxRange+"\" for \""+var+"\" "+ "("+var+"=\""+vo.getTransformedCoordinateX()+"\")";
-					System.out.println("Message is - " + message);
-					throw new OWSException(message,
-							ControllerException.NO_APPLICABLE_CODE); 
-					
-				} else if (outOfBoundCheck.startsWith("Coordinates - Out of Range:y:")) {
-
-					tokens = new StringTokenizer(outOfBoundCheck, ":");
-					tokens.nextToken();
-					var = tokens.nextToken();
-					minRange = tokens.nextToken();
-					maxRange = tokens.nextToken();
-					//System.out.println("Tokens: "+var+minRange+maxRange);
-					String message = "The transformed coordinates for the transformation "+transformationCode+" has allowed range from \""+minRange+"\" to \""+maxRange+"\" for \""+var+"\" "+ "("+var+"=\""+vo.getTransformedCoordinateY()+"\")";
-					System.out.println("Message is - " + message);
-					throw new OWSException(message,
-							ControllerException.NO_APPLICABLE_CODE); 
-					
-				} else if (outOfBoundCheck.startsWith("Coordinates - Out of Range:z:")) {
-
-					tokens = new StringTokenizer(outOfBoundCheck, ":");
-					tokens.nextToken();
-					var = tokens.nextToken();
-					minRange = tokens.nextToken();
-					maxRange = tokens.nextToken();
-					System.out.println("Tokens: "+var+minRange+maxRange);
-					String message = "The transformed coordinates for the transformation "+transformationCode+" has allowed range from \""+minRange+"\" to \""+maxRange+"\" for \""+var+"\" "+ "("+var+"=\""+vo.getTransformedCoordinateZ()+"\")";
-					System.out.println("Message is - " + message);
-					throw new OWSException(message,
-							ControllerException.NO_APPLICABLE_CODE); 
-
-				}
-
-				displacement = util.calculateAccuracy(vo1);
-
-				transformedPointsList.add(vo1);
-			}
-*/			
-
-			// End
-
-/*			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-			java.util.Date date = new java.util.Date();
-			String currentTime = dateFormat.format(date);
-			vo.setCurrentTime(currentTime);
-
-			// Generating 2 random number to be used as GMLID
-			Random randomGenerator1 = new Random();
-			for (int idx = 1; idx <= 10; ++idx) {
-				randomGMLID1 = randomGenerator1.nextInt(100);
-			}
-			Random randomGenerator2 = new Random();
-			for (int idx = 1; idx <= 10; ++idx) {
-				randomGMLID2 = randomGenerator2.nextInt(100);
-			}
-			LOG.debug("Random GML ID1: - {}" , randomGMLID1);
-			LOG.debug("Random GML ID2: - {}" , randomGMLID2);
-
-			// vo.setUrlString(uri.toString());
-
-			XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
-			opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
-			opt.setSaveNamespacesFirst();
-			opt.setSaveAggressiveNamespaces();
-			opt.setUseDefaultNamespace();
-
-			ComplexOutput complexOutput = (ComplexOutput) out
-					.getParameter("TransformPOIOutput");
-			LOG.debug("Setting complex output (requested="
-					+ complexOutput.isRequested() + ")");
-
-			TransformationResponseDocument document = TransformationResponseDocument.Factory
-					.newInstance();
-
-			TransformationResponseType rootDoc = document
-					.addNewTransformationResponse();
-*/
-/*			POIType poi = rootDoc.addNewPOI();
-			poi.setDisplacement(Double.parseDouble(displacement));
-
-			net.opengis.gml.x32.MultiPointType poipnt = poi.addNewMultiPoint();
-			poipnt.setSrsName(vo.getToSRSCode());
-			poipnt.setId(String.valueOf(randomGenerator1));
-
-			PointType pType = null;	
-			Iterator iterator1 = transformedPointsList.iterator();
-			while (iterator1.hasNext()) {
-
-				UCSDServiceVO transformedVO = (UCSDServiceVO) iterator1.next();
-				LOG.debug("***Inside OutputX***" + transformedVO.getTransformedCoordinateX().toString());
-				LOG.debug("***Inside OutputY***" + transformedVO.getTransformedCoordinateY().toString());
-				LOG.debug("***Inside OutputZ***" + transformedVO.getTransformedCoordinateZ().toString());
-
-				pType =	poipnt.addNewPointMember().addNewPoint();
-				pType.addNewPos().setStringValue(transformedVO.getTransformedCoordinateX().toString() +" "+ transformedVO.getTransformedCoordinateY().toString() +" "+transformedVO.getTransformedCoordinateZ().toString() );
-				//pType.setId("p2");
-				
-			}
-
-			poipnt.setSrsDimension( BigInteger.valueOf(3));
-*/
-			
 			ArrayList errorList = new ArrayList();
 			opt.setErrorListener(errorList);
 			boolean isValid = document.validate(opt);
