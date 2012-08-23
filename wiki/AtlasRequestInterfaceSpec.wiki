@@ -483,6 +483,45 @@ Atlas Processes
 </table>
 <br/>
 
+===GetGeneExpressionByGeneId===
+
+<table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
+<tr>
+<th colspan="2">GetGeneExpressionByGeneId</th>
+</tr>
+<tr>
+<th align="left">GET Request</th>
+<td>http://[host:port]/[hub]/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGeneExpressionByGeneId&DataInputs=geneIdentifier=[entrez_id | geneSymbol]&RawDataOutput=SparseValueVolumeXML</td>
+</tr>
+<tr>
+<th align="left">Description</th>
+<td></td>
+</tr>
+<tr>
+<th align="left">Applicability</th>
+<td>ABA. See [AtlasFunctionHubApplicabilityTable Applicability Table].</td>
+</tr>
+<tr>
+<th align="left">Data Inputs</th>
+<td>
+ * entrez gene id OR gene symbol</td>
+</tr>
+<tr>
+<th align="left">Normal Return</th>
+<td>XML document. [http://incf-dai.googlecode.com/svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/GenesResponse.xsd WaxML Schema]</td>
+</tr>
+<tr>
+<th align="left">Error Return</th>
+<td>XML exception report. [http://schemas.opengis.net/ows/0.3.0/owsExceptionReport.xsd OWS Schema].</td>
+</tr>
+<tr>
+<th align="left">Examples</th>
+<td>
+ * ABA: (ABA has changed their web services API without maintaining backward compatibility with their old API on which break the ABA hub implementations of GetGenesByPOI)
+</tr>
+</table>
+<br/>
+
 ===GetObjectsByPOI===
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
