@@ -72,20 +72,18 @@ public class PostgresDBService {
         //Then get the real connection info from the real resource
         rb = new PropertyResourceBundle(new FileInputStream(path));
 
-
         USERNAME = rb.getString("postgres_user");
         PASSWORD = rb.getString("postgres_password");
         URL=rb.getString("postgres_jdbc_url");//connectString+HOST+":"+PORT+":"+DATABASENAME;
 
         System.out.println("---------------URL------------"+URL);
-        
+
         return true;
       }
       catch(Exception e)
       {
         e.printStackTrace();
         throw new Exception("Problem reading database parameters: "+e.getMessage());
-
       }
 
 

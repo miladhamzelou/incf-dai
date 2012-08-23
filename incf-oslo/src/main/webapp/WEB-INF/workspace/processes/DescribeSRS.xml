@@ -20,6 +20,8 @@
       <Title>Atlas SRS Name</Title>
       <Abstract>The Atlas SRS (Spatial Reference System) name.</Abstract>
       <AllowedValues>
+        <Value>Rat_Paxinos_1.0</Value>
+        <Value>Rat_WHS_0.9</Value>
         <Value>Rat_WHS_1.0</Value>
       </AllowedValues>
     </LiteralInput>

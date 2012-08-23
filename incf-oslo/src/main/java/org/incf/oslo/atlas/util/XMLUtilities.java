@@ -229,7 +229,7 @@ public final class XMLUtilities {
 	    } catch (Exception e) {
 			e.printStackTrace();
 		}
-		return responseString.replace("&", "&amp;");
+		return responseString.replace("&", "&amp;").replace("﻿<?xml", "<?xml");
  	}
 
 	/**

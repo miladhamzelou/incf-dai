@@ -174,13 +174,25 @@ public class DescribeSRS implements Processlet {
 
 	public static OrientationType orientation(OrientationType orient,
 			String code, String name, String gmlID, String authorCode,
-			String authorName, String orientationDescription) {
+			String authorName, String orientationDescription, String orientationDate) {
 
 		orient.setCode(code);
 		orient.setId(gmlID); // this is what is linked, to
 		orient.setName(name);
 		Author author = orient.addNewAuthor();
-		author.setDateSubmitted(Calendar.getInstance());
+
+		Calendar c = Calendar.getInstance();
+
+		try {
+			//Start - Date submitted
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	        Date d = sdf.parse(orientationDate);
+			c.setTime(d);
+			//End - Date submitted
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		author.setDateSubmitted(c);
 		author.setAuthorCode(authorCode);
 		author.setStringValue(authorName);
 
@@ -217,7 +229,7 @@ public class DescribeSRS implements Processlet {
 				if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") ) {  
 					name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_0.9", ""));
 				} else { 
-					name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", ""));
+					name.setSrsBase(vo.getSrsName().replace("Rat_", "").replaceAll("_1.0", ""));
 				}
 
 				name.setSrsVersion(vo.getSrsVersion());
@@ -230,7 +242,15 @@ public class DescribeSRS implements Processlet {
 
 				AuthorType author = srs.addNewAuthor();
 				author.setAuthorCode(vo.getSrsAuthorCode());
-				author.setDateSubmitted(Calendar.getInstance());
+				
+				//Start - Date submitted
+				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		        Date d = sdf.parse(vo.getSrsDateSubmitted());
+				Calendar c = Calendar.getInstance();
+				c.setTime(d);
+				//End - Date submitted
+
+				author.setDateSubmitted(c);
 
 				IncfCodeType origin = srs.addNewOrigin();
 				// origin.setCodeSpace("URN");
@@ -299,7 +319,7 @@ public class DescribeSRS implements Processlet {
 		 *///SRSList srsList = rootDoc.addNewSRSList();
 
 		SRSCollection coll1 = rootDoc.addNewSRSCollection();
-		coll1.setHubCode("RAT_WHS_1.0");
+		coll1.setHubCode("Oslo");
 
 		SRSList srsList = coll1.addNewSRSList();
 
@@ -330,12 +350,12 @@ public class DescribeSRS implements Processlet {
 			orientation(orientation, vo.getOrientationName(), vo
 					.getOrientationName(), String.valueOf(randomGMLID), vo
 					.getOrientationAuthor(), vo.getOrientationAuthor(), vo
-					.getOrientationDescription());
+					.getOrientationDescription(), vo.getOrientationDateSubmitted());
 		}
 
 		// Start - Get Slice data
-		if (srsName.equals("Rat_WHS_1.0")) {
-			vo.setSpaceCode(whs09);// FIXME - Remove the hardcoded value
+		if (srsName.equals("Rat_Paxinos_1.0")) {
+			vo.setSpaceCode("Rat_Pax");// FIXME - Remove the hardcoded value
 		} else {
 			vo.setSpaceCode("");
 		}
@@ -354,12 +374,12 @@ public class DescribeSRS implements Processlet {
 		}
 
 		//Start - GetFiducials Data
-		if (srsName.equals("Rat_WHS_1.0")) {
-			vo.setSpaceCode(whs09);// FIXME - Remove the hardcoded value
+		if (srsName.equals("Rat_Paxinos_1.0")) {
+			vo.setSpaceCode("Rat_Pax");// FIXME - Remove the hardcoded value
 		} else {
 			vo.setSpaceCode("");
 		}
-		ArrayList fiducialsDataList = daoImpl.getFiducialsData(vo);
+		/*ArrayList fiducialsDataList = daoImpl.getFiducialsData(vo);
 		
 		Fiducials f = rootDoc.addNewFiducials();
 		iterator = fiducialsDataList.iterator();
@@ -371,7 +391,7 @@ public class DescribeSRS implements Processlet {
 			fiducialElements(fiducialType, fiducialCount, vo);
 		}
 		//End
-
+*/
 		return document;
 	}
 
@@ -407,6 +427,12 @@ public class DescribeSRS implements Processlet {
 			slice.setYOrientation(vo.getPlusY());
 		} else {
 			slice.setOrientation(SliceType.Orientation.HORIZONTAL);
+			if (vo.getPlusX().equalsIgnoreCase("constant")) {
+				slice.setXOrientation(vo.getPlusZ());
+			} else {
+				slice.setXOrientation(vo.getPlusX());
+			}
+			slice.setYOrientation(vo.getPlusY());
 		}
 
 		LOG.debug("Value is - {}", vo.getSlideValue());
@@ -427,14 +453,16 @@ public class DescribeSRS implements Processlet {
 			fiducialType.setName(vo.getFiducialName());
 			fiducialType.addNewDescription().setStringValue(vo.getDescription());
 	
-			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-			Date date = sdf.parse(vo.getDateSubmitted());
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(date);
-	
+			//Start - Date submitted
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	        Date d = sdf.parse(vo.getDateSubmitted());
+			Calendar c = Calendar.getInstance();
+			c.setTime(d);
+			//End - Date submitted
+
 			AuthorType author=	fiducialType.addNewAuthor();
 			author.setAuthorCode(vo.getAuthorCode());
-			author.setDateSubmitted(cal.getInstance());
+			author.setDateSubmitted(c);
 
 			fiducialType.setCertaintyLevel(vo.getCertaintyLevel());
 			fiducialType.setDerivedFrom(vo.getDerivedFrom());

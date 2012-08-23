@@ -19,6 +19,27 @@
     </property>
 	<!-- end database properties for servlet -->
 
+	<!-- begin Oslo Rat database properties -->
+	<property>
+        <name>postgres.oslo.database.driverClassName</name>
+        <value>org.postgresql.Driver</value>
+    </property>
+	<property>
+        <name>postgres.oslo.database.atlasdburl</name>
+        <value>jdbc:postgresql://incf-dev-local.crbs.ucsd.edu:5432/rat-oslo-db</value>
+    </property>
+    <property>
+        <name>postgres.oslo.database.atlasdbuser</name>
+        <value>rat-oslo-db</value>
+ 		<!--<value>atlas</value>-->
+    </property>
+    <property>
+        <name>postgres.oslo.database.atlasdbpassword</name>
+        <value>oslo4321</value>
+        <!--<value>beer</value>-->
+    </property>
+	<!-- end postgres database properties -->
+
 	<!-- begin postgres database properties -->
 	<property>
         <name>postgres.server.database.driverClassName</name>

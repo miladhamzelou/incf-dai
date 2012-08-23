@@ -171,6 +171,50 @@ public class BaseDAO {
 
 
     /**
+     * Gets the connection to the database. Does not do connection pooling.
+     *
+     * @param jndiName - The jndi name of the datasource
+     * @return A Connection object
+     * @throws DataAccessObjectException - If there is an exception establishing the connection.
+     *
+     */
+    public Connection getStandAloneConnectionForPostgresFromOslo()// please change public to protected
+            throws Exception {
+
+    	LOG.debug( "Start - getStandAloneConnectionForPostgresFromOslo()");
+        
+    	Connection connection = null;
+
+        OsloConfigurator props = OsloConfigurator.INSTANCE;
+        
+        String driverClassName = props.getValue("postgres.oslo.database.driverClassName"); 
+        String dbUrl = props.getValue("postgres.oslo.database.atlasdburl");
+        String dbUser = props.getValue("postgres.oslo.database.atlasdbuser");
+        String dbPassword = props.getValue("postgres.oslo.database.atlasdbpassword");
+
+        LOG.debug( "driverClassName - "+driverClassName);
+        LOG.debug( "dbUrl - "+dbUrl);
+        LOG.debug( "dbUser - "+dbUser);
+        LOG.debug( "dbPassword - "+dbPassword);
+ 
+        try {
+        	Class.forName( driverClassName );
+        	LOG.debug( "Start - getStandAloneConnectionForPostgres()");
+            connection = 
+            	DriverManager.getConnection( dbUrl, dbUser, dbPassword );
+            LOG.debug( "End - getStandAloneConnectionForPostgres()");
+ 
+        } catch ( Exception e ) {
+        	LOG.debug( "There is an error" + e.getClass() + e.getMessage());
+            throw new Exception( e.getMessage() );
+        }
+
+        LOG.debug( "End - getStandAloneConnectionForPostgresFromOslo()");
+        return connection;
+
+    }// end of getStandAloneConnection method
+
+    /**
      * Closes an open connection.
      *
      * @param connection - A connection object

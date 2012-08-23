@@ -8,10 +8,9 @@
   <!-- General service information for all services. Used in the 
        GetCapabilities responses. -->
   <ServiceIdentification>
-    <Title>WHS Atlas Services</Title>
+    <Title>Rat Oslo Atlas Services</Title>
     <Abstract>
-      WHS Atlas Services provide access to data available from the 
-      Waxholm Space resource.
+      Rat Oslo Atlas Services.
     </Abstract>
   </ServiceIdentification>
 

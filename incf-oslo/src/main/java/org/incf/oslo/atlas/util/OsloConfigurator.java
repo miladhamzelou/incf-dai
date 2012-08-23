@@ -63,7 +63,7 @@ public class OsloConfigurator {
 		"/prod-oslo-config-properties.xml");
 		LOG.debug("3");
 
-		LOG.debug("WHS Config Path is - " + path);
+		LOG.debug("Oslo Config Path is - " + path);
 		LOG.debug("4");
 		return path;
 

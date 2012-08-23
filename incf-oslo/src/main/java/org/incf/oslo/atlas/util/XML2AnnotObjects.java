@@ -7,6 +7,7 @@ package org.incf.oslo.atlas.util;
 
 import java.util.*;
 import java.io.*;
+
 import org.jdom.*;
 import org.jdom.input.*;
 import org.jdom.output.*;
@@ -36,7 +37,13 @@ public class XML2AnnotObjects
         Document doc = builder.build(new ByteArrayInputStream(xml.getBytes()));
         Element root = doc.getRootElement();
 
+        System.out.println("Root is: " + root);
+
+        Element resource1 =root.getChild("wps:ProcessOutputs");
+        System.out.println("Resource is: " + resource1);
+
         Element resource =root.getChild("RESOURCE");
+        System.out.println("Resource is: " + resource);
         String filepath = resource.getAttributeValue("filepath");
         amodel.setResourcePath(filepath);
 
@@ -174,21 +181,19 @@ public class XML2AnnotObjects
     }
 
 
-    public static void main(String[] args)throws Exception
-    {
+    public static void main(String[] args)throws Exception {
 
     	org.incf.oslo.atlas.util.PostgresDBService.URL = "jdbc:postgresql://ceecee.ucsd.edu:5432/ccdbv2_2";
     	org.incf.oslo.atlas.util.PostgresDBService.USERNAME = "ccdbd_dev";
     	org.incf.oslo.atlas.util.PostgresDBService.PASSWORD = "sand|ego";
 
         XML2AnnotObjects xml2o = new XML2AnnotObjects();
-        File f = new File("C:\\Users\\wawong\\Desktop\\wibdb.pl.xml");
+        File f = new File("C:\\temp\\asif\\AnnotationSchema.xml");
         String xml = xml2o.fileToXML(f);
         System.out.println(xml);
         AnnotationModel amodel = xml2o.xml2polygons(xml);
         IncfDBUtil util = new IncfDBUtil();
         util.insertAnnotation(amodel);
-
 
        // System.out.println("AnnotationModel:"+amodel);
     }

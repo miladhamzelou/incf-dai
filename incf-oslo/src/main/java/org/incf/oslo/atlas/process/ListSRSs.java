@@ -1,7 +1,9 @@
 package org.incf.oslo.atlas.process;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -152,13 +154,25 @@ public class ListSRSs implements Processlet {
 		return ;
 	}
 
-	public static OrientationType orientation(OrientationType orient, String code, String name, String gmlID, String authorCode, String authorName, String orientationDescription) { 
+	public static OrientationType orientation(OrientationType orient, String code, String name, String gmlID, String authorCode, String authorName, String orientationDescription, String orientationDate) { 
 		
 		orient.setCode(code);
 		orient.setId(gmlID); // this is what is linked, to
 		orient.setName(name);
 		Author author = orient.addNewAuthor();
-		author.setDateSubmitted(Calendar.getInstance());
+
+		Calendar c = Calendar.getInstance();
+
+		try { 
+			//Start - Date submitted
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	        Date d = sdf.parse(orientationDate);
+			c.setTime(d);
+			//End - Date submitted
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+		author.setDateSubmitted(c);
 		author.setAuthorCode(authorCode);
 		author.setStringValue(authorName);
 		
@@ -193,7 +207,7 @@ public class ListSRSs implements Processlet {
 		if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") ) {  
 			name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_0.9", ""));
 		} else { 
-			name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", ""));
+			name.setSrsBase(vo.getSrsName().replace("Rat_", "").replaceAll("_1.0", ""));
 		}
 
 		name.setSrsVersion(vo.getSrsVersion());
@@ -203,9 +217,17 @@ public class ListSRSs implements Processlet {
 		Incfdescription srsdescription = srs.addNewDescription();
 		srsdescription.setStringValue(vo.getSrsDescription());
 
-		AuthorType author = 	srs.addNewAuthor();
+		AuthorType author = srs.addNewAuthor();
 		author.setAuthorCode(vo.getSrsAuthorCode());
-		author.setDateSubmitted(Calendar.getInstance());
+		
+		//Start - Date submitted
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+        Date d = sdf.parse(vo.getSrsDateSubmitted());
+		Calendar c = Calendar.getInstance();
+		c.setTime(d);
+		//End - Date submitted
+		
+		author.setDateSubmitted(c);
 		
 		IncfCodeType origin = 	srs.addNewOrigin();
 		//origin.setCodeSpace("URN");
@@ -259,7 +281,7 @@ public class ListSRSs implements Processlet {
 */		//SRSList srsList = rootDoc.addNewSRSList();
 
 		SRSCollection coll1 = rootDoc.addNewSRSCollection();
-		coll1.setHubCode("RAT_WHS_1.0");
+		coll1.setHubCode("RAT_Paxinos_1.0");
 
 		SRSList srsList = coll1.addNewSRSList();
 
@@ -286,7 +308,7 @@ public class ListSRSs implements Processlet {
 			    }
 			vo = (OsloServiceVO) iterator2.next();
 			orientation = o.addNewOrientation();
-			orientation(orientation,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription());
+			orientation(orientation,vo.getOrientationName(),vo.getOrientationName(),String.valueOf(randomGMLID), vo.getOrientationAuthor(), vo.getOrientationAuthor(), vo.getOrientationDescription(), vo.getOrientationDateSubmitted());
 		}
 		return document;
 	}

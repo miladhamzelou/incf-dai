@@ -32,13 +32,12 @@ public class OsloServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForPostgresFromOslo();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		//query.append( " select * from srs where srs_name in (" + srsName + ") " );
 
-		query.append( " select * from srs where status = 'ACTIVE' and srs_author_code = 'Rat_WHS_1.0' " );
-
+		query.append( " select * from srs where status = 'ACTIVE' and srs_name in ('Rat_Paxinos_1.0', 'Rat_WHS_0.9', 'Rat_WHS_1.0')" );
 		System.out.println("getSRSData - Query is - {}" + query.toString() );
 		LOG.debug("getSRSData - Query is - {}", query.toString() );
 
@@ -98,7 +97,7 @@ public class OsloServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForPostgresFromOslo();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from orientation " );
@@ -138,10 +137,10 @@ public class OsloServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForPostgresFromOslo();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
-		query.append( " select * from srs where srs_name in ('" + srsName + "') " ); 
+		query.append( " select * from srs where srs_name in ('" + srsName + "') " );
 
 		System.out.println("Describe SRS - Query is - {}" + query.toString() );
 
@@ -204,7 +203,7 @@ public class OsloServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForPostgresFromOslo();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from slice where space_code = '"+vo.getSpaceCode()+"' " );
@@ -248,7 +247,7 @@ public class OsloServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForPostgresFromOslo();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from fiducial where srs_name = '"+vo.getSpaceCode()+"' " );
