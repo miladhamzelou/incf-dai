@@ -22,6 +22,8 @@ import javax.xml.stream.XMLStreamWriter;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.xml.XMLAdapter;
+import org.deegree.services.controller.exception.ControllerException;
+import org.deegree.services.controller.ows.OWSException;
 import org.deegree.services.wps.output.ComplexOutput;
 
 import org.incf.aba.atlas.process.Get2DImagesByPOI;
@@ -683,6 +685,125 @@ public class ABAUtil {
 		return responseString;
 
 	}
+
+	
+	public String calculateAccuracy(ABAServiceVO vo) {
+
+/*				String transformationCode = "Mouse_ABAvoxel_1.0_To_Mouse_AGEA_1.0_v1.0";
+				String originalCoordinateX = "101";
+				String originalCoordinateY = "112";
+				String originalCoordinateZ = "162";
+*/		
+				String transformationCode = vo.getTransformationCode();
+				String originalCoordinateX = vo.getOriginalCoordinateX();
+				String originalCoordinateY = vo.getOriginalCoordinateY();
+				String originalCoordinateZ = vo.getOriginalCoordinateZ();
+
+				double accuracy = 0;
+				
+				//Parsing transformationCode
+				String[] transformationNameArray;
+				String delimiter = "_To_";
+				transformationNameArray = transformationCode.split(delimiter);
+				String fromSRSCode = transformationNameArray[0];
+				String toSRSCode = transformationNameArray[1].replace("_v1.0", "");
+
+				String transformedCoordinateX1 = "";
+				String transformedCoordinateY1 = "";
+				String transformedCoordinateZ1 = "";
+
+				String transformedCoordinateX2 = "";
+				String transformedCoordinateY2 = "";
+				String transformedCoordinateZ2 = "";
+
+				String transformedCoordinateX3 = "";
+				String transformedCoordinateY3 = "";
+				String transformedCoordinateZ3 = "";
+
+				try {
+
+					ABAUtil util = new ABAUtil();
+					
+					//Transformation 1
+					String completeCoordinatesString = util.directSpaceTransformation(fromSRSCode, toSRSCode, originalCoordinateX, originalCoordinateY, originalCoordinateZ);
+					if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+						throw new OWSException(
+								"No Such Transformation is available under ABA Hub.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+
+					if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+						throw new OWSException("Coordinates - Out of Range.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					transformedCoordinateX1 = vo.getTransformedCoordinateX();
+					transformedCoordinateY1 = vo.getTransformedCoordinateY();
+					transformedCoordinateZ1 = vo.getTransformedCoordinateZ();
+					System.out.println("transformedCoordinateX1: " + transformedCoordinateX1);
+					System.out.println("transformedCoordinateY1: " + transformedCoordinateY1);
+					System.out.println("transformedCoordinateZ1: " + transformedCoordinateZ1);
+					
+					//Transformation 2
+					completeCoordinatesString = "";
+					completeCoordinatesString = util.directSpaceTransformation(toSRSCode, fromSRSCode, vo.getTransformedCoordinateX(), vo.getTransformedCoordinateY(), vo.getTransformedCoordinateZ());
+					if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+						throw new OWSException(
+								"No Such Transformation is available under ABA Hub.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+
+					if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+						throw new OWSException("Coordinates - Out of Range.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					System.out.println("completeCoordinatesString 2: " + completeCoordinatesString);
+
+					transformedCoordinateX2 = vo.getTransformedCoordinateX();
+					transformedCoordinateY2 = vo.getTransformedCoordinateY();
+					transformedCoordinateZ2 = vo.getTransformedCoordinateZ();
+
+					//Transformation 3
+					completeCoordinatesString = "";
+					completeCoordinatesString = util.directSpaceTransformation(fromSRSCode, toSRSCode, vo.getTransformedCoordinateX(), vo.getTransformedCoordinateY(), vo.getTransformedCoordinateZ());
+					if (completeCoordinatesString.equalsIgnoreCase("NOT SUPPORTED")) {
+						throw new OWSException(
+								"No Such Transformation is available under ABA Hub.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					vo = util.splitCoordinatesFromStringToVO(vo, completeCoordinatesString);
+
+					if (vo.getTransformedCoordinateX().equalsIgnoreCase("out")) {
+						throw new OWSException("Coordinates - Out of Range.",
+								ControllerException.NO_APPLICABLE_CODE);
+					}
+
+					transformedCoordinateX3 = vo.getTransformedCoordinateX();
+					transformedCoordinateY3 = vo.getTransformedCoordinateY();
+					transformedCoordinateZ3 = vo.getTransformedCoordinateZ();
+
+					System.out.println("completeCoordinatesString 3: " + completeCoordinatesString);
+
+					//Apply the Euclidean Formula to get the accuracy and divide it by 3
+					double doubleCoordinateX = (Double.parseDouble(transformedCoordinateX3))-(Double.parseDouble(transformedCoordinateX1));
+					double doubleCoordinateY = (Double.parseDouble(transformedCoordinateY3))-(Double.parseDouble(transformedCoordinateY1));
+					double doubleCoordinateZ = (Double.parseDouble(transformedCoordinateZ3))-(Double.parseDouble(transformedCoordinateZ1));
+					accuracy = Math.sqrt((doubleCoordinateX*doubleCoordinateX)+(doubleCoordinateY*doubleCoordinateY)+(doubleCoordinateZ*doubleCoordinateZ))/3;
+
+				} catch ( Exception e ) {
+				e.printStackTrace();
+				}
+
+				return String.valueOf(accuracy);
+
+			}
+
 
 	public String getTransformationChain( ABAServiceVO vo, ComplexOutput complexOutput, ArrayList srsCodeList ) { 
 
@@ -2214,7 +2335,7 @@ public class ABAUtil {
 
 			//Start - Create and run URL, and read the string from the webpage
 			String transforMatrixURL = "http://" + transformationHostName + transformationPortNumber + transformationServicePath + "direction=inverse&atlas="+toSpace.toLowerCase()+"&x=" + originalCoordinateX + "&y=" + originalCoordinateY + "&z=" + originalCoordinateZ;
-			LOG.debug("Transformation matrix url is - {}" , transforMatrixURL); 
+			System.out.println("Transformation matrix url is - {}" + transforMatrixURL); 
 			LOG.debug("X in transformation matrix method is - {}" , originalCoordinateX);
 			URL url = new URL(transforMatrixURL);
 			URLConnection urlCon = url.openConnection();
@@ -3843,12 +3964,18 @@ public class ABAUtil {
 	public static void main ( String args[] ) {
 		ABAUtil util = new ABAUtil();
 		
-		StringTokenizer tokens = new StringTokenizer("Fine Structure Name: DG"); 
+/*		StringTokenizer tokens = new StringTokenizer("Fine Structure Name: DG"); 
 		while ( tokens.hasMoreTokens() ) {
 			String structureName = tokens.nextToken();
 			LOG.debug("Structure Name is - {}" , structureName);
 		}
+*/		
 		
+		ABAServiceVO vo = new ABAServiceVO();
+		String accuracy = util.calculateAccuracy(vo);
+		
+		System.out.println("Accuracy: " + accuracy);
+
 		//util.splitCoordinatesFromStringToVO(new ABAServiceVO(), "13 12 3 4 5 6");
 
 	}
@@ -4219,5 +4346,6 @@ public class ABAUtil {
 				"http://www.brain-map.org/aba/api/gene/%s.xml", 
 				geneSymbol);
 	}
-	
+
+
 }
