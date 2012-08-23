@@ -25,7 +25,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class CentralServiceDAOImpl {
-	
+
 	private CentralConfigurator configurator = CentralConfigurator.INSTANCE;
 
 	private static final Logger LOG = LoggerFactory
@@ -40,12 +40,12 @@ public class CentralServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForPostgresFromABA();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		//query.append( " select * from srs where srs_name in (" + srsName + ") order by srs_name " );
 		
-		query.append( "select * from srs where status = 'ACTIVE' and srs_author_code in ( 'UCSD', 'ABA', 'WHS', 'EMAP' ) order by srs_name" );
+		query.append( "select * from srs where status = 'ACTIVE' and srs_author_code in ( 'UCSD', 'ABA', 'WHS', 'EMAP', 'Paxinos', 'Rat_WHS' ) order by srs_name" );
 
 		LOG.debug("getSRSData - Query is - {}" , query.toString() );
 
@@ -170,7 +170,7 @@ public class CentralServiceDAOImpl {
 		try {
 
 		//Used for postgres connection
-		Connection conn = dao.getStandAloneConnectionForPostgres();
+		Connection conn = dao.getStandAloneConnectionForPostgresFromABA();
 		Statement stmt = conn.createStatement();
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from orientation " );
@@ -373,18 +373,20 @@ public class CentralServiceDAOImpl {
 		StringBuffer query = new StringBuffer();
 		query.append( " select * from space_transformations where status = 'ACTIVE' and hub in ( 'UCSD', 'ABA', 'WHS' ) order by hub" );
 
-		LOG.debug("getSpaceTransformationData - Query is - {}" , query.toString() );
+		System.out.println("getSpaceTransformationData - Query is - {}" + query.toString() );
 
 		ResultSet rs = stmt.executeQuery(query.toString()); 
 
 		while ( rs.next() ) {
 
 			vo = new CentralServiceVO();
-			
+
 			vo.setTransformationSource(rs.getString("source"));
 			vo.setTransformationDestination(rs.getString("destination"));
 			vo.setTransformationHub(rs.getString("hub"));
 			vo.setTransformationURL(rs.getString("transformation_url"));
+
+			System.out.println("TransformationSource: " + vo.getTransformationSource());
 
 			list.add(vo);
 

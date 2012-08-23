@@ -1,7 +1,9 @@
 package org.incf.central.atlas.process;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -156,13 +158,24 @@ public class ListSRSs implements Processlet {
 
 	public static OrientationType orientation(OrientationType orient,
 			String code, String name, String gmlID, String authorCode,
-			String authorName, String orientationDescription) {
+			String authorName, String orientationDescription, String orientationDate) {
 
 		orient.setCode(code);
 		orient.setId(gmlID); // this is what is linked, to
 		orient.setName(name);
+		
+		Calendar c = Calendar.getInstance();
+		try {
+			//Start - Date submitted
+			SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+	        Date d = sdf.parse(orientationDate);
+			c.setTime(d);
+			//End - Date submitted
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		Author author = orient.addNewAuthor();
-		author.setDateSubmitted(Calendar.getInstance());
+		author.setDateSubmitted(c);
 		author.setAuthorCode(authorCode);
 		author.setStringValue(authorName);
 
@@ -272,7 +285,9 @@ public class ListSRSs implements Processlet {
 				
 				if ( vo.getSrsName().equalsIgnoreCase("Mouse_WHS_0.9") ) {  
 					name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_0.9", ""));
-				} else { 
+				} else if ( vo.getSrsName().equalsIgnoreCase("Rat_Paxinos_1.0") ) {
+					name.setSrsBase(vo.getSrsName().replace("Rat_", "").replaceAll("_1.0", ""));
+				}else { 
 					name.setSrsBase(vo.getSrsName().replace("Mouse_", "").replaceAll("_1.0", ""));
 				}
 				
@@ -286,7 +301,15 @@ public class ListSRSs implements Processlet {
 
 				AuthorType author = srs.addNewAuthor();
 				author.setAuthorCode(vo.getSrsAuthorCode());
-				author.setDateSubmitted(new XmlCalendar(vo.getSrsDateSubmitted()));
+				
+				//Start - Date submitted
+				SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
+		        Date d = sdf.parse(vo.getSrsDateSubmitted());
+				Calendar c = Calendar.getInstance();
+				c.setTime(d);
+				//End - Date submitted
+
+				author.setDateSubmitted(c);
 
 				IncfCodeType origin = srs.addNewOrigin();
 				// origin.setCodeSpace("URN");
@@ -361,7 +384,7 @@ public class ListSRSs implements Processlet {
 				orientation(orientation, vo.getOrientationName(), vo
 						.getOrientationName(), String.valueOf(randomGMLID), vo
 						.getOrientationAuthor(), vo.getOrientationAuthor(), vo
-						.getOrientationDescription());
+						.getOrientationDescription(), vo.getOrientationDateSubmitted());
 			}
 
 		} catch (Exception e) {

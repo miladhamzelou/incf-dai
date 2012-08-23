@@ -248,13 +248,17 @@ public class GetStructureNamesByPOI implements Processlet {
 				String codeSpace = "";
 				LOG.debug("::::KEYVALUE:::::{}",vo1.getSrsName());
 				LOG.debug("::::Code:::::{}",vo1.getStructureCode());
-				StringTokenizer tokens = new StringTokenizer(vo1.getSrsName(), "::");
-
-				while (tokens.hasMoreTokens()) {
-					structureDescription = tokens.nextToken();
-					codeSpace = tokens.nextToken();
-				}
 				
+				//StringTokenizer tokens = new StringTokenizer(vo1.getSrsName(), "::");
+		        String [] s1 = vo1.getSrsName().split("::");
+		        
+		        for(int token=0; token<s1.length; token++) {
+		            System.out.println("Token1:"+s1[0]);
+		            System.out.println("Token2:"+s1[1]);
+					structureDescription = s1[0];
+					codeSpace = s1[1];
+		        }
+
 				StructureTerms terms = rootDoc.addNewStructureTerms();
 				StructureTermType term1 = terms.addNewStructureTerm();
 				terms.setHubCode(vo1.getFlag());

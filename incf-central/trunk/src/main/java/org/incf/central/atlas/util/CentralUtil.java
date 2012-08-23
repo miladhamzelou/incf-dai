@@ -870,8 +870,8 @@ public class CentralUtil {
 	}
 */
 
-	
-	public String getCoordinateTransformationChain( CentralServiceVO vo, ComplexOutput complexOutput, ArrayList srsCodeList ) { 
+	//FIXME - Working code for all, substituting with other piece of code
+/*	public String getCoordinateTransformationChain( CentralServiceVO vo, ComplexOutput complexOutput, ArrayList srsCodeList ) { 
 
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
 		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
@@ -897,7 +897,7 @@ public class CentralUtil {
 	 		    CentralServiceDAOImpl impl = new CentralServiceDAOImpl();
 
 	 		    Set chainsList = spaceTransformationFromDB(vo.getFromSRSCode(), vo.getToSRSCode());
-	 			
+
 	 		    //Starts - Check to see if the transformation is supported in the hub or not
 	 		    Iterator iter = chainsList.iterator();
 	 			String chain = "";
@@ -914,15 +914,22 @@ public class CentralUtil {
 	 				srcSet.add(token2.nextToken());
 	 				destSet.add(token2.nextToken());
 	 			}
-	 			
+
+	 			Iterator it1 = srcSet.iterator();
+	 			while (it1.hasNext()) {
+	 			    // Get element
+	 			    Object element = it1.next();
+	 				System.out.println("***Src is:**** " +element.toString());
+	 			}
+
 	 			while (!destSet.contains(vo.getToSRSCode())) { 
 	 				String responseString = "Error: No such transformation is available under this hub.";
-	 				System.out.println("Dest Not available");
+	 				System.out.println("Dest Not available" +vo.getToSRSCode());
 	 				return responseString;
 				}
 	 			while (!srcSet.contains(vo.getFromSRSCode())) { 
 	 				String responseString = "Error: No such transformation is available under this hub.";
-	 				System.out.println("Src Not available");
+	 				System.out.println("Src Not available" + vo.getFromSRSCode());
 	 				return responseString;
 	 			}
 	 			//Ends
@@ -988,13 +995,13 @@ public class CentralUtil {
 	 				//ex.setAccuracy(Integer.parseInt(accuracy));
 	 				ex.setStringValue(vo.getTransformationOneURL());
  			}
- 			
+
  			 ArrayList errorList = new ArrayList();
  			 opt.setErrorListener(errorList);
- 			 
+
  			 // Validate the XML.
  			 boolean isValid = co.validate(opt);
- 			 
+
  			 // If the XML isn't valid, loop through the listener's contents,
  			 // printing contained messages.
  			 if (!isValid)
@@ -1002,7 +1009,7 @@ public class CentralUtil {
  			      for (int j = 0; j < errorList.size(); j++)
  			      {
  			          XmlError error = (XmlError)errorList.get(j);
- 			          
+
  			          LOG.debug("\n");
  			          LOG.debug("Message: {}" , error.getMessage() + "\n");
  			          LOG.debug("Location of invalid XML: {}" , 
@@ -1021,8 +1028,182 @@ public class CentralUtil {
 		return co.xmlText(opt);
 
 		}
+*/
 
 
+	public String getCoordinateTransformationChain( CentralServiceVO vo, ComplexOutput complexOutput, ArrayList srsCodeList ) { 
+
+		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
+		opt.setSaveSuggestedPrefixes(Utilities.SuggestedNamespaces());
+		opt.setSaveNamespacesFirst();
+		opt.setSaveAggressiveNamespaces();
+		opt.setUseDefaultNamespace();
+
+		CoordinateTransformationChainResponseDocument co = CoordinateTransformationChainResponseDocument.Factory.newInstance();
+		co.addNewCoordinateTransformationChainResponse();
+
+		CoordinateTransformationChain ct = co.getCoordinateTransformationChainResponse().addNewCoordinateTransformationChain();
+
+		try { 
+
+	 		    String orderNumber = "";
+	 		    String transformationURL1 = "";
+
+	 		    LOG.debug("Inside All Transformations....");
+	 		    Search search = new Search();
+	 			ArrayList transformationChainList = search.getCoordinateTransformationChainList(vo);
+	 			Iterator transformationChainListIter = transformationChainList.iterator();
+
+	 			if (transformationChainList.size()<0) {
+	 				String responseString = "Error: No such transformation is available under this hub.";
+	 				return responseString;
+	 			}
+
+	 			//Starts - Check to see if the transformation is supported in the hub or not
+/*	 		    
+	 			Iterator iter = list.iterator();
+	 			//String chain = "";
+	 			StringTokenizer token1 = null;
+	 			StringTokenizer token2 = null;
+	 			Set srcSet = new HashSet();
+	 			Set destSet = new HashSet();
+
+	 			//Fill in the srcSet and destSet
+	 			while ( iter.hasNext()) {
+	 				chain = (String)iter.next();
+	 				token1 = new StringTokenizer(chain, ":");
+	 				String tokenModify = token1.nextToken().replaceAll("_To_", ":");
+	 				token2 = new StringTokenizer(tokenModify, ":");
+	 				srcSet.add(token2.nextToken());
+	 				destSet.add(token2.nextToken());
+	 			}
+
+	 			//Read the srcSet
+	 			Iterator it1 = srcSet.iterator();
+	 			while (it1.hasNext()) {
+	 			    // Get element
+	 			    Object element = it1.next();
+	 				System.out.println("***Src is:**** " +element.toString());
+	 			}
+
+	 			//Check if the dest code match. If not, not supported
+	 			while (!destSet.contains(vo.getToSRSCode())) { 
+	 				String responseString = "Error: No such transformation is available under this hub.";
+	 				System.out.println("Dest Not available" +vo.getToSRSCode());
+	 				return responseString;
+				}
+	 			//Check if the src code match. If not, not supported
+	 			while (!srcSet.contains(vo.getFromSRSCode())) {
+	 				String responseString = "Error: No such transformation is available under this hub.";
+	 				System.out.println("Src Not available" + vo.getFromSRSCode());
+	 				return responseString;
+	 			}
+	 			//Ends
+	 			
+	 		    Iterator iterator = list.iterator();
+*/
+
+	 			String ucsdServicePath = config.getValue("ucsd.ucsd.service.path");
+	 			String abaServicePath = config.getValue("ucsd.aba.service.path");
+	 			String whsServicePath = config.getValue("ucsd.whs.service.path");
+	 			String incfDeploymentHostName = vo.getIncfDeployHostname();
+	 			String incfportNumber = config.getValue("incf.deploy.port.delimitor")+vo.getIncfDeployPortNumber();
+	 			String incfSteveHostName = config.getValue("incf.slamont.staging.host");
+	 			String incfSteveMatrixURLPrefix = incfSteveHostName + incfportNumber;
+
+	 			String incfTransformationMatrixURLPrefix = incfDeploymentHostName + incfportNumber;
+
+	 			int i = 1;
+	 			StringTokenizer tokens = null;
+	 			String transformationCode = "";
+	 			String servicePath = "";
+	 			
+	 			//Create the xml response along with the logic
+	 			String source = "";
+	 			String destination = "";
+	 			String hub = "";
+	 				
+	 	        String transformationChainString;
+	 	        while ( transformationChainListIter.hasNext() ) {
+	 	        	transformationChainString = (String) transformationChainListIter.next();
+	 	        	System.out.println("TransformationChainList is: " + transformationChainString);
+				tokens = new StringTokenizer(transformationChainString, ":");
+
+				source = tokens.nextToken();
+				destination = tokens.nextToken();
+				hub = tokens.nextToken();
+
+				transformationCode = source + "_To_" + destination;
+
+				System.out.println("Implementing Hub is: " + hub);
+
+				if (hub.equalsIgnoreCase("ucsd")) {
+					servicePath = ucsdServicePath; 
+				} else if (hub.equalsIgnoreCase("aba")) {
+					servicePath = abaServicePath; 
+				} else if (hub.equalsIgnoreCase("whs")) {
+					servicePath = whsServicePath; 
+				}
+
+					transformationURL1 = "http://" + incfTransformationMatrixURLPrefix + servicePath + "service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode="+transformationCode+"_v1.0;x=;y=;z=";
+					System.out.println("transformationURL1: " + transformationURL1); 
+
+	 		  		vo.setTransformationOneURL(transformationURL1);
+	 		  		//code = vo.getFromSRSCode() + "_To_" + vo.getToSRSCode()+"_v1.0"; // got it
+	 		    	orderNumber = String.valueOf(i); // got it
+
+	 		    	CoordinateChainTransformType ex = ct.addNewCoordinateTransformation();
+	 				ex.setCode(transformationCode+"_v1.0");
+	 				ex.setHub(hub);
+
+/*	 				String transformations = "";
+	 				transformations = transformationCode.replaceAll("_To_", ":");
+	 				StringTokenizer tokens1 = new StringTokenizer(transformations,":");
+	 				String fromSRSCode = tokens1.nextToken();
+	 				String toSRSCode = tokens1.nextToken();
+*/	 				orderNumber = String.valueOf(i);
+	 				ex.setOrder(Integer.parseInt(orderNumber));
+	 				ex.setInputSrsName(new QName(source));
+	 				ex.setOutputSrsName(new QName(destination));
+	 				//ex.setAccuracy(Integer.parseInt(accuracy));
+	 				ex.setStringValue(vo.getTransformationOneURL());
+	 				i++;
+ 			}
+
+ 			 ArrayList errorList = new ArrayList();
+ 			 opt.setErrorListener(errorList);
+
+ 			 // Validate the XML.
+ 			 boolean isValid = co.validate(opt);
+
+ 			 // If the XML isn't valid, loop through the listener's contents,
+ 			 // printing contained messages.
+ 			 if (!isValid)
+ 			 {
+ 			      for (int j = 0; j < errorList.size(); j++)
+ 			      {
+ 			          XmlError error = (XmlError)errorList.get(j);
+
+ 			          LOG.debug("\n");
+ 			          LOG.debug("Message: {}" , error.getMessage() + "\n");
+ 			          LOG.debug("Location of invalid XML: {}" , 
+ 			              error.getCursorLocation().xmlText() + "\n");
+ 			      }
+ 			 }
+
+ 			XMLStreamReader reader = co.newXMLStreamReader();
+ 			XMLStreamWriter writer = complexOutput.getXMLStreamWriter();
+ 			XMLAdapter.writeElement(writer, reader);
+	 			 
+		} catch ( Exception e ) {
+			e.printStackTrace();
+		}
+
+			return co.xmlText(opt);
+
+		}
+
+	
 /*	public String getTransformationChain( CentralServiceVO vo, ComplexOutput complexOutput, ArrayList srsCodeList ) { 
 
 		XmlOptions opt = (new XmlOptions()).setSavePrettyPrint();
@@ -1264,7 +1445,7 @@ public class CentralUtil {
 	public Set spaceTransformationFromDB( String fromSRS, String toSRS ) {
 
 		Set chainsList = new HashSet();
-		
+
 		CentralServiceDAOImpl impl = new CentralServiceDAOImpl();
 		CentralServiceVO vo1 = new CentralServiceVO();
 		CentralServiceVO vo2 = new CentralServiceVO();
@@ -1278,11 +1459,11 @@ public class CentralUtil {
 		//Check for direct transformation
 		try {
 		for ( int i=0; iterator1.hasNext(); i++ ) {
-			
+
 			vo1 = (CentralServiceVO) iterator1.next();
-			
+
 			//System.out.println("fromSRS from List: " + vo1.getTransformationSource() + ", toSRS from List: " + vo1.getTransformationDestination());
-			
+
 			if ( fromSRS == null || fromSRS.equals("") || toSRS == null ||
 				  toSRS.equals("") || fromSRS.equals("all") || toSRS.equals("all")) {
 				chain = vo1.getTransformationSource() + "_To_" + vo1.getTransformationDestination()+":"+vo1.getTransformationHub();
@@ -1290,6 +1471,7 @@ public class CentralUtil {
 				chainsList.add(chain);
 			}
 		}
+
 		//return chainsList;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -1675,6 +1857,13 @@ public class CentralUtil {
 	 			Set srcSet = new HashSet();
 	 			Set destSet = new HashSet();
 	 			
+	 			Iterator it = srcSet.iterator();
+	 			while (it.hasNext()) {
+	 			    // Get element
+	 			    Object element = it.next();
+	 				System.out.println("***Src is:**** " +element.toString());
+	 			}
+
 	 			while ( iter.hasNext()) {
 	 				chain = (String)iter.next();
 	 				token1 = new StringTokenizer(chain, ":");
@@ -1683,15 +1872,24 @@ public class CentralUtil {
 	 				srcSet.add(token2.nextToken());
 	 				destSet.add(token2.nextToken());
 	 			}
+
+	 			
+	 			Iterator it1 = srcSet.iterator();
+	 			while (it1.hasNext()) {
+	 			    // Get element
+	 			    Object element = it1.next();
+	 				System.out.println("***Src is:**** " +element.toString());
+	 			}
 	 			
 	 			while (!destSet.contains(vo.getToSRSCode())) { 
 	 				String responseString = "Error: No such transformation is available under this hub.";
-	 				System.out.println("Dest Not available");
+	 				System.out.println("Dest Not available" + vo.getToSRSCode());
 	 				return responseString;
 				}
+
 	 			while (!srcSet.contains(vo.getFromSRSCode())) { 
 	 				String responseString = "Error: No such transformation is available under this hub.";
-	 				System.out.println("Src Not available");
+	 				System.out.println("Src Not available" + vo.getFromSRSCode());
 	 				return responseString;
 	 			}
 	 			//Ends
