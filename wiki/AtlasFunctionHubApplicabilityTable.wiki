@@ -82,7 +82,7 @@ This table indicates which INCF Atlas processes are applicable to the various hu
   <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetGeneExpressionByGeneId GetGeneExpressionByGeneId]</th>
     <td align="center"></td>
-    <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal X]*</td>
+    <td align="center">*[http://incf-dev.crbs.ucsd.edu/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetGeneExpressionByGeneId&DataInputs=geneIdentifier=Coch&RawDataOutput=SparseValueVolumeXML X]*</td>
     <td align="center"></td>
     <td align="center"></td>
     <td align="center"></td>
