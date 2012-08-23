@@ -80,6 +80,14 @@ This table indicates which INCF Atlas processes are applicable to the various hu
     <td align="center"></td>
   </tr>
   <tr>
+    <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetGeneExpressionByGeneId GetGeneExpressionByGeneId]</th>
+    <td align="center"></td>
+    <td align="center">*O*</td>
+    <td align="center"></td>
+    <td align="center"></td>
+    <td align="center"></td>
+  </tr>
+  <tr>
     <th align="left">[http://code.google.com/p/incf-dai/wiki/AtlasRequestInterfaceSpec#GetObjectsByPOI GetObjectsByPOI]</th>
     <td align="center">*[http://incf-dev.crbs.ucsd.edu/central/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetObjectsByPOI&DataInputs=srsName=Mouse_ABAreference_1.0;x=-2;y=-1;z=0 X]*<sup>2</sup></td>
     <td align="center"></td>
