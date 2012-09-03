@@ -63,6 +63,8 @@ public class ABATransform
 
     {
 
+        System.out.println("Query: Voxel to Reference: u: " + u + " , v: " + v + " , w: " + v);
+
         double[] xyz1 = { u, v, w, 1 };
         double[] xyz2 = { 0, 0, 0, 0 };
 
@@ -81,6 +83,7 @@ public class ABATransform
 		( ( 0 <= r[2] ) && ( r[2] <= 455 ) ) ) )
 	    throw new IndexOutOfBoundsException( "Result out of range" );
 
+    System.out.println("Return: Voxel to Reference: r: " + r);
 	return r;
 
     }
@@ -96,12 +99,14 @@ public class ABATransform
      * the planar coordinates (u and v) and the image ID.
      */
 
-    static public double[] convertVoxelToReference( int u, int v, int w )
+    static public double[] convertVoxelToReference( double u, double v, double w )
         throws IndexOutOfBoundsException
 
     {
 
-	if ( !( ( ( 0 <= u ) && ( u <= 527 ) ) ||
+        System.out.println("Query: Voxel to Reference: u: " + u + " , v: " + v + " , w: " + v);
+
+      if ( !( ( ( 0 <= u ) && ( u <= 527 ) ) ||
 		( ( 0 <= v ) && ( v <= 319 ) ) ||
 		( ( 0 <= w ) && ( w <= 455 ) ) ) )
 	    throw new IndexOutOfBoundsException( "Result out of range" );
@@ -112,6 +117,8 @@ public class ABATransform
 	for ( int j = 0; j < 4; j++ )
 	    for ( int i = 0; i < 4; i++ )
 		xyz2[j] += xyz1[i] * ABAv_to_ABAr[j][i];
+
+    System.out.println("Return: Voxel to Reference: c1: " + xyz2[0] + " , c2: " + xyz2[1] + " , c3: " + xyz2[2]);
 
 	return new double[] { xyz2[0], xyz2[1], xyz2[2] };
 

@@ -2426,11 +2426,13 @@ public class ABAUtil {
 
 			LOG.debug("Inside ABAVOX 2 ABAREF...");
 
-			double[] abav2abar = ABATransform.convertVoxelToReference(Integer.parseInt(originalCoordinateX), 
-					Integer.parseInt(originalCoordinateY), Integer.parseInt(originalCoordinateZ)); 
+			System.out.println("Inside ABAVOX 2 ABAREF...");
+			double[] abav2abar = ABATransform.convertVoxelToReference(Double.parseDouble(originalCoordinateX), 
+					Double.parseDouble(originalCoordinateY), Double.parseDouble(originalCoordinateZ)); 
 
 			transformedCoordinateString = originalCoordinateX + " " + originalCoordinateY + " "+ originalCoordinateZ + " " + abav2abar[0] + " " + abav2abar[1]  + " " + abav2abar[2];
 
+			System.out.println("ABAV to ABAR - TransformedCoordinateString - {}"+transformedCoordinateString);
 			LOG.debug("ABAV to ABAR - TransformedCoordinateString - {}",transformedCoordinateString);
 
 		} else {
