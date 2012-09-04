@@ -463,9 +463,9 @@ http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Ex
 
 In addition to the rat data, we are also working on spatial registration of mouse atlas data from Oslo. Both collections of rat slices and mouse slices are loaded and available for spatial registration:
 
-A gallery of mouse images uploaded and available for registration is here: http://tirebiter.ucsd.edu/cgi-bin/align.pl?uri=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_84380/OsloData/manifest.xml&email=amemon@ncmir.ucsd.edu
+A gallery of mouse images uploaded and available for registration is here: http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/align.pl?uri=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_84380/OsloData/manifest.xml&email=amemon@ncmir.ucsd.edu
 
-A gallery of rat images uploaded and available for registration is here: http://tirebiter.ucsd.edu/cgi-bin/align.pl?uri=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/sagittal/manifest.xml&email=amemon@ncmir.ucsd.edu
+A gallery of rat images uploaded and available for registration is here: http://tirebiter.ucsd.edu/WebImageBrowser/cgi-bin/align.pl?uri=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/sagittal/manifest.xml&email=amemon@ncmir.ucsd.edu
 
 <br/>
 According to Eszter and Jan, a student will be assigned to do spatial registration in August
