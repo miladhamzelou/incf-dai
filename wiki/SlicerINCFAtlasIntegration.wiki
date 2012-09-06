@@ -1,8 +1,10 @@
 #summary Project notes for integrating Slice and INCF Atlas Hubs.
 <wiki:toc max_depth="5"/>
 =Introduction=
-
 Project notes for integrating Slice and INCF Atlas Hubs.
+
+=Purpose=
+To integrate Slicer with INCF Atlas Hubs.
 
 =INCF Altas Hubs=
  * Atlas hubs are "fronts" for accessing data from a variety of atlas data sources
@@ -14,6 +16,11 @@ Project notes for integrating Slice and INCF Atlas Hubs.
  * INCF Atlas Hubs provide a uniform interface for requesting atlas data from the corresponding atlas data source
  * The Hubs do not return actual atlas data directly
  * A client application, such as Slicer, can use the common INCF Atlas Hub interface to get references (links and metadata) to actual atlas source data
+
+=Questions=
+ # Are we adding a capability to Slicer to import data via INCF Atlas Hubs? E.g. accessing the INCF Describe..., Get..., List..., Retrieve2DImages, TransformPOI processes.
+ # Are we adding a capability to Slicer to export data to INCF Atlas? This would be the like
+   * SetAnnotation
 
 =Scheme=
  * A Slicer user may submit a query (HTTP GET request) to an INCF Atlas Hub
