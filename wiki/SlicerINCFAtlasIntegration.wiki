@@ -7,6 +7,7 @@ Project notes for integrating Slice and INCF Atlas Hubs.
 
 =Links=
 
+ * [http://www.slicer.org Primary Slicer site www.slicer.org]
  * [http://www.slicer.org/pages/DeveloperOrientation Slicer developer's page]
 
 =Background=
