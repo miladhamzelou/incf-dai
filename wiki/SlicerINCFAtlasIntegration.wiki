@@ -9,9 +9,13 @@ Project notes for integrating Slice and INCF Atlas Hubs.
 
  * [http://www.slicer.org/pages/DeveloperOrientation Slicer developer's page]
 
-* Primary Slicer site ( http://www.slicer.org )
+=Background=
+
+==Jeff Grethe email of 9/5/12==
+
+ * Primary Slicer site (http://www.slicer.org)
 This has all the background information on Slicer. There is a specific developer's page ( http://www.slicer.org/pages/DeveloperOrientation ) that also has information on how to build slider ( http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers/Build_Instructions ) including information on how to access the code base via GIT or SVN.
 
-* One other application that has been integrated with Slicer that deals with retrieving data is XNAT ( http://www.na-mic.org/Wiki/index.php/2012_Summer_Project_Week:XNATSlicerIntegration )
+ * One other application that has been integrated with Slicer that deals with retrieving data is XNAT ( http://www.na-mic.org/Wiki/index.php/2012_Summer_Project_Week:XNATSlicerIntegration )
 
-* For the INCF atlasing services there is a page ( http://atlasing.incf.org/wiki/Developers ) for developers that links to other resources including an overview document ( https://docs.google.com/View?id=dd9x97wk_2drhhj6fp )
+ * For the INCF atlasing services there is a page ( http://atlasing.incf.org/wiki/Developers ) for developers that links to other resources including an overview document ( https://docs.google.com/View?id=dd9x97wk_2drhhj6fp )
