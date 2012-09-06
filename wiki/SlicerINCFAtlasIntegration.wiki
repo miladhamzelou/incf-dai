@@ -1,4 +1,4 @@
-# Project notes for integrating Slice and INCF Atlas Hubs
+#Project notes for integrating Slice and INCF Atlas Hubs
 
 =Introduction=
 
