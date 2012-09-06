@@ -8,9 +8,11 @@ Project notes for integrating Slice and INCF Atlas Hubs.
 =Links=
 
 ==Slicer==
-
  * [http://www.slicer.org Primary site] (www.slicer.org)
  * [http://www.slicer.org/pages/DeveloperOrientation Developer's page]
+
+==Slicer-XNAT==
+ * [http://www.slicer.org/slicerWiki/index.php/Slicer3:XNAT Slicer3-XNAT Integration]
 
 =Background=
 
