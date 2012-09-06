@@ -34,6 +34,12 @@ Project notes for integrating Slice and INCF Atlas Hubs.
  * [http://www.slicer.org/slicerWiki/index.php/Slicer3:XNAT Slicer3-XNAT Integration]
  * [http://www.na-mic.org/Wiki/index.php/2012_Summer_Project_Week:XNATSlicerIntegration Summer 2012 project]
 
+==XNAT==
+ * [http://xnat.org/ Primary site] User search box (upper right) "slicer"
+ * [http://xnat.org/about/xnat-tools.html XNAT tools] Mention of Slicer
+ * [https://wiki.xnat.org/display/XNAT14/XNAT+Tools XNAT tools 1.4] Mention of Slicer
+ * [https://wiki.xnat.org/display/XNAT/XNAT+Client+Tools XNAT tools 1.5] Mention of Slicer
+
 =Background=
 
 ==Jeff Grethe email of 9/5/12==
