@@ -4,6 +4,25 @@
 
 Project notes for integrating Slice and INCF Atlas Hubs.
 
+=INCF Altas Hubs=
+ * Atlas hubs are "fronts" for accessing data from a variety of atlas data sources
+ * Atlas data sources currently include 
+   * ABA (Allen Brain Atlas from the Allen Brain Institute)
+   * EMAP (Edinburgh Mouse Atlas Project)
+   * WHS ()
+   * UCSD (Cell-Centered Database (CCDB) at the University of California, San Diego)
+ * INCF Atlas Hubs provide a uniform interface for requesting atlas data from the corresponding atlas data source
+ * The Hubs do not return actual atlas data directly
+ * A client application, such as Slicer, can use the common INCF Atlas Hub interface to get references (links and metadata) to actual atlas source data
+
+=Scheme=
+ * A Slicer user may submit a query (HTTP GET request) to an INCF Atlas Hub
+ * The hub will return an XML document (typically a link or a list of links and some metadata relating to the links)
+ * Slicer will parse the returned data and display the returned information
+ * The Slicer user may select a link to pursue and Slicer will submit a corresponding HTTP GET request
+ * Slicer will receive the requested data
+ * ...
+
 
 =Links=
 
@@ -13,6 +32,7 @@ Project notes for integrating Slice and INCF Atlas Hubs.
 
 ==Slicer-XNAT==
  * [http://www.slicer.org/slicerWiki/index.php/Slicer3:XNAT Slicer3-XNAT Integration]
+ * [http://www.na-mic.org/Wiki/index.php/2012_Summer_Project_Week:XNATSlicerIntegration Summer 2012 project]
 
 =Background=
 
