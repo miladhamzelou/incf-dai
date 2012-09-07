@@ -6,7 +6,7 @@ Project notes for integrating Slice and INCF Atlas Hubs.
 =Purpose=
 To integrate Slicer with INCF Atlas Hubs.
 
-=INCF Altas Hubs=
+=INCF Altas Hubs as Seen from Slicer=
  * Atlas hubs are "fronts" for accessing data from a variety of atlas data sources
  * Atlas data sources currently include 
    * ABA (Allen Brain Atlas from the Allen Brain Institute)
@@ -17,7 +17,7 @@ To integrate Slicer with INCF Atlas Hubs.
  * The Hubs do not return actual atlas data directly
  * A client application, such as Slicer, can use the common INCF Atlas Hub interface to get references (links and metadata) to actual atlas source data
 
-=Questions=
+=Questions Regarding the Scope of Integration=
  # Are we adding a capability to Slicer to import data via INCF Atlas Hubs? E.g. accessing these INCF processes:
    * DescribeSRS
    * !DescribeTransformation
@@ -37,9 +37,10 @@ To integrate Slicer with INCF Atlas Hubs.
    * !SetAnnotations
  # Are we adding a capability to Slicer to use an INCF Atlas tool? This would be like
    * TransformPOI
- # Are we expecting to add anything to INCF Atlas processes that would interact with Slicer (from the INCF Atlas end)?
+ # Are we expecting to add anything to INCF Atlas processes that would interact with Slicer (from the INCF Atlas end)? (I'm assuming NO.)
 
-=Scheme=
+=Scheme for Slicer as an INCF Atlas Client=
+Note: For the time being, I'm ignoring the INCF Atlas Central Hub and the WPS !GetCapabilities and !DescribePorcesses functions.
  * A Slicer user may submit a query (HTTP GET request) to an INCF Atlas Hub
  * The hub will return an XML document (typically a link or a list of links and some metadata relating to the links)
  * Slicer will parse the returned data and display the returned information
