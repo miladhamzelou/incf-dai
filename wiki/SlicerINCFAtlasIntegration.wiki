@@ -32,7 +32,6 @@ To integrate Slicer with INCF Atlas Hubs.
    * ListSRSs 
    * !ListTransformations 
    * Retrieve2DImages, 
-   * TransformPOI
  # Are we adding a capability to Slicer to export data to INCF Atlas? This would be the like
    * !SetAnnotations
  # Are we adding a capability to Slicer to use an INCF Atlas tool? This would be like
