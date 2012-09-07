@@ -34,7 +34,10 @@ To integrate Slicer with INCF Atlas Hubs.
    * Retrieve2DImages, 
    * TransformPOI
  # Are we adding a capability to Slicer to export data to INCF Atlas? This would be the like
-   * SetAnnotations
+   * !SetAnnotations
+ # Are we adding a capability to Slicer to use an INCF Atlas tool? This would be like
+   * TransformPOI
+ # Are we expecting to add anything to INCF Atlas processes that would interact with Slicer (from the INCF Atlas end)?
 
 =Scheme=
  * A Slicer user may submit a query (HTTP GET request) to an INCF Atlas Hub
