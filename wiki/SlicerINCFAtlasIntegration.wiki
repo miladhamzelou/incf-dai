@@ -20,17 +20,21 @@ To integrate Slicer with INCF Atlas Hubs.
 =Questions=
  # Are we adding a capability to Slicer to import data via INCF Atlas Hubs? E.g. accessing these INCF processes:
    * DescribeSRS
-   * DescribeTransformation
+   * !DescribeTransformation
    * Get2DImagesByPOI
    * GetAnnotationsByPOI
    * GetCorrelationsByPOI
    * GetGenesByPOI
-   * GetGenesByGeneId
-   * List..., 
+   * !GetGenesByGeneId
+   * GetObjectsByPOI
+   * GetStructureNamesByPOI
+   * !GetTransformationChain
+   * ListSRSs 
+   * !ListTransformations 
    * Retrieve2DImages, 
-   * TransformPOI processes.
+   * TransformPOI
  # Are we adding a capability to Slicer to export data to INCF Atlas? This would be the like
-   * SetAnnotation
+   * SetAnnotations
 
 =Scheme=
  * A Slicer user may submit a query (HTTP GET request) to an INCF Atlas Hub
