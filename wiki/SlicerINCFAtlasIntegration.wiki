@@ -41,13 +41,12 @@ To integrate Slicer with INCF Atlas Hubs.
 
 =Scheme for Slicer as an INCF Atlas Client=
 Note: For the time being, I'm ignoring the INCF Atlas Central Hub and the WPS !GetCapabilities and !DescribePorcesses functions.
- * A Slicer user may submit a query (HTTP GET request) to an INCF Atlas Hub
- * The hub will return an XML document (typically a link or a list of links and some metadata relating to the links)
+ * A Slicer user in a Slicer session may submit an HTTP GET request to an INCF Atlas Hub
+ * The hub will return an XML document (typically containing a link or a list of links and some metadata relating to the links)
  * Slicer will parse the returned data and display the returned information
  * The Slicer user may select a link to pursue and Slicer will submit a corresponding HTTP GET request
  * Slicer will receive the requested data
  * ...
-
 
 =Links=
 
@@ -71,7 +70,5 @@ Note: For the time being, I'm ignoring the INCF Atlas Central Hub and the WPS !G
 
  * Primary Slicer site (http://www.slicer.org). This has all the background information on Slicer. 
  * There is a specific developer's page (http://www.slicer.org/pages/DeveloperOrientation) that also has information on how to build slider (http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers/Build_Instructions) including information on how to access the code base via GIT or SVN.
-
  * One other application that has been integrated with Slicer that deals with retrieving data is XNAT (http://www.na-mic.org/Wiki/index.php/2012_Summer_Project_Week:XNATSlicerIntegration)
-
  * For the INCF atlasing services there is a page (http://atlasing.incf.org/wiki/Developers) for developers that links to other resources including an overview document (https://docs.google.com/View?id=dd9x97wk_2drhhj6fp)
