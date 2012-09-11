@@ -12,3 +12,9 @@ which use the ABA Gene Finder and require modification to work with ABA'v v2 of 
  * http://api.brain-map.org/doc/index.html
  * http://api.brain-map.org/doc/index.html#service__mouse_agea
  * http://api.brain-map.org/doc/index.html#API_Response_Formats
+
+==Examples==
+ * Full URI with all optional parameters
+{{{
+http://mouse.brain-map.org/api/v2/data/query.xml?criteria=service::mouse_agea[set$eq'mouse_coronal'][seed_point$eq6800,4200,5600][seed_age$eqP56][map_age$eqP56][correlation_threshold1$eq0.7][threshold1$eq'1,50'][correlation_threshold2$eq0.8799999999999999][threshold2$eq'1,50'][start_row$eq0][num_rows$eq5]
+}}}
