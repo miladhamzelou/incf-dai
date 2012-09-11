@@ -22,3 +22,7 @@ http://mouse.brain-map.org/api/v2/data/query.xml?criteria=service::mouse_agea[se
 {{{
 http://mouse.brain-map.org/api/v2/data/query.xml?criteria=service::mouse_agea[set$eq'mouse_coronal'][seed_point$eq6800,4200,5600][seed_age$eqP56][map_age$eqP56][num_rows$eq5]
 }}}
+
+==Comments==
+ * Since the returns are ordered high to low by <fold-change>, I presume this is some sort of expression value starting with the most expressed gene at the POI.
+ * $eq must be used in the square bracketed parameters. Not '=' symbols except in 'criteria=service'.
