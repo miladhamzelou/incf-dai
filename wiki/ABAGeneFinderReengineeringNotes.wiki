@@ -1,12 +1,14 @@
 #summary One-sentence summary of this page.
 
-= Introduction =
+=Introduction=
 
-Add your content here.
-
+Purpose: Identify resources related to reengineering INCF Atlas ABA Hub processes:
+ * Get2DImagesByPOI
+ * GetGenesByPOI
+which use the ABA Gene Finder and require modification to work with ABA'v v2 of the Gene Finder.
 
 =Links=
 ==ABA v2 Gene Finder==
-http://api.brain-map.org/doc/index.html
-http://api.brain-map.org/doc/index.html#service__mouse_agea
-http://api.brain-map.org/doc/index.html#API_Response_Formats
+ * http://api.brain-map.org/doc/index.html
+ * http://api.brain-map.org/doc/index.html#service__mouse_agea
+ * http://api.brain-map.org/doc/index.html#API_Response_Formats
