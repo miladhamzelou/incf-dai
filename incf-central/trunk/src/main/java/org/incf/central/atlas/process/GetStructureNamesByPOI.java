@@ -15,6 +15,7 @@ import java.util.StringTokenizer;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.xmlbeans.XmlOptions;
 import org.deegree.commons.utils.kvp.InvalidParameterValueException;
 import org.deegree.commons.utils.kvp.MissingParameterException;
@@ -126,17 +127,22 @@ public class GetStructureNamesByPOI implements Processlet {
 			ArrayList completeStructureList = new ArrayList();
 			ReadXML readXML = new ReadXML();
 
+			String abaFilter = "";
 			// 2a - Call the method from ABA Hub
+			if ( vo.getFilter().equalsIgnoreCase("none") ) {
+				abaFilter = "structureset:anatomic";
+			}
 			String abaURL = "http://"
 					+ hostName
 					+ portNumber
 					+ "/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName="
 					+ vo.getFromSRSCode() + ";x=" + vo.getOriginalCoordinateX()
 					+ ";y=" + vo.getOriginalCoordinateY() + ";z="
-					+ vo.getOriginalCoordinateZ() + ";vocabulary="+ ";filter=" + vo.getFilter();
+					+ vo.getOriginalCoordinateZ() + ";vocabulary="+ ";filter=" + abaFilter;
 			LOG.debug("ABA URL{}" , abaURL);
 
 			CentralServiceVO cvo = null;
+			
 			completeStructureList = readXML.getStructureData(abaURL,
 					completeStructureList, "ABA", cvo);
 

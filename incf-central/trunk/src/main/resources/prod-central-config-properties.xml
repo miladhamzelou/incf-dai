@@ -1,7 +1,6 @@
 <!-- Created by amemon on June 16, 2009, 16:17 -->
 <central-config-properties>
  
- 
 	<!-- begin database properties for servlet -->
 	<property>
         <name>server.database.driverClassName</name>
@@ -158,7 +157,7 @@
 
 	<property>
         <name>incf.deploy.host.name</name>
-        <value>incf.crbs.ucsd.edu</value>
+        <value>incf-dev.crbs.ucsd.edu</value>
         <!-- <value>132.239.131.188</value> -->
         <!-- <value>incf-dev-local.crbs.ucsd.edu</value> -->
     </property>

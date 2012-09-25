@@ -222,6 +222,7 @@ public class Get2DImagesByPOI implements Processlet {
 				i1source.setStringValue(wmsURL);
 				i1source.setFormat(IncfRemoteFormatEnum.IMAGE_PNG.toString());
 				i1source.setSrsName(srsName);
+				i1source.setMetadata(vo1.getRegistrationID());
 				i1source.setType("WMS");
 
 				ImagePosition i1position = image1.addNewImagePosition();
@@ -270,7 +271,8 @@ public class Get2DImagesByPOI implements Processlet {
 			complete2DImageList = new ArrayList();
 	        String abaURL = "http://"+hostName+portNumber+"/aba/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName="+vo.getFromSRSCode()+";x="+vo.getOriginalCoordinateX()+";y="+vo.getOriginalCoordinateY()+";z="+vo.getOriginalCoordinateZ()+";filter="+vo.getFilter();
 		    LOG.debug("ABA URL- {}" , abaURL);
-	        complete2DImageList = readXML.get2DImageDataList(abaURL);
+	        
+		    complete2DImageList = readXML.get2DImageDataList(abaURL);
 
 	        LOG.debug("List size in central is - {}" , complete2DImageList.size());
 	        Iterator iterator = complete2DImageList.iterator();

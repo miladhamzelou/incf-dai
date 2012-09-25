@@ -27,6 +27,7 @@ public class CentralServiceVO {
 		// TODO Auto-generated constructor stub
 	}
 
+	private String registrationID = "";
 	private String structureCode = "";
 	private String structureName = "";
 	private String structureDescription = "";
@@ -1341,6 +1342,14 @@ public class CentralServiceVO {
 
 	public String getStructureCode() {
 		return structureCode;
+	}
+
+	public String getRegistrationID() {
+		return registrationID;
+	}
+
+	public void setRegistrationID(String registrationID) {
+		this.registrationID = registrationID;
 	}
 
 	public void setStructureCode(String structureCode) {

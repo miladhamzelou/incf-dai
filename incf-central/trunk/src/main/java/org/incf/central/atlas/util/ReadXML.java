@@ -198,7 +198,7 @@ public class ReadXML {
 
 		cvo = new CentralServiceVO();
 		Element xmlElement = null;
-		
+
 		try {
 
 			//LOG.debug("1");
@@ -259,9 +259,9 @@ public class ReadXML {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	
+
 		return list;
-		
+
 	}
 
 	
@@ -442,7 +442,7 @@ public class ReadXML {
 
 			                        if (imagePositionElements.getName().equalsIgnoreCase("corners")) {
 				                        List cornerList = column.getChild("Corners").getChildren(); 
-				                        
+
 				                        //1st corner
 				                        org.jdom.Element corner = (org.jdom.Element) cornerList.get(0);
 		    	                    	//LOG.debug("Corner::: "+corner.getAttributeValue("position"));
@@ -520,7 +520,9 @@ public class ReadXML {
 	                    		LOG.debug("IMAGESOURCE-COUNT- " + z + column.getText());
 		                    	vo.setSrsName(column.getAttribute("srsName").getValue());
 		                        vo.setWms(column.getText());
-		                        //LOG.debug("WMS - " + vo.getWms());
+		                    	vo.setRegistrationID(column.getAttribute("metadata").getValue());
+		                    	System.out.println("***************METADATA****************" + vo.getRegistrationID());
+		                    	//LOG.debug("WMS - " + vo.getWms());
 	                }	                        
 
 	                    }
