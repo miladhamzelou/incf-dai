@@ -26,6 +26,7 @@ public class AnnotationVO {
 		// TODO Auto-generated constructor stub
 	}
 
+	private String registrationID = "";
 	private String polygonID = "";
 	private String pointX = "";
 	private String pointY = "";
@@ -95,6 +96,14 @@ public class AnnotationVO {
 
 	public void setPolygonString(String polygonString) {
 		this.polygonString = polygonString;
+	}
+
+	public String getRegistrationID() {
+		return registrationID;
+	}
+
+	public void setRegistrationID(String registrationID) {
+		this.registrationID = registrationID;
 	}
 
 	public String getFilePath() {

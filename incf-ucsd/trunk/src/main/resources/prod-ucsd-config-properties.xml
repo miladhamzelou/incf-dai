@@ -156,7 +156,7 @@
 	<property>
         <name>incf.deploy.host.name</name>
         <!-- <value>132.239.131.188</value>  -->
-        <value>incf.crbs.ucsd.edu</value>
+        <value>incf-dev.crbs.ucsd.edu</value>
     </property>
 
 	<property>

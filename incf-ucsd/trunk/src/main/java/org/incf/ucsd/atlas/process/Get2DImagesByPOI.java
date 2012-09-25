@@ -344,7 +344,7 @@ public class Get2DImagesByPOI implements Processlet {
 						+ vo.getImageServiceName() + ".map&LAYERS="
 						+ vo.getImageBaseName()
 						+ "&FORMAT=png24&VERSION=1.1.1&REQUEST=GetMap"
-						+ "&SRS=EPSG:4326&WIDTH=256&HEIGHT=256&BBOX=";
+						+ "&SRS=EPSG:4326&WIDTH=256&HEIGHT=256&BBOX="+vo.getMinX() + "," + vo.getMinY() + "," + vo.getMaxX() + "," + vo.getMaxY();
 				Image2DType image1 = images.addNewImage2D();
 				ImageSource i1source = image1.addNewImageSource();
 				i1source.setStringValue(wmsURL);
@@ -352,7 +352,7 @@ public class Get2DImagesByPOI implements Processlet {
 				// i1source.setRelavance((float) 0.6);
 				i1source.setSrsName(vo.getFlag());
 				// i1source.setThumbnanil("http://example.com/image.jpg");
-				// i1source.setMetadata("URL");
+				i1source.setMetadata("RegistrationID:"+vo.getRegistrationID());
 				i1source.setType("WMS");
 				// i1source.setType(IncfImageServicesEnum.URL.toString());
 
@@ -651,8 +651,7 @@ public class Get2DImagesByPOI implements Processlet {
 			System.out.println("Transformed Coordinate X in ABAReference: " + transformedCoordinateX);
 			System.out.println("Transformed Coordinate Y in ABAReference: " + transformedCoordinateY);
 			System.out.println("Transformed Coordinate Z in ABAReference: " + transformedCoordinateZ);
-			
-			
+
 			// Create an arbitrary polygon with + or - 3
 			String x1 = transformedCoordinateX;
 			String x2 = String.valueOf(Double
@@ -805,6 +804,7 @@ public class Get2DImagesByPOI implements Processlet {
 				vo.setTfw4(responseElement.getChildText("tfw4"));
 				vo.setTfw5(responseElement.getChildText("tfw5"));
 				vo.setTfw6(responseElement.getChildText("tfw6"));
+				vo.setRegistrationID(responseElement.getChildText("registrationID"));
 
 				if (referenceSpaceName.equalsIgnoreCase("paxinos")) {
 					vo.setFlag(paxinos);

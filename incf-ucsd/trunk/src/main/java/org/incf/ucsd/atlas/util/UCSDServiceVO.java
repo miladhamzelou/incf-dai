@@ -27,6 +27,7 @@ public class UCSDServiceVO {
 		// TODO Auto-generated constructor stub
 	}
 
+	private String registrationID = "";
 	private String incfDeployHostname = "";
 	private String wms = "";
 	private String flag = "";
@@ -847,6 +848,14 @@ public class UCSDServiceVO {
 
 	public void setTransformationFour(String transformationFour) {
 		this.transformationFour = transformationFour;
+	}
+
+	public String getRegistrationID() {
+		return registrationID;
+	}
+
+	public void setRegistrationID(String registrationID) {
+		this.registrationID = registrationID;
 	}
 
 	public String getTransformationFourURL() {
