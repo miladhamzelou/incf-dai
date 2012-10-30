@@ -52,6 +52,7 @@ Note: For the time being, I'm ignoring the INCF Atlas Central Hub and the WPS !G
 ==Slicer==
  * [http://www.slicer.org Primary site] (www.slicer.org)
  * [http://www.slicer.org/pages/DeveloperOrientation Developer's page]
+ * [http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers/Modules#Command_Line_Interface_.28CLI.29 Command Line Interface (CLI)]
 
 ==Slicer-XNAT==
  * [http://www.slicer.org/slicerWiki/index.php/Slicer3:XNAT Slicer3-XNAT Integration]
