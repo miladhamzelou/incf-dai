@@ -13,7 +13,7 @@ To integrate Slicer with INCF Atlas Hubs.
    * EMAP (Edinburgh Mouse Atlas Project)
    * WHS ()
    * UCSD (Cell-Centered Database (CCDB) at the University of California, San Diego)
- * INCF Atlas Hubs provide a uniform interface for requesting atlas data from the corresponding atlas data source
+ * INCF Atlas Hubs provide a uniform interface for requesting atlas data from the corresponding atlas data sourcehttp://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers
  * The Hubs do not return actual atlas data directly
  * A client application, such as Slicer, can use the common INCF Atlas Hub interface to get references (links and metadata) to actual atlas source data
 
@@ -52,6 +52,7 @@ Note: For the time being, I'm ignoring the INCF Atlas Central Hub and the WPS !G
 ==Slicer==
  * [http://www.slicer.org Primary site] (www.slicer.org)
  * [http://www.slicer.org/pages/DeveloperOrientation Developer's page]
+ * [http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers]
  * [http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers/Modules#Command_Line_Interface_.28CLI.29 Command Line Interface (CLI)]
  * [http://viewvc.slicer.org/viewvc.cgi/Slicer4/trunk/Modules/CLI/ CLI modules code]
 
