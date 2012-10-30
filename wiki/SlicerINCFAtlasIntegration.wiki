@@ -51,8 +51,8 @@ Note: For the time being, I'm ignoring the INCF Atlas Central Hub and the WPS !G
 
 ==Slicer==
  * [http://www.slicer.org Primary site] (www.slicer.org)
- * [http://www.slicer.org/pages/DeveloperOrientation Developer's page]
- * [http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers]
+ * [http://www.slicer.org/pages/DeveloperOrientation Developer's page] www.slicer.org/pages/DeveloperOrientation
+ * [http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers Developers Documentation]  www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers
  * [http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers/Modules#Command_Line_Interface_.28CLI.29 Command Line Interface (CLI)]
  * [http://viewvc.slicer.org/viewvc.cgi/Slicer4/trunk/Modules/CLI/ CLI modules code]
 
