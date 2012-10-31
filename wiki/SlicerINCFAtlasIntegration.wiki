@@ -47,6 +47,21 @@ Note: For the time being, I'm ignoring the INCF Atlas Central Hub and the WPS !G
  * Slicer will receive the requested data
  * ...
 
+=CLI Module Notes=
+
+==Slicer Locations==
+
+===drlittle.ucsd.edu===
+
+/usr/local/Slicer-4.1.1-linux-amd64/ -- binary install
+$ ./Slicer -- execute
+
+===dave-hp-5-10===
+
+===dave-ubuntu-5-10===
+
+===david-littles-macbook-pro===
+
 =Links=
 
 ==Slicer==
