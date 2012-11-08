@@ -24,10 +24,7 @@ https://lh6.googleusercontent.com/-UuHhciRSyc0/TuGCOJA4l6I/AAAAAAAAACA/0Aihf7cKi
 On click of “Launch image registration” link, the process will send out an email to the portal user with the Jibber/Jetsam Registration Page as shown  in an image below.
 https://lh3.googleusercontent.com/-qNYKw0RERlQ/TuGCOgL3ZnI/AAAAAAAAACE/N4qpKnY32DI/s912/Step%25252011.jpg
 
-
-Click on the "Jibber" button next to the thumbnail of the microscopy product you would like to spatially warp:
-https://lh3.googleusercontent.com/-dlzgZZyCaJU/TuGgch8TivI/AAAAAAAAACM/_dsRIQPTvLc/s690/Page1.jpg
-
+In the above, click on the "Jibber" button next to the thumbnail of the microscopy product you would like to spatially warp:
 
 Jibber will open two windows: the workspace window containing your microscopy product with the outline of the first coronal section from the Allen Reference Atlas, and the controls window that you will use to manipulate your microscopy product and add reference points correlating it to the reference atlas (mouse over the buttons on the controls window for a description of each of them).
  
