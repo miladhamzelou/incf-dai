@@ -4,40 +4,18 @@
 
 = Getting Started = 
 
-Register as a new user on CCDB portal at: http://ccdb-portal.crbs.ucsd.edu/web/guest/home?p_p_id=58&p_p_lifecycle=1&p_p_state=maximized&p_p_mode=view&saveLastPath=0&_58_struts_action=%2Flogin%2Fcreate_account
+Register as a new INCF user. Once registered, the user can login to the INCF Portal at: http://incf-dev.crbs.ucsd.edu/atlasportal. 
 
+After you login as a INCF user, click on a “Registration” tab that will allow the user to input the metadata shown below.
+https://lh3.googleusercontent.com/-VCFHx1GV0RU/UJt5StWxgaI/AAAAAAAAAHY/jd3BlXD3dOE/s912/img1.jpg
 
-After you login as a CCDB user, click on a “CCDB” tab that will list down the available sub-menus as shown in the image below, then click on Imaging Product Registration link. 
-[https://lh5.googleusercontent.com/-IYRgh1QfUCs/TuGCJ8wUBKI/AAAAAAAAABc/wWmfUrzM9vk/s912/Step%2525201.jpg]
-
-
-After Imaging product registration page is loaded, click on “Add new” button as shown in the image below to create a new CCDB project.[https://lh4.googleusercontent.com/-aNtmT-ODzpc/TuGCKvtYlkI/AAAAAAAAABg/iISjAoGN0ls/s912/Step%2525202.jpg]
-
-
-Supply all the information about the project in the available fields as shown in an image below and press “submit” to create a project. [https://lh6.googleusercontent.com/-jARy9COzHJw/TuGCLDp0crI/AAAAAAAAABk/3woZjawCtw4/s912/Step%2525203.jpg]
-
-
-On a project page, click on “Add New Experiment” link as shown below to create an experiment.
-[https://lh6.googleusercontent.com/-kUYcSVshARQ/TuGCLmsqXeI/AAAAAAAAABo/huctibVm4oQ/s912/Step%2525204.jpg]
-
-
-Supply all the information about the new experiment and click on “Submit” button as shown below.
-[https://lh5.googleusercontent.com/-_Ol45VtDIuE/TuGCMFsXBsI/AAAAAAAAABs/1DABgEvUgsg/s912/Step%2525205.jpg]
-
-
-Now click on “Add New Microscopy” link as shown below to register the microscopy product. 
-[https://lh3.googleusercontent.com/-168f2_Xa7eM/TuGCMvqL25I/AAAAAAAAABw/1PDJuJQGSnA/s912/Step%2525206.jpg]
-
-
-Supply the information about the microscopy product and click on “Submit”.
-[https://lh4.googleusercontent.com/-acHc4WWjElI/TuGCM9tT-YI/AAAAAAAAAB0/PSzTVuBk6xk/s912/Step%2525207.jpg]
-
-
-After registering the microscopy product, now upload your full resolution reconstruction file using the upload tool as shown in an image below.
-[https://lh4.googleusercontent.com/-fR-YZZh2Hgk/TuGCNRqxhdI/AAAAAAAAAB4/62A_AjTPe_8/s912/Step%2525208.jpg]
+Supply all the information about the project in the available fields as shown in an image below and press “INCF - IRODS Upload Tool” to instantiate the upload tool.
+https://lh4.googleusercontent.com/-kUqvNii7yXc/UJt5SzXJzyI/AAAAAAAAAHg/vWMxj5bPRYM/s912/img2.jpg
 
 Then click on “Browse” to locate an image folder from the local machine and click upload to initiate the upload process. 
-[https://lh5.googleusercontent.com/-7KqMX6zITLQ/TuGCNh0JtXI/AAAAAAAAAB8/k-RPAXJZiRs/s912/Step%2525209.jpg]
+https://lh3.googleusercontent.com/-SuMfodnwZvA/UJt5TOB7gQI/AAAAAAAAAHo/sPERWBnhECg/s605/img3.jpg
+
+https://lh6.googleusercontent.com/-mx2yNyATe1I/UJt5TvC83aI/AAAAAAAAAHw/yiqIb52jUvQ/s589/img4.jpg
 
 Once upload process is finished, a link “Launch image registration” will appear in the dialog box.
 https://lh6.googleusercontent.com/-UuHhciRSyc0/TuGCOJA4l6I/AAAAAAAAACA/0Aihf7cKiVg/s589/Step%25252010.jpg
