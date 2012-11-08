@@ -443,10 +443,10 @@ A new image registration tool is developed (doesn’t require Web Start): <a hre
 <th align="left">Notes</th>
 <td width="80%">
 <br/> scheduled in Year 2
-<br/> The initial spatial registration tutorial was developed to help the Oslo team register their mouse slices; it used CCDB portal and Jibber: http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow . 
+<br/> The initial spatial registration tutorial was developed to help the Oslo team register their mouse slices; it is now upgraded to demonstrate spatial registration usage as invoked from the atlas portal;  it runs on INCF servers in Stockholm and uses INCF iRODS: http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow . 
 
 <br/>
-Now that Jibber (spatial registration client) is being replaced with JAWS, and we are moving the workflow from the CCDB portal to a dedicated atlas portal, the tutorial is being updated. A tutorial for using JAWS is <a href="http://tirebiter.ucsd.edu/JAWS/JAWSHelp.html">here</a>. <br/>
+We are experimenting with replacing Jibber (spatial registration client) with another client that does not require Java WebStart. A tutorial for using this new client (named JAWS) is being developed ( <a href="http://tirebiter.ucsd.edu/JAWS/JAWSHelp.html">here</a>); the spatial registration tutorial will be updated once the system is completely tested with the new client <br/>
 </td>
 </tr>
 </table>
