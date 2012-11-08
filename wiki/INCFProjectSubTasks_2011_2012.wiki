@@ -361,12 +361,12 @@ Run time for the above test was approximately about an hour on a 256 GB,
 32 processor Quad-Core AMD opterating system.
 <br/>
 The processing stages are as follows:
-   1) Format conversion to NIFTI1
-   2) Padding images to a uniform size with appoximately 50 percent maxium "slop."
-   3) Stacking and mutual alignment.
-   4) Sampling "truth" volume to match image stack Z spacing and image count.
-   5) Affine alignment.
-   6) Warping
+   1) Format conversion to NIFTI1.<br/>
+   2) Padding images to a uniform size with appoximately 50 percent maxium "slop."<br/>
+   3) Stacking and mutual alignment.<br/>
+   4) Sampling "truth" volume to match image stack Z spacing and image count.<br/>
+   5) Affine alignment.<br/>
+   6) Warping.
 <br/>
 </td>
 </tr>
