@@ -376,7 +376,7 @@ The processing stages are as follows <br/>
 
 <table style="color:black; background-color:#ffffcc;" cellpadding="5" cellspacing="0" border="1">
 <tr>
-<th colspan="2" align="left">Use ITK to generate and compare deformation fields resulting from WHS registration using different transformations (B-spline warping, thin plate spline, landmark warping, etc.) and parameters.</th>
+<th colspan="2" align="left">Use ITK to generate and compare deformation fields resulting from WHS registration using different transformations and parameters.</th>
 </tr>
 <tr>
 <th align="left">Examples</th>
