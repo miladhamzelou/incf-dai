@@ -384,6 +384,7 @@ The processing stages are as follows <br/>
 <th align="left">Examples</th>
 <td width="80%">
 <strong>First set of images:</strong>
+<br/>
 The first set of images represents heat maps (inverse consistency computations) for selected slices where transformation was derived using mutual information alignment. The operation for this alignment transformation was as follows:
 <br/>
     1) Format conversion to NIFTI1.
@@ -402,10 +403,6 @@ ANTS 3 -m MI[histo_volume.nii.gz","truth_volume.nii.gz",1,32] ...
 Explanation of input parameters can be found at: http://www.picsl.upenn.edu/ANTS/documentation.php
 <br/>
 The alignment procedure took 1 hour to compute, on a 32-processor quad core Opteron with 256Gb of RAM.
-<br/>
-<strong>Second set of Images:</strong>
-<br/>
-The second set of images represents heat maps (inverse consistency computations) for selected slices where transformation was derived using cross-correlation alignment. The operation for this alignment transformation was  as follows:
 <br/>
 https://lh4.googleusercontent.com/-qoJR-WdLhPk/UJv1R0LVT4I/AAAAAAAAAJc/DOccOBd2SKI/s800/large-out-006.jpg
 <br/>
@@ -427,8 +424,25 @@ https://lh3.googleusercontent.com/-EPxwrE4RAfE/UJv1GaKKB1I/AAAAAAAAAI4/YAYA09D0N
 <br/>
 https://lh3.googleusercontent.com/-cL_ezZzULvY/UJv1HPb7dCI/AAAAAAAAAJE/oADy_SHXjWs/s800/large-out-048.jpg
 <br/>
-
-The second set of data below using Cross Correlation:
+<strong>Second set of Images:</strong>
+<br/>
+The second set of images represents heat maps (inverse consistency computations) for selected slices where transformation was derived using cross-correlation alignment. The operation for this alignment transformation was  as follows:
+<br/>
+    1) Format conversion to NIFTI1.
+    1) Padding images to a uniform size with approximately 50 percent maxium "slop."
+    1) Stacking and Cross Correlation alignment.
+    1) Sampling "truth" volume to match image stack Z spacing and
+    image count.
+    1) Affine alignment using Cross Correlation.
+    1) Warping using Cross Correlation. 
+<br/>
+ANTS CC parameters:   
+<br/>
+ANTS 2 -m PR[histo_slice.nii.gz","truth_slice.nii.gz",1,2] ... 
+<br/>
+ANTS 3 -m PR[histo_volume.nii.gz","truth_volume.nii.gz",1,2] ...
+<br/>
+The alignment took 6.5 hours to compute, on a 32-processor quad core Opteron with 256Gb of RAM.
 <br/>
 https://lh3.googleusercontent.com/-p7iBChhhpi0/UJ2HRDL5P_I/AAAAAAAAAK0/RNHLGMu0DPc/s800/cc-006.jpg
 <br/>
@@ -449,22 +463,6 @@ https://lh3.googleusercontent.com/-c7BW_VnpdoQ/UJ2HNUME7-I/AAAAAAAAAKE/ArWofB0rR
 https://lh3.googleusercontent.com/-c7BW_VnpdoQ/UJ2HNUME7-I/AAAAAAAAAKE/ArWofB0rR4A/s800/cc-042.jpg
 <br/>
 https://lh5.googleusercontent.com/-xC16I5RZJZI/UJ2HOFzrlnI/AAAAAAAAAKU/-snCW8bAzcI/s800/cc-048.jpg
-<br/>
-    1) Format conversion to NIFTI1.
-    1) Padding images to a uniform size with approximately 50 percent maxium "slop."
-    1) Stacking and Cross Correlation alignment.
-    1) Sampling "truth" volume to match image stack Z spacing and
-    image count.
-    1) Affine alignment using Cross Correlation.
-    1) Warping using Cross Correlation. 
-<br/>
-ANTS CC parameters:   
-<br/>
-ANTS 2 -m PR[histo_slice.nii.gz","truth_slice.nii.gz",1,2] ... 
-<br/>
-ANTS 3 -m PR[histo_volume.nii.gz","truth_volume.nii.gz",1,2] ...
-<br/>
-The alignment took 6.5 hours to compute, on a 32-processor quad core Opteron with 256Gb of RAM.
 <br/>
 It appears that the cross-correlation alignment results in better visual quality of alignment, while inverse consistency in this case is worse than with the mutual information alignment.
 <br/>
