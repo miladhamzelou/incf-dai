@@ -431,8 +431,7 @@ The second set of images represents heat maps (inverse consistency computations)
     1) Format conversion to NIFTI1.
     1) Padding images to a uniform size with approximately 50 percent maxium "slop."
     1) Stacking and Cross Correlation alignment.
-    1) Sampling "truth" volume to match image stack Z spacing and
-    image count.
+    1) Sampling "truth" volume to match image stack Z spacing and image count.
     1) Affine alignment using Cross Correlation.
     1) Warping using Cross Correlation. 
 <br/>
@@ -461,6 +460,8 @@ https://lh6.googleusercontent.com/-DsfThluWWts/UJ2HPJcI6_I/AAAAAAAAAKk/Wpor9K2EM
 https://lh3.googleusercontent.com/-c7BW_VnpdoQ/UJ2HNUME7-I/AAAAAAAAAKE/ArWofB0rR4A/s800/cc-042.jpg
 <br/>
 https://lh3.googleusercontent.com/-c7BW_VnpdoQ/UJ2HNUME7-I/AAAAAAAAAKE/ArWofB0rR4A/s800/cc-042.jpg
+<br/>
+https://lh3.googleusercontent.com/-lm2NHS-q-4k/UJ2HS4UewgI/AAAAAAAAALA/bo2NQQZ_ILA/s800/cc-overlay-042.jpg
 <br/>
 https://lh5.googleusercontent.com/-xC16I5RZJZI/UJ2HOFzrlnI/AAAAAAAAAKU/-snCW8bAzcI/s800/cc-048.jpg
 <br/>
