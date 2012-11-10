@@ -359,7 +359,6 @@ The error/discrepency/repeatability in the "round trip" between forward (atlas -
 <br/>
 Run time for the above test was approximately about an hour on a 256 GB,
 32 processor Quad-Core AMD opterating system.
-<br/>
 The processing stages are as follows <br/>
    1) Format conversion to NIFTI1.<br/>
    2) Padding images to a uniform size with appoximately 50 percent maxium "slop."<br/>
