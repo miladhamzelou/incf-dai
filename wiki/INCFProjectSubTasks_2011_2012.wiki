@@ -383,7 +383,27 @@ The processing stages are as follows <br/>
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
-The first set of data below is using Mutual Information: 
+the first set of images represents heat maps (inverse consistency computations) for selected slices where transformation was derived using mutual information alignment. The operation for this alignment transformation was  as follows:
+<br/>
+    1) Format conversion to NIFTI1.
+
+    1) Padding images to a uniform size with appoximately 50 percent
+    maxium "slop."
+
+    1) Stacking and mutual alignment.
+
+    1) Sampling "truth" volume to match image stack Z spacing and
+    image count.
+
+    1) Affine alignment using Mutual Information.
+
+    1) Warping using Mutual Information. 
+	
+ANTS MI parameters:   
+
+    ANTS 2 -m MI[histo_slice.nii.gz","truth_slice.nii.gz",1,32] ...
+    ANTS 3 -m MI[histo_volume.nii.gz","truth_volume.nii.gz",1,32] ...
+ 
 <br/>
 https://lh4.googleusercontent.com/-qoJR-WdLhPk/UJv1R0LVT4I/AAAAAAAAAJc/DOccOBd2SKI/s800/large-out-006.jpg
 <br/>
