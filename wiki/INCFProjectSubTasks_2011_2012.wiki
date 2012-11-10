@@ -381,7 +381,8 @@ The processing stages are as follows <br/>
 <tr>
 <th align="left">Examples</th>
 <td width="80%">
-
+The first set of data below is using Mutual Information: 
+<br/>
 https://lh4.googleusercontent.com/-qoJR-WdLhPk/UJv1R0LVT4I/AAAAAAAAAJc/DOccOBd2SKI/s800/large-out-006.jpg
 <br/>
 https://lh4.googleusercontent.com/-K_DK944f_m4/UJv1Fsa6mVI/AAAAAAAAAIo/8Gci0tGKAJk/s800/large-out-012.jpg
@@ -401,7 +402,9 @@ https://lh6.googleusercontent.com/-evaUNp8DNMY/UJv1Ebb9u7I/AAAAAAAAAIU/9z5EaS7T6
 https://lh3.googleusercontent.com/-EPxwrE4RAfE/UJv1GaKKB1I/AAAAAAAAAI4/YAYA09D0NgQ/s800/large-out-042.jpg
 <br/>
 https://lh3.googleusercontent.com/-cL_ezZzULvY/UJv1HPb7dCI/AAAAAAAAAJE/oADy_SHXjWs/s800/large-out-048.jpg
+<br/>
 
+The second set of data below using Cross Correlation:
 <br/>
 https://lh3.googleusercontent.com/-p7iBChhhpi0/UJ2HRDL5P_I/AAAAAAAAAK0/RNHLGMu0DPc/s800/cc-006.jpg
 <br/>
