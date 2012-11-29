@@ -64,6 +64,9 @@ $ ./Slicer -- execute
 
 =Links=
 
+===Python===
+ * [http://doc.qt.digia.com/4.7/widgets-and-layouts.html]
+
 ==Slicer==
  * [http://www.slicer.org Primary site] (www.slicer.org)
  * [http://www.slicer.org/pages/DeveloperOrientation Developer's page] www.slicer.org/pages/DeveloperOrientation
