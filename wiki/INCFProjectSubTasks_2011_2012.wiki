@@ -585,14 +585,11 @@ The initial atlas hubs have been setup for:
 <br/>
 ===Wistar Rat===
 <br/>
-===Get2DImagesByPOI:===
-http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Rat_Wistar_1.0;x=100;y=200;z=324;filter=maptype 
+Get2DImagesByPOI: http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Rat_Wistar_1.0;x=100;y=200;z=324;filter=maptype 
 
-DescribeProcess:
-http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL 
+DescribeProcess: http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL 
 
-DescribeSRS:
-http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Wistar_1.0 
+DescribeSRS: http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Wistar_1.0 
 
 GetCapabilities:
 http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&request=GetCapabilities 
