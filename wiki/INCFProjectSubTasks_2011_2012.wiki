@@ -606,7 +606,7 @@ GetAnnotationsByPOI:
 http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=image;x=-2;y=-1;z=0;tolerance=3;filter=filePath:http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
 <br/>
-===RatOslo===
+===Rat Oslo===
 GetCapabilities:
 http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&request=GetCapabilities
 
@@ -620,7 +620,7 @@ DescribeSRS:
 http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Paxinos_1.0
 
 <br/>
-Edinburgh mouse atlas project:
+===Edinburgh mouse atlas project ===
 http://incf-dev.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=GetCapabilities
 <br/>
 </td>
