@@ -583,6 +583,31 @@ http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INC
 <br/>
 The initial atlas hubs have been setup for:
 <br/>
+Wistar Rat
+<br/>
+Get2DImagesByPOI: 
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Rat_Wistar_1.0;x=100;y=200;z=324;filter=maptype 
+
+DescribeProcess
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL 
+
+DescribeSRS
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Wistar_1.0 
+
+GetCapabilities
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&request=GetCapabilities 
+
+ListSRSs
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs 
+
+SetAnnotation
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/AnnotationSchema.xml;filter=userID=incfadmin:password=1ncfA1la5 
+
+The GetAnnotationsByPOI is also working now. 
+GetAnnotationsByPOI: 
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=image;x=-2;y=-1;z=0;tolerance=3;filter=filePath:http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
+
+<br/>
 Edinburgh mouse atlas project:
 http://incf-dev.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=GetCapabilities
 <br/>
