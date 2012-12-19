@@ -603,7 +603,7 @@ SetAnnotation:
 http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/AnnotationSchema.xml;filter=userID=incfadmin:password=1ncfA1la5 
 
 GetAnnotationsByPOI: 
-http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=image;x=-402;y=826;z=597;tolerance=3;filter=filePath:http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=image;x=402;y=826;z=597;tolerance=3;filter=filePath:http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
 <br/>
 ===Rat Oslo===
