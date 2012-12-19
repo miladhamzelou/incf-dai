@@ -584,29 +584,40 @@ http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INC
 The initial atlas hubs have been setup for:
 <br/>
 ===Wistar Rat===
-Get2DImagesByPOI: http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Rat_Wistar_1.0;x=100;y=200;z=324;filter=maptype 
+GetCapabilities: 
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&request=GetCapabilities 
 
-DescribeProcess: http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL 
+DescribeProcess: 
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL 
 
-DescribeSRS: http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Wistar_1.0 
+Get2DImagesByPOI: 
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Rat_Wistar_1.0;x=100;y=200;z=324;filter=maptype 
 
-GetCapabilities: http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&request=GetCapabilities 
+ListSRSs: 
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs 
 
-ListSRSs: http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs 
+DescribeSRS: 
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Wistar_1.0 
 
-SetAnnotation: http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/AnnotationSchema.xml;filter=userID=incfadmin:password=1ncfA1la5 
+SetAnnotation: 
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/AnnotationSchema.xml;filter=userID=incfadmin:password=1ncfA1la5 
 
-GetAnnotationsByPOI: http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=image;x=-2;y=-1;z=0;tolerance=3;filter=filePath:http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
+GetAnnotationsByPOI: 
+http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=image;x=-2;y=-1;z=0;tolerance=3;filter=filePath:http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec
 
 <br/>
 ===RatOslo:===
-DescribeSRS: http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Paxinos_1.0
+GetCapabilities: 
+http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&request=GetCapabilities
 
-ListSRSs: http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+DescribeProcess: 
+http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
 
-GetCapabilities: http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&request=GetCapabilities
+ListSRSs: 
+http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
 
-DescribeProcess: http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL
+DescribeSRS: 
+http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Paxinos_1.0
 
 <br/>
 Edinburgh mouse atlas project:
