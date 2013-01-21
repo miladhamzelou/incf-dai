@@ -6,6 +6,13 @@ Project notes for integrating Slice and INCF Atlas Hubs.
 =Purpose=
 To integrate Slicer with INCF Atlas Hubs.
 
+=Workflow=
+ * User opens Slicer
+ * User loads data
+   * Use "Add Data" from toolbar
+   * Such as canon_T1_r.nii
+ * User places fiducial POI
+
 =INCF Altas Hubs as Seen from Slicer=
  * Atlas hubs are "fronts" for accessing data from a variety of atlas data sources
  * Atlas data sources currently include 
