@@ -18,6 +18,22 @@ To integrate Slicer with INCF Atlas Hubs.
    * Fiducial will be chosen coordinates
    * Enter a Name for the POI fiducial
  * User loads "Dave Extension" module
+ * Module presents
+   * Selection list of scene fiducials
+   * Or, message that there are no fiducials, please add one or more
+   * Button "Get 2D Images at selected POI"
+ * User selects POI from list of fiducials
+ * User presses button "Get 2D Images by POI"
+ * Module acquires list of images using DAI Get2DImagesByPOI
+   * Extracts list "ImageSource" element text strings from response
+   * Extracts LAYERS values from each ImageSource text string
+ * Module presents
+   * Selection list of LAYERS values
+     * Or message "No images returned"
+   * Button "Acquire Selected Image"
+ * User presses button "Acquire Selected Image"
+ * Module integrates image into scene
+   
 
 =INCF Altas Hubs as Seen from Slicer=
  * Atlas hubs are "fronts" for accessing data from a variety of atlas data sources
