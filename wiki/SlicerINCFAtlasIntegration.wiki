@@ -9,9 +9,15 @@ To integrate Slicer with INCF Atlas Hubs.
 =Workflow=
  * User opens Slicer
  * User loads data
-   * Use "Add Data" from toolbar
    * Such as canon_T1_r.nii
+   * Use "Add Data" from toolbar
+   * SRS is Mouse_WHS_1.0
  * User places fiducial POI
+   * Load Annotations module
+   * Use Fiducial on toolbar
+   * Fiducial will be chosen coordinates
+   * Enter a Name for the POI fiducial
+ * User loads "Dave Extension" module
 
 =INCF Altas Hubs as Seen from Slicer=
  * Atlas hubs are "fronts" for accessing data from a variety of atlas data sources
