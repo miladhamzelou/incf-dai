@@ -10,29 +10,30 @@ To integrate Slicer with INCF Atlas Hubs.
  * User opens Slicer
  * User loads data
    * Such as canon_T1_r.nii
-   * Use "Add Data" from toolbar
+   * Use "Add Data" from toolbar (icon "DATA" on left)
    * SRS is Mouse_WHS_1.0
  * User places fiducial POI
    * Load Annotations module
-   * Use Fiducial on toolbar
+   * Use Fiducial on toolbar to create one or more POIs (points of interest)
    * Fiducial will be chosen coordinates
    * Enter a Name for the POI fiducial
  * User loads "Dave Extension" module
  * Module presents
-   * Selection list of scene fiducials
+   * Selection list of scene "Points of Interest" (fiducials)
    * Or, message that there are no fiducials, please add one or more
-   * Button "Get 2D Images at selected POI"
- * User selects POI from list of fiducials
+   * Button "Get 2D Images at POI"
+ * User selects POI from drop-down list of POIs (fiducials)
  * User presses button "Get 2D Images by POI"
  * Module acquires list of images using DAI Get2DImagesByPOI
+   * At selected POI defaulting to filter=maptype:sagittal and tolerance=3
    * Extracts list "ImageSource" element text strings from response
    * Extracts LAYERS values from each ImageSource text string
  * Module presents
-   * Selection list of LAYERS values
-     * Or message "No images returned"
-   * Button "Acquire Selected Image"
- * User presses button "Acquire Selected Image"
- * Module integrates image into scene
+   * Selection list of LAYERS values "Available Images at POI"
+     * Or message "No images returned" (TODO)
+   * Button "Get Selected Image"
+ * User presses button "Get Selected Image"
+ * Module integrates image into scene (TODO)
    
 
 =INCF Altas Hubs as Seen from Slicer=
