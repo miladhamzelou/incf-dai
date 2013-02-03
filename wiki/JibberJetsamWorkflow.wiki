@@ -13,12 +13,12 @@ Supply all the information about the project in the available fields as shown in
 https://lh4.googleusercontent.com/-kUqvNii7yXc/UJt5SzXJzyI/AAAAAAAAAHg/vWMxj5bPRYM/s912/img2.jpg
 
 Then click on “Browse” to locate an image folder from the local machine and click upload to initiate the upload process. 
-https://lh3.googleusercontent.com/-SuMfodnwZvA/UJt5TOB7gQI/AAAAAAAAAHo/sPERWBnhECg/s605/img3.jpg
+https://lh5.googleusercontent.com/-Z179jN2Zeao/UQ3ZZ320v1I/AAAAAAAAAME/cbZWxoKOYVU/s602/1.png?gl=US
 
-https://lh6.googleusercontent.com/-mx2yNyATe1I/UJt5TvC83aI/AAAAAAAAAHw/yiqIb52jUvQ/s589/img4.jpg
+https://lh4.googleusercontent.com/-S6bEOEEKht8/UQ3ZZ3B_0rI/AAAAAAAAAMI/P1TMc-5iAqU/s603/2.png?gl=US
 
 Once upload process is finished, a link “Launch image registration” will appear in the dialog box.
-https://lh6.googleusercontent.com/-UuHhciRSyc0/TuGCOJA4l6I/AAAAAAAAACA/0Aihf7cKiVg/s589/Step%25252010.jpg
+https://lh3.googleusercontent.com/-V53q2v5QKW4/UQ3ZaJG52xI/AAAAAAAAAMQ/8yxfgTrCPEM/s601/3.png?gl=US
 
 
 On click of “Launch image registration” link, the process will send out an email to the portal user with the Jibber/Jetsam Registration Page as shown  in an image below.
