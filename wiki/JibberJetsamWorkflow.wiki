@@ -5,7 +5,7 @@
 = Getting Started = 
 
 Register as a new INCF user. Once registered, the user can login to the INCF Portal at: http://incf-dev.crbs.ucsd.edu/atlasportal. 
-
+ 
 After you login as a INCF user, click on a “Registration” tab that will allow the user to input the metadata shown below.
 https://lh3.googleusercontent.com/-VCFHx1GV0RU/UJt5StWxgaI/AAAAAAAAAHY/jd3BlXD3dOE/s912/img1.jpg
 
