@@ -41,8 +41,7 @@ To integrate Slicer with INCF Atlas Hubs.
 pixelsPerMM = 46.512
 x10min =  -5.3965
 y10min = -11.997
-z10min =  -5.5255
-</code>
+z10min =  -5.5255</code>
 ===0.9 to 1.0===
  * x10 = (x09 / pixelsPerMM) - x10min
  * y10 = (y09 / pixelsPerMM) - y10min
