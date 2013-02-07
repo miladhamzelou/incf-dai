@@ -35,6 +35,20 @@ To integrate Slicer with INCF Atlas Hubs.
  * User presses button "Get Selected Image"
  * Module integrates image into scene (TODO)
    
+=Coordinate Transformations=
+==Mouse_WHS_1.0 to/from Mouse_WHS_0.9==
+pixelsPerMM = 46.512
+x10min =  -5.3965
+y10min = -11.997
+z10min =  -5.5255
+===0.9 to 1.0===
+x10 = (x09 / pixelsPerMM) - x10min
+y10 = (y09 / pixelsPerMM) - y10min
+z10 = (z09 / pixelsPerMM) - z10min
+===1.0 to 0.9===
+x09 = (x10 - x10min) * pixelsPerMM
+y09 = (y10 - y10min) * pixelsPerMM
+z09 = (z10 - z10min) * pixelsPerMM
 
 =INCF Altas Hubs as Seen from Slicer=
  * Atlas hubs are "fronts" for accessing data from a variety of atlas data sources
