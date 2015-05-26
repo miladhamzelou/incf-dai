@@ -1,0 +1,143 @@
+
+# Introduction #
+Project notes for integrating Slice and INCF Atlas Hubs.
+
+# Purpose #
+To integrate Slicer with INCF Atlas Hubs.
+
+# Workflow #
+  * User opens Slicer
+  * User loads data
+    * Such as canon\_T1\_r.nii
+    * Use "Add Data" from toolbar (icon "DATA" on left)
+    * SRS is Mouse\_WHS\_1.0
+  * User places fiducial POI
+    * Load Annotations module
+    * Use Fiducial on toolbar to create one or more POIs (points of interest)
+    * Fiducial will be chosen coordinates
+    * Enter a Name for the POI fiducial
+  * User loads "Dave Extension" module
+  * Module presents
+    * Selection list of scene "Points of Interest" (fiducials)
+    * Or, message that there are no fiducials, please add one or more
+    * Button "Get 2D Images at POI"
+  * User selects POI from drop-down list of POIs (fiducials)
+  * User presses button "Get 2D Images by POI"
+  * Module acquires list of images using DAI Get2DImagesByPOI
+    * At selected POI defaulting to filter=maptype:sagittal and tolerance=3
+    * Extracts list "ImageSource" element text strings from response
+    * Extracts LAYERS values from each ImageSource text string
+  * Module presents
+    * Selection list of LAYERS values "Available Images at POI"
+      * Or message "No images returned" (TODO)
+    * Button "Get Selected Image"
+  * User presses button "Get Selected Image"
+  * Module integrates image into scene (TODO)
+
+# Coordinate Transformations #
+## Mouse\_WHS\_1.0 to/from Mouse\_WHS\_0.9 ##
+```
+
+pixelsPerMM = 46.512
+x10min =  -5.3965
+y10min = -11.997
+z10min =  -5.5255```
+### 0.9 to 1.0 ###
+```
+
+x10 = (x09 / pixelsPerMM) - x10min
+y10 = (y09 / pixelsPerMM) - y10min
+z10 = (z09 / pixelsPerMM) - z10min```
+### 1.0 to 0.9 ###
+```
+
+x09 = (x10 - x10min) * pixelsPerMM
+y09 = (y10 - y10min) * pixelsPerMM
+z09 = (z10 - z10min) * pixelsPerMM```
+
+# INCF Altas Hubs as Seen from Slicer #
+  * Atlas hubs are "fronts" for accessing data from a variety of atlas data sources
+  * Atlas data sources currently include  *** ABA (Allen Brain Atlas from the Allen Brain Institute)
+    * EMAP (Edinburgh Mouse Atlas Project)
+    * WHS ()
+    * UCSD (Cell-Centered Database (CCDB) at the University of California, San Diego)
+  * INCF Atlas Hubs provide a uniform interface for requesting atlas data from the corresponding atlas data sourcehttp://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers
+  * The Hubs do not return actual atlas data directly
+  * A client application, such as Slicer, can use the common INCF Atlas Hub interface to get references (links and metadata) to actual atlas source data**
+
+# Questions Regarding the Scope of Integration #
+  1. Are we adding a capability to Slicer to import data via INCF Atlas Hubs? E.g. accessing these INCF processes:
+    * DescribeSRS
+    * DescribeTransformation
+    * Get2DImagesByPOI
+    * GetAnnotationsByPOI
+    * GetCorrelationsByPOI
+    * GetGenesByPOI
+    * GetGenesByGeneId
+    * GetObjectsByPOI
+    * GetStructureNamesByPOI
+    * GetTransformationChain
+    * ListSRSs
+    * ListTransformations
+    * Retrieve2DImages,
+  1. Are we adding a capability to Slicer to export data to INCF Atlas? This would be the like
+    * SetAnnotations
+  1. Are we adding a capability to Slicer to use an INCF Atlas tool? This would be like
+    * TransformPOI
+  1. Are we expecting to add anything to INCF Atlas processes that would interact with Slicer (from the INCF Atlas end)? (I'm assuming NO.)
+
+# Scheme for Slicer as an INCF Atlas Client #
+Note: For the time being, I'm ignoring the INCF Atlas Central Hub and the WPS GetCapabilities and DescribePorcesses functions.
+  * A Slicer user in a Slicer session may submit an HTTP GET request to an INCF Atlas Hub
+  * The hub will return an XML document (typically containing a link or a list of links and some metadata relating to the links)
+  * Slicer will parse the returned data and display the returned information
+  * The Slicer user may select a link to pursue and Slicer will submit a corresponding HTTP GET request
+  * Slicer will receive the requested data
+  * ...
+
+# CLI Module Notes #
+
+## Slicer Locations ##
+
+### drlittle.ucsd.edu ###
+
+/usr/local/Slicer-4.1.1-linux-amd64/ -- binary install
+$ ./Slicer -- execute
+
+### dave-hp-5-10 ###
+
+### dave-ubuntu-5-10 ###
+
+### david-littles-macbook-pro ###
+
+# Links #
+
+## Python ##
+  * http://doc.qt.digia.com/4.7/widgets-and-layouts.html
+  * http://www.slicer.org/slicerWiki/index.php/Documentation/4.2/Developers/Python_scripting
+
+## Slicer ##
+  * [Primary site](http://www.slicer.org) (www.slicer.org)
+  * [Developer's page](http://www.slicer.org/pages/DeveloperOrientation) www.slicer.org/pages/DeveloperOrientation
+  * [Developers Documentation](http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers)  www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers
+  * [Command Line Interface (CLI)](http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers/Modules#Command_Line_Interface_.28CLI.29)
+  * [CLI modules code](http://viewvc.slicer.org/viewvc.cgi/Slicer4/trunk/Modules/CLI/)
+
+## Slicer-XNAT ##
+  * [Slicer3-XNAT Integration](http://www.slicer.org/slicerWiki/index.php/Slicer3:XNAT)
+  * [Summer 2012 project](http://www.na-mic.org/Wiki/index.php/2012_Summer_Project_Week:XNATSlicerIntegration)
+
+## XNAT ##
+  * [Primary site](http://xnat.org/) User search box (upper right) "slicer"
+  * [XNAT tools](http://xnat.org/about/xnat-tools.html) Mention of Slicer
+  * [XNAT tools 1.4](https://wiki.xnat.org/display/XNAT14/XNAT+Tools) Mention of Slicer
+  * [XNAT tools 1.5](https://wiki.xnat.org/display/XNAT/XNAT+Client+Tools) Mention of Slicer
+
+# Background #
+
+## Jeff Grethe email of 9/5/12 ##
+
+  * Primary Slicer site (http://www.slicer.org). This has all the background information on Slicer.
+  * There is a specific developer's page (http://www.slicer.org/pages/DeveloperOrientation) that also has information on how to build slider (http://www.slicer.org/slicerWiki/index.php/Documentation/4.1/Developers/Build_Instructions) including information on how to access the code base via GIT or SVN.
+  * One other application that has been integrated with Slicer that deals with retrieving data is XNAT (http://www.na-mic.org/Wiki/index.php/2012_Summer_Project_Week:XNATSlicerIntegration)
+  * For the INCF atlasing services there is a page (http://atlasing.incf.org/wiki/Developers) for developers that links to other resources including an overview document (https://docs.google.com/View?id=dd9x97wk_2drhhj6fp)

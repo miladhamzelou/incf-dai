@@ -1,0 +1,23 @@
+# Deegree: Selected Links #
+
+The Deegree website's navigation can be confusing. These links may help.
+
+## Javadocs ##
+  * http://download.deegree.org/deegree3/nightly/services/javadoc/
+  * http://download.deegree.org/deegree3/nightly/core/javadoc/
+
+## Wiki/Overview ##
+  * http://wiki.deegree.org/deegreeWiki/deegree3
+
+## WPS ##
+  * http://wiki.deegree.org/deegreeWiki/deegree3/ProcessingService
+
+## HowTo: Create WPS Processes ##
+  * http://wiki.deegree.org/deegreeWiki/deegree3/HowToCreateWPSProcesses
+
+## Configuration ##
+  * http://wiki.deegree.org/deegreeWiki/deegree3/WorkspaceConfiguration
+  * http://wiki.deegree.org/deegreeWiki/deegree3/WorkspaceConfiguration/ServicesConfiguration
+
+## Deegree Schemas ##
+  * http://schemas.deegree.org/

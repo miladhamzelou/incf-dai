@@ -1,0 +1,31 @@
+INCF Atlas Hub Specification and INCF Atlasing Infrastructure Overview
+Version 0.7.4 - updated to DEEGREE-based services, and including annotations and GetObjectsByPOI
+
+> http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_074_iz.docx (Microsoft Word)
+
+> http://geo.sdsc.edu/ilya/presentations/BIRN_medical/INCF_Atlas_Services_and_WaxML_version_074_iz.pdf (Adobe PDF)
+
+
+
+The [Waxholm Markup Language (WaxML)](WaxML.md) Schema is at:
+
+> http://code.google.com/p/incf-dai/source/browse/#svn/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema
+
+
+WaxML coding examples and sample XML output is at:
+
+> http://code.google.com/p/incf-dai/source/browse/#svn/waxml/trunk/AtlasXmlBeans2
+
+
+Neuroinformatics'2010 Poster "Development of Community Standardsfor Brain Atlas Interoperability" (P90)
+
+> https://docs.google.com/leaf?id=0B4DIwjjoNBb-ODg3NTI2NTEtNjI0OS00YTI2LWI0ZDQtYjYxMzQ2Nzg2Y2Y5&hl=en&authkey=CIHX-YAB
+
+> The final version: https://docs.google.com/leaf?id=0B4DIwjjoNBb-ODBmZDA5ZjAtNTU4ZC00OGNjLWE5MzctOGE0ZTUyZDI4Y2Q0&hl=en&authkey=CMbTwvMG
+
+
+Neuroinformatics'2010 Demo "Representation of Coordinate Reference Systems for the Rodent Brain in the INCF Digital Atlasing Infrastructure" (D09)
+
+> https://docs.google.com/leaf?id=0B4DIwjjoNBb-ZGM3MTJiZmItNjdhZC00MWFmLWFiMDgtM2Q3YTcyNGZiYTk5&hl=en&authkey=CKLnkpoK
+
+> The final version: https://docs.google.com/leaf?id=0B4DIwjjoNBb-YmNmYWYwOGYtZmI2Ni00MTYxLWEzYWQtMDViNjNmMzU5Yzhl&hl=en&authkey=CIrB2aQH

@@ -1,0 +1,100 @@
+# Image Workflow #
+
+# Getting Started #
+
+Register as a new INCF user. Once registered, the user can login to the INCF Portal at: http://incf-dev.crbs.ucsd.edu/atlasportal.
+
+After you login as a INCF user, click on a “Registration” tab that will allow the user to input the metadata shown below.
+![https://lh3.googleusercontent.com/-VCFHx1GV0RU/UJt5StWxgaI/AAAAAAAAAHY/jd3BlXD3dOE/s912/img1.jpg](https://lh3.googleusercontent.com/-VCFHx1GV0RU/UJt5StWxgaI/AAAAAAAAAHY/jd3BlXD3dOE/s912/img1.jpg)
+
+Supply all the information about the project in the available fields as shown in an image below and press “INCF - IRODS Upload Tool” to instantiate the upload tool.
+![https://lh4.googleusercontent.com/-kUqvNii7yXc/UJt5SzXJzyI/AAAAAAAAAHg/vWMxj5bPRYM/s912/img2.jpg](https://lh4.googleusercontent.com/-kUqvNii7yXc/UJt5SzXJzyI/AAAAAAAAAHg/vWMxj5bPRYM/s912/img2.jpg)
+
+Then click on “Browse” to locate an image folder from the local machine and click upload to initiate the upload process.
+https://lh5.googleusercontent.com/-Z179jN2Zeao/UQ3ZZ320v1I/AAAAAAAAAME/cbZWxoKOYVU/s602/1.png?gl=US
+
+https://lh4.googleusercontent.com/-S6bEOEEKht8/UQ3ZZ3B_0rI/AAAAAAAAAMI/P1TMc-5iAqU/s603/2.png?gl=US
+
+Once upload process is finished, a link “Launch image registration” will appear in the dialog box.
+https://lh3.googleusercontent.com/-V53q2v5QKW4/UQ3ZaJG52xI/AAAAAAAAAMQ/8yxfgTrCPEM/s601/3.png?gl=US
+
+
+On click of “Launch image registration” link, the process will send out an email to the portal user with the Jibber/Jetsam Registration Page as shown  in an image below.
+![https://lh3.googleusercontent.com/-qNYKw0RERlQ/TuGCOgL3ZnI/AAAAAAAAACE/N4qpKnY32DI/s912/Step%25252011.jpg](https://lh3.googleusercontent.com/-qNYKw0RERlQ/TuGCOgL3ZnI/AAAAAAAAACE/N4qpKnY32DI/s912/Step%25252011.jpg)
+
+In the above, click on the "Jibber" button next to the thumbnail of the microscopy product you would like to spatially warp:
+
+Jibber will open two windows: the workspace window containing your microscopy product with the outline of the first coronal section from the Allen Reference Atlas, and the controls window that you will use to manipulate your microscopy product and add reference points correlating it to the reference atlas (mouse over the buttons on the controls window for a description of each of them).
+
+Preliminary Alignment to the Reference Atlas
+
+Start by selecting a reference plate that corresponds to the specimen in your microscopy product. It is helpful to have the image of your microscopy product off to one side while you flip through the sagittal or coronal section outlines. If your microscopy product is in the way you can move it over by clicking on the ‘drag image’ button on the controls window, then drag and drop your image over to the left so you can see the black outlines of the atlas more clearly:
+![https://lh6.googleusercontent.com/-9JsSstH63AQ/TuGgdNQ8pYI/AAAAAAAAACQ/HABeZF2zOt8/s306/Page2.jpg](https://lh6.googleusercontent.com/-9JsSstH63AQ/TuGgdNQ8pYI/AAAAAAAAACQ/HABeZF2zOt8/s306/Page2.jpg)
+
+
+Choose ‘Coronal’ or ‘Sagittal’ from the dropdown window, and use the up/down arrows to flip through the atlas sections in order:
+![https://lh4.googleusercontent.com/-b-IRlBlb4dM/TuGgdexVYCI/AAAAAAAAACU/CpGWH8lclJQ/s598/Page3.jpg](https://lh4.googleusercontent.com/-b-IRlBlb4dM/TuGgdexVYCI/AAAAAAAAACU/CpGWH8lclJQ/s598/Page3.jpg)
+
+
+Once you have decided on a reference plate from the atlas that most closely corresponds to your specimen, move your microscopy product so that it is directly underneath the atlas outline. Change the color of the atlas outline so that it contrasts with your image using the ‘set overlay color’ button on the controls window. When the ‘color selector’ window opens, select ‘Overlay’ at the bottom left then click on a color swatch. Before closing the ‘color selector’ window, select ‘Marks’ and choose a bright color for the correspondence markers that you will be making next:
+![https://lh6.googleusercontent.com/-OGwQR_QBltg/TuGgdoySqHI/AAAAAAAAACY/Zi-wtwTu8XM/s620/Page4.jpg](https://lh6.googleusercontent.com/-OGwQR_QBltg/TuGgdoySqHI/AAAAAAAAACY/Zi-wtwTu8XM/s620/Page4.jpg)
+
+
+Now that you can see the outline on top of your microscopy product, use the ‘flip’, ‘rotate’, ‘shrink’ and ‘expand’ buttons...
+![https://lh6.googleusercontent.com/-4-Az2v6oTiI/TuGgeL7EXyI/AAAAAAAAACc/tFR1D7qThfY/s289/Page5.jpg](https://lh6.googleusercontent.com/-4-Az2v6oTiI/TuGgeL7EXyI/AAAAAAAAACc/tFR1D7qThfY/s289/Page5.jpg)
+
+
+...to more closely fit your image to the atlas outline like this:
+![https://lh5.googleusercontent.com/-y4e0D0mbYao/TuGgeXuC8SI/AAAAAAAAACg/y8QDjOdUMuI/s631/Page6.jpg](https://lh5.googleusercontent.com/-y4e0D0mbYao/TuGgeXuC8SI/AAAAAAAAACg/y8QDjOdUMuI/s631/Page6.jpg)
+
+
+You can also brighten your microscopy product, if needed, to better visualize the anatomical details that you need to align with the reference atlas:
+![https://lh4.googleusercontent.com/-7ylrmlPM58w/TuGge24_5bI/AAAAAAAAACk/P8HqbjMlJBI/s668/Page7.jpg](https://lh4.googleusercontent.com/-7ylrmlPM58w/TuGge24_5bI/AAAAAAAAACk/P8HqbjMlJBI/s668/Page7.jpg)
+
+
+If your microscopy product still isn't as big as the Jibber Workstation window you can zoom in to make it bigger using the 'Crop visible region(zoom)' button:
+![https://lh5.googleusercontent.com/-N-DWR1hmBp8/TuGgfHtn71I/AAAAAAAAACo/2H0kYm1J9DI/s794/Page8.jpg](https://lh5.googleusercontent.com/-N-DWR1hmBp8/TuGgfHtn71I/AAAAAAAAACo/2H0kYm1J9DI/s794/Page8.jpg)
+
+
+Crop the view by dragging a box around your microscopy product and the reference atlas.
+![https://lh5.googleusercontent.com/-J_MnjOiFhgk/TuGgftzFjhI/AAAAAAAAACs/c7v4NKYHjZ4/s783/Page9.jpg](https://lh5.googleusercontent.com/-J_MnjOiFhgk/TuGgftzFjhI/AAAAAAAAACs/c7v4NKYHjZ4/s783/Page9.jpg)
+
+
+Now you are ready to begin making correspondence markers to correlate your microscopy product with the reference atlas. Click on the ‘Add New Correspondence’ button on the controls window:
+![https://lh4.googleusercontent.com/-Pxq9jHLTO3k/TuGgf4r7ojI/AAAAAAAAACw/gtd0fX1eLto/s143/Page10.jpg](https://lh4.googleusercontent.com/-Pxq9jHLTO3k/TuGgf4r7ojI/AAAAAAAAACw/gtd0fX1eLto/s143/Page10.jpg)
+
+
+The correspondence marker has directionality to it. The dot is the "anchor" and the cross is the locale to be dragged or warped to the anchor point. To place a correspondence, click on a location on the reference atlas outline, hold down the mouse button and move to the corresponding location on your microscopy product then release the mouse button. It is very important that the anchor of the correspondence marker (dot) is always on the reference atlas outline, and the (+) end of the correspondence marker is always on the microscopy product image.
+
+
+The 'Edit Correspondence' button will only allow you to move the cross end (+) of the correspondence markers after they have been placed. Just use your mouse to drag and drop the cross end (+) of any of your correspondence markers.
+![https://lh4.googleusercontent.com/-mnsyBoKVCC0/TuGggI2OUeI/AAAAAAAAAC0/Y_e0yaH0EIc/s152/Page11.jpg](https://lh4.googleusercontent.com/-mnsyBoKVCC0/TuGggI2OUeI/AAAAAAAAAC0/Y_e0yaH0EIc/s152/Page11.jpg)
+
+
+If you are unsatisfied with the position of the anchoring (dot) end of a correspondence marker, you must delete it using the 'Delete Correspondence' button and then replace it with a new one.
+![https://lh5.googleusercontent.com/-C_X5c7AvMWI/TuGggZ-uczI/AAAAAAAAAC4/X3kEoZ_TzyA/s151/Page12.jpg](https://lh5.googleusercontent.com/-C_X5c7AvMWI/TuGggZ-uczI/AAAAAAAAAC4/X3kEoZ_TzyA/s151/Page12.jpg)
+
+
+Here is an example with about 30 correspondence markers shown in hot pink:
+![https://lh5.googleusercontent.com/-IRdYNp_4fys/TuGggiUBtSI/AAAAAAAAAC8/p0_obdWlOHA/s794/Page13.jpg](https://lh5.googleusercontent.com/-IRdYNp_4fys/TuGggiUBtSI/AAAAAAAAAC8/p0_obdWlOHA/s794/Page13.jpg)
+
+
+To see a preview of the warped microscopy product slide the Sampling all the way up to 'Finer' and click on the 'Test Warping' button (circled above). It may take a few seconds for the warped image preview to appear:
+![https://lh6.googleusercontent.com/-frhjuKzTQZI/TuGghGJ8gPI/AAAAAAAAADA/B9gQ5BNEZMw/s783/Page14.jpg](https://lh6.googleusercontent.com/-frhjuKzTQZI/TuGghGJ8gPI/AAAAAAAAADA/B9gQ5BNEZMw/s783/Page14.jpg)
+Click on the 'Test Warping' button again to continue adding or modifying your correspondence points.
+
+
+When you are satisfied with the test warp generated from the correspondence points you have created, complete the image registration process by clicking on 'File' and 'Register':
+![https://lh4.googleusercontent.com/-gk25lFWS1dU/TuGghSilWcI/AAAAAAAAADE/iQEQ8SgZkSI/s775/Page15.jpg](https://lh4.googleusercontent.com/-gk25lFWS1dU/TuGghSilWcI/AAAAAAAAADE/iQEQ8SgZkSI/s775/Page15.jpg)
+
+
+When the 'Register' window opens, click on the Send button (bottom right):
+![https://lh5.googleusercontent.com/-1_0LQyzZGtA/TuGgh9MEYhI/AAAAAAAAADI/62XzLpqpIDQ/s851/Page16.jpg](https://lh5.googleusercontent.com/-1_0LQyzZGtA/TuGgh9MEYhI/AAAAAAAAADI/62XzLpqpIDQ/s851/Page16.jpg)
+
+
+Once the process is finished, you will receive an email with the URL for a client application named WIB(Web Image Browser) where you can navigate the warped image from the above process. You can also query across various hubs registered under INCF.
+
+
+# Queries #
+For querying the registered image, please follow the steps listed here:
+http://code.google.com/p/incf-dai/wiki/WIBQueryTool

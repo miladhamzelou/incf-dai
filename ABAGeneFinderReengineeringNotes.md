@@ -1,0 +1,31 @@
+# Introduction #
+
+Purpose: Identify resources related to reengineering INCF Atlas ABA Hub processes:
+  * Get2DImagesByPOI
+  * GetGenesByPOI
+which use the ABA Gene Finder and require modification to work with ABA'v v2 of the Gene Finder.
+
+# Links #
+## ABA v2 Gene Finder ##
+  * http://api.brain-map.org/doc/index.html
+  * http://api.brain-map.org/doc/index.html#service__mouse_agea
+  * http://api.brain-map.org/doc/index.html#API_Response_Formats
+
+## Examples ##
+  * Full URI with all optional parameters (first 5 rows)
+    * http://mouse.brain-map.org/api/v2/data/query.xml?criteria=service::mouse_agea[set$eq'mouse\_coronal'][seed\_point$eq6800,4200,5600][seed\_age$eqP56][map\_age$eqP56][correlation\_threshold1$eq0.7][threshold1$eq'1,50'][correlation\_threshold2$eq0.8799999999999999][threshold2$eq'1,50'][start\_row$eq0][num\_rows$eq5]
+```
+http://mouse.brain-map.org/api/v2/data/query.xml?criteria=service::mouse_agea[set$eq'mouse_coronal'][seed_point$eq6800,4200,5600][seed_age$eqP56][map_age$eqP56][correlation_threshold1$eq0.7][threshold1$eq'1,50'][correlation_threshold2$eq0.8799999999999999][threshold2$eq'1,50'][start_row$eq0][num_rows$eq5]
+```
+  * URI without optional parameters except number of items
+```
+http://mouse.brain-map.org/api/v2/data/query.xml?criteria=service::mouse_agea[set$eq'mouse_coronal'][seed_point$eq6800,4200,5600][seed_age$eqP56][map_age$eqP56][num_rows$eq5]
+```
+
+## Comments ##
+  * Since the returns are ordered high to low by 
+
+&lt;fold-change&gt;
+
+, I presume this is some sort of expression value starting with the most expressed gene at the POI.
+  * $eq must be used in the square bracketed parameters. Not '=' symbols except in 'criteria=service'.

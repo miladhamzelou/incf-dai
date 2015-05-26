@@ -1,0 +1,142 @@
+# Introduction #
+
+This page describes the use of ITK and ANTS commands in order to perform
+
+**Image Reconstruction** Image Registration
+
+
+# Image Reconstruction #
+
+Image reconstruction is the process by which N 2D images are composed into a consisten 3D volumetric datase
+
+## Example Command 1 ##
+
+> SimpleImageReconstruction  "inputImage%03d.png"   1   31  0.55   0.55   1.50          yuko\_A.nii.gz
+
+This command will take as input a collection of 31 images with names
+
+  * inputImage001.png
+  * inputImage002.png
+  * inputImage003.png
+  * ...
+  * inputImage031.png
+
+and will compose with them a Nifti image, compressed containing a volumetric dataset, that will be saved in a file with name
+
+  * yuko\_A.nii.gz
+
+The values
+
+  * 0.55
+  * 0.55
+  * 1.50
+
+are the pixel size values in microns(? or millimeters) along X, Y and Z, respectively
+
+
+## Print Information Command ##
+
+This command prints out some basic information from the header of a Nifti file.
+
+### Example ###
+
+
+PrintImageInformation  yuko\_A.nii.gz
+
+and it will print out information such as
+
+
+> File = yuko\_A.nii.gz
+> Origin = [0.0, 0.0, 0.0]
+> Spacing = [0.55, 0.55, 1.50]
+> Size = [512, 1024, 31]
+> Direction =
+> -1 0 0
+> 0 -1 0
+> 0 0 1
+
+
+# Image Registration #
+
+Image registration is the process by which we compute the coordinate transformation between two input 3D volumetric images.
+
+
+A typical example, will be to register the 3D image acquired in a recent experiment, to one of the atlas images of the Waxholm space. For example
+
+
+  * canon\_hist.nii.gz
+  * canon\_T1\_r.nii.gz
+  * canon\_T2star\_r.nii.gz
+  * canon\_T2W\_r.nii.gz
+
+## Example 1 ##
+
+In this particular case, we could register the following two images
+
+  * yuko\_A.nii.gz
+  * canon\_T1\_r.nii.gz
+
+
+In order to perform this registration we can use the ANTS application, that is built on top of ITK.  The typical ANTS command will look like this:
+
+
+> ANTS 3 -m MI[cannon\_T1-r.nii.gz,yuko\_A.nii.gz,1,32] -o TEST -i 30x20x0 --rigid-affine true
+
+
+  * ANTS is the executable file of the Advanced Normalization Tools
+  * 3 is the dimension of the images that we are registering
+  * MI indicates that we are using Mutual Information (comparison metric).
+  * cannon\_T1-r.nii.gz   is the reference images
+  * yuko\_A.nii.gz is the image to be registered to the reference.
+  * --rigid-affine  request to compute a Rigid registration followed by an Affine registration
+  * The arguments 30x20x0 mean that
+  * The coarsest resolution level registration will run for up to 30 iteration,
+  * The second coarsest resolution level registration will run for up to 20 iterations
+  * The highest resolution level will not be used for registration (it will run for zero iterations).
+
+
+This will generate as output three files with names
+
+  * TESTAffine.txt
+  * TESTInverseWarp.nii.gz
+  * TESTWarp.nii.gz
+
+
+## Example 2 ##
+
+A more advanced exampel, below, will perform a deformable registration between two images and put the resampled image in an output file
+
+
+> ANTS 3 -m PR[AtlasHead.nii,crAnatomical.nii,1,4] -r Gauss[0,3]
+-o ElasticTest.nii.gz -i 30x20x10 -t Elast[1.5]
+
+
+This command is described in detail in page 11 of the PDF ANTS manual referenced at the end of this page.
+
+## Example 3 ##
+
+./ANTS 3  -m MI[brainweb1e1a10f20.nii,brainweb1e1a10f20.nii,1,32] -o Registered.txt
+
+# Example 4 #
+
+./ANTS 2 -m MI[BrainProtonDensitySlice.png,BrainProtonDensitySlice.png,1,32]  -o FinalOutcome
+
+This produces the following three files as output
+
+  * FinalOutcomeAffine.txt
+  * FinalOutcomeInverseWarp.nii.gz
+  * FinalOutcomeWarp.nii.gz
+
+# Documentation #
+
+The ANTS manual is available at
+
+
+http://www.picsl.upenn.edu/ANTS/
+
+
+http://advants.svn.sourceforge.net/viewvc/advants/Documentation/ants.pdf?revision=790
+
+# Workflow, as discussed at the meeting #
+
+[workflow](workflow.md)

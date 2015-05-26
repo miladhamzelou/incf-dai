@@ -1,0 +1,276 @@
+THIS PAGE DESCRIBES AN EARLIER VERSION OF THE SERVICES. IT MAY BE USEFUL FOR CLIENT DEVELOPERS WHO TRANSITION TO THE NEW VERSION AND WISH TO COMPARE SERVICE SIGNATURES.
+
+# Atlas Hubs #
+
+We have four hubs currently that demonstrate implemented INCF Atlas functions.
+  * [Central](http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#Central)
+  * [ABA Hub](http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#ABA_Hub)
+  * [EMAP Hub](http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#EMAP_Hub)
+  * [UCSD Hub](http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#UCSD_Hub)
+  * [WHS Hub](http://code.google.com/p/incf-dai/wiki/AtlasHubsServices#WHS_Hub)
+
+Following the WPS standard, the INCF Atlas initiative has determined 14 execute functions in addition to the standard GetCapabilities and DescribeProcess requests. Each hub will implement a subset of the 14 functions.
+
+See the [applicability table](http://code.google.com/p/incf-dai/wiki/AtlasFunctionHubApplicabilityTable) for which WPS functions are implemented or planned to be implemented at each of the hubs.
+
+Currently the project is using four servers to develop and demonstrate the hubs and functions.
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<blockquote><tr>
+<blockquote><th>URL</th>
+<th>Purpose</th>
+<th>Relative<br />Stability</th>
+<th>Location</th>
+</blockquote></tr>
+<tr>
+<blockquote><td>incf-dev-local.crbs.ucsd.edu</td>
+<td>Development and testing</td>
+<td>Least stable</td>
+<td>San Diego</td>
+</blockquote></tr>
+<tr>
+<blockquote><td>incf-dev.crbs.ucsd.edu</td>
+<td>Staging and testing</td>
+<td>More stable</td>
+<td>Stockholm</td>
+</blockquote></tr>
+<tr>
+<blockquote><td>incf.crbs.ucsd.edu</td>
+<td>Production<br />(not currently operational)</td>
+<td>Most stable</td>
+<td>Stockholm</td>
+</blockquote></tr>
+<tr>
+</tr>
+</table></blockquote>
+
+## Working Example Requests/Processes ##
+
+### Central ###
+
+  * GetCapabilities
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&request=GetCapabilities
+
+  * DescribeProcess
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=DescribeProcess
+
+  * Execute : ListSRS
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+
+  * Execute : DescribeSRS
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS
+
+  * Execute : Get2DImagesByPOI
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:Sagittal;tolerance=3
+
+  * Execute : GetStructureNamesByPOI
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-central?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine
+
+
+### ABA Hub ###
+
+  * GetCapabilities
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&request=GetCapabilities
+
+  * DescribeProcess
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=DescribeProcess
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=DescribeProcess
+
+  * Execute : Get2DImagesByPOI
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_AGEA_1.0;x=6600;y=4000;z=5600;filter=maptype:coronal
+
+  * Execute : TransformPOI
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_AGEA_1.0;x=1;y=112;z=162;filter=cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_AGEA_1.0;x=1;y=112;z=162;filter=cerebellum
+
+  * Execute : GetTransformationChain
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+
+  * Execute : GetStructureNamesByPOI
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=280;y=112;z=162;vocabulary=Mouse_ABAvoxel_1.0;filter=structureset:Fine
+
+  * Execute : ListTransformations
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_ABAvoxel_1.0;outputSrsName=Mouse_ABAreference_1.0;filter=Cerebellum
+
+  * Execute : GetCorrelationMapByPOI
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=GetCorrelationMapByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:coronal
+
+  * Execute : ListSRS
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+
+  * Execute : DescribeSRS
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-aba?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS
+
+
+### EMAP Hub ###
+
+  * GetCapabilities
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&request=GetCapabilities
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&request=GetCapabilities
+
+  * DescribeProcess
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=DescribeProcess
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=DescribeProcess
+
+  * Execute : TransformPOI
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_EMAP-T26_1.0;x=12;y=-29;z=-73;filter=cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_EMAP-T26_1.0;x=12;y=-29;z=-73;filter=cerebellum
+
+  * Execute : GetTransformationChain
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+  * Execute : ListTransformations
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-emap?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+
+### UCSD Hub ###
+
+  * GetCapabilities
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&request=GetCapabilities
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&request=GetCapabilities
+
+  * DescribeProcess
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=DescribeProcess
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=DescribeProcess
+
+  * Execute : TransformPOI
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_WHS_0.9;x=1;y=4.3;z=1.78;filter=cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_WHS_0.9;x=1;y=4.3;z=1.78;filter=cerebellum
+
+  * Execute : Get2DImagesByPOI
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:Sagittal;tolerance=3
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Mouse_ABAvoxel_1.0;x=263;y=159;z=227;filter=maptype:Sagittal;tolerance=3
+
+  * Execute : Retrieve2DImage
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=Retrieve2DImage&DataInputs=sourceType=WMS;sourceURL=http%3A%2F%2Fimage.wholebraincatalog.org%2Fcgi-bin%2Fmapserv%3Fmap%3Dcrbsatlas%2Fmapfiles%2Fgensat_3363_modified_sm_transformed-ms.map%26LAYERS%3Dgensat_penk1_09%26FORMAT%3Dpng24%26VERSION%3D1.1.1%26REQUEST%3DGetMap;srsName=Mouse_ABAvoxel_1.0;xmin=-1.9298;xmax=8.73376;ymin=-9.92461;ymax=1.14128;filter=maptype:Sagittal
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=Retrieve2DImage&DataInputs=sourceType=WMS;sourceURL=http%3A%2F%2Fimage.wholebraincatalog.org%2Fcgi-bin%2Fmapserv%3Fmap%3Dcrbsatlas%2Fmapfiles%2Fgensat_3363_modified_sm_transformed-ms.map%26LAYERS%3Dgensat_penk1_09%26FORMAT%3Dpng24%26VERSION%3D1.1.1%26REQUEST%3DGetMap;srsName=Mouse_ABAvoxel_1.0;xmin=-1.9298;xmax=8.73376;ymin=-9.92461;ymax=1.14128;filter=maptype:Sagittal
+
+  * Execute : GetStructureNamesByPOI
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=-4;y=-2.3;z=2;vocabulary=Mouse_Paxinos_1.0;filter=structureset:Fine
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_Paxinos_1.0;x=-4;y=-2.3;z=2;vocabulary=Mouse_Paxinos_1.0;filter=structureset:Fine
+
+  * Execute : GetTransformationChain
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=GetTransformationChain&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+  * Execute : ListTransformations
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_Paxinos_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+  * Execute : ListSRS
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+
+  * Execute : DescribeSRS
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-ucsd?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS
+
+### WHS Hub ###
+
+  * GetCapabilities
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&request=GetCapabilities
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&request=GetCapabilities
+
+  * DescribeProcess
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=DescribeProcess
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=DescribeProcess
+
+  * Execute : GetTransformationChain
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+  * Execute : ListTransformations
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;filter=Cerebellum
+
+  * Execute : TransformPOI
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;x=-1.5;y=0;z=0;filter=cerebellum
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=inputSrsName=Mouse_WHS_1.0;outputSrsName=Mouse_WHS_0.9;x=-1.5;y=0;z=0;filter=cerebellum
+
+  * Execute : GetStructureNamesByPOI
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=Mouse_paxinos_1.0;filter=structureset:Fine
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=GetStructureNamesByPOI&DataInputs=srsName=Mouse_paxinos_1.0;x=1;y=4.3;z=1.78;vocabulary=Mouse_paxinos_1.0;filter=structureset:Fine
+
+  * Execute : ListSRS
+
+> http://incf-dev-local.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs
+
+  * Execute : DescribeSRS
+
+> http://incf-dev.crbs.ucsd.edu:8080/atlas-whs?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS

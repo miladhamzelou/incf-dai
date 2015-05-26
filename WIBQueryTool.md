@@ -1,0 +1,45 @@
+Web Image Browser (WIB) is a light weight web based client used for viewing high resolution microscopy images over the web. The WIB reads and manages tiled images in a manner similar to Google Maps or similar applications, allowing viewing of images of arbitrarily large size. WIB uses one of its mechanism to query INCF's POI based services across different hubs.
+
+Go to INCF Portal at http://incf-dev-local.crbs.ucsd.edu:8080/incfportal/catalog/identity/login.page and create an account.
+
+After you login as a INCF portal user, click on “2D -WIB” tab to load the Web Image Browser (WIB) client that is embedded inside the INCF portal as shown below.
+![https://lh5.googleusercontent.com/-iUBXUOggBDg/TuGB8kR9XCI/AAAAAAAAAAs/XYqA77vcUuw/s912/Page%2525201.jpg](https://lh5.googleusercontent.com/-iUBXUOggBDg/TuGB8kR9XCI/AAAAAAAAAAs/XYqA77vcUuw/s912/Page%2525201.jpg)
+
+Here is the WIB client. Check the radio button that says “Query” as shown below.
+![https://lh6.googleusercontent.com/-OkS-Ryo--z4/TuGB9TmbI7I/AAAAAAAAAAw/W83HC4BQlec/s640/Page%2525202.jpg](https://lh6.googleusercontent.com/-OkS-Ryo--z4/TuGB9TmbI7I/AAAAAAAAAAw/W83HC4BQlec/s640/Page%2525202.jpg)
+
+Left click your mouse button to load the available INCF hubs.
+![https://lh4.googleusercontent.com/-oLdqS23Cetg/TuGB-C0SxLI/AAAAAAAAAA0/V0jrqBY-M7Y/s640/Page%2525203.jpg](https://lh4.googleusercontent.com/-oLdqS23Cetg/TuGB-C0SxLI/AAAAAAAAAA0/V0jrqBY-M7Y/s640/Page%2525203.jpg)
+
+Take the mouse cursor to the hub on which you want to run the query. In the example shown below, we have used ABA hub that currently shows 4 available methods on which POI based queries can be made.
+![https://lh5.googleusercontent.com/-xD_5PPm4Cv4/TuGB-tYlrlI/AAAAAAAAAA4/O3-YLTo2jE4/s640/Page%2525204.jpg](https://lh5.googleusercontent.com/-xD_5PPm4Cv4/TuGB-tYlrlI/AAAAAAAAAA4/O3-YLTo2jE4/s640/Page%2525204.jpg)
+
+Select “Get 2D Images (Coronal)” to query 2D images for coronal view under ABA hub. This method will first perform the necessary coordinates transformation between WHS coordinates and ABA reference coordinates. Then the process will run a spatial query in postgres database intersecting the point selected on the client and get all the records from the database intersecting that point.
+![https://lh6.googleusercontent.com/-kyRTmW_X7TY/TuGB_vAW6jI/AAAAAAAAAA8/xSXm5uWtNNs/s640/Page%2525205.jpg](https://lh6.googleusercontent.com/-kyRTmW_X7TY/TuGB_vAW6jI/AAAAAAAAAA8/xSXm5uWtNNs/s640/Page%2525205.jpg)
+
+
+Here is the result of Get2DImagesByPOI. Eventually this result that shows in a web page will be embedded inside WIB.
+![https://lh3.googleusercontent.com/-FVyAmxKYo-E/TuGCCy1iNoI/AAAAAAAAABU/LK63Qx7HmNg/s912/Page%2525204.1.jpg](https://lh3.googleusercontent.com/-FVyAmxKYo-E/TuGCCy1iNoI/AAAAAAAAABU/LK63Qx7HmNg/s912/Page%2525204.1.jpg)
+
+
+Likewise “Get2DImages(Sagittal)” can be selected to query 2D images for sagittal view.
+![https://lh5.googleusercontent.com/-Jo0cfqayQew/TuGCAXTyTBI/AAAAAAAAABA/PFwOZ88uf54/s640/Page%2525206.jpg](https://lh5.googleusercontent.com/-Jo0cfqayQew/TuGCAXTyTBI/AAAAAAAAABA/PFwOZ88uf54/s640/Page%2525206.jpg)
+
+
+GetStructureNamesByPOI is another service that is created to query the structure terms from ABA. Here again the necessary coordinate transformation between WHS coordinates and ABA coordinates takes place. Then using the ABA coordinates a query is made to get the structure names in ABA.
+![https://lh4.googleusercontent.com/-7vw8ajbGRN8/TuGCBKBOG4I/AAAAAAAAABE/i8V2xr8Lq_U/s640/Page%2525207.jpg](https://lh4.googleusercontent.com/-7vw8ajbGRN8/TuGCBKBOG4I/AAAAAAAAABE/i8V2xr8Lq_U/s640/Page%2525207.jpg)
+
+
+Results for GetStructureNamesByPOI shows up in a window inside WIB.
+![https://lh3.googleusercontent.com/-bJhW5zmoHz4/TuGCBmiLYMI/AAAAAAAAABI/FVNdvC2TDGs/s640/Page%2525207.1.jpg](https://lh3.googleusercontent.com/-bJhW5zmoHz4/TuGCBmiLYMI/AAAAAAAAABI/FVNdvC2TDGs/s640/Page%2525207.1.jpg)
+
+
+GetCorrelationMapByPOI is another method served under ABA hub.
+![https://lh5.googleusercontent.com/-89CV8RzlxhA/TuGCCBA7G9I/AAAAAAAAABM/YG7iLOO4j7E/s640/Page%2525208.jpg](https://lh5.googleusercontent.com/-89CV8RzlxhA/TuGCCBA7G9I/AAAAAAAAABM/YG7iLOO4j7E/s640/Page%2525208.jpg)
+
+
+Result for GetCorrelationMapByPOi shows up in a web browser.
+![https://lh6.googleusercontent.com/-Byg_rOtyWZQ/TuGCCkOCUII/AAAAAAAAABQ/S2iJ0_VBheY/s912/Page%2525208.1.jpg](https://lh6.googleusercontent.com/-Byg_rOtyWZQ/TuGCCkOCUII/AAAAAAAAABQ/S2iJ0_VBheY/s912/Page%2525208.1.jpg)
+
+
+Likewise the queries can be made across various hubs such as UCSD, WHS, EMAP, Central inside WIB.

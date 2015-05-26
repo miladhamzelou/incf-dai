@@ -1,0 +1,825 @@
+Mult#summary Sub-tasks related to INCF Atlas Services Enhancements.
+
+  * [Deliverables:1:A](INCFProjectSubTasks_2011_2012#Deliverables:1:A.md)
+  * [Deliverables:1:B](INCFProjectSubTasks_2011_2012#Deliverables:1:B.md)
+  * [Deliverables:1:C](INCFProjectSubTasks_2011_2012#Deliverables:1:C.md)
+  * [Deliverables:1:D](INCFProjectSubTasks_2011_2012#Deliverables:1:D.md)
+  * [Deliverables:1:E](INCFProjectSubTasks_2011_2012#Deliverables:1:E.md)
+  * [Deliverables:1:F](INCFProjectSubTasks_2011_2012#Deliverables:1:F.md)
+  * [Deliverables:1:G](INCFProjectSubTasks_2011_2012#Deliverables:1:G.md)
+
+  * [Deliverables:2:A](INCFProjectSubTasks_2011_2012#Deliverables:2:A.md)
+  * [Deliverables:2:B](INCFProjectSubTasks_2011_2012#Deliverables:2:B.md)
+  * [Deliverables:2:C](INCFProjectSubTasks_2011_2012#Deliverables:2:C.md)
+  * [Deliverables:2:D](INCFProjectSubTasks_2011_2012#Deliverables:2:D.md)
+  * [Deliverables:2:E](INCFProjectSubTasks_2011_2012#Deliverables:2:E.md)
+  * [Deliverables:2:F](INCFProjectSubTasks_2011_2012#Deliverables:2:F.md)
+
+  * [Deliverables:3:A](INCFProjectSubTasks_2011_2012#Deliverables:3:A.md)
+  * [Deliverables:3:B](INCFProjectSubTasks_2011_2012#Deliverables:3:B.md)
+  * [Deliverables:3:C](INCFProjectSubTasks_2011_2012#Deliverables:3:C.md)
+  * [Deliverables:3:D](INCFProjectSubTasks_2011_2012#Deliverables:3:D.md)
+  * [Deliverables:3:E](INCFProjectSubTasks_2011_2012#Deliverables:3:E.md)
+  * [Deliverables:3:F](INCFProjectSubTasks_2011_2012#Deliverables:3:F.md)
+
+  * [Deliverables:4:A](INCFProjectSubTasks_2011_2012#Deliverables:4:A.md)
+  * [Deliverables:4:B](INCFProjectSubTasks_2011_2012#Deliverables:4:B.md)
+  * [Deliverables:4:C](INCFProjectSubTasks_2011_2012#Deliverables:4:C.md)
+<br />
+
+### Deliverables:1:A ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Evaluate registration/coordinate translation methods available from both human neuroinformatics and animal model research, in particular certainty estimates associated with spatial registration or translation.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br />
+Please click the URL below:<br>
+<br />
+<a href='https://docs.google.com/document/d/1O-eaEg4-259_y73AV4T49YW4hPbD6KhzxA_YhN6bcLc/edit?pli=1#'>https://docs.google.com/document/d/1O-eaEg4-259_y73AV4T49YW4hPbD6KhzxA_YhN6bcLc/edit?pli=1#</a>
+<br />
+Alternately, open it as a docx file here: <a href='https://www.sugarsync.com/pf/D387646_7509688_795703'>https://www.sugarsync.com/pf/D387646_7509688_795703</a>
+
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:1:B ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Conduct accuracy assessment of coordinate transformation functions developed earlier</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+These are preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates. The transformation in question is a thin plate spline created by matching the atlas outline features with corresponding image features. The displacement values are shown in the units of the target coordinate system in the transformation.<br>
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<h3>Brainstem to ABA Reference.</h3>
+These transformations are based upon a thin plate spline warping function.  The test dataset was marked up by a non-expert in neuroanatomy and may suffer from incomplete knowledge of the structural anatomy of the mouse brain.  Correspondence points only on the outline of the histological slice were established.  For the most part interior landmarks were ignored.  Adding interior landmark correspondences would certainly improve the fidelity and invertibility. As expected, with the thin plate spline functions, Euclidean displacement (the measure used here) increases away from correspondence points. Additional visualizations are shown under 1C.<br>
+<br />
+<img src='https://lh4.googleusercontent.com/-viAKSQ7hWAM/TxADoyukPNI/AAAAAAAAADU/2P_EvP4vkAY/s800/error.jpg' />
+<br />
+<img src='https://lh5.googleusercontent.com/-v3BT7cOSook/TxADpuluLZI/AAAAAAAAADY/ZJTm5nmUgdw/s800/error-overlay.jpg' /><br />
+<br />
+<img src='https://lh4.googleusercontent.com/-T2zY54BhbJI/TxADqAIT1kI/AAAAAAAAADc/HZIx22XwJZg/s800/error-overlay-100.jpg' />
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:1:C ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Visualize deformation fields to display regions of lower accuracy (e.g. as “heat maps”.)</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+These are also the preliminary error estimates, based on Euclidean distance between coordinates returned after forward and inverse transformations have been applied, and the original coordinates.<br>
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<br />
+<h1>WHS-PAXINOS-WHS</h1>
+These are based upon a piecewise approximation (derivation and statistics described in <a href='https://www.sugarsync.com/pf/D387646_3733681_280059'>https://www.sugarsync.com/pf/D387646_3733681_280059</a>), which manifests itself in stripes and banding, in the sagittal view in particular. In coronal views, the Euclidean displacement is quite small. Since the WHS to Paxinos and Paxinos to WHS transformations have been computed separately, two displacement fields are shown, for both coronal and sagittal views: for the WHS to Paxinos transform (expressed in mm of the target coordinate system), and for the Paxinos to WHS transform (in pixels of WHS)<br>
+<br />
+<img src='https://lh3.googleusercontent.com/-_hdv4O-9D60/T0IO5My4jdI/AAAAAAAAAEU/WilTP18gdIs/s640/WHS-PAXINOS-WHS-Corrected-coronal-0.02mm-discrepency.jpg' />
+<br />
+<img src='https://lh6.googleusercontent.com/-oDwu7wIOQGY/T0IO5Y-a7eI/AAAAAAAAAEY/AzBlpXrS1zs/s912/WHS-PAXINOS-WHS-Corrected-lateral-0.12mm-discrepency.jpg' />
+<br />
+<img src='https://lh4.googleusercontent.com/-VueuYQiUJOU/T0IO59ByejI/AAAAAAAAAEc/mLo3HO1Lpk0/s511/WHS-PAXINOS-WHS-coronal-512-pixels-discrepency.jpg' />
+<br />
+<img src='https://lh3.googleusercontent.com/-whBJgcbaFqY/T0IO6MssLuI/AAAAAAAAAEg/xzjhgOsjeC4/s912/WHS-PAXINOS-WHS-sagittal-256-pixels-discrepency.jpg' />
+<br />
+
+<br />
+<h1>WHS-AGEA-WHS</h1>
+The transformation is based upon tables supplied to us by Lydia Ng from the ABA team; they are accomplished through a straight lookup mechanism.  The error in roundtrip transformation is due entirely to rounding error and at its maximum is approximately the diagonal length of a voxel (sqrt(3)/3).<br>
+<br />
+<img src='https://lh6.googleusercontent.com/-c915N363Yvc/T0IO7nAZq8I/AAAAAAAAAEk/Fj4bUFB0NKU/s512/WHS-AGEA-WHS-whs-agea-whs.coronal.0584.jpg' />
+<br />
+<img src='https://lh6.googleusercontent.com/-5mB6T9VyBK4/T0IO9MOrmSI/AAAAAAAAAEo/n85r1uAn_wg/s912/WHS-AGEA-WHS-whs-agea-whs.sagittal.0292.jpg' />
+<br />
+
+<br />
+<h1>ABAvoxel-ABAreference, thin plate spine</h1>
+This is a thin plate spline estimate, performed in a similar manner to the Brainstem to ABA Reference experiment described in 1B.Sagittal slices are generally more problematic, but percentage displacement is in single digits.<br>
+<br />
+<img src='https://lh6.googleusercontent.com/-bNp4-48uYW0/T31BEWlXyyI/AAAAAAAAAE8/mLOGM97tanM/s720/crop-jibber-1-all.jpg' />
+<br />
+<img src='https://lh5.googleusercontent.com/-U9s0wooPs_o/T31BFNlnRkI/AAAAAAAAAFI/dW3__nNWIMw/s720/crop-jibber-1-heatmap.jpg' />
+<br />
+<img src='https://lh4.googleusercontent.com/-YNlLc8FC6T0/T31BFqCksAI/AAAAAAAAAFE/gQhD0LREtPU/s720/crop-jibber-2-all.jpg' />
+<br />
+<img src='https://lh6.googleusercontent.com/-W5vn-HIbwlw/T31BGSwvUcI/AAAAAAAAAFc/eMAgz9oLdDk/s720/crop-jibber-2-heatmap.jpg' />
+<br />
+<img src='https://lh6.googleusercontent.com/-ZvWwGKW1zrE/T31BH_bRMSI/AAAAAAAAAFU/gYyFWa6Fa0I/s720/crop-jibber-3-all.jpg' />
+<br />
+<img src='https://lh5.googleusercontent.com/-yHE2z2VQsbw/T31BIjMVDcI/AAAAAAAAAFg/X-aOhtW1bVc/s720/crop-jibber-3-heatmap.jpg' />
+<br />
+
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:1:D ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Develop specification and output schemas for coordinate transformation services that include accuracy estimates.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br />
+The schema includes Euclidean displacement estimates for a sequence of forward and inverse transforms, computed from spline functions. This estimate is attached to transformed point locations. Additional accuracy measures as implemented in ITK/ANTs are being experimented with; a  version of ITK/ANTs has been received from Gang in mid-July, and successfully compiled - however version dependencies still need to be resolved to have sample scripts run to completion (as of 8/8). As discussed during the Edinburgh meeting, the plan is to include additional accuracy estimated in the registration workflow process (initially), and then into service output schema, if such measures are found to be useful. The focus is not on emphasizing a single measure but on providing multiple measures along with the ability to visualize deformation fields.<br>
+<br />
+Here is the schema for coordinate transformation services:<br>
+<br />
+<a href='http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/TransformationResponse.xsd'>http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/TransformationResponse.xsd</a>
+<br />
+
+and<br>
+<br />
+
+<a href='http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/common/CoordinateTransformationCommon.xsd'>http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/common/CoordinateTransformationCommon.xsd</a>
+
+<br />
+The Displacement field (a child of Point's metaDataProperty) is retained for simplicity, though  we are considering deprecating it in favor of a more generic ISO treatment of positional accuracy, as in <a href='http://schemas.opengis.net/gml/3.2.1/coordinateOperations.xsd'>http://schemas.opengis.net/gml/3.2.1/coordinateOperations.xsd</a>
+<br />
+The updated WaxML base schema is:<br>
+<br />
+<a href='http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/common/WaxML_Base.xsd'>http://code.google.com/p/incf-dai/source/browse/waxml/trunk/AtlasXmlBeans2/src/main/xsd/WaxMlSchema/common/WaxML_Base.xsd</a>
+<br />
+</td>
+</tr>
+
+</table>
+<br />
+### Deliverables:1:E ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Implement atlas services that return transformation accuracy information.</th>
+</tr>
+
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br />
+The implemented services use the initial schema as developed in task 1D, and return displacement estimates, for a single point or a collection of points (multi-point)<br>
+<br />
+</td>
+</tr>
+
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+Single Point:<br>
+<br />
+<a href='http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;x=3;y=5.3;z=4.78'>http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=TransformPOI&amp;DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;x=3;y=5.3;z=4.78</a>
+<br />
+Multi-Point:<br>
+<br />
+<a href='http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;points=(3,5.3,4.78)(3,5.3,4.78'>http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=TransformPOI&amp;DataInputs=transformationCode=Mouse_Paxinos_1.0_To_Mouse_WHS_0.9_v1.0;points=(3,5.3,4.78)(3,5.3,4.78</a>)<br>
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:1:F ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Develop an error propagation model and include error assessment in GetTransformationChain responses.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br /> scheduled in Year 2<br>
+<br />
+<br />
+<br />
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:1:G ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Generate a report and publications on the inclusion of accuracy assessment and accuracy propagation in brain atlas web services.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br />
+<br /> scheduled in Year 2<br>
+<br />
+<br />
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+</table>
+<br />
+
+
+<br />
+
+### Deliverables:2:A ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Develop a specification of services and exchange formats to be used in the workflow, and approbate them with image datasets of varying complexity (contributed by the Atlasing TF members).</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br />
+The initial manifest and workflow process files have been developed, and used in the spatial registration process. We are working with Christian Haselgrove on aligning these formats with the new provenance model.  <br />
+</td>
+</tr>
+
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+Here is a sample of Workflow Example File(please download and view the format):<br>
+<a href='https://www.sugarsync.com/pf/D387646_3733681_28450'>https://www.sugarsync.com/pf/D387646_3733681_28450</a>
+
+Here is a sample of Manifest Example File(please download and view the format):<br>
+<a href='https://www.sugarsync.com/pf/D387646_3733681_28475'>https://www.sugarsync.com/pf/D387646_3733681_28475</a>
+</td>
+</tr>
+
+</table>
+<br />
+### Deliverables:2:B ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Develop atlas registration services, by wrapping ITK/ANTs scripts as WPS-compliant services, register them in INCF-DAI.</th>
+</tr>
+
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+A working package received from the ITK/ANTs team - however version dependencies still need to be resolved to have sample scripts run to completion (as of 8/8). The next step is to test it with data from Rob Williams. At the same time, several working IT/ANTs scripts, which are part of the workflow, have been wrapped as web services.<br>
+<br>
+Here is the script definition for ITK used for defining the Registration Workflow:<br>
+<a href='https://github.com/luisibanez/ImageReconstruction'>https://github.com/luisibanez/ImageReconstruction</a>
+
+<a href='https://github.com/luisibanez/ImageRegistration'>https://github.com/luisibanez/ImageRegistration</a>
+
+<a href='https://github.com/picslHISTO/HistoRecon/blob/master/scripts/entire_pipeline.sh'>https://github.com/picslHISTO/HistoRecon/blob/master/scripts/entire_pipeline.sh</a>
+<br />
+Here is the diagram for ITK workflow:<br>
+<br />
+<a href='https://docs.google.com/presentation/d/1Sf_edu7DeKAbUhOLtKXpwLXNvLMrnXrTjJ9lvaSvPVU/edit'>https://docs.google.com/presentation/d/1Sf_edu7DeKAbUhOLtKXpwLXNvLMrnXrTjJ9lvaSvPVU/edit</a>
+</td>
+</tr>
+
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<h2>ITK/ANTs registration scripts implemented as WPS services</h2>
+
+<h3>3D Reconstruction Service:</h3>
+<a href='http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec'>http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=RoughVolumetricRegistrationScript&amp;DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec</a>
+
+<h3>Alignment to WHS:</h3>
+<a href='http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec'>http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=RoughVolumetricRegistrationScript&amp;DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec</a>
+
+<h3>Fine Registration:</h3>
+<a href='http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=WarpReferenceAfterRoughVolumetricRegistration&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec'>http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=WarpReferenceAfterRoughVolumetricRegistration&amp;DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec</a>
+
+<h3>UpdateITK:</h3>
+<a href='http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=RoughVolumetricRegistrationScript&DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec'>http://incf-dev.crbs.ucsd.edu/registration/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=RoughVolumetricRegistrationScript&amp;DataInputs=filePath=http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec</a>
+
+<h2>Atlas service requests updated as a result of the workflow</h2>
+
+<h3>ListSRSs:</h3>
+<a href='http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs'>http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</a>
+
+<h3>DescribeSRS:</h3>
+<a href='http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Mouse_ABAvoxel_1.0'>http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=Mouse_ABAvoxel_1.0</a>
+
+<h3>ListTransformations:</h3>
+<a href='http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListTransformations'>http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListTransformations</a>
+
+<h3>TransformPOI:</h3>
+<a href='http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=TransformPOI&DataInputs=transformationCode=Mouse_Yuko_1.0_To_Mouse_WHS_0.9_v1.0;x=200;y=320;z=211'>http://incf-dev.crbs.ucsd.edu/ucsd/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=TransformPOI&amp;DataInputs=transformationCode=Mouse_Yuko_1.0_To_Mouse_WHS_0.9_v1.0;x=200;y=320;z=211</a>
+
+<h3>The Warped Dataset:</h3>
+
+<a href='http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/spl/jjtest/pnz/H7ctb-2010-03-29-17.19.06.000.pnz&plugin=INCF&use=ccdb'>http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/spl/jjtest/pnz/H7ctb-2010-03-29-17.19.06.000.pnz&amp;plugin=INCF&amp;use=ccdb</a>
+
+</td>
+</tr>
+</table>
+<br />
+
+### Deliverables:2:C ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Test the services on the contributed image datasets.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br />
+The error/discrepency/repeatability in the "round trip" between forward (atlas -> image) and reverse (image -> atlas) warping is very small for the test dataset, on the order of about 3.7 voxels for an image stack of<br>
+50 images sized at 2257 x 1427 pixels.  Much of this error is probably due to nearest-neighbor rounding.<br>
+<br />
+Run time for the above test was approximately about an hour on a 256 GB,<br>
+32 processor Quad-Core AMD opterating system.<br>
+<br />
+The processing stages are as follows <br />
+
+<ol><li>Format conversion to NIFTI1.<br />
+</li><li>Padding images to a uniform size with appoximately 50 percent maxium "slop."<br />
+</li><li>Stacking and mutual alignment.<br />
+</li><li>Sampling "truth" volume to match image stack Z spacing and image count.<br />
+</li><li>Affine alignment.<br />
+</li><li>Warping.</li></ol>
+
+<br />
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:2:D ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Use ITK to generate and compare deformation fields resulting from WHS registration using different transformations and parameters.</th>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<strong>First set of images:</strong>
+<br />
+The first set of images represents heat maps (inverse consistency computations) for selected slices where transformation was derived using mutual information alignment. The operation for this alignment transformation was as follows:<br>
+<br />
+<ol><li>Format conversion to NIFTI1.<br>
+</li><li>Padding images to a uniform size with approximately 50 percent maxium "slop."<br>
+</li><li>Stacking and mutual alignment.<br>
+</li><li>Sampling "truth" volume to match image stack Z spacing and image count.<br>
+</li><li>Affine alignment using Mutual Information.<br>
+</li><li>Warping using Mutual Information.<br>
+<br />
+ANTS MI parameters:<br>
+<br />
+ANTS 2 -m MI[histo_slice.nii.gz","truth_slice.nii.gz",1,32] ...<br>
+<br />
+ANTS 3 -m MI[histo_volume.nii.gz","truth_volume.nii.gz",1,32] ...<br>
+<br />
+Explanation of input parameters can be found at: <a href='http://www.picsl.upenn.edu/ANTS/documentation.php'>http://www.picsl.upenn.edu/ANTS/documentation.php</a>
+<br />
+The alignment procedure took 1 hour to compute, on a 32-processor quad core Opteron with 256Gb of RAM.<br>
+<br />
+<img src='https://lh4.googleusercontent.com/-qoJR-WdLhPk/UJv1R0LVT4I/AAAAAAAAAJc/DOccOBd2SKI/s800/large-out-006.jpg' />
+<br />
+chttps://lh4.googleusercontent.com/-K_DK944f_m4/UJv1Fsa6mVI/AAAAAAAAAIo/8Gci0tGKAJk/s800/large-out-012.jpg<br>
+<br />
+<img src='https://lh4.googleusercontent.com/-RPmrkKN3d-g/UJv1Ip2mHII/AAAAAAAAAJU/FtzSj_Eo7Dg/s800/large-out-018.jpg' />
+<br />
+<img src='https://lh5.googleusercontent.com/-6q94BA2GIa4/UJv1HudznKI/AAAAAAAAAJM/Dpd66vjQRO0/s800/large-out-024.jpg' />
+<br />
+<img src='https://lh3.googleusercontent.com/-4K2muTjNqVc/UJv1F82AWWI/AAAAAAAAAIw/DlCfyIwG_bc/s800/large-out-overlay-030.jpg' />
+<br />
+<img src='https://lh6.googleusercontent.com/-wrpAfNXjSa0/UJv1Gplk9MI/AAAAAAAAAJA/f5F53MCcElc/s800/large-out-030.jpg' />
+<br />
+<img src='https://lh5.googleusercontent.com/-ohv_g9f4_-0/UJv1FNERvPI/AAAAAAAAAIg/SeFqZ3ofEO4/s800/large-out-036.jpg' />
+<br />
+<img src='https://lh6.googleusercontent.com/-evaUNp8DNMY/UJv1Ebb9u7I/AAAAAAAAAIU/9z5EaS7T6k0/s800/large-out-overlay-042.jpg' />
+<br />
+<img src='https://lh3.googleusercontent.com/-EPxwrE4RAfE/UJv1GaKKB1I/AAAAAAAAAI4/YAYA09D0NgQ/s800/large-out-042.jpg' />
+<br />
+<img src='https://lh3.googleusercontent.com/-cL_ezZzULvY/UJv1HPb7dCI/AAAAAAAAAJE/oADy_SHXjWs/s800/large-out-048.jpg' />
+<br />
+<strong>Second set of Images:</strong>
+<br />
+The second set of images represents heat maps (inverse consistency computations) for selected slices where transformation was derived using cross-correlation alignment. The operation for this alignment transformation was  as follows:<br>
+<br />
+</li><li>Format conversion to NIFTI1.<br>
+</li><li>Padding images to a uniform size with approximately 50 percent maxium "slop."<br>
+</li><li>Stacking and Cross Correlation alignment.<br>
+</li><li>Sampling "truth" volume to match image stack Z spacing and image count.<br>
+</li><li>Affine alignment using Cross Correlation.<br>
+</li><li>Warping using Cross Correlation.<br>
+<br />
+ANTS CC parameters:<br>
+<br />
+ANTS 2 -m PR[histo_slice.nii.gz","truth_slice.nii.gz",1,2] ...<br>
+<br />
+ANTS 3 -m PR[histo_volume.nii.gz","truth_volume.nii.gz",1,2] ...<br>
+<br />
+The alignment took 6.5 hours to compute, on a 32-processor quad core Opteron with 256Gb of RAM.<br>
+<br />
+<img src='https://lh3.googleusercontent.com/-p7iBChhhpi0/UJ2HRDL5P_I/AAAAAAAAAK0/RNHLGMu0DPc/s800/cc-006.jpg' />
+<br />
+<img src='https://lh6.googleusercontent.com/-gSjoV-kG2l0/UJ2HOjG-dDI/AAAAAAAAAKY/XoZrFAAn99s/s800/cc-012.jpg' />
+<br />
+<img src='https://lh6.googleusercontent.com/-imG414PaFk0/UJ2HQ--1lqI/AAAAAAAAAKo/JcB1OPdpCgE/s800/cc-018.jpg' />
+<br />
+<img src='https://lh4.googleusercontent.com/-fk0IBGHTBFo/UJ2HNjnM2WI/AAAAAAAAAKM/gxmBvlWu7J8/s800/cc-024.jpg' />
+<br />
+<img src='https://lh6.googleusercontent.com/-pk6M5j5kLvk/UJ2HNCncnQI/AAAAAAAAAJ8/_UkNonJCnW0/s800/cc-030.jpg' />
+<br />
+<img src='https://lh3.googleusercontent.com/-_PiMC78riWU/UJ2HS2nq3rI/AAAAAAAAAK8/AFB2Fx8NXLU/s800/cc-overlay-030.jpg' />
+<br />
+<img src='https://lh6.googleusercontent.com/-DsfThluWWts/UJ2HPJcI6_I/AAAAAAAAAKk/Wpor9K2EM_c/s800/cc-036.jpg' />
+<br />
+<img src='https://lh3.googleusercontent.com/-c7BW_VnpdoQ/UJ2HNUME7-I/AAAAAAAAAKE/ArWofB0rR4A/s800/cc-042.jpg' />
+<br />
+<img src='https://lh3.googleusercontent.com/-c7BW_VnpdoQ/UJ2HNUME7-I/AAAAAAAAAKE/ArWofB0rR4A/s800/cc-042.jpg' />
+<br />
+<img src='https://lh3.googleusercontent.com/-lm2NHS-q-4k/UJ2HS4UewgI/AAAAAAAAALA/bo2NQQZ_ILA/s800/cc-overlay-042.jpg' />
+<br />
+<img src='https://lh5.googleusercontent.com/-xC16I5RZJZI/UJ2HOFzrlnI/AAAAAAAAAKU/-snCW8bAzcI/s800/cc-048.jpg' />
+<br />
+It appears that the cross-correlation alignment results in better visual quality of alignment, while inverse consistency in this case is worse than with the mutual information alignment.<br>
+<br />
+</td>
+</tr>
+</table>
+<br />
+<h3>Deliverables:2:E</h3></li></ol>
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Organize the services into an INCF registration hub that takes advantage of iRODS storage and is available online for registering images to WHS.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br /> scheduled in Year 2<br>
+<br />
+The work has started, with installation of registration portal components on incf-dev, adding a registration page to atlas portal, and configuring the portal and the registration workflow with INCF-managed iRODS and LDAP (with Ruggero).<br>
+<br />
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<br />
+Spatial Registration:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/atlasportal/catalog/dataregistration/dataRegistration.page'>click here</a>
+<br />
+A new image registration tool is developed (doesn’t require Web Start): <a href='http://tirebiter.ucsd.edu/JAWS/JAWS.html'>JAWS</a>
+<br />
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:2:F ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Develop an online manual and tutorials for using the online atlas registration hub.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br /> scheduled in Year 2<br>
+<br /> The initial spatial registration tutorial was developed to help the Oslo team register their mouse slices; it is now upgraded to demonstrate spatial registration usage as invoked from the atlas portal;  it runs on INCF servers in Stockholm and uses INCF iRODS: <a href='http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow'>http://code.google.com/p/incf-dai/wiki/JibberJetsamWorkflow</a> .<br>
+<br>
+<br />
+We are experimenting with replacing Jibber (spatial registration client) with another client that does not require Java WebStart. A tutorial for using this new client (named JAWS) is being developed ( <a href='http://tirebiter.ucsd.edu/JAWS/JAWSHelp.html'>here</a>); the spatial registration tutorial will be updated once the system is completely tested with the new client <br />
+</td>
+</tr>
+</table>
+<br />
+
+
+
+
+### Deliverables:3:A ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Describe available coordinate systems for the rat brain and register them to the spatial reference system registry.</th>
+</tr>
+<tr>
+<th align='left'>Details</th>
+<td width='80%'>
+Three coordinate systems for the rat brain are described in the “ratoslo” hub:<br>
+<br />
+ListSRS:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs'>http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</a>
+<br />
+DescribeSRS:<br>
+<br />
+Rat_Paxinos_1.0:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Paxinos_1.0'>http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=Rat_Paxinos_1.0</a>
+<br />
+Rat_WHS_1.0:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_WHS_1.0'>http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=Rat_WHS_1.0</a>
+<br />
+Rat_WHS_0.9:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_WHS_0.9'>http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=Rat_WHS_0.9</a>
+
+In addition to the rat data, we are also working on spatial registration of mouse atlas data from Oslo. Both collections of rat slices and mouse slices are loaded and available for spatial registration:<br>
+<br>
+A gallery of mouse images uploaded and available for registration is here: <a href='http://incf-dev.crbs.ucsd.edu/WebImageBrowser/cgi-bin/align.pl?uri=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_84380/OsloData/manifest.xml&email=amemon@ncmir.ucsd.edu&use=ccdb'>http://incf-dev.crbs.ucsd.edu/WebImageBrowser/cgi-bin/align.pl?uri=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_84380/OsloData/manifest.xml&amp;email=amemon@ncmir.ucsd.edu&amp;use=ccdb</a>
+
+A gallery of rat images uploaded and available for registration is here: <a href='http://incf-dev.crbs.ucsd.edu/WebImageBrowser/cgi-bin/align.pl?uri=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/sagittal/manifest.xml&email=amemon@ncmir.ucsd.edu&use=ccdb'>http://incf-dev.crbs.ucsd.edu/WebImageBrowser/cgi-bin/align.pl?uri=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/sagittal/manifest.xml&amp;email=amemon@ncmir.ucsd.edu&amp;use=ccdb</a>
+
+<br />
+According to Eszter and Jan, a student will be assigned to do spatial registration in August<br>
+</td>
+</tr>
+
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<a href='http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/49-388_12_s362_20x.pnz&use=ccdb'>http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&amp;pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/49-388_12_s362_20x.pnz&amp;use=ccdb</a>
+
+<a href='http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/26-388_12_s178_20x.pnz'>http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&amp;pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/26-388_12_s178_20x.pnz</a>
+
+<a href='http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/26-388_12_s178_20x.pnz'>http://ccdb-dev-portal.crbs.ucsd.edu/WebImageBrowser/cgi-bin/start.pl?plugin=INCF&amp;pnzID=irods:/telescience/home/CCDB_DATA_USER.portal/CCDB_DATA_USER/acquisition/project_1/microscopy_83337/OsloData/pnz/26-388_12_s178_20x.pnz</a>
+
+</td>
+</tr>
+
+</table>
+<br />
+### Deliverables:3:B ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Develop an atlas hub for rat brain. (and assist other INCF partners in developing their hubs).</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br />
+The initial atlas hubs have been setup for:<br>
+<br />
+<h3>Wistar Rat</h3>
+GetCapabilities:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&request=GetCapabilities'>http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&amp;request=GetCapabilities</a>
+
+DescribeProcess:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL'>http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</a>
+
+Get2DImagesByPOI:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=Get2DImagesByPOI&DataInputs=srsName=Rat_Wistar_1.0;x=100;y=200;z=324;filter=maptype'>http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=Get2DImagesByPOI&amp;DataInputs=srsName=Rat_Wistar_1.0;x=100;y=200;z=324;filter=maptype</a>
+
+ListSRSs:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs'>http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</a>
+
+DescribeSRS:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Wistar_1.0'>http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=Rat_Wistar_1.0</a>
+
+SetAnnotation:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=SetAnnotation&DataInputs=filePath=http://132.239.131.188/incf-common/AnnotationSchema.xml;filter=userID=incfadmin:password=1ncfA1la5'>http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=SetAnnotation&amp;DataInputs=filePath=http://132.239.131.188/incf-common/AnnotationSchema.xml;filter=userID=incfadmin:password=1ncfA1la5</a>
+
+GetAnnotationsByPOI:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=GetAnnotationsByPOI&DataInputs=srsName=image;x=402;y=826;z=597;tolerance=0;filter=filePath:http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec'>http://incf-dev.crbs.ucsd.edu/wistar-rat/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=GetAnnotationsByPOI&amp;DataInputs=srsName=image;x=402;y=826;z=597;tolerance=0;filter=filePath:http://ccdb-portal.crbs.ucsd.edu:8081/ZoomifyDataServer/data/MP_1001_rec</a>
+
+<br />
+<h3>Rat Oslo</h3>
+GetCapabilities:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&request=GetCapabilities'>http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&amp;request=GetCapabilities</a>
+
+DescribeProcess:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=DescribeProcess&Identifier=ALL'>http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&amp;version=1.0.0&amp;request=DescribeProcess&amp;Identifier=ALL</a>
+
+ListSRSs:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=ListSRSs'>http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=ListSRSs</a>
+
+DescribeSRS:<br>
+<a href='http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&version=1.0.0&request=Execute&Identifier=DescribeSRS&DataInputs=srsName=Rat_Paxinos_1.0'>http://incf-dev.crbs.ucsd.edu/ratoslo/atlas?service=WPS&amp;version=1.0.0&amp;request=Execute&amp;Identifier=DescribeSRS&amp;DataInputs=srsName=Rat_Paxinos_1.0</a>
+
+<br />
+<h3>Edinburgh mouse atlas project</h3>
+<a href='http://incf-dev.crbs.ucsd.edu/emap/atlas?service=WPS&version=1.0.0&request=GetCapabilities'>http://incf-dev.crbs.ucsd.edu/emap/atlas?service=WPS&amp;version=1.0.0&amp;request=GetCapabilities</a>
+<br />
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:3:C ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Identify common anatomic features across mouse and rat brain atlases that can be used to map between them. Develop an algorithm and implement an engine for a) expressing a given ROI or POI as a set of spatial placement rules, and b) pruning the set of rules into a parsimonious location description.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br /> scheduled in Year 2<br>
+<br />
+<br />
+<br />
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:3:D ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Create rule-based location descriptions for anatomic features identified in both mouse and rat brain atlases.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br /> scheduled in Year 2<br>
+<br />
+<br />
+<br />
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:3:E ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Develop an algorithm and implement an engine for resolving a set of spatial placement rules to local coordinates of an ROI in a target brain.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br /> scheduled in Year 2<br>
+<br />
+<br />
+<br />
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:3:F ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Incorporate transformations between location descriptions by coordinates, and by spatial placement rules, into WaxML and atlas services.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br /> scheduled in Year 2<br>
+<br />
+<br />
+<br />
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+</table>
+<br />
+
+
+### Deliverables:4:A ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Develop a data registration user interface supporting data upload to iRODS with automatic registration of the uploaded data to the Data Discovery Portal.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br /> scheduled in Year 2<br>
+<br /> A spatial registration page is added to the atlas portal on incf-dev. Once the portal is configured with INCF LDAP and the image upload tool and the new user interface (JAWS) are configured with INCF iRODS, we'll be able to test the new registration system<br />
+<br />The portal registration page is <a href='http://incf-dev.crbs.ucsd.edu/atlasportal/catalog/dataregistration/dataRegistration.page'>here</a>
+
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:4:B ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Develop procedures for synchronizing content of iRODS in the cloud appliance with the metadata catalog underlying the Data Discovery Portal.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br /> scheduled in Year 2<br>
+<br />
+<br />
+<br />
+</td>
+</tr>
+<tr>
+<th align='left'>Examples</th>
+<td width='80%'>
+<br />
+<br />
+<br />
+<br />
+</td>
+</tr>
+</table>
+<br />
+### Deliverables:4:C ###
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<tr>
+<th align='left'>Develop better integration between the Portal’s search facility, and the WBC and WIB clients, so that the discovered image resources can be visualized in WBC or WIB depending on their atlas registration properties. Integrate selected web-based mouse brain atlas viewers developed by members of the INCF Atlasing program (in particular, the Scalable Brain Atlas and the EMAP Atlas Viewer) into the portal.</th>
+</tr>
+<tr>
+<th align='left'>Notes</th>
+<td width='80%'>
+<br /> scheduled in Year 2<br>
+<br /> Atlas portals (based on spatial location in the brain, and based on geographic location of respective labs) are updated to the new version of the portal framework, and customized for brain data categories.<br>
+<br />
+The links are:<br>
+<br />
+AtlasPortal: <a href='http://incf-dev.crbs.ucsd.edu/atlasportal/'>http://incf-dev.crbs.ucsd.edu/atlasportal/</a>
+<br />
+AtlasGeoportal: <a href='http://incf-dev.crbs.ucsd.edu/atlasgeoportal/'>http://incf-dev.crbs.ucsd.edu/atlasgeoportal/</a>
+<br />
+Many brain-atlas related resources are registered to both portals. Currently, 66 resources are registered.<br>
+<br />
+Service monitoring system has been upgraded:<br>
+<br />
+INCF:<br>
+<a href='https://ops.crbs.ucsd.edu/g519da168/document/_/!index.html'>https://ops.crbs.ucsd.edu/g519da168/document/_/!index.html</a>
+
+INCF-DEV:<br>
+<a href='https://ops.crbs.ucsd.edu/g519042c3/document/_/!index.html'>https://ops.crbs.ucsd.edu/g519042c3/document/_/!index.html</a>
+
+INCF-DEV-LOCAL:<br>
+<a href='https://ops.crbs.ucsd.edu/g519c6565/document/_/!index.html'>https://ops.crbs.ucsd.edu/g519c6565/document/_/!index.html</a>
+
+Other clients:<br>
+<a href='https://ops.crbs.ucsd.edu/g51c1a206/document/_/!index.html'>https://ops.crbs.ucsd.edu/g51c1a206/document/_/!index.html</a>
+<br />
+</td>
+</tr>
+</table>
+<br />

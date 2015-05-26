@@ -1,0 +1,39 @@
+# Introduction #
+
+waxml includes ogc schemas. Schemas don't easily compile, but are available precompiled.
+Use pre-compiled schemas.
+
+# Needs: #
+make this work in eclipse
+m2 plugins
+**extension set to true** tried jar in
+ schema files
+ binding files
+ args
+
+# Details #
+
+Precompiled OGC jars:
+http://download.java.net/maven/2/org/jvnet/ogc/
+
+Command line to get this to work (from dave v's machine)
+
+```
+"c:\Program Files\Java\jdk1.6.0_17\bin\xjc.exe" WaxMlSchema\WaxML_Base.xsd BuildJars\gml-v_3_2_1-schema-1.0.0.jar -extension
+```
+
+Basically:
+xjc schemafile jar(s) -extension
+
+> technique learned from: http://weblogs.java.net/blog/kohsuke/archive/2006/09/separate_compil.html
+
+Windows issues Notes:
+http://www.innovationontherun.com/common-issues-and-workarounds-while-building-ear-files-in-eclipse/
+To make 32 bit clipse work in 64 bit, insert -vm into eclipse.ini
+```
+--launcher.XXMaxPermSize
+256m
+-vm
+C:\Program Files (x86)\Java\jdk1.6.0_18\bin\javaw.exe
+-vmargs
+```

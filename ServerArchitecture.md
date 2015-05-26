@@ -1,0 +1,76 @@
+#Description of the planned server(s) and development architecture.
+
+# Overview #
+
+INCF atlas services will consist of
+  * Central services (one)
+  * Hub services (multiple)
+
+For example,
+  * Central
+  * X Hub (e.g. ABA Hub)
+  * Y Hub
+  * Z Hub
+
+[![](http://docs.google.com/drawings/pub?id=12qhCBM4JtWspMJGRVQ7ditzBN7HCMq7W3GMp9xyrJ90&w=829&h=602&nonsense=something_that_ends_with.png)](http://docs.google.com/drawings/pub?id=12qhCBM4JtWspMJGRVQ7ditzBN7HCMq7W3GMp9xyrJ90&w=829&h=602)
+
+## Applicable technologies ##
+  * Primary language: Java
+  * Build: Maven
+  * Server: Tomcat (or similar application server)
+  * Application architecture: RESTlets under controlling servlet
+
+# Development Projects #
+
+<table cellpadding='5' cellspacing='0' border='1'>
+<blockquote><tr>
+<blockquote><th>Entity</th>
+<th>Project Name<br />(SVN)</th>
+<th>Maven<br />Packaging</th>
+<th>Use</th>
+<th>Dedicated<br />Database</th>
+</blockquote></tr>
+<tr>
+<blockquote><td>Central</td>
+<td>atlas-central</td>
+<td>war file</td>
+<td>INCF central server</td>
+<td>Yes</td>
+</blockquote></tr>
+<tr>
+<blockquote><td>ABA Hub</td>
+<td>atlas-aba</td>
+<td>war file</td>
+<td>INCF ABA hub server</td>
+<td>Yes</td>
+</blockquote></tr>
+<tr>
+<blockquote><td>Xxx Hub</td>
+<td>atlas-xxx</td>
+<td>war file</td>
+<td>INCF Xxx hub server</td>
+<td>Yes</td>
+</blockquote></tr>
+<tr>
+<blockquote><td>... Hub</td>
+<td>atlas-...</td>
+<td>war file</td>
+<td>INCF ... hub server</td>
+<td>Yes</td>
+</blockquote></tr>
+<tr>
+<blockquote><td>Common</td>
+<td>atlas-common</td>
+<td>jar file</td>
+<td>Code and resources common <br />to Central and one or more Hubs.<br />This will be dependency or library <br />in other projects.</td>
+<td>No</td>
+</blockquote></tr>
+</table></blockquote>
+
+The Central and Hubs would be deployed as servlets on one or more Tomcat servers. This will support early deployment of a Central and one or more Hubs on a single server, but also later deployment on separate Tomcat servers.
+
+This architecture also supports centralized development of the Central and one or more testbed (pilot, demonstration) Hub projects. Downstream, Hub projects could be spun off to other development teams or entirely new Hub project could be developed independently subject to the INCF Atlas specifications as demonstrated in testbed Hub projects.
+
+# Databases #
+
+Since Central and all Hubs will require databases, these initially may be hosted on a single database server, but later decentralized as desired.

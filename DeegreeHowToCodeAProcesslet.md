@@ -1,0 +1,43 @@
+# HowTo: Code a Degree Processlet #
+
+## Processlet ##
+  * Create a new Java class in the org.incf.`<hub`>.atlas.process package
+  * Make the name of the class exactly the name of process identifier you are implementing, for example, Get2DImagesByPOI.java
+  * Implement the org.deegree.services.wps.Processlet interface
+  * Establish logging
+  * Implement the three methods specified in the interface
+```
+
+@Override
+public void process(!ProcessletInputs in, !ProcessletOutputs out, !ProcessletExecutionInfo info) {
+}
+
+@Override
+public void init() {
+}
+
+@Override
+public void destroy()
+}
+```
+## Process Method ##
+Follow this suggested sequence
+  * Get the values of data inputs from the ProcessInputs parameter
+  * Validate data input values
+  * Do the essential work of the process using data inputs to produce output
+    * Instantiate any objects and invoke any methods to perform the process
+  * Create the XMLBeans response object from the WaxML schema generated classes
+    * This class will be a subclass of org.apache.xmlbeans.XmlObject and org.apache.xmlbeans.XmlTokenSource
+  * Stream the response object using a org.deegree.commons.xml.XMLAdapter.writeElement method
+
+## Init and Destroy Methods ##
+Use the init and destroy methods to initialize and shutdown any resources, such as database connections. init() is called once, when the process is deployed and destroy() is called once when the process is shut down.
+
+## Exception Handling ##
+If the process cannot be executed or a valid response cannot be constructed (remember a valid response can be a negative response), the processlet must throw a ProcessletException.
+  * Log the condition as an error or warning
+  * Instantiate a org.deegree.services.controller.ows.OWSException passing it appropriate arguments
+    * See the Java API docs [javadocs](http://download.deegree.org/deegree3/nightly/services/javadoc/) for org.deegree.services.controller.ows.OWSException.
+    * See Section 10.3.3 and table 62 in the [OGC WPS Interface Standard](http://portal.opengeospatial.org/files/?artifact_id=24151)
+  * Instantiate and throw an org.deegree.services.wps.ProcessletException passing it the OWSException object.
+    * See the Java API docs [javadocs](http://download.deegree.org/deegree3/nightly/services/javadoc/) for  org.deegree.services.wps.ProcessletException.

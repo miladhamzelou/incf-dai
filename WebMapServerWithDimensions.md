@@ -1,0 +1,101 @@
+# Purpose: #
+
+Add your content here.
+
+
+# Requirements #
+
+  * Treat Slices as dimensions
+  * Return Imagery
+  * Return “Features of Interest”
+  * small. no subsets required
+  * fixed width and hight (p. 30)
+Optional:
+  * Treat axes/orientations as dimensions
+Out of Scope:
+  * Coordinate transformation of imagery?
+    * Can report supported CRS for a layer
+Supported Features:
+  * Min/Max scale
+  * Report supported CRS
+
+Questions:
+  * Opaque layers, or transparent
+  * transparent background by default?
+  * keywords at the service or the layer level?
+  * scale?
+== Implementation Discussion
+
+#### Dimensions ####
+The slices should be represented as dimensions.
+Dimensions are discussed in OGC 06-042, section Annex C, (page 51).
+```
+<Dimension 
+  name="dimension_name" 
+  units=unit_name 
+  unitSymbol="symbol"
+  default="default_value" 
+  multipleValues="0|1" nearestValue="0|1"
+  current="0|1">extent</Dimension>
+```
+
+#### Constraints ####
+
+  * Functionality:
+    * The server shall support WMS version 1.3 with dimensions as specified below
+    * The server shall support GetFeatureInfo (Section 7.4, p. 38)
+      * This should be a proxy to GetFeatruesAtPOI
+  * Capabilities:
+    * Style: No default style
+  * Layer information:
+    * Dimension shall be named: “default\_axis”
+    * This unit shall be from UCOM,
+      * f dimensionless or unspecified, the units attribute shall be specified empty (units="")
+    * The unitSymbol shall be eg “nm” “mm”
+      * If dimensionless or unspecified, the unitSymbol attribute shall be not specified
+
+  * A default value shall be specified
+  * Extent
+    * Extent shall have a name attribute of “default\_axis”
+    * default attribute shall be specified
+    * The extent range separated by a “/” e.g. -100/100
+    * nearestValue shall be 0 if exact values are required, or 1 if an approximate value nearest to the value is to be selected.
+
+  * Requests
+    * Dimension names shall be interpreted case-insensitively and should contain no whitespace.
+      * The key for KVP shall be “default\_axis”
+    * GetMap
+      * The default CRS
+      * The default style shall be empty (none)
+    * etFeatureInfo
+
+### GetCapabiltiies ###
+The layer in a capabilties request
+(needs keywords)
+```
+<Layer queryable="0" opaque="0" cascaded="0">
+    <Name>mouse brain</Name>
+    <Title>mouse brain</Title>
+    <SRS>INCF: Mouse_ABAreference_1.0</SRS>
+    <LatLonBoundingBox minx="-256" miny="-256" maxx="256" maxy="256" />
+    <BoundingBox SRS=" Mouse_ABAreference_1.0"
+                minx="-256" miny="-256" maxx="256" maxy="256" />
+    <Dimension name=" default_axis" units="UCOM" unitSymbol=”nm” />
+    <Extent name=" default_axis" default="0" nearestValue="0">-512/512</Extent>
+</Layer>
+```
+
+
+#### Sample GetCapabilties Response ####
+
+TBD
+
+### GetMap Request ###
+TBD
+
+### GetFeatureInfo Request ###
+
+### references ###
+
+
+http://mapserver.org/ogc/wms_time.html

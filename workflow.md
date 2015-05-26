@@ -1,0 +1,170 @@
+# Introduction #
+
+From segmentation to packaged image stacks to 3D image reconstruction, to reconstruction quality measures, then registering to a fixed image (e.g. WHS) - initialization, then a finer transform - to passing the transform file along with the initial image to a warping compute system, to generating lookups (forward and inverse), atlas services, quality measures (e.g. via simulations).
+
+The scripts implementing the workflow, are at:
+https://github.com/INCF
+
+
+# Details #
+
+## 1. Segmentation ##
+is a one-off step, so not covered here, however ITK may provide some scripts that make segmentation easier. The initial images to be packaged, are placed in iRODS.
+
+### 1a. Downsampling ###
+if the images are large, downsampled versions are created in iRODS.This can be done automatically, prior to the second step.
+
+## 2. Initial package, in single modality ##
+> The slices are segmented but don't have consistent spacing or mutual alignment. This package includes a) collection of individual images, b) collection of downsampled images, c) metadata XML. The metadata XML may look like:
+
+
+
+&lt;Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="no"&gt;
+
+
+> 
+
+&lt;Slice code="01" constant="1.1" yOrientation="Yprime" xOrientation="Xprime" slicetype="oblique" downsampled="filename" downsamplingRatioX="0.1" downsamplingRatioY="0.1"&gt;
+
+image\_name
+
+&lt;/Slice&gt;
+
+
+
+// what if they submit DICOM, or MRI
+
+
+
+&lt;/Slices&gt;
+
+
+
+
+&lt;orientations&gt;
+
+
+//  this is as in DescribeSRS
+//  Xprime: ax+by+cz (where a,b,c = anterior-posterior;ventral-dorsal;left-right)
+
+
+&lt;/orientations&gt;
+
+
+
+There may be images of the same brain in other modalities packaged separately (shall they be referenced explicitly from this package?)
+
+This metadata XML may be generated from user interface where all slices in a folder are presented in a table, and for each one, user specifies whether the slice needs to be included in the computation, the "z" value, X and Y orientations, X and Y resolutions, etc. Alternately, this file can be generated manually.
+
+**need user interface for adding/editing these slice metadata. This user interface should support submitting all data that we'll need eventually in NIFTI**
+
+### 2a. Validation tests ###
+User runs validation tests on the input data: a) whether spacing is consistent, and there are jumps in spacing/outliers, and b) whether orientation/shape is more or less smooth. The results are presented for each slice in the same table, so that the user can tweak the properties of each slice.
+
+**need ITK or ANTS script for validation**
+
+If shape validation fails --> need alignment step
+If spacing validation fails --> may still need interpolation step if spacing is not identical
+
+
+## 3. Alignment ##
+processes the initial package, and shifts/affine transforms the plates into alignment. The origin is also set at this step, either by the user, or automatically (?). Generates an updated XML 'package' file such as:
+
+
+
+&lt;Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="yes" origin="  "&gt;
+
+
+> 
+
+&lt;Slice code="01" constant="1.1" yOrientation="Yprime" xOrientation="Xprime" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1"&gt;
+
+image\_name
+
+&lt;/Slice&gt;
+
+
+
+
+&lt;/Slices&gt;
+
+
+
+
+(can we write out this as a collection of transformation files for each slice?)
+
+After this step, user should do "2a. Validation" again.
+
+## 4. Interpolator ##
+> takes the correctly aligned package,  to generate a new package where slices are at equal spacing, and save it in iRODS. The interpolation can be done on downsampled files. The XML output for the "package":
+
+<Slices modality=”delineation|MRI|NISSL|…” device="microscope" resolution = "0.001" units=”mm” alignment="yes" origin="  " spacingY="0.12" spa>
+> 
+
+&lt;Slice code="01" constant="1.1" yOrientation="Yprime" xOrientation="Xprime" slicetype="oblique" downsampled="filename" downsamplingRatio="0.1"&gt;
+
+image\_name
+
+&lt;/Slice&gt;
+
+
+
+
+Unknown end tag for &lt;/Slices&gt;
+
+
+
+Write out transformation files per slice.
+//Do validation (2a) again, and also compute error estimates here.
+// could be nice on the GUI, where it shows for each slice how good it is for 3D reconstruction (redder - yellow- greener)
+
+
+## 5. 3Dreconstruction ##
+This step takes the clean package (with consistent spacing, alignment, and origin set), and generates a nifti. If the files are large (need to set threshold), the reconstructions is done for downsampled images. The information in the package file shall be sufficient to generate coordinate system description in nifti (meta, mrc). The nifti is saved into iRODS. This is a low-res volume (perhaps 100Mb)
+
+**there is existing ITK script for this: SimpleImageReconstruction.sh for clean image stack, and another one that will use transformations**
+
+**as part of this step, we need estimates of the content of the NIFTI (resolution (e.g. average, max), dimensions, reference system)**
+
+
+Perhaps also deformable reconstruction to an image with continuous set of boundaries (may be a separate operation in ANTS)
+
+### 5a. Masking ###
+
+in ITK-SNAP or elsewhere, user defined the area of interest for which quality measures need to be computed.
+
+Select WHS regions you are interested in, and paint a bounding box on your "moving" data.
+
+Will generate: list of ROIs, and also a paint object(bounding box).
+
+## 6. Validation of 3D ##
+User just looks at the volume to see that it worked Ok, and can proceed to registration to canonical coord system.
+
+
+## 7. Rough registration ##
+Initial rough registration to a target 3D model of matching modality (fixed\_image), to define initial affine transformation and produce a roughly registered image. This can be done over a downsampled version retrieved from iRODS; the result and the transformation are written into iRODS.
+
+**calling ANTS script directly**
+
+
+## 8. Fine registration ##
+based on landmarks, of the roughly aligned image (downsampled if needed) to the fixed target image  - producing a new image and a new transformation file. Alternately, may use some mutual information measure. The transformation after this step will include Affine+[spline|deformation..]
+
+
+## 9. Computation ##
+Submitting the original image stack and the collection of transformations, derived so far, to a compute cluster, where all transformations will be applied in sequence (e.g. Jetsam). The result will be a NIFTI file in original resolution.
+
+### 9a. Mesh generation ###
+Generate a corresponding mesh model, write to iRODS (possibly, eventually)
+
+## 10. Lookup and TransformPOI ##
+Given the transformations and the new Nifti, generate a lookup table for both forward and inverse, to make TransformPOI to work. Write to iRODS. Do simulation experiments to assess transformation quality and uncertainty measures, write them to iRODS.
+
+## 11. DAI service update ##
+Update coordinate system description and transformation description, to make DescribeSRS and DescribeTransformation to work. Update the services.
+
+It would be useful to have validation, where for selected slices we resample the original data space into Waxholm, and overlap - eyeball, basically - but not have them as part of infrastructure.
+
+**2-3-4. An alternate route, for single 2D images or where alignment fails, would be to use Jibber to do landmark registration slice-by-slice. Then it goes to step 9 to do jetsam.**
+
+The workflow is managed from a portal, which keeps track of workflow status, provenance, and references to all intermediate files.
